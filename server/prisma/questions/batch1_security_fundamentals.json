@@ -1,0 +1,355 @@
+{
+  "questions": [
+    {
+      "statementEn": "Which security concept describes an inherent flaw, bug, or misconfiguration in software, hardware, or system design that an attacker can potentially take advantage of to breach security?",
+      "statementEs": "¿Qué concepto de seguridad describe una falla inherente, error de software (bug) o mala configuración en el software, hardware o diseño del sistema que un atacante puede aprovechar potencialmente para vulnerar la seguridad?",
+      "questionType": "single_choice",
+      "difficulty": "basic",
+      "primaryTopicExamArea": "security_fundamentals",
+      "multipleAnswerCount": null,
+      "estimatedTimeSeconds": 60,
+      "explanationEn": "In cybersecurity and the Cisco CCNA security framework, foundational security terms are defined as follows:\n- Vulnerability: A weakness, flaw, bug, or misconfiguration in an operating system, application, protocol implementation, or physical control that creates an opening for unauthorized access, privilege escalation, or disruption (e.g., an unpatched software bug such as CVE-2023-20198 in Cisco IOS XE Web UI).\n- Threat: Any potential danger or event that could compromise the confidentiality, integrity, or availability of an organization's assets (e.g., malware, ransomware, an external hacker, or a malicious insider).\n- Exploit: The actual method, software script, payload, or technique created to take advantage of a specific vulnerability to execute an attack.\n- Risk: The probability or likelihood that a threat agent will successfully exploit a vulnerability, multiplied by the potential business impact or loss (Risk = Threat × Vulnerability × Impact).\n- Mitigation: Countermeasures, controls, and hardening practices deployed to eliminate vulnerabilities or reduce the impact of threats.\n\nCisco IOS Configuration and Verification for Device Hardening and Vulnerability Mitigation:\n- Check current IOS version and software integrity against Cisco PSIRT advisories:\n  Router# show version\n  Router# verify /md5 flash:c2900-universalk9-mz.SPA.157-3.M3.bin\n- Disable unsecure legacy management services:\n  Router(config)# no ip http server\n  Router(config)# no ip http secure-server\n  Router(config)# no service finger\n  Router(config)# no service pad\n- Verify open listening sockets and active management services:\n  Router# show control-plane host open-ports\n  Router# show ip sockets",
+      "explanationEs": "En ciberseguridad y en el marco de certificación Cisco CCNA, los términos fundamentales de seguridad se definen de la siguiente manera:\n- Vulnerabilidad (Vulnerability): Una debilidad, falla, error de programación (bug) o defecto de configuración en un sistema operativo, aplicación, protocolo o control físico que deja abierta la posibilidad de acceso no autorizado, elevación de privilegios o denegación de servicio (por ejemplo, una falla de software no parcheada como CVE-2023-20198 en la interfaz Web UI de Cisco IOS XE).\n- Amenaza (Threat): Cualquier peligro potencial o circunstancia externa o interna que pueda comprometer la confidencialidad, integridad o disponibilidad de los activos de información (por ejemplo, ransomware, cibercriminales, malware o un empleado descontento).\n- Exploit: El mecanismo, script, herramienta o técnica diseñada específicamente para aprovecharse de una vulnerabilidad existente y ejecutar un ataque exitoso.\n- Riesgo (Risk): La probabilidad calculada de que una amenaza explote efectivamente una vulnerabilidad, combinada con el impacto o pérdida que causaría en el negocio (Riesgo = Amenaza × Vulnerabilidad × Impacto).\n- Mitigación (Mitigation): Conjunto de medidas de seguridad, configuraciones de aseguramiento (hardening) y parches implementados para reducir o eliminar la vulnerabilidad.\n\nComandos de configuración y verificación en Cisco IOS para mitigación de vulnerabilidades:\n- Verificar la versión actual del software e integridad ante avisos de Cisco PSIRT:\n  Router# show version\n  Router# verify /md5 flash:c2900-universalk9-mz.SPA.157-3.M3.bin\n- Deshabilitar servicios de administración heredados e inseguros:\n  Router(config)# no ip http server\n  Router(config)# no ip http secure-server\n  Router(config)# no service finger\n  Router(config)# no service pad\n- Verificar puertos abiertos y servicios activos:\n  Router# show control-plane host open-ports\n  Router# show ip sockets",
+      "correctAnswerExplanationEn": "A vulnerability is specifically defined as a weakness or flaw in a system or network that can be exploited by a threat to compromise security.",
+      "correctAnswerExplanationEs": "Una vulnerabilidad se define específicamente como una debilidad o falla en un sistema o red que puede ser aprovechada por una amenaza para comprometer la seguridad.",
+      "options": [
+        {
+          "optionLabel": "A",
+          "optionTextEn": "Vulnerability",
+          "optionTextEs": "Vulnerabilidad",
+          "isCorrect": true,
+          "explanationEn": "A vulnerability is a weakness in software, hardware, or configuration that leaves a system susceptible to attack.",
+          "explanationEs": "Una vulnerabilidad es una debilidad en el software, hardware o configuración que deja al sistema susceptible a un ataque."
+        },
+        {
+          "optionLabel": "B",
+          "optionTextEn": "Threat",
+          "optionTextEs": "Amenaza",
+          "isCorrect": false,
+          "explanationEn": "A threat is a potential circumstance, person, or entity capable of causing harm or exploiting a vulnerability.",
+          "explanationEs": "Una amenaza es una circunstancia, persona o entidad potencial capaz de causar daño o explotar una vulnerabilidad."
+        },
+        {
+          "optionLabel": "C",
+          "optionTextEn": "Exploit",
+          "optionTextEs": "Exploit",
+          "isCorrect": false,
+          "explanationEn": "An exploit is the specific code, tool, or technique used by an attacker to take advantage of an existing vulnerability.",
+          "explanationEs": "Un exploit es el código, herramienta o técnica específica utilizada por un atacante para aprovecharse de una vulnerabilidad existente."
+        },
+        {
+          "optionLabel": "D",
+          "optionTextEn": "Risk",
+          "optionTextEs": "Riesgo",
+          "isCorrect": false,
+          "explanationEn": "Risk is the measured probability of a threat actor exploiting a vulnerability and the resulting financial or operational impact.",
+          "explanationEs": "El riesgo es la probabilidad medida de que un actor de amenaza explote una vulnerabilidad y el impacto financiero u operativo resultante."
+        }
+      ],
+      "sourceName": "CCNA 200-301 Original Questions",
+      "sourceLicense": "Original content"
+    },
+    {
+      "statementEn": "A network administrator needs to secure privileged EXEC mode access on a Cisco IOS-XE router. Company security policy requires using the strongest natively supported key-derivation hashing algorithm (Type 9 - scrypt) for the enable secret password, and also obfuscating all cleartext passwords stored in the configuration file. Which pair of global configuration commands satisfies both requirements?",
+      "statementEs": "Un administrador de red necesita proteger el acceso al modo EXEC privilegiado en un router Cisco IOS-XE. La política de seguridad corporativa exige utilizar el algoritmo de hashing basado en derivación de claves más robusto soportado nativamente (Tipo 9 - scrypt) para la contraseña enable secret, y además ofuscar todas las contraseñas en texto claro almacenadas en el archivo de configuración. ¿Qué par de comandos de configuración global cumple con ambos requisitos?",
+      "questionType": "ios_commands",
+      "difficulty": "basic",
+      "primaryTopicExamArea": "security_fundamentals",
+      "multipleAnswerCount": null,
+      "estimatedTimeSeconds": 75,
+      "explanationEn": "Cisco IOS and IOS-XE support several password hashing types:\n- Type 0: Plaintext (unencrypted).\n- Type 7: Weak reversible Vigenère cipher created by 'service password-encryption'. It can be cracked almost instantly and is solely designed to deter casual screen observation ('shoulder surfing').\n- Type 5: MD5 hash, created by standard legacy 'enable secret'. It is susceptible to GPU-accelerated dictionary attacks.\n- Type 8: PBKDF2 with SHA-256 HMAC.\n- Type 9: scrypt hashing algorithm. Introduced in Cisco IOS 15.3(3)M / IOS-XE 3.10S. scrypt is a memory-hard key-derivation function that requires substantial RAM and computation per guess, effectively neutralizing GPU, FPGA, and ASIC brute-force hardware.\n\nConfiguration:\n- To set Type 9 scrypt for privileged EXEC:\n  Router(config)# enable algorithm-type scrypt secret <password>\n- To encrypt line/console passwords with Type 7:\n  Router(config)# service password-encryption\n\nVerification Commands:\n- Router# show running-config | include enable\n  (Displays: enable secret 9 $9$vD...)\n- Router# show running-config | include service password\n  (Displays: service password-encryption)\n- Router# show login\n  (Verifies login enhancements and brute-force block-for settings)",
+      "explanationEs": "Cisco IOS e IOS-XE admiten varios tipos de almacenamiento y hashing de contraseñas:\n- Tipo 0: Texto plano (sin cifrar).\n- Tipo 7: Cifrado reversible débil basado en Vigenère creado por 'service password-encryption'. Se descifra casi de forma instantánea y su único propósito es evitar que curiosos lean la pantalla ('shoulder surfing').\n- Tipo 5: Hash MD5 generado históricamente por 'enable secret'. Es susceptible a ataques de diccionario por fuerza bruta acelerados por GPU.\n- Tipo 8: PBKDF2 con HMAC SHA-256.\n- Tipo 9: Algoritmo de hashing scrypt. Introducido en Cisco IOS 15.3(3)M / IOS-XE 3.10S. scrypt es una función de derivación de claves que exige un alto consumo de memoria RAM y tiempo de CPU por cada intento, neutralizando eficazmente ataques de fuerza bruta mediante GPU, FPGA y ASICs.\n\nConfiguración:\n- Para establecer Tipo 9 scrypt para EXEC privilegiado:\n  Router(config)# enable algorithm-type scrypt secret <password>\n- Para ofuscar contraseñas de consola y líneas vty con Tipo 7:\n  Router(config)# service password-encryption\n\nComandos de verificación:\n- Router# show running-config | include enable\n  (Muestra: enable secret 9 $9$vD...)\n- Router# show running-config | include service password\n  (Muestra: service password-encryption)\n- Router# show login\n  (Verifica la configuración de protección contra ataques de diccionario 'login block-for')",
+      "correctAnswerExplanationEn": "The command 'enable algorithm-type scrypt secret Cisco123!' explicitly specifies the Type 9 scrypt hashing algorithm for the enable secret, while 'service password-encryption' enables Type 7 encryption for all cleartext line and local passwords in the running configuration.",
+      "correctAnswerExplanationEs": "El comando 'enable algorithm-type scrypt secret Cisco123!' especifica de forma explícita el algoritmo de hashing Tipo 9 scrypt para enable secret, mientras que 'service password-encryption' habilita el cifrado Tipo 7 para todas las contraseñas en texto claro de líneas y accesos locales.",
+      "options": [
+        {
+          "optionLabel": "A",
+          "optionTextEn": "Router(config)# enable algorithm-type scrypt secret Cisco123!\nRouter(config)# service password-encryption",
+          "optionTextEs": "Router(config)# enable algorithm-type scrypt secret Cisco123!\nRouter(config)# service password-encryption",
+          "isCorrect": true,
+          "explanationEn": "Correct. 'enable algorithm-type scrypt secret' enforces Type 9 hashing, and 'service password-encryption' obfuscates all plaintext passwords in the configuration file.",
+          "explanationEs": "Correcto. 'enable algorithm-type scrypt secret' aplica el hash Tipo 9 y 'service password-encryption' ofusca todas las contraseñas en texto plano del archivo de configuración."
+        },
+        {
+          "optionLabel": "B",
+          "optionTextEn": "Router(config)# enable secret 9 Cisco123!\nRouter(config)# service password-encryption",
+          "optionTextEs": "Router(config)# enable secret 9 Cisco123!\nRouter(config)# service password-encryption",
+          "isCorrect": false,
+          "explanationEn": "Incorrect. The syntax 'enable secret 9 <string>' informs Cisco IOS that the string is an already-computed Type 9 hash, not a plaintext password. Passing plaintext will cause hash validation errors.",
+          "explanationEs": "Incorrecto. La sintaxis 'enable secret 9 <string>' le indica a Cisco IOS que el texto es un hash Tipo 9 precalculado y no una contraseña en texto plano, lo que generará errores."
+        },
+        {
+          "optionLabel": "C",
+          "optionTextEn": "Router(config)# enable password Cisco123!\nRouter(config)# service password-hash scrypt",
+          "optionTextEs": "Router(config)# enable password Cisco123!\nRouter(config)# service password-hash scrypt",
+          "isCorrect": false,
+          "explanationEn": "Incorrect. 'enable password' creates an unhashed or Type 7 password, which is insecure. 'service password-hash scrypt' is an invalid Cisco IOS command.",
+          "explanationEs": "Incorrecto. 'enable password' crea una contraseña no hasheada o de Tipo 7, lo cual es inseguro. 'service password-hash scrypt' no es un comando válido en Cisco IOS."
+        },
+        {
+          "optionLabel": "D",
+          "optionTextEn": "Router(config)# enable secret Cisco123!\nRouter(config)# security passwords encryption aes",
+          "optionTextEs": "Router(config)# enable secret Cisco123!\nRouter(config)# security passwords encryption aes",
+          "isCorrect": false,
+          "explanationEn": "Incorrect. 'enable secret' without the algorithm-type keyword does not guarantee Type 9 scrypt (it defaults to Type 5 or Type 8 depending on the IOS version). 'security passwords encryption aes' configures Type 6 password encryption using a master key, not general cleartext password obfuscation.",
+          "explanationEs": "Incorrecto. 'enable secret' sin la palabra clave algorithm-type no garantiza Tipo 9 scrypt (utiliza Tipo 5 o Tipo 8 según la versión de IOS). 'security passwords encryption aes' configura cifrado Tipo 6 con clave maestra."
+        }
+      ],
+      "sourceName": "CCNA 200-301 Original Questions",
+      "sourceLicense": "Original content"
+    },
+    {
+      "statementEn": "A network engineer is deploying an IPsec Site-to-Site VPN between headquarters and a remote branch office across the Internet. Enterprise security policy specifies that all user payload traffic must be encrypted to ensure data confidentiality, protected against tampering (data integrity), and shielded against replay attacks. Which IPsec protocol provides all of these required security services, and what IP protocol number does it use in the IPv4 packet header?",
+      "statementEs": "Un ingeniero de red está implementando una VPN IPsec Sitio a Sitio entre la sede central y una sucursal remota a través de Internet. La política de seguridad empresarial especifica que todo el tráfico de carga útil de los usuarios debe cifrarse para garantizar la confidencialidad de los datos, protegerse contra manipulaciones (integridad de datos) y resguardarse contra ataques de repetición (anti-replay). ¿Qué protocolo IPsec proporciona todos estos servicios de seguridad requeridos y qué número de protocolo IP utiliza en el encabezado del paquete IPv4?",
+      "questionType": "network_security",
+      "difficulty": "intermediate",
+      "primaryTopicExamArea": "security_fundamentals",
+      "multipleAnswerCount": null,
+      "estimatedTimeSeconds": 90,
+      "explanationEn": "The IPsec framework relies on two primary data plane protocols:\n1. Encapsulating Security Payload (ESP - IP Protocol 50):\n   - Confidentiality: Encrypts the payload data using symmetric encryption algorithms (e.g., AES-128, AES-256, 3DES).\n   - Data Integrity: Verifies that data has not been altered in transit using hashing (HMAC-SHA-256, HMAC-SHA-512).\n   - Authentication: Verifies the true origin of the data packet.\n   - Anti-Replay: Uses sequence numbers in the ESP header to detect and discard duplicate or intercepted packets.\n   Because ESP provides encryption while AH does not, ESP is the standard protocol for commercial VPNs. Note: When NAT devices exist in the path, ESP is encapsulated in UDP port 4500 (NAT-Traversal).\n\n2. Authentication Header (AH - IP Protocol 51):\n   - Provides integrity, authentication, and anti-replay, but DOES NOT provide confidentiality (payload is sent in plaintext). It also hashes the outer IP header, which fails across NAT.\n\n3. Generic Routing Encapsulation (GRE - IP Protocol 47):\n   - An encapsulation protocol used for tunneling multiprotocol/multicast traffic, but provides zero native encryption or security.\n\n4. Internet Key Exchange (IKE/IKEv2 - UDP 500/4500):\n   - Operates in the control plane to negotiate SAs, authenticate peers, and exchange keys; it does not carry the actual user payload.\n\nCisco IOS Configuration and Verification Commands:\n- Define transform set with ESP encryption and integrity:\n  Router(config)# crypto ipsec transform-set TSET esp-aes 256 esp-sha256-hmac\n  Router(cfg-crypto-trans)# mode tunnel\n- Associate with IPsec profile:\n  Router(config)# crypto ipsec profile VTI_PROFILE\n  Router(ipsec-profile)# set transform-set TSET\n- Verification Commands:\n  Router# show crypto ipsec sa (Shows active ESP SAs, encrypted/decrypted packet counts, inbound/outbound SPIs)\n  Router# show crypto session detail (Displays status of IKE and IPsec tunnel sessions)\n  Router# show crypto isakmp sa (or 'show crypto ikev2 sa')",
+      "explanationEs": "El marco de seguridad IPsec utiliza dos protocolos principales para el plano de datos:\n1. Encapsulating Security Payload (ESP - Protocolo IP 50):\n   - Confidencialidad: Cifra la carga útil de los paquetes utilizando algoritmos simétricos robustos (ej. AES-128, AES-256, 3DES).\n   - Integridad de datos: Garantiza que la información no haya sido alterada durante el tránsito mediante hashes autenticados (HMAC-SHA-256, HMAC-SHA-512).\n   - Autenticación de origen: Valida la identidad del dispositivo emisor.\n   - Anti-Replay: Utiliza números de secuencia en el encabezado ESP para detectar y descartar paquetes duplicados o reinyectados.\n   Dado que ESP provee cifrado y AH no, ESP es el estándar de la industria. Si hay dispositivos NAT en la ruta, ESP se encapsula en UDP puerto 4500 (NAT-Traversal).\n\n2. Authentication Header (AH - Protocolo IP 51):\n   - Ofrece integridad, autenticación y anti-replay, pero NO ofrece confidencialidad (el tráfico viaja en texto claro). Además, su hash incluye campos mutables del encabezado IP, lo que hace que falle al atravesar NAT.\n\n3. Generic Routing Encapsulation (GRE - Protocolo IP 47):\n   - Es un protocolo de encapsulación para transportar tráfico multiprotocolo y multidifusión, pero carece de mecanismos nativos de cifrado o seguridad.\n\n4. Internet Key Exchange (IKE/IKEv2 - UDP 500/4500):\n   - Trabaja en el plano de control para negociar asociaciones de seguridad (SAs), autenticar extremos e intercambiar claves criptográficas; no transporta la carga útil de datos.\n\nComandos de configuración y verificación en Cisco IOS:\n- Definir el transform set con cifrado e integridad ESP:\n  Router(config)# crypto ipsec transform-set TSET esp-aes 256 esp-sha256-hmac\n  Router(cfg-crypto-trans)# mode tunnel\n- Asociar al perfil IPsec:\n  Router(config)# crypto ipsec profile VTI_PROFILE\n  Router(ipsec-profile)# set transform-set TSET\n- Comandos de verificación:\n  Router# show crypto ipsec sa (Muestra SAs de ESP activas, paquetes cifrados/descifrados, contadores de error)\n  Router# show crypto session detail (Muestra el estado completo de las sesiones IKE e IPsec)\n  Router# show crypto isakmp sa (o 'show crypto ikev2 sa')",
+      "correctAnswerExplanationEn": "ESP (Encapsulating Security Payload) is the IPsec protocol that provides data confidentiality (encryption), integrity, authentication, and anti-replay protection. It operates directly over IPv4 using IP protocol number 50.",
+      "correctAnswerExplanationEs": "ESP (Encapsulating Security Payload) es el protocolo de IPsec que proporciona confidencialidad (cifrado), integridad, autenticación y protección contra repetición. Opera directamente sobre IPv4 utilizando el número de protocolo IP 50.",
+      "options": [
+        {
+          "optionLabel": "A",
+          "optionTextEn": "Encapsulating Security Payload (ESP), using IP protocol 50",
+          "optionTextEs": "Encapsulating Security Payload (ESP), utilizando el protocolo IP 50",
+          "isCorrect": true,
+          "explanationEn": "Correct. ESP provides encryption, integrity, authentication, and anti-replay protection, and uses IP protocol number 50.",
+          "explanationEs": "Correcto. ESP proporciona cifrado, integridad, autenticación y protección anti-replay, y utiliza el protocolo IP número 50."
+        },
+        {
+          "optionLabel": "B",
+          "optionTextEn": "Authentication Header (AH), using IP protocol 51",
+          "optionTextEs": "Authentication Header (AH), utilizando el protocolo IP 51",
+          "isCorrect": false,
+          "explanationEn": "Incorrect. AH (IP protocol 51) provides integrity, authentication, and anti-replay, but it does NOT provide encryption/confidentiality.",
+          "explanationEs": "Incorrecto. AH (protocolo IP 51) provee integridad, autenticación y anti-replay, pero NO ofrece cifrado ni confidencialidad."
+        },
+        {
+          "optionLabel": "C",
+          "optionTextEn": "Generic Routing Encapsulation (GRE), using IP protocol 47",
+          "optionTextEs": "Generic Routing Encapsulation (GRE), utilizando el protocolo IP 47",
+          "isCorrect": false,
+          "explanationEn": "Incorrect. GRE (IP protocol 47) is an encapsulation protocol that does not natively offer encryption or cryptographic security services.",
+          "explanationEs": "Incorrecto. GRE (protocolo IP 47) es un protocolo de encapsulación que no posee capacidades criptográficas nativas de cifrado ni integridad."
+        },
+        {
+          "optionLabel": "D",
+          "optionTextEn": "Internet Key Exchange version 2 (IKEv2), using UDP port 500",
+          "optionTextEs": "Internet Key Exchange versión 2 (IKEv2), utilizando el puerto UDP 500",
+          "isCorrect": false,
+          "explanationEn": "Incorrect. IKEv2 negotiates control plane security associations and key exchange, but it is not the protocol that encapsulates and encrypts data payload packets.",
+          "explanationEs": "Incorrecto. IKEv2 negocia asociaciones de seguridad y el intercambio de claves en el plano de control, pero no es el protocolo que encapsula y cifra la carga útil de datos."
+        }
+      ],
+      "sourceName": "CCNA 200-301 Original Questions",
+      "sourceLicense": "Original content"
+    },
+    {
+      "statementEn": "A network administrator needs to restrict access so that ONLY hosts from the engineering department subnet 10.24.16.0/21 are allowed to communicate with the central database server farm located at 10.50.1.0/24. The administrator chooses to implement a numbered standard IPv4 Access Control List (ACL). Which wildcard mask precisely matches the entire engineering subnet, and according to Cisco best practices, where should this standard ACL be placed in the network?",
+      "statementEs": "Un administrador de red necesita restringir el acceso para que ÚNICAMENTE los hosts de la subred del departamento de ingeniería 10.24.16.0/21 tengan permitido comunicarse con la granja de servidores de bases de datos centrales ubicada en 10.50.1.0/24. El administrador decide implementar una Lista de Control de Acceso (ACL) IPv4 estándar numerada. ¿Qué máscara comodín (wildcard) coincide con precisión con toda la subred de ingeniería y, según las mejores prácticas de Cisco, en qué lugar de la red debe ubicarse esta ACL estándar?",
+      "questionType": "single_choice",
+      "difficulty": "intermediate",
+      "primaryTopicExamArea": "security_fundamentals",
+      "multipleAnswerCount": null,
+      "estimatedTimeSeconds": 90,
+      "explanationEn": "Step-by-step Wildcard Mask Calculation for 10.24.16.0/21:\n1. Convert prefix /21 to dotted-decimal subnet mask:\n   /21 = 11111111.11111111.11111000.00000000 = 255.255.248.0\n2. Subtract the subnet mask from 255.255.255.255:\n     255.255.255.255\n   - 255.255.248.000\n   -----------------\n       0.  0.  7.255\n   The wildcard mask is 0.0.7.255.\n   Network range: 10.24.16.0 through 10.24.23.255 (block size = 256 - 248 = 8).\n\nStandard vs. Extended ACL Placement Guidelines (Cisco Best Practice):\n- Standard ACLs (1-99, 1300-1999) evaluate ONLY the source IPv4 address. Because standard ACLs cannot inspect the destination address, applying a standard ACL close to the source will inadvertently block that source from accessing all other network destinations (Internet, DNS, printers) due to the implicit deny at the end of the ACL. Therefore, standard ACLs MUST be placed AS CLOSE TO THE DESTINATION AS POSSIBLE.\n- Extended ACLs (100-199, 2000-2699) filter on source IP, destination IP, protocol, and port numbers. Therefore, extended ACLs should be placed AS CLOSE TO THE SOURCE AS POSSIBLE to drop unwanted traffic immediately before it consumes network bandwidth.\n\nImplicit Deny:\nEvery Cisco IOS ACL has an invisible implicit deny at the end (deny any / deny ip any any). Any traffic not explicitly permitted is dropped.\n\nCisco IOS Configuration and Verification Commands:\n- Configure standard ACL and apply outbound near destination:\n  Router(config)# access-list 10 permit 10.24.16.0 0.0.7.255\n  Router(config)# interface GigabitEthernet0/1\n  Router(config-if)# ip access-group 10 out\n- Verification Commands:\n  Router# show ip access-lists 10 (Shows match counters)\n  Router# show ip interface GigabitEthernet0/1 (Verifies outbound access list is 10)",
+      "explanationEs": "Cálculo paso a paso de la máscara comodín (Wildcard Mask) para 10.24.16.0/21:\n1. Convertir el prefijo /21 a máscara en formato decimal con puntos:\n   /21 = 11111111.11111111.11111000.00000000 = 255.255.248.0\n2. Restar la máscara de subred de 255.255.255.255:\n     255.255.255.255\n   - 255.255.248.000\n   -----------------\n       0.  0.  7.255\n   La máscara comodín resultante es 0.0.7.255.\n   Rango abarcado: 10.24.16.0 a 10.24.23.255 (tamaño de bloque = 256 - 248 = 8).\n\nReglas de ubicación de ACLs Estándar vs Extendidas (Mejores prácticas de Cisco):\n- ACLs Estándar (1-99, 1300-1999): Inspeccionan ÚNICAMENTE la dirección IP de origen. Dado que no evalúan la IP de destino, colocar una ACL estándar cerca del origen bloquearía a los hosts de ingeniería el acceso a cualquier otro destino de la red (Internet, correo, impresión) debido al 'implicit deny'. Por consiguiente, las ACLs estándar DEBEN colocarse LO MÁS CERCA POSIBLE DEL DESTINO.\n- ACLs Extendidas (100-199, 2000-2699): Filtran por IP origen, IP destino, protocolo y puertos. Deben colocarse LO MÁS CERCA POSIBLE DEL ORIGEN para descartar el tráfico antes de que consuma ancho de banda en la red.\n\nDenegación Implícita (Implicit Deny):\nToda ACL de Cisco IOS finaliza con una regla implícita invisible que deniega todo el tráfico no permitido de forma explícita.\n\nComandos de configuración y verificación en Cisco IOS:\n- Configurar ACL estándar y aplicarla en la interfaz de salida cercana al destino:\n  Router(config)# access-list 10 permit 10.24.16.0 0.0.7.255\n  Router(config)# interface GigabitEthernet0/1\n  Router(config-if)# ip access-group 10 out\n- Comandos de verificación:\n  Router# show ip access-lists 10 (Muestra contadores de coincidencia)\n  Router# show ip interface GigabitEthernet0/1 (Verifica que la lista de acceso de salida es 10)",
+      "correctAnswerExplanationEn": "The wildcard mask for a /21 network (255.255.248.0) is 0.0.7.255 (255.255.255.255 - 255.255.248.0). Furthermore, standard ACLs only filter on source address and must be placed as close to the destination as possible to avoid inadvertently blocking traffic to other destinations.",
+      "correctAnswerExplanationEs": "La máscara comodín para una red /21 (255.255.248.0) es 0.0.7.255 (255.255.255.255 - 255.255.248.0). Además, las ACLs estándar solo filtran por dirección de origen y deben ubicarse lo más cerca posible del destino para evitar bloquear involuntariamente el tráfico hacia otros destinos.",
+      "options": [
+        {
+          "optionLabel": "A",
+          "optionTextEn": "Wildcard mask 0.0.7.255, applied as close to the destination (database server farm) as possible.",
+          "optionTextEs": "Máscara comodín 0.0.7.255, aplicada lo más cerca posible del destino (granja de servidores de bases de datos).",
+          "isCorrect": true,
+          "explanationEn": "Correct. 0.0.7.255 accurately matches the /21 subnet (10.24.16.0 to 10.24.23.255), and standard ACLs must be placed near the destination.",
+          "explanationEs": "Correcto. 0.0.7.255 coincide exactamente con la subred /21 (10.24.16.0 a 10.24.23.255), y las ACLs estándar deben ubicarse cerca del destino."
+        },
+        {
+          "optionLabel": "B",
+          "optionTextEn": "Wildcard mask 0.0.7.255, applied as close to the source (engineering subnet) as possible.",
+          "optionTextEs": "Máscara comodín 0.0.7.255, aplicada lo más cerca posible del origen (subred de ingeniería).",
+          "isCorrect": false,
+          "explanationEn": "Incorrect. Standard ACLs should not be placed near the source because they lack destination IP filtering and would block engineering hosts from reaching all other network services due to the implicit deny.",
+          "explanationEs": "Incorrecto. Las ACLs estándar no deben ubicarse cerca del origen porque carecen de filtrado por IP destino y bloquearían el acceso de los hosts a todos los demás servicios de la red por la denegación implícita."
+        },
+        {
+          "optionLabel": "C",
+          "optionTextEn": "Wildcard mask 0.0.15.255, applied as close to the destination (database server farm) as possible.",
+          "optionTextEs": "Máscara comodín 0.0.15.255, aplicada lo más cerca posible del destino (granja de servidores de bases de datos).",
+          "isCorrect": false,
+          "explanationEn": "Incorrect. 0.0.15.255 corresponds to a /20 network prefix (255.255.240.0), matching 16 class C blocks rather than the required /21 prefix.",
+          "explanationEs": "Incorrecto. 0.0.15.255 corresponde a un prefijo /20 (255.255.240.0), coincidiendo con 16 bloques de clase C en lugar del prefijo /21 requerido."
+        },
+        {
+          "optionLabel": "D",
+          "optionTextEn": "Wildcard mask 0.0.31.255, applied as close to the source (engineering subnet) as possible.",
+          "optionTextEs": "Máscara comodín 0.0.31.255, aplicada lo más cerca posible del origen (subred de ingeniería).",
+          "isCorrect": false,
+          "explanationEn": "Incorrect. 0.0.31.255 matches a /19 network prefix (255.255.224.0), and standard ACLs must not be placed close to the source.",
+          "explanationEs": "Incorrecto. 0.0.31.255 coincide con un prefijo /19 (255.255.224.0), y las ACLs estándar no deben colocarse cerca del origen."
+        }
+      ],
+      "sourceName": "CCNA 200-301 Original Questions",
+      "sourceLicense": "Original content"
+    },
+    {
+      "statementEn": "Refer to the following extended named Access Control List configured on router R1:\n\nip access-list extended EDGE_SECURITY\n 10 permit tcp 172.16.20.0 0.0.1.255 host 192.168.100.50 eq 443\n 20 permit tcp 172.16.20.0 0.0.0.255 host 192.168.100.50 eq 80\n 30 deny ip 172.16.20.0 0.0.1.255 any\n 40 permit ip any any\n!\ninterface GigabitEthernet0/0\n ip address 172.16.20.1 255.255.254.0\n ip access-group EDGE_SECURITY in\n\nA host with IP address 172.16.21.85 sends a packet entering GigabitEthernet0/0 destined to web server 192.168.100.50 with destination TCP port 80 (HTTP).\nWhat action does router R1 take with this packet, and why?",
+      "statementEs": "Consulte la siguiente Lista de Control de Acceso nombrada extendida configurada en el router R1:\n\nip access-list extended EDGE_SECURITY\n 10 permit tcp 172.16.20.0 0.0.1.255 host 192.168.100.50 eq 443\n 20 permit tcp 172.16.20.0 0.0.0.255 host 192.168.100.50 eq 80\n 30 deny ip 172.16.20.0 0.0.1.255 any\n 40 permit ip any any\n!\ninterface GigabitEthernet0/0\n ip address 172.16.20.1 255.255.254.0\n ip access-group EDGE_SECURITY in\n\nUn host con la dirección IP 172.16.21.85 envía un paquete que ingresa por GigabitEthernet0/0 con destino al servidor web 192.168.100.50 con puerto TCP de destino 80 (HTTP).\n¿Qué acción realiza el router R1 con este paquete y por qué?",
+      "questionType": "single_choice",
+      "difficulty": "advanced",
+      "primaryTopicExamArea": "security_fundamentals",
+      "multipleAnswerCount": null,
+      "estimatedTimeSeconds": 120,
+      "explanationEn": "Step-by-step sequential analysis of packet filtering on Router R1:\n1. Incoming Packet Attributes:\n   - Source IP: 172.16.21.85\n   - Destination IP: 192.168.100.50\n   - Protocol: TCP\n   - Destination Port: 80\n   - Inbound Interface: GigabitEthernet0/0\n\n2. Sequential Top-Down Evaluation:\n   - Sequence 10: 'permit tcp 172.16.20.0 0.0.1.255 host 192.168.100.50 eq 443'\n     * Source address match: 172.16.20.0 with wildcard 0.0.1.255 matches 172.16.20.0 through 172.16.21.255. Host 172.16.21.85 falls within this range (MATCH).\n     * Destination match: 192.168.100.50 (MATCH).\n     * Port match: Specifies port 443 (HTTPS). The packet destination port is 80 (HTTP). NO MATCH on port.\n   - Sequence 20: 'permit tcp 172.16.20.0 0.0.0.255 host 192.168.100.50 eq 80'\n     * Source address match: Wildcard 0.0.0.255 strictly matches 172.16.20.0 through 172.16.20.255. The host IP 172.16.21.85 is in the 172.16.21.0/24 subnet. NO MATCH on source address.\n   - Sequence 30: 'deny ip 172.16.20.0 0.0.1.255 any'\n     * Source address match: 172.16.20.0 0.0.1.255 matches 172.16.20.0 through 172.16.21.255. Host 172.16.21.85 MATCHES.\n     * Destination match: 'any' matches all destinations (MATCH).\n     * Protocol: 'ip' encompasses all Layer 3 IPv4 packets including TCP (MATCH).\n     * Full match achieved! Action: DENY. The packet is dropped immediately.\n\n3. Cisco IOS terminates ACL evaluation as soon as a match is encountered. Sequence 40 is never reached for this packet.\n\nCisco IOS Configuration and Verification Commands:\n- Check rule hits:\n  Router# show ip access-lists EDGE_SECURITY\n  (Shows match counter incrementing on line 30: 30 deny ip 172.16.20.0 0.0.1.255 any (1 match))\n- Interface application verification:\n  Router# show ip interface GigabitEthernet0/0 | include Inbound\n  (Displays: Inbound access list is EDGE_SECURITY)\n- Inserting a correction rule:\n  Router(config)# ip access-list extended EDGE_SECURITY\n  Router(config-ext-nacl)# 25 permit tcp 172.16.21.0 0.0.0.255 host 192.168.100.50 eq 80",
+      "explanationEs": "Análisis secuencial paso a paso del filtrado de paquetes en el Router R1:\n1. Atributos del paquete recibido:\n   - IP origen: 172.16.21.85\n   - IP destino: 192.168.100.50\n   - Protocolo: TCP\n   - Puerto destino: 80\n   - Interfaz de entrada: GigabitEthernet0/0\n\n2. Evaluación secuencial de arriba hacia abajo:\n   - Secuencia 10: 'permit tcp 172.16.20.0 0.0.1.255 host 192.168.100.50 eq 443'\n     * Coincidencia de origen: 172.16.20.0 con wildcard 0.0.1.255 abarca de 172.16.20.0 a 172.16.21.255. El host 172.16.21.85 está en este rango (COINCIDE).\n     * Coincidencia de destino: 192.168.100.50 (COINCIDE).\n     * Coincidencia de puerto: Requiere puerto 443 (HTTPS). El paquete va al puerto 80 (HTTP). NO COINCIDE EN EL PUERTO.\n   - Secuencia 20: 'permit tcp 172.16.20.0 0.0.0.255 host 192.168.100.50 eq 80'\n     * Coincidencia de origen: La wildcard 0.0.0.255 abarca exclusivamente de 172.16.20.0 a 172.16.20.255. El host 172.16.21.85 pertenece a la subred 172.16.21.0. NO COINCIDE EN EL ORIGEN.\n   - Secuencia 30: 'deny ip 172.16.20.0 0.0.1.255 any'\n     * Coincidencia de origen: 172.16.20.0 0.0.1.255 abarca de 172.16.20.0 a 172.16.21.255. El host 172.16.21.85 COINCIDE.\n     * Coincidencia de destino: 'any' coincide con cualquier destino (COINCIDE).\n     * Protocolo: 'ip' engloba todo tráfico IPv4 incluyendo TCP (COINCIDE).\n     * ¡Coincidencia confirmada! Acción: DENY. El paquete es descartado de inmediato.\n\n3. Cisco IOS finaliza la evaluación de la ACL en cuanto encuentra la primera coincidencia. La línea 40 nunca se evalúa para este paquete.\n\nComandos de configuración y verificación en Cisco IOS:\n- Verificar coincidencias en la lista de acceso:\n  Router# show ip access-lists EDGE_SECURITY\n  (Muestra el contador incrementado en la línea 30: 30 deny ip 172.16.20.0 0.0.1.255 any (1 match))\n- Verificar aplicación en la interfaz:\n  Router# show ip interface GigabitEthernet0/0 | include Inbound\n  (Muestra: Inbound access list is EDGE_SECURITY)\n- Corrección insertando la regla correspondiente:\n  Router(config)# ip access-list extended EDGE_SECURITY\n  Router(config-ext-nacl)# 25 permit tcp 172.16.21.0 0.0.0.255 host 192.168.100.50 eq 80",
+      "correctAnswerExplanationEn": "The packet is dropped by sequence line 30 because sequence line 10 mismatches on port (443 vs 80), sequence line 20 mismatches on source network (0.0.0.255 only covers 172.16.20.0/24), and sequence line 30 matches the host within the 0.0.1.255 wildcard range and drops the traffic.",
+      "correctAnswerExplanationEs": "El paquete es descartado por la línea de secuencia 30 porque la secuencia 10 no coincide en el puerto (443 vs 80), la secuencia 20 no coincide en la red de origen (0.0.0.255 solo cubre 172.16.20.0/24), y la secuencia 30 coincide con el host dentro del rango de wildcard 0.0.1.255 y descarta el tráfico.",
+      "options": [
+        {
+          "optionLabel": "A",
+          "optionTextEn": "The packet is dropped by sequence line 30 because sequence line 20 only matches the 172.16.20.0/24 subnet.",
+          "optionTextEs": "El paquete es descartado por la línea de secuencia 30 porque la línea de secuencia 20 solo coincide con la subred 172.16.20.0/24.",
+          "isCorrect": true,
+          "explanationEn": "Correct. Sequence line 20 uses wildcard 0.0.0.255 (matching only 172.16.20.0/24), so host 172.16.21.85 falls through to sequence line 30 which explicitly denies it.",
+          "explanationEs": "Correcto. La línea 20 utiliza la wildcard 0.0.0.255 (que solo coincide con 172.16.20.0/24), por lo que el host 172.16.21.85 pasa a la línea 30 que lo deniega explícitamente."
+        },
+        {
+          "optionLabel": "B",
+          "optionTextEn": "The packet is forwarded by sequence line 20 because the wildcard mask 0.0.0.255 covers both 172.16.20.0 and 172.16.21.0.",
+          "optionTextEs": "El paquete es reenviado por la línea de secuencia 20 porque la máscara comodín 0.0.0.255 cubre tanto 172.16.20.0 como 172.16.21.0.",
+          "isCorrect": false,
+          "explanationEn": "Incorrect. A wildcard of 0.0.0.255 only allows variations in the last octet (172.16.20.0 to 172.16.20.255); it does not cover 172.16.21.85.",
+          "explanationEs": "Incorrecto. Una wildcard de 0.0.0.255 solo permite variaciones en el último octeto (172.16.20.0 a 172.16.20.255); no cubre 172.16.21.85."
+        },
+        {
+          "optionLabel": "C",
+          "optionTextEn": "The packet is forwarded by sequence line 40 because line 30 only denies ICMP and UDP traffic.",
+          "optionTextEs": "El paquete es reenviado por la línea de secuencia 40 porque la línea 30 solo deniega tráfico ICMP y UDP.",
+          "isCorrect": false,
+          "explanationEn": "Incorrect. The keyword 'ip' in line 30 matches all IP packets including TCP. Because line 30 matches, line 40 is never reached.",
+          "explanationEs": "Incorrecto. La palabra clave 'ip' en la línea 30 abarca todos los paquetes IP, incluyendo TCP. Debido a que la línea 30 coincide, la línea 40 nunca se alcanza."
+        },
+        {
+          "optionLabel": "D",
+          "optionTextEn": "The packet is dropped by the implicit deny at the end of the ACL because none of the configured statements match destination port 80.",
+          "optionTextEs": "El paquete es descartado por la denegación implícita al final de la ACL porque ninguna de las sentencias configuradas coincide con el puerto destino 80.",
+          "isCorrect": false,
+          "explanationEn": "Incorrect. The packet is dropped by an explicit match on sequence line 30, not by the implicit deny. In addition, line 40 precedes the implicit deny.",
+          "explanationEs": "Incorrecto. El paquete es descartado por una coincidencia explícita en la línea 30, no por la denegación implícita. Además, la línea 40 precede a la denegación implícita."
+        }
+      ],
+      "sourceName": "CCNA 200-301 Original Questions",
+      "sourceLicense": "Original content"
+    },
+    {
+      "statementEn": "An administrator configures port security on an access port of a Cisco Catalyst switch with the following commands:\n\nSwitch(config)# interface FastEthernet 0/8\nSwitch(config-if)# switchport mode access\nSwitch(config-if)# switchport port-security\nSwitch(config-if)# switchport port-security maximum 2\nSwitch(config-if)# switchport port-security violation restrict\n\nTwo authorized devices are connected and active. When a third unauthorized host connects to FastEthernet 0/8 and transmits a frame, which two actions occur on the switch? (Choose two.)",
+      "statementEs": "Un administrador configura seguridad de puerto (port security) en un puerto de acceso de un switch Cisco Catalyst con los siguientes comandos:\n\nSwitch(config)# interface FastEthernet 0/8\nSwitch(config-if)# switchport mode access\nSwitch(config-if)# switchport port-security\nSwitch(config-if)# switchport port-security maximum 2\nSwitch(config-if)# switchport port-security violation restrict\n\nDos dispositivos autorizados están conectados y activos. Cuando un tercer host no autorizado se conecta a FastEthernet 0/8 y transmite una trama, ¿cuáles dos acciones ocurren en el switch? (Elija dos).",
+      "questionType": "multiple_choice",
+      "difficulty": "intermediate",
+      "primaryTopicExamArea": "security_fundamentals",
+      "multipleAnswerCount": 2,
+      "estimatedTimeSeconds": 90,
+      "explanationEn": "Port Security Violation Modes in Cisco Catalyst Switches:\n1. 'protect':\n   - Drops frames from unauthorized MAC addresses exceeding the maximum limit.\n   - Does NOT increment the SecurityViolation counter.\n   - Does NOT generate Syslog messages or send SNMP traps.\n   - Interface status remains 'up/up'.\n\n2. 'restrict':\n   - Drops frames from unauthorized MAC addresses while permitting legitimate traffic from authorized MAC addresses.\n   - INCREMENTS the SecurityViolation counter.\n   - Generates a Syslog notification (%PORT_SECURITY-2-PSECURE_VIOLATION) and sends an SNMP trap.\n   - Interface status remains 'up/up'.\n\n3. 'shutdown' (Default mode):\n   - Immediately places the interface into the 'err-disabled' state (operationally down).\n   - Turns off or sets the port LED to amber.\n   - INCREMENTS the SecurityViolation counter.\n   - Generates a Syslog notification and sends an SNMP trap.\n   - Recovery requires manual administrator intervention ('shutdown' followed by 'no shutdown') or automatic timer recovery via 'errdisable recovery cause psecure-violation'.\n\nCisco IOS Configuration and Verification Commands:\n- Interface configuration:\n  Switch(config-if)# switchport mode access\n  Switch(config-if)# switchport port-security\n  Switch(config-if)# switchport port-security maximum 2\n  Switch(config-if)# switchport port-security violation restrict\n- Verification Commands:\n  Switch# show port-security interface FastEthernet 0/8\n  (Displays: Port Security: Enabled, Port Status: Secure-up, Violation Mode: Restrict, Security Violation Count: X)\n  Switch# show port-security address\n  (Displays secure MAC addresses learned on ports)\n  Switch# show interfaces FastEthernet 0/8 status",
+      "explanationEs": "Modos de violación de Port Security en switches Cisco Catalyst:\n1. 'protect':\n   - Descarta las tramas de direcciones MAC no autorizadas que excedan el límite configurado.\n   - NO incrementa el contador de violaciones de seguridad (SecurityViolation count).\n   - NO genera mensajes de Syslog ni envía trampas SNMP.\n   - El estado de la interfaz se mantiene activo ('up/up').\n\n2. 'restrict':\n   - Descarta las tramas de direcciones MAC no autorizadas, permitiendo que el tráfico de las MAC autorizadas continúe fluyendo con normalidad.\n   - INCREMENTA el contador de violaciones de seguridad.\n   - Genera un mensaje de registro Syslog (%PORT_SECURITY-2-PSECURE_VIOLATION) y envía una notificación SNMP trap.\n   - El estado de la interfaz se mantiene activo ('up/up').\n\n3. 'shutdown' (Modo predeterminado):\n   - Pasa inmediatamente la interfaz al estado 'err-disabled' (deshabilitada por error operativo).\n   - Apaga o coloca en color ámbar el LED físico del puerto.\n   - INCREMENTA el contador de violaciones.\n   - Genera mensaje Syslog y envía notificación SNMP trap.\n   - La recuperación exige intervención manual ('shutdown' y 'no shutdown') o automática mediante 'errdisable recovery cause psecure-violation'.\n\nComandos de configuración y verificación en Cisco IOS:\n- Configuración de la interfaz:\n  Switch(config-if)# switchport mode access\n  Switch(config-if)# switchport port-security\n  Switch(config-if)# switchport port-security maximum 2\n  Switch(config-if)# switchport port-security violation restrict\n- Comandos de verificación:\n  Switch# show port-security interface FastEthernet 0/8\n  (Muestra: Port Security: Enabled, Port Status: Secure-up, Violation Mode: Restrict, Security Violation Count: X)\n  Switch# show port-security address\n  (Muestra las direcciones MAC seguras aprendidas)\n  Switch# show interfaces FastEthernet 0/8 status",
+      "correctAnswerExplanationEn": "Under the 'restrict' violation mode, the switch drops frames from the unauthorized MAC address (while keeping authorized hosts forwarding) and logs the event by incrementing the SecurityViolation counter, generating a Syslog message, and sending an SNMP trap.",
+      "correctAnswerExplanationEs": "Bajo el modo de violación 'restrict', el switch descarta las tramas de la dirección MAC no autorizada (manteniendo el reenvío de los hosts autorizados) y registra el evento incrementando el contador SecurityViolation, generando un mensaje de Syslog y enviando un SNMP trap.",
+      "options": [
+        {
+          "optionLabel": "A",
+          "optionTextEn": "The switch drops frames received from the unauthorized MAC address while continuing to forward frames from the two authorized MAC addresses.",
+          "optionTextEs": "El switch descarta las tramas recibidas de la dirección MAC no autorizada mientras continúa reenviando las tramas de las dos direcciones MAC autorizadas.",
+          "isCorrect": true,
+          "explanationEn": "Correct. In restrict mode, only unauthorized frames exceeding the maximum limit are dropped; authorized traffic continues undisturbed.",
+          "explanationEs": "Correcto. En modo restrict, solo se descartan las tramas no autorizadas que excedan el límite; el tráfico autorizado continúa sin interrupción."
+        },
+        {
+          "optionLabel": "B",
+          "optionTextEn": "The switch increments the SecurityViolation counter, generates a Syslog message, and sends an SNMP trap.",
+          "optionTextEs": "El switch incrementa el contador de SecurityViolation, genera un mensaje de Syslog y envía una notificación SNMP trap.",
+          "isCorrect": true,
+          "explanationEn": "Correct. Restrict mode explicitly logs the violation via counter increment, Syslog, and SNMP trap.",
+          "explanationEs": "Correcto. El modo restrict registra explícitamente la infracción incrementando el contador, enviando un Syslog y una trampa SNMP."
+        },
+        {
+          "optionLabel": "C",
+          "optionTextEn": "The switch immediately transitions the port into an err-disabled state and turns the interface LED amber.",
+          "optionTextEs": "El switch transiciona inmediatamente el puerto a un estado err-disabled y cambia el LED de la interfaz a color ámbar.",
+          "isCorrect": false,
+          "explanationEn": "Incorrect. Placing the port into the err-disabled state occurs under 'shutdown' violation mode, not under 'restrict'.",
+          "explanationEs": "Incorrecto. Colocar el puerto en estado err-disabled ocurre bajo el modo 'shutdown', no bajo 'restrict'."
+        },
+        {
+          "optionLabel": "D",
+          "optionTextEn": "The switch shuts down all traffic on the VLAN associated with the interface.",
+          "optionTextEs": "El switch apaga todo el tráfico en la VLAN asociada con la interfaz.",
+          "isCorrect": false,
+          "explanationEn": "Incorrect. Port security is a per-interface feature and does not disable an entire VLAN.",
+          "explanationEs": "Incorrecto. Port security opera a nivel de interfaz física y no desactiva una VLAN completa."
+        },
+        {
+          "optionLabel": "E",
+          "optionTextEn": "The switch silently drops frames from the unauthorized MAC address without incrementing the violation counter or logging any notification.",
+          "optionTextEs": "El switch descarta silenciosamente las tramas de la dirección MAC no autorizada sin incrementar el contador de violaciones ni registrar notificaciones.",
+          "isCorrect": false,
+          "explanationEn": "Incorrect. Silently dropping frames without logging or incrementing the violation counter describes 'protect' mode, not 'restrict' mode.",
+          "explanationEs": "Incorrecto. Descartar tramas silenciosamente sin registrar ni incrementar contadores describe el modo 'protect', no el modo 'restrict'."
+        }
+      ],
+      "sourceName": "CCNA 200-301 Original Questions",
+      "sourceLicense": "Original content"
+    },
+    {
+      "statementEn": "A network security architect is configuring centralized administrative access control for core Cisco enterprise routers. The implementation must fulfill three strict design constraints:\n1. Every individual CLI command entered by an administrator in privileged EXEC mode must be authorized in real time against a centralized identity server.\n2. The entire packet payload between the router and the AAA server—including usernames, commands, and attribute values—must be encrypted over the network.\n3. The AAA protocol must rely on a connection-oriented transport protocol (TCP) to guarantee delivery.\n\nWhich AAA protocol and Cisco IOS authorization command syntax satisfy all three requirements?",
+      "statementEs": "Un arquitecto de seguridad de red está configurando el control de acceso administrativo centralizado para los routers core empresariales Cisco. La implementación debe cumplir con tres requisitos estrictos de diseño:\n1. Cada comando individual de CLI introducido por un administrador en el modo EXEC privilegiado debe ser autorizado en tiempo real contra un servidor de identidad centralizado.\n2. Toda la carga útil de los paquetes entre el router y el servidor AAA —incluyendo nombres de usuario, comandos y valores de atributos— debe estar cifrada a través de la red.\n3. El protocolo AAA debe utilizar un protocolo de transporte orientado a la conexión (TCP) para garantizar la entrega.\n\n¿Qué protocolo AAA y qué sintaxis de comando de autorización en Cisco IOS satisfacen los tres requisitos?",
+      "questionType": "single_choice",
+      "difficulty": "advanced",
+      "primaryTopicExamArea": "security_fundamentals",
+      "multipleAnswerCount": null,
+      "estimatedTimeSeconds": 105,
+      "explanationEn": "Comparison of AAA Protocols (TACACS+ vs. RADIUS):\n1. Separation of AAA Functions:\n   - TACACS+ (Terminal Access Controller Access-Control System Plus): Strictly separates Authentication (verifying identity), Authorization (enforcing what commands can be run), and Accounting (logging commands executed). This modular architecture allows per-command authorization in real time for CLI sessions.\n   - RADIUS (Remote Authentication Dial-In User Service): Combines Authentication and Authorization into a single response packet (Access-Accept/Reject). It does not natively support granular per-command CLI authorization.\n2. Encryption:\n   - TACACS+: Encrypts the entire body/payload of the packet using a pre-shared secret key (only the 12-byte header is cleartext). Command strings and attributes are completely protected from network sniffing.\n   - RADIUS: Encrypts ONLY the password field in the Access-Request packet. Usernames, attributes, and accounting messages are sent in cleartext.\n3. Transport Protocol:\n   - TACACS+: Uses TCP port 49 (connection-oriented, reliable delivery).\n   - RADIUS: Uses UDP ports 1812 (auth/authz) and 1813 (accounting) or legacy UDP ports 1645/1646.\n\nCisco IOS Configuration for Command Authorization:\nRouter(config)# aaa new-model\nRouter(config)# tacacs server ISE_SERVER\nRouter(config-server-tacacs)# address ipv4 10.10.10.50\nRouter(config-server-tacacs)# key CiscoKey123!\nRouter(config)# aaa group server tacacs+ TACACS_GROUP\nRouter(config-sg-tacacs+)# server name ISE_SERVER\nRouter(config)# aaa authorization commands 15 default group TACACS_GROUP local\n\nVerification Commands:\n- Router# show running-config | section aaa\n- Router# show tacacs (Displays server status, TCP connection state, and transaction statistics)\n- Router# show aaa servers (Displays status and round-trip times of configured AAA servers)\n- Router# debug aaa authorization (Real-time troubleshooting of CLI command authorization transactions)",
+      "explanationEs": "Comparación de protocolos AAA (TACACS+ vs. RADIUS):\n1. Separación de funciones AAA:\n   - TACACS+ (Terminal Access Controller Access-Control System Plus): Separa de manera estricta la Autenticación (verificación de identidad), la Autorización (control de comandos y privilegios permitidos) y la Auditoría (registro de comandos ejecutados). Esta arquitectura modular posibilita la autorización por comando individual en tiempo real para sesiones de CLI.\n   - RADIUS (Remote Authentication Dial-In User Service): Combina Autenticación y Autorización en una sola respuesta (Access-Accept/Reject). No admite de forma nativa la autorización granular comando por comando en la CLI.\n2. Cifrado:\n   - TACACS+: Cifra la totalidad del cuerpo/carga útil del paquete mediante una clave secreta compartida (solo el encabezado de 12 bytes viaja en texto claro). Las cadenas de comandos y los atributos están completamente resguardados de capturas de tráfico.\n   - RADIUS: Cifra ÚNICAMENTE el campo de la contraseña en el paquete Access-Request. Los nombres de usuario, atributos y registros de auditoría se envían en texto claro.\n3. Protocolo de transporte:\n   - TACACS+: Utiliza TCP puerto 49 (orientado a la conexión, con entrega garantizada).\n   - RADIUS: Utiliza UDP puertos 1812 (autenticación/autorización) y 1813 (auditoría) o los puertos heredados UDP 1645/1646.\n\nConfiguración de Cisco IOS para autorización de comandos:\nRouter(config)# aaa new-model\nRouter(config)# tacacs server ISE_SERVER\nRouter(config-server-tacacs)# address ipv4 10.10.10.50\nRouter(config-server-tacacs)# key CiscoKey123!\nRouter(config)# aaa group server tacacs+ TACACS_GROUP\nRouter(config-sg-tacacs+)# server name ISE_SERVER\nRouter(config)# aaa authorization commands 15 default group TACACS_GROUP local\n\nComandos de verificación:\n- Router# show running-config | section aaa\n- Router# show tacacs (Muestra estado de conexiones TCP y estadísticas de transacciones)\n- Router# show aaa servers (Muestra estado y tiempos de respuesta de los servidores AAA)\n- Router# debug aaa authorization (Depuración en vivo de las solicitudes de autorización de comandos de CLI)",
+      "correctAnswerExplanationEn": "TACACS+ meets all requirements: it uses TCP port 49, encrypts the entire packet body, strictly separates AAA functions, and enables granular per-command authorization using the 'aaa authorization commands 15 default group tacacs+ local' syntax.",
+      "correctAnswerExplanationEs": "TACACS+ cumple con todos los requisitos: utiliza TCP puerto 49, cifra la totalidad del cuerpo del paquete, separa de forma estricta las funciones AAA y permite la autorización granular comando por comando mediante la sintaxis 'aaa authorization commands 15 default group tacacs+ local'.",
+      "options": [
+        {
+          "optionLabel": "A",
+          "optionTextEn": "TACACS+; using 'aaa authorization commands 15 default group tacacs+ local'",
+          "optionTextEs": "TACACS+; utilizando 'aaa authorization commands 15 default group tacacs+ local'",
+          "isCorrect": true,
+          "explanationEn": "Correct. TACACS+ uses TCP port 49, encrypts the entire payload, and supports per-command authorization with this command syntax.",
+          "explanationEs": "Correcto. TACACS+ usa TCP puerto 49, cifra toda la carga útil y soporta autorización comando por comando con esta sintaxis."
+        },
+        {
+          "optionLabel": "B",
+          "optionTextEn": "RADIUS; using 'aaa authorization exec default group radius local'",
+          "optionTextEs": "RADIUS; utilizando 'aaa authorization exec default group radius local'",
+          "isCorrect": false,
+          "explanationEn": "Incorrect. RADIUS uses UDP, encrypts only the password, and 'aaa authorization exec' authorizes the initial shell session, not individual commands.",
+          "explanationEs": "Incorrecto. RADIUS usa UDP, solo cifra la contraseña y 'aaa authorization exec' autoriza la sesión de shell inicial, no comandos individuales."
+        },
+        {
+          "optionLabel": "C",
+          "optionTextEn": "RADIUS; using 'aaa authorization commands 15 default group radius local'",
+          "optionTextEs": "RADIUS; utilizando 'aaa authorization commands 15 default group radius local'",
+          "isCorrect": false,
+          "explanationEn": "Incorrect. RADIUS does not support per-command authorization because it combines authentication and authorization, and it uses UDP with partial encryption.",
+          "explanationEs": "Incorrecto. RADIUS no admite autorización comando por comando porque combina autenticación y autorización, además de utilizar UDP y cifrado parcial."
+        },
+        {
+          "optionLabel": "D",
+          "optionTextEn": "TACACS+; using 'aaa authentication login default group tacacs+ local'",
+          "optionTextEs": "TACACS+; utilizando 'aaa authentication login default group tacacs+ local'",
+          "isCorrect": false,
+          "explanationEn": "Incorrect. 'aaa authentication login' configures user login authentication (verifying identity), not per-command authorization.",
+          "explanationEs": "Incorrecto. 'aaa authentication login' configura la autenticación de inicio de sesión de los usuarios (quién es), no la autorización de comandos individuales."
+        }
+      ],
+      "sourceName": "CCNA 200-301 Original Questions",
+      "sourceLicense": "Original content"
+    }
+  ]
+}

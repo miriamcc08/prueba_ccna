@@ -1,0 +1,249 @@
+{
+  "questions": [
+    {
+      "statementEn": "Refer to the exhibit displaying the output of the 'show ip nat statistics' command on enterprise border router Router-Edge:\n\nRouter-Edge# show ip nat statistics\nTotal active translations: 1 (0 static, 1 dynamic; 0 extended)\nOutside interfaces:\n  GigabitEthernet0/0/1\nInside interfaces:\n  GigabitEthernet0/0/0\nHits: 1840  Misses: 56\nCEF Translated packets: 1840, CEF Punts: 0\nExpired translations: 0\nDynamic mappings:\n-- Inside Source\n[Id: 1] access-list 10 interface GigabitEthernet0/0/1 refcount 1\n\nAn administrator configured dynamic NAT so that workstations on the 192.168.10.0/24 subnet could access the Internet via the public IPv4 address assigned to GigabitEthernet0/0/1. The first internal workstation successfully accesses external websites, but subsequent connection attempts from all other internal hosts fail. Based on the output, what is the root cause of the failure, and which Cisco IOS command must be configured to resolve the issue?",
+      "statementEs": "Consulte la exhibición que muestra la salida del comando 'show ip nat statistics' en el router de borde empresarial Router-Edge:\n\nRouter-Edge# show ip nat statistics\nTotal active translations: 1 (0 static, 1 dynamic; 0 extended)\nOutside interfaces:\n  GigabitEthernet0/0/1\nInside interfaces:\n  GigabitEthernet0/0/0\nHits: 1840  Misses: 56\nCEF Translated packets: 1840, CEF Punts: 0\nExpired translations: 0\nDynamic mappings:\n-- Inside Source\n[Id: 1] access-list 10 interface GigabitEthernet0/0/1 refcount 1\n\nUn administrador configuró NAT dinámico para que las estaciones de trabajo en la subred 192.168.10.0/24 pudieran acceder a Internet a través de la dirección IPv4 pública asignada a GigabitEthernet0/0/1. La primera estación de trabajo interna accede con éxito a sitios web externos, pero los intentos de conexión posteriores de todos los demás hosts internos fallan. Según la salida, ¿cuál es la causa raíz del fallo y qué comando de Cisco IOS debe configurarse para resolver el problema?",
+      "questionType": "ios_commands",
+      "difficulty": "advanced",
+      "primaryTopicExamArea": "ip_services",
+      "multipleAnswerCount": null,
+      "estimatedTimeSeconds": 90,
+      "explanationEn": "In Cisco IOS, Port Address Translation (PAT), also known as NAT overload, allows multiple private IP addresses to be mapped to a single public IP address by tracking Layer 4 source port numbers. When dynamic NAT is configured with the command 'ip nat inside source list <acl> interface <interface>' without the 'overload' keyword, Cisco IOS treats the configuration as dynamic one-to-one NAT. Because the specified interface has only one IPv4 address, the router assigns that single address to the first internal host that initiates an outbound connection, resulting in one active translation. The 'show ip nat statistics' output confirms this condition with 'Total active translations: 1 (0 static, 1 dynamic; 0 extended)', where '0 extended' indicates that port numbers are not being multiplexed. When subsequent hosts attempt to initiate connections, the single available outside address is already in use, causing 56 NAT misses and preventing outbound communication. Configuring 'ip nat inside source list 10 interface GigabitEthernet0/0/1 overload' enables PAT, allowing thousands of concurrent flows to share the interface IP address.",
+      "explanationEs": "En Cisco IOS, Port Address Translation (PAT), también conocido como NAT overload, permite mapear múltiples direcciones IP privadas a una sola dirección IP pública rastreando los números de puerto de origen de Capa 4. Cuando se configura NAT dinámico con el comando 'ip nat inside source list <acl> interface <interface>' sin la palabra clave 'overload', Cisco IOS trata la configuración como un NAT dinámico uno a uno. Debido a que la interfaz especificada solo tiene una dirección IPv4, el router asigna esa única dirección al primer host interno que inicia una conexión saliente, lo que da como resultado una traducción activa. La salida de 'show ip nat statistics' confirma esta condición con 'Total active translations: 1 (0 static, 1 dynamic; 0 extended)', donde '0 extended' indica que los números de puerto no se están multiplexando. Cuando los hosts posteriores intentan iniciar conexiones, la única dirección externa disponible ya está en uso, lo que genera 56 fallos (misses) de NAT e impide la comunicación saliente. Al configurar 'ip nat inside source list 10 interface GigabitEthernet0/0/1 overload', se habilita PAT, permitiendo que miles de flujos simultáneos compartan la dirección IP de la interfaz.",
+      "correctAnswerExplanationEn": "The absence of the 'overload' keyword caused the router to perform one-to-one dynamic NAT rather than PAT, exhausting the single IP address after the first host connected as shown by '0 extended' translations. Adding 'overload' to 'ip nat inside source list 10 interface GigabitEthernet0/0/1' enables PAT and resolves the address exhaustion.",
+      "correctAnswerExplanationEs": "La ausencia de la palabra clave 'overload' hizo que el router realizara un NAT dinámico uno a uno en lugar de PAT, agotando la única dirección IP disponible después de que el primer host se conectó, como lo demuestran las '0 extended' traducciones. Agregar 'overload' a 'ip nat inside source list 10 interface GigabitEthernet0/0/1' habilita PAT y resuelve el agotamiento de direcciones.",
+      "options": [
+        {
+          "optionLabel": "A",
+          "optionTextEn": "The 'overload' keyword was omitted from the NAT configuration, restricting translations to one-to-one dynamic mapping; configure 'ip nat inside source list 10 interface GigabitEthernet0/0/1 overload'.",
+          "optionTextEs": "Se omitió la palabra clave 'overload' en la configuración de NAT, restringiendo las traducciones a un mapeo dinámico uno a uno; configure 'ip nat inside source list 10 interface GigabitEthernet0/0/1 overload'.",
+          "isCorrect": true,
+          "explanationEn": "Correct. The output shows 'Total active translations: 1 (0 static, 1 dynamic; 0 extended)', which indicates standard dynamic NAT without Port Address Translation (PAT). Because the outside interface has only a single IPv4 address and 'overload' was omitted, the router maps the first host to that public address and rejects all other hosts, generating NAT misses. Adding the 'overload' keyword enables PAT, permitting multiple inside hosts to share the single interface IP address using unique Layer 4 port numbers.",
+          "explanationEs": "Correcto. La salida muestra 'Total active translations: 1 (0 static, 1 dynamic; 0 extended)', lo que indica NAT dinámico estándar sin Port Address Translation (PAT). Debido a que la interfaz outside tiene solo una única dirección IPv4 y se omitió 'overload', el router asigna el primer host a esa dirección pública y rechaza a todos los demás hosts, generando fallos (misses) de NAT. Agregar la palabra clave 'overload' habilita PAT, permitiendo que múltiples hosts internos compartan la dirección IP única de la interfaz utilizando números de puerto de Capa 4 únicos."
+        },
+        {
+          "optionLabel": "B",
+          "optionTextEn": "Interface GigabitEthernet0/0/0 is incorrectly functioning as an outside interface; enter interface configuration mode and execute 'no ip nat inside' followed by 'ip nat outside'.",
+          "optionTextEs": "La interfaz GigabitEthernet0/0/0 está funcionando incorrectamente como interfaz outside; ingrese al modo de configuración de interfaz y ejecute 'no ip nat inside' seguido de 'ip nat outside'.",
+          "isCorrect": false,
+          "explanationEn": "Incorrect. The exhibit explicitly shows that GigabitEthernet0/0/0 is already designated as the inside interface and GigabitEthernet0/0/1 is designated as the outside interface. Changing GigabitEthernet0/0/0 to outside would completely break NAT routing for internal clients. The problem is lack of PAT port multiplexing, not interface roles.",
+          "explanationEs": "Incorrecto. La exhibición muestra explícitamente que GigabitEthernet0/0/0 ya está designada como la interfaz inside y GigabitEthernet0/0/1 como la interfaz outside. Cambiar GigabitEthernet0/0/0 a outside rompería por completo el enrutamiento NAT para los clientes internos. El problema es la falta de multiplexación de puertos PAT, no los roles de interfaz."
+        },
+        {
+          "optionLabel": "C",
+          "optionTextEn": "The router requires an IP NAT pool to support more than one host; configure 'ip nat pool PAT_POOL 203.0.113.1 203.0.113.1 netmask 255.255.255.252' in global configuration mode.",
+          "optionTextEs": "El router requiere un pool de IP NAT para admitir más de un host; configure 'ip nat pool PAT_POOL 203.0.113.1 203.0.113.1 netmask 255.255.255.252' en el modo de configuración global.",
+          "isCorrect": false,
+          "explanationEn": "Incorrect. An IP NAT pool is not mandatory when translating traffic to an interface's assigned IP address. Furthermore, defining a pool containing a single usable address without the 'overload' keyword would recreate the exact same limitation. The solution is to append the 'overload' keyword to the existing interface-based translation statement.",
+          "explanationEs": "Incorrecto. Un pool de IP NAT no es obligatorio cuando se traduce el tráfico a la dirección IP asignada a una interfaz. Además, definir un pool que contenga una única dirección utilizable sin la palabra clave 'overload' recrearía exactamente la misma limitación. La solución es anexar la palabra clave 'overload' a la instrucción de traducción basada en interfaz existente."
+        },
+        {
+          "optionLabel": "D",
+          "optionTextEn": "Access-list 10 contains an implicit deny that blocks additional hosts; configure 'access-list 10 permit any' to allow the remaining LAN addresses to be translated.",
+          "optionTextEs": "Access-list 10 contiene un deny implícito que bloquea hosts adicionales; configure 'access-list 10 permit any' para permitir que las direcciones LAN restantes sean traducidas.",
+          "isCorrect": false,
+          "explanationEn": "Incorrect. Access-list 10 already matches the LAN subnet traffic as evidenced by the first host succeeding and the 56 NAT misses that occurred when other hosts attempted translation. Changing the ACL to 'permit any' does not resolve the absence of port overloading on the single public IP address. In fact, permitting 'any' could unintentionally translate unwanted traffic or management flows.",
+          "explanationEs": "Incorrecto. Access-list 10 ya coincide con el tráfico de la subred LAN, como lo demuestra el hecho de que el primer host tuvo éxito y los 56 fallos (misses) de NAT que ocurrieron cuando otros hosts intentaron la traducción. Cambiar la ACL a 'permit any' no resuelve la ausencia de sobrecarga de puertos en la dirección IP pública única. De hecho, permitir 'any' podría traducir involuntariamente tráfico no deseado o flujos de gestión."
+        }
+      ],
+      "sourceName": "CCNA 200-301 Original Questions",
+      "sourceLicense": "Original content"
+    },
+    {
+      "statementEn": "A network engineer must configure a Cisco IOS router as the local DHCP server for a branch office subnet on subinterface GigabitEthernet0/0.10 with IP address 10.10.10.1/24. The configuration must satisfy the following technical requirements:\n1. Exclude the first 15 host IPv4 addresses (10.10.10.1 through 10.10.10.15) from dynamic assignment to protect statically configured devices.\n2. Create a DHCP pool named BRANCH_POOL.\n3. Provide dynamic addresses from the 10.10.10.0/24 network.\n4. Set the default gateway for clients to 10.10.10.1.\n5. Provide a primary DNS server at 10.10.100.10 and a secondary DNS server at 10.10.100.11.\n\nWhich configuration snippet correctly accomplishes this task?",
+      "statementEs": "Un ingeniero de red debe configurar un router Cisco IOS como el servidor DHCP local para una subred de sucursal en la subinterfaz GigabitEthernet0/0.10 con la dirección IP 10.10.10.1/24. La configuración debe cumplir con los siguientes requisitos técnicos:\n1. Excluir las primeras 15 direcciones IPv4 de host (10.10.10.1 a 10.10.10.15) de la asignación dinámica para proteger los dispositivos configurados estáticamente.\n2. Crear un pool de DHCP llamado BRANCH_POOL.\n3. Proporcionar direcciones dinámicas de la red 10.10.10.0/24.\n4. Establecer la puerta de enlace predeterminada para los clientes en 10.10.10.1.\n5. Proporcionar un servidor DNS primario en 10.10.100.10 y un servidor DNS secundario en 10.10.100.11.\n\n¿Qué fragmento de configuración logra correctamente esta tarea?",
+      "questionType": "ios_commands",
+      "difficulty": "intermediate",
+      "primaryTopicExamArea": "ip_services",
+      "multipleAnswerCount": null,
+      "estimatedTimeSeconds": 90,
+      "explanationEn": "Configuring a Cisco IOS router as a DHCP server requires executing commands in both global configuration mode and DHCP pool configuration submode. The 'ip dhcp excluded-address <start-ip> [end-ip]' command must be executed in global configuration mode before or after pool creation; it prevents the server from assigning specified static IP addresses to dynamic clients. Inside the DHCP pool submode (dhcp-config), the 'network <network-address> <subnet-mask>' command defines the available IP address space and subnet mask for the scope. To designate the default gateway option (DHCP Option 3) that clients install in their routing tables, the command 'default-router <ip-address>' is used. The DNS server IP addresses (DHCP Option 6) are specified using the 'dns-server <ip1> [ip2 ...]' command. Commands such as 'default-gateway' or 'ip default-gateway' are common exam distractors and will be rejected by the Cisco IOS CLI parser in DHCP pool configuration mode.",
+      "explanationEs": "La configuración de un router Cisco IOS como servidor DHCP requiere ejecutar comandos tanto en el modo de configuración global como en el submodo de configuración de pool DHCP. El comando 'ip dhcp excluded-address <ip-inicial> [ip-final]' debe ejecutarse en el modo de configuración global antes o después de la creación del pool; evita que el servidor asigne direcciones IP estáticas específicas a clientes dinámicos. Dentro del submodo de pool DHCP (dhcp-config), el comando 'network <dirección-red> <máscara-subred>' define el espacio de direcciones IP disponible y la máscara de subred para el ámbito. Para designar la opción de puerta de enlace predeterminada (Opción 3 de DHCP) que los clientes instalan en sus tablas de enrutamiento, se utiliza el comando 'default-router <dirección-ip>'. Las direcciones IP de los servidores DNS (Opción 6 de DHCP) se especifican utilizando el comando 'dns-server <ip1> [ip2 ...]'. Comandos como 'default-gateway' o 'ip default-gateway' son distractores comunes de examen y son rechazados por el analizador de línea de comandos de Cisco IOS en el modo de pool DHCP.",
+      "correctAnswerExplanationEn": "Option A presents the exact, valid Cisco IOS commands: 'ip dhcp excluded-address' in global mode, followed by 'ip dhcp pool', 'network', 'default-router', and 'dns-server' with correct subnet mask notation.",
+      "correctAnswerExplanationEs": "La opción A presenta los comandos exactos y válidos de Cisco IOS: 'ip dhcp excluded-address' en modo global, seguido de 'ip dhcp pool', 'network', 'default-router' y 'dns-server' con la notación de máscara de subred correcta.",
+      "options": [
+        {
+          "optionLabel": "A",
+          "optionTextEn": "Router(config)# ip dhcp excluded-address 10.10.10.1 10.10.10.15\nRouter(config)# ip dhcp pool BRANCH_POOL\nRouter(dhcp-config)# network 10.10.10.0 255.255.255.0\nRouter(dhcp-config)# default-router 10.10.10.1\nRouter(dhcp-config)# dns-server 10.10.100.10 10.10.100.11",
+          "optionTextEs": "Router(config)# ip dhcp excluded-address 10.10.10.1 10.10.10.15\nRouter(config)# ip dhcp pool BRANCH_POOL\nRouter(dhcp-config)# network 10.10.10.0 255.255.255.0\nRouter(dhcp-config)# default-router 10.10.10.1\nRouter(dhcp-config)# dns-server 10.10.100.10 10.10.100.11",
+          "isCorrect": true,
+          "explanationEn": "Correct. In Cisco IOS, 'ip dhcp excluded-address' is configured in global configuration mode with the low and high boundary addresses. The DHCP pool is created with 'ip dhcp pool <name>', the pool subnet is specified with 'network <net> <mask>', the default gateway sent to DHCP clients is designated with 'default-router <ip>', and DNS servers are configured with 'dns-server <ip1> <ip2>'.",
+          "explanationEs": "Correcto. En Cisco IOS, 'ip dhcp excluded-address' se configura en modo de configuración global con las direcciones límite inferior y superior. El pool de DHCP se crea con 'ip dhcp pool <nombre>', la subred del pool se especifica con 'network <red> <máscara>', la puerta de enlace predeterminada enviada a los clientes DHCP se designa con 'default-router <ip>', y los servidores DNS se configuran con 'dns-server <ip1> <ip2>'."
+        },
+        {
+          "optionLabel": "B",
+          "optionTextEn": "Router(config)# ip dhcp pool BRANCH_POOL\nRouter(dhcp-config)# ip dhcp excluded-address 10.10.10.1 10.10.10.15\nRouter(dhcp-config)# network 10.10.10.0 255.255.255.0\nRouter(dhcp-config)# default-gateway 10.10.10.1\nRouter(dhcp-config)# dns-server 10.10.100.10 10.10.100.11",
+          "optionTextEs": "Router(config)# ip dhcp pool BRANCH_POOL\nRouter(dhcp-config)# ip dhcp excluded-address 10.10.10.1 10.10.10.15\nRouter(dhcp-config)# network 10.10.10.0 255.255.255.0\nRouter(dhcp-config)# default-gateway 10.10.10.1\nRouter(dhcp-config)# dns-server 10.10.100.10 10.10.100.11",
+          "isCorrect": false,
+          "explanationEn": "Incorrect. 'ip dhcp excluded-address' cannot be entered within DHCP pool configuration mode (dhcp-config); it is strictly a global configuration command. Furthermore, the command to define the default gateway inside a DHCP pool is 'default-router', not 'default-gateway'.",
+          "explanationEs": "Incorrecto. 'ip dhcp excluded-address' no puede ingresarse dentro del modo de configuración del pool DHCP (dhcp-config); es estrictamente un comando de configuración global. Además, el comando para definir la puerta de enlace predeterminada dentro de un pool DHCP es 'default-router', no 'default-gateway'."
+        },
+        {
+          "optionLabel": "C",
+          "optionTextEn": "Router(config)# ip dhcp excluded-address 10.10.10.1 10.10.10.15\nRouter(config)# ip dhcp pool BRANCH_POOL\nRouter(dhcp-config)# subnet 10.10.10.0 255.255.255.0\nRouter(dhcp-config)# ip default-gateway 10.10.10.1\nRouter(dhcp-config)# ip name-server 10.10.100.10 10.10.100.11",
+          "optionTextEs": "Router(config)# ip dhcp excluded-address 10.10.10.1 10.10.10.15\nRouter(config)# ip dhcp pool BRANCH_POOL\nRouter(dhcp-config)# subnet 10.10.10.0 255.255.255.0\nRouter(dhcp-config)# ip default-gateway 10.10.10.1\nRouter(dhcp-config)# ip name-server 10.10.100.10 10.10.100.11",
+          "isCorrect": false,
+          "explanationEn": "Incorrect. The DHCP pool submode uses 'network', not 'subnet'. Additionally, 'ip default-gateway' and 'ip name-server' are global configuration commands used for the router's own management IP traffic when routing is disabled or for DNS resolution by the router itself, not DHCP options distributed to clients.",
+          "explanationEs": "Incorrecto. El submodo de pool DHCP utiliza 'network', no 'subnet'. Además, 'ip default-gateway' e 'ip name-server' son comandos de configuración global utilizados para el propio tráfico IP de gestión del router cuando el enrutamiento está deshabilitado o para la resolución DNS del propio router, no opciones de DHCP distribuidas a los clientes."
+        },
+        {
+          "optionLabel": "D",
+          "optionTextEn": "Router(config)# ip dhcp exclude 10.10.10.1 10.10.10.15\nRouter(config)# ip dhcp server pool BRANCH_POOL\nRouter(dhcp-config)# network 10.10.10.0 0.0.0.255\nRouter(dhcp-config)# default-router 10.10.10.1\nRouter(dhcp-config)# domain-name-server 10.10.100.10 10.10.100.11",
+          "optionTextEs": "Router(config)# ip dhcp exclude 10.10.10.1 10.10.10.15\nRouter(config)# ip dhcp server pool BRANCH_POOL\nRouter(dhcp-config)# network 10.10.10.0 0.0.0.255\nRouter(dhcp-config)# default-router 10.10.10.1\nRouter(dhcp-config)# domain-name-server 10.10.100.10 10.10.100.11",
+          "isCorrect": false,
+          "explanationEn": "Incorrect. The commands 'ip dhcp exclude', 'ip dhcp server pool', and 'domain-name-server' are invalid Cisco IOS syntax. In addition, the network command inside a DHCP pool expects a standard subnet mask (255.255.255.0), not an inverted wildcard mask (0.0.0.255).",
+          "explanationEs": "Incorrecto. Los comandos 'ip dhcp exclude', 'ip dhcp server pool' y 'domain-name-server' representan una sintaxis no válida en Cisco IOS. Además, el comando network dentro de un pool DHCP requiere una máscara de subred estándar (255.255.255.0), no una máscara comodín (wildcard) invertida (0.0.0.255)."
+        }
+      ],
+      "sourceName": "CCNA 200-301 Original Questions",
+      "sourceLicense": "Original content"
+    },
+    {
+      "statementEn": "A network security engineer is updating the management plane security baseline for enterprise network devices. The security policy mandates replacing legacy SNMPv2c implementations with SNMPv3 across all routers and multilayer switches. Which statement accurately contrasts the security mechanisms of SNMPv2c with SNMPv3, and describes the specific security capabilities provided by the SNMPv3 User-based Security Model (USM)?",
+      "statementEs": "Un ingeniero de seguridad de red está actualizando la línea base de seguridad del plano de administración para los dispositivos de red de la empresa. La política de seguridad exige reemplazar las implementaciones heredadas de SNMPv2c por SNMPv3 en todos los routers y switches multicapa. ¿Qué afirmación contrasta con precisión los mecanismos de seguridad de SNMPv2c con SNMPv3 y describe las capacidades de seguridad específicas proporcionadas por el User-based Security Model (USM) de SNMPv3?",
+      "questionType": "single_choice",
+      "difficulty": "basic",
+      "primaryTopicExamArea": "ip_services",
+      "multipleAnswerCount": null,
+      "estimatedTimeSeconds": 60,
+      "explanationEn": "Simple Network Management Protocol (SNMP) is used to monitor and manage network devices across an IP network. Both SNMPv1 and SNMPv2c rely on community strings (such as public or private) that act as cleartext shared passwords transmitted without encryption or integrity checks across the network. This vulnerability allows attackers running packet analyzers to easily capture community strings and potentially modify device configurations or glean sensitive operational data. SNMPv3 resolves these vulnerabilities by introducing the User-based Security Model (USM) and the View-based Access Control Model (VACM). USM defines three distinct security levels: 'noAuthNoPriv' (username match without authentication or encryption), 'authNoPriv' (message authentication and integrity via HMAC-MD5 or HMAC-SHA without encryption), and 'authPriv' (both cryptographic authentication via MD5/SHA and data encryption via DES, 3DES, or AES-128/192/256). Consequently, SNMPv3 provides confidentiality, message integrity, and source authentication, fulfilling enterprise security audit requirements.",
+      "explanationEs": "El protocolo simple de administración de red (SNMP) se utiliza para monitorear y administrar dispositivos de red a través de una red IP. Tanto SNMPv1 como SNMPv2c dependen de community strings (como public o private) que actúan como contraseñas compartidas en texto plano transmitidas sin cifrado ni verificaciones de integridad a través de la red. Esta vulnerabilidad permite a los atacantes que ejecutan analizadores de paquetes capturar fácilmente las community strings y potencialmente modificar configuraciones de dispositivos u obtener datos operativos confidenciales. SNMPv3 resuelve estas vulnerabilidades mediante la introducción del User-based Security Model (USM) y el View-based Access Control Model (VACM). USM define tres niveles de seguridad distintos: 'noAuthNoPriv' (coincidencia de nombre de usuario sin autenticación ni cifrado), 'authNoPriv' (autenticación e integridad de mensajes mediante HMAC-MD5 o HMAC-SHA sin cifrado) y 'authPriv' (tanto autenticación criptográfica mediante MD5/SHA como cifrado de datos mediante DES, 3DES o AES-128/192/256). Por consiguiente, SNMPv3 proporciona confidencialidad, integridad de mensajes y autenticación de origen, cumpliendo con los requisitos de auditoría de seguridad empresarial.",
+      "correctAnswerExplanationEn": "SNMPv2c sends plain-text community strings without encryption or data integrity, whereas SNMPv3 USM delivers source authentication (MD5/SHA), packet integrity, and privacy/encryption (AES/DES) under the authPriv security level.",
+      "correctAnswerExplanationEs": "SNMPv2c envía community strings en texto plano sin cifrado ni integridad de datos, mientras que SNMPv3 USM ofrece autenticación de origen (MD5/SHA), integridad de paquetes y privacidad/cifrado (AES/DES) bajo el nivel de seguridad authPriv.",
+      "options": [
+        {
+          "optionLabel": "A",
+          "optionTextEn": "SNMPv2c relies on plain-text community strings for password-only authentication without encryption, whereas SNMPv3 supports message integrity, authentication (MD5 or SHA), and encryption (DES, 3DES, or AES) using configurable security levels (noAuthNoPriv, authNoPriv, and authPriv).",
+          "optionTextEs": "SNMPv2c se basa en community strings de texto sin cifrar para la autenticación basada solo en contraseña sin cifrado, mientras que SNMPv3 admite integridad de mensajes, autenticación (MD5 o SHA) y cifrado (DES, 3DES o AES) mediante niveles de seguridad configurables (noAuthNoPriv, authNoPriv y authPriv).",
+          "isCorrect": true,
+          "explanationEn": "Correct. SNMPv1 and SNMPv2c transmit community strings in cleartext over the network with no encryption or cryptographic hashing. SNMPv3 incorporates the User-based Security Model (USM), offering authentication (HMAC-MD5/SHA), data integrity, and privacy/encryption (DES/AES) through three standardized security levels: noAuthNoPriv, authNoPriv, and authPriv.",
+          "explanationEs": "Correcto. SNMPv1 y SNMPv2c transmiten community strings en texto plano a través de la red sin cifrado ni hashing criptográfico. SNMPv3 incorpora el User-based Security Model (USM), ofreciendo autenticación (HMAC-MD5/SHA), integridad de datos y privacidad/cifrado (DES/AES) a través de tres niveles de seguridad estandarizados: noAuthNoPriv, authNoPriv y authPriv."
+        },
+        {
+          "optionLabel": "B",
+          "optionTextEn": "SNMPv2c provides built-in 128-bit AES encryption but lacks user authentication, whereas SNMPv3 replaces symmetric encryption with asymmetric RSA public/private key pairs and digital certificates.",
+          "optionTextEs": "SNMPv2c proporciona cifrado AES de 128 bits incorporado pero carece de autenticación de usuario, mientras que SNMPv3 reemplaza el cifrado simétrico con pares de claves pública/privada RSA asimétricas y certificados digitales.",
+          "isCorrect": false,
+          "explanationEn": "Incorrect. SNMPv2c provides zero encryption capabilities and sends all data in cleartext. In addition, SNMPv3 USM uses symmetric encryption algorithms (such as AES and DES) rather than requiring RSA certificates.",
+          "explanationEs": "Incorrecto. SNMPv2c no proporciona capacidades de cifrado y envía todos los datos en texto claro. Además, SNMPv3 USM utiliza algoritmos de cifrado simétrico (como AES y DES) en lugar de requerir certificados RSA."
+        },
+        {
+          "optionLabel": "C",
+          "optionTextEn": "SNMPv2c authenticates managers using HMAC-SHA hashes while leaving payload unencrypted, whereas SNMPv3 mandates TLS tunneling over TCP port 443 to secure SNMP packets.",
+          "optionTextEs": "SNMPv2c autentica a los administradores mediante hashes HMAC-SHA dejando la carga útil sin cifrar, mientras que SNMPv3 exige un túnel TLS sobre el puerto TCP 443 para proteger los paquetes SNMP.",
+          "isCorrect": false,
+          "explanationEn": "Incorrect. SNMPv2c does not support HMAC-SHA or any cryptographic hashing; it sends community strings in cleartext. Furthermore, standard SNMPv3 continues to operate over UDP (port 161 for polls and port 162 for traps/informs) using USM encryption, not mandatory TLS over TCP 443.",
+          "explanationEs": "Incorrecto. SNMPv2c no admite HMAC-SHA ni ningún hash criptográfico; envía community strings en texto plano. Además, el SNMPv3 estándar continúa operando sobre UDP (puerto 161 para consultas y puerto 162 para traps/informs) utilizando el cifrado USM, no mediante TLS obligatorio sobre TCP 443."
+        },
+        {
+          "optionLabel": "D",
+          "optionTextEn": "SNMPv2c requires TACACS+ or RADIUS server integration for authentication, whereas SNMPv3 eliminates external AAA servers by utilizing locally generated pre-shared community passwords.",
+          "optionTextEs": "SNMPv2c requiere la integración de servidores TACACS+ o RADIUS para la autenticación, mientras que SNMPv3 elimina los servidores AAA externos utilizando contraseñas precompartidas de comunidad generadas localmente.",
+          "isCorrect": false,
+          "explanationEn": "Incorrect. Neither SNMPv1 nor SNMPv2c integrates with TACACS+ or RADIUS; they use local community strings. SNMPv3 defines local or centralized users with cryptographic credentials within its User-based Security Model, not pre-shared community strings.",
+          "explanationEs": "Incorrecto. Ni SNMPv1 ni SNMPv2c se integran con TACACS+ o RADIUS; utilizan community strings locales. SNMPv3 define usuarios locales o centralizados con credenciales criptográficas dentro de su User-based Security Model, no community strings precompartidas."
+        }
+      ],
+      "sourceName": "CCNA 200-301 Original Questions",
+      "sourceLicense": "Original content"
+    },
+    {
+      "statementEn": "A network administrator is preparing to upgrade a Cisco router and must back up the existing Cisco IOS software image stored in flash memory to an external TFTP server at IP address 192.168.1.50. After issuing the command 'dir flash:', the administrator confirms that the file is named 'c1900-universalk9-mz.SPA.155-3.M4b.bin'. Which Cisco IOS command executed in privileged EXEC mode initiates the file transfer to back up this image from flash memory to the TFTP server?",
+      "statementEs": "Un administrador de red se está preparando para actualizar un router Cisco y debe respaldar la imagen de software Cisco IOS existente almacenada en la memoria flash en un servidor TFTP externo en la dirección IP 192.168.1.50. Después de emitir el comando 'dir flash:', el administrador confirma que el archivo se llama 'c1900-universalk9-mz.SPA.155-3.M4b.bin'. ¿Qué comando de Cisco IOS ejecutado en el modo EXEC privilegiado inicia la transferencia de archivos para respaldar esta imagen desde la memoria flash al servidor TFTP?",
+      "questionType": "ios_commands",
+      "difficulty": "basic",
+      "primaryTopicExamArea": "ip_services",
+      "multipleAnswerCount": null,
+      "estimatedTimeSeconds": 60,
+      "explanationEn": "In Cisco IOS software, the privileged EXEC 'copy' command is the universal mechanism used to move files between file systems and network services. The syntax consistently requires the source file or file system first, followed by the destination file or file system: 'copy <source> <destination>'. To export or back up a Cisco IOS software image from the router's local non-volatile flash storage to an external TFTP server, the engineer enters 'copy flash: tftp:'. Upon entering this command, the IOS CLI launches an interactive prompt asking for the Source filename, the Address or name of remote host (192.168.1.50), and the Destination filename. In contrast, 'copy tftp: flash:' would instruct the router to download an image from the server into flash, potentially overwriting existing system files. TFTP operates over UDP port 69 and requires no user authentication, making it a simple and standard transport mechanism for Cisco IOS image management.",
+      "explanationEs": "En el software Cisco IOS, el comando 'copy' en modo EXEC privilegiado es el mecanismo universal utilizado para transferir archivos entre sistemas de archivos y servicios de red. La sintaxis requiere de manera constante primero el archivo o sistema de archivos de origen, seguido del archivo o sistema de archivos de destino: 'copy <origen> <destino>'. Para exportar o respaldar una imagen de software Cisco IOS desde el almacenamiento flash no volátil local del router hacia un servidor TFTP externo, el ingeniero ingresa 'copy flash: tftp:'. Al ingresar este comando, la CLI de IOS inicia un diálogo interactivo solicitando el Source filename (nombre de archivo de origen), el Address or name of remote host (192.168.1.50) y el Destination filename (nombre de archivo de destino). En contraste, 'copy tftp: flash:' le ordenaría al router descargar una imagen desde el servidor a la memoria flash, sobrescribiendo potencialmente archivos del sistema existentes. TFTP opera sobre el puerto UDP 69 y no requiere autenticación de usuario, lo que lo convierte en un mecanismo de transporte simple y estándar para la gestión de imágenes de Cisco IOS.",
+      "correctAnswerExplanationEn": "The command 'copy flash: tftp:' correctly designates the router's local flash memory as the source and the remote TFTP server as the destination for backing up the IOS image file.",
+      "correctAnswerExplanationEs": "El comando 'copy flash: tftp:' designa correctamente la memoria flash local del router como el origen y el servidor TFTP remoto como el destino para respaldar el archivo de imagen de IOS.",
+      "options": [
+        {
+          "optionLabel": "A",
+          "optionTextEn": "Router# copy flash: tftp:",
+          "optionTextEs": "Router# copy flash: tftp:",
+          "isCorrect": true,
+          "explanationEn": "Correct. The Cisco IOS 'copy' command follows the syntax 'copy <source-location> <destination-location>'. To back up a file from local flash storage to a remote TFTP server, the source is specified as 'flash:' and the destination is specified as 'tftp:'. The router then interactively prompts the administrator for the source filename, remote TFTP server IP address, and destination filename.",
+          "explanationEs": "Correcto. El comando 'copy' de Cisco IOS sigue la sintaxis 'copy <ubicación-origen> <ubicación-destino>'. Para respaldar un archivo desde el almacenamiento flash local a un servidor TFTP remoto, el origen se especifica como 'flash:' y el destino como 'tftp:'. Luego, el router solicita interactivamente al administrador el nombre del archivo de origen, la dirección IP del servidor TFTP remoto y el nombre del archivo de destino."
+        },
+        {
+          "optionLabel": "B",
+          "optionTextEn": "Router# copy tftp: flash:",
+          "optionTextEs": "Router# copy tftp: flash:",
+          "isCorrect": false,
+          "explanationEn": "Incorrect. The syntax 'copy tftp: flash:' defines the TFTP server as the source and flash memory as the destination, which is used to download/restore a new software image to the router, not to back up an existing image from flash.",
+          "explanationEs": "Incorrecto. La sintaxis 'copy tftp: flash:' define el servidor TFTP como el origen y la memoria flash como el destino, lo que se utiliza para descargar o restaurar una nueva imagen de software en el router, no para respaldar una imagen existente desde la flash."
+        },
+        {
+          "optionLabel": "C",
+          "optionTextEn": "Router# backup flash: 192.168.1.50 tftp:",
+          "optionTextEs": "Router# backup flash: 192.168.1.50 tftp:",
+          "isCorrect": false,
+          "explanationEn": "Incorrect. Cisco IOS does not have a 'backup' command for file system operations. All file transfer operations between local storage and remote servers use the 'copy' command.",
+          "explanationEs": "Incorrecto. Cisco IOS no dispone de un comando 'backup' para operaciones de sistema de archivos. Todas las operaciones de transferencia de archivos entre el almacenamiento local y los servidores remotos utilizan el comando 'copy'."
+        },
+        {
+          "optionLabel": "D",
+          "optionTextEn": "Router# copy running-config tftp:",
+          "optionTextEs": "Router# copy running-config tftp:",
+          "isCorrect": false,
+          "explanationEn": "Incorrect. The command 'copy running-config tftp:' backs up the router's active configuration file from RAM to the TFTP server, not the Cisco IOS binary operating system image residing in flash memory.",
+          "explanationEs": "Incorrecto. El comando 'copy running-config tftp:' respalda el archivo de configuración activo del router desde la RAM al servidor TFTP, no la imagen binaria del sistema operativo Cisco IOS que reside en la memoria flash."
+        }
+      ],
+      "sourceName": "CCNA 200-301 Original Questions",
+      "sourceLicense": "Original content"
+    },
+    {
+      "statementEn": "An enterprise network deploys Cisco IP Phones daisy-chained with user desktop PCs connecting to Catalyst access switches. To ensure optimal voice quality and protect voice streams from being degraded by general data traffic, the network administrator must implement Quality of Service (QoS). Where is the recommended QoS trust boundary located in this deployment model, and which Layer 2 Class of Service (CoS) and Layer 3 Differentiated Services Code Point (DSCP) markings are standardly assigned to voice media (audio payload) traffic by the IP phone?",
+      "statementEs": "Una red empresarial implementa teléfonos Cisco IP Phones conectados en cascada (daisy-chain) con computadoras de escritorio de usuarios conectadas a switches de acceso Catalyst. Para garantizar una calidad de voz óptima y proteger los flujos de voz de la degradación causada por el tráfico de datos general, el administrador de red debe implementar Calidad de Servicio (QoS). ¿Dónde se encuentra el límite de confianza (trust boundary) de QoS recomendado en este modelo de implementación, y qué marcas de Class of Service (CoS) de Capa 2 y Differentiated Services Code Point (DSCP) de Capa 3 asigna de manera estándar el teléfono IP al tráfico de medios de voz (audio payload)?",
+      "questionType": "single_choice",
+      "difficulty": "intermediate",
+      "primaryTopicExamArea": "ip_services",
+      "multipleAnswerCount": null,
+      "estimatedTimeSeconds": 90,
+      "explanationEn": "In modern enterprise network design, the Quality of Service (QoS) trust boundary defines the perimeter beyond which QoS markings (Layer 2 CoS or Layer 3 DSCP) are trusted and preserved. When a Cisco IP Phone connects between the Catalyst access switch and a user PC, the recommended best practice is to extend the trust boundary to the Cisco IP Phone using Cisco Discovery Protocol (CDP). The Cisco IP Phone contains an internal three-port switch: one port connects to the access switch, one connects to the internal phone hardware, and one connects to the access PC. The phone marks its own voice media payload (RTP stream) with Layer 2 CoS 5 in the 802.1Q Priority Code Point (PCP) field and Layer 3 DSCP EF (Expedited Forwarding, decimal 46, binary 101110) in the IPv4 DiffServ byte. Concurrently, the phone untrusts frames originating from the user PC, rewriting PC tags to CoS 0 / DSCP 0 (Best Effort) unless specifically configured to trust PC tags. This prevents user workstations or untrusted software applications from marking arbitrary data traffic with high priority, which would otherwise congest strict-priority hardware queues reserved for voice.",
+      "explanationEs": "En el diseño de redes empresariales modernas, el límite de confianza (trust boundary) de Calidad de Servicio (QoS) define el perímetro más allá del cual las marcas de QoS (CoS de Capa 2 o DSCP de Capa 3) se consideran confiables y se preservan. Cuando un Cisco IP Phone se conecta entre el switch de acceso Catalyst y una PC de usuario, la mejor práctica recomendada es extender el límite de confianza hasta el Cisco IP Phone utilizando Cisco Discovery Protocol (CDP). El Cisco IP Phone contiene un switch interno de tres puertos: un puerto se conecta al switch de acceso, uno se conecta al hardware interno del teléfono y uno se conecta a la PC de acceso. El teléfono marca su propio payload de medios de voz (flujo RTP) con CoS 5 de Capa 2 en el campo Priority Code Point (PCP) de 802.1Q y DSCP EF de Capa 3 (Expedited Forwarding, decimal 46, binario 101110) en el byte DiffServ de IPv4. Al mismo tiempo, el teléfono no confía en las tramas que se originan en la PC del usuario, reescribiendo las etiquetas de la PC a CoS 0 / DSCP 0 (Best Effort) a menos que esté configurado específicamente para confiar en las etiquetas de la PC. Esto evita que las estaciones de trabajo de los usuarios o las aplicaciones de software no confiables marquen tráfico de datos arbitrario con alta prioridad, lo que de otro modo congestionaría las colas de hardware de prioridad estricta reservadas para la voz.",
+      "correctAnswerExplanationEn": "The trust boundary extends to the Cisco IP Phone, which reliably marks delay-sensitive voice media streams with Layer 2 CoS 5 and Layer 3 DSCP EF (decimal 46) while untrusting PC traffic.",
+      "correctAnswerExplanationEs": "El límite de confianza se extiende hasta el Cisco IP Phone, el cual marca de manera confiable los flujos de medios de voz sensibles al retardo con CoS 5 de Capa 2 y DSCP EF de Capa 3 (decimal 46), mientras no confía en el tráfico de la PC.",
+      "options": [
+        {
+          "optionLabel": "A",
+          "optionTextEn": "The trust boundary is extended to the Cisco IP Phone; voice media packets are marked with Layer 2 CoS 5 (in the 802.1Q Priority Code Point) and Layer 3 DSCP EF (Expedited Forwarding, decimal 46).",
+          "optionTextEs": "El límite de confianza (trust boundary) se extiende hasta el Cisco IP Phone; los paquetes de medios de voz se marcan con CoS 5 de Capa 2 (en el Priority Code Point de 802.1Q) y DSCP EF de Capa 3 (Expedited Forwarding, decimal 46).",
+          "isCorrect": true,
+          "explanationEn": "Correct. In a typical enterprise campus deployment, the access switch uses CDP to detect the Cisco IP Phone and extends the QoS trust boundary to the phone itself. The IP phone marks real-time voice payload with Layer 2 CoS 5 (binary 101) in the 802.1Q header and Layer 3 DSCP EF (Expedited Forwarding, decimal 46, binary 101110), while remarking traffic received from the untrusted PC to Best Effort (CoS 0 / DSCP 0).",
+          "explanationEs": "Correcto. En una implementación típica de campus empresarial, el switch de acceso utiliza CDP para detectar el Cisco IP Phone y extiende el límite de confianza de QoS hasta el propio teléfono. El teléfono IP marca el payload de voz en tiempo real con CoS 5 de Capa 2 (binario 101) en el encabezado 802.1Q y DSCP EF de Capa 3 (Expedited Forwarding, decimal 46, binario 101110), mientras que remarca el tráfico recibido de la PC no confiable a Best Effort (CoS 0 / DSCP 0)."
+        },
+        {
+          "optionLabel": "B",
+          "optionTextEn": "The trust boundary is located at the user desktop PC; voice media packets are marked with Layer 2 CoS 3 and Layer 3 DSCP AF41 (Assured Forwarding, decimal 34).",
+          "optionTextEs": "El límite de confianza se ubica en la PC de escritorio del usuario; los paquetes de medios de voz se marcan con CoS 3 de Capa 2 y DSCP AF41 de Capa 3 (Assured Forwarding, decimal 34).",
+          "isCorrect": false,
+          "explanationEn": "Incorrect. End-user PCs are untrusted devices because users or rogue applications could manipulate QoS tags to gain unfair bandwidth priority. Furthermore, DSCP AF41 (decimal 34) is typically reserved for interactive video, not voice payload, and CoS 3 is often used for call signaling.",
+          "explanationEs": "Incorrecto. Las PC de los usuarios finales son dispositivos no confiables porque los usuarios o aplicaciones no autorizadas podrían manipular las etiquetas QoS para obtener prioridad de ancho de banda injusta. Además, DSCP AF41 (decimal 34) se reserva típicamente para video interactivo, no para audio de voz, y CoS 3 se usa a menudo para señalización de llamadas."
+        },
+        {
+          "optionLabel": "C",
+          "optionTextEn": "The trust boundary is located at the distribution switch; voice media packets are marked with Layer 2 CoS 1 and Layer 3 DSCP CS5 (Class Selector 5, decimal 40).",
+          "optionTextEs": "El límite de confianza se ubica en el switch de distribución; los paquetes de medios de voz se marcan con CoS 1 de Capa 2 y DSCP CS5 de Capa 3 (Class Selector 5, decimal 40).",
+          "isCorrect": false,
+          "explanationEn": "Incorrect. Placing the trust boundary at the distribution layer means the access switch would treat all incoming voice packets as untrusted and strip or reset their QoS tags, losing voice priority across access uplinks. In addition, CoS 1 corresponds to Scavenger/Bulk data, not voice media.",
+          "explanationEs": "Incorrecto. Ubicar el límite de confianza en la capa de distribución significa que el switch de acceso trataría todos los paquetes de voz entrantes como no confiables y eliminaría o restablecería sus etiquetas QoS, perdiendo la prioridad de voz a través de los enlaces ascendentes de acceso. Además, CoS 1 corresponde a datos Scavenger/Bulk, no a medios de voz."
+        },
+        {
+          "optionLabel": "D",
+          "optionTextEn": "The trust boundary is extended to the Cisco IP Phone; voice media packets are marked with Layer 2 CoS 7 and Layer 3 DSCP CS7 (Network Control, decimal 56).",
+          "optionTextEs": "El límite de confianza se extiende hasta el Cisco IP Phone; los paquetes de medios de voz se marcan con CoS 7 de Capa 2 y DSCP CS7 de Capa 3 (Network Control, decimal 56).",
+          "isCorrect": false,
+          "explanationEn": "Incorrect. CoS 7 and DSCP CS7 (decimal 56) are reserved for Layer 2/Layer 3 network control traffic (such as STP BPDUs and routing protocol keepalives), not user voice payload. Assigning voice to CS7 would risk starving critical network control traffic in congestion conditions.",
+          "explanationEs": "Incorrecto. CoS 7 y DSCP CS7 (decimal 56) están reservados para el tráfico de control de red de Capa 2/Capa 3 (como STP BPDUs y keepalives de protocolos de enrutamiento), no para el payload de voz del usuario. Asignar voz a CS7 correría el riesgo de privar de recursos al tráfico de control de red crítico en condiciones de congestión."
+        }
+      ],
+      "sourceName": "CCNA 200-301 Original Questions",
+      "sourceLicense": "Original content"
+    }
+  ]
+}

@@ -1,0 +1,502 @@
+{
+  "questions": [
+    {
+      "statementEn": "A network technician is reviewing the default configuration on a newly unboxed Cisco Catalyst 2960 switch. Which statement accurately describes the characteristics and default behavior of VLAN 1?",
+      "statementEs": "Un técnico de red está revisando la configuración predeterminada en un switch Cisco Catalyst 2960 recién desempaquetado. ¿Qué afirmación describe con precisión las características y el comportamiento predeterminado de la VLAN 1?",
+      "questionType": "single_choice",
+      "difficulty": "basic",
+      "primaryTopicExamArea": "network_access",
+      "multipleAnswerCount": null,
+      "estimatedTimeSeconds": 60,
+      "explanationEn": "In Cisco Catalyst switches, VLAN 1 is the factory-default VLAN assigned to all switchports until explicitly reconfigured. It also functions as the default native VLAN on 802.1Q trunk links and the default management VLAN associated with Switch Virtual Interface (SVI) VLAN 1. VLAN 1 belongs to the normal-range VLANs (VLAN IDs 1–1005) stored in flash memory in the vlan.dat file. Crucially, VLAN 1 is a special system VLAN that cannot be renamed, deleted, or cleared from the switch database, even in VTP transparent mode. Verification can be performed using the 'show vlan brief' and 'show interfaces trunk' commands.",
+      "explanationEs": "En los switches Cisco Catalyst, la VLAN 1 es la VLAN predeterminada de fábrica asignada a todos los switchports hasta que se reconfiguren explícitamente. También funciona como la VLAN nativa predeterminada en los enlaces troncales 802.1Q y la VLAN de administración predeterminada asociada con la interfaz virtual de switch (SVI) VLAN 1. La VLAN 1 pertenece a las VLANs de rango normal (IDs de VLAN 1–1005) almacenadas en la memoria flash en el archivo vlan.dat. Fundamentalmente, la VLAN 1 es una VLAN especial del sistema que no se puede renombrar, eliminar ni borrar de la base de datos del switch, incluso en modo VTP transparent. La verificación se puede realizar mediante los comandos 'show vlan brief' y 'show interfaces trunk'.",
+      "correctAnswerExplanationEn": "VLAN 1 is the default VLAN for all switch interfaces, serves as the default native VLAN on 802.1Q trunks, and cannot be deleted or renamed under any circumstance.",
+      "correctAnswerExplanationEs": "La VLAN 1 es la VLAN predeterminada para todas las interfaces del switch, sirve como la VLAN nativa predeterminada en trunks 802.1Q y no se puede eliminar ni renombrar bajo ninguna circunstancia.",
+      "options": [
+        {
+          "optionLabel": "A",
+          "optionTextEn": "It is the default VLAN for all switch ports, serves as the default native VLAN on 802.1Q trunks, and cannot be deleted or renamed.",
+          "optionTextEs": "Es la VLAN predeterminada para todos los puertos del switch, sirve como la VLAN nativa predeterminada en trunks 802.1Q y no se puede eliminar ni renombrar.",
+          "isCorrect": true,
+          "explanationEn": "Correct. VLAN 1 is the default data, management, and native VLAN in Cisco switches and is permanently embedded in Cisco IOS; it cannot be removed or renamed.",
+          "explanationEs": "Correcto. La VLAN 1 es la VLAN predeterminada de datos, administración y nativa en switches Cisco y está integrada permanentemente en Cisco IOS; no se puede eliminar ni renombrar."
+        },
+        {
+          "optionLabel": "B",
+          "optionTextEn": "It is an extended range VLAN that is automatically stored in NVRAM within the startup-config file.",
+          "optionTextEs": "Es una VLAN de rango extendido que se almacena automáticamente en NVRAM dentro del archivo startup-config.",
+          "isCorrect": false,
+          "explanationEn": "Incorrect. VLAN 1 is in the normal range (1–1005) and is stored in flash memory in vlan.dat (unless in VTP transparent mode in newer IOS versions). Extended range VLANs are 1006–4094.",
+          "explanationEs": "Incorrecto. La VLAN 1 está en el rango normal (1–1005) y se almacena en la memoria flash en vlan.dat. Las VLANs de rango extendido son de 1006 a 4094."
+        },
+        {
+          "optionLabel": "C",
+          "optionTextEn": "It can be deleted using the 'no vlan 1' command once another VLAN is configured as the primary management interface.",
+          "optionTextEs": "Se puede eliminar utilizando el comando 'no vlan 1' una vez que otra VLAN se configure como interfaz de administración principal.",
+          "isCorrect": false,
+          "explanationEn": "Incorrect. The switch rejects any command attempting to delete VLAN 1 (e.g., 'Default VLAN 1 cannot be deleted').",
+          "explanationEs": "Incorrecto. El switch rechaza cualquier comando que intente eliminar la VLAN 1 (por ejemplo, 'Default VLAN 1 cannot be deleted')."
+        },
+        {
+          "optionLabel": "D",
+          "optionTextEn": "It is reserved exclusively for Cisco Discovery Protocol (CDP) and cannot carry untagged end-user data frames.",
+          "optionTextEs": "Está reservada exclusivamente para Cisco Discovery Protocol (CDP) y no puede transportar tramas de datos de usuario final sin etiquetar.",
+          "isCorrect": false,
+          "explanationEn": "Incorrect. VLAN 1 carries regular user data traffic for any switchport assigned to it; it is not restricted to control plane protocols.",
+          "explanationEs": "Incorrecto. La VLAN 1 transporta tráfico regular de datos de usuario para cualquier switchport asignado a ella; no está restringida a protocolos del plano de control."
+        }
+      ],
+      "sourceName": "CCNA 200-301 Original Questions",
+      "sourceLicense": "Original content"
+    },
+    {
+      "statementEn": "A network administrator configures an interface on a Cisco Catalyst switch to connect a Cisco IP Phone that has an employee PC attached to its secondary PC port. The following configuration is applied:\n\nSwitch(config)# interface GigabitEthernet0/1\nSwitch(config-if)# switchport mode access\nSwitch(config-if)# switchport access vlan 20\nSwitch(config-if)# switchport voice vlan 50\nSwitch(config-if)# spanning-tree portfast\n\nHow does the switch handle Ethernet frames received on GigabitEthernet0/1?",
+      "statementEs": "Un administrador de red configura una interfaz en un switch Cisco Catalyst para conectar un Cisco IP Phone que tiene una PC de empleado conectada a su puerto secundario de PC. Se aplica la siguiente configuración:\n\nSwitch(config)# interface GigabitEthernet0/1\nSwitch(config-if)# switchport mode access\nSwitch(config-if)# switchport access vlan 20\nSwitch(config-if)# switchport voice vlan 50\nSwitch(config-if)# spanning-tree portfast\n\n¿Cómo maneja el switch las tramas Ethernet recibidas en GigabitEthernet0/1?",
+      "questionType": "ios_commands",
+      "difficulty": "intermediate",
+      "primaryTopicExamArea": "network_access",
+      "multipleAnswerCount": null,
+      "estimatedTimeSeconds": 90,
+      "explanationEn": "When a Cisco switchport is configured with 'switchport access vlan 20' and 'switchport voice vlan 50', it operates as a multi-VLAN access port. The Cisco IP Phone contains an internal 3-port Layer 2 switch: one port connects to the Catalyst switch, one to the internal phone VoIP engine, and one to the PC. The IP phone forwards untagged data frames from the PC across the link, which the Catalyst switch places into access VLAN 20. Concurrently, the IP phone tags its own voice traffic with an 802.1Q header containing VLAN ID 50 and 802.1p Class of Service (CoS) priority (typically CoS 5), which the Catalyst switch accepts into voice VLAN 50. Verification can be performed using 'show interfaces GigabitEthernet0/1 switchport'.",
+      "explanationEs": "Cuando un switchport de Cisco se configura con 'switchport access vlan 20' y 'switchport voice vlan 50', opera como un puerto de acceso multi-VLAN. El Cisco IP Phone contiene un switch de Capa 2 interno de 3 puertos: un puerto se conecta al switch Catalyst, uno al motor interno de VoIP del teléfono y uno a la PC. El teléfono IP reenvía las tramas de datos sin etiquetar de la PC a través del enlace, las cuales el switch Catalyst coloca en la VLAN 20 de acceso. Simultáneamente, el teléfono IP etiqueta su propio tráfico de voz con un encabezado 802.1Q que contiene el ID de VLAN 50 y la prioridad Class of Service (CoS) 802.1p (típicamente CoS 5), que el switch Catalyst acepta en la VLAN 50 de voz. La verificación se puede realizar con 'show interfaces GigabitEthernet0/1 switchport'.",
+      "correctAnswerExplanationEn": "Untagged frames from the PC are assigned to access VLAN 20, while voice frames tagged with 802.1Q VLAN 50 from the IP phone are accepted into voice VLAN 50.",
+      "correctAnswerExplanationEs": "Las tramas sin etiquetar de la PC se asignan a la VLAN 20 de acceso, mientras que las tramas de voz etiquetadas con 802.1Q VLAN 50 del teléfono IP se aceptan en la VLAN 50 de voz.",
+      "options": [
+        {
+          "optionLabel": "A",
+          "optionTextEn": "Untagged frames from the PC are assigned to access VLAN 20, while 802.1Q tagged voice frames from the IP phone are accepted into VLAN 50.",
+          "optionTextEs": "Las tramas sin etiquetar de la PC se asignan a la VLAN 20 de acceso, mientras que las tramas de voz etiquetadas con 802.1Q del teléfono IP se aceptan en la VLAN 50.",
+          "isCorrect": true,
+          "explanationEn": "Correct. The switch treats the port as an access port for VLAN 20 (untagged PC traffic) while allowing 802.1Q tagged frames for voice VLAN 50.",
+          "explanationEs": "Correcto. El switch trata el puerto como un puerto de acceso para la VLAN 20 (tráfico de PC sin etiquetar) mientras permite tramas etiquetadas con 802.1Q para la VLAN 50 de voz."
+        },
+        {
+          "optionLabel": "B",
+          "optionTextEn": "The port acts as a standard 802.1Q trunk, requiring all outgoing frames from both the PC and IP phone to be tagged with their respective VLAN IDs.",
+          "optionTextEs": "El puerto actúa como un trunk 802.1Q estándar, requiriendo que todas las tramas salientes tanto de la PC como del teléfono IP estén etiquetadas con sus respectivos IDs de VLAN.",
+          "isCorrect": false,
+          "explanationEn": "Incorrect. The port remains in access mode ('switchport mode access'), not trunk mode. The workstation NIC does not need to support 802.1Q tagging.",
+          "explanationEs": "Incorrecto. El puerto permanece en modo de acceso ('switchport mode access'), no en modo trunk. La NIC de la estación de trabajo no necesita soportar etiquetado 802.1Q."
+        },
+        {
+          "optionLabel": "C",
+          "optionTextEn": "All untagged frames received from the workstation are dropped because voice VLAN requires 802.1Q tagging on all incoming ingress traffic.",
+          "optionTextEs": "Todas las tramas sin etiquetar recibidas de la estación de trabajo se descartan porque la VLAN de voz requiere etiquetado 802.1Q en todo el tráfico entrante de ingreso.",
+          "isCorrect": false,
+          "explanationEn": "Incorrect. Untagged frames are not dropped; they are associated with the configured access data VLAN (VLAN 20).",
+          "explanationEs": "Incorrecto. Las tramas sin etiquetar no se descartan; se asocian con la VLAN de datos de acceso configurada (VLAN 20)."
+        },
+        {
+          "optionLabel": "D",
+          "optionTextEn": "Voice traffic and PC traffic are both placed untagged into VLAN 20, while VLAN 50 is reserved only for phone firmware TFTP downloads.",
+          "optionTextEs": "El tráfico de voz y el tráfico de PC se colocan sin etiquetar en la VLAN 20, mientras que la VLAN 50 se reserva solo para descargas TFTP de firmware del teléfono.",
+          "isCorrect": false,
+          "explanationEn": "Incorrect. Voice traffic is explicitly tagged with VLAN 50 by the phone (negotiated via CDP/LLDP) and separated from data VLAN 20.",
+          "explanationEs": "Incorrecto. El teléfono etiqueta explícitamente el tráfico de voz con la VLAN 50 (negociado mediante CDP/LLDP) y se separa de la VLAN 20 de datos."
+        }
+      ],
+      "sourceName": "CCNA 200-301 Original Questions",
+      "sourceLicense": "Original content"
+    },
+    {
+      "statementEn": "Two switches, SW1 and SW2, are connected via a direct 802.1Q trunk link on interfaces GigabitEthernet0/1. Shortly after completing the trunk configuration, the network administrator observes the following recurring syslog message on SW1:\n\n%CDP-4-NATIVE_VLAN_MISMATCH: Native VLAN mismatch discovered on GigabitEthernet0/1 (10), with SW2 GigabitEthernet0/1 (20).\n\nThe output of 'show interfaces GigabitEthernet0/1 switchport' confirms that SW1 is configured with Native VLAN 10 and SW2 with Native VLAN 20. What is the immediate operational impact of this configuration mismatch on user traffic traversing this trunk link?",
+      "statementEs": "Dos switches, SW1 y SW2, están conectados a través de un enlace troncal 802.1Q directo en las interfaces GigabitEthernet0/1. Poco después de completar la configuración del trunk, el administrador de red observa el siguiente mensaje de syslog recurrente en SW1:\n\n%CDP-4-NATIVE_VLAN_MISMATCH: Native VLAN mismatch discovered on GigabitEthernet0/1 (10), with SW2 GigabitEthernet0/1 (20).\n\nLa salida de 'show interfaces GigabitEthernet0/1 switchport' confirma que SW1 está configurado con VLAN Nativa 10 y SW2 con VLAN Nativa 20. ¿Cuál es el impacto operativo inmediato de este desajuste de configuración en el tráfico de usuario que atraviesa este enlace troncal?",
+      "questionType": "troubleshooting",
+      "difficulty": "advanced",
+      "primaryTopicExamArea": "network_access",
+      "multipleAnswerCount": null,
+      "estimatedTimeSeconds": 120,
+      "explanationEn": "In an IEEE 802.1Q trunk, frames belonging to the native VLAN are transmitted without an 802.1Q tag (untagged). When SW1 transmits untagged frames belonging to its native VLAN 10 across the link, SW2 receives these untagged frames and automatically maps them into its own configured native VLAN 20. Consequently, broadcast and unicast traffic will leak between VLAN 10 and VLAN 20, creating security risks and Layer 2 bridging anomalies. Furthermore, Cisco Per-VLAN Spanning Tree Plus (PVST+) detects this mismatch via PVID TLVs inside BPDUs and places the mismatched VLANs into a Spanning Tree 'Type Inconsistency' blocking state to prevent switching loops. Normal tagged traffic for other VLANs continues to be encapsulated with 802.1Q tags and forwards normally unless blocked. Verification can be performed with 'show interfaces trunk' and 'show spanning-tree inconsistentports'.",
+      "explanationEs": "En un enlace troncal IEEE 802.1Q, las tramas pertenecientes a la VLAN nativa se transmiten sin una etiqueta 802.1Q (sin etiquetar). Cuando SW1 transmite tramas sin etiquetar pertenecientes a su VLAN nativa 10 a través del enlace, SW2 recibe estas tramas sin etiquetar y las mapea automáticamente en su propia VLAN nativa configurada 20. En consecuencia, el tráfico de broadcast y unicast se fugará entre la VLAN 10 y la VLAN 20, creando riesgos de seguridad y anomalías de conmutación de Capa 2. Además, Cisco Per-VLAN Spanning Tree Plus (PVST+) detecta este desajuste mediante TLVs de PVID dentro de las BPDUs y coloca las VLANs discordantes en un estado de bloqueo por 'Type Inconsistency' de Spanning Tree para evitar bucles. El tráfico etiquetado normal para otras VLANs continúa encapsulado con etiquetas 802.1Q y reenvía normalmente a menos que esté bloqueado. La verificación se puede realizar con 'show interfaces trunk' y 'show spanning-tree inconsistentports'.",
+      "correctAnswerExplanationEn": "Untagged frames sent by SW1 in VLAN 10 are received untagged by SW2 and forwarded into VLAN 20, causing unintended cross-VLAN traffic leaking and STP type inconsistencies.",
+      "correctAnswerExplanationEs": "Las tramas sin etiquetar enviadas por SW1 en la VLAN 10 son recibidas sin etiquetar por SW2 y reenviadas a la VLAN 20, causando fugas de tráfico no deseadas entre VLANs e inconsistencias de tipo en STP.",
+      "options": [
+        {
+          "optionLabel": "A",
+          "optionTextEn": "Untagged frames sent by SW1 in VLAN 10 are received untagged by SW2 and forwarded into VLAN 20, causing cross-VLAN traffic leaking and Spanning Tree inconsistencies.",
+          "optionTextEs": "Las tramas sin etiquetar enviadas por SW1 en la VLAN 10 son recibidas sin etiquetar por SW2 y reenviadas a la VLAN 20, causando fugas de tráfico entre VLANs e inconsistencias de Spanning Tree.",
+          "isCorrect": true,
+          "explanationEn": "Correct. Because 802.1Q does not tag native VLAN frames by default, untagged traffic from SW1's native VLAN 10 enters SW2's native VLAN 20, causing cross-VLAN hopping.",
+          "explanationEs": "Correcto. Dado que 802.1Q no etiqueta las tramas de la VLAN nativa por defecto, el tráfico sin etiquetar de la VLAN nativa 10 de SW1 entra en la VLAN nativa 20 de SW2, provocando saltos entre VLANs."
+        },
+        {
+          "optionLabel": "B",
+          "optionTextEn": "The trunk link interface is immediately transitioned into an err-disabled state by CDP to prevent loop formation.",
+          "optionTextEs": "La interfaz del enlace trunk se coloca inmediatamente en estado err-disabled por CDP para evitar la formación de bucles.",
+          "isCorrect": false,
+          "explanationEn": "Incorrect. CDP generates a warning syslog message (%CDP-4-NATIVE_VLAN_MISMATCH), but CDP does not err-disable the port.",
+          "explanationEs": "Incorrecto. CDP genera un mensaje de advertencia en syslog (%CDP-4-NATIVE_VLAN_MISMATCH), pero CDP no coloca el puerto en err-disabled."
+        },
+        {
+          "optionLabel": "C",
+          "optionTextEn": "All traffic across all VLANs is immediately dropped because 802.1Q trunk negotiation fails completely upon native VLAN detection.",
+          "optionTextEs": "Todo el tráfico a través de todas las VLANs se descarta de inmediato porque la negociación del trunk 802.1Q falla por completo al detectarse la VLAN nativa.",
+          "isCorrect": false,
+          "explanationEn": "Incorrect. Tagged traffic for other VLANs continues to be switched across the trunk unless explicitly blocked by STP or pruning.",
+          "explanationEs": "Incorrecto. El tráfico etiquetado para otras VLANs continúa conmutándose a través del trunk a menos que esté bloqueado explícitamente por STP o podado."
+        },
+        {
+          "optionLabel": "D",
+          "optionTextEn": "SW2 drops all frames from SW1 because 802.1Q CRC frame check sequence recalculation fails on mismatched trunks.",
+          "optionTextEs": "SW2 descarta todas las tramas de SW1 debido a que el recálculo de la secuencia de verificación de tramas (FCS) CRC de 802.1Q falla en trunks con desajuste.",
+          "isCorrect": false,
+          "explanationEn": "Incorrect. Untagged Ethernet frames carry valid standard FCS checksums; the mismatch is a logical Layer 2 configuration issue, not a physical FCS checksum corruption.",
+          "explanationEs": "Incorrecto. Las tramas Ethernet sin etiquetar transportan sumas de verificación FCS válidas; el desajuste es un problema de configuración lógica de Capa 2, no una corrupción de FCS."
+        }
+      ],
+      "sourceName": "CCNA 200-301 Original Questions",
+      "sourceLicense": "Original content"
+    },
+    {
+      "statementEn": "A network administrator is maintaining an 802.1Q trunk on interface GigabitEthernet0/24 of a Cisco Catalyst switch. The output of 'show interfaces trunk' shows that the trunk currently permits VLANs 10, 20, and 30. The administrator must permit new VLAN 40 across the trunk without disrupting or removing any of the existing allowed VLANs. Which command must the administrator enter in interface configuration mode?",
+      "statementEs": "Un administrador de red está manteniendo un trunk 802.1Q en la interfaz GigabitEthernet0/24 de un switch Cisco Catalyst. La salida de 'show interfaces trunk' muestra que el trunk actualmente permite las VLANs 10, 20 y 30. El administrador debe permitir la nueva VLAN 40 a través del trunk sin interrumpir ni eliminar ninguna de las VLANs permitidas existentes. ¿Qué comando debe ingresar el administrador en el modo de configuración de interfaz?",
+      "questionType": "single_choice",
+      "difficulty": "intermediate",
+      "primaryTopicExamArea": "network_access",
+      "multipleAnswerCount": null,
+      "estimatedTimeSeconds": 60,
+      "explanationEn": "In Cisco IOS, the command 'switchport trunk allowed vlan add <vlan-id>' appends the specified VLAN to the existing allowed list on the trunk interface without modifying currently permitted VLANs. If an administrator inadvertently issues 'switchport trunk allowed vlan 40' without the 'add' keyword, the switch completely overwrites the allowed VLAN list, causing all other VLANs (10, 20, 30) to be removed and immediately disrupting production traffic. Other valid modification keywords include 'remove', 'except', and 'all'. Verification can be done by inspecting 'show interfaces GigabitEthernet0/24 switchport' or 'show interfaces trunk'.",
+      "explanationEs": "En Cisco IOS, el comando 'switchport trunk allowed vlan add <vlan-id>' añade la VLAN especificada a la lista de permitidas existente en la interfaz trunk sin modificar las VLANs actualmente permitidas. Si un administrador ingresa por error 'switchport trunk allowed vlan 40' sin la palabra clave 'add', el switch sobrescribe por completo la lista de VLANs permitidas, lo que provoca la eliminación de todas las demás VLANs (10, 20, 30) e interrumpe de inmediato el tráfico de producción. Otras palabras clave de modificación válidas incluyen 'remove', 'except' y 'all'. La verificación se realiza inspeccionando 'show interfaces GigabitEthernet0/24 switchport' o 'show interfaces trunk'.",
+      "correctAnswerExplanationEn": "The 'switchport trunk allowed vlan add 40' command appends VLAN 40 to the existing allowed list without overwriting VLANs 10, 20, and 30.",
+      "correctAnswerExplanationEs": "El comando 'switchport trunk allowed vlan add 40' añade la VLAN 40 a la lista de permitidas existente sin sobrescribir las VLANs 10, 20 y 30.",
+      "options": [
+        {
+          "optionLabel": "A",
+          "optionTextEn": "switchport trunk allowed vlan add 40",
+          "optionTextEs": "switchport trunk allowed vlan add 40",
+          "isCorrect": true,
+          "explanationEn": "Correct. Using the 'add' keyword appends VLAN 40 to the existing list of allowed VLANs without replacing them.",
+          "explanationEs": "Correcto. El uso de la palabra clave 'add' añade la VLAN 40 a la lista existente de VLANs permitidas sin reemplazarlas."
+        },
+        {
+          "optionLabel": "B",
+          "optionTextEn": "switchport trunk allowed vlan 40",
+          "optionTextEs": "switchport trunk allowed vlan 40",
+          "isCorrect": false,
+          "explanationEn": "Incorrect. This command replaces the entire allowed list with only VLAN 40, immediately severing connectivity for VLANs 10, 20, and 30.",
+          "explanationEs": "Incorrecto. Este comando reemplaza toda la lista permitida con solo la VLAN 40, interrumpiendo de inmediato la conectividad para las VLANs 10, 20 y 30."
+        },
+        {
+          "optionLabel": "C",
+          "optionTextEn": "switchport trunk permit vlan 40",
+          "optionTextEs": "switchport trunk permit vlan 40",
+          "isCorrect": false,
+          "explanationEn": "Incorrect. 'permit' is not a valid keyword for the 'switchport trunk' command syntax in Cisco IOS.",
+          "explanationEs": "Incorrecto. 'permit' no es una palabra clave válida para la sintaxis del comando 'switchport trunk' en Cisco IOS."
+        },
+        {
+          "optionLabel": "D",
+          "optionTextEn": "switchport trunk allowed vlan include 40",
+          "optionTextEs": "switchport trunk allowed vlan include 40",
+          "isCorrect": false,
+          "explanationEn": "Incorrect. 'include' is not a valid Cisco IOS parameter in the 'switchport trunk allowed vlan' command hierarchy.",
+          "explanationEs": "Incorrecto. 'include' no es un parámetro válido de Cisco IOS en la jerarquía del comando 'switchport trunk allowed vlan'."
+        }
+      ],
+      "sourceName": "CCNA 200-301 Original Questions",
+      "sourceLicense": "Original content"
+    },
+    {
+      "statementEn": "A network engineer is deploying Layer 2 neighbor discovery across an enterprise network consisting of Cisco switches and third-party VoIP phones and servers. Which statement correctly distinguishes Cisco Discovery Protocol (CDP) from Link Layer Discovery Protocol (LLDP)?",
+      "statementEs": "Un ingeniero de red está implementando el descubrimiento de vecinos de Capa 2 en una red empresarial compuesta por switches Cisco y teléfonos VoIP y servidores de terceros. ¿Qué afirmación distingue correctamente Cisco Discovery Protocol (CDP) de Link Layer Discovery Protocol (LLDP)?",
+      "questionType": "single_choice",
+      "difficulty": "basic",
+      "primaryTopicExamArea": "network_access",
+      "multipleAnswerCount": null,
+      "estimatedTimeSeconds": 60,
+      "explanationEn": "Link Layer Discovery Protocol (LLDP) is an open-standard Layer 2 discovery protocol formalized in IEEE 802.1AB, making it vendor-neutral and universally supported across diverse networking equipment, servers, and IP endpoints. Conversely, Cisco Discovery Protocol (CDP) is a proprietary Layer 2 protocol developed by Cisco and enabled by default on virtually all Cisco switches and routers. While both protocols allow directly connected devices to advertise device identifiers, capabilities, interface details, and duplex/power requirements without requiring Layer 3 configuration, LLDP must be explicitly enabled on many Cisco platforms using the global command 'lldp run'. Default timers also differ: CDP sends advertisements every 60 seconds with a 180-second holdtime, whereas LLDP sends advertisements every 30 seconds with a 120-second holdtime. Verification commands include 'show cdp neighbors' and 'show lldp neighbors'.",
+      "explanationEs": "Link Layer Discovery Protocol (LLDP) es un protocolo de descubrimiento de Capa 2 de estándar abierto formalizado en IEEE 802.1AB, lo que lo hace neutral respecto al proveedor y universalmente compatible con diversos equipos de red, servidores y terminales IP. Por el contrario, Cisco Discovery Protocol (CDP) es un protocolo propietario de Capa 2 desarrollado por Cisco y habilitado de forma predeterminada en prácticamente todos los switches y routers de Cisco. Aunque ambos protocolos permiten que los dispositivos directamente conectados anuncien identificadores de dispositivos, capacidades, detalles de interfaz y requisitos de dúplex/energía sin requerir configuración de Capa 3, LLDP debe habilitarse explícitamente en muchas plataformas de Cisco mediante el comando global 'lldp run'. Los temporizadores predeterminados también difieren: CDP envía anuncios cada 60 segundos con un tiempo de retención de 180 segundos, mientras que LLDP envía anuncios cada 30 segundos con un tiempo de retención de 120 segundos. Los comandos de verificación incluyen 'show cdp neighbors' y 'show lldp neighbors'.",
+      "correctAnswerExplanationEn": "LLDP is an open-standard protocol (IEEE 802.1AB) designed for multivendor environments, whereas CDP is a Cisco-proprietary protocol enabled by default on Cisco hardware.",
+      "correctAnswerExplanationEs": "LLDP es un protocolo de estándar abierto (IEEE 802.1AB) diseñado para entornos de múltiples proveedores, mientras que CDP es un protocolo propietario de Cisco habilitado de forma predeterminada en el hardware de Cisco.",
+      "options": [
+        {
+          "optionLabel": "A",
+          "optionTextEn": "LLDP is an open-standard protocol (IEEE 802.1AB) designed for multivendor environments, whereas CDP is a Cisco-proprietary protocol enabled by default on Cisco hardware.",
+          "optionTextEs": "LLDP es un protocolo de estándar abierto (IEEE 802.1AB) diseñado para entornos de múltiples proveedores, mientras que CDP es un protocolo propietario de Cisco habilitado de forma predeterminada en el hardware de Cisco.",
+          "isCorrect": true,
+          "explanationEn": "Correct. LLDP is defined by IEEE 802.1AB for multivendor interoperability, while CDP is proprietary to Cisco.",
+          "explanationEs": "Correcto. LLDP está definido por IEEE 802.1AB para la interoperabilidad entre múltiples proveedores, mientras que CDP es propietario de Cisco."
+        },
+        {
+          "optionLabel": "B",
+          "optionTextEn": "CDP operates at Layer 3 using IP multicast addresses, whereas LLDP operates strictly at Layer 2.",
+          "optionTextEs": "CDP opera en la Capa 3 utilizando direcciones multicast IP, mientras que LLDP opera estrictamente en la Capa 2.",
+          "isCorrect": false,
+          "explanationEn": "Incorrect. Both CDP and LLDP are media-independent Layer 2 protocols that operate without requiring Layer 3 IP addressing.",
+          "explanationEs": "Incorrecto. Tanto CDP como LLDP son protocolos de Capa 2 independientes del medio que operan sin requerir direccionamiento IP de Capa 3."
+        },
+        {
+          "optionLabel": "C",
+          "optionTextEn": "LLDP cannot transmit device capabilities or native VLAN information, whereas CDP transmits full operational parameters.",
+          "optionTextEs": "LLDP no puede transmitir capacidades del dispositivo ni información de VLAN nativa, mientras que CDP transmite parámetros operativos completos.",
+          "isCorrect": false,
+          "explanationEn": "Incorrect. LLDP uses Type-Length-Value (TLV) attributes to advertise system name, capabilities, VLANs, management addresses, and power (via LLDP-MED).",
+          "explanationEs": "Incorrecto. LLDP utiliza atributos Tipo-Longitud-Valor (TLV) para anunciar el nombre del sistema, capacidades, VLANs, direcciones de administración y energía (vía LLDP-MED)."
+        },
+        {
+          "optionLabel": "D",
+          "optionTextEn": "CDP is enabled globally on Cisco switches using the 'cdp run' command because it is disabled by factory default.",
+          "optionTextEs": "CDP se habilita globalmente en los switches Cisco mediante el comando 'cdp run' debido a que viene deshabilitado por defecto de fábrica.",
+          "isCorrect": false,
+          "explanationEn": "Incorrect. CDP is enabled by default on Cisco switches, whereas LLDP is often disabled by default and requires 'lldp run'.",
+          "explanationEs": "Incorrecto. CDP está habilitado de forma predeterminada en los switches Cisco, mientras que LLDP a menudo está deshabilitado de forma predeterminada y requiere 'lldp run'."
+        }
+      ],
+      "sourceName": "CCNA 200-301 Original Questions",
+      "sourceLicense": "Original content"
+    },
+    {
+      "statementEn": "A network administrator is configuring an EtherChannel link between two Cisco Catalyst switches, SW1 and SW2, using the Link Aggregation Control Protocol (LACP, IEEE 802.3ad). On SW1, the member interfaces are configured with the following command:\n\nSW1(config-if-range)# channel-group 1 mode passive\n\nWhich configuration must be applied to the corresponding interfaces on SW2 for the EtherChannel to bundle and operate successfully?",
+      "statementEs": "Un administrador de red está configurando un enlace EtherChannel entre dos switches Cisco Catalyst, SW1 y SW2, utilizando el Link Aggregation Control Protocol (LACP, IEEE 802.3ad). En SW1, las interfaces miembro están configuradas con el siguiente comando:\n\nSW1(config-if-range)# channel-group 1 mode passive\n\n¿Qué configuración debe aplicarse a las interfaces correspondientes en SW2 para que el EtherChannel se agrupe y funcione correctamente?",
+      "questionType": "single_choice",
+      "difficulty": "intermediate",
+      "primaryTopicExamArea": "network_access",
+      "multipleAnswerCount": null,
+      "estimatedTimeSeconds": 90,
+      "explanationEn": "LACP (IEEE 802.3ad / 802.1AX) defines two operational negotiation modes: 'active' and 'passive'. A port in 'active' mode actively initiates negotiation by transmitting LACP packets (LACPDUs). A port in 'passive' mode responds to incoming LACP packets but does not actively initiate negotiation. If SW1 is in 'passive' mode, SW2 must be configured in 'active' mode ('channel-group 1 mode active') to send LACP packets and trigger bundle formation. If both sides were configured as 'passive', neither switch would send LACPDUs, and the EtherChannel bundle would never form. Modes 'auto' and 'desirable' belong to Cisco's proprietary Port Aggregation Protocol (PAgP) and are completely incompatible with LACP. Mode 'on' forces links into an unnegotiated bundle and will not negotiate with a passive LACP peer. Verification can be performed with the command 'show etherchannel summary'.",
+      "explanationEs": "LACP (IEEE 802.3ad / 802.1AX) define dos modos operativos de negociación: 'active' y 'passive'. Un puerto en modo 'active' inicia activamente la negociación mediante la transmisión de paquetes LACP (LACPDUs). Un puerto en modo 'passive' responde a los paquetes LACP entrantes pero no inicia la negociación activamente. Si SW1 está en modo 'passive', SW2 debe configurarse en modo 'active' ('channel-group 1 mode active') para enviar paquetes LACP y desencadenar la formación del canal. Si ambos lados estuvieran configurados como 'passive', ninguno de los switches enviaría LACPDUs y el canal EtherChannel nunca se formaría. Los modos 'auto' y 'desirable' pertenecen al protocolo propietario de Cisco Port Aggregation Protocol (PAgP) y son completamente incompatibles con LACP. El modo 'on' fuerza los enlaces a un canal no negociado y no negociará con un par LACP pasivo. La verificación se realiza con el comando 'show etherchannel summary'.",
+      "correctAnswerExplanationEn": "SW2 must be configured with 'channel-group 1 mode active' because a passive LACP port requires the remote peer to actively initiate negotiation.",
+      "correctAnswerExplanationEs": "SW2 debe configurarse con 'channel-group 1 mode active' porque un puerto LACP pasivo requiere que el par remoto inicie activamente la negociación.",
+      "options": [
+        {
+          "optionLabel": "A",
+          "optionTextEn": "channel-group 1 mode active",
+          "optionTextEs": "channel-group 1 mode active",
+          "isCorrect": true,
+          "explanationEn": "Correct. Since SW1 is passive, SW2 must be active so that it initiates LACP negotiation packets to form the bundle.",
+          "explanationEs": "Correcto. Dado que SW1 es pasivo, SW2 debe ser activo para que inicie los paquetes de negociación LACP y forme el canal."
+        },
+        {
+          "optionLabel": "B",
+          "optionTextEn": "channel-group 1 mode passive",
+          "optionTextEs": "channel-group 1 mode passive",
+          "isCorrect": false,
+          "explanationEn": "Incorrect. When both sides are configured as passive, neither side transmits LACP packets, preventing the channel from forming.",
+          "explanationEs": "Incorrecto. Cuando ambos lados están configurados como pasivos, ninguno transmite paquetes LACP, impidiendo que el canal se forme."
+        },
+        {
+          "optionLabel": "C",
+          "optionTextEn": "channel-group 1 mode desirable",
+          "optionTextEs": "channel-group 1 mode desirable",
+          "isCorrect": false,
+          "explanationEn": "Incorrect. 'desirable' is a Cisco-proprietary PAgP mode, which cannot communicate with LACP.",
+          "explanationEs": "Incorrecto. 'desirable' es un modo PAgP propietario de Cisco, el cual no puede comunicarse con LACP."
+        },
+        {
+          "optionLabel": "D",
+          "optionTextEn": "channel-group 1 mode on",
+          "optionTextEs": "channel-group 1 mode on",
+          "isCorrect": false,
+          "explanationEn": "Incorrect. The 'on' mode disables negotiation protocols; pairing 'on' with 'passive' results in a protocol mismatch and will not form a working bundle.",
+          "explanationEs": "Incorrecto. El modo 'on' deshabilita los protocolos de negociación; emparejar 'on' con 'passive' provoca una discrepancia de protocolo y no formará un canal operativo."
+        }
+      ],
+      "sourceName": "CCNA 200-301 Original Questions",
+      "sourceLicense": "Original content"
+    },
+    {
+      "statementEn": "Three Cisco Catalyst switches—Switch A, Switch B, and Switch C—are connected in a physical triangle topology and run Rapid PVST+ for VLAN 10. All inter-switch links are GigabitEthernet interfaces with a default STP cost of 4. The bridge parameters for VLAN 10 are as follows:\n\n• Switch A: Base Priority = 32768, MAC address = 000a.4111.1111\n• Switch B: Base Priority = 28672, MAC address = 000a.4133.3333\n• Switch C: Base Priority = 32768, MAC address = 000a.4122.2222\n\nSwitch A and Switch C each connect directly to Switch B, and they also share a direct link with each other. Which two statements are true regarding the resulting Spanning Tree topology for VLAN 10? (Choose two.)",
+      "statementEs": "Tres switches Cisco Catalyst—Switch A, Switch B y Switch C—están conectados en una topología física triangular y ejecutan Rapid PVST+ para la VLAN 10. Todos los enlaces entre switches son interfaces GigabitEthernet con un costo STP predeterminado de 4. Los parámetros de bridge para la VLAN 10 son los siguientes:\n\n• Switch A: Prioridad base = 32768, Dirección MAC = 000a.4111.1111\n• Switch B: Prioridad base = 28672, Dirección MAC = 000a.4133.3333\n• Switch C: Prioridad base = 32768, Dirección MAC = 000a.4122.2222\n\nSwitch A y Switch C se conectan cada uno directamente a Switch B, y también comparten un enlace directo entre sí. ¿Cuáles dos afirmaciones son verdaderas con respecto a la topología de Spanning Tree resultante para la VLAN 10? (Elija dos).",
+      "questionType": "multiple_choice",
+      "difficulty": "advanced",
+      "primaryTopicExamArea": "network_access",
+      "multipleAnswerCount": 2,
+      "estimatedTimeSeconds": 120,
+      "explanationEn": "To determine the Spanning Tree topology for VLAN 10:\n1. Root Bridge Election: The Bridge ID consists of Bridge Priority (Priority + Sys-ID-Ext for VLAN 10) and MAC address. Switch B has priority 28672 + 10 = 28682, while Switch A and Switch C both have priority 32768 + 10 = 32778. Because 28682 is strictly lower than 32778, Switch B is elected as the Root Bridge for VLAN 10.\n2. Root Port Selection: Switch A has a direct path to Switch B with root path cost (RPC) 4. Switch C also has a direct path to Switch B with RPC 4. Thus, each switch designates its direct link to Switch B as its Root Port.\n3. Designated Port Election on the Switch A – Switch C link: Both Switch A and Switch C have identical root path costs of 4 to reach the Root Bridge. To break the tie for the Designated Port on the segment between Switch A and Switch C, the switches compare Bridge IDs. Switch A's Bridge ID is 32778:000a.4111.1111 and Switch C's Bridge ID is 32778:000a.4122.2222. Since Switch A has the lower MAC address (000a.4111.1111 < 000a.4122.2222), Switch A wins the tie-breaker.\n4. Consequently, Switch A's interface facing Switch C becomes the Designated Port (forwarding), while Switch C's interface facing Switch A becomes an Alternate Port in the Discarding state. Verification is done using 'show spanning-tree vlan 10'.",
+      "explanationEs": "Para determinar la topología de Spanning Tree para la VLAN 10:\n1. Elección del Root Bridge: El Bridge ID se compone de la Prioridad de Bridge (Prioridad + Sys-ID-Ext para VLAN 10) y la dirección MAC. Switch B tiene una prioridad de 28672 + 10 = 28682, mientras que Switch A y Switch C tienen una prioridad de 32768 + 10 = 32778. Debido a que 28682 es estrictamente menor que 32778, Switch B es elegido como Root Bridge para la VLAN 10.\n2. Selección del Root Port: Switch A tiene una ruta directa a Switch B con un costo de ruta raíz (RPC) de 4. Switch C también tiene una ruta directa a Switch B con un RPC de 4. Por lo tanto, cada switch designa su enlace directo a Switch B como su Root Port.\n3. Elección del Designated Port en el enlace Switch A – Switch C: Tanto Switch A como Switch C tienen costos de ruta raíz idénticos de 4 para alcanzar el Root Bridge. Para desempatar el Designated Port en el segmento entre Switch A y Switch C, los switches comparan sus Bridge IDs. El Bridge ID de Switch A es 32778:000a.4111.1111 y el de Switch C es 32778:000a.4122.2222. Dado que Switch A tiene la dirección MAC más baja (000a.4111.1111 < 000a.4122.2222), Switch A gana el desempate.\n4. En consecuencia, la interfaz de Switch A conectada a Switch C se convierte en Designated Port (forwarding), mientras que la interfaz de Switch C conectada a Switch A se convierte en Alternate Port en estado Discarding. La verificación se realiza usando 'show spanning-tree vlan 10'.",
+      "correctAnswerExplanationEn": "Switch B is elected as the Root Bridge due to having the lowest Bridge Priority (28682), and Switch C's interface connecting to Switch A becomes an Alternate Port in the Discarding state because Switch A has a lower Bridge ID.",
+      "correctAnswerExplanationEs": "Switch B es elegido como el Root Bridge debido a que tiene la Prioridad de Bridge más baja (28682), y la interfaz de Switch C conectada a Switch A se convierte en Alternate Port en estado Discarding porque Switch A tiene un Bridge ID menor.",
+      "options": [
+        {
+          "optionLabel": "A",
+          "optionTextEn": "Switch B is elected as the Root Bridge for VLAN 10 because it possesses the lowest Bridge Priority value.",
+          "optionTextEs": "Switch B es elegido como el Root Bridge para la VLAN 10 porque posee el valor de Prioridad de Bridge más bajo.",
+          "isCorrect": true,
+          "explanationEn": "Correct. Priority is compared before MAC address. Switch B's total priority is 28682 (28672 + VLAN 10), which is lower than Switch A's and C's 32778.",
+          "explanationEs": "Correcto. La prioridad se compara antes que la dirección MAC. La prioridad total de Switch B es 28682 (28672 + VLAN 10), menor que 32778 de Switch A y C."
+        },
+        {
+          "optionLabel": "B",
+          "optionTextEn": "Switch C's interface connecting to Switch A is assigned the Alternate port role and enters the Discarding state.",
+          "optionTextEs": "La interfaz de Switch C conectada a Switch A se asigna al rol de Alternate port y entra en el estado Discarding.",
+          "isCorrect": true,
+          "explanationEn": "Correct. Both switches tie on root path cost (4), but Switch A has a lower MAC address, so Switch A wins the Designated port role, leaving Switch C's port as Alternate/Discarding.",
+          "explanationEs": "Correcto. Ambos switches empatan en costo de ruta raíz (4), pero Switch A tiene una dirección MAC menor, por lo que gana el rol de Designated port, dejando el puerto de Switch C como Alternate/Discarding."
+        },
+        {
+          "optionLabel": "C",
+          "optionTextEn": "Switch A is elected as the Root Bridge for VLAN 10 because it has the lowest MAC address in the network.",
+          "optionTextEs": "Switch A es elegido como el Root Bridge para la VLAN 10 porque tiene la dirección MAC más baja de la red.",
+          "isCorrect": false,
+          "explanationEn": "Incorrect. The MAC address is only evaluated if there is a tie in priority. Switch B has a lower priority, so MAC addresses are not compared for the root bridge election.",
+          "explanationEs": "Incorrecto. La dirección MAC solo se evalúa si hay un empate en la prioridad. Switch B tiene una prioridad menor, por lo que no se comparan las direcciones MAC para la elección de Root Bridge."
+        },
+        {
+          "optionLabel": "D",
+          "optionTextEn": "Switch A's interface connecting to Switch C becomes an Alternate port in the Discarding state because Switch C has a higher MAC address.",
+          "optionTextEs": "La interfaz de Switch A conectada a Switch C se convierte en un puerto Alternate en estado Discarding porque Switch C tiene una dirección MAC más alta.",
+          "isCorrect": false,
+          "explanationEn": "Incorrect. A lower MAC address wins the Designated role. Since Switch A has the lower MAC address, Switch A's port is Designated, not Alternate.",
+          "explanationEs": "Incorrecto. Una dirección MAC más baja gana el rol Designated. Dado que Switch A tiene la MAC más baja, su puerto es Designated, no Alternate."
+        },
+        {
+          "optionLabel": "E",
+          "optionTextEn": "Switch B places its interface connecting to Switch C into the Discarding state to eliminate the Layer 2 loop.",
+          "optionTextEs": "Switch B coloca su interfaz conectada a Switch C en estado Discarding para eliminar el bucle de Capa 2.",
+          "isCorrect": false,
+          "explanationEn": "Incorrect. All active interfaces on the Root Bridge are Designated ports and are always in the Forwarding state.",
+          "explanationEs": "Incorrecto. Todas las interfaces activas en el Root Bridge son Designated ports y siempre están en estado Forwarding."
+        }
+      ],
+      "sourceName": "CCNA 200-301 Original Questions",
+      "sourceLicense": "Original content"
+    },
+    {
+      "statementEn": "An access switch interface FastEthernet0/5 is connected to an employee cubicle and is configured with the following parameters:\n\nSwitch(config)# interface FastEthernet0/5\nSwitch(config-if)# switchport mode access\nSwitch(config-if)# switchport access vlan 15\nSwitch(config-if)# spanning-tree portfast\nSwitch(config-if)# spanning-tree bpduguard enable\n\nA user unplugs their workstation and connects an unmanaged desktop switch to FastEthernet0/5 to provide connectivity for additional lab devices. Minutes later, the user loses network access completely. The administrator inspects the port and observes the following output:\n\nSwitch# show interfaces FastEthernet0/5 status\nPort      Name   Status       Vlan   Duplex  Speed  Type\nFa0/5            err-disabled 15     auto    auto   10/100BaseTX\n\nWhat caused interface FastEthernet0/5 to transition to the err-disabled state, and what is required to restore normal operation?",
+      "statementEs": "Una interfaz de switch de acceso FastEthernet0/5 está conectada a un cubículo de empleado y está configurada con los siguientes parámetros:\n\nSwitch(config)# interface FastEthernet0/5\nSwitch(config-if)# switchport mode access\nSwitch(config-if)# switchport access vlan 15\nSwitch(config-if)# spanning-tree portfast\nSwitch(config-if)# spanning-tree bpduguard enable\n\nUn usuario desconecta su estación de trabajo y conecta un switch de escritorio no administrado a FastEthernet0/5 para brindar conectividad a dispositivos de laboratorio adicionales. Minutos después, el usuario pierde el acceso a la red por completo. El administrador inspecciona el puerto y observa la siguiente salida:\n\nSwitch# show interfaces FastEthernet0/5 status\nPort      Name   Status       Vlan   Duplex  Speed  Type\nFa0/5            err-disabled 15     auto    auto   10/100BaseTX\n\n¿Qué causó que la interfaz FastEthernet0/5 cambiara al estado err-disabled y qué se requiere para restablecer el funcionamiento normal?",
+      "questionType": "troubleshooting",
+      "difficulty": "intermediate",
+      "primaryTopicExamArea": "network_access",
+      "multipleAnswerCount": null,
+      "estimatedTimeSeconds": 90,
+      "explanationEn": "The Cisco IOS feature 'spanning-tree bpduguard enable' is configured on edge ports alongside PortFast to protect Spanning Tree topology stability. When the unmanaged switch was connected, it transmitted standard 802.1D or 802.1w Bridge Protocol Data Units (BPDUs). Upon receiving a BPDU on an interface with BPDU Guard enabled, the switch immediately disables the port and transitions it into the 'err-disabled' state (%SPANTREE-2-BLOCK_PVRST: Received BPDU... putting FastEthernet0/5 into err-disable state). To recover the port, the offending device transmitting BPDUs must be disconnected, and the administrator must enter interface configuration mode and issue 'shutdown' followed by 'no shutdown', or rely on 'errdisable recovery cause bpduguard' if automated recovery is enabled. Verification commands include 'show interfaces status err-disabled' and 'show errdisable recovery'.",
+      "explanationEs": "La característica de Cisco IOS 'spanning-tree bpduguard enable' se configura en puertos de borde junto con PortFast para proteger la estabilidad de la topología de Spanning Tree. Cuando se conectó el switch no administrado, este transmitió Bridge Protocol Data Units (BPDUs) estándar 802.1D u 802.1w. Al recibir una BPDU en una interfaz con BPDU Guard habilitado, el switch deshabilita inmediatamente el puerto y lo transiciona al estado 'err-disabled' (%SPANTREE-2-BLOCK_PVRST: Received BPDU... putting FastEthernet0/5 into err-disable state). Para recuperar el puerto, se debe desconectar el dispositivo infractor que transmite BPDUs, y el administrador debe ingresar al modo de configuración de interfaz y ejecutar 'shutdown' seguido de 'no shutdown', o recurrir a 'errdisable recovery cause bpduguard' si la recuperación automática está habilitada. Los comandos de verificación incluyen 'show interfaces status err-disabled' y 'show errdisable recovery'.",
+      "correctAnswerExplanationEn": "BPDU Guard shut down the interface after receiving BPDUs from the unmanaged switch; recovery requires removing the device and cycling the interface with shutdown followed by no shutdown.",
+      "correctAnswerExplanationEs": "BPDU Guard apagó la interfaz tras recibir BPDUs del switch no administrado; la recuperación requiere remover el dispositivo y reiniciar la interfaz con shutdown seguido de no shutdown.",
+      "options": [
+        {
+          "optionLabel": "A",
+          "optionTextEn": "BPDU Guard disabled the port upon receiving BPDUs from the unmanaged switch; after removing the offending switch, the administrator must issue 'shutdown' followed by 'no shutdown' on the interface.",
+          "optionTextEs": "BPDU Guard deshabilitó el puerto al recibir BPDUs del switch no administrado; tras retirar el switch infractor, el administrador debe ejecutar 'shutdown' seguido de 'no shutdown' en la interfaz.",
+          "isCorrect": true,
+          "explanationEn": "Correct. BPDU Guard transitions any PortFast port receiving BPDUs to err-disabled. Manual recovery requires 'shutdown' then 'no shutdown'.",
+          "explanationEs": "Correcto. BPDU Guard transiciona cualquier puerto PortFast que reciba BPDUs a err-disabled. La recuperación manual requiere 'shutdown' y luego 'no shutdown'."
+        },
+        {
+          "optionLabel": "B",
+          "optionTextEn": "PortFast detected a duplex and speed mismatch with the unmanaged switch; the port will recover automatically after 30 seconds once auto-negotiation finishes.",
+          "optionTextEs": "PortFast detectó un desajuste de dúplex y velocidad con el switch no administrado; el puerto se recuperará automáticamente tras 30 segundos una vez que finalice la autonegociación.",
+          "isCorrect": false,
+          "explanationEn": "Incorrect. PortFast allows access ports to bypass listening and learning states; it does not monitor speed/duplex or err-disable on mismatch.",
+          "explanationEs": "Incorrecto. PortFast permite a los puertos de acceso omitir los estados listening y learning; no monitorea velocidad/dúplex ni coloca en err-disabled por desajustes."
+        },
+        {
+          "optionLabel": "C",
+          "optionTextEn": "Root Guard detected that the unmanaged switch had a superior bridge priority; the port entered root-inconsistent state and will restore automatically once the switch is detached.",
+          "optionTextEs": "Root Guard detectó que el switch no administrado tenía una prioridad de bridge superior; el puerto entró en estado root-inconsistent y se restaurará automáticamente una vez desconectado el switch.",
+          "isCorrect": false,
+          "explanationEn": "Incorrect. The configuration shows 'bpduguard enable', not 'guard root'. Root Guard places ports in 'root-inconsistent', not 'err-disabled'.",
+          "explanationEs": "Incorrecto. La configuración muestra 'bpduguard enable', no 'guard root'. Root Guard coloca los puertos en 'root-inconsistent', no en 'err-disabled'."
+        },
+        {
+          "optionLabel": "D",
+          "optionTextEn": "Loop Guard triggered because keepalive frames were not returned; the administrator must clear the ARP cache using 'clear ip arp'.",
+          "optionTextEs": "Loop Guard se activó debido a que no se devolvieron las tramas keepalive; el administrador debe borrar la caché ARP usando 'clear ip arp'.",
+          "isCorrect": false,
+          "explanationEn": "Incorrect. Loop Guard prevents alternate/root ports from becoming designated when BPDUs stop arriving; it does not trigger on edge access ports receiving BPDUs.",
+          "explanationEs": "Incorrecto. Loop Guard evita que puertos alternate/root se conviertan en designated cuando dejan de llegar BPDUs; no se activa en puertos de acceso que reciben BPDUs."
+        }
+      ],
+      "sourceName": "CCNA 200-301 Original Questions",
+      "sourceLicense": "Original content"
+    },
+    {
+      "statementEn": "In a centralized Cisco enterprise wireless network utilizing Lightweight Access Points (LAPs) and a Wireless LAN Controller (WLC), the Split-MAC architecture distributes 802.11 protocol functions between the AP and the WLC. Which operational task is handled locally by the Lightweight AP rather than the WLC?",
+      "statementEs": "En una red inalámbrica empresarial centralizada de Cisco que utiliza Lightweight Access Points (LAPs) y un Wireless LAN Controller (WLC), la arquitectura Split-MAC distribuye las funciones del protocolo 802.11 entre el AP y el WLC. ¿Qué tarea operativa es gestionada localmente por el Lightweight AP en lugar del WLC?",
+      "questionType": "single_choice",
+      "difficulty": "basic",
+      "primaryTopicExamArea": "network_access",
+      "multipleAnswerCount": null,
+      "estimatedTimeSeconds": 60,
+      "explanationEn": "Under Cisco's Split-MAC architecture, time-sensitive real-time Layer 2 wireless operations are handled locally by the Lightweight Access Point (LAP), while management, control, and policy functions are offloaded to the centralized Wireless LAN Controller (WLC). The LAP locally executes: 802.11 beacon generation and transmission, probe response handling, MAC-layer frame acknowledgments (ACKs), packet queuing and prioritization, real-time Layer 1/Layer 2 radio monitoring, and hardware encryption/decryption. Conversely, the WLC handles non-real-time operations, including 802.11 client association and reassociation processing, 802.1X/EAP authentication termination, centralized RADIUS transactions, Radio Resource Management (RRM) channel/power calculations, and intra-controller client roaming. Verification can be performed in the WLC GUI under Wireless > Access Points or via CLI using 'show ap config general <AP-name>'.",
+      "explanationEs": "Bajo la arquitectura Split-MAC de Cisco, las operaciones inalámbricas de Capa 2 en tiempo real y sensibles al tiempo son manejadas localmente por el Lightweight Access Point (LAP), mientras que las funciones de administración, control y políticas se delegan al Wireless LAN Controller (WLC) centralizado. El LAP ejecuta localmente: generación y transmisión de beacons 802.11, manejo de respuestas de sondeo (probe responses), acuses de recibo de tramas en la capa MAC (ACKs), encolamiento y priorización de paquetes, monitoreo de radio de Capa 1/Capa 2 en tiempo real y cifrado/descifrado por hardware. Por el contrario, el WLC maneja operaciones que no son en tiempo real, incluyendo el procesamiento de asociación y reasociación de clientes 802.11, terminación de autenticación 802.1X/EAP, transacciones RADIUS centralizadas, cálculos de canal/potencia de Radio Resource Management (RRM) y roaming de clientes dentro del controlador. La verificación se puede realizar en la GUI del WLC en Wireless > Access Points o mediante CLI usando 'show ap config general <AP-name>'.",
+      "correctAnswerExplanationEn": "The Lightweight AP handles real-time 802.11 MAC operations such as beacon generation and frame transmission acknowledgments (ACKs).",
+      "correctAnswerExplanationEs": "El Lightweight AP maneja las operaciones MAC 802.11 en tiempo real, como la generación de beacons y los acuses de recibo de transmisión de tramas (ACKs).",
+      "options": [
+        {
+          "optionLabel": "A",
+          "optionTextEn": "Generating 802.11 beacons and transmitting Layer 2 frame acknowledgments (ACKs).",
+          "optionTextEs": "Generar beacons 802.11 y transmitir acuses de recibo de tramas de Capa 2 (ACKs).",
+          "isCorrect": true,
+          "explanationEn": "Correct. Real-time MAC operations like beacons, probe responses, and immediate frame ACKs must be processed with microsecond timing locally on the AP.",
+          "explanationEs": "Correcto. Las operaciones MAC en tiempo real como beacons, respuestas de sondeo y ACKs inmediatos de tramas deben procesarse con temporización de microsegundos localmente en el AP."
+        },
+        {
+          "optionLabel": "B",
+          "optionTextEn": "Processing 802.11 client association and reassociation requests.",
+          "optionTextEs": "Procesar las solicitudes de asociación y reasociación de clientes 802.11.",
+          "isCorrect": false,
+          "explanationEn": "Incorrect. Association and reassociation state machines are managed centrally by the WLC.",
+          "explanationEs": "Incorrecto. Las máquinas de estado de asociación y reasociación se gestionan de forma centralizada en el WLC."
+        },
+        {
+          "optionLabel": "C",
+          "optionTextEn": "Terminating enterprise 802.1X/EAP authentication and exchanging RADIUS access requests.",
+          "optionTextEs": "Terminar la autenticación empresarial 802.1X/EAP e intercambiar solicitudes de acceso RADIUS.",
+          "isCorrect": false,
+          "explanationEn": "Incorrect. 802.1X/EAP negotiation and RADIUS server authentication are handled directly by the WLC.",
+          "explanationEs": "Incorrecto. La negociación 802.1X/EAP y la autenticación con el servidor RADIUS son manejadas directamente por el WLC."
+        },
+        {
+          "optionLabel": "D",
+          "optionTextEn": "Executing centralized Radio Resource Management (RRM) dynamic channel and transmit power algorithms.",
+          "optionTextEs": "Ejecutar algoritmos centralizados de Radio Resource Management (RRM) para asignación dinámica de canales y potencia de transmisión.",
+          "isCorrect": false,
+          "explanationEn": "Incorrect. While APs collect RF noise and neighbor metrics, the WLC executes the RRM algorithms centrally across the RF group.",
+          "explanationEs": "Incorrecto. Aunque los APs recopilan métricas de ruido RF y vecinos, el WLC ejecuta los algoritmos RRM centralmente en todo el grupo RF."
+        }
+      ],
+      "sourceName": "CCNA 200-301 Original Questions",
+      "sourceLicense": "Original content"
+    },
+    {
+      "statementEn": "An enterprise network engineer is deploying a Cisco Wireless LAN Controller (WLC) connected to a Cisco Catalyst core switch cluster. The controller supports multiple wireless networks: SSID 'Corp-Data' mapped to VLAN 10, SSID 'Voice' mapped to VLAN 20, and SSID 'Guest' mapped to VLAN 30. The controller management interface resides in VLAN 100. To provide link redundancy and avoid per-port bottlenecking, the engineer enables Link Aggregation (LAG) on the WLC. How must the connected Catalyst switch interfaces be configured to support this design?",
+      "statementEs": "Un ingeniero de red empresarial está implementando un Cisco Wireless LAN Controller (WLC) conectado a un clúster de switches core Cisco Catalyst. El controlador admite múltiples redes inalámbricas: SSID 'Corp-Data' asignado a la VLAN 10, SSID 'Voice' asignado a la VLAN 20 y SSID 'Guest' asignado a la VLAN 30. La interfaz de administración del controlador reside en la VLAN 100. Para proporcionar redundancia de enlaces y evitar cuellos de botella por puerto, el ingeniero habilita Link Aggregation (LAG) en el WLC. ¿Cómo deben configurarse las interfaces conectadas del switch Catalyst para respaldar este diseño?",
+      "questionType": "single_choice",
+      "difficulty": "advanced",
+      "primaryTopicExamArea": "network_access",
+      "multipleAnswerCount": null,
+      "estimatedTimeSeconds": 120,
+      "explanationEn": "When Link Aggregation (LAG) is enabled on a Cisco WLC, all physical distribution system ports on the controller are bundled into a single logical EtherChannel. On the connecting Cisco Catalyst switch, the corresponding physical interfaces must be bundled into a single EtherChannel (configured with 'channel-group <id> mode active' for LACP or 'mode on' depending on controller platform recommendations) configured as an 802.1Q trunk port ('switchport mode trunk'). This trunk interface must allow all required VLANs: the WLC management VLAN (VLAN 100) and all client dynamic interface VLANs (VLAN 10, 20, 30). In LAG mode, the WLC dynamically balances traffic across all active physical ports and does not require separate physical access links per VLAN. PAgP is not supported by Cisco WLCs, and configuring individual access ports would prevent multi-VLAN trunking. Verification on the Catalyst switch is performed using 'show etherchannel summary' and 'show interfaces trunk'.",
+      "explanationEs": "Cuando Link Aggregation (LAG) está habilitado en un Cisco WLC, todos los puertos físicos del sistema de distribución en el controlador se agrupan en un único EtherChannel lógico. En el switch Cisco Catalyst conectado, las interfaces físicas correspondientes deben agruparse en un solo EtherChannel (configurado con 'channel-group <id> mode active' para LACP o 'mode on' según las recomendaciones de la plataforma del controlador) configurado como puerto troncal 802.1Q ('switchport mode trunk'). Esta interfaz troncal debe permitir todas las VLANs requeridas: la VLAN de administración del WLC (VLAN 100) y todas las VLANs de interfaz dinámica de clientes (VLAN 10, 20, 30). En modo LAG, el WLC equilibra dinámicamente el tráfico a través de todos los puertos físicos activos y no requiere enlaces de acceso físicos separados por VLAN. PAgP no es compatible con los WLC de Cisco, y la configuración de puertos de acceso individuales impediría el trunking multi-VLAN. La verificación en el switch Catalyst se realiza usando 'show etherchannel summary' y 'show interfaces trunk'.",
+      "correctAnswerExplanationEn": "The switch interfaces must be configured as a single EtherChannel trunk bundle permitting 802.1Q tagged traffic for VLANs 10, 20, 30, and 100.",
+      "correctAnswerExplanationEs": "Las interfaces del switch deben configurarse como un único paquete EtherChannel troncal que permita tráfico etiquetado 802.1Q para las VLANs 10, 20, 30 y 100.",
+      "options": [
+        {
+          "optionLabel": "A",
+          "optionTextEn": "As a single EtherChannel bundle configured as an 802.1Q trunk permitting VLANs 10, 20, 30, and 100.",
+          "optionTextEs": "Como un único enlace EtherChannel configurado como trunk 802.1Q que permite las VLANs 10, 20, 30 y 100.",
+          "isCorrect": true,
+          "explanationEn": "Correct. Enabling LAG on the WLC bundles all physical ports into one logical interface that requires a matching switch EtherChannel operating as an 802.1Q trunk allowing all client and management VLANs.",
+          "explanationEs": "Correcto. Habilitar LAG en el WLC agrupa todos los puertos físicos en una interfaz lógica que requiere un EtherChannel coincidente en el switch operando como trunk 802.1Q permitiendo todas las VLANs de cliente y administración."
+        },
+        {
+          "optionLabel": "B",
+          "optionTextEn": "As independent Layer 2 access ports, assigning one physical cable dedicated to each respective VLAN (VLAN 10, 20, 30, and 100).",
+          "optionTextEs": "Como puertos de acceso de Capa 2 independientes, asignando un cable físico dedicado a cada VLAN respectiva (VLAN 10, 20, 30 y 100).",
+          "isCorrect": false,
+          "explanationEn": "Incorrect. In LAG mode, the WLC does not map individual physical ports to dedicated VLANs; all traffic is multiplexed across the unified EtherChannel trunk.",
+          "explanationEs": "Incorrecto. En modo LAG, el WLC no asigna puertos físicos individuales a VLANs dedicadas; todo el tráfico se multiplexa a través del trunk EtherChannel unificado."
+        },
+        {
+          "optionLabel": "C",
+          "optionTextEn": "As a PAgP EtherChannel bundle set to 'channel-group 1 mode desirable' with native VLAN 100.",
+          "optionTextEs": "Como un canal EtherChannel PAgP configurado en 'channel-group 1 mode desirable' con VLAN nativa 100.",
+          "isCorrect": false,
+          "explanationEn": "Incorrect. Cisco WLCs do not support Cisco-proprietary PAgP; only LACP (IEEE 802.3ad) or static 'mode on' can be used.",
+          "explanationEs": "Incorrecto. Los WLC de Cisco no admiten PAgP propietario de Cisco; solo se puede utilizar LACP (IEEE 802.3ad) o modo estático 'on'."
+        },
+        {
+          "optionLabel": "D",
+          "optionTextEn": "As routed Layer 3 interfaces with IP addresses assigned to each physical switch port, disabling Spanning Tree.",
+          "optionTextEs": "Como interfaces enrutadas de Capa 3 con direcciones IP asignadas a cada puerto físico del switch, deshabilitando Spanning Tree.",
+          "isCorrect": false,
+          "explanationEn": "Incorrect. The WLC distribution ports require Layer 2 connectivity to carry multiple 802.1Q tagged client VLANs to the switch.",
+          "explanationEs": "Incorrecto. Los puertos de distribución del WLC requieren conectividad de Capa 2 para transportar múltiples VLANs de clientes etiquetadas con 802.1Q al switch."
+        }
+      ],
+      "sourceName": "CCNA 200-301 Original Questions",
+      "sourceLicense": "Original content"
+    }
+  ]
+}

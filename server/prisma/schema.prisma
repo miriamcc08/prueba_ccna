@@ -1,0 +1,243 @@
+// ============================================================
+// CCNA Simulator - Database Schema
+// Provider: SQLite (migrable to PostgreSQL)
+// ============================================================
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+// ---- Users ----
+
+model User {
+  id           String   @id @default(cuid())
+  email        String   @unique
+  username     String   @unique
+  passwordHash String
+  role         String   @default("user") // user | admin
+  language     String   @default("en")   // en | es
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+
+  exams      Exam[]
+  favorites  QuestionFavorite[]
+}
+
+// ---- Topics (Exam Areas & Sub-topics) ----
+
+model Topic {
+  id                 String  @id @default(cuid())
+  code               String  @unique // e.g. "1.0", "1.1", "1.1.a"
+  nameEn             String
+  nameEs             String
+  descriptionEn      String?
+  descriptionEs      String?
+  examArea           String  // network_fundamentals, network_access, etc.
+  examAreaNumber     String  // "1.0", "2.0", etc.
+  weightPercentage   Int     // 20, 20, 25, 10, 15, 10
+  examVersion        String  @default("200-301-v1.1")
+  learningObjectives String? // JSON array stored as text
+
+  parentTopicId String?
+  parentTopic   Topic?  @relation("TopicHierarchy", fields: [parentTopicId], references: [id])
+  childTopics   Topic[] @relation("TopicHierarchy")
+
+  questions Question[]
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+// ---- Sources ----
+
+model Source {
+  id               String    @id @default(cuid())
+  name             String
+  url              String?
+  sourceType       String    // official_docs, original, user_import, rfc, textbook
+  consultedAt      DateTime?
+  reuseConditions  String?
+  license          String?
+  validationNotes  String?
+
+  questions Question[]
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+// ---- Questions ----
+
+model Question {
+  id               String  @id @default(cuid())
+  questionFamilyId String? // Groups original + variants together
+
+  // Bilingual statements
+  statementEn String
+  statementEs String
+
+  // Classification
+  questionType         String // single_choice, multiple_choice, true_false, subnetting, etc.
+  difficulty           String // basic, intermediate, advanced
+  multipleAnswerCount  Int?   // For multiple_choice: how many answers to select
+
+  // Timing
+  estimatedTimeSeconds Int @default(90)
+
+  // Validation
+  validationStatus String    @default("draft") // draft, pending_review, validated, rejected
+  lastVerifiedAt   DateTime?
+  examVersion      String    @default("200-301-v1.1")
+
+  // Bilingual explanations
+  explanationEn              String?
+  explanationEs              String?
+  correctAnswerExplanationEn String?
+  correctAnswerExplanationEs String?
+
+  // Topic relation
+  primaryTopicId String
+  primaryTopic   Topic  @relation(fields: [primaryTopicId], references: [id])
+  subtopics      String? // JSON array of topic IDs
+
+  // Source relation
+  sourceId      String?
+  source        Source?  @relation(fields: [sourceId], references: [id])
+  sourceUrl     String?
+  sourceLicense String?
+
+  // Relations
+  options          QuestionOption[]
+  variantsAsOriginal QuestionVariant[] @relation("OriginalQuestion")
+  variantsAsVariant  QuestionVariant[] @relation("VariantQuestion")
+  examQuestions    ExamQuestion[]
+  favorites        QuestionFavorite[]
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+// ---- Question Options ----
+
+model QuestionOption {
+  id            String  @id @default(cuid())
+  questionId    String
+  question      Question @relation(fields: [questionId], references: [id], onDelete: Cascade)
+
+  optionLabel   String  // "A", "B", "C", "D", "E", "F"
+  optionTextEn  String
+  optionTextEs  String
+  isCorrect     Boolean @default(false)
+  explanationEn String?
+  explanationEs String?
+  displayOrder  Int
+
+  examResponses ExamResponse[]
+}
+
+// ---- Question Variants ----
+
+model QuestionVariant {
+  id                 String   @id @default(cuid())
+  originalQuestionId String
+  originalQuestion   Question @relation("OriginalQuestion", fields: [originalQuestionId], references: [id])
+  variantQuestionId  String
+  variantQuestion    Question @relation("VariantQuestion", fields: [variantQuestionId], references: [id])
+  modifiedParameters String?  // JSON: what was changed
+  validationStatus   String   @default("draft")
+  reviewedAt         DateTime?
+
+  createdAt DateTime @default(now())
+}
+
+// ---- Exams ----
+
+model Exam {
+  id     String  @id @default(cuid())
+  userId String?
+  user   User?   @relation(fields: [userId], references: [id])
+
+  // Configuration (stored for history)
+  questionCount  Int
+  durationMinutes Int
+  language       String  // en | es
+  mode           String  // full_simulation, topic_practice, custom, etc.
+  difficulty     String  // basic, intermediate, advanced, mixed
+  strictMode     Boolean @default(true)
+  studyMode      Boolean @default(false)
+  selectedTopics String? // JSON array of topic IDs
+  examVersion    String  @default("200-301-v1.1")
+
+  // State
+  status             String   @default("configured") // configured, in_progress, completed, expired, abandoned
+  currentQuestionIdx Int      @default(0)
+  startedAt          DateTime?
+  expiresAt          DateTime?
+  completedAt        DateTime?
+
+  // Results (calculated on completion)
+  score           Float?
+  percentage      Float?
+  correctCount    Int?
+  incorrectCount  Int?
+  unansweredCount Int?
+  totalTimeSeconds Int?
+
+  // Exam questions
+  questions ExamQuestion[]
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+// ---- Exam Questions (selected questions for each exam) ----
+
+model ExamQuestion {
+  id            String   @id @default(cuid())
+  examId        String
+  exam          Exam     @relation(fields: [examId], references: [id], onDelete: Cascade)
+  questionId    String
+  question      Question @relation(fields: [questionId], references: [id])
+  questionOrder Int      // Position in exam (0-indexed)
+
+  // Response tracking
+  status           String    @default("pending") // pending, answered, skipped, timed_out
+  answeredAt       DateTime?
+  timeSpentSeconds Int?
+
+  responses ExamResponse[]
+
+  @@unique([examId, questionOrder])
+}
+
+// ---- Exam Responses (confirmed answers) ----
+
+model ExamResponse {
+  id               String       @id @default(cuid())
+  examQuestionId   String
+  examQuestion     ExamQuestion @relation(fields: [examQuestionId], references: [id], onDelete: Cascade)
+  selectedOptionId String
+  selectedOption   QuestionOption @relation(fields: [selectedOptionId], references: [id])
+  isCorrect        Boolean?     // Calculated on exam completion
+  confirmedAt      DateTime     @default(now())
+
+  @@unique([examQuestionId, selectedOptionId])
+}
+
+// ---- Question Favorites ----
+
+model QuestionFavorite {
+  id         String   @id @default(cuid())
+  userId     String
+  user       User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  questionId String
+  question   Question @relation(fields: [questionId], references: [id], onDelete: Cascade)
+  createdAt  DateTime @default(now())
+
+  @@unique([userId, questionId])
+}

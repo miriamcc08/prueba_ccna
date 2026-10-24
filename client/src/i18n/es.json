@@ -1,0 +1,287 @@
+{
+  "nav": {
+    "brand": "CCNA Simulator",
+    "home": "Inicio",
+    "config": "Nuevo Examen",
+    "history": "Historial",
+    "questions": "Banco de Preguntas",
+    "admin": "Panel Admin",
+    "login": "Iniciar Sesión",
+    "register": "Registrarse",
+    "logout": "Cerrar Sesión",
+    "profile": "Perfil"
+  },
+  "home": {
+    "badge": "Preparación Cisco 200-301",
+    "title": "Simulador de Examen CCNA 200-301",
+    "subtitle": "Domina los conceptos de redes Cisco con simulaciones de alta fidelidad, diagnóstico adaptativo inteligente y explicaciones técnicas detalladas.",
+    "startSimulation": "Iniciar Simulación Completa",
+    "startSimulationDesc": "100 preguntas, 120 minutos, ponderadas de acuerdo al blueprint oficial.",
+    "practiceByTopic": "Práctica por Dominio",
+    "practiceByTopicDesc": "Enfoca tu estudio en áreas específicas como OSPF, VLANs, Subnetting o Automatización.",
+    "reviewMistakes": "Repasar Fallos",
+    "reviewMistakesDesc": "Entrena con las preguntas que respondiste incorrectamente en exámenes anteriores.",
+    "viewHistory": "Historial y Rendimiento",
+    "viewHistoryDesc": "Monitorea tu evolución, calificaciones históricas y preparación en el tiempo.",
+    "quickSubnetting": "Entrenamiento de Subnetting",
+    "quickSubnettingDesc": "Cálculo intensivo de direcciones IPv4/IPv6 para ganar velocidad y precisión.",
+    "stats": {
+      "totalExams": "Exámenes Completados",
+      "avgScore": "Puntaje Promedio",
+      "questionsPracticed": "Preguntas Resueltas",
+      "readiness": "Nivel de Preparación",
+      "welcomeBack": "Bienvenido de nuevo,"
+    },
+    "chooseLanguagePrompt": "Preferred Language / Idioma Preferido:"
+  },
+  "config": {
+    "title": "Configurar tu Examen CCNA",
+    "subtitle": "Personaliza cantidad de preguntas, tiempo, dominios y modo de simulación.",
+    "mode": {
+      "title": "Modo de Simulación",
+      "full_simulation": "Simulación Completa",
+      "full_simulation_desc": "Formato de examen oficial con 100 preguntas y 120 minutos",
+      "topic_practice": "Práctica por Dominio",
+      "topic_practice_desc": "Enfocado en áreas específicas del blueprint de Cisco",
+      "custom": "Configuración Personalizada",
+      "custom_desc": "Ajusta cantidad de preguntas, límite de tiempo y dificultad",
+      "incorrect_review": "Repaso de Errores",
+      "incorrect_review_desc": "Enfócate en preguntas falladas en intentos pasados",
+      "subnetting_practice": "Práctica de Subnetting",
+      "subnetting_practice_desc": "Cálculos de máscaras, broadcast y direccionamiento IPv4/IPv6",
+      "command_practice": "Práctica de Comandos",
+      "command_practice_desc": "Sintaxis de Cisco IOS CLI, comandos show y configuración",
+      "troubleshooting_practice": "Resolución de Problemas (Troubleshooting)",
+      "troubleshooting_practice_desc": "Diagnóstico de topologías y anomalías de enrutamiento"
+    },
+    "questionCount": {
+      "title": "Número de Preguntas",
+      "custom": "Personalizado"
+    },
+    "duration": {
+      "title": "Duración del Examen",
+      "minutes": "minutos",
+      "custom": "Personalizado (min)"
+    },
+    "language": {
+      "title": "Idioma del Examen",
+      "en": "Inglés (English)",
+      "es": "Español"
+    },
+    "difficulty": {
+      "title": "Nivel de Dificultad",
+      "basic": "Básico (Fundacional)",
+      "intermediate": "Intermedio (Estándar CCNA)",
+      "advanced": "Avanzado (Escenarios Complejos)",
+      "mixed": "Mixto (Equilibrado según examen)"
+    },
+    "topics": {
+      "title": "Dominios del Blueprint Oficial",
+      "selectAll": "Seleccionar Todos",
+      "deselectAll": "Deseleccionar Todos",
+      "weight": "peso"
+    },
+    "options": {
+      "title": "Opciones de Simulación",
+      "randomize": "Aleatorizar orden de preguntas",
+      "groupByTopic": "Agrupar preguntas por dominio temático",
+      "strictMode": "Modo Estricto (sin retroceder, ambiente de examen real Cisco)",
+      "studyMode": "Modo Estudio (retroalimentación y explicaciones inmediatas)",
+      "showExplanations": "Mostrar explicaciones completas al finalizar",
+      "soundEnabled": "Sonidos y alertas auditivas",
+      "perQuestionTimer": "Límite de tiempo por pregunta (segundos, 0 para desactivar)"
+    },
+    "summary": {
+      "title": "Resumen del Examen",
+      "mode": "Modo",
+      "questions": "Preguntas",
+      "duration": "Duración",
+      "language": "Idioma",
+      "difficulty": "Dificultad",
+      "selectedTopics": "Dominios Elegidos",
+      "strictMode": "Modo Estricto",
+      "studyMode": "Modo Estudio",
+      "availableQuestions": "Disponibles en Banco",
+      "startButton": "Iniciar Simulación",
+      "noQuestionsAlert": "No hay preguntas disponibles con los criterios seleccionados. Selecciona más dominios o cambia la dificultad."
+    }
+  },
+  "exam": {
+    "title": "Simulación CCNA 200-301",
+    "questionNumber": "Pregunta {{current}} de {{total}}",
+    "timeRemaining": "Tiempo Restante",
+    "selectSingle": "Selecciona la mejor respuesta única:",
+    "selectMultiple": "Selecciona {{count}} respuestas:",
+    "confirmAnswer": "Confirmar y Continuar",
+    "nextQuestion": "Siguiente Pregunta",
+    "previousQuestion": "Anterior",
+    "finishExam": "Finalizar Examen",
+    "studyExplanation": "Explicación Técnica",
+    "studyCorrect": "¡Correcto!",
+    "studyIncorrect": "Incorrecto.",
+    "warningTimeModal": {
+      "title": "Alerta de Tiempo",
+      "message": "¡Te quedan menos de 5 minutos! Asegúrate de completar tus preguntas activas.",
+      "understood": "Continuar Examen"
+    },
+    "confirmFinishModal": {
+      "title": "Entregar Examen",
+      "message": "¿Estás seguro de que deseas finalizar la sesión de examen? No podrás modificar tus respuestas una vez entregado.",
+      "confirm": "Sí, Entregar Examen",
+      "cancel": "Seguir en Examen"
+    },
+    "autoSubmitExpired": "¡El tiempo ha expirado! Enviando tus respuestas automáticamente..."
+  },
+  "results": {
+    "title": "Resultados de la Simulación",
+    "passed": "¡FELICITACIONES! APROBADO",
+    "failed": "NO APROBADO",
+    "simulatorDisclaimer": "Nota: Esta calificación es calculada por el CCNA 200-301 Simulator (Puntaje de aprobación: 82.5% / ~825 de 1000). El puntaje oficial de Cisco y sus algoritmos pueden variar.",
+    "yourScore": "Tu Calificación",
+    "passingScore": "Estándar de Aprobación: 82.5%",
+    "summary": {
+      "correct": "Correctas",
+      "incorrect": "Incorrectas",
+      "unanswered": "Sin Responder",
+      "totalTime": "Tiempo Total Empleado",
+      "avgTime": "Promedio / Pregunta"
+    },
+    "domains": "Rendimiento por Dominio Temático",
+    "difficulty": "Rendimiento por Nivel de Dificultad",
+    "recommendations": "Recomendaciones Personalizadas de Estudio",
+    "priorityHigh": "Prioridad Alta",
+    "priorityMedium": "Prioridad Media",
+    "priorityLow": "Prioridad Baja",
+    "actions": {
+      "review": "Revisión Detallada con Explicaciones",
+      "retry": "Reintentar Misma Configuración",
+      "new": "Iniciar Nuevo Examen",
+      "home": "Volver al Panel Principal"
+    }
+  },
+  "review": {
+    "title": "Revisión del Examen",
+    "subtitle": "Análisis pormenorizado de preguntas, respuestas y fundamentos según Cisco y RFC.",
+    "filters": {
+      "all": "Todas ({{count}})",
+      "incorrect": "Incorrectas ({{count}})",
+      "correct": "Correctas ({{count}})",
+      "unanswered": "Sin Responder ({{count}})"
+    },
+    "question": "Pregunta",
+    "yourAnswer": "Tu Selección:",
+    "correctAnswer": "Respuesta Correcta:",
+    "explanation": "Análisis Detallado y Justificación",
+    "keyTakeaways": "Concepto Clave Cisco CCNA",
+    "timeSpent": "Tiempo invertido:",
+    "seconds": "segundos",
+    "domain": "Dominio:",
+    "difficulty": "Dificultad:"
+  },
+  "questionBank": {
+    "title": "Banco de Preguntas CCNA",
+    "subtitle": "Explora preguntas técnicas validadas, filtra por dominio de examen y profundiza conceptos de redes.",
+    "search": "Buscar enunciados, comandos o conceptos...",
+    "allTopics": "Todos los Dominios",
+    "allDifficulties": "Todas las Dificultades",
+    "allTypes": "Todos los Tipos",
+    "allStatuses": "Todos los Estados",
+    "columns": {
+      "id": "#",
+      "statement": "Enunciado de la Pregunta",
+      "type": "Tipo",
+      "topic": "Dominio",
+      "difficulty": "Dificultad",
+      "status": "Estado",
+      "actions": "Acción"
+    },
+    "viewDetail": "Inspeccionar",
+    "modalTitle": "Detalle de Pregunta",
+    "options": "Opciones de Respuesta",
+    "source": "Fuente Técnica"
+  },
+  "admin": {
+    "title": "Administración del Simulador CCNA",
+    "tabs": {
+      "questions": "Gestión de Preguntas",
+      "import": "Importar Preguntas",
+      "statistics": "Métricas del Banco",
+      "validators": "Validadores de Reglas"
+    },
+    "import": {
+      "title": "Importar Preguntas en Lote (JSON)",
+      "instructions": "Pega o sube un archivo JSON con preguntas que cumplan el esquema QuestionImportItem.",
+      "dropzone": "Arrastra y suelta el archivo JSON aquí o haz clic para examinar",
+      "preview": "Vista Previa JSON",
+      "button": "Procesar Importación",
+      "importing": "Validando e importando...",
+      "success": "¡Importación completada con éxito!",
+      "rejected": "Rechazadas / Duplicadas"
+    },
+    "stats": {
+      "totalInBank": "Total en Banco",
+      "validated": "Validadas",
+      "pending": "Pendientes de Revisión",
+      "rejected": "Rechazadas",
+      "coverageTitle": "Distribución por Dominio CCNA"
+    },
+    "table": {
+      "actions": "Acciones",
+      "approve": "Aprobar",
+      "reject": "Rechazar",
+      "delete": "Eliminar"
+    }
+  },
+  "auth": {
+    "loginTitle": "Iniciar Sesión",
+    "loginSubtitle": "Accede a tus estadísticas, historial de exámenes y seguimiento personalizado.",
+    "registerTitle": "Crear Cuenta",
+    "registerSubtitle": "Empieza a prepararte para la certificación Cisco CCNA 200-301.",
+    "email": "Correo Electrónico",
+    "password": "Contraseña",
+    "confirmPassword": "Confirmar Contraseña",
+    "username": "Nombre de Usuario",
+    "signInButton": "Iniciar Sesión",
+    "registerButton": "Registrarse",
+    "noAccount": "¿Aún no tienes cuenta?",
+    "haveAccount": "¿Ya estás registrado?",
+    "registerNow": "Crear Cuenta",
+    "signInNow": "Iniciar Sesión",
+    "passwordsDoNotMatch": "Las contraseñas no coinciden.",
+    "passwordTooShort": "La contraseña debe tener al menos 6 caracteres."
+  },
+  "history": {
+    "title": "Historial de Exámenes y Métricas",
+    "subtitle": "Revisa tus simulaciones pasadas, tendencias de puntaje y avance por dominio.",
+    "empty": "No hay exámenes completados todavía. ¡Comienza hoy tu primera simulación CCNA!",
+    "table": {
+      "date": "Fecha y Hora",
+      "mode": "Modo",
+      "questions": "Preguntas",
+      "score": "Calificación",
+      "result": "Resultado",
+      "time": "Duración",
+      "actions": "Acciones"
+    },
+    "scoreTrend": "Tendencia de Calificación Histórica",
+    "viewResults": "Resultados",
+    "review": "Revisar"
+  },
+  "common": {
+    "loading": "Cargando...",
+    "error": "Ocurrió un error",
+    "save": "Guardar",
+    "cancel": "Cancelar",
+    "back": "Volver",
+    "submit": "Enviar",
+    "start": "Comenzar",
+    "close": "Cerrar",
+    "confirm": "Confirmar",
+    "view": "Ver",
+    "all": "Todos",
+    "search": "Buscar",
+    "seconds": "s",
+    "minutes": "min",
+    "hours": "h"
+  }
+}

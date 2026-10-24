@@ -1,0 +1,502 @@
+{
+  "questions": [
+    {
+      "statementEn": "An enterprise deploys a centralized wireless architecture using Cisco Catalyst 9800 Series Wireless LAN Controllers (WLCs) and Cisco Catalyst 9100 Access Points operating in local mode with CAPWAP. Under the Cisco Split-MAC architecture, which function is executed locally by the lightweight access point rather than centrally on the WLC?",
+      "statementEs": "Una empresa despliega una arquitectura inalámbrica centralizada utilizando Wireless LAN Controllers (WLC) Cisco Catalyst serie 9800 y Access Points Cisco Catalyst serie 9100 operando en modo local con CAPWAP. Bajo la arquitectura Split-MAC de Cisco, ¿qué función es ejecutada localmente por el access point ligero en lugar de centralizadamente en el WLC?",
+      "questionType": "single_choice",
+      "difficulty": "intermediate",
+      "primaryTopicExamArea": "network_fundamentals",
+      "multipleAnswerCount": null,
+      "estimatedTimeSeconds": 90,
+      "explanationEn": "The Cisco centralized wireless architecture relies on the Split-MAC concept standardized in CAPWAP (RFC 5415 and RFC 5416). In this model, MAC layer responsibilities are divided based on timing sensitivity between the Lightweight Access Point (LAP) and the Wireless LAN Controller (WLC). The LAP handles time-critical Layer 1 and real-time Layer 2 functions that cannot tolerate WAN or network latency, including beacon frame transmission, probe request responses, frame acknowledgments (ACKs), and frame encryption/decryption (AES-CCMP). In contrast, the centralized WLC handles management, control plane, and higher-level bridging functions. These WLC responsibilities include 802.1X/EAP client authentication, association and re-association handshakes, 802.11-to-802.3 frame encapsulation, intra-controller roaming coordination, and centralized Radio Resource Management (RRM).",
+      "explanationEs": "La arquitectura inalámbrica centralizada de Cisco se basa en el concepto Split-MAC estandarizado en CAPWAP (RFC 5415 y RFC 5416). En este modelo, las responsabilidades de la capa MAC se dividen según la sensibilidad al tiempo entre el Lightweight Access Point (LAP) y el Wireless LAN Controller (WLC). El LAP maneja las funciones de Capa 1 y Capa 2 en tiempo real que no toleran la latencia de red, tales como la transmisión de tramas beacon, las respuestas a probe requests, las confirmaciones de trama (ACK) y el cifrado/descifrado de tramas (AES-CCMP). Por el contrario, el WLC centralizado gestiona las funciones de administración, plano de control y puenteo superior. Estas responsabilidades del WLC incluyen la autenticación de clientes 802.1X/EAP, los intercambios de asociación y reasociación, la encapsulación de tramas 802.11 a 802.3, la coordinación de roaming intracontrolador y la gestión centralizada de recursos de radio (RRM).",
+      "correctAnswerExplanationEn": "Generating 802.11 beacon frames and probe responses requires millisecond-level responsiveness that must occur directly at the radio interface on the lightweight AP, while authentication, bridging, and RRM calculations are centralized on the WLC.",
+      "correctAnswerExplanationEs": "Generar tramas beacon 802.11 y respuestas a probe requests requiere una capacidad de respuesta de milisegundos que debe ocurrir directamente en la interfaz de radio del AP ligero, mientras que la autenticación, el puenteo y los cálculos de RRM se centralizan en el WLC.",
+      "options": [
+        {
+          "optionLabel": "A",
+          "optionTextEn": "Transmitting 802.11 beacon frames and handling 802.11 probe responses",
+          "optionTextEs": "Transmitir tramas beacon 802.11 y procesar respuestas a probe requests 802.11",
+          "isCorrect": true,
+          "explanationEn": "Under the Split-MAC architecture, the lightweight access point is responsible for real-time MAC functions that require immediate responses, such as transmitting periodic 802.11 beacons, responding to client probe requests, and handling frame acknowledgments (ACKs).",
+          "explanationEs": "Bajo la arquitectura Split-MAC, el access point ligero es responsable de las funciones MAC en tiempo real que requieren respuestas inmediatas, como la transmisión de beacons periódicos 802.11, la respuesta a probe requests de clientes y la gestión de confirmaciones de tramas (ACK)."
+        },
+        {
+          "optionLabel": "B",
+          "optionTextEn": "Processing 802.1X/EAP client authentication and cryptographic key management",
+          "optionTextEs": "Procesar la autenticación de clientes 802.1X/EAP y la gestión de claves criptográficas",
+          "isCorrect": false,
+          "explanationEn": "802.1X/EAP authentication handshakes and RADIUS server communications are non-real-time management functions terminated centrally on the WLC.",
+          "explanationEs": "Los intercambios de autenticación 802.1X/EAP y las comunicaciones con el servidor RADIUS son funciones de gestión fuera de tiempo real terminadas centralizadamente en el WLC."
+        },
+        {
+          "optionLabel": "C",
+          "optionTextEn": "Bridging and translating 802.11 wireless frames into 802.3 Ethernet frames",
+          "optionTextEs": "Puenteo y traducción de tramas inalámbricas 802.11 a tramas Ethernet 802.3",
+          "isCorrect": false,
+          "explanationEn": "In local mode, 802.11 client data frames are encapsulated inside CAPWAP data tunnels and transported to the WLC, where 802.11-to-802.3 frame conversion occurs before forwarding onto the wired network.",
+          "explanationEs": "En modo local, las tramas de datos 802.11 de los clientes se encapsulan dentro de túneles de datos CAPWAP y se transportan al WLC, donde ocurre la conversión de tramas 802.11 a 802.3 antes de reenviarse a la red cableada."
+        },
+        {
+          "optionLabel": "D",
+          "optionTextEn": "Executing Radio Resource Management (RRM) dynamic channel and transmit power algorithms",
+          "optionTextEs": "Ejecutar los algoritmos dinámicos de canal y potencia de transmisión de Radio Resource Management (RRM)",
+          "isCorrect": false,
+          "explanationEn": "Although lightweight APs collect RF interference and neighbor metrics, the RRM algorithm runs centrally on the WLC (or Cisco DNA Center) to calculate system-wide channel assignments and power levels.",
+          "explanationEs": "Aunque los APs ligeros recopilan métricas de interferencia de RF y vecinos, el algoritmo RRM se ejecuta de manera centralizada en el WLC (o Cisco DNA Center) para calcular las asignaciones de canales y niveles de potencia en toda la red."
+        }
+      ],
+      "sourceName": "CCNA 200-301 Original Questions",
+      "sourceLicense": "Original content"
+    },
+    {
+      "statementEn": "A systems engineer is provisioning server infrastructure for a mission-critical enterprise virtualization cluster hosting hundreds of production virtual machines (VMs). The business requires direct hardware access, minimal latency, maximum I/O throughput, and the elimination of host operating system overhead. Which virtualization architecture meets these architectural criteria?",
+      "statementEs": "Un ingeniero de sistemas está aprovisionando infraestructura de servidores para un clúster de virtualización empresarial de misión crítica que aloja cientos de máquinas virtuales (VM) de producción. La empresa requiere acceso directo al hardware, latencia mínima, máximo rendimiento de E/S y la eliminación de la sobrecarga del sistema operativo anfitrión. ¿Qué arquitectura de virtualización cumple con estos criterios arquitectónicos?",
+      "questionType": "single_choice",
+      "difficulty": "basic",
+      "primaryTopicExamArea": "network_fundamentals",
+      "multipleAnswerCount": null,
+      "estimatedTimeSeconds": 75,
+      "explanationEn": "Server virtualization is classified into two primary categories based on hypervisor architecture. A Type 1 hypervisor (also known as bare-metal or native, such as VMware ESXi, Cisco HyperFlex HX, and Microsoft Hyper-V Server) installs and executes directly on the physical hardware of the server. Because there is no intermediary host operating system consuming CPU, RAM, and I/O cycles, the hypervisor manages CPU scheduling, memory allocation, and virtual switch packet forwarding with near-native hardware speed. In contrast, a Type 2 hypervisor (hosted, such as VMware Workstation or Oracle VirtualBox) runs as a software application inside a standard host operating system (Windows, Linux, or macOS). The host OS handles all hardware drivers, creating significant performance overhead, increased latency, and a larger security attack surface that makes Type 2 hypervisors unsuited for mission-critical enterprise production.",
+      "explanationEs": "La virtualización de servidores se clasifica en dos categorías principales según la arquitectura del hipervisor. Un hipervisor Tipo 1 (también conocido como bare-metal o nativo, como VMware ESXi, Cisco HyperFlex HX y Microsoft Hyper-V Server) se instala y ejecuta directamente sobre el hardware físico del servidor. Dado que no existe un sistema operativo anfitrión intermediario que consuma ciclos de CPU, memoria RAM y E/S, el hipervisor gestiona la planificación de CPU, la asignación de memoria y el reenvío de paquetes del switch virtual con velocidad casi nativa del hardware. Por el contrario, un hipervisor Tipo 2 (alojado, como VMware Workstation u Oracle VirtualBox) se ejecuta como una aplicación de software dentro de un sistema operativo anfitrión estándar (Windows, Linux o macOS). El SO anfitrión maneja todos los controladores de hardware, creando una sobrecarga de rendimiento significativa, mayor latencia y una superficie de ataque más amplia, lo que hace que los hipervisores Tipo 2 no sean aptos para entornos empresariales de producción de misión crítica.",
+      "correctAnswerExplanationEn": "Type 1 hypervisors install directly onto the physical server hardware without a host OS, providing direct hardware resource management, lowest latency, and maximum throughput for production workloads.",
+      "correctAnswerExplanationEs": "Los hipervisores Tipo 1 se instalan directamente sobre el hardware del servidor físico sin un SO anfitrión, proporcionando gestión directa de recursos de hardware, menor latencia y máximo rendimiento para cargas de trabajo de producción.",
+      "options": [
+        {
+          "optionLabel": "A",
+          "optionTextEn": "A Type 1 hypervisor installed directly onto the bare-metal server hardware",
+          "optionTextEs": "Un hipervisor Tipo 1 instalado directamente sobre el hardware bare-metal del servidor",
+          "isCorrect": true,
+          "explanationEn": "Type 1 (bare-metal) hypervisors run directly on the physical host hardware, providing maximum performance, direct device driver access, and minimal latency for enterprise workloads.",
+          "explanationEs": "Los hipervisores Tipo 1 (bare-metal) se ejecutan directamente en el hardware físico anfitrión, proporcionando el máximo rendimiento, acceso directo a controladores de dispositivos y una latencia mínima para cargas de trabajo empresariales."
+        },
+        {
+          "optionLabel": "B",
+          "optionTextEn": "A Type 2 hypervisor running on top of an enterprise Linux or Windows Server host operating system",
+          "optionTextEs": "Un hipervisor Tipo 2 ejecutándose sobre un sistema operativo anfitrión empresarial Linux o Windows Server",
+          "isCorrect": false,
+          "explanationEn": "Type 2 hypervisors execute on top of an existing host OS, introducing OS overhead, increased scheduling latency, and contention that make them unsuitable for high-density production enterprise environments.",
+          "explanationEs": "Los hipervisores Tipo 2 se ejecutan sobre un sistema operativo anfitrión existente, introduciendo sobrecarga del SO, mayor latencia de planificación y contención que los hacen inadecuados para entornos empresariales de producción de alta densidad."
+        },
+        {
+          "optionLabel": "C",
+          "optionTextEn": "A container engine relying exclusively on a shared host kernel without hardware virtualization extensions",
+          "optionTextEs": "Un motor de contenedores que se basa exclusivamente en un kernel anfitrión compartido sin extensiones de virtualización de hardware",
+          "isCorrect": false,
+          "explanationEn": "Containers provide OS-level virtualization by sharing the host OS kernel rather than providing full virtual machine hardware isolation, and they still depend on a host OS layer.",
+          "explanationEs": "Los contenedores proporcionan virtualización a nivel de sistema operativo compartiendo el kernel del SO anfitrión en lugar de ofrecer aislamiento de hardware completo de máquina virtual, y aún dependen de una capa de SO anfitrión."
+        },
+        {
+          "optionLabel": "D",
+          "optionTextEn": "A virtual appliance running inside a software emulation layer embedded in the system BIOS/UEFI",
+          "optionTextEs": "Un appliance virtual ejecutándose dentro de una capa de emulación por software integrada en la BIOS/UEFI del sistema",
+          "isCorrect": false,
+          "explanationEn": "BIOS/UEFI firmware provides hardware initialization and bootloading capabilities, but does not provide a production hypervisor runtime for virtual machine management.",
+          "explanationEs": "El firmware BIOS/UEFI proporciona inicialización de hardware y capacidades de arranque, pero no proporciona un entorno de ejecución de hipervisor de producción para la gestión de máquinas virtuales."
+        }
+      ],
+      "sourceName": "CCNA 200-301 Original Questions",
+      "sourceLicense": "Original content"
+    },
+    {
+      "statementEn": "A network design engineer is architecting the LAN infrastructure for a regional corporate office with 400 workstations across three floors. To minimize capital hardware expenses, rack space, and administrative complexity, the engineer selects a two-tier (collapsed core) design instead of a traditional three-tier hierarchical campus model. Which two layers of the three-tier model are combined into a single architectural layer in this two-tier design?",
+      "statementEs": "Un ingeniero de diseño de red está diseñando la infraestructura LAN para una oficina corporativa regional con 400 estaciones de trabajo en tres pisos. Para minimizar los gastos de capital en hardware, el espacio en rack y la complejidad administrativa, el ingeniero selecciona un diseño de dos capas (collapsed core) en lugar de un modelo tradicional de campus jerárquico de tres capas. ¿Cuáles dos capas del modelo de tres capas se combinan en una sola capa arquitectónica en este diseño de dos capas?",
+      "questionType": "single_choice",
+      "difficulty": "basic",
+      "primaryTopicExamArea": "network_fundamentals",
+      "multipleAnswerCount": null,
+      "estimatedTimeSeconds": 75,
+      "explanationEn": "The Cisco hierarchical network model provides modularity, scalability, and ease of troubleshooting. In the classic three-tier architecture, the Access layer provides workgroup connectivity and PoE, the Distribution layer enforces routing policies, access control lists (ACLs), and VLAN boundaries, and the Core layer serves as a high-speed switching backbone with no packet manipulation. In small-to-medium campus environments where network traffic volume and physical scale do not require a separate dedicated core backbone, Cisco recommends a two-tier collapsed core design. In this topology, the core and distribution layers are consolidated into a single tier of redundant multilayer switches (the collapsed core). Access layer switches connect directly to these collapsed core switches via redundant uplinks, providing cost savings, lower power consumption, and simpler management while preserving high availability.",
+      "explanationEs": "El modelo de red jerárquico de Cisco proporciona modularidad, escalabilidad y facilidad de resolución de problemas. En la arquitectura clásica de tres capas, la capa de Acceso proporciona conectividad de grupos de trabajo y PoE, la capa de Distribución aplica políticas de enrutamiento, listas de control de acceso (ACL) y límites de VLAN, y la capa de Core actúa como un backbone de conmutación de alta velocidad sin manipulación de paquetes. En entornos de campus pequeños a medianos donde el volumen de tráfico de red y la escala física no requieren un backbone de core dedicado e independiente, Cisco recomienda un diseño de dos capas con collapsed core. En esta topología, las capas de core y distribución se consolidan en un único nivel de switches multicapa redundantes (el núcleo colapsado). Los switches de la capa de acceso se conectan directamente a estos switches de núcleo colapsado mediante enlaces ascendentes redundantes, lo que ahorra costos, reduce el consumo de energía y simplifica la administración, preservando al mismo tiempo la alta disponibilidad.",
+      "correctAnswerExplanationEn": "In a two-tier collapsed core architecture, the core and distribution layers are merged into a single layer of switches, while the access layer connects directly to it.",
+      "correctAnswerExplanationEs": "En una arquitectura de dos capas con collapsed core, las capas de core y distribución se fusionan en una sola capa de switches, mientras que la capa de acceso se conecta directamente a ella.",
+      "options": [
+        {
+          "optionLabel": "A",
+          "optionTextEn": "Core layer and Distribution layer",
+          "optionTextEs": "Capa de Core y capa de Distribución",
+          "isCorrect": true,
+          "explanationEn": "A two-tier collapsed core design combines the high-speed routing capabilities of the core layer and the policy/routing/VLAN aggregation functions of the distribution layer into a single pair of redundant switches.",
+          "explanationEs": "Un diseño de dos capas (collapsed core) combina las capacidades de enrutamiento de alta velocidad de la capa de core y las funciones de políticas/enrutamiento/agregación de VLANs de la capa de distribución en un único par de switches redundantes."
+        },
+        {
+          "optionLabel": "B",
+          "optionTextEn": "Access layer and Distribution layer",
+          "optionTextEs": "Capa de Acceso y capa de Distribución",
+          "isCorrect": false,
+          "explanationEn": "Combining access and distribution would require routing, QoS, and security policy enforcement directly on every end-user access switch, which is not what defines a collapsed core architecture.",
+          "explanationEs": "Combinar acceso y distribución requeriría aplicar enrutamiento, QoS y políticas de seguridad directamente en cada switch de acceso de usuario final, lo cual no es lo que define una arquitectura de collapsed core."
+        },
+        {
+          "optionLabel": "C",
+          "optionTextEn": "Access layer and Core layer",
+          "optionTextEs": "Capa de Acceso y capa de Core",
+          "isCorrect": false,
+          "explanationEn": "Connecting access layer endpoints directly to high-speed core switches while retaining a separate distribution layer is an invalid design that violates hierarchical modularity.",
+          "explanationEs": "Conectar los terminales de la capa de acceso directamente a switches de core de alta velocidad conservando una capa de distribución separada es un diseño inválido que viola la modularidad jerárquica."
+        },
+        {
+          "optionLabel": "D",
+          "optionTextEn": "Distribution layer and WAN Edge layer",
+          "optionTextEs": "Capa de Distribución y capa de WAN Edge",
+          "isCorrect": false,
+          "explanationEn": "The WAN edge connects campus networks to external providers and is not one of the foundational tiers consolidated in the two-tier campus LAN model.",
+          "explanationEs": "El borde WAN conecta las redes de campus con proveedores externos y no es una de las capas fundamentales consolidadas en el modelo de LAN de campus de dos niveles."
+        }
+      ],
+      "sourceName": "CCNA 200-301 Original Questions",
+      "sourceLicense": "Original content"
+    },
+    {
+      "statementEn": "An enterprise network architect is evaluating WAN topologies to connect 20 remote branch offices to the corporate data center. Which two statements accurately describe the characteristics and operational trade-offs of a Hub-and-Spoke WAN topology compared to a Full-Mesh WAN topology? (Choose two.)",
+      "statementEs": "Un arquitecto de redes empresariales está evaluando topologías WAN para conectar 20 sucursales remotas al centro de datos corporativo. ¿Cuáles dos afirmaciones describen con precisión las características y los compromisos operativos de una topología WAN Hub-and-Spoke en comparación con una topología WAN Full-Mesh? (Elija dos.)",
+      "questionType": "multiple_choice",
+      "difficulty": "intermediate",
+      "primaryTopicExamArea": "network_fundamentals",
+      "multipleAnswerCount": 2,
+      "estimatedTimeSeconds": 90,
+      "explanationEn": "WAN topology selection involves balancing financial cost, redundancy, latency, and management complexity. In a Hub-and-Spoke (star) topology, each remote branch (spoke) establishes a single WAN circuit to a central site (the hub), requiring only n connections for n sites. In contrast, a Full-Mesh topology connects every site directly to every other site, requiring n*(n - 1)/2 links (e.g., 20 branches would require 190 circuits in Full-Mesh versus only 20 circuits in Hub-and-Spoke). The primary advantage of Hub-and-Spoke is drastically lower circuit leasing and router interface costs, as well as simpler routing tables. However, the trade-off is that spoke-to-spoke traffic suffers from increased latency because packets must travel from spoke to hub, undergo routing lookup and queuing, and then travel from hub to destination spoke (traffic hairpinning). Additionally, the central hub represents a potential performance bottleneck and single point of failure unless redundant dual-hub routers are deployed.",
+      "explanationEs": "La selección de una topología WAN implica equilibrar costos financieros, redundancia, latencia y complejidad de gestión. En una topología Hub-and-Spoke (en estrella), cada sucursal remota (spoke) establece un único circuito WAN hacia un sitio central (el hub), requiriendo únicamente n conexiones para n sitios. En contraste, una topología Full-Mesh conecta cada sitio directamente con todos los demás sitios, requiriendo n*(n - 1)/2 enlaces (por ejemplo, 20 sucursales requerirían 190 circuitos en Full-Mesh frente a solo 20 circuitos en Hub-and-Spoke). La principal ventaja de Hub-and-Spoke es la reducción drástica de costos de alquiler de circuitos y puertos de router, así como tablas de enrutamiento más simples. Sin embargo, la contrapartida es que el tráfico entre sucursales sufre una mayor latencia debido a que los paquetes deben viajar del spoke al hub, someterse a búsqueda de rutas y encolado, y luego viajar del hub al spoke de destino (hairpinning o efecto trombón). Además, el hub central representa un potencial cuello de botella y punto único de fallo a menos que se desplieguen routers hub duales redundantes.",
+      "correctAnswerExplanationEn": "Hub-and-Spoke drastically reduces circuit and hardware costs by requiring only linear connections (n) instead of n*(n - 1)/2, but introduces latency and hub bandwidth utilization for spoke-to-spoke communication.",
+      "correctAnswerExplanationEs": "Hub-and-Spoke reduce drásticamente los costos de circuitos y hardware al requerir únicamente conexiones lineales (n) en lugar de n*(n - 1)/2, pero introduce latencia y consumo de ancho de banda en el hub para la comunicación entre sucursales.",
+      "options": [
+        {
+          "optionLabel": "A",
+          "optionTextEn": "Hub-and-Spoke requires significantly fewer physical or virtual circuits, resulting in substantially lower circuit and hardware costs.",
+          "optionTextEs": "Hub-and-Spoke requiere significativamente menos circuitos físicos o virtuales, lo que resulta en costos de circuitos y hardware sustancialmente menores.",
+          "isCorrect": true,
+          "explanationEn": "A Hub-and-Spoke topology requires only n links (one per remote spoke to the central hub), whereas Full-Mesh requires n*(n - 1)/2 links (190 links for 20 branches), making Hub-and-Spoke vastly less expensive to deploy and maintain.",
+          "explanationEs": "Una topología Hub-and-Spoke requiere únicamente n enlaces (uno por sucursal remota hacia el hub central), mientras que Full-Mesh requiere n*(n - 1)/2 enlaces (190 enlaces para 20 sucursales), haciendo que Hub-and-Spoke sea mucho más económica de implementar y mantener."
+        },
+        {
+          "optionLabel": "B",
+          "optionTextEn": "Hub-and-Spoke introduces suboptimal latency for branch-to-branch communications because all inter-branch traffic must traverse the central hub.",
+          "optionTextEs": "Hub-and-Spoke introduce una latencia subóptima para las comunicaciones entre sucursales debido a que todo el tráfico inter-sucursal debe atravesar el hub central.",
+          "isCorrect": true,
+          "explanationEn": "Because spoke routers do not have direct connections to one another, any data exchanged between two branch offices must travel through the hub router (hairpinning/tromboning), adding latency and consuming hub bandwidth.",
+          "explanationEs": "Dado que los routers spoke no tienen conexiones directas entre sí, cualquier dato intercambiado entre dos sucursales debe viajar a través del router hub (hairpinning o efecto trombón), lo que agrega latencia y consume ancho de banda del hub."
+        },
+        {
+          "optionLabel": "C",
+          "optionTextEn": "Hub-and-Spoke provides direct, single-hop communication between any two remote branch sites without consuming hub bandwidth.",
+          "optionTextEs": "Hub-and-Spoke proporciona comunicación directa de un solo salto entre dos sitios de sucursal remotos cualesquiera sin consumir ancho de banda del hub.",
+          "isCorrect": false,
+          "explanationEn": "Direct single-hop communication between arbitrary remote branch sites is a defining property of Full-Mesh (or dynamic mesh like DMVPN), not traditional Hub-and-Spoke.",
+          "explanationEs": "La comunicación directa de un solo salto entre sucursales remotas arbitrarias es una propiedad definitoria de Full-Mesh (o malla dinámica como DMVPN), no de Hub-and-Spoke tradicional."
+        },
+        {
+          "optionLabel": "D",
+          "optionTextEn": "Hub-and-Spoke circuit complexity increases exponentially according to the formula n*(n - 1)/2 as new sites are added.",
+          "optionTextEs": "La complejidad de los circuitos en Hub-and-Spoke aumenta exponencialmente según la fórmula n*(n - 1)/2 a medida que se agregan nuevos sitios.",
+          "isCorrect": false,
+          "explanationEn": "The formula n*(n - 1)/2 calculates the number of links in a Full-Mesh topology; Hub-and-Spoke scales linearly with n links.",
+          "explanationEs": "La fórmula n*(n - 1)/2 calcula la cantidad de enlaces en una topología Full-Mesh; Hub-and-Spoke escala linealmente con n enlaces."
+        },
+        {
+          "optionLabel": "E",
+          "optionTextEn": "Hub-and-Spoke completely eliminates any single point of failure in the WAN architecture without requiring redundant hardware.",
+          "optionTextEs": "Hub-and-Spoke elimina completamente cualquier punto único de fallo en la arquitectura WAN sin requerir hardware redundante.",
+          "isCorrect": false,
+          "explanationEn": "The central hub router in a single-hub Hub-and-Spoke topology is inherently a single point of failure; if the hub fails, all remote branches lose connectivity unless dual hubs are implemented.",
+          "explanationEs": "El router hub central en una topología Hub-and-Spoke de un solo hub es intrínsecamente un punto único de fallo; si el hub falla, todas las sucursales remotas pierden conectividad a menos que se implementen hubs duales."
+        }
+      ],
+      "sourceName": "CCNA 200-301 Original Questions",
+      "sourceLicense": "Original content"
+    },
+    {
+      "statementEn": "A network engineer is troubleshooting degraded throughput on a Cisco Catalyst 9300 switch connected to a high-performance network-attached storage (NAS) server on interface GigabitEthernet1/0/12. The engineer issues the command `show interfaces GigabitEthernet1/0/12` and observes the following output:\n\n```text\nGigabitEthernet1/0/12 is up, line protocol is up (connected)\n  Hardware is Gigabit Ethernet, address is 706d.153a.9b0c\n  MTU 1500 bytes, BW 1000000 Kbit/sec, DLY 10 usec, reliability 255/255\n  Full-duplex, 1000Mb/s, media type is 10/100/1000BaseTX\n  input flow-control is off, output flow-control is unsupported\n  ...\n  8492011 packets input, 7120448192 bytes, 0 no buffer\n  0 runts, 23410 giants, 0 throttles\n  23410 input errors, 23410 CRC, 0 frame, 0 overrun, 0 ignored\n  0 watchdog, 0 multicast, 0 pause input\n  6120993 packets output, 4981044120 bytes, 0 underruns\n  0 output errors, 0 collisions, 0 interface resets\n```\n\nBased on this output, what is the root cause of the interface errors, and what corrective action will resolve the problem?",
+      "statementEs": "Un ingeniero de redes está diagnosticando un bajo rendimiento en un switch Cisco Catalyst 9300 conectado a un servidor de almacenamiento conectado en red (NAS) de alto rendimiento en la interfaz GigabitEthernet1/0/12. El ingeniero ejecuta el comando `show interfaces GigabitEthernet1/0/12` y observa la siguiente salida:\n\n```text\nGigabitEthernet1/0/12 is up, line protocol is up (connected)\n  Hardware is Gigabit Ethernet, address is 706d.153a.9b0c\n  MTU 1500 bytes, BW 1000000 Kbit/sec, DLY 10 usec, reliability 255/255\n  Full-duplex, 1000Mb/s, media type is 10/100/1000BaseTX\n  input flow-control is off, output flow-control is unsupported\n  ...\n  8492011 packets input, 7120448192 bytes, 0 no buffer\n  0 runts, 23410 giants, 0 throttles\n  23410 input errors, 23410 CRC, 0 frame, 0 overrun, 0 ignored\n  0 watchdog, 0 multicast, 0 pause input\n  6120993 packets output, 4981044120 bytes, 0 underruns\n  0 output errors, 0 collisions, 0 interface resets\n```\n\nEn función de esta salida, ¿cuál es la causa raíz de los errores de interfaz y qué acción correctiva resolverá el problema?",
+      "questionType": "troubleshooting",
+      "difficulty": "advanced",
+      "primaryTopicExamArea": "network_fundamentals",
+      "multipleAnswerCount": null,
+      "estimatedTimeSeconds": 120,
+      "explanationEn": "On Cisco Catalyst switches, understanding interface error counters is crucial for diagnosing physical and Layer 2 anomalies. A 'giant' frame is defined as an Ethernet frame received that exceeds the maximum allowable transmission unit configured for the interface (typically greater than 1,518 bytes for standard Ethernet or 1,522 bytes for 802.1Q tagged frames). In this scenario, the output shows that `giants` (23,410) matches `input errors` (23,410) and `CRC` (23,410) identically. When a host or storage device (such as a NAS or iSCSI target) is configured with Jumbo Frames (e.g., 9000 bytes) and sends oversized frames to a switch port configured with the default standard MTU of 1500 bytes, the switch receiver hardware identifies the frame as a giant and truncates or fails to process the trailing Frame Check Sequence (FCS), registering a CRC error and discarding the packet. To resolve this issue, the network engineer must configure the switch to support jumbo frames either globally or on the specific interface using the `system mtu` or `mtu 9000` command.",
+      "explanationEs": "En los switches Cisco Catalyst, comprender los contadores de errores de interfaz es crucial para diagnosticar anomalías físicas y de Capa 2. Una trama 'giant' se define como una trama Ethernet recibida que excede la unidad máxima de transmisión permitida configurada para la interfaz (típicamente superior a 1,518 bytes para Ethernet estándar o 1,522 bytes para tramas con etiqueta 802.1Q). En este escenario, la salida muestra que `giants` (23,410) coincide exactamente con `input errors` (23,410) y `CRC` (23,410). Cuando un host o dispositivo de almacenamiento (como un NAS o destino iSCSI) se configura con Jumbo Frames (p. ej., 9000 bytes) y envía tramas sobredimensionadas a un puerto de switch configurado con la MTU estándar predeterminada de 1500 bytes, el hardware receptor del switch identifica la trama como giant y trunca o no procesa adecuadamente la secuencia de verificación de trama (FCS), registrando un error CRC y descartando el paquete. Para resolver este problema, el ingeniero de red debe configurar el switch para admitir jumbo frames ya sea globalmente o en la interfaz específica mediante el comando `system mtu` o `mtu 9000`.",
+      "correctAnswerExplanationEn": "The exact 1:1 correlation between giants, input errors, and CRC errors indicates that the attached NAS is sending jumbo frames larger than the interface's 1500-byte MTU limit; increasing the MTU eliminates the errors.",
+      "correctAnswerExplanationEs": "La correlación exacta 1:1 entre giants, input errors y errores CRC indica que el NAS conectado está enviando jumbo frames mayores que el límite de MTU de 1500 bytes de la interfaz; aumentar la MTU elimina los errores.",
+      "options": [
+        {
+          "optionLabel": "A",
+          "optionTextEn": "The NAS server is transmitting jumbo frames exceeding the switch port's configured 1500-byte MTU; enable system jumbo MTU or increase the interface MTU to match the NAS server.",
+          "optionTextEs": "El servidor NAS está transmitiendo jumbo frames que superan la MTU de 1500 bytes configurada en el puerto del switch; habilite la MTU jumbo del sistema o aumente la MTU de la interfaz para que coincida con el servidor NAS.",
+          "isCorrect": true,
+          "explanationEn": "The counters show exactly 23,410 giants and 23,410 CRC errors. When incoming Ethernet frames exceed the interface MTU (1500 bytes), the switch records them as giants and discards them with CRC/FCS checksum mismatch; increasing MTU resolves the issue.",
+          "explanationEs": "Los contadores muestran exactamente 23,410 giants y 23,410 errores CRC. Cuando las tramas Ethernet entrantes superan la MTU de la interfaz (1500 bytes), el switch las registra como giants y las descarta con discrepancia de checksum CRC/FCS; aumentar la MTU resuelve el problema."
+        },
+        {
+          "optionLabel": "B",
+          "optionTextEn": "The switch port and NAS server have a duplex mismatch; configure both sides to auto-negotiate duplex and speed to eliminate late collisions.",
+          "optionTextEs": "El puerto del switch y el servidor NAS tienen un desajuste de dúplex; configure ambos lados para autonegociar dúplex y velocidad para eliminar las colisiones tardías.",
+          "isCorrect": false,
+          "explanationEn": "The interface is operating at Full-duplex with 0 collisions and 0 runts; a duplex mismatch would generate late collisions and runts on the half-duplex end, not giant frames.",
+          "explanationEs": "La interfaz opera en Full-duplex con 0 colisiones y 0 runts; un desajuste de dúplex generaría late collisions y runts en el extremo half-duplex, no tramas giants."
+        },
+        {
+          "optionLabel": "C",
+          "optionTextEn": "Electromagnetic interference (EMI) is corrupting bits across the twisted-pair cable; replace the existing unshielded Cat5e cable with shielded Cat6A cabling.",
+          "optionTextEs": "La interferencia electromagnética (EMI) está corrompiendo bits en el cable de par trenzado; reemplace el cable Cat5e no blindado existente con cableado Cat6A blindado.",
+          "isCorrect": false,
+          "explanationEn": "Cable faults and EMI produce CRC errors and framing errors on normal-sized frames, but cannot cause frames to artificially expand beyond the MTU to create giants.",
+          "explanationEs": "Las fallas de cable y la EMI producen errores CRC y errores de entramado en tramas de tamaño normal, pero no pueden hacer que las tramas se expandan artificialmente más allá de la MTU para crear giants."
+        },
+        {
+          "optionLabel": "D",
+          "optionTextEn": "The NAS server is transmitting frames faster than the switch ASIC can process; enable input flow-control (`flowcontrol receive on`) on the interface.",
+          "optionTextEs": "El servidor NAS está transmitiendo tramas más rápido de lo que el ASIC del switch puede procesar; habilite el control de flujo de entrada (`flowcontrol receive on`) en la interfaz.",
+          "isCorrect": false,
+          "explanationEn": "Buffer starvation or ASIC oversubscription increments the 'no buffer', 'throttles', or 'overrun' counters, not the giant frame counter.",
+          "explanationEs": "El agotamiento de búfer o la sobresuscripción del ASIC incrementa los contadores 'no buffer', 'throttles' o 'overrun', no el contador de tramas giants."
+        }
+      ],
+      "sourceName": "CCNA 200-301 Original Questions",
+      "sourceLicense": "Original content"
+    },
+    {
+      "statementEn": "A client workstation initiates a secure web connection to an enterprise HTTPS web server. In the first step of the TCP three-way handshake, the client sends a TCP segment to destination port 443 with the SYN flag set and an Initial Sequence Number (ISN) of 2000. Which TCP control flags and acknowledgment number must the web server include in its response to properly complete the second step of the handshake?",
+      "statementEs": "Una estación de trabajo cliente inicia una conexión web segura hacia un servidor web HTTPS empresarial. En el primer paso del protocolo de enlace de tres vías de TCP (three-way handshake), el cliente envía un segmento TCP al puerto de destino 443 con el flag SYN activado y un Número de Secuencia Inicial (ISN) de 2000. ¿Cuáles flags de control TCP y número de reconocimiento debe incluir el servidor web en su respuesta para completar adecuadamente el segundo paso del enlace?",
+      "questionType": "single_choice",
+      "difficulty": "basic",
+      "primaryTopicExamArea": "network_fundamentals",
+      "multipleAnswerCount": null,
+      "estimatedTimeSeconds": 75,
+      "explanationEn": "The Transmission Control Protocol (TCP, defined in RFC 793 and RFC 9293) is a connection-oriented, reliable transport protocol that uses a three-way handshake to synchronize sequence numbers and establish state before transmitting payload data. In Step 1, the initiating host transmits a segment with the SYN control flag enabled and an Initial Sequence Number (ISN), for example `Seq = 2000`. In Step 2, the responding server acknowledges the connection request by sending a segment with both the SYN and ACK flags enabled (`SYN-ACK`). The server provides its own unique Initial Sequence Number (e.g., `Seq = 8000`) and calculates the Acknowledgment Number as `client_ISN + 1` (`Ack = 2001`), confirming receipt of the client's SYN which logically occupies one sequence byte. Finally, in Step 3, the client sends an ACK segment with `Seq = 2001` and `Ack = 8001`, transitioning both endpoints to the `ESTABLISHED` state.",
+      "explanationEs": "El protocolo de control de transmisión (TCP, definido en RFC 793 y RFC 9293) es un protocolo de transporte confiable y orientado a la conexión que utiliza un protocolo de enlace de tres vías (three-way handshake) para sincronizar números de secuencia y establecer estado antes de transmitir datos de carga útil. En el Paso 1, el host iniciador transmite un segmento con el flag de control SYN activado y un Número de Secuencia Inicial (ISN), por ejemplo `Seq = 2000`. En el Paso 2, el servidor que responde acusa recibo de la solicitud de conexión enviando un segmento con los flags SYN y ACK activados (`SYN-ACK`). El servidor proporciona su propio Número de Secuencia Inicial único (p. ej., `Seq = 8000`) y calcula el Número de Reconocimiento como `client_ISN + 1` (`Ack = 2001`), confirmando la recepción del SYN del cliente que ocupa lógicamente un byte de secuencia. Finalmente, en el Paso 3, el cliente envía un segmento ACK con `Seq = 2001` y `Ack = 8001`, pasando ambos extremos al estado `ESTABLISHED`.",
+      "correctAnswerExplanationEn": "The server must send both SYN and ACK flags in the second segment, and acknowledge the client's SYN by returning an Acknowledgment Number equal to the client's ISN plus 1 (2000 + 1 = 2001).",
+      "correctAnswerExplanationEs": "El servidor debe enviar tanto el flag SYN como el flag ACK en el segundo segmento, y reconocer el SYN del cliente devolviendo un Número de Reconocimiento igual al ISN del cliente más 1 (2000 + 1 = 2001).",
+      "options": [
+        {
+          "optionLabel": "A",
+          "optionTextEn": "SYN and ACK flags set, with Acknowledgment Number 2001",
+          "optionTextEs": "Flags SYN y ACK activados, con Número de Reconocimiento 2001",
+          "isCorrect": true,
+          "explanationEn": "In step 2, the server responds with SYN and ACK flags set, generates its own Initial Sequence Number, and acknowledges the client's SYN by adding 1 to the client's sequence number (2000 + 1 = 2001).",
+          "explanationEs": "En el paso 2, el servidor responde con los flags SYN y ACK activados, genera su propio Número de Secuencia Inicial y reconoce el SYN del cliente sumando 1 al número de secuencia del cliente (2000 + 1 = 2001)."
+        },
+        {
+          "optionLabel": "B",
+          "optionTextEn": "ACK flag set only, with Acknowledgment Number 2000",
+          "optionTextEs": "Solo flag ACK activado, con Número de Reconocimiento 2000",
+          "isCorrect": false,
+          "explanationEn": "A standalone ACK does not establish the server's own sequence number synchronization, and the acknowledgment number must be ISN + 1 (2001), not 2000.",
+          "explanationEs": "Un ACK independiente no establece la sincronización del propio número de secuencia del servidor, y el número de reconocimiento debe ser ISN + 1 (2001), no 2000."
+        },
+        {
+          "optionLabel": "C",
+          "optionTextEn": "SYN and ACK flags set, with Acknowledgment Number 2000",
+          "optionTextEs": "Flags SYN y ACK activados, con Número de Reconocimiento 2000",
+          "isCorrect": false,
+          "explanationEn": "The SYN control flag consumes one sequence number in the sequence space; therefore, the acknowledgment number must acknowledge the next expected byte, which is 2001, not 2000.",
+          "explanationEs": "El flag de control SYN consume un número de secuencia en el espacio de secuencia; por lo tanto, el número de reconocimiento debe acusar el siguiente byte esperado, que es 2001, no 2000."
+        },
+        {
+          "optionLabel": "D",
+          "optionTextEn": "SYN flag set only, with Acknowledgment Number 2001",
+          "optionTextEs": "Solo flag SYN activado, con Número de Reconocimiento 2001",
+          "isCorrect": false,
+          "explanationEn": "If the ACK flag is not asserted, the segment does not contain a valid acknowledgment field to confirm the client's initial SYN segment.",
+          "explanationEs": "Si el flag ACK no está activado, el segmento no contiene un campo de reconocimiento válido para confirmar el segmento SYN inicial del cliente."
+        }
+      ],
+      "sourceName": "CCNA 200-301 Original Questions",
+      "sourceLicense": "Original content"
+    },
+    {
+      "statementEn": "A network engineer is designing a variable-length subnet mask (VLSM) IP addressing scheme for a newly opened branch office. The engineer is assigned the network block `192.168.10.0/24`. The engineering department requires a dedicated subnet that can support a minimum of 58 usable host IP addresses while conserving the maximum number of remaining IP addresses for other departments. Which subnet mask and usable host IP address range correspond to the first available subnet meeting this requirement?",
+      "statementEs": "Un ingeniero de redes está diseñando un esquema de direccionamiento IP con máscara de subred de longitud variable (VLSM) para una sucursal recién inaugurada. Al ingeniero se le asigna el bloque de red `192.168.10.0/24`. El departamento de ingeniería requiere una subred dedicada que admita un mínimo de 58 direcciones IP de host utilizables, conservando la máxima cantidad de direcciones IP restantes para otros departamentos. ¿Qué máscara de subred y rango de direcciones IP de host utilizables corresponden a la primera subred disponible que cumple con este requisito?",
+      "questionType": "subnetting",
+      "difficulty": "intermediate",
+      "primaryTopicExamArea": "network_fundamentals",
+      "multipleAnswerCount": null,
+      "estimatedTimeSeconds": 120,
+      "explanationEn": "Step-by-step calculation:\n1. Determine required host bits (h):\n   We need at least 58 usable host addresses. The formula for usable hosts is 2^h - 2 >= required_hosts.\n   - If h = 5: 2^5 - 2 = 32 - 2 = 30 usable hosts (30 < 58, insufficient).\n   - If h = 6: 2^6 - 2 = 64 - 2 = 62 usable hosts (62 >= 58, meets requirement with minimum waste).\n2. Calculate the subnet mask prefix:\n   An IPv4 address has 32 bits. The network prefix is 32 - h = 32 - 6 = /26.\n   In dotted-decimal notation: 11111111.11111111.11111111.11000000 = 255.255.255.192.\n3. Determine the subnet boundary and usable IP range:\n   - Block size (magic number) = 256 - 192 = 64 addresses per subnet.\n   - First Subnet Network ID: 192.168.10.0/26.\n   - First usable host address = Network ID + 1 = 192.168.10.1.\n   - Broadcast address = Next Network ID (192.168.10.64) - 1 = 192.168.10.63.\n   - Last usable host address = Broadcast address - 1 = 192.168.10.62.\nThus, the usable host range is 192.168.10.1 through 192.168.10.62 with a mask of 255.255.255.192 (/26).",
+      "explanationEs": "Cálculo paso a paso:\n1. Determinar los bits de host necesarios (h):\n   Se necesitan al menos 58 direcciones de host utilizables. La fórmula de hosts utilizables es 2^h - 2 >= hosts_requeridos.\n   - Si h = 5: 2^5 - 2 = 32 - 2 = 30 hosts utilizables (30 < 58, insuficiente).\n   - Si h = 6: 2^6 - 2 = 64 - 2 = 62 hosts utilizables (62 >= 58, satisface el requisito con el mínimo desperdicio).\n2. Calcular el prefijo y máscara de subred:\n   Una dirección IPv4 tiene 32 bits. El prefijo de red es 32 - h = 32 - 6 = /26.\n   En formato decimal con puntos: 11111111.11111111.11111111.11000000 = 255.255.255.192.\n3. Determinar el límite de la subred y el rango de IPs utilizables:\n   - Tamaño de bloque (número mágico) = 256 - 192 = 64 direcciones por subred.\n   - Dirección de red de la primera subred: 192.168.10.0/26.\n   - Primera dirección de host utilizable = Dirección de red + 1 = 192.168.10.1.\n   - Dirección de broadcast = Siguiente ID de red (192.168.10.64) - 1 = 192.168.10.63.\n   - Última dirección de host utilizable = Dirección de broadcast - 1 = 192.168.10.62.\nPor lo tanto, el rango de host utilizable es de 192.168.10.1 a 192.168.10.62 con una máscara de 255.255.255.192 (/26).",
+      "correctAnswerExplanationEn": "A /26 mask (255.255.255.192) provides 6 host bits yielding exactly 62 usable addresses (2^6 - 2), perfectly accommodating 58 hosts in the range 192.168.10.1 through 192.168.10.62 without unnecessary address waste.",
+      "correctAnswerExplanationEs": "Una máscara /26 (255.255.255.192) proporciona 6 bits de host que generan exactamente 62 direcciones utilizables (2^6 - 2), acomodando perfectamente 58 hosts en el rango 192.168.10.1 a 192.168.10.62 sin desperdiciar direcciones innecesariamente.",
+      "options": [
+        {
+          "optionLabel": "A",
+          "optionTextEn": "Subnet mask: 255.255.255.192 (/26); usable host range: 192.168.10.1 - 192.168.10.62",
+          "optionTextEs": "Máscara de subred: 255.255.255.192 (/26); rango de host utilizable: 192.168.10.1 - 192.168.10.62",
+          "isCorrect": true,
+          "explanationEn": "A /26 mask allocates 6 host bits, yielding 2^6 - 2 = 62 usable host addresses, which satisfies the 58-host requirement with minimum address wastage; the first subnet spans 192.168.10.0/26 with usable hosts 192.168.10.1 through 192.168.10.62.",
+          "explanationEs": "Una máscara /26 asigna 6 bits de host, proporcionando 2^6 - 2 = 62 direcciones de host utilizables, lo que satisface el requisito de 58 hosts con el mínimo desperdicio de direcciones; la primera subred abarca 192.168.10.0/26 con hosts utilizables desde 192.168.10.1 hasta 192.168.10.62."
+        },
+        {
+          "optionLabel": "B",
+          "optionTextEn": "Subnet mask: 255.255.255.224 (/27); usable host range: 192.168.10.1 - 192.168.10.30",
+          "optionTextEs": "Máscara de subred: 255.255.255.224 (/27); rango de host utilizable: 192.168.10.1 - 192.168.10.30",
+          "isCorrect": false,
+          "explanationEn": "A /27 mask provides 5 host bits, yielding only 2^5 - 2 = 30 usable host IP addresses, which is insufficient for the 58 hosts required.",
+          "explanationEs": "Una máscara /27 proporciona 5 bits de host, lo que rinde solo 2^5 - 2 = 30 direcciones IP de host utilizables, siendo insuficiente para los 58 hosts requeridos."
+        },
+        {
+          "optionLabel": "C",
+          "optionTextEn": "Subnet mask: 255.255.255.128 (/25); usable host range: 192.168.10.1 - 192.168.10.126",
+          "optionTextEs": "Máscara de subred: 255.255.255.128 (/25); rango de host utilizable: 192.168.10.1 - 192.168.10.126",
+          "isCorrect": false,
+          "explanationEn": "While a /25 mask supports 126 usable hosts (2^7 - 2 = 126), it wastes 68 unallocated IP addresses and does not conserve the maximum number of addresses for other subnets.",
+          "explanationEs": "Aunque una máscara /25 admite 126 hosts utilizables (2^7 - 2 = 126), desperdicia 68 direcciones IP sin asignar y no conserva el número máximo de direcciones para otras subredes."
+        },
+        {
+          "optionLabel": "D",
+          "optionTextEn": "Subnet mask: 255.255.255.192 (/26); usable host range: 192.168.10.0 - 192.168.10.63",
+          "optionTextEs": "Máscara de subred: 255.255.255.192 (/26); rango de host utilizable: 192.168.10.0 - 192.168.10.63",
+          "isCorrect": false,
+          "explanationEn": "192.168.10.0 is the network address and 192.168.10.63 is the directed broadcast address; neither can be assigned as a usable host IP address.",
+          "explanationEs": "192.168.10.0 es la dirección de red y 192.168.10.63 es la dirección de difusión dirigida (broadcast); ninguna de las dos puede asignarse como dirección IP de host utilizable."
+        }
+      ],
+      "sourceName": "CCNA 200-301 Original Questions",
+      "sourceLicense": "Original content"
+    },
+    {
+      "statementEn": "A network administrator executes the command `show ipv6 route` on a Cisco router and notices that several dynamic routing protocol routes have next-hop addresses beginning with `fe80::`. Which statement correctly describes the architectural properties and operational scope of this IPv6 address type?",
+      "statementEs": "Un administrador de red ejecuta el comando `show ipv6 route` en un router Cisco y observa que varias rutas de protocolos de enrutamiento dinámico tienen direcciones de siguiente salto que comienzan con `fe80::`. ¿Qué afirmación describe correctamente las propiedades arquitectónicas y el alcance operativo de este tipo de dirección IPv6?",
+      "questionType": "subnetting",
+      "difficulty": "intermediate",
+      "primaryTopicExamArea": "network_fundamentals",
+      "multipleAnswerCount": null,
+      "estimatedTimeSeconds": 90,
+      "explanationEn": "In IPv6 architecture (RFC 4291), link-local unicast addresses are automatically generated on every interface where IPv6 is enabled. Link-local addresses use the reserved prefix `fe80::/10` (the first 10 binary bits are `1111 1110 10`, spanning from `fe80::` to `febf::`, though standard implementations utilize `fe80::/64`). Because their scope is strictly confined to the immediate local physical or logical link, IPv6 routers will drop any packet destined for a link-local address if it attempts to traverse a routing boundary. Dynamic routing protocols like OSPFv3, EIGRP for IPv6, and RIPng explicitly utilize link-local addresses as the next-hop IP address in routing table entries. This architectural decision ensures that route forwarding remains decoupled from global IP renumbering and prevents routing adjacencies from breaking when global unicast address prefixes change.",
+      "explanationEs": "En la arquitectura IPv6 (RFC 4291), las direcciones unicast de enlace local (link-local) se generan automáticamente en cada interfaz donde se habilita IPv6. Las direcciones link-local utilizan el prefijo reservado `fe80::/10` (los primeros 10 bits binarios son `1111 1110 10`, abarcando desde `fe80::` hasta `febf::`, aunque las implementaciones estándar utilizan `fe80::/64`). Dado que su alcance está estrictamente confinado al enlace físico o lógico local inmediato, los routers IPv6 descartarán cualquier paquete destinado a una dirección link-local si intenta atravesar un límite de enrutamiento. Los protocolos de enrutamiento dinámico como OSPFv3, EIGRP para IPv6 y RIPng utilizan explícitamente direcciones link-local como la dirección IP de siguiente salto en las entradas de la tabla de enrutamiento. Esta decisión arquitectónica garantiza que el reenvío de rutas permanezca desacoplado de la renumeración de IP global y evita que las adyacencias de enrutamiento se rompan cuando cambian los prefijos de direcciones unicast globales.",
+      "correctAnswerExplanationEn": "IPv6 link-local addresses use the prefix fe80::/10, have a scope limited solely to the immediate local link, and are never routed across subnets by routers.",
+      "correctAnswerExplanationEs": "Las direcciones IPv6 link-local utilizan el prefijo fe80::/10, tienen un alcance limitado únicamente al enlace local inmediato y nunca son enrutadas a través de subredes por los routers.",
+      "options": [
+        {
+          "optionLabel": "A",
+          "optionTextEn": "It is an IPv6 link-local unicast address (fe80::/10) that is valid only within the local broadcast domain and is never forwarded by routers across subnet boundaries.",
+          "optionTextEs": "Es una dirección unicast IPv6 de enlace local (link-local, fe80::/10) que es válida únicamente dentro del dominio de difusión local y nunca es reenviada por los routers a través de límites de subred.",
+          "isCorrect": true,
+          "explanationEn": "IPv6 link-local addresses (fe80::/10) are restricted to the local Layer 2 segment and routers do not forward packets addressed to link-local destinations to other networks.",
+          "explanationEs": "Las direcciones IPv6 link-local (fe80::/10) están restringidas al segmento local de Capa 2 y los routers no reenvían paquetes dirigidos a destinos link-local hacia otras redes."
+        },
+        {
+          "optionLabel": "B",
+          "optionTextEn": "It is an IPv6 unique local address (fc00::/7) intended for routed internal private networks across multiple campus sites.",
+          "optionTextEs": "Es una dirección local única IPv6 (unique local, fc00::/7) destinada a redes privadas internas enrutadas a través de múltiples sedes de campus.",
+          "isCorrect": false,
+          "explanationEn": "Unique Local Addresses (ULAs) occupy the prefix fc00::/7 (commonly fd00::/8) and are routable across private enterprise networks, whereas fe80::/10 is link-local.",
+          "explanationEs": "Las direcciones Unique Local (ULA) ocupan el prefijo fc00::/7 (habitualmente fd00::/8) y son enrutables en redes empresariales privadas, mientras que fe80::/10 es link-local."
+        },
+        {
+          "optionLabel": "C",
+          "optionTextEn": "It is an IPv6 all-routers multicast address (ff02::2) used exclusively for Neighbor Discovery Protocol (NDP) Router Advertisements.",
+          "optionTextEs": "Es una dirección multicast IPv6 para todos los routers (ff02::2) utilizada exclusivamente para Router Advertisements de Neighbor Discovery Protocol (NDP).",
+          "isCorrect": false,
+          "explanationEn": "Multicast addresses begin with the prefix ff00::/8, not fe80::/10; link-local addresses are unicast addresses.",
+          "explanationEs": "Las direcciones multicast comienzan con el prefijo ff00::/8, no fe80::/10; las direcciones link-local son direcciones unicast."
+        },
+        {
+          "optionLabel": "D",
+          "optionTextEn": "It is an IPv6 global unicast address allocated from the documentation range (2001:db8::/32) for simulated lab environments.",
+          "optionTextEs": "Es una dirección unicast global IPv6 asignada desde el rango de documentación (2001:db8::/32) para entornos de laboratorio simulados.",
+          "isCorrect": false,
+          "explanationEn": "The documentation prefix reserved by RFC 3849 is 2001:db8::/32, which is distinct from the link-local prefix fe80::/10.",
+          "explanationEs": "El prefijo de documentación reservado por RFC 3849 es 2001:db8::/32, el cual es independiente del prefijo link-local fe80::/10."
+        }
+      ],
+      "sourceName": "CCNA 200-301 Original Questions",
+      "sourceLicense": "Original content"
+    },
+    {
+      "statementEn": "A network administrator applies the following configuration commands to an interface on a Cisco IOS-XE router:\n\n```text\nRouter(config)# interface GigabitEthernet0/0/2\nRouter(config-if)# ipv6 address 2001:db8:100:1::1/64\nRouter(config-if)# ipv6 address 2001:db8:100:2::1/64\nRouter(config-if)# ipv6 address fe80::1 link-local\nRouter(config-if)# no shutdown\n```\n\nWhat is the resulting operational IPv6 addressing state of interface GigabitEthernet0/0/2?",
+      "statementEs": "Un administrador de red aplica los siguientes comandos de configuración en una interfaz de un router Cisco IOS-XE:\n\n```text\nRouter(config)# interface GigabitEthernet0/0/2\nRouter(config-if)# ipv6 address 2001:db8:100:1::1/64\nRouter(config-if)# ipv6 address 2001:db8:100:2::1/64\nRouter(config-if)# ipv6 address fe80::1 link-local\nRouter(config-if)# no shutdown\n```\n\n¿Cuál es el estado operativo de direccionamiento IPv6 resultante de la interfaz GigabitEthernet0/0/2?",
+      "questionType": "ios_commands",
+      "difficulty": "advanced",
+      "primaryTopicExamArea": "network_fundamentals",
+      "multipleAnswerCount": null,
+      "estimatedTimeSeconds": 100,
+      "explanationEn": "IPv6 was designed with native multi-homing and multi-address capabilities. On a Cisco IOS or IOS-XE router, configuring multiple `ipv6 address <prefix>` commands on the same interface does not overwrite previous entries; instead, all configured global unicast addresses (GUAs) are added to the interface and become simultaneously active. The router will answer Neighbor Solicitations and forward packets using either prefix. Additionally, while Cisco IOS automatically generates a link-local address using the modified EUI-64 format based on the interface's MAC address (or a randomized token), administrators can manually configure a static link-local address using the syntax `ipv6 address <address> link-local`. Configuring a simple static link-local address such as `fe80::1` on all router interfaces facing client LANs is an industry best practice because it provides a consistent, easily identifiable default gateway for client Neighbor Discovery and static route configurations.",
+      "explanationEs": "IPv6 se diseñó con capacidades nativas de múltiples direcciones y multi-homing. En un router Cisco IOS o IOS-XE, configurar múltiples comandos `ipv6 address <prefijo>` en la misma interfaz no sobrescribe las entradas anteriores; en su lugar, todas las direcciones unicast globales (GUA) configuradas se agregan a la interfaz y se vuelven simultáneamente activas. El router responderá a Neighbor Solicitations y reenviará paquetes utilizando cualquiera de los prefijos. Además, aunque Cisco IOS genera automáticamente una dirección link-local utilizando el formato EUI-64 modificado basado en la dirección MAC de la interfaz (o un token aleatorio), los administradores pueden configurar manualmente una dirección link-local estática utilizando la sintaxis `ipv6 address <dirección> link-local`. Configurar una dirección link-local estática sencilla como `fe80::1` en todas las interfaces de router orientadas a las LAN de clientes es una buena práctica recomendada en la industria porque proporciona una puerta de enlace predeterminada consistente y fácil de identificar para Neighbor Discovery de clientes y configuraciones de rutas estáticas.",
+      "correctAnswerExplanationEn": "Cisco IOS supports multiple active global unicast addresses from different prefixes on the same interface without overwriting, and manually overrides the link-local address when the `link-local` parameter is supplied.",
+      "correctAnswerExplanationEs": "Cisco IOS admite múltiples direcciones unicast globales activas de diferentes prefijos en la misma interfaz sin sobrescribir, y anula manualmente la dirección link-local cuando se proporciona el parámetro `link-local`.",
+      "options": [
+        {
+          "optionLabel": "A",
+          "optionTextEn": "The interface activates both global unicast addresses (2001:db8:100:1::1/64 and 2001:db8:100:2::1/64) simultaneously and uses fe80::1 as its static link-local address.",
+          "optionTextEs": "La interfaz activa ambas direcciones unicast globales (2001:db8:100:1::1/64 y 2001:db8:100:2::1/64) simultáneamente y utiliza fe80::1 como su dirección link-local estática.",
+          "isCorrect": true,
+          "explanationEn": "Cisco IOS allows multiple IPv6 global unicast addresses on a single interface without overwriting previous ones, and the 'link-local' keyword manually overrides the automatic EUI-64 link-local address with fe80::1.",
+          "explanationEs": "Cisco IOS permite múltiples direcciones unicast globales IPv6 en una sola interfaz sin sobrescribir las anteriores, y la palabra clave 'link-local' anula manualmente la dirección link-local automática EUI-64 con fe80::1."
+        },
+        {
+          "optionLabel": "B",
+          "optionTextEn": "The second global unicast command overwrites the first, leaving only 2001:db8:100:2::1/64 and an automatically generated EUI-64 link-local address active.",
+          "optionTextEs": "El segundo comando unicast global sobrescribe el primero, dejando únicamente 2001:db8:100:2::1/64 y una dirección link-local generada automáticamente por EUI-64 activa.",
+          "isCorrect": false,
+          "explanationEn": "Unlike IPv4 where a second `ip address` command replaces the primary address unless `secondary` is appended, IPv6 supports multiple global unicast addresses by default without replacement.",
+          "explanationEs": "A diferencia de IPv4 donde un segundo comando `ip address` reemplaza la dirección principal a menos que se agregue `secondary`, IPv6 admite múltiples direcciones unicast globales por defecto sin reemplazo."
+        },
+        {
+          "optionLabel": "C",
+          "optionTextEn": "The command `ipv6 address fe80::1 link-local` is rejected because link-local addresses can only be derived dynamically using the modified EUI-64 format.",
+          "optionTextEs": "El comando `ipv6 address fe80::1 link-local` es rechazado porque las direcciones link-local solo pueden derivarse dinámicamente mediante el formato EUI-64 modificado.",
+          "isCorrect": false,
+          "explanationEn": "Cisco IOS fully supports manually assigning static link-local addresses using the `link-local` parameter, which is a common best practice for router default gateways.",
+          "explanationEs": "Cisco IOS admite plenamente la asignación manual de direcciones link-local estáticas utilizando el parámetro `link-local`, lo cual es una buena práctica común para puertas de enlace predeterminadas en routers."
+        },
+        {
+          "optionLabel": "D",
+          "optionTextEn": "The interface enters an err-disabled state because multiple IPv6 prefixes on the same physical broadcast domain create an illegal subnet collision.",
+          "optionTextEs": "La interfaz entra en estado err-disabled porque múltiples prefijos IPv6 en el mismo dominio de difusión físico generan una colisión de subred no válida.",
+          "isCorrect": false,
+          "explanationEn": "IPv6 architecture natively allows multiple prefixes to co-exist on the same link (multi-homing / multi-prefixing), and this never triggers an error-disabled state.",
+          "explanationEs": "La arquitectura IPv6 permite de forma nativa que múltiples prefijos coexistan en el mismo enlace (multi-homing / multi-prefixing), y esto nunca desencadena un estado err-disabled."
+        }
+      ],
+      "sourceName": "CCNA 200-301 Original Questions",
+      "sourceLicense": "Original content"
+    },
+    {
+      "statementEn": "A network support technician is performing on-site client troubleshooting across mixed desktop environments. The technician must verify the active IPv4 address, subnet mask, default gateway, and configured DNS server addresses on both a Microsoft Windows workstation and a modern Linux workstation using standard native command-line utilities. Which combination of operating system commands provides this complete set of information on each respective platform?",
+      "statementEs": "Un técnico de soporte de red está realizando tareas de resolución de problemas en estaciones de trabajo cliente en un entorno heterogéneo. El técnico debe verificar la dirección IPv4 activa, la máscara de subred, la puerta de enlace predeterminada y las direcciones de servidores DNS configuradas tanto en una estación de trabajo Microsoft Windows como en una estación de trabajo Linux moderna utilizando herramientas nativas estándar de línea de comandos. ¿Qué combinación de comandos de sistema operativo proporciona este conjunto completo de información en cada plataforma respectiva?",
+      "questionType": "single_choice",
+      "difficulty": "advanced",
+      "primaryTopicExamArea": "network_fundamentals",
+      "multipleAnswerCount": null,
+      "estimatedTimeSeconds": 100,
+      "explanationEn": "Verifying IP host parameters across diverse client operating systems is an essential skill outlined in CCNA objective 1.10. On Microsoft Windows, typing `ipconfig` provides only a brief summary showing IPv4/IPv6 addresses, subnet mask, and default gateway, but completely omits DNS server addresses, DHCP server information, and physical MAC addresses. The technician must execute `ipconfig /all` to retrieve the comprehensive configuration including DNS resolvers and lease details. On modern Linux systems (which have deprecated the legacy `net-tools` package containing `ifconfig`), interface IP addressing and CIDR subnet masks are examined with `ip addr show` (or `ip a`). The default gateway must be verified via the routing table using `ip route show` (or `ip r`), where the line starting with `default via <IP>` identifies the gateway. Finally, active DNS name servers are checked either by querying the systemd resolver with `resolvectl status` (or `systemd-resolve --status`) or by inspecting the static resolver configuration file `/etc/resolv.conf`.",
+      "explanationEs": "Verificar los parámetros IP de host en diversos sistemas operativos cliente es una habilidad esencial descrita en el objetivo 1.10 de CCNA. En Microsoft Windows, escribir `ipconfig` proporciona solo un breve resumen que muestra direcciones IPv4/IPv6, máscara de subred y puerta de enlace predeterminada, pero omite completamente las direcciones de servidores DNS, información de servidores DHCP y direcciones MAC físicas. El técnico debe ejecutar `ipconfig /all` para obtener la configuración completa, incluidos los servidores DNS y los detalles de concesión. En los sistemas Linux modernos (que han dejado obsoleta la suite heredada `net-tools` que contenía `ifconfig`), el direccionamiento IP de interfaces y las máscaras de subred CIDR se examinan con `ip addr show` (o `ip a`). La puerta de enlace predeterminada debe verificarse a través de la tabla de enrutamiento mediante `ip route show` (o `ip r`), donde la línea que comienza con `default via <IP>` identifica la puerta de enlace. Finalmente, los servidores de nombres DNS activos se comprueban consultando el solucionador systemd con `resolvectl status` (o `systemd-resolve --status`) o inspeccionando el archivo de configuración estático `/etc/resolv.conf`.",
+      "correctAnswerExplanationEn": "Windows requires `ipconfig /all` to display DNS servers alongside IP, mask, and gateway; modern Linux uses `ip addr show` for address and mask, `ip route show` for default gateway, and `resolvectl status` or `/etc/resolv.conf` for DNS servers.",
+      "correctAnswerExplanationEs": "Windows requiere `ipconfig /all` para mostrar los servidores DNS junto con IP, máscara y puerta de enlace; Linux moderno utiliza `ip addr show` para dirección y máscara, `ip route show` para puerta de enlace predeterminada, y `resolvectl status` o `/etc/resolv.conf` para servidores DNS.",
+      "options": [
+        {
+          "optionLabel": "A",
+          "optionTextEn": "Windows: `ipconfig /all`; Linux: `ip addr show` (for IP/mask), `ip route show` (for default gateway), and `resolvectl status` or inspecting `/etc/resolv.conf` (for DNS servers)",
+          "optionTextEs": "Windows: `ipconfig /all`; Linux: `ip addr show` (para IP/máscara), `ip route show` (para puerta de enlace predeterminada), y `resolvectl status` o inspeccionar `/etc/resolv.conf` (para servidores DNS)",
+          "isCorrect": true,
+          "explanationEn": "On Windows, `ipconfig /all` outputs IP, mask, default gateway, and DNS servers; on modern Linux (`iproute2`/systemd), `ip addr` reveals IP/mask, `ip route` reveals the default gateway, and `resolvectl status` (or `/etc/resolv.conf`) provides DNS server details.",
+          "explanationEs": "En Windows, `ipconfig /all` muestra IP, máscara, puerta de enlace predeterminada y servidores DNS; en Linux moderno (`iproute2`/systemd), `ip addr` muestra IP/máscara, `ip route` muestra la puerta de enlace predeterminada, y `resolvectl status` (o `/etc/resolv.conf`) proporciona los detalles de servidores DNS."
+        },
+        {
+          "optionLabel": "B",
+          "optionTextEn": "Windows: `ipconfig`; Linux: `ifconfig -a`",
+          "optionTextEs": "Windows: `ipconfig`; Linux: `ifconfig -a`",
+          "isCorrect": false,
+          "explanationEn": "Basic `ipconfig` on Windows omits DNS server addresses, and legacy `ifconfig -a` on Linux displays only interface IP addresses and masks without displaying default gateway routes or DNS configurations.",
+          "explanationEs": "El comando básico `ipconfig` en Windows omite las direcciones de servidores DNS, y el comando heredado `ifconfig -a` en Linux muestra únicamente direcciones IP de interfaz y máscaras sin mostrar rutas de puerta de enlace predeterminada ni configuraciones de DNS."
+        },
+        {
+          "optionLabel": "C",
+          "optionTextEn": "Windows: `winipcfg /all`; Linux: `route -n`",
+          "optionTextEs": "Windows: `winipcfg /all`; Linux: `route -n`",
+          "isCorrect": false,
+          "explanationEn": "`winipcfg` is an obsolete GUI utility from Windows 95/98 that does not exist in modern Windows, and `route -n` on Linux shows the routing table but does not display interface IP assignment details or DNS servers.",
+          "explanationEs": "`winipcfg` es una utilidad gráfica obsoleta de Windows 95/98 que no existe en Windows moderno, y `route -n` en Linux muestra la tabla de enrutamiento pero no muestra detalles de asignación de IP de interfaces ni servidores DNS."
+        },
+        {
+          "optionLabel": "D",
+          "optionTextEn": "Windows: `netstat -rn`; Linux: `arp -a`",
+          "optionTextEs": "Windows: `netstat -rn`; Linux: `arp -a`",
+          "isCorrect": false,
+          "explanationEn": "`netstat -rn` displays the kernel routing table without showing DNS servers, and `arp -a` only displays the ARP resolution cache, not the host's own IP configuration or DNS settings.",
+          "explanationEs": "`netstat -rn` muestra la tabla de enrutamiento del kernel sin mostrar servidores DNS, y `arp -a` únicamente muestra la caché de resolución ARP, no la configuración IP del host ni los parámetros DNS."
+        }
+      ],
+      "sourceName": "CCNA 200-301 Original Questions",
+      "sourceLicense": "Original content"
+    }
+  ]
+}

@@ -1,0 +1,649 @@
+{
+  "questions": [
+    {
+      "statementEn": "Refer to the following excerpt from the routing table of a Cisco IOS router:\n\nRouter# show ip route\nCodes: L - local, C - connected, S - static, R - RIP, M - mobile, B - BGP\n       D - EIGRP, EX - EIGRP external, O - OSPF, IA - OSPF inter area \n       N1 - OSPF NSSA external type 1, N2 - OSPF NSSA external type 2\n       E1 - OSPF external type 1, E2 - OSPF external type 2\n       i - IS-IS, su - IS-IS summary, L1 - IS-IS level-1, L2 - IS-IS level-2\n       ia - IS-IS inter area, * - candidate default, U - per-user static route\n       o - ODR, P - periodic downloaded static route, H - NHRP, l - LISP\n       a - application route\n       + - replicated route, % - next hop override, p - overrides from PfR\n\nGateway of last resort is not set\n\n      10.0.0.0/8 is variably subnetted, 4 subnets, 2 masks\nO IA     10.25.10.0/24 [110/65] via 192.168.12.2, 00:18:42, GigabitEthernet0/1\n\nIn the route entry for 10.25.10.0/24, what do the values 110 and 65 inside the brackets [110/65] represent?",
+      "statementEs": "Consulte el siguiente extracto de la tabla de enrutamiento de un router Cisco IOS:\n\nRouter# show ip route\nCodes: L - local, C - connected, S - static, R - RIP, M - mobile, B - BGP\n       D - EIGRP, EX - EIGRP external, O - OSPF, IA - OSPF inter area \n       N1 - OSPF NSSA external type 1, N2 - OSPF NSSA external type 2\n       E1 - OSPF external type 1, E2 - OSPF external type 2\n       i - IS-IS, su - IS-IS summary, L1 - IS-IS level-1, L2 - IS-IS level-2\n       ia - IS-IS inter area, * - candidate default, U - per-user static route\n       o - ODR, P - periodic downloaded static route, H - NHRP, l - LISP\n       a - application route\n       + - replicated route, % - next hop override, p - overrides from PfR\n\nGateway of last resort is not set\n\n      10.0.0.0/8 is variably subnetted, 4 subnets, 2 masks\nO IA     10.25.10.0/24 [110/65] via 192.168.12.2, 00:18:42, GigabitEthernet0/1\n\nEn la entrada de ruta para 10.25.10.0/24, ¿qué representan los valores 110 y 65 dentro de los corchetes [110/65]?",
+      "questionType": "routing_table",
+      "difficulty": "basic",
+      "primaryTopicExamArea": "ip_connectivity",
+      "multipleAnswerCount": null,
+      "estimatedTimeSeconds": 60,
+      "explanationEn": "In Cisco IOS routing tables, any dynamically learned or static route with distance/metric displays those values in brackets as [Administrative Distance / Metric]. Administrative distance (AD) rates the trustworthiness of the routing information source, where a lower value indicates a more trusted source (default AD for OSPF is 110). Metric represents the protocol-calculated cost to reach the destination subnet (for OSPF, metric is link cost based on bandwidth, which equals 65 here).",
+      "explanationEs": "En las tablas de enrutamiento de Cisco IOS, toda ruta aprendida dinámicamente o estática muestra sus valores entre corchetes con el formato [Distancia Administrativa / Métrica]. La distancia administrativa (AD) califica la confiabilidad del origen de la información de enrutamiento, donde un valor menor indica mayor confiabilidad (el AD predeterminado para OSPF es 110). La métrica representa el costo calculado por el protocolo para alcanzar la subred de destino (en OSPF, la métrica es el costo de enlace basado en ancho de banda, que aquí equivale a 65).",
+      "correctAnswerExplanationEn": "110 is the default administrative distance of OSPF in Cisco IOS, and 65 is the accumulated OSPF link metric (cost) to reach 10.25.10.0/24.",
+      "correctAnswerExplanationEs": "110 es la distancia administrativa predeterminada de OSPF en Cisco IOS y 65 es la métrica (costo) acumulada de enlace OSPF para alcanzar 10.25.10.0/24.",
+      "options": [
+        {
+          "optionLabel": "A",
+          "optionTextEn": "110 is the administrative distance, and 65 is the metric (cost).",
+          "optionTextEs": "110 es la distancia administrativa y 65 es la métrica (costo).",
+          "isCorrect": true,
+          "explanationEn": "Correct. In the bracket notation [AD/metric], the first number is always the administrative distance and the second number is the metric.",
+          "explanationEs": "Correcto. En la notación entre corchetes [AD/métrica], el primer número es siempre la distancia administrativa y el segundo número es la métrica."
+        },
+        {
+          "optionLabel": "B",
+          "optionTextEn": "110 is the metric (cost), and 65 is the administrative distance.",
+          "optionTextEs": "110 es la métrica (costo) y 65 es la distancia administrativa.",
+          "isCorrect": false,
+          "explanationEn": "Incorrect. The numbers are inverted; administrative distance appears first, followed by metric.",
+          "explanationEs": "Incorrecto. Los números están invertidos; la distancia administrativa aparece primero, seguida de la métrica."
+        },
+        {
+          "optionLabel": "C",
+          "optionTextEn": "110 is the OSPF process ID, and 65 is the autonomous system number.",
+          "optionTextEs": "110 es el ID de proceso OSPF y 65 es el número de sistema autónomo.",
+          "isCorrect": false,
+          "explanationEn": "Incorrect. OSPF process ID and autonomous system numbers are not shown in route descriptor brackets in the routing table.",
+          "explanationEs": "Incorrecto. El ID de proceso OSPF y los números de sistema autónomo no se muestran entre corchetes en las entradas de la tabla de enrutamiento."
+        },
+        {
+          "optionLabel": "D",
+          "optionTextEn": "110 is the hop count, and 65 is the cumulative path delay in milliseconds.",
+          "optionTextEs": "110 es el conteo de saltos y 65 es el retardo acumulado de la ruta en milisegundos.",
+          "isCorrect": false,
+          "explanationEn": "Incorrect. OSPF uses link cost based on interface bandwidth, not hop count or delay.",
+          "explanationEs": "Incorrecto. OSPF utiliza costo de enlace basado en el ancho de banda de la interfaz, no conteo de saltos ni retardo."
+        }
+      ],
+      "sourceName": "CCNA 200-301 Original Questions",
+      "sourceLicense": "Original content"
+    },
+    {
+      "statementEn": "An administrator configures interface GigabitEthernet0/0 on a Cisco router running IOS 15 with IP address 172.16.30.1 255.255.255.0 and enables the interface. The administrator issues the command show ip route and observes the following entries:\n\nRouter# show ip route\nGateway of last resort is not set\n\n      172.16.0.0/16 is variably subnetted, 2 subnets, 2 masks\nC        172.16.30.0/24 is directly connected, GigabitEthernet0/0\nL        172.16.30.1/32 is directly connected, GigabitEthernet0/0\n\nWhat is the primary operational purpose of the 'L' (Local) route with prefix length /32 in the routing table?",
+      "statementEs": "Un administrador configura la interfaz GigabitEthernet0/0 en un router Cisco con IOS 15 con la dirección IP 172.16.30.1 255.255.255.0 y habilita la interfaz. El administrador ejecuta el comando show ip route y observa las siguientes entradas:\n\nRouter# show ip route\nGateway of last resort is not set\n\n      172.16.0.0/16 is variably subnetted, 2 subnets, 2 masks\nC        172.16.30.0/24 is directly connected, GigabitEthernet0/0\nL        172.16.30.1/32 is directly connected, GigabitEthernet0/0\n\n¿Cuál es el propósito operativo principal de la ruta 'L' (Local) con longitud de prefijo /32 en la tabla de enrutamiento?",
+      "questionType": "routing_table",
+      "difficulty": "intermediate",
+      "primaryTopicExamArea": "ip_connectivity",
+      "multipleAnswerCount": null,
+      "estimatedTimeSeconds": 75,
+      "explanationEn": "Starting in Cisco IOS 15.0, when an interface is configured with an IP address and brought up, two entries are installed: a Connected route ('C') for the network subnet prefix (/24) and a Local route ('L') for the router interface's own IP address with a /32 host mask. The /32 local route creates a 'receive' adjacency in Cisco Express Forwarding (CEF). This allows the forwarding plane to quickly identify packets destined directly to the router itself (such as SSH, BGP, OSPF, or ICMP traffic directed to the router) and dispatch them immediately to the router's local control plane CPU without performing recursive lookups across the subnet.",
+      "explanationEs": "A partir de Cisco IOS 15.0, cuando se configura una dirección IP en una interfaz y se levanta, se instalan dos entradas: una ruta Conectada ('C') para el prefijo de la subred de red (/24) y una ruta Local ('L') para la propia dirección IP de la interfaz del router con máscara de host /32. La ruta local /32 crea una adyacencia 'receive' en Cisco Express Forwarding (CEF). Esto permite al plano de reenvío identificar rápidamente los paquetes destinados directamente al propio router (como tráfico SSH, BGP, OSPF o ICMP dirigido al router) y enviarlos de inmediato a la CPU del plano de control sin realizar búsquedas recursivas en la subred.",
+      "correctAnswerExplanationEn": "The /32 Local route identifies the router's own interface IP address, enabling CEF to quickly route incoming traffic destined to the router itself directly to the local control plane.",
+      "correctAnswerExplanationEs": "La ruta Local /32 identifica la dirección IP propia de la interfaz del router, permitiendo a CEF enrutar rápidamente el tráfico entrante destinado al propio router directo al plano de control local.",
+      "options": [
+        {
+          "optionLabel": "A",
+          "optionTextEn": "It identifies the router's own interface IP address, allowing CEF to quickly direct traffic destined for the router itself to the local control plane.",
+          "optionTextEs": "Identifica la dirección IP propia de la interfaz del router, permitiendo a CEF dirigir rápidamente el tráfico destinado al propio router hacia el plano de control local.",
+          "isCorrect": true,
+          "explanationEn": "Correct. Local /32 routes allow Cisco Express Forwarding (CEF) to optimize packet handling destined to the router itself.",
+          "explanationEs": "Correcto. Las rutas locales /32 permiten a Cisco Express Forwarding (CEF) optimizar el procesamiento de paquetes destinados al propio dispositivo."
+        },
+        {
+          "optionLabel": "B",
+          "optionTextEn": "It acts as a floating backup route in case the primary GigabitEthernet0/0 connected route experiences packet loss.",
+          "optionTextEs": "Actúa como una ruta flotante de respaldo en caso de que la ruta conectada principal de GigabitEthernet0/0 experimente pérdida de paquetes.",
+          "isCorrect": false,
+          "explanationEn": "Incorrect. A connected interface cannot back itself up with a floating route; if the interface goes down, both C and L routes disappear simultaneously.",
+          "explanationEs": "Incorrecto. Una interfaz conectada no se respalda a sí misma con una ruta flotante; si la interfaz cae, ambas rutas C y L desaparecen simultáneamente."
+        },
+        {
+          "optionLabel": "C",
+          "optionTextEn": "It automatically advertises a /32 host route into all running dynamic routing protocols regardless of network configuration.",
+          "optionTextEs": "Publica automáticamente una ruta de host /32 en todos los protocolos de enrutamiento dinámico en ejecución sin importar la configuración de red.",
+          "isCorrect": false,
+          "explanationEn": "Incorrect. Local routes are not redistributed or advertised into dynamic routing protocols by default.",
+          "explanationEs": "Incorrecto. Las rutas locales no se redistribuyen ni se publican en protocolos dinámicos por defecto."
+        },
+        {
+          "optionLabel": "D",
+          "optionTextEn": "It defines the directed broadcast address for the 172.16.30.0/24 subnet to enable DHCP relay services.",
+          "optionTextEs": "Define la dirección de difusión dirigida para la subred 172.16.30.0/24 para habilitar servicios de DHCP relay.",
+          "isCorrect": false,
+          "explanationEn": "Incorrect. The directed broadcast address for this subnet is 172.16.30.255, not the interface IP address 172.16.30.1.",
+          "explanationEs": "Incorrecto. La dirección de difusión dirigida de esta subred es 172.16.30.255, no la dirección IP de interfaz 172.16.30.1."
+        }
+      ],
+      "sourceName": "CCNA 200-301 Original Questions",
+      "sourceLicense": "Original content"
+    },
+    {
+      "statementEn": "A network engineer configures a static default route on a branch office router:\n\nBranch-Router(config)# ip route 0.0.0.0 0.0.0.0 198.51.100.2\nBranch-Router(config)# exit\nBranch-Router# show ip route static\nBranch-Router# show ip route | include Gateway\nGateway of last resort is not set\n\nThe command executed without syntax errors, but the static route is completely absent from the routing table and the Gateway of Last Resort remains not set. What is the most likely root cause?",
+      "statementEs": "Un ingeniero de red configura una ruta estática predeterminada en el router de una sucursal:\n\nBranch-Router(config)# ip route 0.0.0.0 0.0.0.0 198.51.100.2\nBranch-Router(config)# exit\nBranch-Router# show ip route static\nBranch-Router# show ip route | include Gateway\nGateway of last resort is not set\n\nEl comando se ejecutó sin errores de sintaxis, pero la ruta estática está completamente ausente de la tabla de enrutamiento y el Gateway of Last Resort permanece sin establecerse. ¿Cuál es la causa raíz más probable?",
+      "questionType": "troubleshooting",
+      "difficulty": "advanced",
+      "primaryTopicExamArea": "ip_connectivity",
+      "multipleAnswerCount": null,
+      "estimatedTimeSeconds": 90,
+      "explanationEn": "Cisco IOS requires that the next-hop IP address specified in an 'ip route' command be reachable before installing that static route into the Routing Information Base (RIB). Reachability requires either a directly connected route covering that IP on an active interface (in up/up state) or a valid recursive route in the routing table. If the interface connecting to 198.51.100.0/24 is down/down, shutdown, or lacks an IP address, the next hop 198.51.100.2 cannot be resolved, so Cisco IOS holds the command in running-config but withholds it from the routing table and does not set the Gateway of Last Resort.",
+      "explanationEs": "Cisco IOS exige que la dirección IP de siguiente salto especificada en un comando 'ip route' sea alcanzable antes de instalar dicha ruta estática en la Base de Información de Enrutamiento (RIB). La alcanzabilidad requiere una ruta directamente conectada que cubra esa IP en una interfaz activa (en estado up/up) o una ruta recursiva válida en la tabla de enrutamiento. Si la interfaz conectada a 198.51.100.0/24 está apagada (down/down, shutdown) o carece de dirección IP, el siguiente salto 198.51.100.2 no se puede resolver, por lo que Cisco IOS mantiene el comando en la running-config pero no lo instala en la tabla de enrutamiento ni activa el Gateway of Last Resort.",
+      "correctAnswerExplanationEn": "Cisco IOS will not install a static route into the routing table unless the next-hop IP address is reachable via an active up/up interface or an existing route in the RIB.",
+      "correctAnswerExplanationEs": "Cisco IOS no instalará una ruta estática en la tabla de enrutamiento a menos que la IP de siguiente salto sea alcanzable mediante una interfaz activa en up/up o una ruta existente en la RIB.",
+      "options": [
+        {
+          "optionLabel": "A",
+          "optionTextEn": "The next-hop IP address 198.51.100.2 is not reachable because there is no matching active route or up/up interface for that subnet in the RIB.",
+          "optionTextEs": "La dirección IP de siguiente salto 198.51.100.2 no es alcanzable porque no existe una ruta activa coincidente ni una interfaz up/up para esa subred en la RIB.",
+          "isCorrect": true,
+          "explanationEn": "Correct. Cisco IOS validates next-hop reachability before placing a static route into the routing table.",
+          "explanationEs": "Correcto. Cisco IOS valida la alcanzabilidad del siguiente salto antes de colocar una ruta estática en la tabla de enrutamiento."
+        },
+        {
+          "optionLabel": "B",
+          "optionTextEn": "Default static routes must be configured with CIDR notation (ip route 0.0.0.0/0 198.51.100.2) in modern Cisco IOS versions.",
+          "optionTextEs": "Las rutas estáticas predeterminadas deben configurarse con notación CIDR (ip route 0.0.0.0/0 198.51.100.2) en versiones modernas de Cisco IOS.",
+          "isCorrect": false,
+          "explanationEn": "Incorrect. Cisco IOS IPv4 'ip route' syntax strictly requires dotted-decimal subnet mask (0.0.0.0 0.0.0.0), not CIDR slash notation.",
+          "explanationEs": "Incorrecto. La sintaxis IPv4 de 'ip route' en Cisco IOS requiere estrictamente la máscara en formato decimal con puntos (0.0.0.0 0.0.0.0), no la barra CIDR."
+        },
+        {
+          "optionLabel": "C",
+          "optionTextEn": "The ip default-network command must be executed first to enable candidate default routes.",
+          "optionTextEs": "El comando ip default-network debe ejecutarse primero para habilitar rutas predeterminadas candidatas.",
+          "isCorrect": false,
+          "explanationEn": "Incorrect. 'ip default-network' is an older classful routing command and is not required for 'ip route 0.0.0.0 0.0.0.0'.",
+          "explanationEs": "Incorrecto. 'ip default-network' es un comando heredado con clases y no se requiere para 'ip route 0.0.0.0 0.0.0.0'."
+        },
+        {
+          "optionLabel": "D",
+          "optionTextEn": "Static routes have a default administrative distance of 255 and remain inactive until a lower distance is manually configured.",
+          "optionTextEs": "Las rutas estáticas tienen una distancia administrativa predeterminada de 255 y permanecen inactivas hasta que se configure manualmente una distancia menor.",
+          "isCorrect": false,
+          "explanationEn": "Incorrect. Static routes have a default administrative distance of 1, not 255 (255 means untrusted/unusable).",
+          "explanationEs": "Incorrecto. Las rutas estáticas tienen una distancia administrativa predeterminada de 1, no 255 (255 significa no confiable/inutilizable)."
+        }
+      ],
+      "sourceName": "CCNA 200-301 Original Questions",
+      "sourceLicense": "Original content"
+    },
+    {
+      "statementEn": "A Cisco router contains the following entries in its IPv4 routing table:\n\nRouter# show ip route\nGateway of last resort is 192.168.1.1 to network 0.0.0.0\n\nS*    0.0.0.0/0 [1/0] via 192.168.1.1\nS     10.1.0.0/16 [1/0] via 10.0.12.2\nO     10.1.4.0/22 [110/20] via 10.0.14.2\nD     10.1.5.0/24 [90/307200] via 10.0.15.2\nO     10.1.5.64/26 [110/10] via 10.0.16.2\n\nA packet arrives at the router destined for IP address 10.1.5.75. Which route will the router select to forward this packet, and why?",
+      "statementEs": "Un router Cisco contiene las siguientes entradas en su tabla de enrutamiento IPv4:\n\nRouter# show ip route\nGateway of last resort is 192.168.1.1 to network 0.0.0.0\n\nS*    0.0.0.0/0 [1/0] via 192.168.1.1\nS     10.1.0.0/16 [1/0] via 10.0.12.2\nO     10.1.4.0/22 [110/20] via 10.0.14.2\nD     10.1.5.0/24 [90/307200] via 10.0.15.2\nO     10.1.5.64/26 [110/10] via 10.0.16.2\n\nLlega un paquete al router con destino a la dirección IP 10.1.5.75. ¿Qué ruta seleccionará el router para reenviar este paquete y por qué?",
+      "questionType": "routing_table",
+      "difficulty": "intermediate",
+      "primaryTopicExamArea": "ip_connectivity",
+      "multipleAnswerCount": null,
+      "estimatedTimeSeconds": 90,
+      "explanationEn": "When a router forwards an IP packet, it ALWAYS selects the route with the Longest Prefix Match (LPM) among all matching routes in the routing table, regardless of administrative distance or metric.\nStep-by-step prefix analysis for destination 10.1.5.75:\n1. 0.0.0.0/0: Matches all addresses (prefix length = 0 bits).\n2. 10.1.0.0/16: Range 10.1.0.0 to 10.1.255.255 (prefix length = 16 bits). Matches.\n3. 10.1.4.0/22: Third octet block size = 4 (256 - 252 = 4). Range 10.1.4.0 to 10.1.7.255 (prefix length = 22 bits). Matches.\n4. 10.1.5.0/24: Range 10.1.5.0 to 10.1.5.255 (prefix length = 24 bits). Matches.\n5. 10.1.5.64/26: Fourth octet block size = 64 (256 - 192 = 64). Range 10.1.5.64 to 10.1.5.127 (prefix length = 26 bits). 10.1.5.75 falls squarely in this range. Matches.\nComparing prefix lengths: /26 > /24 > /22 > /16 > /0. The /26 OSPF route matches 26 bits, making it the longest prefix match. Next hop 10.0.16.2 is chosen. Administrative distance is only used to select which route to install when multiple sources advertise the exact same prefix/mask, never when choosing between routes of different prefix lengths during forwarding.",
+      "explanationEs": "Cuando un router reenvía un paquete IP, SIEMPRE selecciona la ruta con la Coincidencia de Prefijo más Largo (Longest Prefix Match - LPM) entre todas las rutas coincidentes en la tabla de enrutamiento, sin importar la distancia administrativa ni la métrica.\nAnálisis paso a paso de los prefijos para el destino 10.1.5.75:\n1. 0.0.0.0/0: Coincide con todas las direcciones (longitud de prefijo = 0 bits).\n2. 10.1.0.0/16: Rango 10.1.0.0 a 10.1.255.255 (longitud de prefijo = 16 bits). Coincide.\n3. 10.1.4.0/22: Tamaño de bloque en tercer octeto = 4 (256 - 252 = 4). Rango 10.1.4.0 a 10.1.7.255 (longitud de prefijo = 22 bits). Coincide.\n4. 10.1.5.0/24: Rango 10.1.5.0 a 10.1.5.255 (longitud de prefijo = 24 bits). Coincide.\n5. 10.1.5.64/26: Tamaño de bloque en cuarto octeto = 64 (256 - 192 = 64). Rango 10.1.5.64 a 10.1.5.127 (longitud de prefijo = 26 bits). 10.1.5.75 se encuentra dentro de este rango. Coincide.\nComparando longitudes de prefijo: /26 > /24 > /22 > /16 > /0. La ruta OSPF /26 coincide en 26 bits, siendo el prefijo más largo. Se selecciona el siguiente salto 10.0.16.2. La distancia administrativa solo se usa para desempatar la instalación cuando varias fuentes publican el prefijo idéntico, nunca al reenviar entre rutas con distintas longitudes de máscara.",
+      "correctAnswerExplanationEn": "The OSPF route 10.1.5.64/26 via 10.0.16.2 is chosen because /26 is the longest prefix match (26 bits), which takes precedence over all other routes regardless of their administrative distance.",
+      "correctAnswerExplanationEs": "Se elige la ruta OSPF 10.1.5.64/26 a través de 10.0.16.2 porque /26 es la coincidencia de prefijo más larga (26 bits), la cual tiene prioridad sobre cualquier otra ruta sin importar su distancia administrativa.",
+      "options": [
+        {
+          "optionLabel": "A",
+          "optionTextEn": "The OSPF route 10.1.5.64/26 via next hop 10.0.16.2, because /26 has the longest prefix match covering the destination address.",
+          "optionTextEs": "La ruta OSPF 10.1.5.64/26 vía siguiente salto 10.0.16.2, porque /26 tiene la coincidencia de prefijo más larga para la dirección de destino.",
+          "isCorrect": true,
+          "explanationEn": "Correct. Longest prefix match (/26) is the fundamental rule of IP packet forwarding.",
+          "explanationEs": "Correcto. La coincidencia de prefijo más largo (/26) es la regla fundamental de reenvío de paquetes IP."
+        },
+        {
+          "optionLabel": "B",
+          "optionTextEn": "The static route 10.1.0.0/16 via next hop 10.0.12.2, because static routes have the lowest administrative distance (AD 1).",
+          "optionTextEs": "La ruta estática 10.1.0.0/16 vía siguiente salto 10.0.12.2, porque las rutas estáticas tienen la menor distancia administrativa (AD 1).",
+          "isCorrect": false,
+          "explanationEn": "Incorrect. Administrative distance is not evaluated during packet forwarding lookups when multiple different prefix lengths match.",
+          "explanationEs": "Incorrecto. La distancia administrativa no se evalúa durante la búsqueda de reenvío cuando coinciden múltiples rutas de distinta longitud."
+        },
+        {
+          "optionLabel": "C",
+          "optionTextEn": "The EIGRP route 10.1.5.0/24 via next hop 10.0.15.2, because EIGRP has a lower administrative distance (AD 90) than OSPF (AD 110).",
+          "optionTextEs": "La ruta EIGRP 10.1.5.0/24 vía siguiente salto 10.0.15.2, porque EIGRP tiene menor distancia administrativa (AD 90) que OSPF (AD 110).",
+          "isCorrect": false,
+          "explanationEn": "Incorrect. The /24 route has fewer matching bits than the /26 route; prefix length always overrides administrative distance.",
+          "explanationEs": "Incorrecto. La ruta /24 tiene menos bits coincidentes que la ruta /26; la longitud del prefijo siempre prevalece sobre la distancia administrativa."
+        },
+        {
+          "optionLabel": "D",
+          "optionTextEn": "The static default route 0.0.0.0/0 via next hop 192.168.1.1, because it is the Gateway of Last Resort.",
+          "optionTextEs": "La ruta estática predeterminada 0.0.0.0/0 vía siguiente salto 192.168.1.1, porque es el Gateway of Last Resort.",
+          "isCorrect": false,
+          "explanationEn": "Incorrect. The default route has a prefix length of 0 bits and is only used if no specific route matches the destination.",
+          "explanationEs": "Incorrecto. La ruta predeterminada tiene una longitud de prefijo de 0 bits y solo se usa si ninguna ruta específica coincide con el destino."
+        }
+      ],
+      "sourceName": "CCNA 200-301 Original Questions",
+      "sourceLicense": "Original content"
+    },
+    {
+      "statementEn": "A Cisco router receives the following route advertisements from different sources, all with reachable next hops:\n1. OSPF advertises 172.16.10.0/24 with cost 10 via next hop 10.1.1.2.\n2. EIGRP advertises 172.16.10.0/24 with metric 307200 via next hop 10.2.2.2.\n3. OSPF advertises 172.16.10.128/25 with cost 25 via next hop 10.3.3.2.\n4. A static route is configured: ip route 172.16.0.0 255.255.0.0 10.4.4.2.\n\nWhen the router receives an IP packet destined for 172.16.10.130, how does the router populate its routing table (RIB) and forward the packet?",
+      "statementEs": "Un router Cisco recibe las siguientes publicaciones de rutas desde diferentes fuentes, todas con siguientes saltos alcanzables:\n1. OSPF publica 172.16.10.0/24 con costo 10 vía siguiente salto 10.1.1.2.\n2. EIGRP publica 172.16.10.0/24 con métrica 307200 vía siguiente salto 10.2.2.2.\n3. OSPF publica 172.16.10.128/25 con costo 25 vía siguiente salto 10.3.3.2.\n4. Se configura una ruta estática: ip route 172.16.0.0 255.255.0.0 10.4.4.2.\n\nCuando el router recibe un paquete IP destinado a 172.16.10.130, ¿cómo puebla el router su tabla de enrutamiento (RIB) y reenvía el paquete?",
+      "questionType": "single_choice",
+      "difficulty": "advanced",
+      "primaryTopicExamArea": "ip_connectivity",
+      "multipleAnswerCount": null,
+      "estimatedTimeSeconds": 100,
+      "explanationEn": "This question tests the vital two-step process in Cisco routing: RIB Installation vs. Packet Forwarding.\nPhase 1: Routing Table (RIB) Installation:\n- For the identical prefix 172.16.10.0/24, both EIGRP and OSPF offer routes. Cisco IOS compares Administrative Distance: EIGRP (AD 90) beats OSPF (AD 110). Thus, EIGRP route via 10.2.2.2 is installed in the RIB, and the OSPF /24 route is rejected. Metrics between different routing protocols are never compared.\n- The prefix 172.16.10.128/25 is unique; no other routing source offers /25, so OSPF's route via 10.3.3.2 is installed in the RIB (AD 110).\n- The static route 172.16.0.0/16 is unique; it is installed in the RIB (AD 1).\nPhase 2: Packet Forwarding (Longest Prefix Match):\n- A packet arrives for 172.16.10.130. Matching installed routes:\n  * 172.16.0.0/16 (16 bits)\n  * 172.16.10.0/24 (24 bits, covers 172.16.10.0 - 172.16.10.255)\n  * 172.16.10.128/25 (25 bits, covers 172.16.10.128 - 172.16.10.255)\n172.16.10.130 matches /25. Because 25 bits is the longest prefix match, the router forwards the packet to next hop 10.3.3.2. Administrative distance is irrelevant during forwarding once routes are in the RIB.",
+      "explanationEs": "Esta pregunta evalúa el proceso esencial de dos fases en el enrutamiento de Cisco: Instalación en la RIB vs. Reenvío de Paquetes.\nFase 1: Instalación en la Tabla de Enrutamiento (RIB):\n- Para el prefijo idéntico 172.16.10.0/24, tanto EIGRP como OSPF ofrecen rutas. Cisco IOS compara la Distancia Administrativa: EIGRP (AD 90) supera a OSPF (AD 110). Por lo tanto, la ruta EIGRP vía 10.2.2.2 se instala en la RIB y la ruta OSPF /24 es rechazada. Las métricas entre diferentes protocolos nunca se comparan.\n- El prefijo 172.16.10.128/25 es único; ninguna otra fuente ofrece /25, por lo que la ruta OSPF vía 10.3.3.2 se instala en la RIB (AD 110).\n- La ruta estática 172.16.0.0/16 es única; se instala en la RIB (AD 1).\nFase 2: Reenvío de Paquetes (Coincidencia de Prefijo más Largo):\n- Llega un paquete hacia 172.16.10.130. Rutas instaladas que coinciden:\n  * 172.16.0.0/16 (16 bits)\n  * 172.16.10.0/24 (24 bits, cubre 172.16.10.0 a 172.16.10.255)\n  * 172.16.10.128/25 (25 bits, cubre 172.16.10.128 a 172.16.10.255)\n172.16.10.130 coincide con /25. Al ser 25 bits la coincidencia de prefijo más larga, el router reenvía el paquete al siguiente salto 10.3.3.2. La distancia administrativa es irrelevante durante el reenvío una vez que las rutas están en la RIB.",
+      "correctAnswerExplanationEn": "EIGRP wins route installation over OSPF for 172.16.10.0/24 due to lower AD (90 vs 110), but for packet forwarding to 172.16.10.130, the OSPF route 172.16.10.128/25 wins because /25 is the longest prefix match.",
+      "correctAnswerExplanationEs": "EIGRP gana la instalación sobre OSPF para 172.16.10.0/24 por menor AD (90 vs 110), pero para el reenvío hacia 172.16.10.130, la ruta OSPF 172.16.10.128/25 gana porque /25 es la coincidencia de prefijo más larga.",
+      "options": [
+        {
+          "optionLabel": "A",
+          "optionTextEn": "It installs the EIGRP route for 172.16.10.0/24 (AD 90 beats OSPF AD 110) and installs 172.16.10.128/25 (OSPF); it forwards the packet to 10.3.3.2 because /25 is the longest prefix match.",
+          "optionTextEs": "Instala la ruta EIGRP para 172.16.10.0/24 (AD 90 supera a OSPF AD 110) e instala 172.16.10.128/25 (OSPF); reenvía el paquete a 10.3.3.2 porque /25 es la coincidencia de prefijo más larga.",
+          "isCorrect": true,
+          "explanationEn": "Correct. AD arbitrates between identical prefixes (EIGRP wins /24), while longest prefix match (/25) dictates packet forwarding.",
+          "explanationEs": "Correcto. El AD desempata entre prefijos idénticos (EIGRP gana /24), mientras que el prefijo más largo (/25) dicta el reenvío."
+        },
+        {
+          "optionLabel": "B",
+          "optionTextEn": "It forwards the packet to 10.4.4.2 because the static route has the lowest administrative distance (AD 1), which overrides dynamic routing protocols during packet forwarding.",
+          "optionTextEs": "Reenvía el paquete a 10.4.4.2 porque la ruta estática tiene la menor distancia administrativa (AD 1), la cual anula los protocolos dinámicos durante el reenvío.",
+          "isCorrect": false,
+          "explanationEn": "Incorrect. Administrative distance is only used to select routes for the routing table, not to choose between different prefix lengths during forwarding.",
+          "explanationEs": "Incorrecto. La distancia administrativa solo se usa para seleccionar rutas para la tabla, no para elegir entre distintas longitudes de prefijo al reenviar."
+        },
+        {
+          "optionLabel": "C",
+          "optionTextEn": "It installs the OSPF route for 172.16.10.0/24 and forwards the packet to 10.1.1.2 because OSPF's metric of 10 is lower than EIGRP's metric of 307200.",
+          "optionTextEs": "Instala la ruta OSPF para 172.16.10.0/24 y reenvía el paquete a 10.1.1.2 porque la métrica de OSPF (10) es menor que la de EIGRP (307200).",
+          "isCorrect": false,
+          "explanationEn": "Incorrect. Metrics from different routing protocols are completely incompatible and cannot be directly compared.",
+          "explanationEs": "Incorrecto. Las métricas de distintos protocolos son completamente incompatibles y no se pueden comparar directamente."
+        },
+        {
+          "optionLabel": "D",
+          "optionTextEn": "It forwards the packet to 10.2.2.2 because EIGRP has a lower administrative distance (90) than the OSPF /25 route (110).",
+          "optionTextEs": "Reenvía el paquete a 10.2.2.2 porque EIGRP tiene menor distancia administrativa (90) que la ruta OSPF /25 (110).",
+          "isCorrect": false,
+          "explanationEn": "Incorrect. The OSPF /25 route is more specific (longer prefix) than the EIGRP /24 route, so LPM chooses OSPF /25.",
+          "explanationEs": "Incorrecto. La ruta OSPF /25 es más específica (prefijo más largo) que la ruta EIGRP /24, por lo que LPM elige OSPF /25."
+        }
+      ],
+      "sourceName": "CCNA 200-301 Original Questions",
+      "sourceLicense": "Original content"
+    },
+    {
+      "statementEn": "A network administrator needs to configure static default routes on a dual-stack Cisco IOS router. All unmatched IPv4 packets must be forwarded to next hop 203.0.113.1, and all unmatched IPv6 packets must be forwarded to next hop 2001:db8:acad::1. Which pair of Cisco IOS commands correctly configures these routes?",
+      "statementEs": "Un administrador de red necesita configurar rutas estáticas predeterminadas en un router Cisco IOS de doble pila (dual-stack). Todos los paquetes IPv4 no coincidentes deben reenviarse al siguiente salto 203.0.113.1, y todos los paquetes IPv6 no coincidentes deben reenviarse al siguiente salto 2001:db8:acad::1. ¿Qué par de comandos de Cisco IOS configura correctamente estas rutas?",
+      "questionType": "ios_commands",
+      "difficulty": "basic",
+      "primaryTopicExamArea": "ip_connectivity",
+      "multipleAnswerCount": null,
+      "estimatedTimeSeconds": 60,
+      "explanationEn": "In Cisco IOS:\n- The IPv4 static default route command syntax is: 'ip route 0.0.0.0 0.0.0.0 <next-hop-ip | exit-interface>'. Prefix 0.0.0.0 with mask 0.0.0.0 matches any IPv4 destination.\n- The IPv6 static default route command syntax is: 'ipv6 route ::/0 <next-hop-ipv6 | exit-interface>'. The double colon '::' represents 128 zeros and '/0' indicates a prefix length of zero bits, matching all IPv6 destinations.\nCommands such as 'ip default-gateway' apply only to Layer 2 switches for management IP reachability when IP routing is disabled. 'ipv6 route ::/128' configures a host route for the unspecified address, not a default route.",
+      "explanationEs": "En Cisco IOS:\n- La sintaxis de ruta estática predeterminada IPv4 es: 'ip route 0.0.0.0 0.0.0.0 <ip-siguiente-salto | interfaz-salida>'. El prefijo 0.0.0.0 con máscara 0.0.0.0 coincide con cualquier destino IPv4.\n- La sintaxis de ruta estática predeterminada IPv6 es: 'ipv6 route ::/0 <ip-siguiente-salto-ipv6 | interfaz-salida>'. Los dos puntos dobles '::' representan 128 ceros y '/0' indica una longitud de prefijo de cero bits, coincidiendo con todos los destinos IPv6.\nComandos como 'ip default-gateway' solo aplican a switches de Capa 2 para gestión cuando el enrutamiento IP está deshabilitado. 'ipv6 route ::/128' configura una ruta de host para la dirección no especificada, no una ruta predeterminada.",
+      "correctAnswerExplanationEn": "'ip route 0.0.0.0 0.0.0.0 203.0.113.1' and 'ipv6 route ::/0 2001:db8:acad::1' are the exact standard Cisco IOS commands to define IPv4 and IPv6 static default routes.",
+      "correctAnswerExplanationEs": "'ip route 0.0.0.0 0.0.0.0 203.0.113.1' y 'ipv6 route ::/0 2001:db8:acad::1' son los comandos estándar exactos de Cisco IOS para definir rutas estáticas predeterminadas IPv4 e IPv6.",
+      "options": [
+        {
+          "optionLabel": "A",
+          "optionTextEn": "ip route 0.0.0.0 0.0.0.0 203.0.113.1\nipv6 route ::/0 2001:db8:acad::1",
+          "optionTextEs": "ip route 0.0.0.0 0.0.0.0 203.0.113.1\nipv6 route ::/0 2001:db8:acad::1",
+          "isCorrect": true,
+          "explanationEn": "Correct. Prefix 0.0.0.0 0.0.0.0 defines the IPv4 default route, and ::/0 defines the IPv6 default route.",
+          "explanationEs": "Correcto. El prefijo 0.0.0.0 0.0.0.0 define la ruta predeterminada IPv4 y ::/0 define la ruta predeterminada IPv6."
+        },
+        {
+          "optionLabel": "B",
+          "optionTextEn": "ip default-gateway 203.0.113.1\nipv6 default-gateway 2001:db8:acad::1",
+          "optionTextEs": "ip default-gateway 203.0.113.1\nipv6 default-gateway 2001:db8:acad::1",
+          "isCorrect": false,
+          "explanationEn": "Incorrect. 'ip default-gateway' is used on Layer 2 switches when routing is disabled, not for packet forwarding on routers.",
+          "explanationEs": "Incorrecto. 'ip default-gateway' se utiliza en switches de Capa 2 cuando el enrutamiento está deshabilitado, no para reenvío en routers."
+        },
+        {
+          "optionLabel": "C",
+          "optionTextEn": "ip route default 203.0.113.1\nipv6 route default 2001:db8:acad::1",
+          "optionTextEs": "ip route default 203.0.113.1\nipv6 route default 2001:db8:acad::1",
+          "isCorrect": false,
+          "explanationEn": "Incorrect. 'default' is not a valid parameter for prefix and mask in the 'ip route' or 'ipv6 route' command.",
+          "explanationEs": "Incorrecto. 'default' no es un parámetro válido para el prefijo y la máscara en los comandos 'ip route' o 'ipv6 route'."
+        },
+        {
+          "optionLabel": "D",
+          "optionTextEn": "ip route 0.0.0.0 /0 203.0.113.1\nipv6 route ::/128 2001:db8:acad::1",
+          "optionTextEs": "ip route 0.0.0.0 /0 203.0.113.1\nipv6 route ::/128 2001:db8:acad::1",
+          "isCorrect": false,
+          "explanationEn": "Incorrect. IPv4 'ip route' does not accept CIDR notation, and '::/128' represents a host route matching 128 bits, not a default route.",
+          "explanationEs": "Incorrecto. 'ip route' en IPv4 no acepta notación CIDR y '::/128' representa una ruta de host de 128 bits, no una ruta predeterminada."
+        }
+      ],
+      "sourceName": "CCNA 200-301 Original Questions",
+      "sourceLicense": "Original content"
+    },
+    {
+      "statementEn": "An enterprise router learns the internal network 192.168.50.0/24 dynamically via OSPF over a primary fiber link. An administrator wants to configure a floating static backup route to 192.168.50.0/24 across a secondary LTE connection using next-hop IP 10.200.1.2. The floating static route must remain dormant and only enter the routing table if the primary OSPF route is withdrawn. Which command correctly configures this floating static route?",
+      "statementEs": "Un router empresarial aprende la red interna 192.168.50.0/24 dinámicamente mediante OSPF a través de un enlace de fibra principal. Un administrador desea configurar una ruta estática flotante de respaldo hacia 192.168.50.0/24 a través de una conexión LTE secundaria usando la IP de siguiente salto 10.200.1.2. La ruta estática flotante debe permanecer inactiva y solo entrar a la tabla de enrutamiento si la ruta OSPF principal desaparece. ¿Qué comando configura correctamente esta ruta estática flotante?",
+      "questionType": "ios_commands",
+      "difficulty": "intermediate",
+      "primaryTopicExamArea": "ip_connectivity",
+      "multipleAnswerCount": null,
+      "estimatedTimeSeconds": 75,
+      "explanationEn": "A floating static route is a static route configured with an Administrative Distance (AD) higher than that of the primary routing protocol. OSPF has a default administrative distance of 110. A standard static route has a default AD of 1; if configured without an explicit distance, it would immediately preempt OSPF. By specifying an AD of 115 at the end of the command ('ip route 192.168.50.0 255.255.255.0 10.200.1.2 115'), the router will keep the static route out of the routing table as long as the primary OSPF route (AD 110) exists. If OSPF loses neighbor connectivity or the fiber link goes down, OSPF withdraws the route and the floating static route (AD 115) is immediately installed into the RIB.",
+      "explanationEs": "Una ruta estática flotante es una ruta estática configurada con una Distancia Administrativa (AD) superior a la del protocolo de enrutamiento principal. OSPF tiene un AD predeterminado de 110. Una ruta estática estándar tiene un AD predeterminado de 1; si se configura sin una distancia explícita, anularía a OSPF de inmediato. Al especificar un AD de 115 al final del comando ('ip route 192.168.50.0 255.255.255.0 10.200.1.2 115'), el router mantiene la ruta estática fuera de la tabla de enrutamiento mientras exista la ruta OSPF principal (AD 110). Si OSPF pierde la conectividad de vecinos o el enlace de fibra cae, OSPF retira la ruta y la ruta flotante (AD 115) se instala inmediatamente en la RIB.",
+      "correctAnswerExplanationEn": "'ip route 192.168.50.0 255.255.255.0 10.200.1.2 115' sets an administrative distance of 115, which is higher than OSPF's default AD of 110, creating a floating static backup.",
+      "correctAnswerExplanationEs": "'ip route 192.168.50.0 255.255.255.0 10.200.1.2 115' establece una distancia administrativa de 115, la cual es mayor que el AD predeterminado de OSPF de 110, creando un respaldo estático flotante.",
+      "options": [
+        {
+          "optionLabel": "A",
+          "optionTextEn": "ip route 192.168.50.0 255.255.255.0 10.200.1.2 115",
+          "optionTextEs": "ip route 192.168.50.0 255.255.255.0 10.200.1.2 115",
+          "isCorrect": true,
+          "explanationEn": "Correct. AD 115 is greater than OSPF's AD of 110, so the static route remains dormant until OSPF fails.",
+          "explanationEs": "Correcto. El AD de 115 es superior al AD de 110 de OSPF, por lo que la ruta estática permanece inactiva hasta que OSPF falle."
+        },
+        {
+          "optionLabel": "B",
+          "optionTextEn": "ip route 192.168.50.0 255.255.255.0 10.200.1.2",
+          "optionTextEs": "ip route 192.168.50.0 255.255.255.0 10.200.1.2",
+          "isCorrect": false,
+          "explanationEn": "Incorrect. Without an explicit distance, the static route has an AD of 1, which will immediately override and replace the OSPF route.",
+          "explanationEs": "Incorrecto. Sin una distancia explícita, la ruta estática tiene un AD de 1, lo cual anulará y reemplazará inmediatamente a la ruta OSPF."
+        },
+        {
+          "optionLabel": "C",
+          "optionTextEn": "ip route 192.168.50.0 255.255.255.0 10.200.1.2 90",
+          "optionTextEs": "ip route 192.168.50.0 255.255.255.0 10.200.1.2 90",
+          "isCorrect": false,
+          "explanationEn": "Incorrect. An AD of 90 is lower than OSPF (110), so it would take precedence over OSPF instead of acting as a backup.",
+          "explanationEs": "Incorrecto. Un AD de 90 es menor que el de OSPF (110), por lo que tendría prioridad sobre OSPF en lugar de servir como respaldo."
+        },
+        {
+          "optionLabel": "D",
+          "optionTextEn": "ip route 192.168.50.0 255.255.255.0 10.200.1.2 distance 115",
+          "optionTextEs": "ip route 192.168.50.0 255.255.255.0 10.200.1.2 distance 115",
+          "isCorrect": false,
+          "explanationEn": "Incorrect. The keyword 'distance' is invalid syntax in the Cisco IOS 'ip route' command; the distance is entered directly as an integer.",
+          "explanationEs": "Incorrecto. La palabra clave 'distance' es sintaxis inválida en el comando 'ip route' de Cisco IOS; la distancia se ingresa directamente como un número entero."
+        }
+      ],
+      "sourceName": "CCNA 200-301 Original Questions",
+      "sourceLicense": "Original content"
+    },
+    {
+      "statementEn": "An engineer configures a static route on a Cisco router specifying only the outbound Ethernet broadcast interface:\n\nRouter(config)# ip route 192.168.20.0 255.255.255.0 GigabitEthernet0/0\n\nWhy is configuring a directly attached static route on a broadcast multiaccess Ethernet network considered a poor design practice, and what operational problem can it cause?",
+      "statementEs": "Un ingeniero configura una ruta estática en un router Cisco especificando únicamente la interfaz Ethernet multiacceso de salida:\n\nRouter(config)# ip route 192.168.20.0 255.255.255.0 GigabitEthernet0/0\n\n¿Por qué configurar una ruta estática directamente conectada en una red Ethernet multiacceso de difusión se considera una mala práctica de diseño y qué problema operativo puede causar?",
+      "questionType": "single_choice",
+      "difficulty": "advanced",
+      "primaryTopicExamArea": "ip_connectivity",
+      "multipleAnswerCount": null,
+      "estimatedTimeSeconds": 90,
+      "explanationEn": "When a static route specifies only an exit interface on a multiaccess Ethernet network (without a next-hop IP address), the router treats the entire destination network (192.168.20.0/24) as if it were directly connected to that broadcast segment. Consequently, whenever traffic arrives for any host in 192.168.20.0/24 (e.g., 192.168.20.14, 192.168.20.89), the router issues an ARP broadcast request on GigabitEthernet0/0 asking 'Who has 192.168.20.x?'. If the next-hop gateway has Proxy ARP enabled, it replies with its own MAC address. The router then creates an individual ARP cache entry for every single destination IP address contacted. This causes excessive ARP broadcast traffic, exhausts the router's ARP cache memory, and spikes router CPU utilization due to constant ARP resolution interrupts. Best practice on multiaccess networks is to use a next-hop IP or a fully specified static route (ip route 192.168.20.0 255.255.255.0 GigabitEthernet0/0 10.1.1.2). Directly attached static routes should only be used on point-to-point links (such as Serial).",
+      "explanationEs": "Cuando una ruta estática especifica únicamente la interfaz de salida en una red Ethernet multiacceso (sin una dirección IP de siguiente salto), el router asume que toda la red de destino (192.168.20.0/24) está directamente conectada a ese segmento de difusión. En consecuencia, cada vez que llega tráfico para cualquier host en 192.168.20.0/24 (por ejemplo, 192.168.20.14, 192.168.20.89), el router emite una solicitud ARP de difusión en GigabitEthernet0/0 preguntando '¿Quién tiene 192.168.20.x?'. Si el gateway del siguiente salto tiene Proxy ARP habilitado, responde con su propia dirección MAC. El router crea entonces una entrada ARP individual para cada dirección IP de destino contactada. Esto provoca un tráfico excesivo de difusión ARP, satura la memoria de la caché ARP y eleva el uso de CPU por constantes interrupciones de resolución ARP. La mejor práctica en redes multiacceso es usar una IP de siguiente salto o una ruta totalmente especificada (ip route 192.168.20.0 255.255.255.0 GigabitEthernet0/0 10.1.1.2). Las rutas directamente conectadas solo deben usarse en enlaces punto a punto (como Serial).",
+      "correctAnswerExplanationEn": "The router treats the destination subnet as directly connected and generates an ARP request for every destination IP, risking ARP cache exhaustion, excessive broadcast traffic, and high CPU usage.",
+      "correctAnswerExplanationEs": "El router trata la subred de destino como directamente conectada y genera una solicitud ARP para cada dirección IP de destino, provocando saturación de la caché ARP, tráfico excesivo de difusión y alto uso de CPU.",
+      "options": [
+        {
+          "optionLabel": "A",
+          "optionTextEn": "The router considers the target subnet as directly connected and sends an ARP request for every destination host IP, which can deplete ARP cache memory and increase CPU utilization.",
+          "optionTextEs": "El router considera la subred de destino como directamente conectada y envía una solicitud ARP para cada IP de host de destino, lo que puede agotar la memoria de la caché ARP e incrementar el uso de CPU.",
+          "isCorrect": true,
+          "explanationEn": "Correct. Multiaccess networks require ARP resolution for each destination IP when no next hop is specified, creating excessive ARP requests and cache bloat.",
+          "explanationEs": "Correcto. Las redes multiacceso requieren resolución ARP para cada IP de destino cuando no se indica un siguiente salto, generando solicitudes ARP excesivas y sobrecarga de memoria."
+        },
+        {
+          "optionLabel": "B",
+          "optionTextEn": "Cisco IOS automatically shuts down GigabitEthernet0/0 because Ethernet interfaces reject directly attached static routes.",
+          "optionTextEs": "Cisco IOS apaga automáticamente GigabitEthernet0/0 porque las interfaces Ethernet rechazan las rutas estáticas directamente conectadas.",
+          "isCorrect": false,
+          "explanationEn": "Incorrect. Cisco IOS accepts the command without error and does not shut down the interface.",
+          "explanationEs": "Incorrecto. Cisco IOS acepta el comando sin errores y no apaga la interfaz."
+        },
+        {
+          "optionLabel": "C",
+          "optionTextEn": "The router automatically changes the administrative distance of the route to 255, rendering the route permanently unusable.",
+          "optionTextEs": "El router cambia automáticamente la distancia administrativa de la ruta a 255, dejando la ruta permanentemente inutilizable.",
+          "isCorrect": false,
+          "explanationEn": "Incorrect. Directly attached static routes retain an administrative distance of 1 (or 0 for directly connected calculation in some displays), never 255.",
+          "explanationEs": "Incorrecto. Las rutas estáticas directamente conectadas mantienen una distancia administrativa de 1 (o 0 según la vista), nunca 255."
+        },
+        {
+          "optionLabel": "D",
+          "optionTextEn": "The route will only forward TCP traffic because UDP and ICMP packets cannot be encapsulated without a known Layer 3 gateway.",
+          "optionTextEs": "La ruta solo reenviará tráfico TCP porque los paquetes UDP e ICMP no pueden encapsularse sin un gateway de Capa 3 conocido.",
+          "isCorrect": false,
+          "explanationEn": "Incorrect. Layer 3 forwarding and ARP behavior are independent of the Layer 4 transport protocol (TCP, UDP, or ICMP).",
+          "explanationEs": "Incorrecto. El reenvío de Capa 3 y el comportamiento ARP son independientes del protocolo de transporte de Capa 4 (TCP, UDP o ICMP)."
+        }
+      ],
+      "sourceName": "CCNA 200-301 Original Questions",
+      "sourceLicense": "Original content"
+    },
+    {
+      "statementEn": "A Cisco router initializes an OSPFv2 process. The 'router-id' command has NOT been manually configured under 'router ospf'. The router currently has the following operational interfaces in up/up state:\n- Loopback0: IP 10.10.10.1/32\n- Loopback1: IP 10.200.1.1/32\n- GigabitEthernet0/0: IP 192.168.1.1/24\n- GigabitEthernet0/1: IP 172.16.50.1/24\n\nWhich IPv4 address will OSPF automatically select as its Router ID (RID)?",
+      "statementEs": "Un router Cisco inicia un proceso OSPFv2. El comando 'router-id' NO ha sido configurado manualmente bajo 'router ospf'. El router tiene actualmente las siguientes interfaces operativas en estado up/up:\n- Loopback0: IP 10.10.10.1/32\n- Loopback1: IP 10.200.1.1/32\n- GigabitEthernet0/0: IP 192.168.1.1/24\n- GigabitEthernet0/1: IP 172.16.50.1/24\n\n¿Qué dirección IPv4 seleccionará OSPF automáticamente como su Router ID (RID)?",
+      "questionType": "single_choice",
+      "difficulty": "basic",
+      "primaryTopicExamArea": "ip_connectivity",
+      "multipleAnswerCount": null,
+      "estimatedTimeSeconds": 60,
+      "explanationEn": "In Cisco IOS, OSPFv2 selects its 32-bit Router ID using the following strict hierarchy:\n1. The explicitly configured value using the 'router-id <id>' command in router configuration mode.\n2. The highest IPv4 address on any active, operational Loopback interface (in up/up state).\n3. The highest IPv4 address on any active, operational physical interface (in up/up state).\nIn this scenario, no manual 'router-id' is configured. The router has two active loopback interfaces: Loopback0 (10.10.10.1) and Loopback1 (10.200.1.1). Because loopback interfaces take precedence over physical interfaces, physical interfaces (even with higher numerical IPs like 192.168.1.1) are ignored. Between the two loopbacks, 10.200.1.1 is numerically greater than 10.10.10.1. Therefore, OSPF selects 10.200.1.1 as the Router ID.",
+      "explanationEs": "En Cisco IOS, OSPFv2 selecciona su Router ID de 32 bits siguiendo una jerarquía estricta:\n1. El valor configurado explícitamente mediante el comando 'router-id <id>' en el modo de configuración del router.\n2. La dirección IPv4 más alta entre todas las interfaces Loopback activas y operativas (en estado up/up).\n3. La dirección IPv4 más alta entre todas las interfaces físicas activas y operativas (en estado up/up).\nEn este escenario, no se configuró un 'router-id' manual. El router tiene dos interfaces loopback activas: Loopback0 (10.10.10.1) y Loopback1 (10.200.1.1). Debido a que las interfaces loopback tienen prioridad sobre las interfaces físicas, las interfaces físicas (incluso con IPs numéricamente mayores como 192.168.1.1) se ignoran. Entre las dos loopbacks, 10.200.1.1 es numéricamente mayor que 10.10.10.1. Por lo tanto, OSPF selecciona 10.200.1.1 como Router ID.",
+      "correctAnswerExplanationEn": "Loopback interfaces take precedence over physical interfaces, and 10.200.1.1 is the highest IPv4 address among all active loopback interfaces.",
+      "correctAnswerExplanationEs": "Las interfaces loopback tienen prioridad sobre las interfaces físicas y 10.200.1.1 es la dirección IPv4 más alta entre todas las interfaces loopback activas.",
+      "options": [
+        {
+          "optionLabel": "A",
+          "optionTextEn": "10.200.1.1",
+          "optionTextEs": "10.200.1.1",
+          "isCorrect": true,
+          "explanationEn": "Correct. Loopback interfaces override physical interfaces, and 10.200.1.1 is the highest loopback IP address.",
+          "explanationEs": "Correcto. Las interfaces loopback tienen precedencia sobre las físicas y 10.200.1.1 es la IP más alta de las loopbacks."
+        },
+        {
+          "optionLabel": "B",
+          "optionTextEn": "192.168.1.1",
+          "optionTextEs": "192.168.1.1",
+          "isCorrect": false,
+          "explanationEn": "Incorrect. Although 192.168.1.1 is the highest physical interface IP, any active loopback interface takes precedence over physical interfaces.",
+          "explanationEs": "Incorrecto. Aunque 192.168.1.1 es la IP de interfaz física más alta, cualquier loopback activa tiene prioridad sobre las interfaces físicas."
+        },
+        {
+          "optionLabel": "C",
+          "optionTextEn": "10.10.10.1",
+          "optionTextEs": "10.10.10.1",
+          "isCorrect": false,
+          "explanationEn": "Incorrect. Loopback0 has a lower numerical IP address than Loopback1 (10.10.10.1 < 10.200.1.1).",
+          "explanationEs": "Incorrecto. Loopback0 tiene una dirección IP numéricamente menor que Loopback1 (10.10.10.1 < 10.200.1.1)."
+        },
+        {
+          "optionLabel": "D",
+          "optionTextEn": "172.16.50.1",
+          "optionTextEs": "172.16.50.1",
+          "isCorrect": false,
+          "explanationEn": "Incorrect. GigabitEthernet0/1 is a physical interface and is not considered when active loopbacks exist.",
+          "explanationEs": "Incorrecto. GigabitEthernet0/1 es una interfaz física y no se considera cuando existen loopbacks activas."
+        }
+      ],
+      "sourceName": "CCNA 200-301 Original Questions",
+      "sourceLicense": "Original content"
+    },
+    {
+      "statementEn": "In Cisco IOS OSPFv2, interface cost is calculated using the formula: Cost = Reference Bandwidth / Interface Bandwidth. By default, the reference bandwidth is 100 Mbps (10^8 bps). Under default settings, what are the calculated OSPF costs for a GigabitEthernet (1 Gbps) interface and a TenGigabitEthernet (10 Gbps) interface, and which router configuration command corrects this calculation to differentiate links up to 10 Gbps?",
+      "statementEs": "En Cisco IOS OSPFv2, el costo de la interfaz se calcula mediante la fórmula: Costo = Ancho de Banda de Referencia / Ancho de Banda de la Interfaz. Por defecto, el ancho de banda de referencia es 100 Mbps (10^8 bps). Con los valores predeterminados, ¿cuáles son los costos calculados de OSPF para una interfaz GigabitEthernet (1 Gbps) y una interfaz TenGigabitEthernet (10 Gbps), y qué comando de configuración del router corrige este cálculo para diferenciar enlaces de hasta 10 Gbps?",
+      "questionType": "single_choice",
+      "difficulty": "intermediate",
+      "primaryTopicExamArea": "ip_connectivity",
+      "multipleAnswerCount": null,
+      "estimatedTimeSeconds": 85,
+      "explanationEn": "In Cisco IOS, OSPF interface costs must be positive integers; fractional values are rounded up to a minimum integer cost of 1.\nUnder default reference bandwidth (100 Mbps = 100,000,000 bps):\n- FastEthernet (100 Mbps): 100 / 100 = cost 1\n- GigabitEthernet (1000 Mbps): 100 / 1000 = 0.1 -> rounded up to cost 1\n- TenGigabitEthernet (10000 Mbps): 100 / 10000 = 0.01 -> rounded up to cost 1\nBecause FastEthernet, 1 Gbps, and 10 Gbps links all receive identical costs of 1, OSPF cannot distinguish between them when making best-path decisions. To resolve this, the reference bandwidth must be increased using the command 'auto-cost reference-bandwidth <value-in-Mbps>' under router ospf configuration mode. Setting 'auto-cost reference-bandwidth 10000' (or higher) configures a 10 Gbps reference bandwidth, resulting in:\n- 10 Gbps = cost 1\n- 1 Gbps = cost 10\n- 100 Mbps = cost 100\nThis command must be applied consistently across all routers in the OSPF domain.",
+      "explanationEs": "En Cisco IOS, los costos de interfaz de OSPF deben ser enteros positivos; los valores fraccionarios se redondean hacia arriba al costo mínimo entero de 1.\nCon el ancho de banda de referencia predeterminado (100 Mbps = 100,000,000 bps):\n- FastEthernet (100 Mbps): 100 / 100 = costo 1\n- GigabitEthernet (1000 Mbps): 100 / 1000 = 0.1 -> redondeado a costo 1\n- TenGigabitEthernet (10000 Mbps): 100 / 10000 = 0.01 -> redondeado a costo 1\nDado que FastEthernet, 1 Gbps y 10 Gbps reciben costos idénticos de 1, OSPF no puede diferenciarlos al seleccionar la mejor ruta. Para resolver esto, el ancho de banda de referencia debe aumentarse mediante el comando 'auto-cost reference-bandwidth <valor-en-Mbps>' en el modo de configuración del router ospf. Configurar 'auto-cost reference-bandwidth 10000' (o superior) establece un ancho de banda de referencia de 10 Gbps, resultando en:\n- 10 Gbps = costo 1\n- 1 Gbps = costo 10\n- 100 Mbps = costo 100\nEste comando debe aplicarse de manera coherente en todos los routers del dominio OSPF.",
+      "correctAnswerExplanationEn": "Both GigabitEthernet and TenGigabitEthernet calculate to a cost of 1 under default settings (values < 1 round up to 1); configuring 'auto-cost reference-bandwidth 10000' under router ospf establishes proper metric differentiation.",
+      "correctAnswerExplanationEs": "Tanto GigabitEthernet como TenGigabitEthernet calculan un costo de 1 con la configuración predeterminada (los valores < 1 se redondean a 1); configurar 'auto-cost reference-bandwidth 10000' en router ospf establece la diferenciación métrica adecuada.",
+      "options": [
+        {
+          "optionLabel": "A",
+          "optionTextEn": "Both interfaces receive a cost of 1; the command auto-cost reference-bandwidth 10000 under router ospf must be configured to differentiate them.",
+          "optionTextEs": "Ambas interfaces reciben un costo de 1; debe configurarse el comando auto-cost reference-bandwidth 10000 bajo router ospf para diferenciarlas.",
+          "isCorrect": true,
+          "explanationEn": "Correct. 100/1000 and 100/10000 both round up to 1; 'auto-cost reference-bandwidth 10000' sets reference to 10 Gbps.",
+          "explanationEs": "Correcto. 100/1000 y 100/10000 se redondean a 1; 'auto-cost reference-bandwidth 10000' establece la referencia en 10 Gbps."
+        },
+        {
+          "optionLabel": "B",
+          "optionTextEn": "GigabitEthernet receives a cost of 10 and TenGigabitEthernet receives a cost of 1; no command is required as Cisco IOS scales metrics automatically.",
+          "optionTextEs": "GigabitEthernet recibe un costo de 10 y TenGigabitEthernet recibe un costo de 1; no se requiere ningún comando ya que Cisco IOS escala las métricas automáticamente.",
+          "isCorrect": false,
+          "explanationEn": "Incorrect. Default reference bandwidth is 100 Mbps, not 10 Gbps, so Cisco IOS does not scale automatically without manual configuration.",
+          "explanationEs": "Incorrecto. El ancho de banda de referencia predeterminado es 100 Mbps, no 10 Gbps, por lo que Cisco IOS no escala de forma automática sin configuración."
+        },
+        {
+          "optionLabel": "C",
+          "optionTextEn": "GigabitEthernet receives a cost of 1 and TenGigabitEthernet receives a cost of 0.1; the command ip ospf metric-scale 10G under interface configuration mode is required.",
+          "optionTextEs": "GigabitEthernet recibe un costo de 1 y TenGigabitEthernet recibe un costo de 0.1; se requiere el comando ip ospf metric-scale 10G en modo de interfaz.",
+          "isCorrect": false,
+          "explanationEn": "Incorrect. OSPF metrics cannot be fractional, and 'ip ospf metric-scale' is not a valid Cisco IOS command.",
+          "explanationEs": "Incorrecto. Las métricas OSPF no pueden ser fraccionarias y 'ip ospf metric-scale' no es un comando válido en Cisco IOS."
+        },
+        {
+          "optionLabel": "D",
+          "optionTextEn": "Both interfaces receive a cost of 0; the command ip ospf cost auto must be configured on each interface.",
+          "optionTextEs": "Ambas interfaces reciben un costo de 0; el comando ip ospf cost auto debe configurarse en cada interfaz.",
+          "isCorrect": false,
+          "explanationEn": "Incorrect. OSPF cost cannot be 0; the minimum cost is 1.",
+          "explanationEs": "Incorrecto. El costo de OSPF no puede ser 0; el costo mínimo es 1."
+        }
+      ],
+      "sourceName": "CCNA 200-301 Original Questions",
+      "sourceLicense": "Original content"
+    },
+    {
+      "statementEn": "Two Cisco routers are connected via an Ethernet link and configured for single-area OSPFv2. Which TWO parameters exchanged in the OSPF Hello packet must match identically between the two routers for an OSPF neighbor relationship to form and successfully reach the FULL adjacency state? (Choose two.)",
+      "statementEs": "Dos routers Cisco están conectados mediante un enlace Ethernet y configurados para OSPFv2 en área única. ¿Qué DOS parámetros intercambiados en el paquete OSPF Hello deben coincidir de manera idéntica entre ambos routers para que se forme una relación de vecindad OSPF y alcance con éxito el estado de adyacencia FULL? (Elija dos).",
+      "questionType": "multiple_choice",
+      "difficulty": "intermediate",
+      "primaryTopicExamArea": "ip_connectivity",
+      "multipleAnswerCount": 2,
+      "estimatedTimeSeconds": 75,
+      "explanationEn": "In OSPFv2, routers exchange Hello packets to discover neighbors and establish adjacencies. For two routers on a broadcast network to form an adjacency, the following parameters in the Hello packet MUST match identically:\n1. Hello and Dead timer intervals (default 10s and 40s on broadcast networks).\n2. Area ID (both routers must reside in the same area, such as Area 0).\n3. Subnet address and subnet mask on the connecting interface.\n4. Authentication credentials and type (if authentication is configured).\n5. Area type flags (stub, NSSA options).\nParameters that do NOT need to match:\n- OSPF Process ID: Strictly locally significant; routers in different processes (e.g., process 1 and process 2) form full adjacencies without issue.\n- OSPF Router ID: Must be UNIQUE; duplicate Router IDs prevent adjacencies from forming.\n- Interface Priority: Used only for DR/BDR election; different priorities are common and expected.",
+      "explanationEs": "En OSPFv2, los routers intercambian paquetes Hello para descubrir vecinos y establecer adyacencias. Para que dos routers en una red de difusión formen una adyacencia, los siguientes parámetros en el paquete Hello DEBEN coincidir exactamente:\n1. Intervalos de temporizadores Hello y Dead (por defecto 10s y 40s en redes broadcast).\n2. Area ID (ambos routers deben residir en la misma área, como el Área 0).\n3. Dirección de subred y máscara de subred en la interfaz de conexión.\n4. Credenciales y tipo de autenticación (si la autenticación está configurada).\n5. Flags de tipo de área (opciones stub, NSSA).\nParámetros que NO necesitan coincidir:\n- Process ID de OSPF: Tiene significancia estrictamente local; routers con diferentes procesos (por ejemplo, proceso 1 y proceso 2) forman adyacencias FULL sin inconvenientes.\n- Router ID de OSPF: Debe ser ÚNICO; Router IDs duplicados impiden la formación de la adyacencia.\n- Prioridad de interfaz: Se utiliza únicamente para la elección de DR/BDR; es normal y esperado que las prioridades sean diferentes.",
+      "correctAnswerExplanationEn": "Hello and Dead timer intervals, along with Area ID and connecting subnet/mask, must match identically in OSPF Hello packets for routers to become adjacent.",
+      "correctAnswerExplanationEs": "Los intervalos de temporizadores Hello y Dead, junto con el Area ID y la subred/máscara de conexión, deben coincidir exactamente en los paquetes Hello de OSPF para que los routers sean adyacentes.",
+      "options": [
+        {
+          "optionLabel": "A",
+          "optionTextEn": "Hello and Dead timer intervals",
+          "optionTextEs": "Intervalos de temporizadores Hello y Dead",
+          "isCorrect": true,
+          "explanationEn": "Correct. Mismatched Hello or Dead timers prevent routers from forming an OSPF neighbor relationship.",
+          "explanationEs": "Correcto. Temporizadores Hello o Dead desiguales impiden que los routers formen una relación de vecindad OSPF."
+        },
+        {
+          "optionLabel": "B",
+          "optionTextEn": "Area ID and subnet/subnet mask",
+          "optionTextEs": "Area ID y subred/máscara de subred",
+          "isCorrect": true,
+          "explanationEn": "Correct. Connecting interfaces must belong to the exact same OSPF area and share the same subnet and mask.",
+          "explanationEs": "Correcto. Las interfaces de conexión deben pertenecer exactamente a la misma área OSPF y compartir la misma subred y máscara."
+        },
+        {
+          "optionLabel": "C",
+          "optionTextEn": "OSPF Process ID",
+          "optionTextEs": "ID de proceso OSPF",
+          "isCorrect": false,
+          "explanationEn": "Incorrect. OSPF process ID is locally significant to the router and does not have to match the neighbor.",
+          "explanationEs": "Incorrecto. El ID de proceso OSPF tiene significado puramente local y no tiene que coincidir con el vecino."
+        },
+        {
+          "optionLabel": "D",
+          "optionTextEn": "OSPF Router ID",
+          "optionTextEs": "Router ID de OSPF",
+          "isCorrect": false,
+          "explanationEn": "Incorrect. Router IDs must be unique across the entire OSPF domain. Matching Router IDs cause conflict and prevent adjacency.",
+          "explanationEs": "Incorrecto. Los Router IDs deben ser únicos en todo el dominio OSPF. Router IDs idénticos causan conflictos e impiden la adyacencia."
+        },
+        {
+          "optionLabel": "E",
+          "optionTextEn": "Interface OSPF priority value",
+          "optionTextEs": "Valor de prioridad OSPF de la interfaz",
+          "isCorrect": false,
+          "explanationEn": "Incorrect. Priority values are used to elect DR/BDR and do not need to match.",
+          "explanationEs": "Incorrecto. Los valores de prioridad se usan para elegir DR/BDR y no requieren coincidir."
+        }
+      ],
+      "sourceName": "CCNA 200-301 Original Questions",
+      "sourceLicense": "Original content"
+    },
+    {
+      "statementEn": "Three Cisco routers (R1, R2, and R3) are connected to the same Layer 2 switch in OSPF Area 0 on the broadcast subnet 192.168.1.0/24:\n- R1 is powered on at 08:00 AM with interface priority 1 and Router ID 1.1.1.1.\n- R2 is powered on at 08:05 AM with interface priority 100 and Router ID 2.2.2.2.\n- R3 is powered on at 08:15 AM with interface priority 255 and Router ID 3.3.3.3.\n\nNo router experiences a crash, reboot, or OSPF process reset. At 08:20 AM, after all routers have reached full convergence, what are the OSPF roles of R1, R2, and R3 on this broadcast segment?",
+      "statementEs": "Tres routers Cisco (R1, R2 y R3) están conectados al mismo switch de Capa 2 en el Área 0 de OSPF en la subred de difusión 192.168.1.0/24:\n- R1 se enciende a las 08:00 AM con prioridad de interfaz 1 y Router ID 1.1.1.1.\n- R2 se enciende a las 08:05 AM con prioridad de interfaz 100 y Router ID 2.2.2.2.\n- R3 se enciende a las 08:15 AM con prioridad de interfaz 255 y Router ID 3.3.3.3.\n\nNingún router experimenta caídas, reinicios ni reinicio del proceso OSPF. A las 08:20 AM, tras alcanzar la convergencia completa de todos los equipos, ¿cuáles son los roles OSPF de R1, R2 y R3 en este segmento de difusión?",
+      "questionType": "single_choice",
+      "difficulty": "advanced",
+      "primaryTopicExamArea": "ip_connectivity",
+      "multipleAnswerCount": null,
+      "estimatedTimeSeconds": 100,
+      "explanationEn": "OSPF Designated Router (DR) and Backup Designated Router (BDR) elections on multiaccess broadcast networks are non-preemptive. Once a router is elected as DR or BDR, it retains that role until it fails or its OSPF process is reset, regardless of newly introduced routers with higher priority or higher Router ID.\nTimeline breakdown:\n1. At 08:00 AM: R1 powers on alone. Its 40-second Wait timer expires without detecting any other OSPF routers. R1 elects itself as the DR. No BDR exists.\n2. At 08:05 AM: R2 powers on. R2 sees that an active DR (R1) is already established. Because OSPF DR election is non-preemptive, R2 does NOT preempt R1, despite having a higher priority (100 vs 1). However, the BDR role is vacant, so R2 becomes the BDR.\n3. At 08:15 AM: R3 powers on with priority 255 (the maximum possible priority). R3 discovers that both DR (R1) and BDR (R2) are already active. Since neither role can be preempted, R3 becomes a DROTHER.\nFinal roles: R1 is DR, R2 is BDR, and R3 is DROTHER.",
+      "explanationEs": "Las elecciones de Designated Router (DR) y Backup Designated Router (BDR) de OSPF en redes multiacceso de difusión son no apropiativas (non-preemptive). Una vez que un router es elegido como DR o BDR, retiene ese rol hasta que falle o se reinicie su proceso OSPF, independientemente de que aparezcan nuevos routers con mayor prioridad o mayor Router ID.\nDesglose cronológico:\n1. A las 08:00 AM: R1 se enciende solo. Su temporizador Wait de 40 segundos expira sin detectar otros routers OSPF. R1 se autoproclama DR. No existe BDR.\n2. A las 08:05 AM: R2 se enciende. R2 detecta que ya existe un DR activo (R1). Dado que la elección no es apropiativa, R2 NO desbanca a R1, a pesar de tener mayor prioridad (100 vs 1). Sin embargo, el puesto de BDR está vacante, por lo que R2 asume el rol de BDR.\n3. A las 08:15 AM: R3 se enciende con prioridad 255 (la máxima permitida). R3 detecta que tanto el DR (R1) como el BDR (R2) ya están activos. Al no existir apropiación, R3 se convierte en DROTHER.\nRoles finales: R1 es DR, R2 es BDR y R3 es DROTHER.",
+      "correctAnswerExplanationEn": "Because OSPF DR/BDR elections are non-preemptive, R1 becomes DR (booted first), R2 fills the vacant BDR slot, and R3 becomes DROTHER because both roles are already occupied.",
+      "correctAnswerExplanationEs": "Dado que las elecciones de DR/BDR de OSPF no son apropiativas, R1 se convierte en DR (inició primero), R2 ocupa el puesto vacante de BDR y R3 se convierte en DROTHER porque ambos roles ya están ocupados.",
+      "options": [
+        {
+          "optionLabel": "A",
+          "optionTextEn": "R1 is the DR, R2 is the BDR, and R3 is a DROTHER.",
+          "optionTextEs": "R1 es el DR, R2 es el BDR y R3 es un DROTHER.",
+          "isCorrect": true,
+          "explanationEn": "Correct. OSPF DR/BDR election is non-preemptive; R1 booted first and became DR, R2 booted second and became BDR, leaving R3 as DROTHER.",
+          "explanationEs": "Correcto. La elección de DR/BDR en OSPF no es apropiativa; R1 inició primero y fue DR, R2 inició segundo y fue BDR, dejando a R3 como DROTHER."
+        },
+        {
+          "optionLabel": "B",
+          "optionTextEn": "R3 is the DR, R2 is the BDR, and R1 is a DROTHER.",
+          "optionTextEs": "R3 es el DR, R2 es el BDR y R1 es un DROTHER.",
+          "isCorrect": false,
+          "explanationEn": "Incorrect. This assumes preemptive behavior where higher priority preempts an existing DR, which does not occur in OSPF.",
+          "explanationEs": "Incorrecto. Esto asume un comportamiento apropiativo donde la mayor prioridad desbanca al DR existente, lo cual no ocurre en OSPF."
+        },
+        {
+          "optionLabel": "C",
+          "optionTextEn": "R3 is the DR, R1 is the BDR, and R2 is a DROTHER.",
+          "optionTextEs": "R3 es el DR, R1 es el BDR y R2 es un DROTHER.",
+          "isCorrect": false,
+          "explanationEn": "Incorrect. R3 cannot preempt active DR or BDR roles upon booting.",
+          "explanationEs": "Incorrecto. R3 no puede desbancar los roles activos de DR o BDR al encenderse."
+        },
+        {
+          "optionLabel": "D",
+          "optionTextEn": "R2 is the DR, R3 is the BDR, and R1 is a DROTHER.",
+          "optionTextEs": "R2 es el DR, R3 es el BDR y R1 es un DROTHER.",
+          "isCorrect": false,
+          "explanationEn": "Incorrect. R1 remains DR because neither R2 nor R3 can preempt an already active DR.",
+          "explanationEs": "Incorrecto. R1 permanece como DR porque ni R2 ni R3 pueden desbancar a un DR ya activo."
+        }
+      ],
+      "sourceName": "CCNA 200-301 Original Questions",
+      "sourceLicense": "Original content"
+    },
+    {
+      "statementEn": "A network technician inspects the ARP cache on a Layer 3 Cisco Catalyst switch using the show ip arp command and observes the following entry:\n\nSwitch# show ip arp\nProtocol  Address          Age (min)  Hardware Addr   Type   Interface\nInternet  10.1.10.1               -   0000.0c07.ac0a  ARPA   Vlan10\nInternet  10.1.10.25             14   aabb.cc00.1020  ARPA   Vlan10\n\nWhich First Hop Redundancy Protocol (FHRP) generated the virtual MAC address 0000.0c07.ac0a, and what does the last byte (0a) signify?",
+      "statementEs": "Un técnico de red inspecciona la caché ARP en un switch Cisco Catalyst de Capa 3 mediante el comando show ip arp y observa la siguiente entrada:\n\nSwitch# show ip arp\nProtocol  Address          Age (min)  Hardware Addr   Type   Interface\nInternet  10.1.10.1               -   0000.0c07.ac0a  ARPA   Vlan10\nInternet  10.1.10.25             14   aabb.cc00.1020  ARPA   Vlan10\n\n¿Qué protocolo de redundancia de primer salto (FHRP) generó la dirección MAC virtual 0000.0c07.ac0a y qué significa el último byte (0a)?",
+      "questionType": "single_choice",
+      "difficulty": "basic",
+      "primaryTopicExamArea": "ip_connectivity",
+      "multipleAnswerCount": null,
+      "estimatedTimeSeconds": 60,
+      "explanationEn": "Cisco Hot Standby Router Protocol version 1 (HSRPv1) uses the well-known virtual MAC address format 0000.0c07.acXX, structured as follows:\n- 0000.0c: Cisco Organizationally Unique Identifier (OUI).\n- 07.ac: HSRP version 1 virtual MAC identifier.\n- XX: 8-bit HSRP standby group number expressed in hexadecimal (00 to ff, representing groups 0 to 255).\nIn this output, the final byte is '0a' in hexadecimal. Converting hex '0a' to decimal: 0 * 16 + 10 = 10. Thus, this entry corresponds to HSRP version 1 servicing standby group 10.\nComparison with other FHRP virtual MAC structures:\n- HSRPv2: 0000.0c9f.fXXX (where XXX is a 12-bit group number from 0 to 4095).\n- VRRPv2 (IPv4): 0000.5e00.01XX (where XX is the VRID from 1 to 255).\n- VRRPv3 (IPv6): 0000.5e00.02XX.\n- GLBP: 0007.b400.XXYY (where XX is group and YY is forwarder number).",
+      "explanationEs": "El protocolo Hot Standby Router Protocol versión 1 de Cisco (HSRPv1) utiliza el formato de dirección MAC virtual estándar 0000.0c07.acXX, estructurado de la siguiente forma:\n- 0000.0c: Identificador Único de Organización (OUI) de Cisco.\n- 07.ac: Identificador de MAC virtual de HSRP versión 1.\n- XX: Número de grupo standby de HSRP de 8 bits expresado en hexadecimal (00 a ff, que representa los grupos del 0 al 255).\nEn esta salida, el byte final es '0a' en hexadecimal. Convirtiendo '0a' hexadecimal a decimal: 0 * 16 + 10 = 10. Por lo tanto, esta entrada corresponde a HSRP versión 1 atendiendo el grupo standby 10.\nComparativa con otras estructuras de MAC virtual de FHRP:\n- HSRPv2: 0000.0c9f.fXXX (donde XXX es un grupo de 12 bits, de 0 a 4095).\n- VRRPv2 (IPv4): 0000.5e00.01XX (donde XX es el VRID del 1 al 255).\n- VRRPv3 (IPv6): 0000.5e00.02XX.\n- GLBP: 0007.b400.XXYY (donde XX es el grupo e YY es el forwarder).",
+      "correctAnswerExplanationEn": "0000.0c07.acXX is the HSRPv1 virtual MAC address structure, where hex '0a' denotes HSRP standby group 10.",
+      "correctAnswerExplanationEs": "0000.0c07.acXX es la estructura de dirección MAC virtual de HSRPv1, donde el valor hexadecimal '0a' indica el grupo standby 10.",
+      "options": [
+        {
+          "optionLabel": "A",
+          "optionTextEn": "The protocol is HSRP version 1, and the last byte represents HSRP standby group 10 in hexadecimal (0a hex = 10 decimal).",
+          "optionTextEs": "El protocolo es HSRP versión 1 y el último byte representa el grupo standby 10 de HSRP en hexadecimal (0a hex = 10 decimal).",
+          "isCorrect": true,
+          "explanationEn": "Correct. HSRPv1 uses 0000.0c07.acXX where XX is the hex representation of the group number (0a hex = 10).",
+          "explanationEs": "Correcto. HSRPv1 usa 0000.0c07.acXX donde XX es la representación hexadecimal del número de grupo (0a hex = 10)."
+        },
+        {
+          "optionLabel": "B",
+          "optionTextEn": "The protocol is HSRP version 2, and the standby group number is 10.",
+          "optionTextEs": "El protocolo es HSRP versión 2 y el número de grupo standby es 10.",
+          "isCorrect": false,
+          "explanationEn": "Incorrect. HSRP version 2 uses the virtual MAC format 0000.0c9f.fXXX.",
+          "explanationEs": "Incorrecto. HSRP versión 2 utiliza el formato de MAC virtual 0000.0c9f.fXXX."
+        },
+        {
+          "optionLabel": "C",
+          "optionTextEn": "The protocol is VRRP version 2, and the last byte represents Virtual Router Identifier (VRID) 10.",
+          "optionTextEs": "El protocolo es VRRP versión 2 y el último byte representa el Identificador de Router Virtual (VRID) 10.",
+          "isCorrect": false,
+          "explanationEn": "Incorrect. VRRP for IPv4 uses virtual MAC address 0000.5e00.01XX.",
+          "explanationEs": "Incorrecto. VRRP para IPv4 utiliza la dirección MAC virtual 0000.5e00.01XX."
+        },
+        {
+          "optionLabel": "D",
+          "optionTextEn": "The protocol is GLBP, and the last byte represents Active Virtual Forwarder (AVF) number 10.",
+          "optionTextEs": "El protocolo es GLBP y el último byte representa el número de Active Virtual Forwarder (AVF) 10.",
+          "isCorrect": false,
+          "explanationEn": "Incorrect. GLBP uses virtual MAC address 0007.b400.XXYY.",
+          "explanationEs": "Incorrecto. GLBP utiliza la dirección MAC virtual 0007.b400.XXYY."
+        }
+      ],
+      "sourceName": "CCNA 200-301 Original Questions",
+      "sourceLicense": "Original content"
+    }
+  ]
+}

@@ -1,0 +1,543 @@
+{
+  "questions": [
+    {
+      "statementEn": "An enterprise network engineer is provisioning access switches for a new office floor. The design requires connecting Cisco Catalyst 9130 Wi-Fi 6 (802.11ax) Access Points, each requiring up to 25.5 W of continuous DC power at the Powered Device (PD) interface over Cat6 UTP cabling. Which IEEE Power over Ethernet standard must the switch ports support to meet this power requirement?",
+      "statementEs": "Un ingeniero de redes empresariales está aprovisionando switches de acceso para una nueva planta de oficinas. El diseño requiere conectar Access Points Cisco Catalyst 9130 Wi-Fi 6 (802.11ax), cada uno requiriendo hasta 25.5 W de potencia continua de CC en la interfaz del Powered Device (PD) mediante cableado UTP Cat6. ¿Qué estándar IEEE de Power over Ethernet deben admitir los puertos del switch para cumplir con este requisito de potencia?",
+      "questionType": "single_choice",
+      "difficulty": "intermediate",
+      "primaryTopicExamArea": "network_fundamentals",
+      "multipleAnswerCount": null,
+      "estimatedTimeSeconds": 90,
+      "explanationEn": "Power over Ethernet (PoE) enables network switches (Power Sourcing Equipment or PSE) to supply DC electrical power alongside Ethernet data to connected endpoints (Powered Devices or PDs) such as IP phones, surveillance cameras, and Wireless Access Points over standard twisted-pair cabling up to 100 meters. The original IEEE 802.3af (2003) standard provides up to 15.4 W at the PSE and 12.95 W at the PD. To support higher-draw devices like dual-band 802.11ax access points and pan-tilt-zoom cameras, IEEE 802.3at (PoE+) was introduced, supplying up to 30.0 W at the PSE and guaranteeing 25.5 W at the PD. IEEE 802.3bt (PoE++ / 4PPoE) further expands capacity to Type 3 (60 W PSE / 51 W PD) and Type 4 (90 W PSE / 71.3 W PD).",
+      "explanationEs": "Power over Ethernet (PoE) permite a los switches de red (Power Sourcing Equipment o PSE) suministrar alimentación eléctrica de CC junto con los datos de Ethernet a dispositivos terminales conectados (Powered Devices o PD) como teléfonos IP, cámaras de vigilancia y Access Points inalámbricos sobre cableado de par trenzado estándar de hasta 100 metros. El estándar original IEEE 802.3af (2003) proporciona hasta 15.4 W en el PSE y 12.95 W en el PD. Para admitir dispositivos de mayor consumo como APs 802.11ax de doble banda y cámaras PTZ, se introdujo IEEE 802.3at (PoE+), que suministra hasta 30.0 W en el PSE y garantiza 25.5 W en el PD. IEEE 802.3bt (PoE++ / 4PPoE) expande aún más la capacidad a Tipo 3 (60 W PSE / 51 W PD) y Tipo 4 (90 W PSE / 71.3 W PD).",
+      "correctAnswerExplanationEn": "IEEE 802.3at (PoE+) specifies 30.0 W of PSE output power, ensuring that after transmission losses over 100 meters of Cat5e/Cat6 cabling, exactly up to 25.5 W is available at the Powered Device (PD).",
+      "correctAnswerExplanationEs": "IEEE 802.3at (PoE+) especifica 30.0 W de potencia de salida en el PSE, garantizando que tras las pérdidas por transmisión a lo largo de 100 metros de cable Cat5e/Cat6, haya disponibles exactamente hasta 25.5 W en el Powered Device (PD).",
+      "options": [
+        {
+          "optionLabel": "A",
+          "optionTextEn": "IEEE 802.3af (PoE)",
+          "optionTextEs": "IEEE 802.3af (PoE)",
+          "isCorrect": false,
+          "explanationEn": "IEEE 802.3af (Type 1 PoE) supplies a maximum of 15.4 W at the PSE port and guarantees only 12.95 W at the PD due to cable resistance over a 100-meter run, which is insufficient for the required 25.5 W.",
+          "explanationEs": "IEEE 802.3af (PoE Tipo 1) suministra un máximo de 15.4 W en el puerto PSE y garantiza únicamente 12.95 W en el PD debido a la resistencia del cable a lo largo de 100 metros, lo cual es insuficiente para los 25.5 W requeridos.",
+          "displayOrder": 0
+        },
+        {
+          "optionLabel": "B",
+          "optionTextEn": "IEEE 802.3at (PoE+)",
+          "optionTextEs": "IEEE 802.3at (PoE+)",
+          "isCorrect": true,
+          "explanationEn": "IEEE 802.3at (Type 2 PoE+) provides up to 30.0 W of DC power per PSE port and guarantees up to 25.5 W of power delivered at the PD over up to 100 meters of twisted-pair cabling.",
+          "explanationEs": "IEEE 802.3at (PoE+ Tipo 2) suministra hasta 30.0 W de potencia de CC por puerto PSE y garantiza hasta 25.5 W entregados en el PD a lo largo de hasta 100 metros de cable de par trenzado.",
+          "displayOrder": 1
+        },
+        {
+          "optionLabel": "C",
+          "optionTextEn": "Cisco Universal Power Over Ethernet (UPOE)",
+          "optionTextEs": "Cisco Universal Power Over Ethernet (UPOE)",
+          "isCorrect": false,
+          "explanationEn": "Cisco UPOE supplies up to 60 W at the PSE (51 W at the PD) using all four twisted pairs. While it exceeds 25.5 W, it is a proprietary Cisco extension rather than an IEEE standard, and is unnecessarily high for an 802.3at requirement.",
+          "explanationEs": "Cisco UPOE suministra hasta 60 W en el PSE (51 W en el PD) utilizando los cuatro pares trenzados. Aunque supera los 25.5 W, es una extensión propietaria de Cisco en lugar de un estándar IEEE, y excede innecesariamente los requisitos de 802.3at.",
+          "displayOrder": 2
+        },
+        {
+          "optionLabel": "D",
+          "optionTextEn": "IEEE 802.3bt Type 4",
+          "optionTextEs": "IEEE 802.3bt Type 4",
+          "isCorrect": false,
+          "explanationEn": "IEEE 802.3bt Type 4 delivers up to 90–100 W at the PSE (71.3 W at the PD). Although it can power lower-class devices, it is not the baseline IEEE standard required for 25.5 W PDs and requires 4-pair delivery.",
+          "explanationEs": "IEEE 802.3bt Tipo 4 entrega hasta 90-100 W en el PSE (71.3 W en el PD). Aunque puede alimentar dispositivos de clases inferiores, no es el estándar IEEE base requerido para PDs de 25.5 W y requiere entrega sobre 4 pares.",
+          "displayOrder": 3
+        }
+      ],
+      "sourceName": "CCNA 200-301 Original Questions",
+      "sourceLicense": "Original content"
+    },
+    {
+      "statementEn": "Which two architectural capabilities distinguish a Next-Generation Firewall (NGFW) from a traditional stateful firewall? (Choose two.)",
+      "statementEs": "¿Cuáles dos capacidades arquitectónicas distinguen a un Next-Generation Firewall (NGFW) de un firewall de inspección de estado tradicional? (Elija dos.)",
+      "questionType": "multiple_choice",
+      "difficulty": "basic",
+      "primaryTopicExamArea": "network_fundamentals",
+      "multipleAnswerCount": 2,
+      "estimatedTimeSeconds": 90,
+      "explanationEn": "A Next-Generation Firewall (NGFW) evolves traditional perimeter security by combining stateful packet inspection with deep Layer 7 application awareness, integrated Next-Generation Intrusion Prevention Systems (NGIPS), advanced malware protection (AMP), and identity-based policy enforcement. While traditional firewalls filter traffic strictly by Layer 3 IP addresses, Layer 4 ports, and connection state tables, NGFWs inspect payload data to recognize applications even when using non-standard ports or SSL/TLS encryption. Features such as stateful connection tracking, NAT/PAT, and port-based ACL filtering are foundational legacy capabilities present in both traditional firewalls and NGFWs.",
+      "explanationEs": "Un Next-Generation Firewall (NGFW) evoluciona la seguridad perimetral tradicional al combinar la inspección de paquetes con estado con el reconocimiento profundo de aplicaciones en la Capa 7, sistemas de prevención de intrusiones de próxima generación (NGIPS) integrados, protección avanzada contra malware (AMP) y aplicación de políticas basadas en identidad. Mientras que los firewalls tradicionales filtran el tráfico estrictamente mediante direcciones IP de Capa 3, puertos de Capa 4 y tablas de estado de conexión, los NGFW inspeccionan la carga útil para identificar aplicaciones incluso si usan puertos no estándar o cifrado SSL/TLS. Las funciones como seguimiento con estado, NAT/PAT y filtrado por puertos son capacidades heredadas presentes tanto en firewalls tradicionales como en NGFW.",
+      "correctAnswerExplanationEn": "The key differentiators of an NGFW are Layer 7 Application Visibility and Control (AVC) and an integrated inline NGIPS with contextual threat intelligence. Traditional firewalls operate primarily up to Layer 4 and lack native, synchronized application decoding and threat prevention.",
+      "correctAnswerExplanationEs": "Los diferenciadores clave de un NGFW son Application Visibility and Control (AVC) en Capa 7 y un NGIPS integrado en línea con inteligencia contextual sobre amenazas. Los firewalls tradicionales operan principalmente hasta la Capa 4 y carecen de decodificación nativa de aplicaciones y prevención de amenazas sincronizada.",
+      "options": [
+        {
+          "optionLabel": "A",
+          "optionTextEn": "Deep packet inspection with Application Visibility and Control (AVC) up to Layer 7",
+          "optionTextEs": "Inspección profunda de paquetes con Application Visibility and Control (AVC) hasta la Capa 7",
+          "isCorrect": true,
+          "explanationEn": "NGFWs inspect application layer payloads to identify and enforce policies on specific applications (e.g., distinguishing between Facebook chat and Facebook video) regardless of the TCP/UDP port used.",
+          "explanationEs": "Los NGFW inspeccionan la carga útil de la capa de aplicación para identificar y aplicar políticas sobre aplicaciones específicas (p. ej., distinguir entre chat y video en Facebook) independientemente del puerto TCP/UDP utilizado.",
+          "displayOrder": 0
+        },
+        {
+          "optionLabel": "B",
+          "optionTextEn": "Stateful connection tracking based on Layer 4 TCP SYN, ACK, and FIN flags",
+          "optionTextEs": "Seguimiento de conexiones con estado basado en flags TCP SYN, ACK y FIN de Capa 4",
+          "isCorrect": false,
+          "explanationEn": "Stateful connection tracking at Layer 4 is the defining characteristic of traditional stateful firewalls (such as the legacy Cisco ASA), not a feature unique to NGFWs.",
+          "explanationEs": "El seguimiento de conexiones con estado en Capa 4 es la característica definitoria de los firewalls tradicionales con inspección de estado (como el Cisco ASA tradicional), no una característica exclusiva de los NGFW.",
+          "displayOrder": 1
+        },
+        {
+          "optionLabel": "C",
+          "optionTextEn": "Integrated Next-Generation Intrusion Prevention System (NGIPS) with contextual threat intelligence",
+          "optionTextEs": "Next-Generation Intrusion Prevention System (NGIPS) integrado con inteligencia de amenazas contextual",
+          "isCorrect": true,
+          "explanationEn": "NGFWs integrate an inline NGIPS engine (such as Cisco Firepower / Snort 3) that correlates threat intelligence, vulnerability data, and user identities to block exploits and malware inline.",
+          "explanationEs": "Los NGFW integran un motor NGIPS en línea (como Cisco Firepower / Snort 3) que correlaciona inteligencia de amenazas, datos de vulnerabilidad e identidades de usuario para bloquear exploits y malware en línea.",
+          "displayOrder": 2
+        },
+        {
+          "optionLabel": "D",
+          "optionTextEn": "Port Address Translation (PAT) to map multiple private IP addresses to a single public IP",
+          "optionTextEs": "Port Address Translation (PAT) para mapear múltiples direcciones IP privadas a una sola IP pública",
+          "isCorrect": false,
+          "explanationEn": "NAT and PAT are standard network layer features supported by traditional firewalls, routers, and Layer 3 switches, and do not distinguish an NGFW.",
+          "explanationEs": "NAT y PAT son funciones estándar de capa de red admitidas por firewalls tradicionales, routers y switches de Capa 3, por lo que no diferencian a un NGFW.",
+          "displayOrder": 3
+        },
+        {
+          "optionLabel": "E",
+          "optionTextEn": "Static packet filtering restricted to Layer 3 IP headers and Layer 4 port numbers",
+          "optionTextEs": "Filtrado estático de paquetes restringido a encabezados IP de Capa 3 y números de puerto de Capa 4",
+          "isCorrect": false,
+          "explanationEn": "Static packet filtering is the function of basic router Access Control Lists (ACLs) and first-generation firewalls, which lack application awareness and deep inspection.",
+          "explanationEs": "El filtrado estático de paquetes es la función de las Access Control Lists (ACL) básicas de routers y firewalls de primera generación, los cuales carecen de reconocimiento de aplicaciones e inspección profunda.",
+          "displayOrder": 4
+        }
+      ],
+      "sourceName": "CCNA 200-301 Original Questions",
+      "sourceLicense": "Original content"
+    },
+    {
+      "statementEn": "An enterprise network engineer is evaluating a two-tier Spine-Leaf (Clos) architecture for a new data center. Which topological principle is fundamental to this design?",
+      "statementEs": "Un ingeniero de redes empresariales está evaluando una arquitectura Spine-Leaf (Clos) de dos niveles para un nuevo centro de datos. ¿Qué principio topológico es fundamental para este diseño?",
+      "questionType": "single_choice",
+      "difficulty": "intermediate",
+      "primaryTopicExamArea": "network_fundamentals",
+      "multipleAnswerCount": null,
+      "estimatedTimeSeconds": 90,
+      "explanationEn": "The two-tier Spine-Leaf architecture, derived from Charles Clos's telecommunication switching model, is engineered specifically for modern data center environments dominated by east-west server-to-server traffic. In this topology, every leaf switch (access layer) connects to every spine switch (aggregation layer) in a full mesh. Endpoints such as servers, firewalls, and routers connect solely to leaf switches, and spine switches have no server attachments. Furthermore, leaf switches never connect to other leaf switches, and spine switches never connect to other spine switches. This topology guarantees that any two servers in the data center are separated by exactly two hops (leaf -> spine -> leaf), providing predictable latency, high throughput, and seamless horizontal scalability using Layer 3 Equal-Cost Multi-Path (ECMP).",
+      "explanationEs": "La arquitectura Spine-Leaf de dos niveles, derivada del modelo de conmutación de telecomunicaciones de Charles Clos, está diseñada específicamente para entornos de centros de datos modernos donde predomina el tráfico este-oeste entre servidores. En esta topología, cada switch leaf (capa de acceso) se conecta a cada switch spine (capa de agregación) en una malla completa. Los terminales como servidores, firewalls y routers se conectan únicamente a los switches leaf, y los switches spine no poseen conexiones a servidores. Asimismo, los switches leaf nunca se conectan entre sí y los switches spine nunca se conectan entre sí. Esta topología garantiza que dos servidores cualesquiera estén separados exactamente por dos saltos (leaf -> spine -> leaf), ofreciendo latencia predecible, alto rendimiento y escalabilidad horizontal fluida mediante Equal-Cost Multi-Path (ECMP) de Capa 3.",
+      "correctAnswerExplanationEn": "In a standard spine-leaf fabric, all leaves connect to all spines, no leaf-to-leaf or spine-to-spine links exist, and endpoints connect exclusively to leaf switches.",
+      "correctAnswerExplanationEs": "En una estructura spine-leaf estándar, todos los switches leaf se conectan a todos los spines, no existen enlaces entre leaves ni entre spines, y los dispositivos finales se conectan exclusivamente a los switches leaf.",
+      "options": [
+        {
+          "optionLabel": "A",
+          "optionTextEn": "Every leaf switch connects to every spine switch, and leaf switches never connect directly to other leaf switches.",
+          "optionTextEs": "Cada switch leaf se conecta a cada switch spine, y los switches leaf nunca se conectan directamente entre sí.",
+          "isCorrect": true,
+          "explanationEn": "In a Clos-based spine-leaf topology, every leaf connects to all spines in a full mesh pattern, spine switches never connect to other spines, leaf switches never connect to other leaves, and end-hosts connect only to leaf switches.",
+          "explanationEs": "En una topología spine-leaf basada en Clos, cada leaf se conecta a todos los spines en un patrón de malla completa, los switches spine nunca se conectan entre sí, los switches leaf nunca se conectan entre sí y los hosts finales se conectan únicamente a los switches leaf.",
+          "displayOrder": 0
+        },
+        {
+          "optionLabel": "B",
+          "optionTextEn": "Leaf switches form direct redundant horizontal interconnections to run Rapid PVST+ and prevent broadcast loops.",
+          "optionTextEs": "Los switches leaf forman interconexiones horizontales redundantes directas para ejecutar Rapid PVST+ y prevenir bucles de difusión.",
+          "isCorrect": false,
+          "explanationEn": "Spine-leaf designs deliberately avoid direct links between leaf switches and typically use Layer 3 routing (ECMP) to eliminate Spanning Tree Protocol blocking entirely.",
+          "explanationEs": "Los diseños spine-leaf evitan deliberadamente enlaces directos entre switches leaf y típicamente utilizan enrutamiento de Capa 3 (ECMP) para eliminar completamente el bloqueo de Spanning Tree Protocol.",
+          "displayOrder": 1
+        },
+        {
+          "optionLabel": "C",
+          "optionTextEn": "Spine switches provide dedicated physical access ports for bare-metal servers, hypervisors, and storage devices.",
+          "optionTextEs": "Los switches spine proporcionan puertos de acceso físico dedicados para servidores bare-metal, hipervisores y dispositivos de almacenamiento.",
+          "isCorrect": false,
+          "explanationEn": "Endpoints, servers, storage arrays, and network services attach exclusively to leaf switches; spine switches function purely as high-speed aggregation backbones.",
+          "explanationEs": "Los terminales, servidores, sistemas de almacenamiento y servicios de red se conectan exclusivamente a los switches leaf; los switches spine funcionan únicamente como una infraestructura dorsal de conmutación de alta velocidad.",
+          "displayOrder": 2
+        },
+        {
+          "optionLabel": "D",
+          "optionTextEn": "Core switches aggregate distribution switches which then connect directly to redundant access switches in a collapsed triangle.",
+          "optionTextEs": "Los switches core agregan switches de distribución que luego se conectan directamente a switches de acceso redundantes en un triángulo colapsado.",
+          "isCorrect": false,
+          "explanationEn": "This describes a traditional three-tier or collapsed two-tier hierarchical campus network topology, not a data center spine-leaf fabric.",
+          "explanationEs": "Esto describe una topología de red jerárquica de campus tradicional de tres niveles o dos niveles colapsados, no una estructura spine-leaf de centro de datos.",
+          "displayOrder": 3
+        }
+      ],
+      "sourceName": "CCNA 200-301 Original Questions",
+      "sourceLicense": "Original content"
+    },
+    {
+      "statementEn": "A network technician needs to interconnect two campus buildings separated by a distance of 1,800 meters (1.8 km) using a 10 Gigabit Ethernet link. Which combination of cabling and transceiver standard meets this distance requirement?",
+      "statementEs": "Un técnico de redes necesita interconectar dos edificios de un campus separados por una distancia de 1,800 metros (1.8 km) mediante un enlace 10 Gigabit Ethernet. ¿Qué combinación de cableado y estándar de transceptor cumple con este requisito de distancia?",
+      "questionType": "single_choice",
+      "difficulty": "basic",
+      "primaryTopicExamArea": "network_fundamentals",
+      "multipleAnswerCount": null,
+      "estimatedTimeSeconds": 60,
+      "explanationEn": "Fiber optic cabling is classified into Single-Mode Fiber (SMF) and Multimode Fiber (MMF). SMF has a narrow glass core (typically 9 micrometers) that allows light to travel along a single path, minimizing modal dispersion and enabling transmission distances of 10 km (10GBASE-LR) up to 40 km (10GBASE-ER) using laser diodes. Multimode fiber has a broader core (50 or 62.5 micrometers) that permits multiple paths of light using VCSELs or LEDs, but suffers from modal dispersion over long distances. Consequently, 10GBASE-SR over OM3 is limited to 300 meters, and over OM4 to 400 meters. Copper Ethernet (10GBASE-T over Cat6A) is limited to 100 meters. For an 1,800-meter link, SMF with 10GBASE-LR is the appropriate standard.",
+      "explanationEs": "El cableado de fibra óptica se clasifica en fibra monomodo (SMF) y fibra multimodo (MMF). La fibra SMF posee un núcleo de vidrio estrecho (típicamente de 9 micrómetros) que permite que la luz viaje por un único camino, minimizando la dispersión modal y permitiendo distancias de 10 km (10GBASE-LR) hasta 40 km (10GBASE-ER) mediante diodos láser. La fibra multimodo tiene un núcleo más ancho (50 o 62.5 micrómetros) que permite múltiples trayectorias de luz usando VCSELs o LEDs, pero sufre de dispersión modal en distancias largas. Por ello, 10GBASE-SR sobre OM3 está limitado a 300 metros y sobre OM4 a 400 metros. El cobre (10GBASE-T sobre Cat6A) está limitado a 100 metros. Para un enlace de 1,800 metros, SMF con 10GBASE-LR es el estándar indicado.",
+      "correctAnswerExplanationEn": "10GBASE-LR over Single-Mode Fiber supports up to 10 kilometers, making it the only option capable of bridging the 1,800-meter inter-building span.",
+      "correctAnswerExplanationEs": "10GBASE-LR sobre fibra monomodo admite hasta 10 kilómetros, lo que lo convierte en la única opción capaz de cubrir la distancia de 1,800 metros entre edificios.",
+      "options": [
+        {
+          "optionLabel": "A",
+          "optionTextEn": "Single-Mode Fiber (SMF) with 10GBASE-LR transceivers",
+          "optionTextEs": "Fibra monomodo (SMF) con transceptores 10GBASE-LR",
+          "isCorrect": true,
+          "explanationEn": "10GBASE-LR operates over Single-Mode Fiber (SMF) using a 1310 nm laser wavelength and supports link distances of up to 10 kilometers (10,000 meters), satisfying the 1,800-meter requirement.",
+          "explanationEs": "10GBASE-LR opera sobre fibra monomodo (SMF) utilizando una longitud de onda láser de 1310 nm y admite distancias de enlace de hasta 10 kilómetros (10,000 metros), cumpliendo con el requisito de 1,800 metros.",
+          "displayOrder": 0
+        },
+        {
+          "optionLabel": "B",
+          "optionTextEn": "Multimode Fiber (MMF) OM3 with 10GBASE-SR transceivers",
+          "optionTextEs": "Fibra multimodo (MMF) OM3 con transceptores 10GBASE-SR",
+          "isCorrect": false,
+          "explanationEn": "10GBASE-SR over OM3 Multimode Fiber has a maximum reach of 300 meters, which is far too short for an 1,800-meter inter-building run.",
+          "explanationEs": "10GBASE-SR sobre fibra multimodo OM3 tiene un alcance máximo de 300 metros, lo cual es insuficiente para una tirada de 1,800 metros entre edificios.",
+          "displayOrder": 1
+        },
+        {
+          "optionLabel": "C",
+          "optionTextEn": "Multimode Fiber (MMF) OM4 with 10GBASE-SR transceivers",
+          "optionTextEs": "Fibra multimodo (MMF) OM4 con transceptores 10GBASE-SR",
+          "isCorrect": false,
+          "explanationEn": "10GBASE-SR over OM4 Multimode Fiber has a maximum transmission distance of 400 meters, which cannot span 1,800 meters.",
+          "explanationEs": "10GBASE-SR sobre fibra multimodo OM4 tiene una distancia máxima de transmisión de 400 metros, por lo que no puede cubrir 1,800 metros.",
+          "displayOrder": 2
+        },
+        {
+          "optionLabel": "D",
+          "optionTextEn": "Category 6A Shielded Twisted-Pair (STP) with 10GBASE-T transceivers",
+          "optionTextEs": "Cable de par trenzado blindado (STP) Categoría 6A con transceptores 10GBASE-T",
+          "isCorrect": false,
+          "explanationEn": "10GBASE-T over copper Cat6A cabling is strictly limited by Ethernet standards to a maximum distance of 100 meters.",
+          "explanationEs": "10GBASE-T sobre cable de cobre Cat6A está estrictamente limitado por los estándares de Ethernet a una distancia máxima de 100 metros.",
+          "displayOrder": 3
+        }
+      ],
+      "sourceName": "CCNA 200-301 Original Questions",
+      "sourceLicense": "Original content"
+    },
+    {
+      "statementEn": "A network administrator troubleshoots a critical production server experiencing severe throughput degradation. The switch port connecting to the server is manually configured with 'speed 100' and 'duplex full'. The server NIC is configured for IEEE 802.3u Auto-Negotiation. The switch port counter displays a high count of late collisions, runts, and FCS errors. What is the fundamental cause of this network issue?",
+      "statementEs": "Un administrador de red soluciona problemas en un servidor de producción crítico que experimenta una grave degradación en su rendimiento. El puerto del switch conectado al servidor está configurado manualmente con 'speed 100' y 'duplex full'. La tarjeta de red (NIC) del servidor está configurada para Auto-Negotiation IEEE 802.3u. El contador del puerto del switch muestra una gran cantidad de colisiones tardías (late collisions), runts y errores FCS. ¿Cuál es la causa fundamental de este problema de red?",
+      "questionType": "single_choice",
+      "difficulty": "advanced",
+      "primaryTopicExamArea": "network_fundamentals",
+      "multipleAnswerCount": null,
+      "estimatedTimeSeconds": 120,
+      "explanationEn": "Under IEEE 802.3u standards, when one link partner disables Auto-Negotiation and is manually hardcoded to Full-Duplex, it stops sending Fast Link Pulses (FLPs). The opposite partner running Auto-Negotiation uses parallel detection to sense the physical signaling speed (locking into 100 Mbps), but cannot determine duplex capabilities. IEEE rules dictate that when duplex cannot be negotiated, the interface must fall back to the safest default: Half-Duplex. The switch operating in Full-Duplex transmits whenever it has data because collision detection is disabled. The server operating in Half-Duplex uses CSMA/CD; when it receives frames while transmitting, it registers a collision. Because the switch sent frames after the 64-byte (512-bit) transmission slot time, the server or switch records these as late collisions, FCS errors, and truncated runt frames.",
+      "explanationEs": "Bajo los estándares IEEE 802.3u, cuando un extremo desactiva la autonegociación y se configura manualmente en Full-Duplex, deja de enviar pulsos FLP (Fast Link Pulses). El extremo opuesto con Auto-Negotiation utiliza detección en paralelo para identificar la velocidad física (estableciendo 100 Mbps), pero no puede determinar el dúplex. La normativa IEEE dicta que si el dúplex no se puede negociar, la interfaz debe adoptar el valor por defecto: Half-Duplex. El switch en Full-Duplex transmite en cualquier momento sin verificar portadora, ya que la detección de colisiones está deshabilitada. El servidor en Half-Duplex utiliza CSMA/CD; cuando recibe tramas mientras transmite, detecta una colisión. Como el switch transmitió después de la ventana de 64 bytes (512 bits), se registran late collisions, errores FCS y tramas incompletas (runts).",
+      "correctAnswerExplanationEn": "The auto-negotiating server defaults to Half-Duplex because it cannot negotiate with the hardcoded switch port. When the switch transmits simultaneously in Full-Duplex, it triggers collisions outside the 64-byte window, generating late collisions, runts, and FCS errors.",
+      "correctAnswerExplanationEs": "El servidor en autonegociación adopta Half-Duplex por defecto porque no puede negociar con el puerto fijo del switch. Cuando el switch transmite simultáneamente en Full-Duplex, genera colisiones fuera de la ventana de 64 bytes, produciendo late collisions, runts y errores FCS.",
+      "options": [
+        {
+          "optionLabel": "A",
+          "optionTextEn": "A duplex mismatch: the server NIC failed to negotiate duplex and defaulted to Half-Duplex, causing collisions when both sides transmit simultaneously.",
+          "optionTextEs": "Un desajuste de dúplex (duplex mismatch): la NIC del servidor no pudo negociar el dúplex y adoptó Half-Duplex por defecto, provocando colisiones cuando ambos extremos transmiten en simultáneo.",
+          "isCorrect": true,
+          "explanationEn": "When a port is hardcoded to Full-Duplex, it disables auto-negotiation pulses. The remote auto-negotiating partner detects speed via electrical pulses but cannot negotiate duplex, so it defaults to Half-Duplex per 802.3u specifications, resulting in a duplex mismatch with late collisions and FCS errors.",
+          "explanationEs": "Cuando un puerto se configura manualmente en Full-Duplex, se deshabilitan los pulsos de autonegociación. El extremo remoto que intenta negociar detecta la velocidad por pulsos eléctricos pero no puede negociar el dúplex, por lo que adopta Half-Duplex por defecto según la norma 802.3u, provocando un desajuste de dúplex con late collisions y errores FCS.",
+          "displayOrder": 0
+        },
+        {
+          "optionLabel": "B",
+          "optionTextEn": "A speed mismatch: the server NIC detected electrical noise and defaulted to 10 Mbps while the switch remained locked at 100 Mbps.",
+          "optionTextEs": "Un desajuste de velocidad: la NIC del servidor detectó ruido eléctrico y cambió a 10 Mbps mientras el switch permaneció fijo en 100 Mbps.",
+          "isCorrect": false,
+          "explanationEn": "Ethernet auto-negotiation correctly senses electrical signaling speed (100BASE-TX Fast Link Pulses / carrier frequency) even without duplex negotiation, so speed matches at 100 Mbps; a speed mismatch causes the link to go physically down.",
+          "explanationEs": "La autonegociación de Ethernet detecta correctamente la velocidad de señalización eléctrica (Fast Link Pulses / frecuencia portadora de 100BASE-TX) incluso sin negociación de dúplex, por lo que la velocidad coincide en 100 Mbps; un desajuste de velocidad provocaría la caída física del enlace (down).",
+          "displayOrder": 1
+        },
+        {
+          "optionLabel": "C",
+          "optionTextEn": "A faulty Cat5e patch cable exceeding the maximum delay threshold of 512 bit times, creating propagation delay collisions.",
+          "optionTextEs": "Un cable patch Cat5e defectuoso que excede el umbral máximo de retardo de 512 bit times, provocando colisiones por retardo de propagación.",
+          "isCorrect": false,
+          "explanationEn": "While late collisions can theoretically occur if cable length exceeds 100 meters, the mismatched duplex configuration between hardcoded and auto-negotiation settings is the definitive diagnostic signature for this scenario.",
+          "explanationEs": "Aunque las colisiones tardías pueden ocurrir teóricamente si la longitud del cable supera los 100 metros, la configuración dispar de dúplex entre un puerto fijo y uno en autonegociación es la causa de diagnóstico definitiva en este escenario.",
+          "displayOrder": 2
+        },
+        {
+          "optionLabel": "D",
+          "optionTextEn": "A jabber condition on the server network card causing continuous transmission of frames larger than 1518 bytes.",
+          "optionTextEs": "Una condición de jabber en la tarjeta de red del servidor que provoca la transmisión continua de tramas de más de 1518 bytes.",
+          "isCorrect": false,
+          "explanationEn": "Jabber refers to a transceiver continuously transmitting oversized corrupt frames (typically > 1518 bytes without pause). It causes giant errors rather than runts and late collisions.",
+          "explanationEs": "Jabber se refiere a un transceptor que transmite tramas corruptas de tamaño excesivo continuamente (típicamente > 1518 bytes sin pausa). Provoca errores de tramas gigantes (giants) en lugar de runts y late collisions.",
+          "displayOrder": 3
+        }
+      ],
+      "sourceName": "CCNA 200-301 Original Questions",
+      "sourceLicense": "Original content"
+    },
+    {
+      "statementEn": "Which mechanism does the Transmission Control Protocol (TCP) use to provide flow control, preventing a fast sender from overwhelming a slower receiver's buffer?",
+      "statementEs": "¿Qué mecanismo utiliza el Transmission Control Protocol (TCP) para proporcionar control de flujo, evitando que un emisor rápido sature el búfer de un receptor más lento?",
+      "questionType": "single_choice",
+      "difficulty": "basic",
+      "primaryTopicExamArea": "network_fundamentals",
+      "multipleAnswerCount": null,
+      "estimatedTimeSeconds": 60,
+      "explanationEn": "Flow control is a fundamental feature of TCP that matches the transmission rate of the sender to the processing and buffer capacity of the receiving application. The receiver advertises available receive buffer space through the 16-bit Window Size field in each TCP segment header. As buffer space depletes, the receiver shrinks the advertised window; if the buffer is completely full, a window size of zero (Zero Window) is advertised, halting the sender until buffer space frees up. This dynamic process is known as the sliding window mechanism. In contrast, UDP has no windowing, flow control, or acknowledgment mechanisms, relying entirely on upper-layer applications to throttle transmission.",
+      "explanationEs": "El control de flujo es una función fundamental de TCP que empareja la velocidad de transmisión del emisor con la capacidad de procesamiento y almacenamiento en búfer del receptor. El receptor anuncia el espacio disponible en su búfer a través del campo Window Size de 16 bits en el encabezado de cada segmento TCP. A medida que el búfer se llena, el receptor reduce el tamaño de la ventana anunciada; si se llena por completo, anuncia una ventana de cero (Zero Window), deteniendo al emisor hasta que se libere espacio. Este proceso dinámico se conoce como el mecanismo de ventana deslizante (sliding window). Por el contrario, UDP no posee ventanas, control de flujo ni mecanismos de acuse de recibo, dependiendo por completo de las aplicaciones de capas superiores para regular la transmisión.",
+      "correctAnswerExplanationEn": "TCP flow control is governed by the sliding window mechanism, where the receiver uses the Window Size header field to advertise the number of bytes it can buffer before requiring an acknowledgment.",
+      "correctAnswerExplanationEs": "El control de flujo en TCP está regulado por el mecanismo de ventana deslizante, donde el receptor utiliza el campo Window Size del encabezado para anunciar la cantidad de bytes que puede almacenar en búfer antes de requerir un acuse de recibo.",
+      "options": [
+        {
+          "optionLabel": "A",
+          "optionTextEn": "Sliding Window using the Window Size field in the TCP header",
+          "optionTextEs": "Ventana deslizante (Sliding Window) usando el campo Window Size en el encabezado TCP",
+          "isCorrect": true,
+          "explanationEn": "TCP flow control is achieved via the 16-bit Window Size field in the TCP header, which dynamically informs the sender of how many bytes the receiver is currently willing and able to accept.",
+          "explanationEs": "El control de flujo en TCP se logra mediante el campo de 16 bits Window Size en el encabezado TCP, que informa dinámicamente al emisor cuántos bytes está dispuesto y en capacidad de aceptar el receptor.",
+          "displayOrder": 0
+        },
+        {
+          "optionLabel": "B",
+          "optionTextEn": "Three-way handshake using SYN, SYN-ACK, and ACK control bits",
+          "optionTextEs": "Handshake de tres vías usando los bits de control SYN, SYN-ACK y ACK",
+          "isCorrect": false,
+          "explanationEn": "The three-way handshake establishes a reliable Layer 4 TCP connection and synchronizes initial sequence numbers (ISNs), but does not regulate ongoing data flow volume.",
+          "explanationEs": "El handshake de tres vías establece una conexión TCP confiable de Capa 4 y sincroniza los números de secuencia iniciales (ISN), pero no regula el volumen continuo de flujo de datos.",
+          "displayOrder": 1
+        },
+        {
+          "optionLabel": "C",
+          "optionTextEn": "Sequence and Acknowledgment numbers for packet reordering and recovery",
+          "optionTextEs": "Números de secuencia y reconocimiento para el reordenamiento y recuperación de paquetes",
+          "isCorrect": false,
+          "explanationEn": "Sequence and Acknowledgment numbers ensure reliable, in-order byte stream delivery and retransmission of lost segments, which constitutes reliability rather than flow control.",
+          "explanationEs": "Los números de secuencia y reconocimiento aseguran la entrega ordenada y confiable del flujo de bytes y la retransmisión de segmentos perdidos, lo cual constituye fiabilidad y no control de flujo.",
+          "displayOrder": 2
+        },
+        {
+          "optionLabel": "D",
+          "optionTextEn": "Strict priority queueing and traffic policing at the physical interface",
+          "optionTextEs": "Cola de prioridad estricta y vigilancia de tráfico (policing) en la interfaz física",
+          "isCorrect": false,
+          "explanationEn": "Queueing and traffic policing are Quality of Service (QoS) mechanisms implemented on routers and switches, not inherent transport layer protocol functions of TCP.",
+          "explanationEs": "Las colas y el policing son mecanismos de Calidad de Servicio (QoS) implementados en routers y switches, no funciones de protocolo inherentes a la capa de transporte de TCP.",
+          "displayOrder": 3
+        }
+      ],
+      "sourceName": "CCNA 200-301 Original Questions",
+      "sourceLicense": "Original content"
+    },
+    {
+      "statementEn": "A router interface is configured with the IPv4 address 172.16.45.138/27. What are the network address and broadcast address for this subnet?",
+      "statementEs": "Una interfaz de router está configurada con la dirección IPv4 172.16.45.138/27. ¿Cuáles son la dirección de red (network address) y la dirección de broadcast para esta subred?",
+      "questionType": "subnetting",
+      "difficulty": "intermediate",
+      "primaryTopicExamArea": "network_fundamentals",
+      "multipleAnswerCount": null,
+      "estimatedTimeSeconds": 120,
+      "explanationEn": "Step-by-step subnet calculation:\n1. Given IP Address: 172.16.45.138\n2. CIDR Prefix: /27\n3. Subnet Mask: 255.255.255.224 (Binary: 11111111.11111111.11111111.11100000)\n4. Host Bits: 32 - 27 = 5 bits remaining in the fourth octet.\n5. Block Size (Magic Number): 2^5 = 32 (or 256 - 224 = 32).\n6. Subnet Multiples in the fourth octet: 0, 32, 64, 96, 128, 160, 192, 224.\n7. Placement: 138 falls between 128 and 159 (128 <= 138 <= 159).\n- Network Address: 172.16.45.128\n- First Usable Host: 172.16.45.129\n- Last Usable Host: 172.16.45.158\n- Broadcast Address: 172.16.45.159 (next subnet 160 minus 1)\n- Total Usable Hosts: 2^5 - 2 = 30 usable host IP addresses.",
+      "explanationEs": "Cálculo de subred paso a paso:\n1. Dirección IP dada: 172.16.45.138\n2. Prefijo CIDR: /27\n3. Máscara de subred: 255.255.255.224 (Binario: 11111111.11111111.11111111.11100000)\n4. Bits de host: 32 - 27 = 5 bits restantes en el cuarto octeto.\n5. Tamaño de bloque (Número mágico): 2^5 = 32 (o 256 - 224 = 32).\n6. Múltiplos de subred en el cuarto octeto: 0, 32, 64, 96, 128, 160, 192, 224.\n7. Ubicación: 138 se encuentra entre 128 y 159 (128 <= 138 <= 159).\n- Dirección de red: 172.16.45.128\n- Primer host utilizable: 172.16.45.129\n- Último host utilizable: 172.16.45.158\n- Dirección de broadcast: 172.16.45.159 (siguiente subred 160 menos 1)\n- Total de hosts utilizables: 2^5 - 2 = 30 direcciones de host utilizables.",
+      "correctAnswerExplanationEn": "The /27 prefix yields an increment of 32 in the fourth octet. The subnet spanning 138 begins at network address 172.16.45.128 and terminates at broadcast address 172.16.45.159.",
+      "correctAnswerExplanationEs": "El prefijo /27 genera un incremento de 32 en el cuarto octeto. La subred que contiene la dirección 138 inicia en la dirección de red 172.16.45.128 y culmina en la dirección de broadcast 172.16.45.159.",
+      "options": [
+        {
+          "optionLabel": "A",
+          "optionTextEn": "Network address: 172.16.45.128, Broadcast address: 172.16.45.159",
+          "optionTextEs": "Dirección de red: 172.16.45.128, Dirección de broadcast: 172.16.45.159",
+          "isCorrect": true,
+          "explanationEn": "Correct. With a /27 prefix (subnet mask 255.255.255.224), the block size in the fourth octet is 32 (2^5 = 32). The subnets increment by 32: 0, 32, 64, 96, 128, 160. Host 138 falls into the 172.16.45.128 subnet, whose broadcast address is 172.16.45.159.",
+          "explanationEs": "Correcto. Con un prefijo /27 (máscara de subred 255.255.255.224), el tamaño de bloque en el cuarto octeto es 32 (2^5 = 32). Las subredes avanzan de 32 en 32: 0, 32, 64, 96, 128, 160. El host 138 pertenece a la subred 172.16.45.128, cuya dirección de broadcast es 172.16.45.159.",
+          "displayOrder": 0
+        },
+        {
+          "optionLabel": "B",
+          "optionTextEn": "Network address: 172.16.45.128, Broadcast address: 172.16.45.143",
+          "optionTextEs": "Dirección de red: 172.16.45.128, Dirección de broadcast: 172.16.45.143",
+          "isCorrect": false,
+          "explanationEn": "Incorrect. A broadcast address of .143 corresponds to a block size of 16 (/28 prefix), not a /27 prefix.",
+          "explanationEs": "Incorrecto. Una dirección de broadcast de .143 corresponde a un tamaño de bloque de 16 (prefijo /28), no a un prefijo /27.",
+          "displayOrder": 1
+        },
+        {
+          "optionLabel": "C",
+          "optionTextEn": "Network address: 172.16.45.96, Broadcast address: 172.16.45.127",
+          "optionTextEs": "Dirección de red: 172.16.45.96, Dirección de broadcast: 172.16.45.127",
+          "isCorrect": false,
+          "explanationEn": "Incorrect. The range 172.16.45.96 to 172.16.45.127 represents the preceding /27 subnet and does not encompass host 172.16.45.138.",
+          "explanationEs": "Incorrecto. El rango de 172.16.45.96 a 172.16.45.127 representa la subred /27 anterior y no abarca el host 172.16.45.138.",
+          "displayOrder": 2
+        },
+        {
+          "optionLabel": "D",
+          "optionTextEn": "Network address: 172.16.45.136, Broadcast address: 172.16.45.139",
+          "optionTextEs": "Dirección de red: 172.16.45.136, Dirección de broadcast: 172.16.45.139",
+          "isCorrect": false,
+          "explanationEn": "Incorrect. A block size of 4 with network .136 and broadcast .139 corresponds to a /30 prefix (255.255.255.252), not /27.",
+          "explanationEs": "Incorrecto. Un tamaño de bloque de 4 con red .136 y broadcast .139 corresponde a un prefijo /30 (255.255.255.252), no /27.",
+          "displayOrder": 3
+        }
+      ],
+      "sourceName": "CCNA 200-301 Original Questions",
+      "sourceLicense": "Original content"
+    },
+    {
+      "statementEn": "A network architect allocates subnets from the summary block 10.150.16.0/22 for a new corporate branch. The branch requires four distinct subnets:\n• Department 1 (Sales): 230 usable hosts\n• Department 2 (Engineering): 110 usable hosts\n• Department 3 (Finance): 55 usable hosts\n• Department 4 (Guest Wi-Fi): 28 usable hosts\nApplying Variable-Length Subnet Masking (VLSM) starting from the beginning of the block in order from the largest requirement to the smallest, what is the subnet mask and usable host range for Department 3 (Finance)?",
+      "statementEs": "Un arquitecto de red asigna subredes a partir del bloque de resumen 10.150.16.0/22 para una nueva sucursal corporativa. La sucursal requiere cuatro subredes distintas:\n• Departamento 1 (Ventas): 230 hosts utilizables\n• Departamento 2 (Ingeniería): 110 hosts utilizables\n• Departamento 3 (Finanzas): 55 hosts utilizables\n• Departamento 4 (Wi-Fi Invitados): 28 hosts utilizables\nAplicando Variable-Length Subnet Masking (VLSM) desde el inicio del bloque en orden de mayor a menor requerimiento, ¿cuál es la máscara de subred y el rango de hosts utilizables para el Departamento 3 (Finanzas)?",
+      "questionType": "single_choice",
+      "difficulty": "advanced",
+      "primaryTopicExamArea": "network_fundamentals",
+      "multipleAnswerCount": null,
+      "estimatedTimeSeconds": 120,
+      "explanationEn": "VLSM allocation requires sizing and ordering subnets from largest to smallest to avoid address fragmentation:\n1. Department 1 (Sales - 230 hosts): Needs 8 host bits (2^8 - 2 = 254 hosts). Mask: /24 (255.255.255.0). Subnet allocated: 10.150.16.0/24 (Usable: 10.150.16.1 - 10.150.16.254, Broadcast: 10.150.16.255).\n2. Department 2 (Engineering - 110 hosts): Needs 7 host bits (2^7 - 2 = 126 hosts). Mask: /25 (255.255.255.128). Next available: 10.150.17.0/25 (Usable: 10.150.17.1 - 10.150.17.126, Broadcast: 10.150.17.127).\n3. Department 3 (Finance - 55 hosts): Needs 6 host bits (2^6 - 2 = 62 hosts). Mask: /26 (255.255.255.192). Next available: 10.150.17.128/26 (Usable: 10.150.17.129 - 10.150.17.190, Broadcast: 10.150.17.191).\n4. Department 4 (Guest Wi-Fi - 28 hosts): Needs 5 host bits (2^5 - 2 = 30 hosts). Mask: /27 (255.255.255.224). Next available: 10.150.17.192/27 (Usable: 10.150.17.193 - 10.150.17.222, Broadcast: 10.150.17.223).",
+      "explanationEs": "La asignación mediante VLSM exige dimensionar y ordenar las subredes de mayor a menor para evitar la fragmentación de direcciones:\n1. Departamento 1 (Ventas - 230 hosts): Requiere 8 bits de host (2^8 - 2 = 254 hosts). Máscara: /24 (255.255.255.0). Subred asignada: 10.150.16.0/24 (Utilizables: 10.150.16.1 - 10.150.16.254, Broadcast: 10.150.16.255).\n2. Departamento 2 (Ingeniería - 110 hosts): Requiere 7 bits de host (2^7 - 2 = 126 hosts). Máscara: /25 (255.255.255.128). Siguiente disponible: 10.150.17.0/25 (Utilizables: 10.150.17.1 - 10.150.17.126, Broadcast: 10.150.17.127).\n3. Departamento 3 (Finanzas - 55 hosts): Requiere 6 bits de host (2^6 - 2 = 62 hosts). Máscara: /26 (255.255.255.192). Siguiente disponible: 10.150.17.128/26 (Utilizables: 10.150.17.129 - 10.150.17.190, Broadcast: 10.150.17.191).\n4. Departamento 4 (Wi-Fi Invitados - 28 hosts): Requiere 5 bits de host (2^5 - 2 = 30 hosts). Máscara: /27 (255.255.255.224). Siguiente disponible: 10.150.17.192/27 (Utilizables: 10.150.17.193 - 10.150.17.222, Broadcast: 10.150.17.223).",
+      "correctAnswerExplanationEn": "Following contiguous largest-to-smallest allocation, Department 3 receives the subnet block starting at 10.150.17.128 with a /26 prefix (255.255.255.192), giving usable host addresses from 10.150.17.129 to 10.150.17.190.",
+      "correctAnswerExplanationEs": "Siguiendo la asignación contigua de mayor a menor, el Departamento 3 recibe el bloque de subred que comienza en 10.150.17.128 con un prefijo /26 (255.255.255.192), lo que brinda direcciones de host utilizables de 10.150.17.129 a 10.150.17.190.",
+      "options": [
+        {
+          "optionLabel": "A",
+          "optionTextEn": "Subnet mask: 255.255.255.192 (/26); Usable host range: 10.150.17.129 - 10.150.17.190",
+          "optionTextEs": "Máscara de subred: 255.255.255.192 (/26); Rango de hosts utilizables: 10.150.17.129 - 10.150.17.190",
+          "isCorrect": true,
+          "explanationEn": "Correct. Sales requires /24 (10.150.16.0 - 10.150.16.255). Engineering requires /25 (10.150.17.0 - 10.150.17.127). Finance requires 55 hosts, which needs 6 host bits (2^6 - 2 = 62 hosts, /26). The next available address is 10.150.17.128/26 (mask 255.255.255.192), giving a usable host range of 10.150.17.129 through 10.150.17.190 with broadcast 10.150.17.191.",
+          "explanationEs": "Correcto. Ventas requiere /24 (10.150.16.0 - 10.150.16.255). Ingeniería requiere /25 (10.150.17.0 - 10.150.17.127). Finanzas requiere 55 hosts, lo que necesita 6 bits de host (2^6 - 2 = 62 hosts, /26). La siguiente dirección disponible es 10.150.17.128/26 (máscara 255.255.255.192), proporcionando un rango de hosts utilizables de 10.150.17.129 a 10.150.17.190 con broadcast 10.150.17.191.",
+          "displayOrder": 0
+        },
+        {
+          "optionLabel": "B",
+          "optionTextEn": "Subnet mask: 255.255.255.224 (/27); Usable host range: 10.150.17.129 - 10.150.17.158",
+          "optionTextEs": "Máscara de subred: 255.255.255.224 (/27); Rango de hosts utilizables: 10.150.17.129 - 10.150.17.158",
+          "isCorrect": false,
+          "explanationEn": "Incorrect. A /27 prefix (255.255.255.224) provides only 30 usable hosts (2^5 - 2), which fails to accommodate the 55 hosts required for Finance.",
+          "explanationEs": "Incorrecto. Un prefijo /27 (255.255.255.224) proporciona únicamente 30 hosts utilizables (2^5 - 2), lo cual no puede albergar los 55 hosts requeridos por Finanzas.",
+          "displayOrder": 1
+        },
+        {
+          "optionLabel": "C",
+          "optionTextEn": "Subnet mask: 255.255.255.192 (/26); Usable host range: 10.150.18.1 - 10.150.18.62",
+          "optionTextEs": "Máscara de subred: 255.255.255.192 (/26); Rango de hosts utilizables: 10.150.18.1 - 10.150.18.62",
+          "isCorrect": false,
+          "explanationEn": "Incorrect. Assigning 10.150.18.0/26 skips the second half of the 10.150.17.0 block (10.150.17.128 - 10.150.17.255), violating contiguous VLSM allocation principles.",
+          "explanationEs": "Incorrecto. Asignar 10.150.18.0/26 omite la segunda mitad del bloque 10.150.17.0 (10.150.17.128 - 10.150.17.255), violando los principios de asignación contigua de VLSM.",
+          "displayOrder": 2
+        },
+        {
+          "optionLabel": "D",
+          "optionTextEn": "Subnet mask: 255.255.255.128 (/25); Usable host range: 10.150.17.1 - 10.150.17.126",
+          "optionTextEs": "Máscara de subred: 255.255.255.128 (/25); Rango de hosts utilizables: 10.150.17.1 - 10.150.17.126",
+          "isCorrect": false,
+          "explanationEn": "Incorrect. This subnet (10.150.17.0/25) was already allocated to Department 2 (Engineering, 110 hosts) and would create an address overlap.",
+          "explanationEs": "Incorrecto. Esta subred (10.150.17.0/25) ya fue asignada al Departamento 2 (Ingeniería, 110 hosts) y causaría una superposición de direcciones.",
+          "displayOrder": 3
+        }
+      ],
+      "sourceName": "CCNA 200-301 Original Questions",
+      "sourceLicense": "Original content"
+    },
+    {
+      "statementEn": "A network administrator configures a Cisco router GigabitEthernet interface having the MAC address 0050.56BE.341A with the command 'ipv6 address 2001:db8:acad:1::/64 eui-64'. Which IPv6 global unicast address is generated on the interface?",
+      "statementEs": "Un administrador de red configura una interfaz GigabitEthernet de un router Cisco que posee la dirección MAC 0050.56BE.341A con el comando 'ipv6 address 2001:db8:acad:1::/64 eui-64'. ¿Qué dirección IPv6 unicast global se genera en la interfaz?",
+      "questionType": "single_choice",
+      "difficulty": "intermediate",
+      "primaryTopicExamArea": "network_fundamentals",
+      "multipleAnswerCount": null,
+      "estimatedTimeSeconds": 90,
+      "explanationEn": "The modified EUI-64 format allows an IPv6 device to automatically generate a 64-bit Interface Identifier (IID) from its 48-bit IEEE 802 MAC address. The process follows three exact steps:\n1. Divide the 48-bit MAC address (0050.56BE.341A) into two 24-bit halves: 00-50-56 (OUI) and BE-34-1A (device identifier).\n2. Insert the fixed 16-bit hexadecimal value 0xFFFE between the two halves: 00-50-56-FF-FE-BE-34-1A.\n3. Invert the 7th bit (the Universal/Local or U/L bit) from the left in the first byte. The first byte 0x00 is 0000 0000 in binary; inverting bit 7 produces 0000 0010 (0x02). The first byte becomes 02.\nCombining this with the configured prefix 2001:db8:acad:1::/64 and compressing leading zeros produces: 2001:db8:acad:1:250:56ff:febe:341a.",
+      "explanationEs": "El formato EUI-64 modificado permite a un dispositivo IPv6 generar automáticamente un Identificador de Interfaz (IID) de 64 bits a partir de su dirección MAC IEEE 802 de 48 bits. El proceso sigue tres pasos exactos:\n1. Dividir la dirección MAC de 48 bits (0050.56BE.341A) en dos mitades de 24 bits: 00-50-56 (OUI) y BE-34-1A (identificador de dispositivo).\n2. Insertar el valor hexadecimal fijo de 16 bits 0xFFFE en medio de ambas mitades: 00-50-56-FF-FE-BE-34-1A.\n3. Invertir el séptimo bit (el bit Universal/Local o U/L) contando desde la izquierda en el primer byte. El primer byte 0x00 es 0000 0000 en binario; al invertir el bit 7 se obtiene 0000 0010 (0x02). El primer byte se convierte en 02.\nAl combinar esto con el prefijo configurado 2001:db8:acad:1::/64 y comprimir los ceros iniciales resulta: 2001:db8:acad:1:250:56ff:febe:341a.",
+      "correctAnswerExplanationEn": "The modified EUI-64 standard inserts FFFE in the middle of the MAC and inverts the 7th bit of the first byte (00 -> 02), yielding 2001:db8:acad:1:250:56ff:febe:341a.",
+      "correctAnswerExplanationEs": "El estándar EUI-64 modificado inserta FFFE en el centro de la MAC e invierte el séptimo bit del primer byte (00 -> 02), dando como resultado 2001:db8:acad:1:250:56ff:febe:341a.",
+      "options": [
+        {
+          "optionLabel": "A",
+          "optionTextEn": "2001:db8:acad:1:250:56ff:febe:341a",
+          "optionTextEs": "2001:db8:acad:1:250:56ff:febe:341a",
+          "isCorrect": true,
+          "explanationEn": "Correct. The 48-bit MAC 00:50:56:BE:34:1A is split into two halves (00:50:56 and BE:34:1A) with 0xFFFE inserted (00:50:56:FF:FE:BE:34:1A). Inverting the 7th bit (Universal/Local bit) changes byte 0x00 (00000000) to 0x02 (00000010), producing the 64-bit Interface ID 0250:56ff:febe:341a. Omitting leading zeros yields 2001:db8:acad:1:250:56ff:febe:341a.",
+          "explanationEs": "Correcto. La dirección MAC de 48 bits 00:50:56:BE:34:1A se divide en dos mitades (00:50:56 y BE:34:1A) con 0xFFFE insertado en el medio (00:50:56:FF:FE:BE:34:1A). Al invertir el séptimo bit (bit Universal/Local), el byte 0x00 (00000000) cambia a 0x02 (00000010), produciendo el Interface ID de 64 bits 0250:56ff:febe:341a. Omitiendo los ceros a la izquierda resulta en 2001:db8:acad:1:250:56ff:febe:341a.",
+          "displayOrder": 0
+        },
+        {
+          "optionLabel": "B",
+          "optionTextEn": "2001:db8:acad:1:0050:56ff:febe:341a",
+          "optionTextEs": "2001:db8:acad:1:0050:56ff:febe:341a",
+          "isCorrect": false,
+          "explanationEn": "Incorrect. This address failed to invert the 7th bit (Universal/Local bit) of the first byte of the MAC address.",
+          "explanationEs": "Incorrecto. En esta dirección no se invirtió el séptimo bit (bit Universal/Local) del primer byte de la dirección MAC.",
+          "displayOrder": 1
+        },
+        {
+          "optionLabel": "C",
+          "optionTextEn": "2001:db8:acad:1:250:56fe:ffbe:341a",
+          "optionTextEs": "2001:db8:acad:1:250:56fe:ffbe:341a",
+          "isCorrect": false,
+          "explanationEn": "Incorrect. The inserted 16-bit pattern was erroneously swapped to FEFF instead of the standardized FFFE pattern.",
+          "explanationEs": "Incorrecto. El patrón insertado de 16 bits fue invertido erróneamente a FEFF en lugar del patrón estandarizado FFFE.",
+          "displayOrder": 2
+        },
+        {
+          "optionLabel": "D",
+          "optionTextEn": "fe80::250:56ff:febe:341a",
+          "optionTextEs": "fe80::250:56ff:febe:341a",
+          "isCorrect": false,
+          "explanationEn": "Incorrect. This is the link-local IPv6 address (prefix fe80::/10), whereas the command explicitly configured a global unicast address using the 2001:db8:acad:1::/64 prefix.",
+          "explanationEs": "Incorrecto. Esta es la dirección IPv6 link-local (prefijo fe80::/10), mientras que el comando configuró explícitamente una dirección unicast global usando el prefijo 2001:db8:acad:1::/64.",
+          "displayOrder": 3
+        }
+      ],
+      "sourceName": "CCNA 200-301 Original Questions",
+      "sourceLicense": "Original content"
+    },
+    {
+      "statementEn": "A network engineer verifies the WAN interface configuration on an edge router connected to a service provider. The interface is dynamically assigned the IPv4 address 100.64.45.10 with subnet mask 255.255.240.0. According to IETF RFC standards, to which address classification does this IP address belong?",
+      "statementEs": "Un administrador de red verifica la configuración de la interfaz WAN de un router de borde conectado a un proveedor de servicios. La interfaz tiene asignada dinámicamente la dirección IPv4 100.64.45.10 con máscara de subred 255.255.240.0. De acuerdo con los estándares RFC de la IETF, ¿a qué clasificación de direccionamiento pertenece esta dirección IP?",
+      "questionType": "single_choice",
+      "difficulty": "basic",
+      "primaryTopicExamArea": "network_fundamentals",
+      "multipleAnswerCount": null,
+      "estimatedTimeSeconds": 60,
+      "explanationEn": "RFC 6598 designates 100.64.0.0/10 (ranging from 100.64.0.0 to 100.127.255.255) as Shared Address Space, commonly implemented for Carrier-Grade NAT (CGNAT) or Large-Scale NAT (LSN). As public IPv4 addresses became scarce, ISPs required a dedicated address pool to assign to customer edge routers (CPE) that would not overlap with existing RFC 1918 enterprise private ranges (10.0.0.0/8, 172.16.0.0/12, 192.168.0.0/16) and would not be routable across the public Internet. Packets with 100.64.0.0/10 addresses must be translated via CGNAT before traversing the public Internet.",
+      "explanationEs": "RFC 6598 designa 100.64.0.0/10 (que abarca desde 100.64.0.0 hasta 100.127.255.255) como espacio de direcciones compartidas (Shared Address Space), comúnmente implementado para Carrier-Grade NAT (CGNAT) o Large-Scale NAT (LSN). Debido al agotamiento de direcciones IPv4 públicas, los ISP necesitaron un bloque exclusivo para asignar a los routers perimetrales de los clientes (CPE) que no colisionara con los rangos privados de empresas definidos en RFC 1918 (10.0.0.0/8, 172.16.0.0/12, 192.168.0.0/16) y que no fuera enrutable en la Internet pública. Los paquetes con direcciones 100.64.0.0/10 deben ser traducidos mediante CGNAT antes de cursar tráfico hacia la Internet pública.",
+      "correctAnswerExplanationEn": "The 100.64.0.0/10 block is designated by RFC 6598 for Carrier-Grade NAT (CGNAT) shared address space, preventing address collisions between enterprise internal RFC 1918 addresses and ISP translation layers.",
+      "correctAnswerExplanationEs": "El bloque 100.64.0.0/10 está designado por RFC 6598 para el espacio compartido de Carrier-Grade NAT (CGNAT), evitando colisiones de direcciones entre los rangos internos RFC 1918 de las empresas y las capas de traducción del ISP.",
+      "options": [
+        {
+          "optionLabel": "A",
+          "optionTextEn": "Shared Address Space for Carrier-Grade NAT (CGNAT) under RFC 6598 (100.64.0.0/10)",
+          "optionTextEs": "Espacio de direcciones compartidas para Carrier-Grade NAT (CGNAT) bajo RFC 6598 (100.64.0.0/10)",
+          "isCorrect": true,
+          "explanationEn": "RFC 6598 reserves the prefix 100.64.0.0/10 (addresses 100.64.0.0 to 100.127.255.255) as Shared Address Space for Carrier-Grade NAT (CGNAT/Large-Scale NAT) deployed by ISPs to communicate with customer premises equipment without consuming public IPv4 addresses or conflicting with RFC 1918 private spaces.",
+          "explanationEs": "RFC 6598 reserva el prefijo 100.64.0.0/10 (direcciones de 100.64.0.0 a 100.127.255.255) como espacio de direcciones compartidas (Shared Address Space) para Carrier-Grade NAT (CGNAT/Large-Scale NAT) implementado por ISPs para comunicarse con equipos de clientes (CPE) sin consumir IPs públicas ni entrar en conflicto con RFC 1918.",
+          "displayOrder": 0
+        },
+        {
+          "optionLabel": "B",
+          "optionTextEn": "Private IPv4 Address Space under RFC 1918 Class B (172.16.0.0/12)",
+          "optionTextEs": "Espacio de direcciones IPv4 privadas bajo RFC 1918 Clase B (172.16.0.0/12)",
+          "isCorrect": false,
+          "explanationEn": "RFC 1918 defines private address spaces strictly as 10.0.0.0/8, 172.16.0.0/12 (172.16.0.0 to 172.31.255.255), and 192.168.0.0/16; 100.64.0.0/10 is not part of RFC 1918.",
+          "explanationEs": "RFC 1918 define los espacios de direcciones privadas estrictamente como 10.0.0.0/8, 172.16.0.0/12 (172.16.0.0 a 172.31.255.255) y 192.168.0.0/16; 100.64.0.0/10 no forma parte de RFC 1918.",
+          "displayOrder": 1
+        },
+        {
+          "optionLabel": "C",
+          "optionTextEn": "Automatic Private IP Addressing (APIPA) / IPv4 Link-Local range under RFC 3927 (169.254.0.0/16)",
+          "optionTextEs": "Rango Automatic Private IP Addressing (APIPA) / IPv4 Link-Local bajo RFC 3927 (169.254.0.0/16)",
+          "isCorrect": false,
+          "explanationEn": "APIPA link-local addressing is designated under RFC 3927 in the prefix 169.254.0.0/16 and is self-assigned by hosts when DHCP server discovery fails.",
+          "explanationEs": "El direccionamiento link-local de APIPA está designado bajo RFC 3927 en el prefijo 169.254.0.0/16 y es autoasignado por los hosts cuando falla el descubrimiento del servidor DHCP.",
+          "displayOrder": 2
+        },
+        {
+          "optionLabel": "D",
+          "optionTextEn": "Globally routable public IPv4 address assigned to ARIN for public Internet transit",
+          "optionTextEs": "Dirección IPv4 pública enrutable globalmente asignada a ARIN para tránsito en la Internet pública",
+          "isCorrect": false,
+          "explanationEn": "Addresses within 100.64.0.0/10 are non-routable on the global public Internet and are filtered at ISP border routers.",
+          "explanationEs": "Las direcciones dentro de 100.64.0.0/10 no son enrutables en la Internet pública global y son filtradas en los routers de borde de los proveedores de servicios.",
+          "displayOrder": 3
+        }
+      ],
+      "sourceName": "CCNA 200-301 Original Questions",
+      "sourceLicense": "Original content"
+    }
+  ]
+}

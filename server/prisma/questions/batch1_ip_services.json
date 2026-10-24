@@ -1,0 +1,249 @@
+{
+  "questions": [
+    {
+      "statementEn": "Refer to the exhibit displaying the output of the 'show ip nat translations' command on an enterprise edge router:\n\nRouter# show ip nat translations\nPro  Inside global         Inside local          Outside local         Outside global\ntcp  203.0.113.25:80       192.168.10.50:80      198.51.100.77:49152   198.51.100.77:49152\n\nAn external client at IP address 198.51.100.77 is establishing an HTTP connection to the company's internal web server. Which statement correctly identifies how the source and destination IPv4 addresses appear in the packet header as the frame traverses the internal LAN segment between the router's inside interface and the web server?",
+      "statementEs": "Consulte la exhibición que muestra la salida del comando 'show ip nat translations' en un router de borde empresarial:\n\nRouter# show ip nat translations\nPro  Inside global         Inside local          Outside local         Outside global\ntcp  203.0.113.25:80       192.168.10.50:80      198.51.100.77:49152   198.51.100.77:49152\n\nUn cliente externo en la dirección IP 198.51.100.77 está estableciendo una conexión HTTP con el servidor web interno de la empresa. ¿Qué afirmación identifica correctamente cómo aparecen las direcciones IPv4 de origen y destino en el encabezado del paquete mientras la trama atraviesa el segmento LAN interno entre la interfaz inside del router y el servidor web?",
+      "questionType": "single_choice",
+      "difficulty": "advanced",
+      "primaryTopicExamArea": "ip_services",
+      "multipleAnswerCount": null,
+      "estimatedTimeSeconds": 90,
+      "explanationEn": "Cisco defines four distinct NAT address classifications: Inside Local (the private RFC 1918 address assigned to the host inside the network, 192.168.10.50), Inside Global (the public routable address representing the internal host to the external world, 203.0.113.25), Outside Local (the IP address of an external host as known to internal hosts, 198.51.100.77), and Outside Global (the globally routable IP assigned to the external host by its owner, 198.51.100.77). When an inbound packet arrives at the router's outside interface addressed to 203.0.113.25:80, the router consults its static NAT table and translates the destination IP address to the Inside Local address (192.168.10.50). As a result, when the packet traverses the internal LAN toward the server, the source IP remains 198.51.100.77 (Outside Local) and the destination IP is 192.168.10.50 (Inside Local).",
+      "explanationEs": "Cisco define cuatro clasificaciones de direcciones NAT: Inside Local (la dirección privada RFC 1918 asignada al host dentro de la red interna, 192.168.10.50), Inside Global (la dirección pública enrutable que representa al host interno ante el mundo exterior, 203.0.113.25), Outside Local (la dirección IP de un host externo tal como es conocida por los hosts internos, 198.51.100.77) y Outside Global (la dirección IP globalmente enrutable asignada al host externo por su propietario, 198.51.100.77). Cuando un paquete entrante llega a la interfaz outside del router dirigido a 203.0.113.25:80, el router consulta su tabla NAT estática y traduce la dirección IP de destino a la dirección Inside Local (192.168.10.50). Por lo tanto, cuando el paquete atraviesa la LAN interna hacia el servidor, la IP de origen permanece como 198.51.100.77 (Outside Local) y la IP de destino es 192.168.10.50 (Inside Local).",
+      "correctAnswerExplanationEn": "The router's NAT process performs destination translation for inbound packets matching a static inside source NAT entry. On the inside LAN segment, the destination address has been replaced with the Inside Local IP (192.168.10.50), while the source IP represents the external sender as seen on the inside (Outside Local: 198.51.100.77).",
+      "correctAnswerExplanationEs": "El proceso NAT del router realiza la traducción de destino para los paquetes entrantes que coinciden con una entrada de NAT estático de origen interno. En el segmento LAN interno, la dirección de destino se ha reemplazado con la IP Inside Local (192.168.10.50), mientras que la IP de origen representa al emisor externo visto en el interior (Outside Local: 198.51.100.77).",
+      "options": [
+        {
+          "optionLabel": "A",
+          "optionTextEn": "Source IP: 198.51.100.77 (Outside Local) and Destination IP: 192.168.10.50 (Inside Local)",
+          "optionTextEs": "IP de origen: 198.51.100.77 (Outside Local) e IP de destino: 192.168.10.50 (Inside Local)",
+          "isCorrect": true,
+          "explanationEn": "Correct. On the inside network segment, the router has already translated the destination Inside Global address (203.0.113.25) into the private Inside Local address (192.168.10.50). The source IP remains the remote host address as seen internally, which is the Outside Local address (198.51.100.77).",
+          "explanationEs": "Correcto. En el segmento de red interno, el router ya ha traducido la dirección de destino Inside Global (203.0.113.25) a la dirección privada Inside Local (192.168.10.50). La IP de origen se mantiene como la dirección del host remoto vista internamente, que es la dirección Outside Local (198.51.100.77)."
+        },
+        {
+          "optionLabel": "B",
+          "optionTextEn": "Source IP: 203.0.113.25 (Inside Global) and Destination IP: 198.51.100.77 (Outside Global)",
+          "optionTextEs": "IP de origen: 203.0.113.25 (Inside Global) e IP de destino: 198.51.100.77 (Outside Global)",
+          "isCorrect": false,
+          "explanationEn": "Incorrect. This describes the headers of a return packet as viewed on the external public Internet after NAT has taken place, not the incoming packet on the internal LAN segment.",
+          "explanationEs": "Incorrecto. Esto describe los encabezados de un paquete de retorno tal como se verían en la red pública de Internet después del proceso NAT, no el paquete entrante en el segmento LAN interno."
+        },
+        {
+          "optionLabel": "C",
+          "optionTextEn": "Source IP: 192.168.10.50 (Inside Local) and Destination IP: 203.0.113.25 (Inside Global)",
+          "optionTextEs": "IP de origen: 192.168.10.50 (Inside Local) e IP de destino: 203.0.113.25 (Inside Global)",
+          "isCorrect": false,
+          "explanationEn": "Incorrect. An incoming packet originating from an external client does not carry the web server's address as the source IP, nor would both inside addresses be present in a single header.",
+          "explanationEs": "Incorrecto. Un paquete entrante originado por un cliente externo no contiene la dirección del servidor web como IP de origen, ni estarían presentes ambas direcciones internas en un solo encabezado."
+        },
+        {
+          "optionLabel": "D",
+          "optionTextEn": "Source IP: 198.51.100.77 (Outside Global) and Destination IP: 203.0.113.25 (Inside Global)",
+          "optionTextEs": "IP de origen: 198.51.100.77 (Outside Global) e IP de destino: 203.0.113.25 (Inside Global)",
+          "isCorrect": false,
+          "explanationEn": "Incorrect. This reflects the packet header on the external WAN link before it enters the router's outside interface, prior to destination NAT translation.",
+          "explanationEs": "Incorrecto. Esto refleja el encabezado del paquete en el enlace WAN externo antes de ingresar a la interfaz outside del router, previo a la traducción de destino NAT."
+        }
+      ],
+      "sourceName": "CCNA 200-301 Original Questions",
+      "sourceLicense": "Original content"
+    },
+    {
+      "statementEn": "A network engineer is configuring a Cisco router acting as the default gateway for client workstations in VLAN 20 on subinterface GigabitEthernet0/0.20. The clients fail to obtain network parameters during the DORA process and assign themselves APIPA addresses (169.254.x.x). A central enterprise DHCP server is located in the data center at IPv4 address 10.10.100.5. Which Cisco IOS command must be configured under subinterface GigabitEthernet0/0.20 to enable the router to relay client DHCPDISCOVER broadcast messages as unicast packets to the central server?",
+      "statementEs": "Un ingeniero de red está configurando un router Cisco que actúa como puerta de enlace predeterminada para estaciones de trabajo en la VLAN 20 en la subinterfaz GigabitEthernet0/0.20. Los clientes no logran obtener parámetros de red durante el proceso DORA y se autoasignan direcciones APIPA (169.254.x.x). Un servidor DHCP empresarial centralizado se encuentra en el centro de datos en la dirección IPv4 10.10.100.5. ¿Qué comando de Cisco IOS debe configurarse bajo la subinterfaz GigabitEthernet0/0.20 para permitir que el router reenvíe los mensajes de difusión DHCPDISCOVER de los clientes como paquetes unicast al servidor central?",
+      "questionType": "ios_commands",
+      "difficulty": "intermediate",
+      "primaryTopicExamArea": "ip_services",
+      "multipleAnswerCount": null,
+      "estimatedTimeSeconds": 75,
+      "explanationEn": "The Dynamic Host Configuration Protocol (DHCP) operates through the four-step DORA process: DHCPDISCOVER (client broadcast), DHCPOFFER (server unicast or broadcast), DHCPREQUEST (client broadcast), and DHCPACK (server unicast or broadcast). Because client DHCPDISCOVER frames are sent as Layer 3 broadcasts (destination 255.255.255.255, UDP port 67), routers drop them by default and do not cross network boundaries. The 'ip helper-address <server-ip>' command configured on the incoming client-facing interface instructs the router to act as a DHCP relay agent. The router intercepts the UDP port 67 broadcast, populates the Gateway IP Address (giaddr) field with its subinterface IP address so the server knows which subnet pool to allocate from, and forwards the packet as a unicast message to 10.10.100.5.",
+      "explanationEs": "El protocolo de configuración dinámica de host (DHCP) opera mediante el proceso DORA de cuatro pasos: DHCPDISCOVER (difusión del cliente), DHCPOFFER (unicast o difusión del servidor), DHCPREQUEST (difusión del cliente) y DHCPACK (unicast o difusión del servidor). Debido a que las tramas DHCPDISCOVER del cliente se envían como difusiones de Capa 3 (destino 255.255.255.255, puerto UDP 67), los routers las descartan de forma predeterminada y no cruzan los límites de red. El comando 'ip helper-address <server-ip>' configurado en la interfaz orientada al cliente le indica al router que actúe como un agente relay de DHCP. El router intercepta la difusión en el puerto UDP 67, completa el campo Gateway IP Address (giaddr) con la dirección IP de su subinterfaz para que el servidor sepa de qué pool de subred asignar, y reenvía el paquete como un mensaje unicast a 10.10.100.5.",
+      "correctAnswerExplanationEn": "The interface configuration command 'ip helper-address 10.10.100.5' activates the DHCP relay agent on GigabitEthernet0/0.20, converting incoming client DHCP broadcast packets into unicast packets routed directly to 10.10.100.5.",
+      "correctAnswerExplanationEs": "El comando de configuración de interfaz 'ip helper-address 10.10.100.5' activa el agente relay de DHCP en GigabitEthernet0/0.20, convirtiendo los paquetes de difusión DHCP del cliente en paquetes unicast enrutados directamente a 10.10.100.5.",
+      "options": [
+        {
+          "optionLabel": "A",
+          "optionTextEn": "ip helper-address 10.10.100.5",
+          "optionTextEs": "ip helper-address 10.10.100.5",
+          "isCorrect": true,
+          "explanationEn": "Correct. 'ip helper-address' is the Cisco IOS interface command that enables DHCP relay by forwarding broadcast UDP packets (including ports 67 and 68) to the target unicast IP address.",
+          "explanationEs": "Correcto. 'ip helper-address' es el comando de interfaz de Cisco IOS que habilita el relay de DHCP reenviando paquetes de difusión UDP (incluidos los puertos 67 y 68) a la dirección IP unicast de destino."
+        },
+        {
+          "optionLabel": "B",
+          "optionTextEn": "ip dhcp relay 10.10.100.5",
+          "optionTextEs": "ip dhcp relay 10.10.100.5",
+          "isCorrect": false,
+          "explanationEn": "Incorrect. 'ip dhcp relay' is not valid Cisco IOS command syntax for configuring a DHCP relay address on an interface.",
+          "explanationEs": "Incorrecto. 'ip dhcp relay' no es una sintaxis de comando válida de Cisco IOS para configurar una dirección de relay DHCP en una interfaz."
+        },
+        {
+          "optionLabel": "C",
+          "optionTextEn": "ip dhcp-server 10.10.100.5",
+          "optionTextEs": "ip dhcp-server 10.10.100.5",
+          "isCorrect": false,
+          "explanationEn": "Incorrect. 'ip dhcp-server' does not exist in standard Cisco IOS software.",
+          "explanationEs": "Incorrecto. 'ip dhcp-server' no existe en el software estándar de Cisco IOS."
+        },
+        {
+          "optionLabel": "D",
+          "optionTextEn": "ip forward-protocol udp 10.10.100.5",
+          "optionTextEs": "ip forward-protocol udp 10.10.100.5",
+          "isCorrect": false,
+          "explanationEn": "Incorrect. 'ip forward-protocol udp' is a global configuration command used to specify which UDP port numbers are forwarded when helper addresses are active; it takes a port number as an argument, not an IP address.",
+          "explanationEs": "Incorrecto. 'ip forward-protocol udp' es un comando de configuración global utilizado para especificar qué números de puerto UDP se reenvían cuando las direcciones helper están activas; toma un número de puerto como argumento, no una dirección IP."
+        }
+      ],
+      "sourceName": "CCNA 200-301 Original Questions",
+      "sourceLicense": "Original content"
+    },
+    {
+      "statementEn": "A network engineer configures a core router (Core-R1) with the command 'ntp server 192.0.2.10'. The external reference server at 192.0.2.10 is directly synchronized with a precision GPS atomic clock and operates at Stratum 1. Internal distribution switches are configured with the command 'ntp server <Core-R1-IP>' to synchronize their clocks from Core-R1. After all devices successfully converge and synchronize, what stratum level is advertised by Core-R1, and what stratum level will the distribution switches report for their own system clocks?",
+      "statementEs": "Un ingeniero de red configura un router central (Core-R1) con el comando 'ntp server 192.0.2.10'. El servidor de referencia externo en 192.0.2.10 está sincronizado directamente con un reloj atómico GPS de precisión y opera en Stratum 1. Los switches de distribución internos se configuran con el comando 'ntp server <Core-R1-IP>' para sincronizar sus relojes desde Core-R1. Después de que todos los dispositivos convergen y se sincronizan exitosamente, ¿qué nivel de estrato anuncia Core-R1 y qué nivel de estrato reportarán los switches de distribución para sus propios relojes de sistema?",
+      "questionType": "single_choice",
+      "difficulty": "basic",
+      "primaryTopicExamArea": "ip_services",
+      "multipleAnswerCount": null,
+      "estimatedTimeSeconds": 60,
+      "explanationEn": "Network Time Protocol (NTP) uses a hierarchical system of stratum levels (0 to 15) to describe the distance between a network device and an authoritative time source. Stratum 0 devices are high-precision timekeeping standards (such as atomic clocks or GPS satellites) that are not directly attached to a network. Stratum 1 servers are directly connected to Stratum 0 physical devices. Each subsequent NTP client that synchronizes to an upstream server increments the stratum level by 1. Therefore, Core-R1 synchronizing to a Stratum 1 server becomes Stratum 2, and the distribution switches synchronizing to Core-R1 become Stratum 3. Stratum 16 indicates an unsynchronized clock or an unreachable time source.",
+      "explanationEs": "El protocolo de tiempo de red (NTP) utiliza un sistema jerárquico de niveles de estrato (0 a 15) para describir la distancia entre un dispositivo de red y una fuente de tiempo autoritativa. Los dispositivos de Stratum 0 son estándares de cronometraje de alta precisión (como relojes atómicos o satélites GPS) que no están conectados directamente a una red. Los servidores Stratum 1 están conectados directamente a dispositivos físicos Stratum 0. Cada cliente NTP subsiguiente que se sincroniza con un servidor upstream incrementa el nivel de estrato en 1. Por lo tanto, Core-R1, al sincronizarse con un servidor Stratum 1, pasa a ser Stratum 2, y los switches de distribución que se sincronizan con Core-R1 pasan a ser Stratum 3. Stratum 16 indica un reloj no sincronizado o una fuente de tiempo inalcanzable.",
+      "correctAnswerExplanationEn": "Core-R1 increments the stratum of its upstream server (Stratum 1) by one, operating at Stratum 2. The distribution switches in turn synchronize to Core-R1, operating at Stratum 2 + 1 = Stratum 3.",
+      "correctAnswerExplanationEs": "Core-R1 incrementa en uno el estrato de su servidor upstream (Stratum 1), operando en Stratum 2. Los switches de distribución a su vez se sincronizan con Core-R1, operando en Stratum 2 + 1 = Stratum 3.",
+      "options": [
+        {
+          "optionLabel": "A",
+          "optionTextEn": "Core-R1 operates at Stratum 2, and the distribution switches operate at Stratum 3.",
+          "optionTextEs": "Core-R1 opera en Stratum 2, y los switches de distribución operan en Stratum 3.",
+          "isCorrect": true,
+          "explanationEn": "Correct. NTP stratum numbers indicate the distance in hops from the reference clock. An authoritative source synchronized directly to Stratum 0 (atomic/GPS) is Stratum 1; a client syncing to Stratum 1 becomes Stratum 2, and devices syncing to Stratum 2 become Stratum 3.",
+          "explanationEs": "Correcto. Los números de estrato NTP indican la distancia en saltos desde el reloj de referencia. Una fuente autoritativa sincronizada directamente a Stratum 0 (atómico/GPS) es Stratum 1; un cliente que se sincroniza a Stratum 1 se convierte en Stratum 2, y los dispositivos que se sincronizan a Stratum 2 se convierten en Stratum 3."
+        },
+        {
+          "optionLabel": "B",
+          "optionTextEn": "Core-R1 operates at Stratum 1, and the distribution switches operate at Stratum 2.",
+          "optionTextEs": "Core-R1 opera en Stratum 1, y los switches de distribución operan en Stratum 2.",
+          "isCorrect": false,
+          "explanationEn": "Incorrect. Core-R1 cannot be Stratum 1 because it does not possess a directly attached Stratum 0 hardware clock (such as a local GPS receiver or atomic standard).",
+          "explanationEs": "Incorrecto. Core-R1 no puede ser Stratum 1 porque no posee un reloj de hardware Stratum 0 conectado directamente (como un receptor GPS local o estándar atómico)."
+        },
+        {
+          "optionLabel": "C",
+          "optionTextEn": "Core-R1 operates at Stratum 2, and the distribution switches operate at Stratum 2.",
+          "optionTextEs": "Core-R1 opera en Stratum 2, y los switches de distribución operan en Stratum 2.",
+          "isCorrect": false,
+          "explanationEn": "Incorrect. When an NTP client synchronizes to a server, its stratum is always one higher (hop count + 1) than its master server's stratum level.",
+          "explanationEs": "Incorrecto. Cuando un cliente NTP se sincroniza con un servidor, su estrato siempre es uno superior (conteo de saltos + 1) al nivel de estrato de su servidor maestro."
+        },
+        {
+          "optionLabel": "D",
+          "optionTextEn": "Core-R1 operates at Stratum 16, and the distribution switches operate at Stratum 16.",
+          "optionTextEs": "Core-R1 opera en Stratum 16, y los switches de distribución operan en Stratum 16.",
+          "isCorrect": false,
+          "explanationEn": "Incorrect. Stratum 16 indicates an unsynchronized or unreachable state. Because the scenario explicitly states successful convergence, devices will have valid strata between 1 and 15.",
+          "explanationEs": "Incorrecto. Stratum 16 indica un estado no sincronizado o inalcanzable. Debido a que el escenario establece explícitamente una convergencia exitosa, los dispositivos tendrán estratos válidos entre 1 y 15."
+        }
+      ],
+      "sourceName": "CCNA 200-301 Original Questions",
+      "sourceLicense": "Original content"
+    },
+    {
+      "statementEn": "A network administrator configures a Cisco IOS router to send log messages to an external Syslog collector using the following commands:\n\nRouter(config)# logging host 192.168.50.25\nRouter(config)# logging trap warnings\n\nBased on standard Cisco Syslog severity levels (0 through 7), which group of message severity levels will the router forward to the Syslog collector at 192.168.50.25?",
+      "statementEs": "Un administrador de red configura un router Cisco IOS para enviar mensajes de registro a un recolector Syslog externo mediante los siguientes comandos:\n\nRouter(config)# logging host 192.168.50.25\nRouter(config)# logging trap warnings\n\nEn función de los niveles de gravedad estándar de Syslog en Cisco (0 a 7), ¿qué grupo de niveles de gravedad de mensajes reenviará el router al recolector Syslog en 192.168.50.25?",
+      "questionType": "single_choice",
+      "difficulty": "basic",
+      "primaryTopicExamArea": "ip_services",
+      "multipleAnswerCount": null,
+      "estimatedTimeSeconds": 60,
+      "explanationEn": "Cisco IOS devices use eight standard Syslog severity levels ranging from 0 to 7: 0 (Emergencies - system unusable), 1 (Alerts - immediate action needed), 2 (Critical - critical conditions), 3 (Errors - error conditions), 4 (Warnings - warning conditions), 5 (Notifications - normal but significant conditions, such as interface up/down), 6 (Informational - informational messages), and 7 (Debugging - debug output). When the 'logging trap <level>' command is configured, the router forwards all messages at the defined severity level and all numerically lower (more severe) levels to the remote Syslog host. Configuring 'logging trap warnings' sets the threshold at level 4, which means messages of levels 0 (Emergencies), 1 (Alerts), 2 (Critical), 3 (Errors), and 4 (Warnings) are forwarded, while levels 5, 6, and 7 are suppressed.",
+      "explanationEs": "Los dispositivos Cisco IOS utilizan ocho niveles de gravedad estándar de Syslog que van del 0 al 7: 0 (Emergencies - sistema inutilizable), 1 (Alerts - acción inmediata requerida), 2 (Critical - condiciones críticas), 3 (Errors - condiciones de error), 4 (Warnings - condiciones de advertencia), 5 (Notifications - condición normal pero significativa, como interfaz up/down), 6 (Informational - mensajes informativos) y 7 (Debugging - salida de depuración). Cuando se configura el comando 'logging trap <level>', el router reenvía al host Syslog remoto todos los mensajes en el nivel de gravedad definido y todos los niveles numéricamente inferiores (más graves). Al configurar 'logging trap warnings', se establece el umbral en el nivel 4, lo que significa que se reenvían los mensajes de niveles 0 (Emergencies), 1 (Alerts), 2 (Critical), 3 (Errors) y 4 (Warnings), mientras que los niveles 5, 6 y 7 quedan suprimidos.",
+      "correctAnswerExplanationEn": "The 'logging trap warnings' command includes severity level 4 (Warnings) and all more severe levels (0 through 3), thus sending levels 0 through 4 to the remote collector.",
+      "correctAnswerExplanationEs": "El comando 'logging trap warnings' incluye el nivel de gravedad 4 (Warnings) y todos los niveles más graves (0 al 3), enviando así los niveles 0 al 4 al recolector remoto.",
+      "options": [
+        {
+          "optionLabel": "A",
+          "optionTextEn": "Severity levels 0 through 4 (Emergencies, Alerts, Critical, Errors, and Warnings)",
+          "optionTextEs": "Niveles de gravedad 0 al 4 (Emergencies, Alerts, Critical, Errors y Warnings)",
+          "isCorrect": true,
+          "explanationEn": "Correct. The command 'logging trap <level>' instructs the router to send all Syslog messages matching the specified severity level AND all numerically lower (more severe) levels, meaning levels 0, 1, 2, 3, and 4.",
+          "explanationEs": "Correcto. El comando 'logging trap <level>' instruye al router a enviar todos los mensajes Syslog que coincidan con el nivel de gravedad especificado Y todos los niveles numéricamente inferiores (más graves), es decir, los niveles 0, 1, 2, 3 y 4."
+        },
+        {
+          "optionLabel": "B",
+          "optionTextEn": "Only severity level 4 messages (Warnings)",
+          "optionTextEs": "Únicamente mensajes con nivel de gravedad 4 (Warnings)",
+          "isCorrect": false,
+          "explanationEn": "Incorrect. The logging trap command defines a threshold, forwarding messages at that level and all higher severity (lower numerical) levels, not just the single level specified.",
+          "explanationEs": "Incorrecto. El comando logging trap define un umbral, reenviando mensajes en ese nivel y todos los niveles de mayor gravedad (numéricamente menores), no únicamente el nivel especificado."
+        },
+        {
+          "optionLabel": "C",
+          "optionTextEn": "Severity levels 4 through 7 (Warnings, Notifications, Informational, and Debugging)",
+          "optionTextEs": "Niveles de gravedad 4 al 7 (Warnings, Notifications, Informational y Debugging)",
+          "isCorrect": false,
+          "explanationEn": "Incorrect. Higher numerical values represent less severe messages (level 7 is debugging). The trap threshold includes lower numerical values (0 to 4), not higher numbers.",
+          "explanationEs": "Incorrecto. Los valores numéricos más altos representan mensajes menos graves (el nivel 7 es debugging). El umbral de trap incluye valores numéricos más bajos (0 a 4), no números más altos."
+        },
+        {
+          "optionLabel": "D",
+          "optionTextEn": "Severity levels 0 through 5 (Emergencies, Alerts, Critical, Errors, Warnings, and Notifications)",
+          "optionTextEs": "Niveles de gravedad 0 al 5 (Emergencies, Alerts, Critical, Errors, Warnings y Notifications)",
+          "isCorrect": false,
+          "explanationEn": "Incorrect. Notifications corresponds to severity level 5. A trap level set to warnings (4) excludes level 5, 6 (Informational), and 7 (Debugging).",
+          "explanationEs": "Incorrecto. Notifications corresponde al nivel de gravedad 5. Un nivel de trap configurado en warnings (4) excluye el nivel 5, 6 (Informational) y 7 (Debugging)."
+        }
+      ],
+      "sourceName": "CCNA 200-301 Original Questions",
+      "sourceLicense": "Original content"
+    },
+    {
+      "statementEn": "An enterprise connects its headquarters router to an MPLS WAN service using a 1 Gbps GigabitEthernet physical link. However, the contracted service level agreement (SLA) with the service provider specifies a Committed Information Rate (CIR) of 150 Mbps, and the provider automatically drops any customer packets exceeding this rate. Which Quality of Service (QoS) mechanism must the network engineer configure on the router's egress interface to smooth traffic bursts and prevent provider packet drops by temporarily queuing excess packets in memory, and how does this mechanism fundamentally differ from traffic policing?",
+      "statementEs": "Una empresa conecta su router principal a un servicio MPLS WAN mediante un enlace físico GigabitEthernet de 1 Gbps. Sin embargo, el acuerdo de nivel de servicio (SLA) contratado con el proveedor especifica un Committed Information Rate (CIR) de 150 Mbps, y el proveedor descarta automáticamente cualquier paquete del cliente que supere dicha tasa. ¿Qué mecanismo de Calidad de Servicio (QoS) debe configurar el ingeniero de red en la interfaz de salida (egress) del router para suavizar las ráfagas de tráfico y evitar que el proveedor descarte paquetes almacenando temporalmente los paquetes excedentes en colas de memoria, y en qué se diferencia fundamentalmente del policing de tráfico?",
+      "questionType": "single_choice",
+      "difficulty": "intermediate",
+      "primaryTopicExamArea": "ip_services",
+      "multipleAnswerCount": null,
+      "estimatedTimeSeconds": 90,
+      "explanationEn": "Traffic shaping and traffic policing are two fundamental QoS rate-limiting mechanisms. Traffic shaping retains excess packets in a buffer (queue) when traffic exceeds a specified Committed Information Rate (CIR) and slowly transmits them over time, smoothing out bursts and presenting a steady flow of packets to the service provider. Because shaping buffers packets rather than dropping them, it introduces delay and jitter but avoids packet loss, making it ideal for egress WAN interfaces where the physical line rate (1 Gbps) exceeds the contracted CIR (150 Mbps). In contrast, traffic policing does not buffer packets; it measures traffic against a rate and immediately drops or remarks (re-classifies) non-conforming packets. Congestion management tools like LLQ and congestion avoidance tools like WRED operate within queues during congestion, but do not rate-shape an interface to a sub-rate CIR.",
+      "explanationEs": "Traffic shaping y traffic policing son dos mecanismos fundamentales de limitación de tasa en QoS. Traffic shaping retiene los paquetes excedentes en un búfer (cola) cuando el tráfico supera el Committed Information Rate (CIR) especificado y los transmite gradualmente en el tiempo, suavizando las ráfagas y presentando un flujo constante de paquetes al proveedor de servicios. Debido a que el shaping almacena en búfer los paquetes en lugar de descartarlos, introduce retardo y jitter pero previene la pérdida de paquetes, lo que lo hace ideal para interfaces WAN de salida donde la velocidad de línea física (1 Gbps) excede el CIR contratado (150 Mbps). En contraste, traffic policing no almacena paquetes en búfer; mide el tráfico contra una tasa y descarta o remarca (reclasifica) inmediatamente los paquetes no conformes. Las herramientas de gestión de congestión como LLQ y de evasión como WRED operan dentro de las colas durante la congestión, pero no realizan conformación de tasa de interfaz a un CIR sub-tasa.",
+      "correctAnswerExplanationEn": "Traffic shaping buffers excess packets and smooths bursts to conform to the 150 Mbps CIR, preventing the service provider's policer from dropping customer traffic. Unlike shaping, policing drops or remarks out-of-profile packets without buffering.",
+      "correctAnswerExplanationEs": "Traffic shaping almacena en búfer los paquetes excedentes y suaviza las ráfagas para ajustarse al CIR de 150 Mbps, evitando que el policer del proveedor de servicios descarte el tráfico del cliente. A diferencia del shaping, el policing descarta o remarca paquetes fuera de perfil sin almacenar en búfer.",
+      "options": [
+        {
+          "optionLabel": "A",
+          "optionTextEn": "Traffic shaping; it buffers excess packets in memory queues and delays their transmission to achieve a smooth egress rate, whereas traffic policing drops or remarks excess packets without buffering.",
+          "optionTextEs": "Traffic shaping; almacena en búfer de memoria los paquetes excedentes y retrasa su transmisión para lograr una tasa de salida suave, mientras que el policing descarta o remarca los paquetes excedentes sin almacenar en búfer.",
+          "isCorrect": true,
+          "explanationEn": "Correct. Traffic shaping buffers excess packets and transmits them over time at the desired rate, making it ideal for sub-rate WAN links to prevent provider drops. Policing does not buffer; it immediately drops or remarks non-conforming traffic.",
+          "explanationEs": "Correcto. Traffic shaping almacena en búfer los paquetes excedentes y los transmite a lo largo del tiempo a la tasa deseada, lo que lo hace ideal para enlaces WAN con tasa inferior a la línea física para evitar descartes del proveedor. El policing no almacena en búfer; descarta o remarca inmediatamente el tráfico no conforme."
+        },
+        {
+          "optionLabel": "B",
+          "optionTextEn": "Traffic policing; it holds non-conforming packets in hardware queues until bandwidth becomes available, whereas traffic shaping instantly discards all out-of-profile frames.",
+          "optionTextEs": "Traffic policing; retiene los paquetes no conformes en colas de hardware hasta que haya ancho de banda disponible, mientras que traffic shaping descarta instantáneamente todas las tramas fuera de perfil.",
+          "isCorrect": false,
+          "explanationEn": "Incorrect. This reverses the definitions of shaping and policing. Shaping uses queues/buffers, while policing enforces hard limits without buffering.",
+          "explanationEs": "Incorrecto. Esto invierte las definiciones de shaping y policing. Shaping utiliza colas/búferes, mientras que el policing aplica límites estrictos sin almacenar en búfer."
+        },
+        {
+          "optionLabel": "C",
+          "optionTextEn": "Weighted Random Early Detection (WRED); it shapes TCP traffic by delaying acknowledgments, whereas traffic policing operates solely on UDP video streams.",
+          "optionTextEs": "Weighted Random Early Detection (WRED); conforma el tráfico TCP retrasando los acuses de recibo, mientras que el policing opera únicamente en flujos de video UDP.",
+          "isCorrect": false,
+          "explanationEn": "Incorrect. WRED is a congestion avoidance mechanism that randomly drops TCP packets before queues fill to prevent global synchronization; it is not a rate-limiting shaping tool.",
+          "explanationEs": "Incorrecto. WRED es un mecanismo de evasión de congestión que descarta aleatoriamente paquetes TCP antes de que las colas se llenen para evitar la sincronización global; no es una herramienta de conformación de tasa."
+        },
+        {
+          "optionLabel": "D",
+          "optionTextEn": "Low Latency Queuing (LLQ); it eliminates latency by compressing packet headers across the physical Gigabit link, whereas traffic policing buffers only management traffic.",
+          "optionTextEs": "Low Latency Queuing (LLQ); elimina la latencia comprimiendo los encabezados de paquetes a través del enlace Gigabit físico, mientras que el policing almacena en búfer solo el tráfico de gestión.",
+          "isCorrect": false,
+          "explanationEn": "Incorrect. LLQ is a congestion management scheduling technique that provides a strict-priority queue for delay-sensitive voice/video traffic; it does not rate-limit or shape overall interface bandwidth to a sub-rate CIR.",
+          "explanationEs": "Incorrecto. LLQ es una técnica de planificación de gestión de congestión que proporciona una cola de prioridad estricta para tráfico sensible al retardo como voz y video; no limita ni conforma el ancho de banda general de la interfaz a un CIR sub-tasa."
+        }
+      ],
+      "sourceName": "CCNA 200-301 Original Questions",
+      "sourceLicense": "Original content"
+    }
+  ]
+}

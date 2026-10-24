@@ -1,0 +1,25 @@
+{
+  "name": "ccna-simulator",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Professional CCNA 200-301 Exam Simulator",
+  "scripts": {
+    "dev": "concurrently -n server,client -c blue,green \"npm run dev:server\" \"npm run dev:client\"",
+    "dev:server": "cd server && npm run dev",
+    "dev:client": "cd client && npm run dev",
+    "build": "npm run build:server && npm run build:client",
+    "build:server": "cd server && npm run build",
+    "build:client": "cd client && npm run build",
+    "db:migrate": "cd server && npx prisma migrate dev",
+    "db:seed": "cd server && npx prisma db seed",
+    "db:reset": "cd server && npx prisma migrate reset --force",
+    "db:studio": "cd server && npx prisma studio",
+    "test": "cd server && npm test",
+    "test:client": "cd client && npm test",
+    "install:all": "npm install && cd server && npm install && cd ../client && npm install",
+    "setup": "npm run install:all && npm run db:migrate && npm run db:seed"
+  },
+  "devDependencies": {
+    "concurrently": "^9.1.2"
+  }
+}

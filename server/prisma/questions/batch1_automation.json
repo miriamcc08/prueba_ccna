@@ -1,0 +1,257 @@
+{
+  "questions": [
+    {
+      "statementEn": "In traditional network operations, network administrators configure routers and switches individually using the Command-Line Interface (CLI). Over time, ad-hoc changes often lead to \"configuration drift.\" How does adopting modern network automation mitigate this problem?",
+      "statementEs": "En las operaciones de red tradicionales, los administradores de red configuran routers y switches de forma individual utilizando la interfaz de línea de comandos (CLI). Con el tiempo, los cambios ad-hoc suelen provocar una \"desviación de configuración\" (configuration drift). ¿Cómo mitiga este problema la adopción de la automatización de redes moderna?",
+      "questionType": "single_choice",
+      "difficulty": "basic",
+      "primaryTopicExamArea": "automation_programmability",
+      "multipleAnswerCount": null,
+      "estimatedTimeSeconds": 60,
+      "explanationEn": "Configuration drift occurs in traditional, manually managed networks when engineers execute ad-hoc, one-off CLI commands on individual devices to resolve immediate incidents or test configurations. Over time, devices that should maintain identical baseline configurations diverge significantly, creating security vulnerabilities, compliance failures, and unpredictable troubleshooting scenarios.\n\nModern network automation mitigates configuration drift through Infrastructure as Code (IaC) principles:\n1. Single Source of Truth (SSoT): Baseline device configurations are defined declaratively in centralized, version-controlled repositories (such as Git) using templates (e.g., Jinja2) and structured data files (YAML or JSON).\n2. Automated State Enforcement: Automation frameworks (like Ansible, Cisco Catalyst Center, or Terraform) continually audit running configurations against the declared baseline and programmatically push required corrections to enforce consistency.\n3. Auditability and Predictability: All changes are peer-reviewed through pull requests, tested in CI/CD pipelines, and deployed simultaneously across dozens or hundreds of devices, eliminating human typographical errors.\n\nDistractor Analysis:\n- Option B is incorrect: Restricting management access to unencrypted Telnet sessions severely compromises network security and has no impact on configuration drift.\n- Option C is incorrect: Rebooting devices and erasing their startup-config every 24 hours would cause catastrophic service disruptions and lose essential persistent configurations.\n- Option D is incorrect: Converting static router interfaces to dynamic DHCP client interfaces disrupts deterministic Layer 3 topology and routing protocols without solving configuration divergence.",
+      "explanationEs": "La desviación de configuración (configuration drift) ocurre en redes tradicionales administradas manualmente cuando los ingenieros ejecutan comandos CLI ad-hoc y puntuales en dispositivos individuales para resolver incidentes inmediatos o probar configuraciones. Con el tiempo, los dispositivos que deberían mantener configuraciones base idénticas divergen considerablemente, generando vulnerabilidades de seguridad, incumplimientos de normativas y escenarios de diagnóstico impredecibles.\n\nLa automatización de red moderna mitiga la desviación de configuración mediante principios de Infraestructura como Código (IaC):\n1. Única Fuente de Verdad (Single Source of Truth - SSoT): Las configuraciones base se definen de manera declarativa en repositorios centralizados con control de versiones (como Git) mediante plantillas (ej. Jinja2) y archivos de datos estructurados (YAML o JSON).\n2. Aplicación Automatizada del Estado: Los entornos de automatización (como Ansible, Cisco Catalyst Center o Terraform) auditan continuamente las configuraciones activas frente a la línea base declarada y envían de forma programática las correcciones necesarias para hacer cumplir la consistencia.\n3. Auditabilidad y Predictibilidad: Todos los cambios se revisan mediante solicitudes de extracción (pull requests), se prueban en pipelines CI/CD y se despliegan simultáneamente en docenas o cientos de dispositivos, eliminando errores tipográficos humanos.\n\nAnálisis de Distractores:\n- La opción B es incorrecta: Restringir el acceso de administración a sesiones Telnet no cifradas compromete gravemente la seguridad de la red y no previene la desviación de configuración.\n- La opción C es incorrecta: Reiniciar los dispositivos y borrar su startup-config cada 24 horas provocaría interrupciones catastróficas del servicio y la pérdida de configuraciones persistentes esenciales.\n- La opción D es incorrecta: Convertir interfaces de router estáticas en clientes DHCP dinámicos altera la topología de Capa 3 determinista y los protocolos de enrutamiento sin solucionar la divergencia de configuraciones.",
+      "correctAnswerExplanationEn": "Network automation mitigates configuration drift by defining configurations as code in centralized templates and automatically enforcing the desired state across all network devices from a single source of truth.",
+      "correctAnswerExplanationEs": "La automatización de red mitiga la desviación de configuración al definir las configuraciones como código en plantillas centralizadas y aplicar automáticamente el estado deseado en todos los dispositivos desde una única fuente de verdad.",
+      "options": [
+        {
+          "optionLabel": "A",
+          "optionTextEn": "By defining configurations as code in centralized templates and automatically enforcing the desired state across all devices from a single source of truth.",
+          "optionTextEs": "Al definir las configuraciones como código en plantillas centralizadas y aplicar automáticamente el estado deseado en todos los dispositivos desde una única fuente de verdad.",
+          "isCorrect": true,
+          "explanationEn": "Correct. Automation tools use declarative models, version-controlled templates, and centralized repositories to maintain consistent state and eliminate configuration drift.",
+          "explanationEs": "Correcto. Las herramientas de automatización utilizan modelos declarativos, plantillas con control de versiones y repositorios centralizados para mantener un estado coherente y eliminar la desviación de configuración."
+        },
+        {
+          "optionLabel": "B",
+          "optionTextEn": "By disabling the local console port and restricting administrative access exclusively to unencrypted Telnet sessions.",
+          "optionTextEs": "Al deshabilitar el puerto de consola local y restringir el acceso administrativo exclusivamente a sesiones Telnet no cifradas.",
+          "isCorrect": false,
+          "explanationEn": "Incorrect. Telnet transmits credentials in plaintext, creating severe security vulnerabilities, and does nothing to solve configuration drift.",
+          "explanationEs": "Incorrecto. Telnet transmite credenciales en texto plano, creando graves brechas de seguridad, y no soluciona la desviación de configuración."
+        },
+        {
+          "optionLabel": "C",
+          "optionTextEn": "By requiring network devices to automatically reboot and wipe their startup-config every 24 hours.",
+          "optionTextEs": "Al requerir que los dispositivos de red se reinicien automáticamente y borren su startup-config cada 24 horas.",
+          "isCorrect": false,
+          "explanationEn": "Incorrect. Erasing startup-config and rebooting would wipe out valid operational configurations and cause regular network outages.",
+          "explanationEs": "Incorrecto. Borrar el startup-config y reiniciar eliminaría configuraciones operativas válidas y provocaría caídas de red constantes."
+        },
+        {
+          "optionLabel": "D",
+          "optionTextEn": "By converting all router interfaces to dynamic DHCP client interfaces whenever an inconsistency is detected.",
+          "optionTextEs": "Al convertir todas las interfaces de router en interfaces cliente DHCP dinámicas cada vez que se detecte una inconsistencia.",
+          "isCorrect": false,
+          "explanationEn": "Incorrect. Core and distribution router interfaces require deterministic static IP addressing; switching them to DHCP would break routing protocols and network connectivity.",
+          "explanationEs": "Incorrecto. Las interfaces de routers de núcleo y distribución requieren direccionamiento IP estático y determinista; cambiarlas a DHCP rompería los protocolos de enrutamiento y la conectividad."
+        }
+      ],
+      "sourceName": "CCNA 200-301 Original Questions",
+      "sourceLicense": "Original content"
+    },
+    {
+      "statementEn": "An enterprise network is transitioning from a traditional distributed architecture to a Software-Defined Access (SD-Access) fabric managed by a centralized Cisco Catalyst Center (formerly DNA Center) controller. Which two statements correctly describe the architectural planes, APIs, or fabric components in this SDN environment? (Choose two.)",
+      "statementEs": "Una red empresarial está migrando de una arquitectura distribuida tradicional a un fabric de Software-Defined Access (SD-Access) gestionado por un controlador centralizado Cisco Catalyst Center (anteriormente DNA Center). ¿Cuáles dos afirmaciones describen correctamente los planos arquitectónicos, las APIs o los componentes del fabric en este entorno SDN? (Elija dos.)",
+      "questionType": "multiple_choice",
+      "difficulty": "intermediate",
+      "primaryTopicExamArea": "automation_programmability",
+      "multipleAnswerCount": 2,
+      "estimatedTimeSeconds": 90,
+      "explanationEn": "In Software-Defined Networking (SDN) and Cisco SD-Access architectures, the functional model separates control, data, and management operations across dedicated planes and standardized APIs:\n\n1. Northbound APIs (NB APIs):\n- Located 'above' the SDN controller.\n- Expose controller capabilities, inventory, and telemetry to external software (business applications, ServiceNow, Python scripts, monitoring tools).\n- Implemented almost universally as RESTful APIs over HTTPS using JSON data encoding.\n\n2. Southbound APIs (SB APIs):\n- Located 'below' the SDN controller.\n- Allow the centralized controller to communicate directly with physical forwarding devices (switches, routers, wireless LAN controllers).\n- Used to discover topology, push network policies, and configure device forwarding tables. Common southbound protocols include NETCONF (RFC 6241 using YANG data models), RESTCONF (RFC 8040), OpenFlow, Cisco CLI over SSH, and SNMP.\n\n3. Underlay vs. Overlay vs. Fabric:\n- Underlay: The physical infrastructure (cabling, switches, routers) and standard Layer 3 routing protocols (such as IS-IS or OSPF) providing reachability between device loopbacks.\n- Overlay: The logical, virtualized topology established on top of the underlay using encapsulation tunnels (VXLAN for data plane traffic encapsulation and LISP for control plane endpoint mapping).\n- Fabric: The combined integrated system of underlay, overlay, and centralized controller policies.\n\n4. Data Plane vs. Control Plane:\n- In modern enterprise SDN, the data plane (packet forwarding) remains distributed on hardware ASICs within the physical switches/routers for wire-speed performance. Moving the data plane into the controller CPU would create an unscalable performance bottleneck.\n\nDistractor Analysis:\n- Option C is incorrect because it inverts the definitions: the underlay is the physical hardware and Layer 3 routing, while the overlay is the virtual VXLAN/LISP tunnels.\n- Option D is incorrect because the data plane remains on physical switch ASICs to process frames at line rate; only control/management plane intelligence is centralized.\n- Option E is incorrect because Northbound APIs connect applications to the controller, not edge switches directly to core routers for routing protocol updates.",
+      "explanationEs": "En las arquitecturas de Redes Definidas por Software (SDN) y Cisco SD-Access, el modelo funcional separa las operaciones de control, datos y gestión a través de planos dedicados y APIs estandarizadas:\n\n1. Northbound APIs (APIs en dirección norte):\n- Ubicadas 'por encima' del controlador SDN.\n- Exponen las capacidades del controlador, inventario y telemetría a software externo (aplicaciones de negocio, ServiceNow, scripts de Python, herramientas de monitoreo).\n- Se implementan casi universalmente como APIs RESTful sobre HTTPS utilizando codificación de datos en formato JSON.\n\n2. Southbound APIs (APIs en dirección sur):\n- Ubicadas 'por debajo' del controlador SDN.\n- Permiten al controlador centralizado comunicarse directamente con los dispositivos físicos de reenvío (switches, routers, WLCs).\n- Se utilizan para descubrir la topología, enviar políticas de red y programar las tablas de reenvío. Entre los protocolos southbound comunes se encuentran NETCONF (RFC 6241 utilizando modelos de datos YANG), RESTCONF (RFC 8040), OpenFlow, Cisco CLI sobre SSH y SNMP.\n\n3. Underlay vs. Overlay vs. Fabric:\n- Underlay: La infraestructura física (cableado, switches, routers) y los protocolos de enrutamiento de Capa 3 estándar (como IS-IS u OSPF) que brindan alcanzabilidad entre las direcciones loopback de los dispositivos.\n- Overlay: La topología lógica y virtualizada establecida sobre el underlay mediante túneles de encapsulación (VXLAN para la encapsulación de datos en el plano de datos y LISP para el plano de control y mapeo de terminales).\n- Fabric: El sistema integrado global de underlay, overlay y políticas del controlador centralizado.\n\n4. Data Plane vs. Control Plane:\n- En SDN empresarial moderno, el plano de datos (reenvío de paquetes) permanece distribuido en los ASICs de hardware de los switches y routers físicos para mantener rendimiento a velocidad de cable (wire-speed). Trasladar el reenvío de paquetes a la CPU del controlador generaría un cuello de botella inmanejable.\n\nAnálisis de Distractores:\n- La opción C es incorrecta porque invierte las definiciones: el underlay es el hardware físico y el enrutamiento de Capa 3, mientras que el overlay son los túneles virtuales VXLAN/LISP.\n- La opción D es incorrecta porque el plano de datos permanece en los ASICs de los switches físicos para procesar tramas a velocidad de línea; solo la inteligencia del plano de control/gestión está centralizada.\n- La opción E es incorrecta porque las Northbound APIs conectan aplicaciones con el controlador, no switches de borde directamente con routers de núcleo para el intercambio de protocolos de enrutamiento.",
+      "correctAnswerExplanationEn": "Northbound APIs provide programmatic REST/JSON interfaces between external applications and the controller, while Southbound APIs (such as NETCONF, RESTCONF, and OpenFlow) allow the controller to configure and program the forwarding behavior of physical underlay devices.",
+      "correctAnswerExplanationEs": "Las Northbound APIs proporcionan interfaces REST/JSON programáticas entre aplicaciones externas y el controlador, mientras que las Southbound APIs (como NETCONF, RESTCONF y OpenFlow) permiten al controlador configurar y programar el comportamiento de reenvío de los dispositivos físicos del underlay.",
+      "options": [
+        {
+          "optionLabel": "A",
+          "optionTextEn": "Northbound APIs use RESTful HTTP calls with JSON payloads to enable external business applications, monitoring platforms, and automation scripts to communicate with the SDN controller.",
+          "optionTextEs": "Las Northbound APIs utilizan llamadas HTTP RESTful con cargas JSON para permitir que aplicaciones empresariales externas, plataformas de monitoreo y scripts de automatización se comuniquen con el controlador SDN.",
+          "isCorrect": true,
+          "explanationEn": "Correct. Northbound APIs operate between applications and the SDN controller, typically utilizing REST architectures and JSON formatting.",
+          "explanationEs": "Correcto. Las Northbound APIs operan entre las aplicaciones y el controlador SDN, utilizando típicamente arquitecturas REST y formato JSON."
+        },
+        {
+          "optionLabel": "B",
+          "optionTextEn": "Southbound APIs (such as NETCONF/RESTCONF, OpenFlow, or Cisco CLI/SNMP) are used by the centralized controller to push configuration policies and program the forwarding behavior of physical underlay devices.",
+          "optionTextEs": "Las Southbound APIs (tales como NETCONF/RESTCONF, OpenFlow o Cisco CLI/SNMP) son utilizadas por el controlador centralizado para enviar políticas de configuración y programar el comportamiento de reenvío de los dispositivos físicos del underlay.",
+          "isCorrect": true,
+          "explanationEn": "Correct. Southbound APIs connect the controller to downstream network devices to enforce policies and program forwarding tables.",
+          "explanationEs": "Correcto. Las Southbound APIs conectan el controlador con los dispositivos de red aguas abajo para aplicar políticas y programar tablas de reenvío."
+        },
+        {
+          "optionLabel": "C",
+          "optionTextEn": "The underlay network consists of virtual VXLAN tunnels and LISP mappings, while the overlay network represents the physical fiber cabling, power supplies, and Layer 3 spine/leaf switches.",
+          "optionTextEs": "La red underlay consiste en túneles virtuales VXLAN y mapeos LISP, mientras que la red overlay representa el cableado de fibra físico, fuentes de alimentación y switches spine/leaf de Capa 3.",
+          "isCorrect": false,
+          "explanationEn": "Incorrect. This statement reverses the roles: the underlay is the physical Layer 3 network, while the overlay is the virtual VXLAN/LISP encapsulation layer.",
+          "explanationEs": "Incorrecto. Esta afirmación invierte los roles: el underlay es la red física de Capa 3, mientras que el overlay es la capa virtual de encapsulación VXLAN/LISP."
+        },
+        {
+          "optionLabel": "D",
+          "optionTextEn": "In a controller-based architecture, packet forwarding (data plane) is moved entirely into the controller CPU, eliminating the need for hardware ASICs on campus switches.",
+          "optionTextEs": "En una arquitectura basada en controladores, el reenvío de paquetes (data plane) se traslada por completo a la CPU del controlador, eliminando la necesidad de ASICs de hardware en los switches de campus.",
+          "isCorrect": false,
+          "explanationEn": "Incorrect. Forwarding remains in the distributed data plane on physical switch ASICs to process packets at line rate.",
+          "explanationEs": "Incorrecto. El reenvío permanece en el plano de datos distribuido en los ASICs de los switches físicos para procesar paquetes a velocidad de línea."
+        },
+        {
+          "optionLabel": "E",
+          "optionTextEn": "Northbound APIs connect directly between edge switches and core routers to dynamically exchange BGP and OSPF routing updates.",
+          "optionTextEs": "Las Northbound APIs se conectan directamente entre switches de borde y routers de núcleo para intercambiar actualizaciones de enrutamiento BGP y OSPF de forma dinámica.",
+          "isCorrect": false,
+          "explanationEn": "Incorrect. Northbound APIs exist between the SDN controller and external software applications, not between individual physical switches for routing protocol peering.",
+          "explanationEs": "Incorrecto. Las Northbound APIs existen entre el controlador SDN y las aplicaciones de software externas, no entre switches físicos individuales para el intercambio de protocolos de enrutamiento."
+        }
+      ],
+      "sourceName": "CCNA 200-301 Original Questions",
+      "sourceLicense": "Original content"
+    },
+    {
+      "statementEn": "How does Artificial Intelligence (AI) and Machine Learning (ML) integration within modern network management platforms, such as Cisco Catalyst Center (DNA Center) AI Network Analytics, improve operational troubleshooting compared to traditional threshold-based SNMP alerts?",
+      "statementEs": "¿Cómo mejora la integración de Inteligencia Artificial (AI) y Aprendizaje Automático (ML) en las plataformas modernas de gestión de red, como Cisco Catalyst Center (DNA Center) AI Network Analytics, la resolución de problemas operativos en comparación con las alertas tradicionales de SNMP basadas en umbrales estáticos?",
+      "questionType": "single_choice",
+      "difficulty": "basic",
+      "primaryTopicExamArea": "automation_programmability",
+      "multipleAnswerCount": null,
+      "estimatedTimeSeconds": 60,
+      "explanationEn": "Traditional network monitoring systems rely on static thresholds configured by administrators (e.g., trigger an alert if CPU utilization exceeds 80% or client Wi-Fi association latency exceeds 5 seconds). This model suffers from significant operational flaws:\n- False positives (alert fatigue): Normal cyclical traffic peaks (e.g., 9:00 AM on Monday mornings when hundreds of employees connect simultaneously) generate high volumes of nuisance alarms.\n- False negatives: Slow, abnormal performance degradation occurring during off-peak hours (e.g., 2:00 AM on Sunday) remains undetected because metrics stay below the fixed high threshold.\n\nCisco Catalyst Center AI Network Analytics incorporates Machine Learning (ML) models trained on broad telemetry data to solve this:\n1. Dynamic Baselining: The ML engine models normal client and device behavior across various times of the day, days of the week, and seasonal cycles. It dynamically shifts expected operational baselines rather than enforcing a static threshold.\n2. Intelligent Anomaly Detection: An issue is flagged only when statistical deviation exceeds learned historical behavior, drastically reducing alert fatigue by up to 99%.\n3. Root-Cause Analysis and Guided Remediation: Telemetry from access points, switches, DHCP servers, and RADIUS authentication servers is correlated to pinpoint the exact root cause (e.g., rogue DHCP server or expired RADIUS certificate) and provide clear, actionable remediation steps.\n4. Intent-Based Networking (IBN) Assurance: This closed-loop assurance verifies that the network continuously delivers on business intent (Translation -> Activation -> Assurance).\n\nDistractor Analysis:\n- Option B is incorrect: AI/ML software cannot alter physical ASIC silicon or rewrite firmware microcode on live production hardware.\n- Option C is incorrect: AI/ML does not alter standard IEEE 802.3 Ethernet frame synchronization preambles.\n- Option D is incorrect: AI/ML optimizes network operations but does not replace standard IP addressing, subnetting, or routed network architectures.",
+      "explanationEs": "Los sistemas de monitoreo de red tradicionales se basan en umbrales estáticos configurados por administradores (por ejemplo, generar una alerta si el uso de CPU supera el 80% o la latencia de asociación Wi-Fi excede los 5 segundos). Este modelo presenta importantes deficiencias operativas:\n- Falsos positivos (fatiga de alertas): Los picos de tráfico normales y cíclicos (ej. lunes a las 9:00 AM cuando cientos de empleados se conectan a la vez) generan un volumen abrumador de alarmas molestas innecesarias.\n- Falsos negativos: Una degradación lenta y anómala del rendimiento en horas de bajo tráfico (ej. domingo a las 2:00 AM) pasa inadvertida porque las métricas permanecen por debajo del umbral fijo.\n\nCisco Catalyst Center AI Network Analytics incorpora modelos de Machine Learning (ML) entrenados con telemetría global para resolver esto:\n1. Líneas Base Dinámicas (Dynamic Baselining): El motor de ML aprende el comportamiento normal de clientes y dispositivos en diferentes horas del día, días de la semana y ciclos estacionales. Ajusta dinámicamente las expectativas operativas en lugar de imponer un umbral rígido.\n2. Detección Inteligente de Anomalías: Solo se reporta una anomalía cuando la desviación estadística sobrepasa el comportamiento histórico aprendido, reduciendo la fatiga de alertas hasta en un 99%.\n3. Análisis de Causa Raíz y Remediación Guiada: Se correlaciona telemetría de puntos de acceso, switches, servidores DHCP y servidores RADIUS para aislar la causa raíz exacta (ej. servidor DHCP no autorizado o certificado RADIUS vencido) y ofrecer pasos claros de corrección.\n4. Aseguramiento en Redes Basadas en Intención (Intent-Based Networking - IBN): Este aseguramiento de ciclo cerrado verifica continuamente que la red cumpla con la intención del negocio (Traducción -> Activación -> Aseguramiento).\n\nAnálisis de Distractores:\n- La opción B es incorrecta: El software de AI/ML no puede modificar el silicio físico de los ASICs ni reescribir el microcódigo de hardware en equipos en producción.\n- La opción C es incorrecta: AI/ML no altera el preámbulo estándar de sincronización de tramas Ethernet IEEE 802.3.\n- La opción D es incorrecta: AI/ML optimiza las operaciones, pero no reemplaza el direccionamiento IP, las subredes ni las arquitecturas enrutadas.",
+      "correctAnswerExplanationEn": "AI and ML improve network operations by learning dynamic performance baselines to differentiate real anomalies from standard traffic variations and by providing guided, root-cause remediation steps.",
+      "correctAnswerExplanationEs": "La IA y el ML mejoran las operaciones de red al aprender líneas base de rendimiento dinámicas para diferenciar anomalías reales de variaciones normales de tráfico y brindar pasos guiados de remediación de causa raíz.",
+      "options": [
+        {
+          "optionLabel": "A",
+          "optionTextEn": "By establishing dynamic behavioral baselines for network performance to distinguish true anomalies from normal cyclical fluctuations, and delivering guided root-cause remediation.",
+          "optionTextEs": "Al establecer líneas base de comportamiento dinámicas para el rendimiento de la red a fin de distinguir anomalías reales de fluctuaciones cíclicas normales, y ofrecer remediación guiada de causa raíz.",
+          "isCorrect": true,
+          "explanationEn": "Correct. Machine Learning builds dynamic baselines to filter out normal traffic spikes, isolate real anomalies, and suggest root-cause fixes.",
+          "explanationEs": "Correcto. Machine Learning construye líneas base dinámicas para filtrar picos normales de tráfico, aislar anomalías reales y sugerir soluciones de causa raíz."
+        },
+        {
+          "optionLabel": "B",
+          "optionTextEn": "By automatically reprogramming switch microcode and patching hardware silicon defects on deployed physical ASICs without rebooting.",
+          "optionTextEs": "Al reprogramar automáticamente el microcódigo de los switches y reparar defectos de silicio en los ASICs físicos desplegados sin reiniciar.",
+          "isCorrect": false,
+          "explanationEn": "Incorrect. AI/ML algorithms analyze telemetry and provide operational insight; they cannot alter or repair physical ASIC silicon hardware.",
+          "explanationEs": "Incorrecto. Los algoritmos de AI/ML analizan telemetría y proveen información operativa; no pueden alterar ni reparar el hardware físico de los ASICs."
+        },
+        {
+          "optionLabel": "C",
+          "optionTextEn": "By replacing standard Ethernet preamble synchronization sequences with neural network weights to compress Layer 2 frames.",
+          "optionTextEs": "Al reemplazar las secuencias de sincronización del preámbulo de Ethernet por ponderaciones de redes neuronales para comprimir tramas de Capa 2.",
+          "isCorrect": false,
+          "explanationEn": "Incorrect. Ethernet frame preambles follow IEEE 802.3 standards and are strictly used for bit synchronization at the physical/data link boundary.",
+          "explanationEs": "Incorrecto. Los preámbulos de trama Ethernet siguen los estándares IEEE 802.3 y se usan estrictamente para sincronización de bits en el límite físico/enlace de datos."
+        },
+        {
+          "optionLabel": "D",
+          "optionTextEn": "By eliminating the need for IP addressing and subnetting through cognitive optical wave switching.",
+          "optionTextEs": "Al eliminar la necesidad de direccionamiento IP y división en subredes mediante conmutación cognitiva de ondas ópticas.",
+          "isCorrect": false,
+          "explanationEn": "Incorrect. Network automation and AI/ML operate within existing network protocols (IPv4, IPv6, routing) and do not eliminate IP addressing.",
+          "explanationEs": "Incorrecto. La automatización y la AI/ML operan dentro de los protocolos de red existentes (IPv4, IPv6, enrutamiento) y no eliminan el direccionamiento IP."
+        }
+      ],
+      "sourceName": "CCNA 200-301 Original Questions",
+      "sourceLicense": "Original content"
+    },
+    {
+      "statementEn": "A network engineer is automating device provisioning using Python scripts to interact with the Cisco Catalyst Center REST API. The engineer issues the following HTTP request to configure a new loopback interface on a managed router:\n\n**Request:**\n```http\nPOST /dna/intent/api/v1/network-device/interface/loopback HTTP/1.1\nHost: catalyst-center.example.com\nAuthorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...\nContent-Type: application/json\nAccept: application/json\n\n{\n  \"deviceIp\": \"10.1.1.1\",\n  \"interface\": {\n    \"name\": \"Loopback50\",\n    \"ipv4Address\": \"172.16.50.1\",\n    \"subnetMask\": \"255.255.255.255\",\n    \"description\": \"Out-of-band Management Router ID\",\n    \"enabled\": true\n  }\n}\n```\n\n**Response:**\n```http\nHTTP/1.1 201 Created\nContent-Type: application/json\nDate: Sat, 17 Oct 2026 14:00:00 GMT\n\n{\n  \"response\": {\n    \"taskId\": \"a931c6a2-4a7b-4021-9e77-5117fba63012\",\n    \"url\": \"/dna/intent/api/v1/task/a931c6a2-4a7b-4021-9e77-5117fba63012\"\n  },\n  \"version\": \"1.0\"\n}\n```\n\nFollowing RESTful API architecture principles and Cisco Catalyst Center API design, which conclusion is correct regarding this interaction?",
+      "statementEs": "Un ingeniero de redes está automatizando el aprovisionamiento de dispositivos mediante scripts en Python que interactúan con la API REST de Cisco Catalyst Center. El ingeniero envía la siguiente solicitud HTTP para configurar una nueva interfaz loopback en un router administrado:\n\n**Solicitud (Request):**\n```http\nPOST /dna/intent/api/v1/network-device/interface/loopback HTTP/1.1\nHost: catalyst-center.example.com\nAuthorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...\nContent-Type: application/json\nAccept: application/json\n\n{\n  \"deviceIp\": \"10.1.1.1\",\n  \"interface\": {\n    \"name\": \"Loopback50\",\n    \"ipv4Address\": \"172.16.50.1\",\n    \"subnetMask\": \"255.255.255.255\",\n    \"description\": \"Out-of-band Management Router ID\",\n    \"enabled\": true\n  }\n}\n```\n\n**Respuesta (Response):**\n```http\nHTTP/1.1 201 Created\nContent-Type: application/json\nDate: Sat, 17 Oct 2026 14:00:00 GMT\n\n{\n  \"response\": {\n    \"taskId\": \"a931c6a2-4a7b-4021-9e77-5117fba63012\",\n    \"url\": \"/dna/intent/api/v1/task/a931c6a2-4a7b-4021-9e77-5117fba63012\"\n  },\n  \"version\": \"1.0\"\n}\n```\n\nSiguiendo los principios de la arquitectura API RESTful y el diseño de APIs de Cisco Catalyst Center, ¿cuál conclusión es correcta respecto a esta interacción?",
+      "questionType": "single_choice",
+      "difficulty": "advanced",
+      "primaryTopicExamArea": "automation_programmability",
+      "multipleAnswerCount": null,
+      "estimatedTimeSeconds": 120,
+      "explanationEn": "Understanding RESTful APIs, HTTP verbs, status codes, and JSON payloads is essential for CCNA automation:\n\n1. CRUD to HTTP Verb Mapping:\n- Create -> POST (creates a new subordinate resource; non-idempotent).\n- Read -> GET (retrieves resource representation; safe and idempotent).\n- Update -> PUT (replaces resource entirely; idempotent) or PATCH (partial update).\n- Delete -> DELETE (removes resource; idempotent).\n\n2. HTTP Status Codes:\n- 200 OK: Standard successful response for GET or synchronous requests.\n- 201 Created: The request succeeded and resulted in the creation of a new resource (or intent task).\n- 202 Accepted: Request received and queued for asynchronous processing.\n- 400 Bad Request: Syntax error, malformed JSON, or missing mandatory attributes.\n- 401 Unauthorized: Missing or invalid authentication token/credentials.\n- 403 Forbidden: Authenticated client does not have required permissions.\n- 404 Not Found: The specified URI endpoint does not exist.\n\n3. Cisco Catalyst Center Asynchronous Task Pattern:\nDevice configuration operations in Cisco Catalyst Center require communicating with physical switches/routers over Southbound protocols (SSH/NETCONF), validating syntax, and saving configuration. Because this takes several seconds, the REST API does not hold the HTTP connection open. Instead, it returns HTTP 201 Created or HTTP 202 Accepted containing a JSON object with a unique 'taskId' and a task URL (e.g., '/dna/intent/api/v1/task/<id>').\nThe calling client application uses this URL with an HTTP GET request to poll task execution progress until the state changes to 'COMPLETED' or 'SUCCESS'.\n\nDistractor Analysis:\n- Option B is incorrect: By RFC specification, POST is non-idempotent. Executing the same POST multiple times would typically attempt to re-create the resource, leading to a 400 Bad Request or 409 Conflict error because Loopback50 already exists.\n- Option C is incorrect: HTTP 201 indicates success (resource created), not an error or rejection.\n- Option D is incorrect: In REST architecture, HTTP GET is strictly a safe, read-only method and must not be used to submit state-modifying JSON payloads to create configuration items.",
+      "explanationEs": "Comprender las APIs RESTful, los verbos HTTP, los códigos de estado y las cargas JSON es fundamental para la automatización en el CCNA:\n\n1. Mapeo de operaciones CRUD a verbos HTTP:\n- Create (Crear) -> POST (crea un nuevo recurso subordinado; no es idempotente).\n- Read (Leer) -> GET (obtiene la representación del recurso; es seguro e idempotente).\n- Update (Actualizar) -> PUT (reemplaza el recurso por completo; es idempotente) o PATCH (actualización parcial).\n- Delete (Eliminar) -> DELETE (elimina el recurso; es idempotente).\n\n2. Códigos de Estado HTTP:\n- 200 OK: Respuesta estándar exitosa para solicitudes GET o síncronas.\n- 201 Created: La solicitud tuvo éxito y resultó en la creación de un nuevo recurso (o tarea de intención).\n- 202 Accepted: Solicitud recibida y encolada para procesamiento asíncrono.\n- 400 Bad Request: Error de sintaxis, JSON mal formado o atributos obligatorios faltantes.\n- 401 Unauthorized: Token de autenticación o credenciales ausentes o inválidos.\n- 403 Forbidden: El cliente autenticado no tiene los permisos necesarios.\n- 404 Not Found: El endpoint URI especificado no existe.\n\n3. Patrón de Tareas Asíncronas en Cisco Catalyst Center:\nLas operaciones de configuración en Cisco Catalyst Center requieren comunicarse con switches y routers físicos mediante protocolos Southbound (SSH/NETCONF), validar la sintaxis y guardar la configuración. Dado que esto demora varios segundos, la API REST no mantiene la conexión HTTP bloqueada en espera. En su lugar, responde con HTTP 201 Created o 202 Accepted conteniendo un objeto JSON con un 'taskId' único y una URL de tarea (ej. '/dna/intent/api/v1/task/<id>').\nLa aplicación cliente utiliza esta URL con una solicitud HTTP GET para consultar periódicamente el progreso de la tarea hasta que el estado cambie a 'COMPLETED' o 'SUCCESS'.\n\nAnálisis de Distractores:\n- La opción B es incorrecta: Por especificación RFC, POST no es idempotente. Ejecutar el mismo POST varias veces intentaría recrear el recurso, provocando un error 400 Bad Request o 409 Conflict debido a que Loopback50 ya existe.\n- La opción C es incorrecta: HTTP 201 indica éxito (recurso creado), no un error o rechazo.\n- La opción D es incorrecta: En la arquitectura REST, HTTP GET es estrictamente un método seguro de solo lectura y nunca debe usarse para enviar cargas JSON que creen o modifiquen configuraciones.",
+      "correctAnswerExplanationEn": "The POST method creates a new resource and returned HTTP 201 Created along with an asynchronous task URL that the client must query with HTTP GET to monitor configuration deployment progress.",
+      "correctAnswerExplanationEs": "El método POST crea un nuevo recurso y respondió con HTTP 201 Created junto con una URL de tarea asíncrona que el cliente debe consultar con HTTP GET para monitorear el progreso del despliegue de la configuración.",
+      "options": [
+        {
+          "optionLabel": "A",
+          "optionTextEn": "The POST method created a new resource, returning HTTP 201 Created along with an asynchronous task URL that the client must query with HTTP GET to monitor configuration completion.",
+          "optionTextEs": "El método POST creó un nuevo recurso, respondiendo con HTTP 201 Created junto con una URL de tarea asíncrona que el cliente debe consultar con HTTP GET para monitorear la finalización de la configuración.",
+          "isCorrect": true,
+          "explanationEn": "Correct. POST creates resources (CRUD Create), HTTP 201 indicates successful creation, and Catalyst Center returns a task URL for asynchronous polling.",
+          "explanationEs": "Correcto. POST crea recursos (operación Create de CRUD), HTTP 201 indica creación exitosa y Catalyst Center devuelve una URL de tarea para sondeo asíncrono."
+        },
+        {
+          "optionLabel": "B",
+          "optionTextEn": "The POST method is idempotent, meaning executing this identical request multiple times is guaranteed by RFC standards to produce identical server states without attempting to re-create the interface.",
+          "optionTextEs": "El método POST es idempotente, lo que significa que ejecutar esta solicitud idéntica varias veces garantiza según los estándares RFC que se produzcan estados de servidor idénticos sin intentar recrear la interfaz.",
+          "isCorrect": false,
+          "explanationEn": "Incorrect. POST is explicitly non-idempotent according to HTTP/REST RFC specifications (unlike GET, PUT, or DELETE).",
+          "explanationEs": "Incorrecto. POST es explícitamente no idempotente según las especificaciones RFC de HTTP/REST (a diferencia de GET, PUT o DELETE)."
+        },
+        {
+          "optionLabel": "C",
+          "optionTextEn": "The HTTP 201 Created response indicates an error where the controller rejected the JSON payload due to a missing router serial number attribute.",
+          "optionTextEs": "La respuesta HTTP 201 Created indica un error en el que el controlador rechazó la carga JSON debido a la falta del atributo con el número de serie del router.",
+          "isCorrect": false,
+          "explanationEn": "Incorrect. 201 Created is a 2xx success status code indicating that the resource/task was created successfully; 4xx codes indicate client errors.",
+          "explanationEs": "Incorrecto. 201 Created es un código de éxito 2xx que indica que el recurso/tarea se creó correctamente; los códigos 4xx representan errores del cliente."
+        },
+        {
+          "optionLabel": "D",
+          "optionTextEn": "To comply with RESTful standards, the engineer should have used HTTP GET with the JSON configuration payload inside the request message body to create the interface.",
+          "optionTextEs": "Para cumplir con los estándares RESTful, el ingeniero debió haber utilizado HTTP GET con la carga útil de configuración JSON dentro del cuerpo del mensaje de solicitud para crear la interfaz.",
+          "isCorrect": false,
+          "explanationEn": "Incorrect. HTTP GET is designed strictly for safe, read-only data retrieval and should not contain a message body creating state changes on the server.",
+          "explanationEs": "Incorrecto. HTTP GET está diseñado estrictamente para recuperación segura de datos de solo lectura y no debe contener un cuerpo que genere cambios de estado en el servidor."
+        }
+      ],
+      "sourceName": "CCNA 200-301 Original Questions",
+      "sourceLicense": "Original content"
+    },
+    {
+      "statementEn": "A network engineering team is evaluating configuration management systems to automate standard security baselines across hundreds of Cisco Catalyst switches and IOS XE routers. The organization has established the following technical requirements:\n- No proprietary software agents, background daemons, or third-party runtime environments can be installed on the managed network switches.\n- The automation engine must manage devices by pushing configuration changes over standard SSH or NETCONF directly from a centralized control workstation.\n- The system must define target host groups in an inventory file and execute structured automation routines formatted in human-readable YAML.\n\nWhich configuration management tool fulfills these criteria, and what term describes its configuration files?",
+      "statementEs": "Un equipo de ingeniería de redes está evaluando sistemas de gestión de configuración para automatizar líneas base de seguridad estándar en cientos de switches Cisco Catalyst y routers IOS XE. La organización ha establecido los siguientes requisitos técnicos:\n- No se pueden instalar agentes de software propietarios, demonios en segundo plano ni entornos de ejecución de terceros en los switches de red administrados.\n- El motor de automatización debe administrar los dispositivos enviando (push) los cambios de configuración a través de SSH o NETCONF estándar directamente desde una estación de control centralizada.\n- El sistema debe definir grupos de hosts objetivo en un archivo de inventario (inventory file) y ejecutar rutinas de automatización estructuradas con formato YAML legible por humanos.\n\n¿Qué herramienta de gestión de configuración cumple con estos criterios y qué término describe sus archivos de configuración?",
+      "questionType": "automation",
+      "difficulty": "intermediate",
+      "primaryTopicExamArea": "automation_programmability",
+      "multipleAnswerCount": null,
+      "estimatedTimeSeconds": 90,
+      "explanationEn": "Modern network automation relies on configuration management tools that differ significantly in architecture, communication protocols, and file formats:\n\n1. Ansible:\n- Architecture: Agentless. Target network switches and routers do not require any specialized agent software, daemons, or Python execution environments. Ansible connects over standard protocols already running on enterprise network equipment (SSH, NETCONF, or RESTCONF).\n- Control Model: Push model. The centralized control node (Linux or macOS) initiates sessions to remote endpoints and pushes configuration state.\n- Inventory: Uses an inventory file (in INI or YAML format) to define managed devices, group them by role or site (e.g., [access_switches], [core_routers]), and associate variables (e.g., ansible_network_os=cisco.ios.ios).\n- Configuration Routines: Defined in Playbooks formatted in YAML (Yet Another Markup Language). Playbooks contain plays with ordered tasks that execute Ansible modules (e.g., cisco.ios.ios_config, cisco.ios.ios_acls).\n\n2. Puppet:\n- Architecture: Historically Agent-based. An agent software daemon runs on the managed node (although proxy agents exist, standard operation requires an agent).\n- Control Model: Pull model. The client agent contacts the centralized Puppet Master server every 30 minutes to pull its compiled catalog.\n- Configuration Files: Manifests written in Puppet DSL (a Ruby-derived Domain Specific Language).\n\n3. Chef:\n- Architecture: Agent-based. A Chef Client daemon must be installed and active on each managed target device.\n- Control Model: Pull model. The client periodically polls the Chef Server for updated policies.\n- Configuration Files: Cookbooks containing Recipes written in pure Ruby or Ruby DSL.\n\n4. SaltStack:\n- Architecture: Typically Agent-based (Salt Minions connect over ZeroMQ), though it also supports an agentless mode (Salt SSH).\n- Configuration Files: States (SLS files) written in YAML.\n\nDistractor Analysis:\n- Option B is incorrect: Puppet is agent-based, operates via a pull model, and uses Manifests written in Puppet DSL (not YAML recipes).\n- Option C is incorrect: Chef is agent-based, uses a pull model, and organizes its logic into Cookbooks and Recipes written in Ruby DSL (not agentless JSON manifests).\n- Option D is incorrect: Ansible is agentless (requires no Ruby daemon in switch flash memory) and uses Playbooks written in YAML, not XML manifests.",
+      "explanationEs": "La automatización de red moderna utiliza herramientas de gestión de configuración que difieren ampliamente en arquitectura, protocolos de comunicación y formatos de archivo:\n\n1. Ansible:\n- Arquitectura: Sin agentes (Agentless). Los switches y routers de red administrados no requieren la instalación de software de agentes especializado, demonios ni entornos de ejecución de Python. Ansible se conecta a través de protocolos estándar ya activos en los dispositivos de red (SSH, NETCONF o RESTCONF).\n- Modelo de Control: Modelo Push. El nodo de control centralizado (Linux o macOS) inicia las sesiones hacia los extremos remotos y envía las configuraciones requeridas.\n- Inventario: Utiliza un archivo de inventario (en formato INI o YAML) para definir los dispositivos administrados, agruparlos por rol o ubicación (ej. [access_switches], [core_routers]) y asociar variables de conexión (ej. ansible_network_os=cisco.ios.ios).\n- Rutinas de Configuración: Se definen en Playbooks escritos en YAML (Yet Another Markup Language). Los playbooks contienen plays con tareas secuenciales que ejecutan módulos de Ansible (ej. cisco.ios.ios_config, cisco.ios.ios_acls).\n\n2. Puppet:\n- Arquitectura: Históricamente basado en agentes (Agent-based). Un demonio de software se ejecuta en el nodo administrado (aunque existen agentes proxy, el modelo estándar requiere agente).\n- Modelo de Control: Modelo Pull. El agente cliente contacta al servidor Puppet Master central periódicamente para descargar su catálogo compilado.\n- Archivos de Configuración: Manifiestos (Manifests) escritos en Puppet DSL (un lenguaje específico de dominio derivado de Ruby).\n\n3. Chef:\n- Arquitectura: Basado en agentes (Agent-based). Requiere un demonio Chef Client instalado y activo en cada dispositivo administrado.\n- Modelo de Control: Modelo Pull. El cliente consulta periódicamente al Chef Server para obtener políticas actualizadas.\n- Archivos de Configuración: Cookbooks (libros de cocina) que contienen Recipes (recetas) escritas en Ruby o Ruby DSL.\n\n4. SaltStack:\n- Arquitectura: Típicamente basado en agentes (Salt Minions sobre ZeroMQ), aunque admite un modo sin agentes (Salt SSH).\n- Archivos de Configuración: States (archivos SLS) escritos en YAML.\n\nAnálisis de Distractores:\n- La opción B es incorrecta: Puppet está basado en agentes, funciona bajo un modelo pull y utiliza Manifiestos escritos en Puppet DSL (no recetas en YAML).\n- La opción C es incorrecta: Chef está basado en agentes, utiliza el modelo pull y organiza su lógica en Cookbooks y Recipes escritas en Ruby DSL (no manifiestos JSON sin agentes).\n- La opción D es incorrecta: Ansible no usa agentes (no requiere ningún demonio Ruby en la memoria flash del switch) y utiliza Playbooks en formato YAML, no manifiestos en XML.",
+      "correctAnswerExplanationEn": "Ansible meets all criteria because it features an agentless architecture operating over SSH/NETCONF, utilizes an inventory file to target devices, and executes automation workflows defined in YAML playbooks.",
+      "correctAnswerExplanationEs": "Ansible cumple con todos los criterios debido a que posee una arquitectura sin agentes que opera sobre SSH/NETCONF, utiliza un archivo de inventario para seleccionar dispositivos y ejecuta flujos de trabajo de automatización definidos en playbooks de YAML.",
+      "options": [
+        {
+          "optionLabel": "A",
+          "optionTextEn": "Ansible; it uses an agentless architecture over SSH and executes configuration routines called playbooks written in YAML.",
+          "optionTextEs": "Ansible; utiliza una arquitectura sin agentes (agentless) sobre SSH y ejecuta rutinas de configuración denominadas playbooks escritas en YAML.",
+          "isCorrect": true,
+          "explanationEn": "Correct. Ansible is agentless, connects to network devices via SSH, and uses YAML playbooks along with inventory files.",
+          "explanationEs": "Correcto. Ansible no requiere agentes, se conecta a los dispositivos de red vía SSH y utiliza playbooks en YAML junto con archivos de inventario."
+        },
+        {
+          "optionLabel": "B",
+          "optionTextEn": "Puppet; it relies on an agentless push architecture and organizes system states into configuration recipes written in YAML.",
+          "optionTextEs": "Puppet; se basa en una arquitectura push sin agentes y organiza los estados del sistema en configuration recipes escritas en YAML.",
+          "isCorrect": false,
+          "explanationEn": "Incorrect. Puppet is agent-based, uses a pull model, and defines configurations in manifests written in Puppet DSL, not YAML recipes.",
+          "explanationEs": "Incorrecto. Puppet está basado en agentes, utiliza un modelo pull y define configuraciones en manifiestos escritos en Puppet DSL, no recetas en YAML."
+        },
+        {
+          "optionLabel": "C",
+          "optionTextEn": "Chef; it uses an agentless pull architecture over HTTPS and formats its automation manifests using JSON.",
+          "optionTextEs": "Chef; utiliza una arquitectura pull sin agentes sobre HTTPS y formatea sus manifiestos de automatización mediante JSON.",
+          "isCorrect": false,
+          "explanationEn": "Incorrect. Chef requires an on-device agent (Chef Client) and organizes configuration into cookbooks and recipes written in Ruby DSL.",
+          "explanationEs": "Incorrecto. Chef requiere un agente en el dispositivo (Chef Client) y organiza la configuración en cookbooks y recetas escritas en Ruby DSL."
+        },
+        {
+          "optionLabel": "D",
+          "optionTextEn": "Ansible; it requires a Ruby-based agent daemon installed in Cisco IOS flash memory and organizes instructions into manifests written in XML.",
+          "optionTextEs": "Ansible; requiere un demonio de agente basado en Ruby instalado en la memoria flash de Cisco IOS y organiza las instrucciones en manifiestos escritos en XML.",
+          "isCorrect": false,
+          "explanationEn": "Incorrect. Ansible does not require any agent daemon in switch flash and does not use XML manifests; it is agentless and uses YAML playbooks.",
+          "explanationEs": "Incorrecto. Ansible no requiere ningún demonio de agente en la memoria flash del switch ni usa manifiestos en XML; es sin agentes y usa playbooks en YAML."
+        }
+      ],
+      "sourceName": "CCNA 200-301 Original Questions",
+      "sourceLicense": "Original content"
+    }
+  ]
+}
