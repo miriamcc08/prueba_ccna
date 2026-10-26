@@ -1,0 +1,832 @@
+{
+  "batchId": "original-20261026-b08-10",
+  "authorship": "Original bilingual project scenarios, not copied from certification question banks.",
+  "reviewStatus": "pending_review",
+  "questions": [
+    {
+      "id": "ccna-original-20261026-b08-001",
+      "concept": "aiops-it-operations-role",
+      "questionFamilyId": "concept-aiops-it-operations-role",
+      "statementEn": "What does AIOps primarily apply AI and machine learning to?",
+      "statementEs": "¿A qué aplica principalmente AIOps la IA y el aprendizaje automático?",
+      "questionType": "single_choice",
+      "multipleAnswerCount": null,
+      "difficulty": "basic",
+      "primaryTopicExamArea": "automation_programmability",
+      "estimatedTimeSeconds": 75,
+      "explanationEn": "AIOps applies AI, ML and related reasoning to IT operations. It can assist analysis and automation; the term does not imply infallibility or removal of physical infrastructure.",
+      "explanationEs": "AIOps aplica IA, ML y razonamiento relacionado a operaciones TI. Puede ayudar al análisis y automatización; no implica infalibilidad ni eliminar infraestructura física.",
+      "correctAnswerExplanationEn": "AIOps applies AI, ML and related reasoning to IT operations. It can assist analysis and automation; the term does not imply infallibility or removal of physical infrastructure.",
+      "correctAnswerExplanationEs": "AIOps aplica IA, ML y razonamiento relacionado a operaciones TI. Puede ayudar al análisis y automatización; no implica infalibilidad ni eliminar infraestructura física.",
+      "sourceName": "Original CCNA practice — focused batch 08",
+      "sourceUrl": "https://www.cisco.com/c/en/us/solutions/artificial-intelligence/what-is-aiops.html",
+      "sourceSection": "What is AIOps?",
+      "sourceLicense": "Original project question wording; technical references are not reproduced.",
+      "examVersion": "200-301-v1.1",
+      "validationStatus": "pending_review",
+      "verification": {
+        "referenceAccess": "consulted",
+        "humanReviewRequired": true,
+        "referenceDocumentUrl": "https://www.cisco.com/site/us/en/learn/topics/artificial-intelligence/what-is-aiops.html",
+        "referenceSha256": "569d8a81fa99d4a7eceec5886a7c1bb22f5d622f8571dbfbc5bea06710b951fa",
+        "retrievedAt": "2026-10-26T17:53:03.728037+00:00",
+        "consultedAt": "2026-10-26T18:01:35.401730+00:00",
+        "evidenceSection": "What is AIOps?",
+        "evidenceAnchor": "strategic use of AI, machine learning",
+        "evidenceAnchors": [
+          "strategic use of AI, machine learning"
+        ],
+        "consultationNotes": "Automated-assistant documentary review of scenario assumptions, proposed key, distractors and bilingual wording. Independent human approval remains pending.",
+        "documentaryReview": {
+          "reviewerType": "automated_assistant",
+          "checkedAt": "2026-10-26T18:01:35.401730+00:00",
+          "contentSha256": "063486d790c0cd2c6e6d2a5e04c791b2ac626c55789c71e800d042f49aeaf6be",
+          "scope": "source passage, answer key, assumptions, distractors and bilingual consistency",
+          "humanApproval": "pending"
+        }
+      },
+      "options": [
+        {
+          "optionTextEn": "Improving and automating IT operations processes",
+          "optionTextEs": "Mejorar y automatizar procesos de operaciones TI",
+          "isCorrect": true,
+          "explanationEn": "AIOps applies AI, ML and related reasoning to IT operations. It can assist analysis and automation; the term does not imply infallibility or removal of physical infrastructure.",
+          "explanationEs": "AIOps aplica IA, ML y razonamiento relacionado a operaciones TI. Puede ayudar al análisis y automatización; no implica infalibilidad ni eliminar infraestructura física.",
+          "optionLabel": "A",
+          "displayOrder": 0
+        },
+        {
+          "optionTextEn": "Changing IPv4 addresses into passwords",
+          "optionTextEs": "Convertir direcciones IPv4 en contraseñas",
+          "isCorrect": false,
+          "explanationEn": "AIOps applies AI, ML and related reasoning to IT operations. It can assist analysis and automation; the term does not imply infallibility or removal of physical infrastructure.",
+          "explanationEs": "AIOps aplica IA, ML y razonamiento relacionado a operaciones TI. Puede ayudar al análisis y automatización; no implica infalibilidad ni eliminar infraestructura física.",
+          "optionLabel": "B",
+          "displayOrder": 1
+        },
+        {
+          "optionTextEn": "Replacing the physical need for cables and radios",
+          "optionTextEs": "Eliminar la necesidad física de cables y radios",
+          "isCorrect": false,
+          "explanationEn": "AIOps applies AI, ML and related reasoning to IT operations. It can assist analysis and automation; the term does not imply infallibility or removal of physical infrastructure.",
+          "explanationEs": "AIOps aplica IA, ML y razonamiento relacionado a operaciones TI. Puede ayudar al análisis y automatización; no implica infalibilidad ni eliminar infraestructura física.",
+          "optionLabel": "C",
+          "displayOrder": 2
+        },
+        {
+          "optionTextEn": "Guaranteeing that every network prediction is correct",
+          "optionTextEs": "Garantizar que toda predicción de red sea correcta",
+          "isCorrect": false,
+          "explanationEn": "AIOps applies AI, ML and related reasoning to IT operations. It can assist analysis and automation; the term does not imply infallibility or removal of physical infrastructure.",
+          "explanationEs": "AIOps aplica IA, ML y razonamiento relacionado a operaciones TI. Puede ayudar al análisis y automatización; no implica infalibilidad ni eliminar infraestructura física.",
+          "optionLabel": "D",
+          "displayOrder": 3
+        }
+      ]
+    },
+    {
+      "id": "ccna-original-20261026-b08-002",
+      "concept": "aiops-event-correlation-scope",
+      "questionFamilyId": "concept-aiops-event-correlation-scope",
+      "statementEn": "An AIOps workflow performs event correlation. Which two interpretations are reasonable? Select two.",
+      "statementEs": "Un flujo AIOps correlaciona eventos. ¿Qué dos interpretaciones son razonables? Selecciona dos.",
+      "questionType": "multiple_choice",
+      "multipleAnswerCount": 2,
+      "difficulty": "basic",
+      "primaryTopicExamArea": "automation_programmability",
+      "estimatedTimeSeconds": 75,
+      "explanationEn": "Event correlation is listed as an AIOps operation. Grouping related evidence can inform analysis, but the mere grouping is not a logical proof of a unique cause and does not justify discarding every alert.",
+      "explanationEs": "La correlación es una operación AIOps. Agrupar evidencia relacionada puede orientar el análisis, pero agrupar no prueba una causa única ni justifica descartar toda alerta.",
+      "correctAnswerExplanationEn": "Event correlation is listed as an AIOps operation. Grouping related evidence can inform analysis, but the mere grouping is not a logical proof of a unique cause and does not justify discarding every alert.",
+      "correctAnswerExplanationEs": "La correlación es una operación AIOps. Agrupar evidencia relacionada puede orientar el análisis, pero agrupar no prueba una causa única ni justifica descartar toda alerta.",
+      "sourceName": "Original CCNA practice — focused batch 08",
+      "sourceUrl": "https://www.cisco.com/c/en/us/solutions/artificial-intelligence/what-is-aiops.html",
+      "sourceSection": "AIOps definition",
+      "sourceLicense": "Original project question wording; technical references are not reproduced.",
+      "examVersion": "200-301-v1.1",
+      "validationStatus": "pending_review",
+      "verification": {
+        "referenceAccess": "consulted",
+        "humanReviewRequired": true,
+        "referenceDocumentUrl": "https://www.cisco.com/site/us/en/learn/topics/artificial-intelligence/what-is-aiops.html",
+        "referenceSha256": "569d8a81fa99d4a7eceec5886a7c1bb22f5d622f8571dbfbc5bea06710b951fa",
+        "retrievedAt": "2026-10-26T17:53:03.728037+00:00",
+        "consultedAt": "2026-10-26T18:01:35.401730+00:00",
+        "evidenceSection": "AIOps definition",
+        "evidenceAnchor": "event correlation",
+        "evidenceAnchors": [
+          "event correlation"
+        ],
+        "consultationNotes": "Automated-assistant documentary review of scenario assumptions, proposed key, distractors and bilingual wording. Independent human approval remains pending.",
+        "documentaryReview": {
+          "reviewerType": "automated_assistant",
+          "checkedAt": "2026-10-26T18:01:35.401730+00:00",
+          "contentSha256": "d3e208936ce4c2655aa97c425e5f8dc6124bac448064b1d78a51b82589167b15",
+          "scope": "source passage, answer key, assumptions, distractors and bilingual consistency",
+          "humanApproval": "pending"
+        }
+      },
+      "options": [
+        {
+          "optionTextEn": "Correlation can support investigation without proving every grouped alert has one cause",
+          "optionTextEs": "La correlación puede ayudar sin demostrar que toda alerta agrupada tenga una causa",
+          "isCorrect": true,
+          "explanationEn": "Event correlation is listed as an AIOps operation. Grouping related evidence can inform analysis, but the mere grouping is not a logical proof of a unique cause and does not justify discarding every alert.",
+          "explanationEs": "La correlación es una operación AIOps. Agrupar evidencia relacionada puede orientar el análisis, pero agrupar no prueba una causa única ni justifica descartar toda alerta.",
+          "optionLabel": "A",
+          "displayOrder": 0
+        },
+        {
+          "optionTextEn": "Related observations can be considered together during issue analysis",
+          "optionTextEs": "Pueden considerarse juntas observaciones relacionadas al analizar un problema",
+          "isCorrect": true,
+          "explanationEn": "Event correlation is listed as an AIOps operation. Grouping related evidence can inform analysis, but the mere grouping is not a logical proof of a unique cause and does not justify discarding every alert.",
+          "explanationEs": "La correlación es una operación AIOps. Agrupar evidencia relacionada puede orientar el análisis, pero agrupar no prueba una causa única ni justifica descartar toda alerta.",
+          "optionLabel": "B",
+          "displayOrder": 1
+        },
+        {
+          "optionTextEn": "Every alert must be deleted without investigation",
+          "optionTextEs": "Toda alerta debe borrarse sin investigar",
+          "isCorrect": false,
+          "explanationEn": "Event correlation is listed as an AIOps operation. Grouping related evidence can inform analysis, but the mere grouping is not a logical proof of a unique cause and does not justify discarding every alert.",
+          "explanationEs": "La correlación es una operación AIOps. Agrupar evidencia relacionada puede orientar el análisis, pero agrupar no prueba una causa única ni justifica descartar toda alerta.",
+          "optionLabel": "C",
+          "displayOrder": 2
+        },
+        {
+          "optionTextEn": "Correlation is the same operation as changing an Ethernet duplex setting",
+          "optionTextEs": "Correlacionar equivale a cambiar el dúplex Ethernet",
+          "isCorrect": false,
+          "explanationEn": "Event correlation is listed as an AIOps operation. Grouping related evidence can inform analysis, but the mere grouping is not a logical proof of a unique cause and does not justify discarding every alert.",
+          "explanationEs": "La correlación es una operación AIOps. Agrupar evidencia relacionada puede orientar el análisis, pero agrupar no prueba una causa única ni justifica descartar toda alerta.",
+          "optionLabel": "D",
+          "displayOrder": 3
+        }
+      ]
+    },
+    {
+      "id": "ccna-original-20261026-b08-003",
+      "concept": "aiops-remediation-suggestions-versus-physical-repair",
+      "questionFamilyId": "concept-aiops-remediation-suggestions-versus-physical-repair",
+      "statementEn": "An NMS uses AI/ML to diagnose a device issue and present remediation steps. What role is illustrated?",
+      "statementEs": "Un NMS usa IA/ML para diagnosticar un problema de equipo y presentar pasos correctivos. ¿Qué rol se ilustra?",
+      "questionType": "single_choice",
+      "multipleAnswerCount": null,
+      "difficulty": "basic",
+      "primaryTopicExamArea": "automation_programmability",
+      "estimatedTimeSeconds": 75,
+      "explanationEn": "The documented example uses AI/ML in problem diagnosis and remediation steps. A suggested correction still has an operational context; it is not a physical robot or an authorization grant.",
+      "explanationEs": "El ejemplo usa IA/ML en diagnóstico y pasos correctivos. Una sugerencia conserva su contexto operativo; no es un robot físico ni una concesión de autorización.",
+      "correctAnswerExplanationEn": "The documented example uses AI/ML in problem diagnosis and remediation steps. A suggested correction still has an operational context; it is not a physical robot or an authorization grant.",
+      "correctAnswerExplanationEs": "El ejemplo usa IA/ML en diagnóstico y pasos correctivos. Una sugerencia conserva su contexto operativo; no es un robot físico ni una concesión de autorización.",
+      "sourceName": "Original CCNA practice — focused batch 08",
+      "sourceUrl": "https://www.cisco.com/c/en/us/solutions/artificial-intelligence/what-is-aiops.html",
+      "sourceSection": "Examples of AIOps",
+      "sourceLicense": "Original project question wording; technical references are not reproduced.",
+      "examVersion": "200-301-v1.1",
+      "validationStatus": "pending_review",
+      "verification": {
+        "referenceAccess": "consulted",
+        "humanReviewRequired": true,
+        "referenceDocumentUrl": "https://www.cisco.com/site/us/en/learn/topics/artificial-intelligence/what-is-aiops.html",
+        "referenceSha256": "569d8a81fa99d4a7eceec5886a7c1bb22f5d622f8571dbfbc5bea06710b951fa",
+        "retrievedAt": "2026-10-26T17:53:03.728037+00:00",
+        "consultedAt": "2026-10-26T18:01:35.401730+00:00",
+        "evidenceSection": "Examples of AIOps",
+        "evidenceAnchor": "provides remediation steps",
+        "evidenceAnchors": [
+          "provides remediation steps"
+        ],
+        "consultationNotes": "Automated-assistant documentary review of scenario assumptions, proposed key, distractors and bilingual wording. Independent human approval remains pending.",
+        "documentaryReview": {
+          "reviewerType": "automated_assistant",
+          "checkedAt": "2026-10-26T18:01:35.401730+00:00",
+          "contentSha256": "90e42ff7cd33041eca6ab9fc37d76d12797d29104b52fe2d4d3068817bae803e",
+          "scope": "source passage, answer key, assumptions, distractors and bilingual consistency",
+          "humanApproval": "pending"
+        }
+      },
+      "options": [
+        {
+          "optionTextEn": "Physically replacing every damaged cable itself",
+          "optionTextEs": "Sustituir físicamente por sí mismo todo cable dañado",
+          "isCorrect": false,
+          "explanationEn": "The documented example uses AI/ML in problem diagnosis and remediation steps. A suggested correction still has an operational context; it is not a physical robot or an authorization grant.",
+          "explanationEs": "El ejemplo usa IA/ML en diagnóstico y pasos correctivos. Una sugerencia conserva su contexto operativo; no es un robot físico ni una concesión de autorización.",
+          "optionLabel": "A",
+          "displayOrder": 0
+        },
+        {
+          "optionTextEn": "Making operator authorization unnecessary",
+          "optionTextEs": "Volver innecesaria la autorización del operador",
+          "isCorrect": false,
+          "explanationEn": "The documented example uses AI/ML in problem diagnosis and remediation steps. A suggested correction still has an operational context; it is not a physical robot or an authorization grant.",
+          "explanationEs": "El ejemplo usa IA/ML en diagnóstico y pasos correctivos. Una sugerencia conserva su contexto operativo; no es un robot físico ni una concesión de autorización.",
+          "optionLabel": "B",
+          "displayOrder": 1
+        },
+        {
+          "optionTextEn": "Assisting issue analysis and remediation workflows",
+          "optionTextEs": "Ayudar al análisis y al flujo de corrección de problemas",
+          "isCorrect": true,
+          "explanationEn": "The documented example uses AI/ML in problem diagnosis and remediation steps. A suggested correction still has an operational context; it is not a physical robot or an authorization grant.",
+          "explanationEs": "El ejemplo usa IA/ML en diagnóstico y pasos correctivos. Una sugerencia conserva su contexto operativo; no es un robot físico ni una concesión de autorización.",
+          "optionLabel": "C",
+          "displayOrder": 2
+        },
+        {
+          "optionTextEn": "Proving the application cannot have another fault",
+          "optionTextEs": "Demostrar que la aplicación no puede tener otro fallo",
+          "isCorrect": false,
+          "explanationEn": "The documented example uses AI/ML in problem diagnosis and remediation steps. A suggested correction still has an operational context; it is not a physical robot or an authorization grant.",
+          "explanationEs": "El ejemplo usa IA/ML en diagnóstico y pasos correctivos. Una sugerencia conserva su contexto operativo; no es un robot físico ni una concesión de autorización.",
+          "optionLabel": "D",
+          "displayOrder": 3
+        }
+      ]
+    },
+    {
+      "id": "ccna-original-20261026-b08-004",
+      "concept": "aiops-platform-and-human-expertise",
+      "questionFamilyId": "concept-aiops-platform-and-human-expertise",
+      "statementEn": "Which two components can be part of implementing and operating an AIOps approach? Select two.",
+      "statementEs": "¿Qué dos componentes pueden formar parte de implementar y operar AIOps? Selecciona dos.",
+      "questionType": "multiple_choice",
+      "multipleAnswerCount": 2,
+      "difficulty": "basic",
+      "primaryTopicExamArea": "automation_programmability",
+      "estimatedTimeSeconds": 75,
+      "explanationEn": "Cisco describes an alignment of technology components and human expertise. Calling a solution AIOps does not remove the need to implement and operate it responsibly.",
+      "explanationEs": "Cisco describe coordinación de componentes tecnológicos y experiencia humana. Llamar AIOps a una solución no elimina la necesidad de implementarla y operarla responsablemente.",
+      "correctAnswerExplanationEn": "Cisco describes an alignment of technology components and human expertise. Calling a solution AIOps does not remove the need to implement and operate it responsibly.",
+      "correctAnswerExplanationEs": "Cisco describe coordinación de componentes tecnológicos y experiencia humana. Llamar AIOps a una solución no elimina la necesidad de implementarla y operarla responsablemente.",
+      "sourceName": "Original CCNA practice — focused batch 08",
+      "sourceUrl": "https://www.cisco.com/c/en/us/solutions/artificial-intelligence/what-is-aiops.html",
+      "sourceSection": "Is AIOps a platform?",
+      "sourceLicense": "Original project question wording; technical references are not reproduced.",
+      "examVersion": "200-301-v1.1",
+      "validationStatus": "pending_review",
+      "verification": {
+        "referenceAccess": "consulted",
+        "humanReviewRequired": true,
+        "referenceDocumentUrl": "https://www.cisco.com/site/us/en/learn/topics/artificial-intelligence/what-is-aiops.html",
+        "referenceSha256": "569d8a81fa99d4a7eceec5886a7c1bb22f5d622f8571dbfbc5bea06710b951fa",
+        "retrievedAt": "2026-10-26T17:53:03.728037+00:00",
+        "consultedAt": "2026-10-26T18:01:35.401730+00:00",
+        "evidenceSection": "Is AIOps a platform?",
+        "evidenceAnchor": "as well as human expertise",
+        "evidenceAnchors": [
+          "as well as human expertise"
+        ],
+        "consultationNotes": "Automated-assistant documentary review of scenario assumptions, proposed key, distractors and bilingual wording. Independent human approval remains pending.",
+        "documentaryReview": {
+          "reviewerType": "automated_assistant",
+          "checkedAt": "2026-10-26T18:01:35.401730+00:00",
+          "contentSha256": "acf79edd436d5f917ed565a8f914d57043cf74fd312c46287fc74bfc6395593a",
+          "scope": "source passage, answer key, assumptions, distractors and bilingual consistency",
+          "humanApproval": "pending"
+        }
+      },
+      "options": [
+        {
+          "optionTextEn": "AI/ML technology and supporting software or hardware",
+          "optionTextEs": "Tecnología IA/ML y software o hardware de soporte",
+          "isCorrect": true,
+          "explanationEn": "Cisco describes an alignment of technology components and human expertise. Calling a solution AIOps does not remove the need to implement and operate it responsibly.",
+          "explanationEs": "Cisco describe coordinación de componentes tecnológicos y experiencia humana. Llamar AIOps a una solución no elimina la necesidad de implementarla y operarla responsablemente.",
+          "optionLabel": "A",
+          "displayOrder": 0
+        },
+        {
+          "optionTextEn": "Human expertise",
+          "optionTextEs": "Experiencia humana",
+          "isCorrect": true,
+          "explanationEn": "Cisco describes an alignment of technology components and human expertise. Calling a solution AIOps does not remove the need to implement and operate it responsibly.",
+          "explanationEs": "Cisco describe coordinación de componentes tecnológicos y experiencia humana. Llamar AIOps a una solución no elimina la necesidad de implementarla y operarla responsablemente.",
+          "optionLabel": "B",
+          "displayOrder": 1
+        },
+        {
+          "optionTextEn": "A rule that only a single ordinary DNS record may be used",
+          "optionTextEs": "Una regla que permite solo un registro DNS ordinario",
+          "isCorrect": false,
+          "explanationEn": "Cisco describes an alignment of technology components and human expertise. Calling a solution AIOps does not remove the need to implement and operate it responsibly.",
+          "explanationEs": "Cisco describe coordinación de componentes tecnológicos y experiencia humana. Llamar AIOps a una solución no elimina la necesidad de implementarla y operarla responsablemente.",
+          "optionLabel": "C",
+          "displayOrder": 2
+        },
+        {
+          "optionTextEn": "A requirement to abandon every IT operations process",
+          "optionTextEs": "Una obligación de abandonar todo proceso TI",
+          "isCorrect": false,
+          "explanationEn": "Cisco describes an alignment of technology components and human expertise. Calling a solution AIOps does not remove the need to implement and operate it responsibly.",
+          "explanationEs": "Cisco describe coordinación de componentes tecnológicos y experiencia humana. Llamar AIOps a una solución no elimina la necesidad de implementarla y operarla responsablemente.",
+          "optionLabel": "D",
+          "displayOrder": 3
+        }
+      ]
+    },
+    {
+      "id": "ccna-original-20261026-b08-005",
+      "concept": "aiops-cross-team-insights",
+      "questionFamilyId": "concept-aiops-cross-team-insights",
+      "statementEn": "An AIOps system supplies insights across SecOps, NetOps and DevOps. What benefit does this illustrate?",
+      "statementEs": "Un sistema AIOps aporta información entre SecOps, NetOps y DevOps. ¿Qué beneficio ilustra?",
+      "questionType": "single_choice",
+      "multipleAnswerCount": null,
+      "difficulty": "basic",
+      "primaryTopicExamArea": "automation_programmability",
+      "estimatedTimeSeconds": 75,
+      "explanationEn": "Shared operational insights can help teams identify issues or opportunities together. Collaboration does not mean sharing credentials or bypassing each team security responsibilities.",
+      "explanationEs": "La información operativa compartida puede ayudar a identificar problemas u oportunidades conjuntamente. Colaborar no significa compartir credenciales ni evitar responsabilidades de seguridad.",
+      "correctAnswerExplanationEn": "Shared operational insights can help teams identify issues or opportunities together. Collaboration does not mean sharing credentials or bypassing each team security responsibilities.",
+      "correctAnswerExplanationEs": "La información operativa compartida puede ayudar a identificar problemas u oportunidades conjuntamente. Colaborar no significa compartir credenciales ni evitar responsabilidades de seguridad.",
+      "sourceName": "Original CCNA practice — focused batch 08",
+      "sourceUrl": "https://www.cisco.com/c/en/us/solutions/artificial-intelligence/what-is-aiops.html",
+      "sourceSection": "Benefits of AIOps",
+      "sourceLicense": "Original project question wording; technical references are not reproduced.",
+      "examVersion": "200-301-v1.1",
+      "validationStatus": "pending_review",
+      "verification": {
+        "referenceAccess": "consulted",
+        "humanReviewRequired": true,
+        "referenceDocumentUrl": "https://www.cisco.com/site/us/en/learn/topics/artificial-intelligence/what-is-aiops.html",
+        "referenceSha256": "569d8a81fa99d4a7eceec5886a7c1bb22f5d622f8571dbfbc5bea06710b951fa",
+        "retrievedAt": "2026-10-26T17:53:03.728037+00:00",
+        "consultedAt": "2026-10-26T18:01:35.401730+00:00",
+        "evidenceSection": "Benefits of AIOps",
+        "evidenceAnchor": "SecOps, NetOps, DevOps",
+        "evidenceAnchors": [
+          "SecOps, NetOps, DevOps"
+        ],
+        "consultationNotes": "Automated-assistant documentary review of scenario assumptions, proposed key, distractors and bilingual wording. Independent human approval remains pending.",
+        "documentaryReview": {
+          "reviewerType": "automated_assistant",
+          "checkedAt": "2026-10-26T18:01:35.401730+00:00",
+          "contentSha256": "c76659e85b3c3c66ba6c2fc691d3349b2cbb03af4b55a7056164717d1e0594cd",
+          "scope": "source passage, answer key, assumptions, distractors and bilingual consistency",
+          "humanApproval": "pending"
+        }
+      },
+      "options": [
+        {
+          "optionTextEn": "Automatically turning a failed interface into a valid DNS answer",
+          "optionTextEs": "Convertir una interfaz caída en respuesta DNS válida",
+          "isCorrect": false,
+          "explanationEn": "Shared operational insights can help teams identify issues or opportunities together. Collaboration does not mean sharing credentials or bypassing each team security responsibilities.",
+          "explanationEs": "La información operativa compartida puede ayudar a identificar problemas u oportunidades conjuntamente. Colaborar no significa compartir credenciales ni evitar responsabilidades de seguridad.",
+          "optionLabel": "A",
+          "displayOrder": 0
+        },
+        {
+          "optionTextEn": "Helping teams coordinate analysis and act on shared operational information",
+          "optionTextEs": "Ayudar a coordinar análisis y actuar sobre información operativa compartida",
+          "isCorrect": true,
+          "explanationEn": "Shared operational insights can help teams identify issues or opportunities together. Collaboration does not mean sharing credentials or bypassing each team security responsibilities.",
+          "explanationEs": "La información operativa compartida puede ayudar a identificar problemas u oportunidades conjuntamente. Colaborar no significa compartir credenciales ni evitar responsabilidades de seguridad.",
+          "optionLabel": "B",
+          "displayOrder": 1
+        },
+        {
+          "optionTextEn": "Making security policy irrelevant to NetOps",
+          "optionTextEs": "Volver irrelevante la política de seguridad para NetOps",
+          "isCorrect": false,
+          "explanationEn": "Shared operational insights can help teams identify issues or opportunities together. Collaboration does not mean sharing credentials or bypassing each team security responsibilities.",
+          "explanationEs": "La información operativa compartida puede ayudar a identificar problemas u oportunidades conjuntamente. Colaborar no significa compartir credenciales ni evitar responsabilidades de seguridad.",
+          "optionLabel": "C",
+          "displayOrder": 2
+        },
+        {
+          "optionTextEn": "Requiring every team to share one administrator password",
+          "optionTextEs": "Exigir que todos compartan una contraseña de administrador",
+          "isCorrect": false,
+          "explanationEn": "Shared operational insights can help teams identify issues or opportunities together. Collaboration does not mean sharing credentials or bypassing each team security responsibilities.",
+          "explanationEs": "La información operativa compartida puede ayudar a identificar problemas u oportunidades conjuntamente. Colaborar no significa compartir credenciales ni evitar responsabilidades de seguridad.",
+          "optionLabel": "D",
+          "displayOrder": 3
+        }
+      ]
+    },
+    {
+      "id": "ccna-original-20261026-b08-006",
+      "concept": "netconf-test-only-does-not-apply-edits",
+      "questionFamilyId": "concept-netconf-test-only-does-not-apply-edits",
+      "statementEn": "A NETCONF server advertises :validate:1.1. An edit-config request uses test-option test-only. What is the intended result?",
+      "statementEs": "Un servidor NETCONF anuncia :validate:1.1. Un edit-config usa test-option test-only. ¿Cuál es el resultado previsto?",
+      "questionType": "single_choice",
+      "multipleAnswerCount": null,
+      "difficulty": "intermediate",
+      "primaryTopicExamArea": "automation_programmability",
+      "estimatedTimeSeconds": 75,
+      "explanationEn": "test-only tests the configuration data without applying it, when supported. This is distinct from test-then-set and from assuming a successful validation is an applied configuration.",
+      "explanationEs": "test-only comprueba los datos sin aplicarlos cuando se admite. Difiere de test-then-set y de suponer que validar con éxito equivale a aplicar.",
+      "correctAnswerExplanationEn": "test-only tests the configuration data without applying it, when supported. This is distinct from test-then-set and from assuming a successful validation is an applied configuration.",
+      "correctAnswerExplanationEs": "test-only comprueba los datos sin aplicarlos cuando se admite. Difiere de test-then-set y de suponer que validar con éxito equivale a aplicar.",
+      "sourceName": "Original CCNA practice — focused batch 08",
+      "sourceUrl": "https://www.rfc-editor.org/rfc/rfc6241.txt",
+      "sourceSection": "7.2",
+      "sourceLicense": "Original project question wording; technical references are not reproduced.",
+      "examVersion": "200-301-v1.1",
+      "validationStatus": "pending_review",
+      "verification": {
+        "referenceAccess": "consulted",
+        "humanReviewRequired": true,
+        "referenceDocumentUrl": "https://www.rfc-editor.org/rfc/rfc6241.txt",
+        "referenceSha256": "989b44560e4663267618b4b6bfc4cf0c7772fa2b59b5980936d9b073cbbd5314",
+        "retrievedAt": "2026-10-26T15:17:07.681864+00:00",
+        "consultedAt": "2026-10-26T18:01:35.401730+00:00",
+        "evidenceSection": "7.2",
+        "evidenceAnchor": "test-only: Perform only the validation test, without attempting to set",
+        "evidenceAnchors": [
+          "test-only: Perform only the validation test, without attempting to set"
+        ],
+        "consultationNotes": "Automated-assistant documentary review of scenario assumptions, proposed key, distractors and bilingual wording. Independent human approval remains pending.",
+        "documentaryReview": {
+          "reviewerType": "automated_assistant",
+          "checkedAt": "2026-10-26T18:01:35.401730+00:00",
+          "contentSha256": "a6ec2f0f4efb75d633c63204b6abcb3323437fd8bd2f1d43ced0f03e62b9fec9",
+          "scope": "source passage, answer key, assumptions, distractors and bilingual consistency",
+          "humanApproval": "pending"
+        }
+      },
+      "options": [
+        {
+          "optionTextEn": "Always save the change to startup and reboot",
+          "optionTextEs": "Guardar siempre en startup y reiniciar",
+          "isCorrect": false,
+          "explanationEn": "test-only tests the configuration data without applying it, when supported. This is distinct from test-then-set and from assuming a successful validation is an applied configuration.",
+          "explanationEs": "test-only comprueba los datos sin aplicarlos cuando se admite. Difiere de test-then-set y de suponer que validar con éxito equivale a aplicar.",
+          "optionLabel": "A",
+          "displayOrder": 0
+        },
+        {
+          "optionTextEn": "Skip validation and apply every edit blindly",
+          "optionTextEs": "Omitir validación y aplicar todo cambio a ciegas",
+          "isCorrect": false,
+          "explanationEn": "test-only tests the configuration data without applying it, when supported. This is distinct from test-then-set and from assuming a successful validation is an applied configuration.",
+          "explanationEs": "test-only comprueba los datos sin aplicarlos cuando se admite. Difiere de test-then-set y de suponer que validar con éxito equivale a aplicar.",
+          "optionLabel": "B",
+          "displayOrder": 1
+        },
+        {
+          "optionTextEn": "Replace NETCONF transport with DNS",
+          "optionTextEs": "Sustituir transporte NETCONF por DNS",
+          "isCorrect": false,
+          "explanationEn": "test-only tests the configuration data without applying it, when supported. This is distinct from test-then-set and from assuming a successful validation is an applied configuration.",
+          "explanationEs": "test-only comprueba los datos sin aplicarlos cuando se admite. Difiere de test-then-set y de suponer que validar con éxito equivale a aplicar.",
+          "optionLabel": "C",
+          "displayOrder": 2
+        },
+        {
+          "optionTextEn": "Test the requested edit without applying it",
+          "optionTextEs": "Comprobar la edición solicitada sin aplicarla",
+          "isCorrect": true,
+          "explanationEn": "test-only tests the configuration data without applying it, when supported. This is distinct from test-then-set and from assuming a successful validation is an applied configuration.",
+          "explanationEs": "test-only comprueba los datos sin aplicarlos cuando se admite. Difiere de test-then-set y de suponer que validar con éxito equivale a aplicar.",
+          "optionLabel": "D",
+          "displayOrder": 3
+        }
+      ]
+    },
+    {
+      "id": "ccna-original-20261026-b08-007",
+      "concept": "http-409-resource-state-conflict",
+      "questionFamilyId": "concept-http-409-resource-state-conflict",
+      "statementEn": "A configuration API responds HTTP 409 Conflict because a requested operation is incompatible with the current resource state. What should the client investigate?",
+      "statementEs": "Una API responde HTTP 409 Conflict porque una operación no es compatible con el estado actual del recurso. ¿Qué debe investigar el cliente?",
+      "questionType": "single_choice",
+      "multipleAnswerCount": null,
+      "difficulty": "basic",
+      "primaryTopicExamArea": "automation_programmability",
+      "estimatedTimeSeconds": 75,
+      "explanationEn": "409 indicates a conflict with current state. Understanding and resolving the conflict may allow a later request; it is not itself proof of success or a universal authentication failure.",
+      "explanationEs": "409 indica conflicto con el estado actual. Comprenderlo y resolverlo puede permitir otra solicitud; no prueba éxito ni un fallo universal de autenticación.",
+      "correctAnswerExplanationEn": "409 indicates a conflict with current state. Understanding and resolving the conflict may allow a later request; it is not itself proof of success or a universal authentication failure.",
+      "correctAnswerExplanationEs": "409 indica conflicto con el estado actual. Comprenderlo y resolverlo puede permitir otra solicitud; no prueba éxito ni un fallo universal de autenticación.",
+      "sourceName": "Original CCNA practice — focused batch 08",
+      "sourceUrl": "https://www.rfc-editor.org/rfc/rfc9110.txt",
+      "sourceSection": "15.5.10",
+      "sourceLicense": "Original project question wording; technical references are not reproduced.",
+      "examVersion": "200-301-v1.1",
+      "validationStatus": "pending_review",
+      "verification": {
+        "referenceAccess": "consulted",
+        "humanReviewRequired": true,
+        "referenceDocumentUrl": "https://www.rfc-editor.org/rfc/rfc9110.txt",
+        "referenceSha256": "21c1cdce6ab0e5509b04d84a28000836c7a087cf786efe6f04877ebfff47232a",
+        "retrievedAt": "2026-10-26T15:17:07.867903+00:00",
+        "consultedAt": "2026-10-26T18:01:35.401730+00:00",
+        "evidenceSection": "15.5.10",
+        "evidenceAnchor": "could not be completed due to a conflict with the current state",
+        "evidenceAnchors": [
+          "could not be completed due to a conflict with the current state"
+        ],
+        "consultationNotes": "Automated-assistant documentary review of scenario assumptions, proposed key, distractors and bilingual wording. Independent human approval remains pending.",
+        "documentaryReview": {
+          "reviewerType": "automated_assistant",
+          "checkedAt": "2026-10-26T18:01:35.401730+00:00",
+          "contentSha256": "6e19d190c96825060c19135912a1d3066eec7fbb7fcd18d30837df7d50c98b0a",
+          "scope": "source passage, answer key, assumptions, distractors and bilingual consistency",
+          "humanApproval": "pending"
+        }
+      },
+      "options": [
+        {
+          "optionTextEn": "A need to retry forever without inspecting the response",
+          "optionTextEs": "La necesidad de reintentar indefinidamente sin revisar respuesta",
+          "isCorrect": false,
+          "explanationEn": "409 indicates a conflict with current state. Understanding and resolving the conflict may allow a later request; it is not itself proof of success or a universal authentication failure.",
+          "explanationEs": "409 indica conflicto con el estado actual. Comprenderlo y resolverlo puede permitir otra solicitud; no prueba éxito ni un fallo universal de autenticación.",
+          "optionLabel": "A",
+          "displayOrder": 0
+        },
+        {
+          "optionTextEn": "Only whether DNS uses TCP port 409",
+          "optionTextEs": "Solo si DNS usa puerto TCP 409",
+          "isCorrect": false,
+          "explanationEn": "409 indicates a conflict with current state. Understanding and resolving the conflict may allow a later request; it is not itself proof of success or a universal authentication failure.",
+          "explanationEs": "409 indica conflicto con el estado actual. Comprenderlo y resolverlo puede permitir otra solicitud; no prueba éxito ni un fallo universal de autenticación.",
+          "optionLabel": "B",
+          "displayOrder": 1
+        },
+        {
+          "optionTextEn": "A guarantee the operation already succeeded",
+          "optionTextEs": "Una garantía de que la operación tuvo éxito",
+          "isCorrect": false,
+          "explanationEn": "409 indicates a conflict with current state. Understanding and resolving the conflict may allow a later request; it is not itself proof of success or a universal authentication failure.",
+          "explanationEs": "409 indica conflicto con el estado actual. Comprenderlo y resolverlo puede permitir otra solicitud; no prueba éxito ni un fallo universal de autenticación.",
+          "optionLabel": "C",
+          "displayOrder": 2
+        },
+        {
+          "optionTextEn": "The resource state and conflict details before deciding how to retry",
+          "optionTextEs": "El estado del recurso y los detalles del conflicto antes de decidir el reintento",
+          "isCorrect": true,
+          "explanationEn": "409 indicates a conflict with current state. Understanding and resolving the conflict may allow a later request; it is not itself proof of success or a universal authentication failure.",
+          "explanationEs": "409 indica conflicto con el estado actual. Comprenderlo y resolverlo puede permitir otra solicitud; no prueba éxito ni un fallo universal de autenticación.",
+          "optionLabel": "D",
+          "displayOrder": 3
+        }
+      ]
+    },
+    {
+      "id": "ccna-original-20261026-b08-008",
+      "concept": "ai-generated-change-still-needs-authorization",
+      "questionFamilyId": "concept-api-authorization-server-enforcement",
+      "statementEn": "An AI assistant proposes a privileged network configuration change. The requesting account has read-only rights. Does generating the command grant permission to execute it?",
+      "statementEs": "Un asistente IA propone un cambio privilegiado de red. La cuenta solicitante solo puede leer. ¿Generar el comando concede permiso para ejecutarlo?",
+      "questionType": "single_choice",
+      "multipleAnswerCount": null,
+      "difficulty": "intermediate",
+      "primaryTopicExamArea": "security_fundamentals",
+      "estimatedTimeSeconds": 75,
+      "explanationEn": "Authorization controls which entity may perform the operation, regardless of who drafted the text. Automated assistance does not expand an account privileges.",
+      "explanationEs": "La autorización controla qué entidad puede ejecutar la operación, sin importar quién redactó el texto. La asistencia automatizada no amplía privilegios de una cuenta.",
+      "correctAnswerExplanationEn": "Authorization controls which entity may perform the operation, regardless of who drafted the text. Automated assistance does not expand an account privileges.",
+      "correctAnswerExplanationEs": "La autorización controla qué entidad puede ejecutar la operación, sin importar quién redactó el texto. La asistencia automatizada no amplía privilegios de una cuenta.",
+      "sourceName": "Original CCNA practice — focused batch 08",
+      "sourceUrl": "https://www.rfc-editor.org/rfc/rfc2904.txt",
+      "sourceSection": "Authorization framework",
+      "sourceLicense": "Original project question wording; technical references are not reproduced.",
+      "examVersion": "200-301-v1.1",
+      "validationStatus": "pending_review",
+      "verification": {
+        "referenceAccess": "consulted",
+        "humanReviewRequired": true,
+        "referenceDocumentUrl": "https://www.rfc-editor.org/rfc/rfc2904.txt",
+        "referenceSha256": "802ad25d792aa2968c48a7cde189a1aff23f9b59b350d6d4531da876b709a205",
+        "retrievedAt": "2026-10-26T17:05:25.920657+00:00",
+        "consultedAt": "2026-10-26T18:01:35.401730+00:00",
+        "evidenceSection": "Authorization framework",
+        "evidenceAnchor": "Policy Enforcement Point",
+        "evidenceAnchors": [
+          "Policy Enforcement Point"
+        ],
+        "consultationNotes": "Automated-assistant documentary review of scenario assumptions, proposed key, distractors and bilingual wording. Independent human approval remains pending.",
+        "documentaryReview": {
+          "reviewerType": "automated_assistant",
+          "checkedAt": "2026-10-26T18:01:35.401730+00:00",
+          "contentSha256": "8f15c29f855a184e2b782b16565523a28d609f2b207c684cb93a283824793249",
+          "scope": "source passage, answer key, assumptions, distractors and bilingual consistency",
+          "humanApproval": "pending"
+        }
+      },
+      "options": [
+        {
+          "optionTextEn": "No; because network configuration can never be automated",
+          "optionTextEs": "No; la configuración de red nunca puede automatizarse",
+          "isCorrect": false,
+          "explanationEn": "Authorization controls which entity may perform the operation, regardless of who drafted the text. Automated assistance does not expand an account privileges.",
+          "explanationEs": "La autorización controla qué entidad puede ejecutar la operación, sin importar quién redactó el texto. La asistencia automatizada no amplía privilegios de una cuenta.",
+          "optionLabel": "A",
+          "displayOrder": 0
+        },
+        {
+          "optionTextEn": "No; authorization still has to permit the operation",
+          "optionTextEs": "No; la autorización debe seguir permitiendo la operación",
+          "isCorrect": true,
+          "explanationEn": "Authorization controls which entity may perform the operation, regardless of who drafted the text. Automated assistance does not expand an account privileges.",
+          "explanationEs": "La autorización controla qué entidad puede ejecutar la operación, sin importar quién redactó el texto. La asistencia automatizada no amplía privilegios de una cuenta.",
+          "optionLabel": "B",
+          "displayOrder": 1
+        },
+        {
+          "optionTextEn": "Yes; any command suggested by a model is an administrator token",
+          "optionTextEs": "Sí; todo comando sugerido es un token administrador",
+          "isCorrect": false,
+          "explanationEn": "Authorization controls which entity may perform the operation, regardless of who drafted the text. Automated assistance does not expand an account privileges.",
+          "explanationEs": "La autorización controla qué entidad puede ejecutar la operación, sin importar quién redactó el texto. La asistencia automatizada no amplía privilegios de una cuenta.",
+          "optionLabel": "C",
+          "displayOrder": 2
+        },
+        {
+          "optionTextEn": "Yes; generated text automatically overrides server roles",
+          "optionTextEs": "Sí; el texto generado anula roles del servidor",
+          "isCorrect": false,
+          "explanationEn": "Authorization controls which entity may perform the operation, regardless of who drafted the text. Automated assistance does not expand an account privileges.",
+          "explanationEs": "La autorización controla qué entidad puede ejecutar la operación, sin importar quién redactó el texto. La asistencia automatizada no amplía privilegios de una cuenta.",
+          "optionLabel": "D",
+          "displayOrder": 3
+        }
+      ]
+    },
+    {
+      "id": "ccna-original-20261026-b08-009",
+      "concept": "alert-precision-explicit-model",
+      "questionFamilyId": "concept-alert-precision-explicit-model",
+      "statementEn": "In a simplified alert-quality model, precision = true alerts / all emitted alerts. There are 20 true alerts and 5 false alerts. What is precision?",
+      "statementEs": "En un modelo simplificado, precisión = alertas verdaderas / todas las emitidas. Hay 20 verdaderas y 5 falsas. ¿Cuál es la precisión?",
+      "questionType": "single_choice",
+      "multipleAnswerCount": null,
+      "difficulty": "intermediate",
+      "primaryTopicExamArea": "automation_programmability",
+      "estimatedTimeSeconds": 75,
+      "explanationEn": "The stated model gives 20/(20+5)=0.8, or 80%. This is not recall, not a vendor performance claim and not proof that the remaining alerts are harmless.",
+      "explanationEs": "El modelo da 20/(20+5)=0,8, u 80%. No es recall, una cifra de rendimiento del proveedor ni prueba de que las demás alertas sean inofensivas.",
+      "correctAnswerExplanationEn": "The stated model gives 20/(20+5)=0.8, or 80%. This is not recall, not a vendor performance claim and not proof that the remaining alerts are harmless.",
+      "correctAnswerExplanationEs": "El modelo da 20/(20+5)=0,8, u 80%. No es recall, una cifra de rendimiento del proveedor ni prueba de que las demás alertas sean inofensivas.",
+      "sourceName": "Original CCNA practice — focused batch 08",
+      "sourceUrl": "https://www.cisco.com/c/en/us/solutions/artificial-intelligence/what-is-aiops.html",
+      "sourceSection": "Operational insights and explicit mathematical model",
+      "sourceLicense": "Original project question wording; technical references are not reproduced.",
+      "examVersion": "200-301-v1.1",
+      "validationStatus": "pending_review",
+      "verification": {
+        "referenceAccess": "consulted",
+        "humanReviewRequired": true,
+        "calculation": {
+          "kind": "alert_precision",
+          "true_alerts": 20,
+          "false_alerts": 5
+        },
+        "referenceDocumentUrl": "https://www.cisco.com/site/us/en/learn/topics/artificial-intelligence/what-is-aiops.html",
+        "referenceSha256": "569d8a81fa99d4a7eceec5886a7c1bb22f5d622f8571dbfbc5bea06710b951fa",
+        "retrievedAt": "2026-10-26T17:53:03.728037+00:00",
+        "consultedAt": "2026-10-26T18:01:35.401730+00:00",
+        "evidenceSection": "Operational insights and explicit mathematical model",
+        "evidenceAnchor": "make decisions faster",
+        "evidenceAnchors": [
+          "make decisions faster"
+        ],
+        "consultationNotes": "Automated-assistant documentary review of scenario assumptions, proposed key, distractors and bilingual wording. Independent human approval remains pending.",
+        "referenceCoverageNotes": "The source supplies operational context; the mathematical model is explicitly defined by the hypothetical scenario and is not vendor performance data or a confirmed exam subobjective.",
+        "documentaryReview": {
+          "reviewerType": "automated_assistant",
+          "checkedAt": "2026-10-26T18:01:35.401730+00:00",
+          "contentSha256": "92a95fa7ae98776e01c9589a98491ee2db9bac5e251bf3b6bc5be912ffca8e51",
+          "scope": "source passage, answer key, assumptions, distractors and bilingual consistency",
+          "humanApproval": "pending"
+        }
+      },
+      "options": [
+        {
+          "optionTextEn": "20%",
+          "optionTextEs": "20%",
+          "isCorrect": false,
+          "explanationEn": "The stated model gives 20/(20+5)=0.8, or 80%. This is not recall, not a vendor performance claim and not proof that the remaining alerts are harmless.",
+          "explanationEs": "El modelo da 20/(20+5)=0,8, u 80%. No es recall, una cifra de rendimiento del proveedor ni prueba de que las demás alertas sean inofensivas.",
+          "optionLabel": "A",
+          "displayOrder": 0
+        },
+        {
+          "optionTextEn": "80%",
+          "optionTextEs": "80%",
+          "isCorrect": true,
+          "explanationEn": "The stated model gives 20/(20+5)=0.8, or 80%. This is not recall, not a vendor performance claim and not proof that the remaining alerts are harmless.",
+          "explanationEs": "El modelo da 20/(20+5)=0,8, u 80%. No es recall, una cifra de rendimiento del proveedor ni prueba de que las demás alertas sean inofensivas.",
+          "optionLabel": "B",
+          "displayOrder": 1
+        },
+        {
+          "optionTextEn": "25%",
+          "optionTextEs": "25%",
+          "isCorrect": false,
+          "explanationEn": "The stated model gives 20/(20+5)=0.8, or 80%. This is not recall, not a vendor performance claim and not proof that the remaining alerts are harmless.",
+          "explanationEs": "El modelo da 20/(20+5)=0,8, u 80%. No es recall, una cifra de rendimiento del proveedor ni prueba de que las demás alertas sean inofensivas.",
+          "optionLabel": "C",
+          "displayOrder": 2
+        },
+        {
+          "optionTextEn": "100%",
+          "optionTextEs": "100%",
+          "isCorrect": false,
+          "explanationEn": "The stated model gives 20/(20+5)=0.8, or 80%. This is not recall, not a vendor performance claim and not proof that the remaining alerts are harmless.",
+          "explanationEs": "El modelo da 20/(20+5)=0,8, u 80%. No es recall, una cifra de rendimiento del proveedor ni prueba de que las demás alertas sean inofensivas.",
+          "optionLabel": "D",
+          "displayOrder": 3
+        }
+      ]
+    },
+    {
+      "id": "ccna-original-20261026-b08-010",
+      "concept": "automation-explicit-time-savings-model",
+      "questionFamilyId": "concept-automation-explicit-time-savings-model",
+      "statementEn": "A hypothetical automation saves 10 minutes on one daily task and 15 on another over five working days. Ignore setup and maintenance costs. What is the weekly time saving?",
+      "statementEs": "Una automatización hipotética ahorra 10 minutos en una tarea diaria y 15 en otra durante cinco días laborables. Ignora costos de preparación y mantenimiento. ¿Cuál es el ahorro semanal?",
+      "questionType": "single_choice",
+      "multipleAnswerCount": null,
+      "difficulty": "intermediate",
+      "primaryTopicExamArea": "automation_programmability",
+      "estimatedTimeSeconds": 75,
+      "explanationEn": "The declared calculation is (10+15)×5=125 minutes. It is an illustrative estimate under explicit assumptions, not guaranteed savings for a real deployment.",
+      "explanationEs": "El cálculo indicado es (10+15)×5=125 minutos. Es una estimación ilustrativa con supuestos explícitos, no ahorro garantizado de un despliegue.",
+      "correctAnswerExplanationEn": "The declared calculation is (10+15)×5=125 minutes. It is an illustrative estimate under explicit assumptions, not guaranteed savings for a real deployment.",
+      "correctAnswerExplanationEs": "El cálculo indicado es (10+15)×5=125 minutos. Es una estimación ilustrativa con supuestos explícitos, no ahorro garantizado de un despliegue.",
+      "sourceName": "Original CCNA practice — focused batch 08",
+      "sourceUrl": "https://www.cisco.com/c/en/us/solutions/artificial-intelligence/what-is-aiops.html",
+      "sourceSection": "Time and cost savings",
+      "sourceLicense": "Original project question wording; technical references are not reproduced.",
+      "examVersion": "200-301-v1.1",
+      "validationStatus": "pending_review",
+      "verification": {
+        "referenceAccess": "consulted",
+        "humanReviewRequired": true,
+        "calculation": {
+          "kind": "time_savings",
+          "daily_minutes": [
+            10,
+            15
+          ],
+          "days": 5
+        },
+        "referenceDocumentUrl": "https://www.cisco.com/site/us/en/learn/topics/artificial-intelligence/what-is-aiops.html",
+        "referenceSha256": "569d8a81fa99d4a7eceec5886a7c1bb22f5d622f8571dbfbc5bea06710b951fa",
+        "retrievedAt": "2026-10-26T17:53:03.728037+00:00",
+        "consultedAt": "2026-10-26T18:01:35.401730+00:00",
+        "evidenceSection": "Time and cost savings",
+        "evidenceAnchor": "10 minutes on one task, 15 minutes on another",
+        "evidenceAnchors": [
+          "10 minutes on one task, 15 minutes on another"
+        ],
+        "consultationNotes": "Automated-assistant documentary review of scenario assumptions, proposed key, distractors and bilingual wording. Independent human approval remains pending.",
+        "referenceCoverageNotes": "The source supplies operational context; the mathematical model is explicitly defined by the hypothetical scenario and is not vendor performance data or a confirmed exam subobjective.",
+        "documentaryReview": {
+          "reviewerType": "automated_assistant",
+          "checkedAt": "2026-10-26T18:01:35.401730+00:00",
+          "contentSha256": "60f8ba0bfbeea754773d03afe8fef63ac3d76a03ce3a45f3262521d5d4b010e0",
+          "scope": "source passage, answer key, assumptions, distractors and bilingual consistency",
+          "humanApproval": "pending"
+        }
+      },
+      "options": [
+        {
+          "optionTextEn": "75 minutes",
+          "optionTextEs": "75 minutos",
+          "isCorrect": false,
+          "explanationEn": "The declared calculation is (10+15)×5=125 minutes. It is an illustrative estimate under explicit assumptions, not guaranteed savings for a real deployment.",
+          "explanationEs": "El cálculo indicado es (10+15)×5=125 minutos. Es una estimación ilustrativa con supuestos explícitos, no ahorro garantizado de un despliegue.",
+          "optionLabel": "A",
+          "displayOrder": 0
+        },
+        {
+          "optionTextEn": "50 minutes",
+          "optionTextEs": "50 minutos",
+          "isCorrect": false,
+          "explanationEn": "The declared calculation is (10+15)×5=125 minutes. It is an illustrative estimate under explicit assumptions, not guaranteed savings for a real deployment.",
+          "explanationEs": "El cálculo indicado es (10+15)×5=125 minutos. Es una estimación ilustrativa con supuestos explícitos, no ahorro garantizado de un despliegue.",
+          "optionLabel": "B",
+          "displayOrder": 1
+        },
+        {
+          "optionTextEn": "125 minutes",
+          "optionTextEs": "125 minutos",
+          "isCorrect": true,
+          "explanationEn": "The declared calculation is (10+15)×5=125 minutes. It is an illustrative estimate under explicit assumptions, not guaranteed savings for a real deployment.",
+          "explanationEs": "El cálculo indicado es (10+15)×5=125 minutos. Es una estimación ilustrativa con supuestos explícitos, no ahorro garantizado de un despliegue.",
+          "optionLabel": "C",
+          "displayOrder": 2
+        },
+        {
+          "optionTextEn": "25 minutes",
+          "optionTextEs": "25 minutos",
+          "isCorrect": false,
+          "explanationEn": "The declared calculation is (10+15)×5=125 minutes. It is an illustrative estimate under explicit assumptions, not guaranteed savings for a real deployment.",
+          "explanationEs": "El cálculo indicado es (10+15)×5=125 minutos. Es una estimación ilustrativa con supuestos explícitos, no ahorro garantizado de un despliegue.",
+          "optionLabel": "D",
+          "displayOrder": 3
+        }
+      ]
+    }
+  ]
+}

@@ -25,6 +25,18 @@ export const ReviewPage: React.FC = () => {
   const [reviews, setReviews] = useState<ReviewQuestionItem[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
+  const [canRestart, setCanRestart] = useState(false);
+  const [restarting, setRestarting] = useState(false);
+  const [restartError, setRestartError] = useState('');
+
+  useEffect(() => {
+    let active = true;
+    setCanRestart(false); setRestartError('');
+    if (examId) api.getExamState(examId).then(result => {
+      if (active && result.success && result.data) setCanRestart(result.data.config.studyMode && !result.data.config.strictMode && result.data.status === 'completed');
+    });
+    return () => { active = false; };
+  }, [examId]);
 
   const [filter, setFilter] = useState<FilterType>('all');
   const [currentIndex, setCurrentIndex] = useState<number>(0);
@@ -100,6 +112,20 @@ export const ReviewPage: React.FC = () => {
 
   return (
     <div className="space-y-6 pb-16">
+      {reviews.some(q => q.historicalContentPreserved === false) && <p role="status" className="card text-amber-200">{t('review.legacyContentWarning')}</p>}
+      {restartError && <p role="alert" className="text-red-300">{restartError}</p>}
+      {canRestart && currentQuestion && currentQuestion.selectedOptionIds.length > 0 && <div className="card space-y-2">
+        <p className="text-sm text-slate-400">{t('study.restartHelp')}</p>
+        <button type="button" className="btn-secondary" disabled={restarting} onClick={async () => {
+          if (!examId) return;
+          setRestarting(true); setRestartError('');
+          try {
+            const result = await api.restartStudyExercise(examId, currentQuestion.examQuestionId);
+            if (result.success && result.data) navigate(`/exam/${result.data.examId}`);
+            else setRestartError(result.error || t('study.restartError'));
+          } finally { setRestarting(false); }
+        }}>{t(restarting ? 'study.restarting' : 'study.restart')}</button>
+      </div>}
       {/* Header & Back Button */}
       <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
         <div>

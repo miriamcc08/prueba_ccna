@@ -84,7 +84,7 @@ router.get(
         }
       }
 
-      const response: ApiResponse<typeof topic & { learningObjectives: string[] }> = {
+      const response: ApiResponse<Omit<typeof topic, 'learningObjectives'> & { learningObjectives: string[] }> = {
         success: true,
         data: {
           ...topic,

@@ -30,6 +30,7 @@ export const ExamSummaryCard: React.FC<ExamSummaryCardProps> = ({
           <span>{t('config.summary.title')}</span>
         </h3>
 
+        {config.perQuestionTimeLimit && <p className="mb-3 text-sm text-cyan-300">{t('config.options.perQuestionTimeLimit')}: {config.perQuestionTimeLimit} s</p>}
         {/* Configuration Parameter Rows */}
         <div className="space-y-3.5 text-sm mb-6">
           <div className="flex justify-between items-center py-1.5 border-b border-slate-700/40">
@@ -48,7 +49,7 @@ export const ExamSummaryCard: React.FC<ExamSummaryCardProps> = ({
             <span className="text-slate-400">{t('config.summary.duration')}:</span>
             <span className="font-semibold text-slate-200 flex items-center gap-1.5">
               <ClockIcon size={14} className="text-teal-400" />
-              <span>{config.durationMinutes} {t('config.duration.minutes')}</span>
+              <span>{config.untimed ? t('study.untimed') : `${config.durationMinutes} ${t('config.duration.minutes')}`}</span>
             </span>
           </div>
 

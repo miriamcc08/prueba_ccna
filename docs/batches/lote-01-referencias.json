@@ -1,0 +1,388 @@
+{
+  "batchId": "original-20261024-50",
+  "generatedAt": "2026-10-26T18:01:35.401730+00:00",
+  "scope": "Explicit partial review: first twenty of fifty; thirty remain without this focused review. General citations and consulted chapters are identified separately.",
+  "questionsWithFocusedConsultation": 20,
+  "documents": [
+    {
+      "url": "https://www.cisco.com/c/en/us/support/docs/ip/access-lists/26448-ACLsamples.html",
+      "status": "retrieved",
+      "primary": true,
+      "sha256": "d004fd75573b4f98df59c86de4448a69abd072947aad8a5aac3a838e1e04b8a8",
+      "retrievedAt": "2026-10-26T15:17:06.175969+00:00",
+      "bytes": 71442,
+      "finalUrl": "https://www.cisco.com/c/en/us/support/docs/ip/access-lists/26448-ACLsamples.html",
+      "cachePath": "/workspace/.ccna-cache/references/sha256/d004fd75573b4f98df59c86de4448a69abd072947aad8a5aac3a838e1e04b8a8.html"
+    },
+    {
+      "url": "https://www.rfc-editor.org/rfc/rfc1878",
+      "primary": true,
+      "status": "retrieved",
+      "sha256": "2869b124b9258cc11a34527d330e5310519d0cc6182bf0e103b1a65b7856dc3c",
+      "bytes": 19414,
+      "retrievedAt": "2026-10-26T14:24:19.565575+00:00",
+      "finalUrl": "https://www.rfc-editor.org/rfc/rfc1878.txt",
+      "cachePath": "/workspace/.ccna-cache/references/5925deadf2958dd3.txt",
+      "retrievalUrl": "https://www.rfc-editor.org/rfc/rfc1878.txt"
+    },
+    {
+      "url": "https://www.rfc-editor.org/rfc/rfc3021",
+      "retrievalUrl": "https://www.rfc-editor.org/rfc/rfc3021.txt",
+      "status": "retrieved",
+      "primary": true,
+      "sha256": "e19bf6ce80f4d5c9f82c2b7c08802bf8a1b8f8f00fea348dffac1142646861e7",
+      "bytes": 19771,
+      "cachePath": "/workspace/.ccna-cache/references/sha256/e19bf6ce80f4d5c9f82c2b7c08802bf8a1b8f8f00fea348dffac1142646861e7.txt",
+      "finalUrl": "https://www.rfc-editor.org/rfc/rfc3021.txt",
+      "retrievedAt": "2026-10-26T17:05:26.097147+00:00"
+    },
+    {
+      "url": "https://www.rfc-editor.org/rfc/rfc4291",
+      "status": "retrieved",
+      "primary": true,
+      "sha256": "4d58dff6b432d5d524bf3a3b7f0337a4177fa65f92ed72f2a92e97b471de48b2",
+      "retrievedAt": "2026-10-26T15:17:07.342733+00:00",
+      "bytes": 52897,
+      "finalUrl": "https://www.rfc-editor.org/rfc/rfc4291.txt",
+      "cachePath": "/workspace/.ccna-cache/references/sha256/4d58dff6b432d5d524bf3a3b7f0337a4177fa65f92ed72f2a92e97b471de48b2.txt",
+      "retrievalUrl": "https://www.rfc-editor.org/rfc/rfc4291.txt"
+    },
+    {
+      "url": "https://www.rfc-editor.org/rfc/rfc4632",
+      "primary": true,
+      "status": "retrieved",
+      "sha256": "13694a39f586eb2054407780edccdf7c39332e57f067c8008bba4326bfc24fa9",
+      "bytes": 66944,
+      "retrievedAt": "2026-10-26T14:24:20.745932+00:00",
+      "finalUrl": "https://www.rfc-editor.org/rfc/rfc4632.txt",
+      "cachePath": "/workspace/.ccna-cache/references/b5de2fba443c7126.txt",
+      "retrievalUrl": "https://www.rfc-editor.org/rfc/rfc4632.txt"
+    },
+    {
+      "url": "https://www.rfc-editor.org/rfc/rfc5952",
+      "retrievalUrl": "https://www.rfc-editor.org/rfc/rfc5952.txt",
+      "status": "retrieved",
+      "primary": true,
+      "sha256": "c75e82c5f53bcec8148820fadf0d65935336ee2031fa6ce10504797ed4c1979d",
+      "bytes": 26570,
+      "cachePath": "/workspace/.ccna-cache/references/sha256/c75e82c5f53bcec8148820fadf0d65935336ee2031fa6ce10504797ed4c1979d.txt",
+      "finalUrl": "https://www.rfc-editor.org/rfc/rfc5952.txt",
+      "retrievedAt": "2026-10-26T17:05:26.432275+00:00"
+    },
+    {
+      "url": "https://www.rfc-editor.org/rfc/rfc7042",
+      "retrievalUrl": "https://www.rfc-editor.org/rfc/rfc7042.txt",
+      "status": "retrieved",
+      "primary": true,
+      "sha256": "8ad7b042253d1204cef2a5eddd6682072a5d4f9edc3b749df15df7bccdeca1df",
+      "bytes": 53488,
+      "cachePath": "/workspace/.ccna-cache/references/sha256/8ad7b042253d1204cef2a5eddd6682072a5d4f9edc3b749df15df7bccdeca1df.txt",
+      "finalUrl": "https://www.rfc-editor.org/rfc/rfc7042.txt",
+      "retrievedAt": "2026-10-26T17:05:26.310441+00:00"
+    },
+    {
+      "url": "https://www.rfc-editor.org/rfc/rfc791",
+      "status": "retrieved",
+      "primary": true,
+      "sha256": "6cfb387fcecfc1b72f2f69343c5b6951b5d263d708162e2b5c66ab8f394f6265",
+      "retrievedAt": "2026-10-26T15:17:07.749355+00:00",
+      "bytes": 94892,
+      "finalUrl": "https://www.rfc-editor.org/rfc/rfc791.txt",
+      "cachePath": "/workspace/.ccna-cache/references/sha256/6cfb387fcecfc1b72f2f69343c5b6951b5d263d708162e2b5c66ab8f394f6265.txt",
+      "retrievalUrl": "https://www.rfc-editor.org/rfc/rfc791.txt"
+    },
+    {
+      "url": "https://www.rfc-editor.org/rfc/rfc919",
+      "retrievalUrl": "https://www.rfc-editor.org/rfc/rfc919.txt",
+      "status": "retrieved",
+      "primary": true,
+      "sha256": "37d6bdb202cd4336e0922b862dbcff0516cd0d7cfa5219d0109e16545b1df64e",
+      "bytes": 16382,
+      "cachePath": "/workspace/.ccna-cache/references/sha256/37d6bdb202cd4336e0922b862dbcff0516cd0d7cfa5219d0109e16545b1df64e.txt",
+      "finalUrl": "https://www.rfc-editor.org/rfc/rfc919.txt",
+      "retrievedAt": "2026-10-26T17:05:26.588928+00:00"
+    },
+    {
+      "url": "https://www.rfc-editor.org/rfc/rfc9542.txt",
+      "status": "retrieved",
+      "primary": true,
+      "sha256": "5c52f6cb6aacb1dea947a206bc8775ec8aaed52d74b92c600f1b1166d5c3c0f1",
+      "bytes": 79284,
+      "cachePath": "/workspace/.ccna-cache/references/sha256/5c52f6cb6aacb1dea947a206bc8775ec8aaed52d74b92c600f1b1166d5c3c0f1.txt",
+      "finalUrl": "https://www.rfc-editor.org/rfc/rfc9542.txt",
+      "retrievedAt": "2026-10-26T17:07:23.572835+00:00"
+    },
+    {
+      "url": "https://www.cisco.com/c/en/us/td/docs/switches/lan/catalyst9300/software/release/17-15/configuration_guide/vlan/b_1715_vlan_9300_cg/configuring_vlans.html",
+      "primary": true,
+      "status": "retrieved",
+      "sha256": "524237fa275ee04ea9bb77a2d3979a8911a2c8c62d6757ff0bd01553b1b6c5d3",
+      "bytes": 197749,
+      "retrievedAt": "2026-10-26T14:24:18.154685+00:00",
+      "finalUrl": "https://www.cisco.com/c/en/us/td/docs/switches/lan/catalyst9300/software/release/17-15/configuration_guide/vlan/b_1715_vlan_9300_cg/configuring_vlans.html",
+      "cachePath": "/workspace/.ccna-cache/references/2870bd2aca8dcd12.html"
+    },
+    {
+      "url": "https://www.cisco.com/c/en/us/td/docs/switches/lan/catalyst9300/software/release/17-15/configuration_guide/vlan/b_1715_vlan_9300_cg/configuring_vlan_trunks.html",
+      "status": "retrieved",
+      "primary": true,
+      "sha256": "99ba29253329bba1c5edd2bb8780e155945eec145433000463e78519f598b858",
+      "bytes": 245217,
+      "cachePath": "/workspace/.ccna-cache/references/sha256/99ba29253329bba1c5edd2bb8780e155945eec145433000463e78519f598b858.html",
+      "finalUrl": "https://www.cisco.com/c/en/us/td/docs/switches/lan/catalyst9300/software/release/17-15/configuration_guide/vlan/b_1715_vlan_9300_cg/configuring_vlan_trunks.html",
+      "retrievedAt": "2026-10-26T16:40:08.310633+00:00"
+    },
+    {
+      "url": "https://www.cisco.com/c/en/us/td/docs/switches/lan/catalyst9300/software/release/17-15/configuration_guide/lyr2/b_1715_lyr2_9300_cg/configuring_spanning_tree_protocol.html",
+      "primary": true,
+      "status": "retrieved",
+      "sha256": "bd4a22940684e9d2516551f3e9032737bca5fd15736962bfc778c6b21962fdc7",
+      "bytes": 360720,
+      "retrievedAt": "2026-10-26T14:24:18.153947+00:00",
+      "finalUrl": "https://www.cisco.com/c/en/us/td/docs/switches/lan/catalyst9300/software/release/17-15/configuration_guide/lyr2/b_1715_lyr2_9300_cg/configuring_spanning_tree_protocol.html",
+      "cachePath": "/workspace/.ccna-cache/references/sha256/bd4a22940684e9d2516551f3e9032737bca5fd15736962bfc778c6b21962fdc7.html"
+    },
+    {
+      "url": "https://www.cisco.com/c/en/us/td/docs/switches/lan/catalyst9300/software/release/17-15/configuration_guide/lyr2/b_1715_lyr2_9300_cg/configuring_etherchannels.html",
+      "status": "retrieved",
+      "primary": true,
+      "sha256": "45ce331b4fdaa8879ab0b9d9a3fe9d9ea47f074e76df4d6d42823fc7a9e2cb86",
+      "retrievedAt": "2026-10-26T15:17:06.179456+00:00",
+      "bytes": 457157,
+      "finalUrl": "https://www.cisco.com/c/en/us/td/docs/switches/lan/catalyst9300/software/release/17-15/configuration_guide/lyr2/b_1715_lyr2_9300_cg/configuring_etherchannels.html",
+      "cachePath": "/workspace/.ccna-cache/references/sha256/45ce331b4fdaa8879ab0b9d9a3fe9d9ea47f074e76df4d6d42823fc7a9e2cb86.html"
+    }
+  ],
+  "focusedEvidence": [
+    {
+      "questionId": "ccna-original-20261024-001",
+      "url": "https://www.rfc-editor.org/rfc/rfc4632",
+      "section": "3.1",
+      "anchors": [
+        "prefix"
+      ],
+      "sha256": "13694a39f586eb2054407780edccdf7c39332e57f067c8008bba4326bfc24fa9",
+      "consultedAt": "2026-10-26T17:08:42.614557+00:00",
+      "contentSha256": "6496bf4368bf59e21cecaebf2abcadd1340398a8f53aaeb068f587dcb83ce1fc"
+    },
+    {
+      "questionId": "ccna-original-20261024-002",
+      "url": "https://www.rfc-editor.org/rfc/rfc919",
+      "section": "7",
+      "anchors": [
+        "all ones"
+      ],
+      "sha256": "37d6bdb202cd4336e0922b862dbcff0516cd0d7cfa5219d0109e16545b1df64e",
+      "consultedAt": "2026-10-26T17:08:42.614557+00:00",
+      "contentSha256": "1208e8c04e99d06229ec49da95c92c2a3b1d0d1602df795c573a0768bed6ba10"
+    },
+    {
+      "questionId": "ccna-original-20261024-003",
+      "url": "https://www.rfc-editor.org/rfc/rfc1878",
+      "section": "Subnet Table",
+      "anchors": [
+        "255.255.255.192"
+      ],
+      "sha256": "2869b124b9258cc11a34527d330e5310519d0cc6182bf0e103b1a65b7856dc3c",
+      "consultedAt": "2026-10-26T17:08:42.614557+00:00",
+      "contentSha256": "c36d946ae89f6cdd6ae252f6edce21187f23f4c3de632a4ca304572668b648e2"
+    },
+    {
+      "questionId": "ccna-original-20261024-004",
+      "url": "https://www.cisco.com/c/en/us/support/docs/ip/access-lists/26448-ACLsamples.html",
+      "section": "Protocol specification / configuration guide",
+      "anchors": [
+        "inverse mask"
+      ],
+      "sha256": "d004fd75573b4f98df59c86de4448a69abd072947aad8a5aac3a838e1e04b8a8",
+      "consultedAt": "2026-10-26T17:08:42.614557+00:00",
+      "contentSha256": "aafc5c0e34c2b970d4bf8277b543f064a07cf57d47f8dead248442f6d6d3bf40"
+    },
+    {
+      "questionId": "ccna-original-20261024-005",
+      "url": "https://www.rfc-editor.org/rfc/rfc3021",
+      "section": "2.1",
+      "anchors": [
+        "MUST be interpreted as host addresses"
+      ],
+      "sha256": "e19bf6ce80f4d5c9f82c2b7c08802bf8a1b8f8f00fea348dffac1142646861e7",
+      "consultedAt": "2026-10-26T17:08:42.614557+00:00",
+      "contentSha256": "d7842ce9ac64b8f9e15688bf6436cd904f464383eb517c41dee98fd72e5f3a21"
+    },
+    {
+      "questionId": "ccna-original-20261024-006",
+      "url": "https://www.rfc-editor.org/rfc/rfc4632",
+      "section": "3.1",
+      "anchors": [
+        "prefix"
+      ],
+      "sha256": "13694a39f586eb2054407780edccdf7c39332e57f067c8008bba4326bfc24fa9",
+      "consultedAt": "2026-10-26T17:08:42.614557+00:00",
+      "contentSha256": "6080e83289174fd5e38f62a61a4efcd554318f685d1011c17c1a60795c151902"
+    },
+    {
+      "questionId": "ccna-original-20261024-007",
+      "url": "https://www.rfc-editor.org/rfc/rfc4291",
+      "section": "2.3",
+      "anchors": [
+        "prefix-length"
+      ],
+      "sha256": "4d58dff6b432d5d524bf3a3b7f0337a4177fa65f92ed72f2a92e97b471de48b2",
+      "consultedAt": "2026-10-26T17:08:42.614557+00:00",
+      "contentSha256": "2fc82488d6b1f79195acc05b99773444dcb9ccf98d88dbf0110598e6c934e2e1"
+    },
+    {
+      "questionId": "ccna-original-20261024-008",
+      "url": "https://www.rfc-editor.org/rfc/rfc5952",
+      "section": "4",
+      "anchors": [
+        "longest run"
+      ],
+      "sha256": "c75e82c5f53bcec8148820fadf0d65935336ee2031fa6ce10504797ed4c1979d",
+      "consultedAt": "2026-10-26T17:08:42.614557+00:00",
+      "contentSha256": "c5d920132035bf6b43b586ace1354a844dda3e61233254d63174727dd0da0fd9"
+    },
+    {
+      "questionId": "ccna-original-20261024-009",
+      "url": "https://www.rfc-editor.org/rfc/rfc791",
+      "section": "3.1 Fragmentation",
+      "anchors": [
+        "8 octet"
+      ],
+      "sha256": "6cfb387fcecfc1b72f2f69343c5b6951b5d263d708162e2b5c66ab8f394f6265",
+      "consultedAt": "2026-10-26T17:08:42.614557+00:00",
+      "contentSha256": "39c15f8a2fac01bdd827c26e02210a67bb9fc5414c3804421d7e08d0792a85df"
+    },
+    {
+      "questionId": "ccna-original-20261024-010",
+      "url": "https://www.rfc-editor.org/rfc/rfc7042",
+      "section": "2.1",
+      "anchors": [
+        "local"
+      ],
+      "sha256": "8ad7b042253d1204cef2a5eddd6682072a5d4f9edc3b749df15df7bccdeca1df",
+      "consultedAt": "2026-10-26T17:08:42.614557+00:00",
+      "contentSha256": "7b3484c8b23c454d1724e6debea8725da9816ec47ef7873a04c00abdfc703c2b"
+    },
+    {
+      "questionId": "ccna-original-20261024-011",
+      "url": "https://www.cisco.com/c/en/us/td/docs/switches/lan/catalyst9300/software/release/17-15/configuration_guide/lyr2/b_1715_lyr2_9300_cg.html",
+      "documentUrl": "https://www.cisco.com/c/en/us/td/docs/switches/lan/catalyst9300/software/release/17-15/configuration_guide/vlan/b_1715_vlan_9300_cg/configuring_vlans.html",
+      "section": "VLAN Logical Networks",
+      "anchors": [
+        "A VLAN is a switched network that is logically segmented"
+      ],
+      "sha256": "524237fa275ee04ea9bb77a2d3979a8911a2c8c62d6757ff0bd01553b1b6c5d3",
+      "consultedAt": "2026-10-26T18:01:35.401730+00:00",
+      "contentSha256": "50876eca6a8c602cff4cdd02d29adde84ea5023b020ada69ac7da12dd2116dc5"
+    },
+    {
+      "questionId": "ccna-original-20261024-012",
+      "url": "https://www.cisco.com/c/en/us/td/docs/switches/lan/catalyst9300/software/release/17-15/configuration_guide/lyr2/b_1715_lyr2_9300_cg.html",
+      "documentUrl": "https://www.cisco.com/c/en/us/td/docs/switches/lan/catalyst9300/software/release/17-15/configuration_guide/vlan/b_1715_vlan_9300_cg/configuring_vlans.html",
+      "section": "Assigning Static-Access Ports to a VLAN",
+      "anchors": [
+        "Assigns the port to a VLAN"
+      ],
+      "sha256": "524237fa275ee04ea9bb77a2d3979a8911a2c8c62d6757ff0bd01553b1b6c5d3",
+      "consultedAt": "2026-10-26T18:01:35.401730+00:00",
+      "contentSha256": "6b226b5e02321bdc5adcab81812b925d15694a533fe22d1bac5b67e56c24552f"
+    },
+    {
+      "questionId": "ccna-original-20261024-013",
+      "url": "https://www.cisco.com/c/en/us/td/docs/switches/lan/catalyst9300/software/release/17-15/configuration_guide/lyr2/b_1715_lyr2_9300_cg.html",
+      "documentUrl": "https://www.cisco.com/c/en/us/td/docs/switches/lan/catalyst9300/software/release/17-15/configuration_guide/vlan/b_1715_vlan_9300_cg/configuring_vlan_trunks.html",
+      "section": "Allowed VLANs on a Trunk",
+      "anchors": [
+        "preventing traffic from those VLANs from passing over the trunk"
+      ],
+      "sha256": "99ba29253329bba1c5edd2bb8780e155945eec145433000463e78519f598b858",
+      "consultedAt": "2026-10-26T18:01:35.401730+00:00",
+      "contentSha256": "713a9d046da357c1db1de599a9fddeabc58f81c925d1c388527e35095ed981e3"
+    },
+    {
+      "questionId": "ccna-original-20261024-014",
+      "url": "https://www.cisco.com/c/en/us/td/docs/switches/lan/catalyst9300/software/release/17-15/configuration_guide/lyr2/b_1715_lyr2_9300_cg.html",
+      "documentUrl": "https://www.cisco.com/c/en/us/td/docs/switches/lan/catalyst9300/software/release/17-15/configuration_guide/lyr2/b_1715_lyr2_9300_cg/configuring_spanning_tree_protocol.html",
+      "section": "Root device selection and bridge ID",
+      "anchors": [
+        "priority value occupies the most significant bits"
+      ],
+      "sha256": "bd4a22940684e9d2516551f3e9032737bca5fd15736962bfc778c6b21962fdc7",
+      "consultedAt": "2026-10-26T18:01:35.401730+00:00",
+      "contentSha256": "a4904e63342f15885a1fb2c64902bfa81fc308fe61e1daa752250a662f3a4581"
+    },
+    {
+      "questionId": "ccna-original-20261024-015",
+      "url": "https://www.cisco.com/c/en/us/td/docs/switches/lan/catalyst9300/software/release/17-15/configuration_guide/lyr2/b_1715_lyr2_9300_cg.html",
+      "documentUrl": "https://www.cisco.com/c/en/us/td/docs/switches/lan/catalyst9300/software/release/17-15/configuration_guide/lyr2/b_1715_lyr2_9300_cg/configuring_spanning_tree_protocol.html",
+      "section": "Root device selection and bridge ID",
+      "anchors": [
+        "lowest MAC address in the VLAN becomes the root device"
+      ],
+      "sha256": "bd4a22940684e9d2516551f3e9032737bca5fd15736962bfc778c6b21962fdc7",
+      "consultedAt": "2026-10-26T18:01:35.401730+00:00",
+      "contentSha256": "3a19b29561524c64b3962164fd5714806cf18a131e72ff5385fd1485e8e1c5bf"
+    },
+    {
+      "questionId": "ccna-original-20261024-016",
+      "url": "https://www.cisco.com/c/en/us/td/docs/switches/lan/catalyst9300/software/release/17-15/configuration_guide/lyr2/b_1715_lyr2_9300_cg.html",
+      "documentUrl": "https://www.cisco.com/c/en/us/td/docs/switches/lan/catalyst9300/software/release/17-15/configuration_guide/lyr2/b_1715_lyr2_9300_cg/configuring_spanning_tree_protocol.html",
+      "section": "Root port path cost",
+      "anchors": [
+        "best path (lowest cost)"
+      ],
+      "sha256": "bd4a22940684e9d2516551f3e9032737bca5fd15736962bfc778c6b21962fdc7",
+      "consultedAt": "2026-10-26T18:01:35.401730+00:00",
+      "contentSha256": "27438912f3303c0f7d11ca906c18d8d46936fe0c2a9ac51ad2d32422a438c152"
+    },
+    {
+      "questionId": "ccna-original-20261024-017",
+      "url": "https://www.cisco.com/c/en/us/td/docs/switches/lan/catalyst9300/software/release/17-15/configuration_guide/lyr2/b_1715_lyr2_9300_cg.html",
+      "documentUrl": "https://www.cisco.com/c/en/us/td/docs/switches/lan/catalyst9300/software/release/17-15/configuration_guide/lyr2/b_1715_lyr2_9300_cg/configuring_etherchannels.html",
+      "section": "LACP modes",
+      "anchors": [
+        "active mode can form an EtherChannel with another port that is in the active or passive mode"
+      ],
+      "sha256": "45ce331b4fdaa8879ab0b9d9a3fe9d9ea47f074e76df4d6d42823fc7a9e2cb86",
+      "consultedAt": "2026-10-26T18:01:35.401730+00:00",
+      "contentSha256": "db846770ada51ffbfb77d63f75d5d06580c161de9338ae1140761dba04e688e1"
+    },
+    {
+      "questionId": "ccna-original-20261024-018",
+      "url": "https://www.cisco.com/c/en/us/td/docs/switches/lan/catalyst9300/software/release/17-15/configuration_guide/lyr2/b_1715_lyr2_9300_cg.html",
+      "documentUrl": "https://www.cisco.com/c/en/us/td/docs/switches/lan/catalyst9300/software/release/17-15/configuration_guide/lyr2/b_1715_lyr2_9300_cg/configuring_etherchannels.html",
+      "section": "EtherChannel restrictions and VLAN membership",
+      "anchors": [
+        "ports in an EtherChannel must be assigned to the same VLAN"
+      ],
+      "sha256": "45ce331b4fdaa8879ab0b9d9a3fe9d9ea47f074e76df4d6d42823fc7a9e2cb86",
+      "consultedAt": "2026-10-26T18:01:35.401730+00:00",
+      "contentSha256": "ed8f5e460e2c0b336796835daffd15cf346a8f82220fa2690f15371523fd040c"
+    },
+    {
+      "questionId": "ccna-original-20261024-019",
+      "url": "https://www.cisco.com/c/en/us/td/docs/switches/lan/catalyst9300/software/release/17-15/configuration_guide/lyr2/b_1715_lyr2_9300_cg.html",
+      "documentUrl": "https://www.cisco.com/c/en/us/td/docs/switches/lan/catalyst9300/software/release/17-15/configuration_guide/vlan/b_1715_vlan_9300_cg/configuring_vlans.html",
+      "section": "VLAN IDs and platform limitations",
+      "anchors": [
+        "VLANs are identified by a number from 1 to 4094"
+      ],
+      "sha256": "524237fa275ee04ea9bb77a2d3979a8911a2c8c62d6757ff0bd01553b1b6c5d3",
+      "consultedAt": "2026-10-26T18:01:35.401730+00:00",
+      "contentSha256": "4da93c14076c64a786c20bbf0275415b527a628fa4a14a6a3ef6f5567a7ff7d9"
+    },
+    {
+      "questionId": "ccna-original-20261024-020",
+      "url": "https://www.cisco.com/c/en/us/td/docs/switches/lan/catalyst9300/software/release/17-15/configuration_guide/lyr2/b_1715_lyr2_9300_cg.html",
+      "documentUrl": "https://www.cisco.com/c/en/us/td/docs/switches/lan/catalyst9300/software/release/17-15/configuration_guide/vlan/b_1715_vlan_9300_cg/configuring_vlan_trunks.html",
+      "section": "Configuring the Native VLAN for Untagged Traffic",
+      "anchors": [
+        "device forwards untagged traffic in the native VLAN configured for the port"
+      ],
+      "sha256": "99ba29253329bba1c5edd2bb8780e155945eec145433000463e78519f598b858",
+      "consultedAt": "2026-10-26T18:01:35.401730+00:00",
+      "contentSha256": "cb49b49f7602f489e17c3100694fee3e0baca389b8d961b75c60319aea17d026"
+    }
+  ]
+}

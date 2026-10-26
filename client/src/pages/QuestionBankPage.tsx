@@ -9,6 +9,7 @@ import {
   EXAM_AREA_LABELS,
 } from '@shared/types';
 import { useTranslation } from '../i18n/useTranslation';
+import { useAuth } from '../hooks/useAuth';
 import api from '../services/api';
 import {
   SearchIcon,
@@ -24,6 +25,8 @@ import {
 
 export const QuestionBankPage: React.FC = () => {
   const { t, language } = useTranslation();
+  const { isAuthenticated, isAdmin } = useAuth();
+  const [favoritesOnly, setFavoritesOnly] = useState(false);
 
   const [questions, setQuestions] = useState<QuestionListItem[]>([]);
   const [loading, setLoading] = useState(true);
@@ -54,6 +57,8 @@ export const QuestionBankPage: React.FC = () => {
       const res = await api.getQuestions({
         page,
         pageSize,
+        language,
+        favoritesOnly: isAuthenticated && favoritesOnly,
         search: search.trim() || undefined,
         topic: selectedTopic || undefined,
         difficulty: selectedDifficulty || undefined,
@@ -78,13 +83,14 @@ export const QuestionBankPage: React.FC = () => {
     } finally {
       setLoading(false);
     }
-  }, [page, pageSize, search, selectedTopic, selectedDifficulty, selectedType, selectedStatus]);
+  }, [page, pageSize, search, selectedTopic, selectedDifficulty, selectedType, selectedStatus, language, favoritesOnly, isAuthenticated]);
 
   useEffect(() => {
     fetchQuestions();
   }, [fetchQuestions]);
 
   const handleOpenDetail = async (id: string) => {
+    if (!isAdmin) return;
     setSelectedQuestionId(id);
     setLoadingDetail(true);
     try {
@@ -129,6 +135,7 @@ export const QuestionBankPage: React.FC = () => {
         </p>
       </div>
 
+      {isAuthenticated && <label><input type="checkbox" checked={favoritesOnly} onChange={e => { setFavoritesOnly(e.target.checked); setPage(1); }} /> {t('study.favoritesOnly')}</label>}
       {/* Filter and Search Bar */}
       <div className="card bg-slate-800/80 p-5 space-y-4">
         <div className="flex flex-col md:flex-row gap-3">
@@ -256,6 +263,8 @@ export const QuestionBankPage: React.FC = () => {
                     <td className="py-3.5 px-4 text-right">
                       <button
                         type="button"
+                        disabled={!isAdmin}
+                        title={!isAdmin ? t('study.adminSolutions') : undefined}
                         onClick={() => handleOpenDetail(q.id)}
                         className="px-2.5 py-1 rounded bg-slate-700 hover:bg-cyan-600 hover:text-white text-slate-200 text-xs font-semibold transition-colors"
                       >

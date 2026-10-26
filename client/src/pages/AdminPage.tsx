@@ -1,4 +1,5 @@
-import React, { useState, useEffect } from 'react';
+import { parseQuestionCsv, QUESTION_CSV_TEMPLATE } from '@shared/questionCsv';
+import React, { useState, useEffect, useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
 import {
   QuestionListItem,
@@ -11,6 +12,7 @@ import {
 import { useTranslation } from '../i18n/useTranslation';
 import { useAuth } from '../hooks/useAuth';
 import api from '../services/api';
+import AdminQuestionEditor from '../components/AdminQuestionEditor';
 import {
   ShieldIcon,
   UploadIcon,
@@ -22,11 +24,12 @@ import {
   XIcon,
 } from '../components/Icons';
 
-type AdminTab = 'questions' | 'import' | 'statistics' | 'validators';
+type AdminTab = 'questions' | 'import' | 'statistics' | 'create';
 
 export const AdminPage: React.FC = () => {
   const { t, language } = useTranslation();
-  const { user, isAuthenticated, isAdmin } = useAuth();
+  const { isAuthenticated, isAdmin, isLoading: authLoading } = useAuth();
+  const l = (es: string, en: string) => language === 'es' ? es : en;
   const navigate = useNavigate();
 
   const [activeTab, setActiveTab] = useState<AdminTab>('questions');
@@ -34,10 +37,26 @@ export const AdminPage: React.FC = () => {
   // Question Management State
   const [questions, setQuestions] = useState<QuestionListItem[]>([]);
   const [loadingQuestions, setLoadingQuestions] = useState(false);
+  const [questionPage, setQuestionPage] = useState(1);
+  const [questionSearch, setQuestionSearch] = useState('');
+  const [questionStatus, setQuestionStatus] = useState('');
+  const [pagination, setPagination] = useState<import('@shared/types').PaginationInfo | null>(null);
+  const requestVersion = useRef(0);
+  const [reviewTarget, setReviewTarget] = useState<{ id: string; status: ValidationStatus } | null>(null);
+  const [reviewNotes, setReviewNotes] = useState('');
+  const [reviewEvidence, setReviewEvidence] = useState('');
+  const [reviewConfirmed, setReviewConfirmed] = useState(false);
+  const [reviewDetail, setReviewDetail] = useState<import('@shared/types').QuestionDetail | null>(null);
+  const [reviewBusy, setReviewBusy] = useState(false);
+  const [revisionDraft, setRevisionDraft] = useState({ statementEn: '', statementEs: '', explanationEn: '', explanationEs: '', sourceUrl: '' });
+  const [revisionOptions, setRevisionOptions] = useState<import('@shared/types').QuestionOptionDetail[]>([]);
+  const [validationMessage, setValidationMessage] = useState('');
+  const revisionChanged = !!reviewDetail && (Object.keys(revisionDraft) as Array<keyof typeof revisionDraft>).some(key => revisionDraft[key] !== (reviewDetail[key] || '')) || (!!reviewDetail && JSON.stringify(revisionOptions) !== JSON.stringify(reviewDetail.options));
   const [actionMessage, setActionMessage] = useState<string | null>(null);
 
   // Import State
   const [jsonInput, setJsonInput] = useState('');
+  const [importFormat, setImportFormat] = useState<'json' | 'csv'>('json');
   const [importResult, setImportResult] = useState<ImportResult | null>(null);
   const [isImporting, setIsImporting] = useState(false);
   const [importError, setImportError] = useState<string | null>(null);
@@ -48,23 +67,23 @@ export const AdminPage: React.FC = () => {
 
   // Redirect non-admins or unauthenticated users
   useEffect(() => {
-    if (!isAuthenticated) {
+    if (!authLoading && !isAuthenticated) {
       navigate('/login');
     }
-  }, [isAuthenticated, navigate]);
+  }, [isAuthenticated, authLoading, navigate]);
 
   const loadQuestions = async () => {
+    const version = ++requestVersion.current;
     setLoadingQuestions(true);
     try {
-      const res = await api.getQuestions({ pageSize: 50 });
+      const res = await api.getQuestions({ page: questionPage, pageSize: 50, search: questionSearch, status: questionStatus, language });
+      if (version !== requestVersion.current) return;
       if (res.success && res.data) {
-        setQuestions(res.data);
-      }
-    } catch (e) {
-      console.error(e);
-    } finally {
-      setLoadingQuestions(false);
-    }
+        setQuestions(res.data); setPagination(res.pagination || null);
+        if (res.pagination && questionPage > Math.max(1, res.pagination.totalPages)) setQuestionPage(Math.max(1, res.pagination.totalPages));
+      } else { setQuestions([]); setPagination(null); setActionMessage(res.error || l('No se pudo cargar el banco.', 'Unable to load the question bank.')); }
+    } catch { if (version === requestVersion.current) { setQuestions([]); setPagination(null); setActionMessage(l('No se pudo cargar el banco.', 'Unable to load the question bank.')); } }
+    finally { if (version === requestVersion.current) setLoadingQuestions(false); }
   };
 
   const loadStats = async () => {
@@ -74,68 +93,65 @@ export const AdminPage: React.FC = () => {
       if (res.success && res.data) {
         setStats(res.data);
       } else {
-        // Mock fallback statistics if endpoint is empty
-        setStats({
-          totalQuestions: 240,
-          validatedQuestions: 205,
-          pendingQuestions: 25,
-          rejectedQuestions: 10,
-          coverageByArea: {
-            network_fundamentals: 48,
-            network_access: 48,
-            ip_connectivity: 60,
-            ip_services: 24,
-            security_fundamentals: 36,
-            automation_programmability: 24,
-          },
-        });
+        setStats(null);
+        setActionMessage(res.error || t('adminWorkflow.statsError'));
       }
     } catch {
-      setStats({
-        totalQuestions: 240,
-        validatedQuestions: 205,
-        pendingQuestions: 25,
-        rejectedQuestions: 10,
-        coverageByArea: {
-          network_fundamentals: 48,
-          network_access: 48,
-          ip_connectivity: 60,
-          ip_services: 24,
-          security_fundamentals: 36,
-          automation_programmability: 24,
-        },
-      });
+      setStats(null);
+      setActionMessage(t('adminWorkflow.statsError'));
     } finally {
       setLoadingStats(false);
     }
   };
 
   useEffect(() => {
+    if (!isAdmin) return;
     if (activeTab === 'questions') {
       loadQuestions();
     } else if (activeTab === 'statistics') {
       loadStats();
     }
-  }, [activeTab]);
+  }, [activeTab, isAdmin, questionPage, questionSearch, questionStatus, language]);
 
-  const handleUpdateStatus = async (id: string, newStatus: ValidationStatus) => {
-    try {
-      const res = await api.updateQuestionStatus(id, newStatus);
-      if (res.success) {
-        setActionMessage(`Question #${id} status changed to ${newStatus}`);
-        setQuestions((prev) =>
-          prev.map((q) => (q.id === id ? { ...q, validationStatus: newStatus } : q))
-        );
-        setTimeout(() => setActionMessage(null), 3000);
-      }
-    } catch (e: any) {
-      setActionMessage(`Failed to update question: ${e.message}`);
+  const handleUpdateStatus = async (id: string, status: ValidationStatus) => {
+    setReviewTarget({ id, status }); setReviewNotes(''); setReviewEvidence(''); setReviewConfirmed(false); setReviewDetail(null); setRevisionOptions([]); setValidationMessage('');
+    const detail = await api.getQuestionDetail(id);
+    if (detail.success && detail.data) {
+      setReviewDetail(detail.data);
+      if (detail.data.sourceUrl?.startsWith('https://')) setReviewEvidence(detail.data.sourceUrl);
+      setRevisionDraft({ statementEn: detail.data.statementEn, statementEs: detail.data.statementEs, explanationEn: detail.data.explanationEn || '', explanationEs: detail.data.explanationEs || '', sourceUrl: detail.data.sourceUrl || '' });
+      setRevisionOptions(detail.data.options.map(option => ({ ...option })));
     }
+    else setActionMessage(detail.error || t('adminWorkflow.detailError'));
+  };
+  const submitReview = async () => {
+    if (!reviewTarget) return;
+    if (revisionChanged) { setActionMessage(t('adminWorkflow.saveRevisionFirst')); return; }
+    setReviewBusy(true);
+    try {
+      const res = await api.updateQuestionStatus(reviewTarget.id, reviewTarget.status, reviewNotes, reviewEvidence || undefined);
+      if (res.success) {
+        setReviewTarget(null); await loadQuestions(); setActionMessage(t('adminWorkflow.saved'));
+      } else setActionMessage(res.error || t('adminWorkflow.saveError'));
+    } finally { setReviewBusy(false); }
+  };
+
+  const saveRevision = async () => {
+    if (!reviewTarget || !revisionChanged) return;
+    setReviewBusy(true);
+    try {
+      const res = await api.createQuestionRevision(reviewTarget.id, { ...revisionDraft, options: revisionOptions, multipleAnswerCount: reviewDetail?.questionType === 'multiple_choice' ? revisionOptions.filter(option => option.isCorrect).length : null });
+      if (res.success) { setReviewTarget(null); await loadQuestions(); setActionMessage(t('adminWorkflow.revisionSaved')); }
+      else setActionMessage(res.error || t('adminWorkflow.saveError'));
+    } finally { setReviewBusy(false); }
   };
 
   const handleFileUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
     if (!file) return;
+    if (file.size > 2 * 1024 * 1024) { setImportError(l('El archivo supera 2 MiB.', 'The file exceeds 2 MiB.')); e.target.value = ''; return; }
+    setImportFormat(file.name.toLowerCase().endsWith('.csv') ? 'csv' : 'json');
+    setImportResult(null);
 
     const reader = new FileReader();
     reader.onload = (event) => {
@@ -147,6 +163,7 @@ export const AdminPage: React.FC = () => {
         setImportError('Failed to parse uploaded JSON file.');
       }
     };
+    reader.onerror = () => setImportError(l('No se pudo leer el archivo.', 'Unable to read the file.'));
     reader.readAsText(file);
   };
 
@@ -156,13 +173,14 @@ export const AdminPage: React.FC = () => {
 
     let parsedQuestions: QuestionImportItem[];
     try {
-      parsedQuestions = JSON.parse(jsonInput);
+      const payload = importFormat === 'csv' ? parseQuestionCsv(jsonInput) : JSON.parse(jsonInput);
+      parsedQuestions = Array.isArray(payload) ? payload : payload?.questions;
       if (!Array.isArray(parsedQuestions)) {
-        setImportError('JSON must be an array of question objects.');
+        setImportError(l('Usa una lista JSON o un objeto con questions como lista.', 'Use a JSON array or an object with a questions array.'));
         return;
       }
     } catch (e: any) {
-      setImportError(`Invalid JSON format: ${e.message}`);
+      setImportError(`${l('Formato inválido', 'Invalid format')} (${importFormat.toUpperCase()}): ${e.message}`);
       return;
     }
 
@@ -181,13 +199,16 @@ export const AdminPage: React.FC = () => {
     }
   };
 
+  if (authLoading) return <p>{t('common.loading')}</p>;
+  if (!isAuthenticated) return null;
+
   if (!isAdmin && isAuthenticated) {
     return (
       <div className="max-w-md mx-auto my-12 card text-center space-y-4 border-amber-500/50">
         <ShieldIcon size={36} className="text-amber-400 mx-auto" />
-        <h2 className="text-xl font-bold text-white">Access Restricted</h2>
+        <h2 className="text-xl font-bold text-white">{l('Acceso restringido', 'Restricted access')}</h2>
         <p className="text-slate-300 text-sm">
-          You need Administrator permissions to access the Simulator Admin Panel.
+          {l('Necesitas permisos de administrador para acceder al panel.', 'Administrator permissions are required to access this panel.')}
         </p>
         <button
           type="button"
@@ -210,12 +231,13 @@ export const AdminPage: React.FC = () => {
             <span>{t('admin.title')}</span>
           </h1>
           <p className="text-xs sm:text-sm text-slate-400 mt-1">
-            Manage CCNA questions, dataset ingestion, and validation rules.
+            {l('Crea, importa y revisa preguntas antes de incorporarlas a los exámenes.', 'Create, import and review questions before making them available in exams.')}
           </p>
         </div>
 
         {/* Tab Navigation */}
-        <div className="flex items-center bg-slate-800 p-1 rounded-xl border border-slate-700 text-xs font-semibold">
+        <div className="flex flex-wrap gap-1 items-center bg-slate-800 p-1 rounded-xl border border-slate-700 text-xs font-semibold">
+          <button type="button" onClick={() => { setActiveTab('create'); setReviewTarget(null); }} className="btn-secondary">{l('Crear pregunta', 'Create question')}</button>
           <button
             type="button"
             onClick={() => setActiveTab('questions')}
@@ -253,9 +275,58 @@ export const AdminPage: React.FC = () => {
         </div>
       )}
 
+      {activeTab === 'create' && <AdminQuestionEditor onCreated={() => {
+        setQuestionPage(1); setQuestionSearch(''); setQuestionStatus('pending_review'); setActiveTab('questions');
+        setActionMessage(l('Pregunta creada y guardada pendiente de revisión.', 'Question created and saved for review.'));
+      }} />}
+
+      {reviewTarget && <section className="card space-y-3" aria-label={t('adminWorkflow.title')}>
+        <h2>{t('adminWorkflow.title')}: {reviewTarget.status}</h2>
+        {reviewDetail ? <div className="space-y-2">
+          <p>{reviewDetail.statementEn}</p><p>{reviewDetail.statementEs}</p>
+          {reviewDetail.questionFamilyId && <p>{t('adminWorkflow.exerciseFamily')}: {reviewDetail.questionFamilyId}</p>}
+          {reviewDetail.sourceUrl?.startsWith('https://') && <a className="text-cyan-300 underline" href={reviewDetail.sourceUrl} target="_blank" rel="noopener noreferrer">{t('adminWorkflow.openReference')}</a>}
+          {reviewDetail.options.map(option => <p key={option.id}>{option.optionLabel}: {option.optionTextEn} / {option.optionTextEs} {option.isCorrect ? '✓' : ''}</p>)}
+          <p>{reviewDetail.explanationEn}</p><p>{reviewDetail.explanationEs}</p>
+          {reviewDetail.sourceLicense && <p>{l('Autoría o licencia', 'Authorship or license')}: {reviewDetail.sourceLicense}</p>}
+        </div> : <p>{t('common.loading')}</p>}
+        {reviewDetail && <details className="border border-slate-600 rounded p-3">
+          <summary>{t('adminWorkflow.editRevision')}</summary>
+          <p>{t('adminWorkflow.revisionHelp')}</p>
+          {(Object.keys(revisionDraft) as Array<keyof typeof revisionDraft>).map(key => <label key={key} className="block mt-2">{t(`adminWorkflow.revision_${key}`)}<textarea className="input-field block w-full" value={revisionDraft[key]} onChange={e => setRevisionDraft(prev => ({ ...prev, [key]: e.target.value }))} /></label>)}
+          {revisionOptions.map((option, index) => <fieldset key={option.id} className="mt-3 border border-slate-700 p-2">
+            <legend>{l('Revisión de opción', 'Option revision')} {option.optionLabel}</legend>
+            <label className="block">{l('Revisión opción', 'Revise option')} {option.optionLabel} EN<textarea className="input-field w-full" value={option.optionTextEn} onChange={e => setRevisionOptions(previous => previous.map((value, i) => i === index ? { ...value, optionTextEn: e.target.value } : value))} /></label>
+            <label className="block">{l('Revisión opción', 'Revise option')} {option.optionLabel} ES<textarea className="input-field w-full" value={option.optionTextEs} onChange={e => setRevisionOptions(previous => previous.map((value, i) => i === index ? { ...value, optionTextEs: e.target.value } : value))} /></label>
+            <label><input type={reviewDetail.questionType === 'multiple_choice' ? 'checkbox' : 'radio'} name="revision-correct" checked={option.isCorrect} onChange={e => setRevisionOptions(previous => previous.map((value, i) => reviewDetail.questionType === 'multiple_choice' ? i === index ? { ...value, isCorrect: e.target.checked } : value : { ...value, isCorrect: i === index }))} /> {l('Correcta de revisión', 'Revision correct')} {option.optionLabel}</label>
+          </fieldset>)}
+          <button className="btn-secondary mt-3" disabled={reviewBusy || !revisionChanged || revisionDraft.statementEn.trim().length < 5 || revisionDraft.statementEs.trim().length < 5} onClick={saveRevision}>{t('adminWorkflow.saveRevision')}</button>
+        </details>}
+        {revisionChanged && <p role="status">{t('adminWorkflow.saveRevisionFirst')}</p>}
+        <button type="button" className="btn-secondary" disabled={!reviewDetail || reviewBusy || revisionChanged} onClick={async () => {
+          if (!reviewTarget) return;
+          setReviewBusy(true);
+          try {
+            const res = await api.validateQuestion(reviewTarget.id);
+            setValidationMessage(res.success && res.data ? res.data.valid ? l('Comprobaciones automáticas correctas. La revisión técnica y de traducción sigue siendo necesaria.', 'Automated checks passed. Technical and translation review is still required.') : [...res.data.answerValidation.errors, ...(res.data.subnetValidation?.errors || [])].join(' · ') : res.error || l('No se pudo comprobar.', 'Unable to check.'));
+          } finally { setReviewBusy(false); }
+        }}>{l('Ejecutar comprobaciones', 'Run checks')}</button>
+        {validationMessage && <p role="status">{validationMessage}</p>}
+        <label className="block">{t('adminWorkflow.notes')}<textarea className="input-field block w-full" minLength={20} value={reviewNotes} onChange={e => setReviewNotes(e.target.value)} /></label>
+        <label className="block">{t('adminWorkflow.evidence')}<input className="input-field block w-full" type="url" value={reviewEvidence} onChange={e => setReviewEvidence(e.target.value)} /></label>
+        {reviewTarget.status === 'validated' && <label className="block"><input type="checkbox" checked={reviewConfirmed} onChange={e => setReviewConfirmed(e.target.checked)} /> {t('adminWorkflow.confirm')}</label>}
+        <button className="btn-primary" disabled={reviewBusy || !reviewDetail || revisionChanged || reviewNotes.trim().length < 20 || (reviewTarget.status === 'validated' && (!reviewConfirmed || !reviewEvidence.startsWith('https://')))} onClick={submitReview}>{t('adminWorkflow.save')}</button>
+        <button className="btn-secondary" onClick={() => setReviewTarget(null)}>{t('common.cancel')}</button>
+      </section>}
       {/* Tab 1: Question Approval & Management */}
       {activeTab === 'questions' && (
         <div className="card p-0 overflow-hidden bg-slate-800/90 border-slate-700/80 shadow-xl">
+          <div className="p-4 flex flex-wrap gap-3">
+            <label>{l('Buscar preguntas', 'Search questions')}<input className="input-field" value={questionSearch} onChange={e => { setQuestionSearch(e.target.value); setQuestionPage(1); }} /></label>
+            <label>{l('Estado de revisión', 'Review status')}<select className="input-field" value={questionStatus} onChange={e => { setQuestionStatus(e.target.value); setQuestionPage(1); }}>
+              <option value="">{l('Todos', 'All')}</option><option value="pending_review">{l('Pendientes', 'Pending')}</option><option value="validated">{l('Aprobadas', 'Approved')}</option><option value="draft">{l('Borradores', 'Drafts')}</option><option value="rejected">{l('Rechazadas', 'Rejected')}</option>
+            </select></label>
+          </div>
           <div className="overflow-x-auto">
             <table className="w-full text-left text-xs text-slate-300">
               <thead className="bg-slate-900/80 text-slate-400 uppercase tracking-wider text-[11px] border-b border-slate-700/80">
@@ -329,6 +400,11 @@ export const AdminPage: React.FC = () => {
               </tbody>
             </table>
           </div>
+          <nav aria-label={l('Paginación de preguntas', 'Question pagination')} className="p-4 flex gap-3 items-center flex-wrap">
+            <button type="button" className="btn-secondary" disabled={loadingQuestions || questionPage <= 1} onClick={() => setQuestionPage(value => value - 1)}>{l('Página anterior', 'Previous page')}</button>
+            <span>{l('Página', 'Page')} {questionPage} / {Math.max(1, pagination?.totalPages || 1)} · {pagination?.totalItems || 0} {l('preguntas', 'questions')}</span>
+            <button type="button" className="btn-secondary" disabled={loadingQuestions || questionPage >= (pagination?.totalPages || 1)} onClick={() => setQuestionPage(value => value + 1)}>{l('Página siguiente', 'Next page')}</button>
+          </nav>
         </div>
       )}
 
@@ -341,14 +417,14 @@ export const AdminPage: React.FC = () => {
               <span>{t('admin.import.title')}</span>
             </h2>
             <p className="text-xs text-slate-400">
-              {t('admin.import.instructions')}
+              {t('admin.import.instructions')} {l('Se admite una lista JSON o un lote con questions. También CSV con la plantilla descargable. La generación automática con IA no está disponible.', 'A JSON array or a batch with questions is supported. CSV with the downloadable template is also supported. Automatic AI generation is not available.')}
             </p>
 
             {/* File Dropzone */}
             <div className="border-2 border-dashed border-slate-700 hover:border-cyan-500/60 rounded-2xl p-6 text-center cursor-pointer bg-slate-900/40 transition-colors">
               <input
                 type="file"
-                accept=".json"
+                accept=".json,.csv,application/json,text/csv"
                 onChange={handleFileUpload}
                 className="hidden"
                 id="json-file-input"
@@ -359,17 +435,23 @@ export const AdminPage: React.FC = () => {
                   {t('admin.import.dropzone')}
                 </span>
                 <span className="block text-xs text-slate-500 mt-1">
-                  Supported format: JSON array of QuestionImportItem objects
+                  {l('JSON o CSV UTF-8 · máximo 2 MiB por archivo', 'JSON or UTF-8 CSV · maximum 2 MiB per file')}
                 </span>
               </label>
             </div>
 
+            <div className="flex flex-wrap items-center gap-4">
+              <label>{l('Formato de importación', 'Import format')}<select className="input-field ml-2" value={importFormat} onChange={e => { setImportFormat(e.target.value as 'json' | 'csv'); setImportError(null); setImportResult(null); }}><option value="json">JSON</option><option value="csv">CSV</option></select></label>
+              <a className="text-cyan-300 underline" href={'data:text/csv;charset=utf-8,' + encodeURIComponent('\uFEFF' + QUESTION_CSV_TEMPLATE)} download="plantilla-preguntas.csv">{l('Descargar plantilla CSV', 'Download CSV template')}</a>
+            </div>
+            {importFormat === 'csv' && <p className="text-sm text-slate-300">{l('Usa comas como separador y UTF-8. correctAnswers: A para una respuesta o A|C para varias. Completa las opciones en ambos idiomas. Los candidatos se guardan pendientes de revisión.', 'Use commas and UTF-8. correctAnswers: A for one answer or A|C for several. Fill options in both languages. Candidates are saved pending review.')}</p>}
             {/* Textarea Preview / Manual Paste */}
             <div>
               <label className="text-xs font-semibold text-slate-300 block mb-1">
-                {t('admin.import.preview')} / Raw JSON Paste:
+                {t('admin.import.preview')} ({importFormat.toUpperCase()})
               </label>
               <textarea
+                aria-label={l('Contenido de importación', 'Import content')}
                 rows={10}
                 value={jsonInput}
                 onChange={(e) => setJsonInput(e.target.value)}
@@ -400,6 +482,7 @@ export const AdminPage: React.FC = () => {
             <button
               type="button"
               disabled={!jsonInput.trim() || isImporting}
+              aria-label={l('Procesar importación', 'Process import')}
               onClick={handleProcessImport}
               className="btn-primary"
             >

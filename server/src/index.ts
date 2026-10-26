@@ -5,23 +5,24 @@ import examsRouter from './routes/exams';
 import topicsRouter from './routes/topics';
 import usersRouter from './routes/users';
 import { errorHandler, notFoundHandler } from './middleware/errorHandler';
+import { allowedOrigin } from './lib/corsPolicy';
+import { AppError } from './middleware/errorHandler';
 import { ApiResponse } from '../../shared/types';
 import { prisma } from './lib/prisma';
 
 const app: Express = express();
 const PORT = Number(process.env.PORT) || 3001;
-const CORS_ORIGIN = process.env.CORS_ORIGIN || 'http://localhost:5173';
+const CORS_ORIGINS = (process.env.CORS_ORIGIN || 'http://localhost:5173').split(',').map(value => value.trim()).filter(Boolean);
+if (process.env.NODE_ENV === 'production' && (!process.env.CORS_ORIGIN?.trim() || CORS_ORIGINS.includes('*'))) {
+  throw new Error('Configure explicit CORS_ORIGIN values in production; wildcard origins are not allowed.');
+}
 
 // ---- Middleware ----
 app.use(
   cors({
     origin: (origin, callback) => {
-      // Allow requests with no origin (like mobile apps, curl, or same-origin)
-      if (!origin || origin === CORS_ORIGIN || origin.startsWith('http://localhost:')) {
-        callback(null, true);
-      } else {
-        callback(null, true); // Allow dev origins flexibly
-      }
+      if (allowedOrigin(origin, CORS_ORIGINS, process.env.NODE_ENV === 'development')) callback(null, true);
+      else callback(new AppError(403, 'Origin is not allowed.'));
     },
     credentials: true,
   })

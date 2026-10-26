@@ -1,7 +1,11 @@
+import StudyTopicPractice from '../components/StudyTopicPractice';
 import React, { useEffect, useState, useCallback, useRef } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
+import { useExamSounds } from '../hooks/useExamSounds';
 import { useExam } from '../hooks/useExam';
 import { useTranslation } from '../i18n/useTranslation';
+import { useAuth } from '../hooks/useAuth';
+import api from '../services/api';
 import Timer from '../components/Timer';
 import ProgressBar from '../components/ProgressBar';
 import QuestionCard from '../components/QuestionCard';
@@ -16,7 +20,13 @@ import {
 export const ExamPage: React.FC = () => {
   const { id: examId } = useParams<{ id: string }>();
   const navigate = useNavigate();
-  const { t } = useTranslation();
+  const { t, language } = useTranslation();
+  const { isAuthenticated } = useAuth();
+  const [favorites, setFavorites] = useState<string[]>([]);
+  const [favoriteError, setFavoriteError] = useState('');
+  useEffect(() => {
+    if (isAuthenticated) api.getFavorites().then(res => { if (res.success && res.data) setFavorites(res.data); });
+  }, [isAuthenticated]);
 
   const {
     status,
@@ -29,9 +39,15 @@ export const ExamPage: React.FC = () => {
     loadQuestion,
     submitAnswer,
     completeExam,
+    resetExam,
   } = useExam(examId);
 
+  const sounds = useExamSounds(examState?.config.soundEnabled ?? true);
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [restartError, setRestartError] = useState('');
+  const [restarting, setRestarting] = useState(false);
+  const [showTopicPractice, setShowTopicPractice] = useState(false);
+  useEffect(() => { setShowTopicPractice(false); }, [examId]);
   const [showFinishModal, setShowFinishModal] = useState(false);
   const [showTimeWarningModal, setShowTimeWarningModal] = useState(false);
   const hasWarnedTimeRef = useRef(false);
@@ -43,44 +59,67 @@ export const ExamPage: React.FC = () => {
     }
   }, [examId, loadExamSession]);
 
+  useEffect(() => {
+    if (status === 'completed' && examId) navigate(`/results/${examId}`, { replace: true });
+  }, [status, examId, navigate]);
+
   // Handle timer expiration
   const handleTimeExpire = useCallback(async () => {
     if (status === 'completed') return;
-    try {
-      await completeExam();
-      if (examId) {
-        navigate(`/results/${examId}`);
-      }
-    } catch {
-      if (examId) {
-        navigate(`/results/${examId}`);
-      }
-    }
+    const result = await completeExam();
+    if (result && examId) navigate(`/results/${examId}`);
   }, [status, completeExam, examId, navigate]);
 
-  // Check 5-minute time remaining warning
+  // Check throughout the countdown, including after returning to the tab.
   useEffect(() => {
-    if (examState?.expiresAt && !hasWarnedTimeRef.current) {
-      const remainingSecs = Math.floor((new Date(examState.expiresAt).getTime() - Date.now()) / 1000);
-      if (remainingSecs > 0 && remainingSecs <= 300) {
+    hasWarnedTimeRef.current = false;
+    if (!examState?.expiresAt) return;
+    const checkWarning = () => {
+      const remainingSecs = Math.ceil((new Date(examState.expiresAt!).getTime() - Date.now()) / 1000);
+      if (!hasWarnedTimeRef.current && remainingSecs > 0 && remainingSecs <= 300) {
         hasWarnedTimeRef.current = true;
         setShowTimeWarningModal(true);
+        sounds.play(880);
       }
-    }
-  }, [examState?.expiresAt]);
+    };
+    checkWarning();
+    const interval = window.setInterval(checkWarning, 1000);
+    document.addEventListener('visibilitychange', checkWarning);
+    return () => {
+      window.clearInterval(interval);
+      document.removeEventListener('visibilitychange', checkWarning);
+    };
+  }, [examId, examState?.expiresAt, sounds.play]);
+
+  // Poll only once the saved deadline has elapsed. The server decides whether to advance.
+  useEffect(() => {
+    if (!examId || !examState?.questionExpiresAt || status === 'completed') return;
+    let disposed = false, inFlight = false;
+    const deadline = new Date(examState.questionExpiresAt).getTime();
+    const reconcile = async () => {
+      if (disposed || inFlight || isSubmitting || restarting || Date.now() < deadline) return;
+      inFlight = true;
+      try { await loadExamSession(examId); } finally { inFlight = false; }
+    };
+    const interval = window.setInterval(() => { void reconcile(); }, 1000);
+    document.addEventListener('visibilitychange', reconcile);
+    return () => { disposed = true; window.clearInterval(interval); document.removeEventListener('visibilitychange', reconcile); };
+  }, [examId, examState?.questionExpiresAt, status === 'completed', isSubmitting, restarting, loadExamSession]);
 
   const handleConfirmAnswer = async (selectedOptionIds: string[]) => {
-    if (!examId || isSubmitting) return;
+    if (!examId || isSubmitting) return false;
 
+    sounds.prepare();
     setIsSubmitting(true);
     try {
       const res = await submitAnswer(selectedOptionIds);
       if (!res) {
         setIsSubmitting(false);
-        return;
+        return false;
       }
 
       const isStudyMode = examState?.config?.studyMode;
+      sounds.play(isStudyMode ? res.isCorrect ? 660 : 220 : 440);
       const totalQuestions = examState?.totalQuestions || currentQuestion?.totalQuestions || 0;
 
       // In strict mode or normal simulation mode, automatically transition to next
@@ -88,15 +127,17 @@ export const ExamPage: React.FC = () => {
         if (res.nextQuestionIndex >= totalQuestions) {
           // All questions answered, finalize exam
           const result = await completeExam();
-          navigate(`/results/${examId}`);
+          if (result) navigate(`/results/${examId}`);
         } else {
           // Load next question
           await loadQuestion(res.nextQuestionIndex);
         }
       }
       // In study mode, feedback remains on screen until user clicks "Next Question"
+      return true;
     } catch (e) {
       console.error('Error submitting answer', e);
+      return false;
     } finally {
       setIsSubmitting(false);
     }
@@ -108,10 +149,8 @@ export const ExamPage: React.FC = () => {
     const totalQuestions = examState?.totalQuestions || currentQuestion?.totalQuestions || 0;
 
     if (nextIdx >= totalQuestions) {
-      await completeExam();
-      if (examId) {
-        navigate(`/results/${examId}`);
-      }
+      const result = await completeExam();
+      if (result && examId) navigate(`/results/${examId}`);
     } else {
       await loadQuestion(nextIdx);
     }
@@ -121,14 +160,8 @@ export const ExamPage: React.FC = () => {
     setShowFinishModal(false);
     setIsSubmitting(true);
     try {
-      await completeExam();
-      if (examId) {
-        navigate(`/results/${examId}`);
-      }
-    } catch {
-      if (examId) {
-        navigate(`/results/${examId}`);
-      }
+      const result = await completeExam();
+      if (result && examId) navigate(`/results/${examId}`);
     } finally {
       setIsSubmitting(false);
     }
@@ -177,13 +210,13 @@ export const ExamPage: React.FC = () => {
             </div>
             <div>
               <div className="text-sm font-bold text-white">
-                CCNA 200-301 Official Simulation
+                {t('study.simulatorTitle')}
               </div>
               <div className="text-xs text-slate-400 flex items-center gap-2">
-                <span>Mode: {examState?.config?.mode || 'Simulation'}</span>
+                <span>{t('study.mode')}: {t(`config.mode.${examState?.config?.mode || 'custom'}`)}</span>
                 <span>•</span>
                 <span className={isStrictMode ? 'text-amber-400' : 'text-teal-400'}>
-                  {isStrictMode ? 'Strict Mode' : 'Study Mode'}
+                  {t(isStrictMode ? 'study.strictMode' : 'study.studyMode')}
                 </span>
               </div>
             </div>
@@ -201,6 +234,7 @@ export const ExamPage: React.FC = () => {
             {/* Finish Exam Button */}
             <button
               type="button"
+              disabled={isSubmitting || status === 'loading'}
               onClick={() => setShowFinishModal(true)}
               className="px-3.5 py-1.5 text-xs font-semibold rounded-lg bg-slate-700 hover:bg-red-900/60 text-slate-300 hover:text-red-200 border border-slate-600 hover:border-red-500/50 transition-colors"
             >
@@ -219,6 +253,39 @@ export const ExamPage: React.FC = () => {
         </div>
       </div>
 
+      {examState?.questionExpiresAt && <div className="card flex flex-wrap gap-3 items-center" role="group" aria-label={t('study.questionTimer')}>
+        <span>{t('study.questionTimer')}</span><Timer key={examState.questionExpiresAt} expiresAt={examState.questionExpiresAt} />
+        <p className="text-sm text-slate-400">{t('study.questionTimerHelp')}</p>
+      </div>}
+      {error && <p role="alert" className="text-red-300">{error}</p>}
+      {restartError && <p role="alert" className="text-red-300">{restartError}</p>}
+
+      {isStudyMode && lastFeedback?.confirmed && <p className="text-sm text-slate-400">{t('study.restartHelp')}</p>}
+      {isStudyMode && <div className="flex flex-wrap gap-3 items-center">
+        <button type="button" className="btn-secondary" disabled={restarting || isSubmitting || status === 'loading'} onClick={() => setShowTopicPractice(value => !value)}>{language === 'es' ? 'Cambiar de tema' : 'Change topic'}</button>
+        <button className="btn-secondary" disabled={currentQuestionIndex === 0 || isSubmitting || status === 'loading'} onClick={() => loadQuestion(currentQuestionIndex - 1)}>{t('study.previous')}</button>
+        {examState?.config.untimed && <span>{t('study.untimed')}</span>}
+        {lastFeedback?.confirmed && <button type="button" className="btn-secondary" disabled={restarting || isSubmitting || status === 'loading'} onClick={async () => {
+          if (!examId || !currentQuestion) return;
+          setRestarting(true); setRestartError('');
+          try {
+            const result = await api.restartStudyExercise(examId, currentQuestion.examQuestionId);
+            if (result.success && result.data) { resetExam(); navigate(`/exam/${result.data.examId}`); }
+            else setRestartError(result.error || t('study.restartError'));
+          } finally { setRestarting(false); }
+        }}>{t(restarting ? 'study.restarting' : 'study.restart')}</button>}
+        {examState?.config.practiceSourceExamId && <button type="button" className="btn-secondary" disabled={restarting || isSubmitting} onClick={() => { const sourceId = examState.config.practiceSourceExamId!; resetExam(); navigate(`/exam/${sourceId}`); }}>{t('study.returnToSource')}</button>}
+
+        {isAuthenticated && currentQuestion && <button className="btn-secondary" onClick={async () => {
+          const id = currentQuestion.id;
+          const favorite = !favorites.includes(id);
+          const res = await api.setFavorite(id, favorite);
+          if (res.success) { setFavorites(prev => favorite ? [...prev, id] : prev.filter(q => q !== id)); setFavoriteError(''); }
+          else setFavoriteError(res.error || t('study.favoriteError'));
+        }}>{t(favorites.includes(currentQuestion.id) ? 'study.removeFavorite' : 'study.saveFavorite')}</button>}
+        {favoriteError && <p role="alert">{favoriteError}</p>}
+      </div>}
+      {isStudyMode && showTopicPractice && examId && examState && <StudyTopicPractice examId={examId} config={examState.config} onCreated={id => { resetExam(); navigate(`/exam/${id}`); }} />}
       {/* Question Card Component */}
       {currentQuestion && (
         <QuestionCard
@@ -227,6 +294,7 @@ export const ExamPage: React.FC = () => {
           mode={isStudyMode ? 'study' : 'strict'}
           isSubmitting={isSubmitting}
           studyFeedback={lastFeedback}
+          showExplanations={examState?.config.showExplanations ?? true}
           onNext={handleStudyNextQuestion}
           hasNext={currentQuestionIndex + 1 < total}
         />

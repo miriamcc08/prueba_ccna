@@ -1,0 +1,430 @@
+{
+  "batchId": "original-20261024-b02-50",
+  "generatedAt": "2026-10-24T16:12:06.324675+00:00",
+  "scope": "Source retrieval and focused consultation evidence; no automatic question approval. Only 24 focused passages are marked consulted. Other retrieved documents still require passage-level review.",
+  "questionsWithFocusedConsultation": 24,
+  "documents": [
+    {
+      "url": "https://www.cisco.com/c/en/us/support/docs/ip/access-lists/26448-ACLsamples.html",
+      "status": "retrieved",
+      "sha256": "74f458c23f474b0c25c0541ef994d3fe2a9db24ab1f96132ae68f561952de00e",
+      "bytes": 71443,
+      "retrievedAt": "2026-10-24T15:55:39.269523+00:00"
+    },
+    {
+      "url": "https://www.cisco.com/c/en/us/support/docs/ip/border-gateway-protocol-bgp/15986-admin-distance.html",
+      "status": "retrieved",
+      "sha256": "a3392a43c6f27067d07e6e0ad44759971326872b17cff5ebf0f8add8fd62d123",
+      "bytes": 73412,
+      "retrievedAt": "2026-10-24T15:55:39.269245+00:00"
+    },
+    {
+      "url": "https://www.cisco.com/c/en/us/support/docs/ip/dynamic-address-allocation-resolution/13718-5.html",
+      "status": "retrieved",
+      "sha256": "36e87ff729cadb91bb93adad57a2753acf21566d95b236094f31d1e0f2c97aa4",
+      "bytes": 61936,
+      "retrievedAt": "2026-10-24T16:05:13.690506+00:00"
+    },
+    {
+      "url": "https://www.cisco.com/c/en/us/support/docs/lan-switching/spanning-tree-protocol/10596-84.html",
+      "status": "retrieved",
+      "sha256": "e6c2e5f729635af9b2f69d0d92004edef745dbac7bafff60efd63b8aa36054f3",
+      "bytes": 68336,
+      "retrievedAt": "2026-10-24T16:07:20.853872+00:00"
+    },
+    {
+      "url": "https://www.cisco.com/c/en/us/support/docs/lan-switching/spanning-tree-protocol/24062-146.html",
+      "status": "retrieved",
+      "sha256": "bb74c30ea1fde9290157f06cef1c7aa65afd0a0f45acaf47b42986b72786f184",
+      "bytes": 80757,
+      "retrievedAt": "2026-10-24T16:07:21.201581+00:00"
+    },
+    {
+      "url": "https://www.cisco.com/c/en/us/td/docs/routers/ios/config/17-x/ip-routing/b-ip-routing/m_iri-default-passive-interface.html",
+      "status": "retrieved",
+      "sha256": "05e4661404c0e1a1f6317c94efa6648d37287833a9af7991807f701dd7142c9e",
+      "bytes": 142038,
+      "retrievedAt": "2026-10-24T16:07:21.870453+00:00"
+    },
+    {
+      "url": "https://www.cisco.com/c/en/us/td/docs/switches/lan/catalyst9300/software/release/17-15/configuration_guide/lyr2/b_1715_lyr2_9300_cg/configuring_etherchannels.html",
+      "status": "retrieved",
+      "sha256": "91099656140566b3cfef5a280aedfdec8a2f6ee70d48168eb1ec5f7fa8a99d4a",
+      "bytes": 457158,
+      "retrievedAt": "2026-10-24T15:58:24.285816+00:00"
+    },
+    {
+      "url": "https://www.cisco.com/c/en/us/td/docs/switches/lan/catalyst9300/software/release/17-15/configuration_guide/lyr2/b_1715_lyr2_9300_cg/configuring_optional_spanning_tree_features.html",
+      "status": "retrieved",
+      "sha256": "4456cf009e2c5a4fcae7f3fecaab3a7b3d847a0dbb559e65935b8b5e78db364b",
+      "bytes": 239201,
+      "retrievedAt": "2026-10-24T15:58:24.116648+00:00"
+    },
+    {
+      "url": "https://www.cisco.com/c/en/us/td/docs/switches/lan/catalyst9300/software/release/17-15/configuration_guide/sec/b_1715_sec_9300_cg/configuring_authentication.html",
+      "status": "retrieved",
+      "sha256": "afa0b3ecf56c4adbef061d98ba284071a60a3a434ca6e5e907aa55541ddf3c48",
+      "bytes": 576879,
+      "retrievedAt": "2026-10-24T15:58:24.168169+00:00"
+    },
+    {
+      "url": "https://www.cisco.com/c/en/us/td/docs/switches/lan/catalyst9300/software/release/17-15/configuration_guide/sec/b_1715_sec_9300_cg/configuring_dynamic_arp_inspection.html",
+      "status": "retrieved",
+      "sha256": "114622c567ab3ce651bcaaa014035c94c3e7e7233ac98dc65c1c56e52f74d073",
+      "bytes": 209161,
+      "retrievedAt": "2026-10-24T15:58:25.062616+00:00"
+    },
+    {
+      "url": "https://www.cisco.com/c/en/us/td/docs/switches/lan/catalyst9300/software/release/17-15/configuration_guide/vlan/b_1715_vlan_9300_cg/configuring_vlan_trunks.html",
+      "status": "retrieved",
+      "sha256": "991d0d8f3ceed6dd357bff33a57c416bb8219e287abe41408f6268b3d493b940",
+      "bytes": 245218,
+      "retrievedAt": "2026-10-24T16:05:17.585281+00:00"
+    },
+    {
+      "url": "https://www.cisco.com/c/en/us/td/docs/switches/lan/catalyst9300/software/release/17-15/configuration_guide/vlan/b_1715_vlan_9300_cg/configuring_voice_vlans.html",
+      "status": "retrieved",
+      "sha256": "4cdcb68f86f1f96f62d81a4a9f88f2195f2986bc31655debdd2c976b43ea8268",
+      "bytes": 121139,
+      "retrievedAt": "2026-10-24T16:05:18.692326+00:00"
+    },
+    {
+      "url": "https://www.rfc-editor.org/rfc/rfc1035.txt",
+      "status": "retrieved",
+      "sha256": "d14ae809fc9b41bbcae26bb38c937c9515808b944f3252b00de9fe0e95f4fdfb",
+      "bytes": 122549,
+      "retrievedAt": "2026-10-24T15:55:39.635433+00:00"
+    },
+    {
+      "url": "https://www.rfc-editor.org/rfc/rfc1112.txt",
+      "status": "retrieved",
+      "sha256": "677f3163f4f495f2cacc95aaf718d465e897b38a6aaf8774bf4f618e04b940f8",
+      "bytes": 38950,
+      "retrievedAt": "2026-10-24T15:58:24.540599+00:00"
+    },
+    {
+      "url": "https://www.rfc-editor.org/rfc/rfc1191.txt",
+      "status": "retrieved",
+      "sha256": "3de7c2cb99832c6d1929f9f918172865831848f77e8ab585488125581afa6b68",
+      "bytes": 46853,
+      "retrievedAt": "2026-10-24T15:58:24.833437+00:00"
+    },
+    {
+      "url": "https://www.rfc-editor.org/rfc/rfc2131.txt",
+      "status": "retrieved",
+      "sha256": "a043b705785b81762505ded4cf71d61392b2b1da2b4ce1e32c13bc984de5f4a5",
+      "bytes": 113738,
+      "retrievedAt": "2026-10-24T15:55:39.677500+00:00"
+    },
+    {
+      "url": "https://www.rfc-editor.org/rfc/rfc2328.txt",
+      "status": "retrieved",
+      "sha256": "981690e297fbba9e8ef655802552b5529cb17f1ffe790ad2d55706cc522ff50c",
+      "bytes": 524985,
+      "retrievedAt": "2026-10-24T15:55:39.704024+00:00"
+    },
+    {
+      "url": "https://www.rfc-editor.org/rfc/rfc2903.txt",
+      "status": "retrieved",
+      "sha256": "b12f75b0d7b706467cd63c2e8f7982ddd27f627a0534e2803f111f0bf9067218",
+      "bytes": 60627,
+      "retrievedAt": "2026-10-24T15:58:24.770172+00:00"
+    },
+    {
+      "url": "https://www.rfc-editor.org/rfc/rfc3416.txt",
+      "status": "retrieved",
+      "sha256": "e310ccf5a9cbbcb6c47d2fc0b50316889588d85447c7be0d40ddf74be70c8ac8",
+      "bytes": 70043,
+      "retrievedAt": "2026-10-24T15:58:25.013432+00:00"
+    },
+    {
+      "url": "https://www.rfc-editor.org/rfc/rfc4007.txt",
+      "status": "retrieved",
+      "sha256": "d39c1d5327dd2c21f8eef9aa93d260353be5c6e3f6d2c157d1f4e3f784a259a3",
+      "bytes": 53555,
+      "retrievedAt": "2026-10-24T15:59:56.403092+00:00"
+    },
+    {
+      "url": "https://www.rfc-editor.org/rfc/rfc4291.txt",
+      "status": "retrieved",
+      "sha256": "4d58dff6b432d5d524bf3a3b7f0337a4177fa65f92ed72f2a92e97b471de48b2",
+      "bytes": 52897,
+      "retrievedAt": "2026-10-24T15:55:39.901720+00:00"
+    },
+    {
+      "url": "https://www.rfc-editor.org/rfc/rfc4861.txt",
+      "status": "retrieved",
+      "sha256": "1a4309c117d765a7c0edfcb2297fc90c3c09f0fcae255f15e53b20748bcc09fb",
+      "bytes": 235106,
+      "retrievedAt": "2026-10-24T15:58:25.145062+00:00"
+    },
+    {
+      "url": "https://www.rfc-editor.org/rfc/rfc4862.txt",
+      "status": "retrieved",
+      "sha256": "6d3d2af5d2f6c9109b4ebd038ff7a6cec56771bbb0b5d8bd520357e03f097aa2",
+      "bytes": 72482,
+      "retrievedAt": "2026-10-24T15:58:25.471471+00:00"
+    },
+    {
+      "url": "https://www.rfc-editor.org/rfc/rfc5771.txt",
+      "status": "retrieved",
+      "sha256": "a41d561a277f09736777f3f2d5bc16407bb5dc066dfe703ed85d91d04d46ba46",
+      "bytes": 22239,
+      "retrievedAt": "2026-10-24T16:09:45.675220+00:00"
+    },
+    {
+      "url": "https://www.rfc-editor.org/rfc/rfc5905.txt",
+      "status": "retrieved",
+      "sha256": "8b7abd903c60202e2953ee012fefa6916666c3b0c71825c748cdd262024fb268",
+      "bytes": 241096,
+      "retrievedAt": "2026-10-24T15:55:40.099483+00:00"
+    },
+    {
+      "url": "https://www.rfc-editor.org/rfc/rfc6241.txt",
+      "status": "retrieved",
+      "sha256": "989b44560e4663267618b4b6bfc4cf0c7772fa2b59b5980936d9b073cbbd5314",
+      "bytes": 209465,
+      "retrievedAt": "2026-10-24T15:58:25.271244+00:00"
+    },
+    {
+      "url": "https://www.rfc-editor.org/rfc/rfc6585.txt",
+      "status": "retrieved",
+      "sha256": "f6d55d1b491cd515c35827cf9181753b23b2a68c4df14e56d83dc445b3876e58",
+      "bytes": 17164,
+      "retrievedAt": "2026-10-24T15:58:25.306069+00:00"
+    },
+    {
+      "url": "https://www.rfc-editor.org/rfc/rfc6691.txt",
+      "status": "retrieved",
+      "sha256": "0b53ce864c12726523911a0b70c9a0637e464ea636d6637df031f3e2f36a69a8",
+      "bytes": 16707,
+      "retrievedAt": "2026-10-24T15:58:25.754742+00:00"
+    },
+    {
+      "url": "https://www.rfc-editor.org/rfc/rfc791.txt",
+      "status": "retrieved",
+      "sha256": "6cfb387fcecfc1b72f2f69343c5b6951b5d263d708162e2b5c66ab8f394f6265",
+      "bytes": 94892,
+      "retrievedAt": "2026-10-24T15:55:40.286980+00:00"
+    },
+    {
+      "url": "https://www.rfc-editor.org/rfc/rfc7950.txt",
+      "status": "retrieved",
+      "sha256": "b71ae68e7aaff84a3321e1538a0cd788f549e4889ac375bf891f67cd8876908d",
+      "bytes": 393155,
+      "retrievedAt": "2026-10-24T15:58:25.440133+00:00"
+    },
+    {
+      "url": "https://www.rfc-editor.org/rfc/rfc8200.txt",
+      "status": "retrieved",
+      "sha256": "371ae3f133d562db5d6385e6def4ca9914c4f831be228ea7779fd28799c2f490",
+      "bytes": 93162,
+      "retrievedAt": "2026-10-24T15:58:25.424005+00:00"
+    },
+    {
+      "url": "https://www.rfc-editor.org/rfc/rfc9110.txt",
+      "status": "retrieved",
+      "sha256": "21c1cdce6ab0e5509b04d84a28000836c7a087cf786efe6f04877ebfff47232a",
+      "bytes": 502941,
+      "retrievedAt": "2026-10-24T15:55:40.425725+00:00"
+    }
+  ],
+  "focusedEvidence": [
+    {
+      "questionId": "ccna-original-20261024-b02-001",
+      "url": "https://www.rfc-editor.org/rfc/rfc4291.txt",
+      "section": "2.7.1",
+      "anchor": "A Solicited-Node multicast address is formed",
+      "sha256": "4d58dff6b432d5d524bf3a3b7f0337a4177fa65f92ed72f2a92e97b471de48b2",
+      "consultedAt": "2026-10-24T16:12:06.324675+00:00"
+    },
+    {
+      "questionId": "ccna-original-20261024-b02-002",
+      "url": "https://www.rfc-editor.org/rfc/rfc4291.txt",
+      "section": "Appendix A",
+      "anchor": "insert two octets, with hexadecimal values of 0xFF",
+      "sha256": "4d58dff6b432d5d524bf3a3b7f0337a4177fa65f92ed72f2a92e97b471de48b2",
+      "consultedAt": "2026-10-24T16:12:06.324675+00:00"
+    },
+    {
+      "questionId": "ccna-original-20261024-b02-003",
+      "url": "https://www.rfc-editor.org/rfc/rfc8200.txt",
+      "section": "5",
+      "anchor": "fragmentation in IPv6 is performed only",
+      "sha256": "371ae3f133d562db5d6385e6def4ca9914c4f831be228ea7779fd28799c2f490",
+      "consultedAt": "2026-10-24T16:12:06.324675+00:00"
+    },
+    {
+      "questionId": "ccna-original-20261024-b02-006",
+      "url": "https://www.rfc-editor.org/rfc/rfc4862.txt",
+      "section": "5.4.2",
+      "anchor": "IP source is set to the unspecified",
+      "sha256": "6d3d2af5d2f6c9109b4ebd038ff7a6cec56771bbb0b5d8bd520357e03f097aa2",
+      "consultedAt": "2026-10-24T16:12:06.324675+00:00"
+    },
+    {
+      "questionId": "ccna-original-20261024-b02-007",
+      "url": "https://www.rfc-editor.org/rfc/rfc5771.txt",
+      "section": "4 Local Network Control Block",
+      "anchor": "not forwarded off link",
+      "sha256": "a41d561a277f09736777f3f2d5bc16407bb5dc066dfe703ed85d91d04d46ba46",
+      "consultedAt": "2026-10-24T16:12:06.324675+00:00"
+    },
+    {
+      "questionId": "ccna-original-20261024-b02-008",
+      "url": "https://www.rfc-editor.org/rfc/rfc6691.txt",
+      "section": "2",
+      "anchor": "MTU value SHOULD be decreased",
+      "sha256": "0b53ce864c12726523911a0b70c9a0637e464ea636d6637df031f3e2f36a69a8",
+      "consultedAt": "2026-10-24T16:12:06.324675+00:00"
+    },
+    {
+      "questionId": "ccna-original-20261024-b02-009",
+      "url": "https://www.rfc-editor.org/rfc/rfc791.txt",
+      "section": "3.1",
+      "anchor": "offset is measured in units",
+      "sha256": "6cfb387fcecfc1b72f2f69343c5b6951b5d263d708162e2b5c66ab8f394f6265",
+      "consultedAt": "2026-10-24T16:12:06.324675+00:00"
+    },
+    {
+      "questionId": "ccna-original-20261024-b02-010",
+      "url": "https://www.rfc-editor.org/rfc/rfc1112.txt",
+      "section": "6.4",
+      "anchor": "low-order 23 bits",
+      "sha256": "677f3163f4f495f2cacc95aaf718d465e897b38a6aaf8774bf4f618e04b940f8",
+      "consultedAt": "2026-10-24T16:12:06.324675+00:00"
+    },
+    {
+      "questionId": "ccna-original-20261024-b02-011",
+      "url": "https://www.cisco.com/c/en/us/td/docs/switches/lan/catalyst9300/software/release/17-15/configuration_guide/lyr2/b_1715_lyr2_9300_cg/configuring_optional_spanning_tree_features.html",
+      "section": "BPDU Guard",
+      "anchor": "BPDU guard feature puts the port",
+      "sha256": "4456cf009e2c5a4fcae7f3fecaab3a7b3d847a0dbb559e65935b8b5e78db364b",
+      "consultedAt": "2026-10-24T16:12:06.324675+00:00"
+    },
+    {
+      "questionId": "ccna-original-20261024-b02-016",
+      "url": "https://www.cisco.com/c/en/us/td/docs/switches/lan/catalyst9300/software/release/17-15/configuration_guide/vlan/b_1715_vlan_9300_cg/configuring_vlan_trunks.html",
+      "section": "Allowed VLAN List",
+      "anchor": "allowed vlan",
+      "sha256": "991d0d8f3ceed6dd357bff33a57c416bb8219e287abe41408f6268b3d493b940",
+      "consultedAt": "2026-10-24T16:12:06.324675+00:00"
+    },
+    {
+      "questionId": "ccna-original-20261024-b02-018",
+      "url": "https://www.cisco.com/c/en/us/td/docs/switches/lan/catalyst9300/software/release/17-15/configuration_guide/vlan/b_1715_vlan_9300_cg/configuring_vlan_trunks.html",
+      "section": "Dynamic Trunking Protocol",
+      "anchor": "dynamic desirable Makes the interface actively",
+      "sha256": "991d0d8f3ceed6dd357bff33a57c416bb8219e287abe41408f6268b3d493b940",
+      "consultedAt": "2026-10-24T16:12:06.324675+00:00"
+    },
+    {
+      "questionId": "ccna-original-20261024-b02-024",
+      "url": "https://www.rfc-editor.org/rfc/rfc2328.txt",
+      "section": "9.4",
+      "anchor": "Router Priority of 0 are ineligible",
+      "sha256": "981690e297fbba9e8ef655802552b5529cb17f1ffe790ad2d55706cc522ff50c",
+      "consultedAt": "2026-10-24T16:12:06.324675+00:00"
+    },
+    {
+      "questionId": "ccna-original-20261024-b02-028",
+      "url": "https://www.cisco.com/c/en/us/support/docs/ip/border-gateway-protocol-bgp/15986-admin-distance.html",
+      "section": "Default Distance Value Table",
+      "anchor": "administrative distance is 255",
+      "sha256": "a3392a43c6f27067d07e6e0ad44759971326872b17cff5ebf0f8add8fd62d123",
+      "consultedAt": "2026-10-24T16:12:06.324675+00:00"
+    },
+    {
+      "questionId": "ccna-original-20261024-b02-029",
+      "url": "https://www.cisco.com/c/en/us/support/docs/ip/dynamic-address-allocation-resolution/13718-5.html",
+      "section": "How Proxy ARP Works",
+      "anchor": "router replies with its own MAC",
+      "sha256": "36e87ff729cadb91bb93adad57a2753acf21566d95b236094f31d1e0f2c97aa4",
+      "consultedAt": "2026-10-24T16:12:06.324675+00:00"
+    },
+    {
+      "questionId": "ccna-original-20261024-b02-031",
+      "url": "https://www.rfc-editor.org/rfc/rfc2328.txt",
+      "section": "16.1",
+      "anchor": "cost of a path",
+      "sha256": "981690e297fbba9e8ef655802552b5529cb17f1ffe790ad2d55706cc522ff50c",
+      "consultedAt": "2026-10-24T16:12:06.324675+00:00"
+    },
+    {
+      "questionId": "ccna-original-20261024-b02-032",
+      "url": "https://www.rfc-editor.org/rfc/rfc8200.txt",
+      "section": "5",
+      "anchor": "cannot convey a 1280",
+      "sha256": "371ae3f133d562db5d6385e6def4ca9914c4f831be228ea7779fd28799c2f490",
+      "consultedAt": "2026-10-24T16:12:06.324675+00:00"
+    },
+    {
+      "questionId": "ccna-original-20261024-b02-036",
+      "url": "https://www.rfc-editor.org/rfc/rfc2131.txt",
+      "section": "4.4.5",
+      "anchor": "T1 defaults to",
+      "sha256": "a043b705785b81762505ded4cf71d61392b2b1da2b4ce1e32c13bc984de5f4a5",
+      "consultedAt": "2026-10-24T16:12:06.324675+00:00"
+    },
+    {
+      "questionId": "ccna-original-20261024-b02-037",
+      "url": "https://www.rfc-editor.org/rfc/rfc5905.txt",
+      "section": "11.2.1",
+      "anchor": "one greater than the preceding",
+      "sha256": "8b7abd903c60202e2953ee012fefa6916666c3b0c71825c748cdd262024fb268",
+      "consultedAt": "2026-10-24T16:12:06.324675+00:00"
+    },
+    {
+      "questionId": "ccna-original-20261024-b02-041",
+      "url": "https://www.cisco.com/c/en/us/td/docs/switches/lan/catalyst9300/software/release/17-15/configuration_guide/sec/b_1715_sec_9300_cg/configuring_authentication.html",
+      "section": "Method Lists and Authentication Errors",
+      "anchor": "only if the previous method returns an error",
+      "sha256": "afa0b3ecf56c4adbef061d98ba284071a60a3a434ca6e5e907aa55541ddf3c48",
+      "consultedAt": "2026-10-24T16:12:06.324675+00:00"
+    },
+    {
+      "questionId": "ccna-original-20261024-b02-043",
+      "url": "https://www.cisco.com/c/en/us/td/docs/switches/lan/catalyst9300/software/release/17-15/configuration_guide/sec/b_1715_sec_9300_cg/configuring_dynamic_arp_inspection.html",
+      "section": "Dynamic ARP Inspection Validation",
+      "anchor": "verify IP-to-MAC address bindings",
+      "sha256": "114622c567ab3ce651bcaaa014035c94c3e7e7233ac98dc65c1c56e52f74d073",
+      "consultedAt": "2026-10-24T16:12:06.324675+00:00"
+    },
+    {
+      "questionId": "ccna-original-20261024-b02-044",
+      "url": "https://www.cisco.com/c/en/us/support/docs/ip/access-lists/26448-ACLsamples.html",
+      "section": "TCP established",
+      "anchor": "ACK/RST",
+      "sha256": "74f458c23f474b0c25c0541ef994d3fe2a9db24ab1f96132ae68f561952de00e",
+      "consultedAt": "2026-10-24T16:12:06.324675+00:00"
+    },
+    {
+      "questionId": "ccna-original-20261024-b02-046",
+      "url": "https://www.rfc-editor.org/rfc/rfc6585.txt",
+      "section": "4",
+      "anchor": "429 status code indicates",
+      "sha256": "f6d55d1b491cd515c35827cf9181753b23b2a68c4df14e56d83dc445b3876e58",
+      "consultedAt": "2026-10-24T16:12:06.324675+00:00"
+    },
+    {
+      "questionId": "ccna-original-20261024-b02-048",
+      "url": "https://www.rfc-editor.org/rfc/rfc6241.txt",
+      "section": "8.3.4",
+      "anchor": "candidate capability, use the <commit> operation to set the ",
+      "sha256": "989b44560e4663267618b4b6bfc4cf0c7772fa2b59b5980936d9b073cbbd5314",
+      "consultedAt": "2026-10-24T16:12:06.324675+00:00"
+    },
+    {
+      "questionId": "ccna-original-20261024-b02-050",
+      "url": "https://www.rfc-editor.org/rfc/rfc7950.txt",
+      "section": "9.2.4",
+      "anchor": "lower-inclusive bound",
+      "sha256": "b71ae68e7aaff84a3321e1538a0cd788f549e4889ac375bf891f67cd8876908d",
+      "consultedAt": "2026-10-24T16:12:06.324675+00:00"
+    }
+  ],
+  "examReference": {
+    "url": "https://www.cisco.com/site/us/en/learn/training-certifications/exams/ccna.html",
+    "observed": "The retrieved official exam page states a 120-minute exam and links to ccna-v1-1-exam-topics. The linked topic document could not be retrieved; current weights were not independently reconfirmed here."
+  }
+}

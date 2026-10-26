@@ -1,0 +1,418 @@
+{
+  "batchId": "original-20261024-b03-50",
+  "generatedAt": "2026-10-24T16:34:37.547489+00:00",
+  "scope": "Primary-source retrieval and focused consultation only, not automatic technical or translation approval. Partial reference coverage is explicitly marked in individual questions.",
+  "questionsWithFocusedConsultation": 11,
+  "documents": [
+    {
+      "url": "https://www.cisco.com/c/en/us/support/docs/ip/access-lists/26448-ACLsamples.html",
+      "primary": true,
+      "status": "retrieved",
+      "sha256": "74f458c23f474b0c25c0541ef994d3fe2a9db24ab1f96132ae68f561952de00e",
+      "bytes": 71443,
+      "retrievedAt": "2026-10-24T15:55:39.269523+00:00"
+    },
+    {
+      "url": "https://www.cisco.com/c/en/us/support/docs/ip/border-gateway-protocol-bgp/15986-admin-distance.html",
+      "primary": true,
+      "status": "retrieved",
+      "sha256": "a3392a43c6f27067d07e6e0ad44759971326872b17cff5ebf0f8add8fd62d123",
+      "bytes": 73412,
+      "retrievedAt": "2026-10-24T15:55:39.269245+00:00"
+    },
+    {
+      "url": "https://www.cisco.com/c/en/us/td/docs/routers/ios/config/17-x/ip-routing/b-ip-routing/m_iri-default-passive-interface.html",
+      "primary": true,
+      "status": "retrieved",
+      "sha256": "05e4661404c0e1a1f6317c94efa6648d37287833a9af7991807f701dd7142c9e",
+      "bytes": 142038,
+      "retrievedAt": "2026-10-24T16:07:21.870453+00:00"
+    },
+    {
+      "url": "https://www.cisco.com/c/en/us/td/docs/switches/lan/catalyst9300/software/release/17-15/configuration_guide/lyr2/b_1715_lyr2_9300_cg/configuring_etherchannels.html",
+      "primary": true,
+      "status": "retrieved",
+      "sha256": "91099656140566b3cfef5a280aedfdec8a2f6ee70d48168eb1ec5f7fa8a99d4a",
+      "bytes": 457158,
+      "retrievedAt": "2026-10-24T15:58:24.285816+00:00"
+    },
+    {
+      "url": "https://www.cisco.com/c/en/us/td/docs/switches/lan/catalyst9300/software/release/17-15/configuration_guide/lyr2/b_1715_lyr2_9300_cg/configuring_optional_spanning_tree_features.html",
+      "primary": true,
+      "status": "retrieved",
+      "sha256": "4456cf009e2c5a4fcae7f3fecaab3a7b3d847a0dbb559e65935b8b5e78db364b",
+      "bytes": 239201,
+      "retrievedAt": "2026-10-24T15:58:24.116648+00:00"
+    },
+    {
+      "url": "https://www.cisco.com/c/en/us/td/docs/switches/lan/catalyst9300/software/release/17-15/configuration_guide/lyr2/b_1715_lyr2_9300_cg/configuring_spanning_tree_protocol.html",
+      "primary": true,
+      "status": "retrieved",
+      "sha256": "3e00634a67b70bc4f407ba6425645939612d2868466c06b521a99e1375956bc6",
+      "bytes": 360721,
+      "retrievedAt": "2026-10-24T15:58:24.285191+00:00"
+    },
+    {
+      "url": "https://www.cisco.com/c/en/us/td/docs/switches/lan/catalyst9300/software/release/17-15/configuration_guide/sec/b_1715_sec_9300_cg/configuring_dynamic_arp_inspection.html",
+      "primary": true,
+      "status": "retrieved",
+      "sha256": "114622c567ab3ce651bcaaa014035c94c3e7e7233ac98dc65c1c56e52f74d073",
+      "bytes": 209161,
+      "retrievedAt": "2026-10-24T15:58:25.062616+00:00"
+    },
+    {
+      "url": "https://www.cisco.com/c/en/us/td/docs/switches/lan/catalyst9300/software/release/17-15/configuration_guide/sec/b_1715_sec_9300_cg/configuring_ieee_802_1x_port_based_authentication.html",
+      "primary": true,
+      "status": "retrieved",
+      "sha256": "8bd896d6b10face1520911355a50f478cef877b88980cb8ba29e38189bdf2c21",
+      "bytes": 1088159,
+      "retrievedAt": "2026-10-24T15:58:25.059785+00:00"
+    },
+    {
+      "url": "https://www.cisco.com/c/en/us/td/docs/switches/lan/catalyst9300/software/release/17-15/configuration_guide/sec/b_1715_sec_9300_cg/port_security.html",
+      "primary": true,
+      "status": "retrieved",
+      "sha256": "9691fd4c28ef2eca3f1c6d19a93117b5954a7b209d0eb6f699fe3f9dac7295ef",
+      "bytes": 289460,
+      "retrievedAt": "2026-10-24T15:58:25.169524+00:00"
+    },
+    {
+      "url": "https://www.rfc-editor.org/rfc/rfc1034.txt",
+      "primary": true,
+      "status": "retrieved",
+      "sha256": "d6b10a71441df879cc2817d23f2dad120c8a5f87e74eba1e4ed4b743a76a891a",
+      "bytes": 126103,
+      "retrievedAt": "2026-10-24T16:24:38.134379+00:00"
+    },
+    {
+      "url": "https://www.rfc-editor.org/rfc/rfc1035.txt",
+      "primary": true,
+      "status": "retrieved",
+      "sha256": "d14ae809fc9b41bbcae26bb38c937c9515808b944f3252b00de9fe0e95f4fdfb",
+      "bytes": 122549,
+      "retrievedAt": "2026-10-24T15:55:39.635433+00:00"
+    },
+    {
+      "url": "https://www.rfc-editor.org/rfc/rfc1242.txt",
+      "primary": true,
+      "status": "retrieved",
+      "sha256": "9d7b1476a79f6b71c3729e26ea6b6b20446aa17d1e7c4834c21260fa74b1cb52",
+      "bytes": 22143,
+      "retrievedAt": "2026-10-24T16:24:38.149686+00:00"
+    },
+    {
+      "url": "https://www.rfc-editor.org/rfc/rfc1812.txt",
+      "primary": true,
+      "status": "retrieved",
+      "sha256": "72c2c27fecd3eef085f978a8c0ee5f364877708bfc0251af1c8437b56ad2f56d",
+      "bytes": 415740,
+      "retrievedAt": "2026-10-24T15:55:39.617067+00:00"
+    },
+    {
+      "url": "https://www.rfc-editor.org/rfc/rfc1918.txt",
+      "primary": true,
+      "status": "retrieved",
+      "sha256": "56c43465298772bc4d899923f1785b7b7bf8dd2c9f2f9a53422800ddc5cf9337",
+      "bytes": 22271,
+      "retrievedAt": "2026-10-24T16:24:37.789040+00:00"
+    },
+    {
+      "url": "https://www.rfc-editor.org/rfc/rfc2328.txt",
+      "primary": true,
+      "status": "retrieved",
+      "sha256": "981690e297fbba9e8ef655802552b5529cb17f1ffe790ad2d55706cc522ff50c",
+      "bytes": 524985,
+      "retrievedAt": "2026-10-24T15:55:39.704024+00:00"
+    },
+    {
+      "url": "https://www.rfc-editor.org/rfc/rfc2464.txt",
+      "primary": true,
+      "status": "retrieved",
+      "sha256": "f9554329ef1f4e093513e5b6f7af00bb5d206710e0c61d08bd578fa5f00aee9a",
+      "bytes": 12725,
+      "retrievedAt": "2026-10-24T16:24:37.990856+00:00"
+    },
+    {
+      "url": "https://www.rfc-editor.org/rfc/rfc2474.txt",
+      "primary": false,
+      "status": "retrieved",
+      "sha256": "c490f3e15aa0b85b4117fe31ffbe68f17bf12e68357e8a1651c520ba2589f909",
+      "bytes": 50576,
+      "retrievedAt": "2026-10-24T16:24:37.696047+00:00"
+    },
+    {
+      "url": "https://www.rfc-editor.org/rfc/rfc2865.txt",
+      "primary": false,
+      "status": "retrieved",
+      "sha256": "f0e29bff65ae4be6bf1511e31b02a8ab4d60d7f852c2d171ecdd8d664d0562d4",
+      "bytes": 146456,
+      "retrievedAt": "2026-10-24T16:24:38.308797+00:00"
+    },
+    {
+      "url": "https://www.rfc-editor.org/rfc/rfc3022.txt",
+      "primary": true,
+      "status": "retrieved",
+      "sha256": "c57fe60c46eff630d4d82eece5bf624ba3ac80f16711e7acdb44a28e01331d86",
+      "bytes": 37675,
+      "retrievedAt": "2026-10-24T15:55:39.826107+00:00"
+    },
+    {
+      "url": "https://www.rfc-editor.org/rfc/rfc3168.txt",
+      "primary": true,
+      "status": "retrieved",
+      "sha256": "35b437f1826b2624d6c5e7af2f047a6ba0a3110cd5559ffbd0cefdc8c3d87b76",
+      "bytes": 170966,
+      "retrievedAt": "2026-10-24T16:24:37.494645+00:00"
+    },
+    {
+      "url": "https://www.rfc-editor.org/rfc/rfc3414.txt",
+      "primary": true,
+      "status": "retrieved",
+      "sha256": "636ffdf3f44222d4295e52a846075a3fea826604cd8ba88ae8e69d87664cbb5f",
+      "bytes": 193558,
+      "retrievedAt": "2026-10-24T16:24:38.195960+00:00"
+    },
+    {
+      "url": "https://www.rfc-editor.org/rfc/rfc3849.txt",
+      "primary": true,
+      "status": "retrieved",
+      "sha256": "b0741fc609be565b356c62d2f9b9ef30469f3fe7bde386c2690e173751bb1941",
+      "bytes": 7872,
+      "retrievedAt": "2026-10-24T16:24:37.856658+00:00"
+    },
+    {
+      "url": "https://www.rfc-editor.org/rfc/rfc4253.txt",
+      "primary": true,
+      "status": "retrieved",
+      "sha256": "b471173305154f6c66facffcf7a4a25fc5c32765cb30542120be6c20a88f1ed3",
+      "bytes": 68263,
+      "retrievedAt": "2026-10-24T16:24:38.368577+00:00"
+    },
+    {
+      "url": "https://www.rfc-editor.org/rfc/rfc4632.txt",
+      "primary": true,
+      "status": "retrieved",
+      "sha256": "13694a39f586eb2054407780edccdf7c39332e57f067c8008bba4326bfc24fa9",
+      "bytes": 66944,
+      "retrievedAt": "2026-10-24T15:55:39.952247+00:00"
+    },
+    {
+      "url": "https://www.rfc-editor.org/rfc/rfc4861.txt",
+      "primary": true,
+      "status": "retrieved",
+      "sha256": "1a4309c117d765a7c0edfcb2297fc90c3c09f0fcae255f15e53b20748bcc09fb",
+      "bytes": 235106,
+      "retrievedAt": "2026-10-24T15:58:25.145062+00:00"
+    },
+    {
+      "url": "https://www.rfc-editor.org/rfc/rfc5415.txt",
+      "primary": true,
+      "status": "retrieved",
+      "sha256": "48e0ebb6efe752602694a25db0a50d9777eeda4a565119d1f17bba0b1f522ed0",
+      "bytes": 345381,
+      "retrievedAt": "2026-10-24T16:24:38.137435+00:00"
+    },
+    {
+      "url": "https://www.rfc-editor.org/rfc/rfc5416.txt",
+      "primary": true,
+      "status": "retrieved",
+      "sha256": "ef326f22d2302b43547dcad37fbc545b075dcae7941372b0569fd84e0f5a4af2",
+      "bytes": 175870,
+      "retrievedAt": "2026-10-24T16:24:38.187141+00:00"
+    },
+    {
+      "url": "https://www.rfc-editor.org/rfc/rfc5681.txt",
+      "primary": true,
+      "status": "retrieved",
+      "sha256": "a2d99a2421d5c57b248394f26ba44fc364aa546680fbf10ff0aa7034dad8b87d",
+      "bytes": 44339,
+      "retrievedAt": "2026-10-24T16:24:37.542090+00:00"
+    },
+    {
+      "url": "https://www.rfc-editor.org/rfc/rfc5737.txt",
+      "primary": true,
+      "status": "retrieved",
+      "sha256": "9d16217614a74a9b064eff900e5cd07a525793cf8227dca1267100e880f0c410",
+      "bytes": 7036,
+      "retrievedAt": "2026-10-24T16:24:37.836098+00:00"
+    },
+    {
+      "url": "https://www.rfc-editor.org/rfc/rfc6241.txt",
+      "primary": true,
+      "status": "retrieved",
+      "sha256": "989b44560e4663267618b4b6bfc4cf0c7772fa2b59b5980936d9b073cbbd5314",
+      "bytes": 209465,
+      "retrievedAt": "2026-10-24T15:58:25.271244+00:00"
+    },
+    {
+      "url": "https://www.rfc-editor.org/rfc/rfc6750.txt",
+      "primary": true,
+      "status": "retrieved",
+      "sha256": "9dc385cf4ecdd85024e5a95e447ede9230e11700bf35251906b25b37557d604b",
+      "bytes": 38949,
+      "retrievedAt": "2026-10-24T16:24:38.337637+00:00"
+    },
+    {
+      "url": "https://www.rfc-editor.org/rfc/rfc768.txt",
+      "primary": true,
+      "status": "retrieved",
+      "sha256": "7dc8880e1ecef9c3f9da0db4b876a16e96bfa4f0953cc9d977d414f8f680c2f0",
+      "bytes": 5896,
+      "retrievedAt": "2026-10-24T16:24:37.548876+00:00"
+    },
+    {
+      "url": "https://www.rfc-editor.org/rfc/rfc791.txt",
+      "primary": true,
+      "status": "retrieved",
+      "sha256": "6cfb387fcecfc1b72f2f69343c5b6951b5d263d708162e2b5c66ab8f394f6265",
+      "bytes": 94892,
+      "retrievedAt": "2026-10-24T15:55:40.286980+00:00"
+    },
+    {
+      "url": "https://www.rfc-editor.org/rfc/rfc792.txt",
+      "primary": true,
+      "status": "retrieved",
+      "sha256": "58714393ded142bacf188d7e8977eef98f4110c4c87ac94595f750df5664c2c6",
+      "bytes": 29186,
+      "retrievedAt": "2026-10-24T16:24:38.044062+00:00"
+    },
+    {
+      "url": "https://www.rfc-editor.org/rfc/rfc8200.txt",
+      "primary": true,
+      "status": "retrieved",
+      "sha256": "371ae3f133d562db5d6385e6def4ca9914c4f831be228ea7779fd28799c2f490",
+      "bytes": 93162,
+      "retrievedAt": "2026-10-24T15:58:25.424005+00:00"
+    },
+    {
+      "url": "https://www.rfc-editor.org/rfc/rfc8259.txt",
+      "primary": true,
+      "status": "retrieved",
+      "sha256": "61a5378f4255c720beb2a4b4a63b29540147c140f36988bf086291989b4cd2d7",
+      "bytes": 28360,
+      "retrievedAt": "2026-10-24T15:55:40.346339+00:00"
+    },
+    {
+      "url": "https://www.rfc-editor.org/rfc/rfc826.txt",
+      "primary": true,
+      "status": "retrieved",
+      "sha256": "01bc62fe6a37e90f1246ac43e8e145f1322b4ed1474836145c3da93d2bd3c8a6",
+      "bytes": 21556,
+      "retrievedAt": "2026-10-24T16:24:37.795553+00:00"
+    },
+    {
+      "url": "https://www.rfc-editor.org/rfc/rfc8907.txt",
+      "primary": true,
+      "status": "retrieved",
+      "sha256": "b66c86b0d996baa98ae018ae5448d76b9973c6154d5fcb6002af0a62fd879233",
+      "bytes": 92137,
+      "retrievedAt": "2026-10-24T16:24:38.322191+00:00"
+    },
+    {
+      "url": "https://www.rfc-editor.org/rfc/rfc9110.txt",
+      "primary": true,
+      "status": "retrieved",
+      "sha256": "21c1cdce6ab0e5509b04d84a28000836c7a087cf786efe6f04877ebfff47232a",
+      "bytes": 502941,
+      "retrievedAt": "2026-10-24T15:55:40.425725+00:00"
+    },
+    {
+      "url": "https://www.rfc-editor.org/rfc/rfc9293.txt",
+      "primary": true,
+      "status": "retrieved",
+      "sha256": "6d9ac8be4b0286f8c3d337addf442b2eb6a9b14e1366594ea7fbc273f93dc2d9",
+      "bytes": 263696,
+      "retrievedAt": "2026-10-24T16:24:37.586872+00:00"
+    }
+  ],
+  "focusedEvidence": [
+    {
+      "questionId": "ccna-original-20261024-b03-001",
+      "url": "https://www.rfc-editor.org/rfc/rfc9293.txt",
+      "section": "3.3.1",
+      "anchor": "counting SYN and FIN",
+      "sha256": "6d9ac8be4b0286f8c3d337addf442b2eb6a9b14e1366594ea7fbc273f93dc2d9",
+      "consultedAt": "2026-10-24T16:34:37.547489+00:00"
+    },
+    {
+      "questionId": "ccna-original-20261024-b03-002",
+      "url": "https://www.rfc-editor.org/rfc/rfc9293.txt",
+      "section": "3.3.1",
+      "anchor": "counting SYN and FIN",
+      "sha256": "6d9ac8be4b0286f8c3d337addf442b2eb6a9b14e1366594ea7fbc273f93dc2d9",
+      "consultedAt": "2026-10-24T16:34:37.547489+00:00"
+    },
+    {
+      "questionId": "ccna-original-20261024-b03-003",
+      "url": "https://www.rfc-editor.org/rfc/rfc5681.txt",
+      "section": "2",
+      "anchor": "minimum of cwnd and rwnd",
+      "sha256": "a2d99a2421d5c57b248394f26ba44fc364aa546680fbf10ff0aa7034dad8b87d",
+      "consultedAt": "2026-10-24T16:34:37.547489+00:00"
+    },
+    {
+      "questionId": "ccna-original-20261024-b03-004",
+      "url": "https://www.rfc-editor.org/rfc/rfc768.txt",
+      "section": "Format",
+      "anchor": "Length is the length in octets",
+      "sha256": "7dc8880e1ecef9c3f9da0db4b876a16e96bfa4f0953cc9d977d414f8f680c2f0",
+      "consultedAt": "2026-10-24T16:34:37.547489+00:00"
+    },
+    {
+      "questionId": "ccna-original-20261024-b03-005",
+      "url": "https://www.rfc-editor.org/rfc/rfc791.txt",
+      "section": "3.1",
+      "anchor": "length of the internet header in 32 bit words",
+      "sha256": "6cfb387fcecfc1b72f2f69343c5b6951b5d263d708162e2b5c66ab8f394f6265",
+      "consultedAt": "2026-10-24T16:34:37.547489+00:00"
+    },
+    {
+      "questionId": "ccna-original-20261024-b03-007",
+      "url": "https://www.rfc-editor.org/rfc/rfc3849.txt",
+      "section": "2 and 3",
+      "anchor": "2001:DB8::/32",
+      "sha256": "b0741fc609be565b356c62d2f9b9ef30469f3fe7bde386c2690e173751bb1941",
+      "consultedAt": "2026-10-24T16:34:37.547489+00:00"
+    },
+    {
+      "questionId": "ccna-original-20261024-b03-008",
+      "url": "https://www.rfc-editor.org/rfc/rfc5737.txt",
+      "section": "3",
+      "anchor": "192.0.2.0/24",
+      "sha256": "9d16217614a74a9b064eff900e5cd07a525793cf8227dca1267100e880f0c410",
+      "consultedAt": "2026-10-24T16:34:37.547489+00:00"
+    },
+    {
+      "questionId": "ccna-original-20261024-b03-018",
+      "url": "https://www.rfc-editor.org/rfc/rfc5416.txt",
+      "section": "IEEE 802.11 radio information and SNR fields",
+      "anchor": "SNR is a signed, 8-bit value",
+      "sha256": "ef326f22d2302b43547dcad37fbc545b075dcae7941372b0569fd84e0f5a4af2",
+      "consultedAt": "2026-10-24T16:34:37.547489+00:00"
+    },
+    {
+      "questionId": "ccna-original-20261024-b03-025",
+      "url": "https://www.rfc-editor.org/rfc/rfc2328.txt",
+      "section": "1.2 Router ID",
+      "anchor": "uniquely identifies the router within an Autonomous System",
+      "sha256": "981690e297fbba9e8ef655802552b5529cb17f1ffe790ad2d55706cc522ff50c",
+      "consultedAt": "2026-10-24T16:34:37.547489+00:00"
+    },
+    {
+      "questionId": "ccna-original-20261024-b03-033",
+      "url": "https://www.rfc-editor.org/rfc/rfc1034.txt",
+      "section": "3.6.2",
+      "anchor": "If a CNAME RR is present at a node",
+      "sha256": "d6b10a71441df879cc2817d23f2dad120c8a5f87e74eba1e4ed4b743a76a891a",
+      "consultedAt": "2026-10-24T16:34:37.547489+00:00"
+    },
+    {
+      "questionId": "ccna-original-20261024-b03-041",
+      "url": "https://www.rfc-editor.org/rfc/rfc8907.txt",
+      "section": "3.4; RFC 2865 for RADIUS binding",
+      "anchor": "TCP Server port 49",
+      "sha256": "b66c86b0d996baa98ae018ae5448d76b9973c6154d5fcb6002af0a62fd879233",
+      "consultedAt": "2026-10-24T16:34:37.547489+00:00"
+    }
+  ]
+}

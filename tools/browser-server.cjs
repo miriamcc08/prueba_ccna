@@ -1,0 +1,12 @@
+const { execFileSync, spawn } = require('node:child_process');
+const { writeFileSync } = require('node:fs');
+const { resolve } = require('node:path');
+const database = process.env.DATABASE_URL;
+if (!database || !database.startsWith('file:/tmp/ccna-browser-')) throw new Error('Browser tests require an isolated database under /tmp/ccna-browser-.');
+writeFileSync(database.slice(5), '');
+const cwd = resolve(__dirname, '../server');
+execFileSync(process.execPath, ['node_modules/prisma/build/index.js', 'migrate', 'deploy'], { cwd, env: process.env, stdio: 'inherit' });
+execFileSync(process.execPath, ['node_modules/tsx/dist/cli.mjs', 'prisma/seed.ts'], { cwd, env: process.env, stdio: 'inherit' });
+const server = spawn(process.execPath, ['node_modules/tsx/dist/cli.mjs', 'src/index.ts'], { cwd, env: process.env, stdio: 'inherit' });
+for (const signal of ['SIGTERM', 'SIGINT']) process.on(signal, () => server.kill(signal));
+server.on('exit', code => process.exit(code || 0));

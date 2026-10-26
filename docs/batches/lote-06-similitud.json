@@ -1,0 +1,8 @@
+{
+  "batchId": "original-20261026-b06-50",
+  "checkedAgainst": 550,
+  "received": 50,
+  "threshold": 0.72,
+  "potentialNearDuplicates": [],
+  "scope": "English lexical screening after masking numeric IPv4 values. Related exercises retain declared families and are not counted as independent concepts. No guarantee of complete semantic deduplication."
+}

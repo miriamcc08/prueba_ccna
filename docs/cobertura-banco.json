@@ -1,0 +1,330 @@
+{
+  "generatedAt": "2026-10-26T18:06:19.781296+00:00",
+  "scope": "Candidate metadata and broad areas only, not official coverage or human approval.",
+  "candidateCount": 660,
+  "areas": {
+    "automation_programmability": 74,
+    "ip_connectivity": 163,
+    "ip_services": 65,
+    "network_access": 130,
+    "network_fundamentals": 130,
+    "security_fundamentals": 98
+  },
+  "originalBatches": [
+    {
+      "batchId": "original-20261024-50",
+      "received": 50,
+      "focusedConsultations": 20,
+      "independentCases": 28
+    },
+    {
+      "batchId": "original-20261024-b02-50",
+      "received": 50,
+      "focusedConsultations": 24,
+      "independentCases": 13
+    },
+    {
+      "batchId": "original-20261024-b03-50",
+      "received": 50,
+      "focusedConsultations": 11,
+      "independentCases": 21
+    },
+    {
+      "batchId": "original-20261026-b04-50",
+      "received": 50,
+      "focusedConsultations": 14,
+      "independentCases": 9
+    },
+    {
+      "batchId": "original-20261026-b05-50",
+      "received": 50,
+      "focusedConsultations": 50,
+      "independentCases": 6
+    },
+    {
+      "batchId": "original-20261026-b06-50",
+      "received": 50,
+      "focusedConsultations": 50,
+      "independentCases": 12
+    },
+    {
+      "batchId": "original-20261026-b07-50",
+      "received": 50,
+      "focusedConsultations": 50,
+      "independentCases": 10
+    },
+    {
+      "batchId": "original-20261026-b08-10",
+      "received": 10,
+      "focusedConsultations": 10,
+      "independentCases": 2
+    }
+  ],
+  "focusedOriginalQuestions": 229,
+  "independentlyCheckedOriginalCases": 101,
+  "officialObjectiveMapping": "pending verification against full official syllabus",
+  "priorityTriage": [
+    {
+      "topic": "architectures",
+      "pattern": "spine.?leaf|leaf.?spine|three.?tier|two.?tier|collapsed.?core|hierarchical campus",
+      "method": "English statement keyword screening, not an official-objective map. AIOps terms expanded in batch 08; counts are not directly comparable to earlier screens.",
+      "matches": 6,
+      "records": [
+        {
+          "file": "batch1_network_fundamentals.json",
+          "index": 2,
+          "id": null,
+          "family": null
+        },
+        {
+          "file": "batch2_network_fundamentals.json",
+          "index": 2,
+          "id": null,
+          "family": null
+        },
+        {
+          "file": "original_20261026_b07_50.json",
+          "index": 0,
+          "id": "ccna-original-20261026-b07-001",
+          "family": "concept-campus-access-layer-endpoints"
+        },
+        {
+          "file": "original_20261026_b07_50.json",
+          "index": 2,
+          "id": "ccna-original-20261026-b07-003",
+          "family": "concept-collapsed-core-combines-roles"
+        },
+        {
+          "file": "original_20261026_b07_50.json",
+          "index": 3,
+          "id": "ccna-original-20261026-b07-004",
+          "family": "concept-leaf-spine-complete-bipartite-link-count"
+        },
+        {
+          "file": "original_20261026_b07_50.json",
+          "index": 4,
+          "id": "ccna-original-20261026-b07-005",
+          "family": "concept-leaf-spine-same-hop-count"
+        }
+      ]
+    },
+    {
+      "topic": "virtualization",
+      "pattern": "hypervisor|container|virtual machine|VRF|overlay|VTEP|VXLAN",
+      "method": "English statement keyword screening, not an official-objective map. AIOps terms expanded in batch 08; counts are not directly comparable to earlier screens.",
+      "matches": 9,
+      "records": [
+        {
+          "file": "batch2_network_fundamentals.json",
+          "index": 1,
+          "id": null,
+          "family": null
+        },
+        {
+          "file": "batch3_all.json",
+          "index": 11,
+          "id": null,
+          "family": null
+        },
+        {
+          "file": "batch5_all.json",
+          "index": 20,
+          "id": null,
+          "family": null
+        },
+        {
+          "file": "batch5_all.json",
+          "index": 41,
+          "id": null,
+          "family": null
+        },
+        {
+          "file": "original_20261026_b06_50.json",
+          "index": 29,
+          "id": "ccna-original-20261026-b06-030",
+          "family": "concept-vrf-separate-forwarding-tables"
+        },
+        {
+          "file": "original_20261026_b07_50.json",
+          "index": 5,
+          "id": "ccna-original-20261026-b07-006",
+          "family": "concept-network-virtualization-overlay-underlay-separation"
+        },
+        {
+          "file": "original_20261026_b07_50.json",
+          "index": 7,
+          "id": "ccna-original-20261026-b07-008",
+          "family": "concept-vxlan-vni-bit-field-capacity"
+        },
+        {
+          "file": "original_20261026_b07_50.json",
+          "index": 8,
+          "id": "ccna-original-20261026-b07-009",
+          "family": "concept-vxlan-vtep-encapsulation-visibility"
+        },
+        {
+          "file": "original_20261026_b07_50.json",
+          "index": 9,
+          "id": "ccna-original-20261026-b07-010",
+          "family": "concept-vxlan-isolation-not-encryption-guarantee"
+        }
+      ]
+    },
+    {
+      "topic": "automation_tools",
+      "pattern": "Ansible|Terraform|configuration management",
+      "method": "English statement keyword screening, not an official-objective map. AIOps terms expanded in batch 08; counts are not directly comparable to earlier screens.",
+      "matches": 8,
+      "records": [
+        {
+          "file": "batch1_automation.json",
+          "index": 4,
+          "id": null,
+          "family": null
+        },
+        {
+          "file": "batch2_automation.json",
+          "index": 4,
+          "id": null,
+          "family": null
+        },
+        {
+          "file": "batch3_all.json",
+          "index": 48,
+          "id": null,
+          "family": null
+        },
+        {
+          "file": "batch4_all.json",
+          "index": 45,
+          "id": null,
+          "family": null
+        },
+        {
+          "file": "batch4_all.json",
+          "index": 47,
+          "id": null,
+          "family": null
+        },
+        {
+          "file": "batch5_all.json",
+          "index": 46,
+          "id": null,
+          "family": null
+        },
+        {
+          "file": "batch6_all.json",
+          "index": 48,
+          "id": null,
+          "family": null
+        },
+        {
+          "file": "batch6_all.json",
+          "index": 49,
+          "id": null,
+          "family": null
+        }
+      ]
+    },
+    {
+      "topic": "wireless_security",
+      "pattern": "WPA[23]|SAE|802\\.1X|EAP.TLS",
+      "method": "English statement keyword screening, not an official-objective map. AIOps terms expanded in batch 08; counts are not directly comparable to earlier screens.",
+      "matches": 7,
+      "records": [
+        {
+          "file": "batch3_all.json",
+          "index": 39,
+          "id": null,
+          "family": null
+        },
+        {
+          "file": "batch3_all.json",
+          "index": 44,
+          "id": null,
+          "family": null
+        },
+        {
+          "file": "batch5_all.json",
+          "index": 42,
+          "id": null,
+          "family": null
+        },
+        {
+          "file": "original_20261024_b03_50.json",
+          "index": 39,
+          "id": "ccna-original-20261024-b03-040",
+          "family": "concept-dot1x-three-role-separation"
+        },
+        {
+          "file": "original_20261026_b05_50.json",
+          "index": 12,
+          "id": "ccna-original-20261026-b05-013",
+          "family": "concept-radius-dynamic-vlan-assignment-attributes"
+        },
+        {
+          "file": "original_20261026_b07_50.json",
+          "index": 37,
+          "id": "ccna-original-20261026-b07-038",
+          "family": "concept-tls-service-identity"
+        },
+        {
+          "file": "original_20261026_b07_50.json",
+          "index": 38,
+          "id": "ccna-original-20261026-b07-039",
+          "family": "concept-eap-tls-mutual-authentication"
+        }
+      ]
+    },
+    {
+      "topic": "ai_ml",
+      "pattern": "artificial intelligence|machine learning|generative AI|AIOps|AI assistant",
+      "method": "English statement keyword screening, not an official-objective map. AIOps terms expanded in batch 08; counts are not directly comparable to earlier screens.",
+      "matches": 7,
+      "records": [
+        {
+          "file": "batch1_automation.json",
+          "index": 2,
+          "id": null,
+          "family": null
+        },
+        {
+          "file": "batch2_automation.json",
+          "index": 2,
+          "id": null,
+          "family": null
+        },
+        {
+          "file": "original_20261026_b08_10.json",
+          "index": 0,
+          "id": "ccna-original-20261026-b08-001",
+          "family": "concept-aiops-it-operations-role"
+        },
+        {
+          "file": "original_20261026_b08_10.json",
+          "index": 1,
+          "id": "ccna-original-20261026-b08-002",
+          "family": "concept-aiops-event-correlation-scope"
+        },
+        {
+          "file": "original_20261026_b08_10.json",
+          "index": 3,
+          "id": "ccna-original-20261026-b08-004",
+          "family": "concept-aiops-platform-and-human-expertise"
+        },
+        {
+          "file": "original_20261026_b08_10.json",
+          "index": 4,
+          "id": "ccna-original-20261026-b08-005",
+          "family": "concept-aiops-cross-team-insights"
+        },
+        {
+          "file": "original_20261026_b08_10.json",
+          "index": 7,
+          "id": "ccna-original-20261026-b08-008",
+          "family": "concept-api-authorization-server-enforcement"
+        }
+      ]
+    }
+  ]
+}

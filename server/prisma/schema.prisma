@@ -26,6 +26,7 @@ model User {
 
   exams      Exam[]
   favorites  QuestionFavorite[]
+  reviews    QuestionReview[]
 }
 
 // ---- Topics (Exam Areas & Sub-topics) ----
@@ -117,6 +118,7 @@ model Question {
   variantsAsVariant  QuestionVariant[] @relation("VariantQuestion")
   examQuestions    ExamQuestion[]
   favorites        QuestionFavorite[]
+  reviews          QuestionReview[]
 
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
@@ -170,6 +172,7 @@ model Exam {
   difficulty     String  // basic, intermediate, advanced, mixed
   strictMode     Boolean @default(true)
   studyMode      Boolean @default(false)
+  settings       String? // Complete submitted configuration, including untimed study.
   selectedTopics String? // JSON array of topic IDs
   examVersion    String  @default("200-301-v1.1")
 
@@ -205,8 +208,11 @@ model ExamQuestion {
   question      Question @relation(fields: [questionId], references: [id])
   questionOrder Int      // Position in exam (0-indexed)
 
+  contentSnapshot String? // Immutable question content and option order for this attempt.
+
   // Response tracking
   status           String    @default("pending") // pending, answered, skipped, timed_out
+  activatedAt      DateTime? // Server activation; reload cannot reset a question timer.
   answeredAt       DateTime?
   timeSpentSeconds Int?
 
@@ -240,4 +246,17 @@ model QuestionFavorite {
   createdAt  DateTime @default(now())
 
   @@unique([userId, questionId])
+}
+
+// Immutable audit entries for explicit technical review decisions.
+model QuestionReview {
+  id          String   @id @default(cuid())
+  questionId  String
+  question    Question @relation(fields: [questionId], references: [id])
+  reviewerId  String
+  reviewer    User     @relation(fields: [reviewerId], references: [id])
+  status      String
+  notes       String
+  evidenceUrl String?
+  createdAt   DateTime @default(now())
 }

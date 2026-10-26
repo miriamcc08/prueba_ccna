@@ -1,0 +1,116 @@
+{
+  "arithmeticChecksPassed": 11,
+  "fullTechnicalApprovals": 0,
+  "legacySingleAnswerKeys": {
+    "A": 266,
+    "B": 1
+  },
+  "legacyMultipleAnswerKeys": {
+    "A,B": 29,
+    "A,C": 1,
+    "A,B,C": 2,
+    "A,D": 1
+  },
+  "scope": "Eleven selected arithmetic cases, with numerical ES/EN agreement. Reference consultation, technical translation and the rest of the bank remain unapproved.",
+  "records": [
+    {
+      "file": "batch1_network_fundamentals.json",
+      "index": 6,
+      "kind": "bounds",
+      "result": "('172.16.45.128', '172.16.45.159')",
+      "answer": "A",
+      "arithmetic": "passed",
+      "fullTechnicalApproval": false
+    },
+    {
+      "file": "batch2_network_fundamentals.json",
+      "index": 6,
+      "kind": "capacity",
+      "result": "('255.255.255.192', 26, '192.168.10.1', '192.168.10.62')",
+      "answer": "A",
+      "arithmetic": "passed",
+      "fullTechnicalApproval": false
+    },
+    {
+      "file": "batch3_all.json",
+      "index": 6,
+      "kind": "capacity",
+      "result": "('255.255.255.224', 27, '192.168.50.1', '192.168.50.30')",
+      "answer": "A",
+      "arithmetic": "passed",
+      "fullTechnicalApproval": false
+    },
+    {
+      "file": "batch3_all.json",
+      "index": 8,
+      "kind": "summary",
+      "result": "198.51.100.0/22",
+      "answer": "A",
+      "arithmetic": "passed",
+      "fullTechnicalApproval": false
+    },
+    {
+      "file": "batch4_all.json",
+      "index": 6,
+      "kind": "summary",
+      "result": "192.168.16.0/22",
+      "answer": "A",
+      "arithmetic": "passed",
+      "fullTechnicalApproval": false
+    },
+    {
+      "file": "batch4_all.json",
+      "index": 7,
+      "kind": "vlsm",
+      "result": "172.16.11.0/25",
+      "answer": "A",
+      "arithmetic": "passed",
+      "fullTechnicalApproval": false
+    },
+    {
+      "file": "batch5_all.json",
+      "index": 3,
+      "kind": "vlsm",
+      "result": "172.20.2.0/24",
+      "answer": "A",
+      "arithmetic": "passed",
+      "fullTechnicalApproval": false
+    },
+    {
+      "file": "batch5_all.json",
+      "index": 4,
+      "kind": "ipv6",
+      "result": "2001:db8::8:800:200c:417a",
+      "answer": "A",
+      "arithmetic": "passed",
+      "fullTechnicalApproval": false
+    },
+    {
+      "file": "batch5_all.json",
+      "index": 29,
+      "kind": "summary_command",
+      "result": "10.4.16.0/22",
+      "answer": "A",
+      "arithmetic": "passed",
+      "fullTechnicalApproval": false
+    },
+    {
+      "file": "batch6_all.json",
+      "index": 0,
+      "kind": "mask",
+      "result": "('255.255.255.224', '11100000')",
+      "answer": "A",
+      "arithmetic": "passed",
+      "fullTechnicalApproval": false
+    },
+    {
+      "file": "batch6_all.json",
+      "index": 1,
+      "kind": "summary",
+      "result": "172.16.16.0/22",
+      "answer": "A",
+      "arithmetic": "passed",
+      "fullTechnicalApproval": false
+    }
+  ]
+}

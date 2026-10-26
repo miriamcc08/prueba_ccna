@@ -104,7 +104,8 @@
         }
       ],
       "sourceName": "CCNA 200-301 Original Questions",
-      "sourceLicense": "Original content"
+      "sourceLicense": "Original content",
+      "questionFamilyId": "concept-ipv4-route-aggregation"
     },
     {
       "statementEn": "An enterprise network design team is allocated the Class B IPv4 network block 172.24.0.0/16. The team decides to subnet this entire address space using a prefix length of /22 for all remote corporate facilities. How many total subnets are created from this allocation, and how many usable IPv4 host addresses are available per individual subnet?",
@@ -1245,18 +1246,18 @@
       "primaryTopicExamArea": "ip_connectivity",
       "multipleAnswerCount": null,
       "estimatedTimeSeconds": 90,
-      "explanationEn": "When an Autonomous System Boundary Router (ASBR) redistributes external routes into OSPF, they are categorized as either External Type 2 (E2) or External Type 1 (E1). By default, redistributed routes are injected as OSPF External Type 2 (O E2) with a fixed metric of 20 (or 1 for BGP). The key operational difference lies in metric accumulation. For O E2 routes, the cost advertised throughout the entire OSPF domain remains strictly constant at the external cost (20), ignoring the internal path cost to reach the ASBR. For O E1 routes, the total cost calculated by an internal router is cumulative: it equals the external cost plus the internal OSPF link cost to reach the ASBR. If both E1 and E2 paths exist to the same destination, OSPF always prefers E1 over E2 regardless of metric values.",
-      "explanationEs": "Cuando un Autonomous System Boundary Router (ASBR) redistribuye rutas externas en OSPF, se categorizan como External Tipo 2 (E2) o External Tipo 1 (E1). Por defecto, las rutas redistribuidas se inyectan como OSPF External Tipo 2 (O E2) con una métrica fija de 20 (o 1 para BGP). La diferencia operativa clave radica en la acumulación de la métrica. Para las rutas O E2, el costo anunciado a través de todo el dominio OSPF permanece estrictamente constante en el costo externo (20), ignorando el costo de la ruta interna para alcanzar al ASBR. Para las rutas O E1, el costo total calculado por un router interno es acumulativo: equivale al costo externo más el costo del enlace OSPF interno para alcanzar al ASBR. Si existen rutas E1 y E2 hacia el mismo destino, OSPF siempre prefiere E1 sobre E2 independientemente de los valores de métrica.",
-      "correctAnswerExplanationEn": "O E2 routes maintain a static external metric (20) across all routers, while O E1 routes add internal OSPF path costs to the external metric as they propagate.",
-      "correctAnswerExplanationEs": "Las rutas O E2 mantienen una métrica externa estática (20) en todos los routers, mientras que las rutas O E1 suman los costos de ruta OSPF internos a la métrica externa a medida que se propagan.",
+      "explanationEn": "For an OSPF external Type 2 (E2) route, the external metric is the primary comparison metric; the internal cost is not added to that displayed Type 2 metric. However, when eligible E2 routes to the same destination have equal external metrics, the internal cost to the forwarding address or ASBR can decide the preferred path. It is therefore incorrect to claim that internal cost never matters. A Type 1 (E1) route uses the sum of external metric and internal cost to the forwarding address or ASBR. The values 20 and 35 in this exhibit are route metrics for these examples, not universal fixed values. Comparing E1 and E2 preferences is relevant to eligible routes for the same destination, not to different prefixes.",
+      "explanationEs": "En una ruta externa OSPF tipo 2 (E2), la métrica externa es el criterio principal; el costo interno no se suma a esa métrica tipo 2 mostrada. Sin embargo, si rutas E2 elegibles al mismo destino tienen la misma métrica externa, el costo interno hacia la forwarding address o el ASBR puede decidir la ruta preferida. Por tanto, es incorrecto afirmar que el costo interno nunca importa. Una ruta tipo 1 (E1) usa la suma de la métrica externa y el costo interno hacia la forwarding address o el ASBR. Los valores 20 y 35 del ejemplo son métricas de esas rutas, no constantes universales. La comparación de preferencias E1/E2 se aplica a rutas elegibles al mismo destino, no a prefijos distintos.",
+      "correctAnswerExplanationEn": "For an OSPF external Type 2 (E2) route, the external metric is the primary comparison metric; the internal cost is not added to that displayed Type 2 metric. However, when eligible E2 routes to the same destination have equal external metrics, the internal cost to the forwarding address or ASBR can decide the preferred path. It is therefore incorrect to claim that internal cost never matters. A Type 1 (E1) route uses the sum of external metric and internal cost to the forwarding address or ASBR. The values 20 and 35 in this exhibit are route metrics for these examples, not universal fixed values. Comparing E1 and E2 preferences is relevant to eligible routes for the same destination, not to different prefixes.",
+      "correctAnswerExplanationEs": "En una ruta externa OSPF tipo 2 (E2), la métrica externa es el criterio principal; el costo interno no se suma a esa métrica tipo 2 mostrada. Sin embargo, si rutas E2 elegibles al mismo destino tienen la misma métrica externa, el costo interno hacia la forwarding address o el ASBR puede decidir la ruta preferida. Por tanto, es incorrecto afirmar que el costo interno nunca importa. Una ruta tipo 1 (E1) usa la suma de la métrica externa y el costo interno hacia la forwarding address o el ASBR. Los valores 20 y 35 del ejemplo son métricas de esas rutas, no constantes universales. La comparación de preferencias E1/E2 se aplica a rutas elegibles al mismo destino, no a prefijos distintos.",
       "options": [
         {
           "optionLabel": "A",
-          "optionTextEn": "The metric for O E2 routes remains fixed at the external redistributed cost (20) across all routers, whereas O E1 routes dynamically add the internal OSPF path cost to reach the ASBR.",
-          "optionTextEs": "La métrica para las rutas O E2 permanece fija en el costo redistribuido externo (20) en todos los routers, mientras que las rutas O E1 suman dinámicamente el costo de ruta OSPF interno para alcanzar al ASBR.",
+          "optionTextEn": "E2 primarily compares the external metric, using internal cost to break equal-external-metric ties; E1 adds internal path cost to the external metric.",
+          "optionTextEs": "E2 compara principalmente la métrica externa y usa el costo interno para desempatar métricas externas iguales; E1 suma el costo interno a la métrica externa.",
           "isCorrect": true,
-          "explanationEn": "E2 does not increment along the internal OSPF path; E1 accumulates internal link costs plus the external redistribution seed metric.",
-          "explanationEs": "E2 no se incrementa a lo largo de la ruta OSPF interna; E1 acumula los costos de enlaces internos más la métrica semilla de redistribución externa.",
+          "explanationEn": "For an OSPF external Type 2 (E2) route, the external metric is the primary comparison metric; the internal cost is not added to that displayed Type 2 metric. However, when eligible E2 routes to the same destination have equal external metrics, the internal cost to the forwarding address or ASBR can decide the preferred path. It is therefore incorrect to claim that internal cost never matters. A Type 1 (E1) route uses the sum of external metric and internal cost to the forwarding address or ASBR. The values 20 and 35 in this exhibit are route metrics for these examples, not universal fixed values. Comparing E1 and E2 preferences is relevant to eligible routes for the same destination, not to different prefixes.",
+          "explanationEs": "En una ruta externa OSPF tipo 2 (E2), la métrica externa es el criterio principal; el costo interno no se suma a esa métrica tipo 2 mostrada. Sin embargo, si rutas E2 elegibles al mismo destino tienen la misma métrica externa, el costo interno hacia la forwarding address o el ASBR puede decidir la ruta preferida. Por tanto, es incorrecto afirmar que el costo interno nunca importa. Una ruta tipo 1 (E1) usa la suma de la métrica externa y el costo interno hacia la forwarding address o el ASBR. Los valores 20 y 35 del ejemplo son métricas de esas rutas, no constantes universales. La comparación de preferencias E1/E2 se aplica a rutas elegibles al mismo destino, no a prefijos distintos.",
           "displayOrder": 0
         },
         {
@@ -1351,8 +1352,8 @@
       "primaryTopicExamArea": "ip_connectivity",
       "multipleAnswerCount": null,
       "estimatedTimeSeconds": 90,
-      "explanationEn": "In Cisco IOS routing tables, every routing entry displayed by `show ip route` includes bracketed parameters formatted as `[Administrative Distance / Metric]`. The first number represents the Administrative Distance (AD), which defines the trustworthiness of the route source on a scale from 0 to 255 (lower values are more trustworthy). For static routes configured with a next-hop IP address, the default AD is 1. The second number represents the route Metric (or cost), which is used by dynamic routing protocols to evaluate the optimal path among multiple routes learned from the same protocol. For static routes, the metric is 0 because the route is manually specified rather than computed by a dynamic metric algorithm.",
-      "explanationEs": "En las tablas de enrutamiento de Cisco IOS, cada entrada mostrada por `show ip route` incluye parámetros entre corchetes con el formato `[Distancia Administrativa / Métrica]`. El primer número representa la Distancia Administrativa (AD), que define la confiabilidad de la fuente de la ruta en una escala de 0 a 255 (valores más bajos son más confiables). Para rutas estáticas configuradas con una IP de siguiente salto, la AD predeterminada es 1. El segundo número representa la Métrica (o costo) de la ruta, utilizada por los protocolos de enrutamiento dinámico para evaluar la ruta óptima entre múltiples rutas aprendidas del mismo protocolo. Para las rutas estáticas, la métrica es 0 debido a que la ruta se especifica manualmente en lugar de ser computada por un algoritmo de métrica dinámico.",
+      "explanationEn": "In Cisco IOS routing tables, route entries such as the static and dynamic routes in this example can display bracketed parameters formatted as `[Administrative Distance / Metric]`. The first number represents the Administrative Distance (AD), which defines the trustworthiness of the route source on a scale from 0 to 255 (lower values are more trustworthy). For static routes configured with a next-hop IP address, the default AD is 1. The second number represents the route Metric (or cost), which is used by dynamic routing protocols to evaluate the optimal path among multiple routes learned from the same protocol. For static routes, the metric is 0 because the route is manually specified rather than computed by a dynamic metric algorithm. Directly connected and local route entries need not display this bracket pair; do not generalize this display format to every line.",
+      "explanationEs": "En las tablas de enrutamiento de Cisco IOS, entradas como las rutas estáticas y dinámicas del ejemplo pueden mostrar parámetros entre corchetes con el formato `[Distancia Administrativa / Métrica]`. El primer número representa la Distancia Administrativa (AD), que define la confiabilidad de la fuente de la ruta en una escala de 0 a 255 (valores más bajos son más confiables). Para rutas estáticas configuradas con una IP de siguiente salto, la AD predeterminada es 1. El segundo número representa la Métrica (o costo) de la ruta, utilizada por los protocolos de enrutamiento dinámico para evaluar la ruta óptima entre múltiples rutas aprendidas del mismo protocolo. Para las rutas estáticas, la métrica es 0 debido a que la ruta se especifica manualmente en lugar de ser computada por un algoritmo de métrica dinámico. Las entradas de rutas directamente conectadas y locales no tienen por qué mostrar este par de valores; no generalices el formato a todas las líneas.",
       "correctAnswerExplanationEn": "In the notation [1/0], the first number (1) is the Administrative Distance, and the second number (0) is the route Metric.",
       "correctAnswerExplanationEs": "En la notación [1/0], el primer número (1) es la Distancia Administrativa y el segundo número (0) es la Métrica de la ruta.",
       "options": [
@@ -1394,7 +1395,8 @@
         }
       ],
       "sourceName": "CCNA 200-301 Original Questions",
-      "sourceLicense": "Original content"
+      "sourceLicense": "Original content",
+      "questionFamilyId": "concept-route-distance-metric-display"
     },
     {
       "statementEn": "A network engineer is configuring an IPv6 static route to reach destination prefix 2001:db8:acad:20::/64 using the link-local address fe80::2 of the adjacent upstream router. Why does Cisco IOS require the outgoing interface to be explicitly specified alongside the link-local next-hop address (e.g., `ipv6 route 2001:db8:acad:20::/64 GigabitEthernet0/0/0 fe80::2`)?",
@@ -1553,7 +1555,8 @@
         }
       ],
       "sourceName": "CCNA 200-301 Original Questions",
-      "sourceLicense": "Original content"
+      "sourceLicense": "Original content",
+      "questionFamilyId": "concept-ipv4-longest-prefix"
     },
     {
       "statementEn": "An enterprise edge router must be configured with a default static route (Gateway of Last Resort) to send all traffic destined for unknown external public networks to the service provider router at IPv4 address 203.0.113.1. Which Cisco IOS configuration command establishes this default route?",
@@ -2463,7 +2466,8 @@
         }
       ],
       "sourceName": "CCNA 200-301 Original Questions",
-      "sourceLicense": "Original content"
+      "sourceLicense": "Original content",
+      "questionFamilyId": "concept-json-array-ordered-lookup"
     },
     {
       "statementEn": "Network engineers are evaluating modern model-driven network programmability protocols that utilize YANG data models to configure and manage enterprise infrastructure. Which two statements accurately describe the transport protocols and data encodings utilized by NETCONF and RESTCONF? (Choose two.)",

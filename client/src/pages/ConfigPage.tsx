@@ -35,6 +35,7 @@ export const ConfigPage: React.FC = () => {
   const [loadingTopics, setLoadingTopics] = useState(false);
   const [creatingExam, setCreatingExam] = useState(false);
   const [error, setError] = useState<string | null>(null);
+  const [availableCount, setAvailableCount] = useState<number | null>(null);
 
   // Form State
   const [mode, setMode] = useState<ExamMode>(urlMode || 'full_simulation');
@@ -48,15 +49,18 @@ export const ConfigPage: React.FC = () => {
 
   const [examLanguage, setExamLanguage] = useState<Language>(language);
   const [difficulty, setDifficulty] = useState<Difficulty>('mixed');
-  const [selectedTopics, setSelectedTopics] = useState<string[]>([]);
+  const [selectedTopics, setSelectedTopics] = useState<string[]>(searchParams.get('area') ? [searchParams.get('area')!] : []);
 
   const [randomize, setRandomize] = useState(true);
   const [groupByTopic, setGroupByTopic] = useState(false);
   const [strictMode, setStrictMode] = useState(urlMode === 'full_simulation');
   const [studyMode, setStudyMode] = useState(false);
+  const [untimed, setUntimed] = useState(false);
   const [showExplanations, setShowExplanations] = useState(true);
   const [soundEnabled, setSoundEnabled] = useState(true);
   const [perQuestionTimeLimit, setPerQuestionTimeLimit] = useState<number>(0);
+
+  useEffect(() => { if (studyMode && !strictMode && untimed) setPerQuestionTimeLimit(0); }, [studyMode, strictMode, untimed]);
 
   // Load topics
   useEffect(() => {
@@ -74,8 +78,8 @@ export const ConfigPage: React.FC = () => {
             examArea: area,
             examAreaNumber: `${idx + 1}.0`,
             weightPercentage: EXAM_AREA_WEIGHTS[area],
-            questionCount: 40,
-            validatedCount: 35,
+            questionCount: 0,
+            validatedCount: 0,
           }));
           setAvailableTopics(fallback);
         }
@@ -89,8 +93,8 @@ export const ConfigPage: React.FC = () => {
           examArea: area,
           examAreaNumber: `${idx + 1}.0`,
           weightPercentage: EXAM_AREA_WEIGHTS[area],
-          questionCount: 40,
-          validatedCount: 35,
+          questionCount: 0,
+          validatedCount: 0,
         }));
         setAvailableTopics(fallback);
       })
@@ -152,11 +156,22 @@ export const ConfigPage: React.FC = () => {
     randomize,
     strictMode,
     studyMode,
+    untimed: studyMode && !strictMode && untimed,
     showExplanations,
     soundEnabled,
     perQuestionTimeLimit: perQuestionTimeLimit > 0 ? perQuestionTimeLimit : undefined,
     groupByTopic,
   };
+
+  const configKey = JSON.stringify(currentConfig);
+  useEffect(() => {
+    let active = true;
+    setAvailableCount(null);
+    api.getExamAvailability(currentConfig).then(res => {
+      if (active && res.success && res.data) setAvailableCount(res.data.available);
+    });
+    return () => { active = false; };
+  }, [configKey]);
 
   const handleStartExam = async () => {
     setCreatingExam(true);
@@ -519,6 +534,10 @@ export const ConfigPage: React.FC = () => {
                 <span className="text-slate-200">{t('config.options.studyMode')}</span>
               </label>
 
+              {studyMode && !strictMode && <label className="flex items-center gap-3 p-3 rounded-lg bg-slate-900/60 border border-slate-700 cursor-pointer">
+                <input type="checkbox" checked={untimed} onChange={e => setUntimed(e.target.checked)} />
+                <span>{t('study.untimed')}</span>
+              </label>}
               <label className="flex items-center gap-3 p-3 rounded-lg bg-slate-900/60 border border-slate-700 cursor-pointer">
                 <input
                   type="checkbox"
@@ -537,6 +556,14 @@ export const ConfigPage: React.FC = () => {
                   className="rounded border-slate-700 text-cyan-500 focus:ring-cyan-400 bg-slate-800 h-4 w-4"
                 />
                 <span className="text-slate-200">{t('config.options.soundEnabled')}</span>
+              </label>
+              <label className="block p-3 rounded-lg bg-slate-900/60 border border-slate-700">
+                <span>{t('config.options.perQuestionTimeLimit')}</span>
+                <select className="input-field block w-full mt-2" disabled={studyMode && !strictMode && untimed} value={perQuestionTimeLimit} onChange={e => setPerQuestionTimeLimit(Number(e.target.value))}>
+                  <option value={0}>{t('config.options.noQuestionLimit')}</option>
+                  {[10, 30, 60, 90, 120, 180, 300, 600].map(seconds => <option key={seconds} value={seconds}>{seconds} s</option>)}
+                </select>
+                <span className="block text-xs text-slate-400 mt-2">{t('config.options.questionLimitHelp')}</span>
               </label>
             </div>
           </section>

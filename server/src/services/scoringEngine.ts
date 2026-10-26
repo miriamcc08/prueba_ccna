@@ -1,3 +1,4 @@
+import { storedQuestion } from '../lib/examSnapshot';
 import { prisma } from '../lib/prisma';
 import {
   ExamResultResponse,
@@ -13,7 +14,7 @@ import {
 } from '../../../shared/types';
 import { AppError } from '../middleware/errorHandler';
 
-const PASSING_PERCENTAGE = 82.5; // CCNA standard passing score ~825/1000 (82.5%)
+const PASSING_PERCENTAGE = 82.5; // Simulator practice target, not a Cisco passing threshold.
 
 export async function calculateResults(examId: string): Promise<ExamResultResponse> {
   const exam = await prisma.exam.findUnique({
@@ -40,6 +41,10 @@ export async function calculateResults(examId: string): Promise<ExamResultRespon
 
   if (!exam) {
     throw new AppError(404, `Exam "${examId}" not found.`);
+  }
+
+  if (!['completed', 'expired'].includes(exam.status)) {
+    throw new AppError(403, 'Results are only available after completing the exam.');
   }
 
   const now = new Date();
@@ -81,7 +86,7 @@ export async function calculateResults(examId: string): Promise<ExamResultRespon
   const responseUpdates: Array<{ id: string; isCorrect: boolean }> = [];
 
   for (const eq of exam.questions) {
-    const q = eq.question;
+    const q = storedQuestion(eq);
     const topic = q.primaryTopic;
     const diff = q.difficulty as Difficulty;
     const examArea = topic.examArea as ExamArea;
@@ -160,7 +165,7 @@ export async function calculateResults(examId: string): Promise<ExamResultRespon
       for (const resp of eq.responses) {
         responseUpdates.push({
           id: resp.id,
-          isCorrect: correctOptionIds.has(resp.selectedOptionId),
+          isCorrect: isExactMatch,
         });
       }
     }
@@ -183,7 +188,7 @@ export async function calculateResults(examId: string): Promise<ExamResultRespon
     ? Math.round((correctCount / totalQuestions) * 1000) / 10
     : 0;
   
-  // Cisco 300 - 1000 scaled score
+  // Internal simulator scale only; it does not predict an official Cisco score.
   const score = totalQuestions > 0
     ? Math.round(300 + (correctCount / totalQuestions) * 700)
     : 300;
@@ -319,10 +324,14 @@ export async function getExamReview(examId: string): Promise<ReviewQuestionItem[
     throw new AppError(404, `Exam "${examId}" not found.`);
   }
 
+  if (!['completed', 'expired'].includes(exam.status)) {
+    throw new AppError(403, 'Review is only available after completing the exam.');
+  }
+
   const isEs = exam.language === 'es';
 
   return exam.questions.map((eq) => {
-    const q = eq.question;
+    const q = storedQuestion(eq);
     const selectedOptionIds = eq.responses.map((r) => r.selectedOptionId);
     const selectedOptions = q.options.filter((o) => selectedOptionIds.includes(o.id));
     const correctOptions = q.options.filter((o) => o.isCorrect);
@@ -340,6 +349,7 @@ export async function getExamReview(examId: string): Promise<ReviewQuestionItem[
     }
 
     return {
+      historicalContentPreserved: !!eq.contentSnapshot,
       questionNumber: eq.questionOrder + 1,
       examQuestionId: eq.id,
       questionId: q.id,

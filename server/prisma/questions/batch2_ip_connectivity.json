@@ -194,7 +194,8 @@
         }
       ],
       "sourceName": "CCNA 200-301 Original Questions",
-      "sourceLicense": "Original content"
+      "sourceLicense": "Original content",
+      "questionFamilyId": "concept-ipv4-longest-prefix"
     },
     {
       "statementEn": "A network administrator investigates an issue where user traffic destined for an application server at 10.40.12.180 is unexpectedly exiting Router2 via interface GigabitEthernet0/3 (next-hop 192.168.30.1):\n\nRouter2# show ip route\nGateway of last resort is 203.0.113.1 to network 0.0.0.0\n\nS*    0.0.0.0/0 [1/0] via 203.0.113.1, GigabitEthernet0/0\nO     10.40.0.0/16 [110/10] via 192.168.10.1, GigabitEthernet0/1\nS     10.40.12.0/25 [1/0] via 192.168.20.1, GigabitEthernet0/2\nO     10.40.12.128/26 [110/15] via 192.168.30.1, GigabitEthernet0/3\nS     10.40.12.192/27 [1/0] via 192.168.40.1, GigabitEthernet0/4\n\nThe administrator expected traffic to use the static route configured out GigabitEthernet0/4 (next-hop 192.168.40.1) because static routes have an administrative distance of 1. What is the root cause of this routing behavior?",

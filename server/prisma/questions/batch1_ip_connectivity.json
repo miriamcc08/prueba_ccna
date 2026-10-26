@@ -47,7 +47,8 @@
         }
       ],
       "sourceName": "CCNA 200-301 Original Questions",
-      "sourceLicense": "Original content"
+      "sourceLicense": "Original content",
+      "questionFamilyId": "concept-route-distance-metric-display"
     },
     {
       "statementEn": "An administrator configures interface GigabitEthernet0/0 on a Cisco router running IOS 15 with IP address 172.16.30.1 255.255.255.0 and enables the interface. The administrator issues the command show ip route and observes the following entries:\n\nRouter# show ip route\nGateway of last resort is not set\n\n      172.16.0.0/16 is variably subnetted, 2 subnets, 2 masks\nC        172.16.30.0/24 is directly connected, GigabitEthernet0/0\nL        172.16.30.1/32 is directly connected, GigabitEthernet0/0\n\nWhat is the primary operational purpose of the 'L' (Local) route with prefix length /32 in the routing table?",
@@ -194,7 +195,8 @@
         }
       ],
       "sourceName": "CCNA 200-301 Original Questions",
-      "sourceLicense": "Original content"
+      "sourceLicense": "Original content",
+      "questionFamilyId": "concept-ipv4-longest-prefix"
     },
     {
       "statementEn": "A Cisco router receives the following route advertisements from different sources, all with reachable next hops:\n1. OSPF advertises 172.16.10.0/24 with cost 10 via next hop 10.1.1.2.\n2. EIGRP advertises 172.16.10.0/24 with metric 307200 via next hop 10.2.2.2.\n3. OSPF advertises 172.16.10.128/25 with cost 25 via next hop 10.3.3.2.\n4. A static route is configured: ip route 172.16.0.0 255.255.0.0 10.4.4.2.\n\nWhen the router receives an IP packet destined for 172.16.10.130, how does the router populate its routing table (RIB) and forward the packet?",

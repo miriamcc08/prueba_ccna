@@ -11,6 +11,7 @@ import * as path from 'path';
 const prisma = new PrismaClient();
 
 interface QuestionImport {
+  questionFamilyId?: string;
   statementEn: string;
   statementEs: string;
   questionType: string;
@@ -254,14 +255,15 @@ async function importFile(filePath: string): Promise<BatchReport> {
     try {
       await prisma.question.create({
         data: {
+          questionFamilyId: q.questionFamilyId,
           statementEn: q.statementEn,
           statementEs: q.statementEs,
           questionType: q.questionType,
           difficulty: q.difficulty,
           multipleAnswerCount: q.multipleAnswerCount || null,
           estimatedTimeSeconds: q.estimatedTimeSeconds || 90,
-          validationStatus: 'validated', // Pre-validated during generation
-          lastVerifiedAt: new Date(),
+          validationStatus: 'pending_review', // Structural checks do not establish technical correctness.
+          lastVerifiedAt: null,
           explanationEn: q.explanationEn || null,
           explanationEs: q.explanationEs || null,
           correctAnswerExplanationEn: q.correctAnswerExplanationEn || null,

@@ -1,3 +1,4 @@
+import LearningPlan from '../components/LearningPlan';
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useTranslation } from '../i18n/useTranslation';
@@ -86,6 +87,7 @@ export const HomePage: React.FC = () => {
 
   return (
     <div className="space-y-12 pb-12">
+      {isAuthenticated && <LearningPlan />}
       {/* Hero Header */}
       <section className="relative overflow-hidden rounded-3xl bg-gradient-to-b from-slate-800/90 via-slate-900 to-slate-950 border border-slate-700/80 p-8 sm:p-12 shadow-2xl backdrop-blur-xl">
         <div className="absolute top-0 right-0 -mt-12 -mr-12 w-96 h-96 bg-cyan-500/10 rounded-full blur-3xl pointer-events-none" />

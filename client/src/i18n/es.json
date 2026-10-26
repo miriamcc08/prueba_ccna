@@ -82,6 +82,9 @@
       "weight": "peso"
     },
     "options": {
+      "perQuestionTimeLimit": "Límite por pregunta",
+      "noQuestionLimit": "Sin límite por pregunta",
+      "questionLimitHelp": "Al vencer, cuenta sin responder y avanza. También corre mientras lees explicaciones. No se combina con estudio sin cronómetro.",
       "title": "Opciones de Simulación",
       "randomize": "Aleatorizar orden de preguntas",
       "groupByTopic": "Agrupar preguntas por dominio temático",
@@ -136,9 +139,9 @@
     "title": "Resultados de la Simulación",
     "passed": "¡FELICITACIONES! APROBADO",
     "failed": "NO APROBADO",
-    "simulatorDisclaimer": "Nota: Esta calificación es calculada por el CCNA 200-301 Simulator (Puntaje de aprobación: 82.5% / ~825 de 1000). El puntaje oficial de Cisco y sus algoritmos pueden variar.",
+    "simulatorDisclaimer": "Puntuación interna de práctica: escala de 300 a 1000 y objetivo de 82,5 %. No representa la puntuación ni el umbral oficial de Cisco y no garantiza aprobar.",
     "yourScore": "Tu Calificación",
-    "passingScore": "Estándar de Aprobación: 82.5%",
+    "passingScore": "Objetivo de práctica: 82,5 %",
     "summary": {
       "correct": "Correctas",
       "incorrect": "Incorrectas",
@@ -176,7 +179,8 @@
     "timeSpent": "Tiempo invertido:",
     "seconds": "segundos",
     "domain": "Dominio:",
-    "difficulty": "Dificultad:"
+    "difficulty": "Dificultad:",
+    "legacyContentWarning": "Este intento antiguo no guardó una copia del contenido. La revisión puede reflejar ediciones posteriores del banco."
   },
   "questionBank": {
     "title": "Banco de Preguntas CCNA",
@@ -209,10 +213,10 @@
       "validators": "Validadores de Reglas"
     },
     "import": {
-      "title": "Importar Preguntas en Lote (JSON)",
-      "instructions": "Pega o sube un archivo JSON con preguntas que cumplan el esquema QuestionImportItem.",
-      "dropzone": "Arrastra y suelta el archivo JSON aquí o haz clic para examinar",
-      "preview": "Vista Previa JSON",
+      "title": "Importar preguntas en lote (JSON o CSV)",
+      "instructions": "Pega o selecciona un archivo con preguntas bilingües.",
+      "dropzone": "Seleccionar archivo JSON o CSV",
+      "preview": "Contenido para importar",
       "button": "Procesar Importación",
       "importing": "Validando e importando...",
       "success": "¡Importación completada con éxito!",
@@ -283,5 +287,60 @@
     "seconds": "s",
     "minutes": "min",
     "hours": "h"
+  },
+  "study": {
+    "questionTimer": "Tiempo de la pregunta activa",
+    "questionTimerHelp": "El servidor marca sin responder al vencer. Revisar una pregunta anterior no pausa el plazo de la activa.",
+    "restart": "Reiniciar ejercicio",
+    "restarting": "Creando práctica…",
+    "restartError": "No se pudo reiniciar el ejercicio.",
+    "restartHelp": "Reiniciar crea una práctica independiente sin cronómetro con la versión aprobada actual. Tu intento y respuesta anteriores se conservan.",
+    "returnToSource": "Volver al intento original",
+    "untimed": "Sin cronómetro",
+    "previous": "Pregunta anterior",
+    "saveFavorite": "Guardar favorita",
+    "removeFavorite": "Quitar favorita",
+    "favoriteError": "No se pudo guardar la favorita",
+    "favoritesOnly": "Solo mis favoritas",
+    "adminSolutions": "Las soluciones completas del banco son solo para administradores.",
+    "of": "de",
+    "answered": "respondidas",
+    "simulatorTitle": "CCNA 200-301 — Simulador de práctica",
+    "mode": "Modalidad",
+    "strictMode": "Modo estricto",
+    "studyMode": "Modo estudio",
+    "available": "Preguntas validadas de familias distintas disponibles con estos filtros: {{count}}",
+    "useAvailable": "Usar la cantidad disponible"
+  },
+  "adminWorkflow": {
+    "title": "Revisión técnica",
+    "notes": "Notas de revisión (mínimo 20 caracteres)",
+    "evidence": "Referencia técnica HTTPS",
+    "confirm": "He comprobado las respuestas, alternativas y traducciones con la referencia indicada.",
+    "save": "Guardar revisión",
+    "saved": "Revisión guardada con trazabilidad.",
+    "saveError": "No se pudo guardar la revisión",
+    "detailError": "No se pudo cargar la pregunta",
+    "statsError": "No se pudieron cargar las estadísticas reales",
+    "editRevision": "Editar como nueva revisión",
+    "revisionHelp": "El original se conserva para el historial. La revisión nueva queda pendiente de aprobación.",
+    "revision_statementEn": "Enunciado EN de la revisión",
+    "revision_statementEs": "Enunciado ES de la revisión",
+    "revision_explanationEn": "Explicación EN de la revisión",
+    "revision_explanationEs": "Explicación ES de la revisión",
+    "saveRevision": "Guardar como nueva revisión",
+    "saveRevisionFirst": "Guarda la revisión nueva antes de intentar aprobar su contenido.",
+    "revisionSaved": "Nueva revisión creada; requiere revisión técnica antes de usarse en exámenes.",
+    "exerciseFamily": "Familia de ejercicios",
+    "openReference": "Abrir referencia técnica",
+    "revision_sourceUrl": "Referencia HTTPS de la revisión"
+  },
+  "learning": {
+    "title": "Plan de estudio según tu historial",
+    "error": "No se pudo cargar el plan de estudio",
+    "empty": "Completa un primer examen para medir tu rendimiento.",
+    "practice": "Practicar esta área",
+    "repeated": "Temas con errores repetidos",
+    "slow": "Temas que requieren más tiempo"
   }
 }

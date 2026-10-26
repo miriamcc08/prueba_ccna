@@ -354,7 +354,7 @@
     {
       "statementEn": "A network administrator executes the command `show ipv6 route` on a Cisco router and notices that several dynamic routing protocol routes have next-hop addresses beginning with `fe80::`. Which statement correctly describes the architectural properties and operational scope of this IPv6 address type?",
       "statementEs": "Un administrador de red ejecuta el comando `show ipv6 route` en un router Cisco y observa que varias rutas de protocolos de enrutamiento dinámico tienen direcciones de siguiente salto que comienzan con `fe80::`. ¿Qué afirmación describe correctamente las propiedades arquitectónicas y el alcance operativo de este tipo de dirección IPv6?",
-      "questionType": "subnetting",
+      "questionType": "ipv6_addressing",
       "difficulty": "intermediate",
       "primaryTopicExamArea": "network_fundamentals",
       "multipleAnswerCount": null,

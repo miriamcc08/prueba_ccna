@@ -62,6 +62,7 @@ export const createExamSchema = z.object({
   randomize: z.boolean().default(true),
   strictMode: z.boolean().default(true),
   studyMode: z.boolean().default(false),
+  untimed: z.boolean().default(false),
   showExplanations: z.boolean().default(false),
   soundEnabled: z.boolean().default(true),
   perQuestionTimeLimit: z.number().int().min(10).max(600).optional(),
@@ -116,7 +117,8 @@ export const createQuestionSchema = z.object({
   statementEn: z.string().min(5, 'English statement must be at least 5 characters'),
   statementEs: z.string().min(5, 'Spanish statement must be at least 5 characters'),
   questionType: z.enum(QUESTION_TYPES),
-  difficulty: z.enum(DIFFICULTIES),
+  difficulty: z.enum(DIFFICULTIES).refine(value => value !== 'mixed', 'An individual question needs basic, intermediate or advanced difficulty.'),
+  questionFamilyId: z.string().trim().min(1).max(200).optional(),
   primaryTopicId: z.string().min(1, 'Primary topic ID is required'),
   subtopics: z.array(z.string()).optional().default([]),
   multipleAnswerCount: z.number().int().min(1).optional().nullable(),
@@ -140,10 +142,11 @@ export type UpdateQuestionInput = z.infer<typeof updateQuestionSchema>;
 
 // ---- 8. Import Question Item Schema ----
 export const questionImportItemSchema = z.object({
+  questionFamilyId: z.string().trim().min(1).max(200).optional(),
   statementEn: z.string().min(5),
   statementEs: z.string().min(5),
   questionType: z.enum(QUESTION_TYPES),
-  difficulty: z.enum(DIFFICULTIES),
+  difficulty: z.enum(DIFFICULTIES).refine(value => value !== 'mixed', 'An individual question needs basic, intermediate or advanced difficulty.'),
   primaryTopicExamArea: z.enum(EXAM_AREAS),
   multipleAnswerCount: z.number().int().min(1).optional().nullable(),
   estimatedTimeSeconds: z.number().int().min(10).max(600).optional(),
@@ -165,6 +168,7 @@ export type ImportQuestionsInput = z.infer<typeof importQuestionsSchema>;
 
 // ---- 9. Question Filter Query Schema ----
 export const questionFilterSchema = z.object({
+  favoritesOnly: z.enum(['true', 'false']).default('false').transform(value => value === 'true'),
   topic: z.string().optional(),
   examArea: z.enum(EXAM_AREAS).optional(),
   difficulty: z.enum(DIFFICULTIES).optional(),

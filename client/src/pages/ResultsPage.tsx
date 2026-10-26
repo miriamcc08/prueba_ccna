@@ -21,6 +21,7 @@ export const ResultsPage: React.FC = () => {
   const { id: examId } = useParams<{ id: string }>();
   const navigate = useNavigate();
   const { t, language } = useTranslation();
+  const l = (es: string, en: string) => language === 'es' ? es : en;
 
   const [results, setResults] = useState<ExamResultResponse | null>(null);
   const [loading, setLoading] = useState(true);
@@ -219,11 +220,25 @@ export const ResultsPage: React.FC = () => {
             {t('results.domains')}
           </h2>
           <p className="text-xs text-slate-400 mb-6">
-            Compare your accuracy rate against the CCNA 200-301 passing benchmark of 82.5%.
+            {t('results.simulatorDisclaimer')}
           </p>
           <TopicChart data={results.topicBreakdown} />
         </section>
       )}
+
+      {results.difficultyBreakdown?.length > 0 && <section className="card">
+        <h2 className="text-lg font-bold text-white mb-3">{l('Rendimiento por dificultad', 'Performance by difficulty')}</h2>
+        <p className="text-xs text-slate-400 mb-4">{l('Sin acierto incluye respuestas incorrectas y preguntas no respondidas.', 'Not correct includes incorrect answers and unanswered questions.')}</p>
+        <div className="overflow-x-auto">
+          <table className="w-full text-sm text-left" aria-label={l('Rendimiento por dificultad', 'Performance by difficulty')}>
+            <thead><tr>{[l('Dificultad', 'Difficulty'), l('Preguntas', 'Questions'), l('Aciertos', 'Correct'), l('Sin acierto', 'Not correct'), l('Porcentaje', 'Percentage')].map(label => <th key={label} scope="col" className="p-2">{label}</th>)}</tr></thead>
+            <tbody>{results.difficultyBreakdown.map(item => <tr key={item.difficulty} className="border-t border-slate-700">
+              <th scope="row" className="p-2">{({ basic: l('Básica', 'Basic'), intermediate: l('Intermedia', 'Intermediate'), advanced: l('Avanzada', 'Advanced'), mixed: l('Mixta', 'Mixed') })[item.difficulty]}</th>
+              <td className="p-2">{item.total}</td><td className="p-2">{item.correct}</td><td className="p-2">{item.total - item.correct}</td><td className="p-2">{item.percentage}%</td>
+            </tr>)}</tbody>
+          </table>
+        </div>
+      </section>}
 
       {/* Recommendations & Adaptive Advice */}
       {results.recommendations && results.recommendations.length > 0 && (

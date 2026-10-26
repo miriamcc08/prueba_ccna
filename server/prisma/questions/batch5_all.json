@@ -1092,7 +1092,8 @@
         }
       ],
       "sourceName": "CCNA 200-301 Original Questions",
-      "sourceLicense": "Original content"
+      "sourceLicense": "Original content",
+      "questionFamilyId": "concept-ipv4-longest-prefix"
     },
     {
       "statementEn": "Refer to the exhibit displaying OSPF neighbor output and debug messages on Router R1:\n\nR1# show ip ospf neighbor\nNeighbor ID     Pri   State           Dead Time   Address         Interface\n2.2.2.2           1   EXSTART/  -     00:00:34    10.0.12.2       GigabitEthernet0/0\n\nR1# debug ip ospf adj\n*Oct 24 10:14:02.115: OSPF-1 ADJ Gi0/0: Rcv DBD from 2.2.2.2 seq 0x1F2B opt 0x52 flag 0x7 len 1480 mtu 9000 state EXSTART\n*Oct 24 10:14:02.116: OSPF-1 ADJ Gi0/0: Nbr 2.2.2.2 has larger interface MTU 9000, local MTU is 1500\n\nR1 and R2 are directly connected over GigabitEthernet0/0 in OSPF Area 0. The neighbor state continuously cycles between EXSTART and DOWN. What is the root cause of this OSPF adjacency failure, and how can it be resolved on R1 without changing interface MTUs?",
@@ -1386,7 +1387,8 @@
         }
       ],
       "sourceName": "CCNA 200-301 Original Questions",
-      "sourceLicense": "Original content"
+      "sourceLicense": "Original content",
+      "questionFamilyId": "concept-ipv6-longest-prefix"
     },
     {
       "statementEn": "Refer to the exhibit displaying the OSPF Link-State Database (LSDB) on an internal router in Area 0:\n\nRouter# show ip ospf database\n            OSPF Router with ID (1.1.1.1) (Process ID 1)\n\n                Router Link States (Area 0)\nLink ID         ADV Router      Age         Seq#       Checksum Link count\n1.1.1.1         1.1.1.1         412         0x80000004 0x00A12C 2\n2.2.2.2         2.2.2.2         389         0x80000006 0x008F42 3\n3.3.3.3         3.3.3.3         180         0x80000002 0x0014B1 2\n\n                Net Link States (Area 0)\nLink ID         ADV Router      Age         Seq#       Checksum\n192.168.12.2    2.2.2.2         389         0x80000003 0x00411B\n\n                Summary Net Link States (Area 0)\nLink ID         ADV Router      Age         Seq#       Checksum\n10.20.0.0       3.3.3.3         540         0x80000001 0x00F83C\n\nBased on this Link-State Database output, which statement correctly identifies the network roles and topology characteristics?",

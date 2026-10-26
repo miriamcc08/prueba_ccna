@@ -1,4 +1,5 @@
 import React from 'react';
+import { useTranslation } from '../i18n/useTranslation';
 
 interface ProgressBarProps {
   current: number; // 1-based index
@@ -13,6 +14,7 @@ export const ProgressBar: React.FC<ProgressBarProps> = ({
   answeredCount,
   className = '',
 }) => {
+  const { t } = useTranslation();
   const safeTotal = Math.max(1, total);
   const effectiveAnswered = answeredCount !== undefined ? answeredCount : Math.max(0, current - 1);
   const answeredPercentage = Math.min(100, Math.max(0, (effectiveAnswered / safeTotal) * 100));
@@ -23,9 +25,9 @@ export const ProgressBar: React.FC<ProgressBarProps> = ({
       <div className="flex justify-between items-center text-xs font-semibold text-slate-400 mb-2">
         <div className="flex items-center gap-2">
           <span className="text-cyan-400 font-bold">{effectiveAnswered}</span>
-          <span>of</span>
+          <span>{t('study.of')}</span>
           <span className="text-slate-200">{safeTotal}</span>
-          <span>answered</span>
+          <span>{t('study.answered')}</span>
         </div>
         <div className="text-slate-400 font-mono">
           {Math.round((effectiveAnswered / safeTotal) * 100)}%

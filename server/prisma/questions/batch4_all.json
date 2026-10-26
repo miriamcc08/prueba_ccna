@@ -319,8 +319,8 @@
       "sourceLicense": "Original content"
     },
     {
-      "statementEn": "An Internet Service Provider allocates four contiguous Class C network blocks to an enterprise customer: 192.168.16.0/24, 192.168.17.0/24, 192.168.18.0/24, and 192.168.19.0/24. What is the most precise CIDR supernet route that aggregates exactly these four networks into a single routing advertisement without advertising any extraneous address space?",
-      "statementEs": "Un Proveedor de Servicios de Internet asigna cuatro bloques de red contiguos de Clase C a un cliente empresarial: 192.168.16.0/24, 192.168.17.0/24, 192.168.18.0/24 y 192.168.19.0/24. ¿Cuál es la ruta supernet CIDR más precisa que agrega exactamente estas cuatro redes en un único anuncio de enrutamiento sin anunciar espacio de direcciones adicional?",
+      "statementEn": "An organization reserves four contiguous IPv4 /24 blocks for internal use: 192.168.16.0/24, 192.168.17.0/24, 192.168.18.0/24, and 192.168.19.0/24. What is the most precise CIDR supernet that aggregates exactly these networks without including additional address space?",
+      "statementEs": "Una organización reserva cuatro bloques IPv4 /24 contiguos para uso interno: 192.168.16.0/24, 192.168.17.0/24, 192.168.18.0/24 y 192.168.19.0/24. ¿Cuál es el supernet CIDR más preciso que resume exactamente estas redes sin incluir espacio adicional?",
       "questionType": "subnetting",
       "difficulty": "intermediate",
       "primaryTopicExamArea": "network_fundamentals",
@@ -369,7 +369,8 @@
         }
       ],
       "sourceName": "CCNA 200-301 Original Questions",
-      "sourceLicense": "Original content"
+      "sourceLicense": "Original content",
+      "questionFamilyId": "concept-ipv4-route-aggregation"
     },
     {
       "statementEn": "An enterprise network architect is assigned the parent IPv4 block 172.16.8.0/21 to create subnets using Variable-Length Subnet Masking (VLSM). The subnets must be allocated sequentially in descending order of size to maximize address efficiency. The department host requirements are:\n- Sales: 500 hosts\n- Engineering: 220 hosts\n- Marketing: 100 hosts\n- Finance: 55 hosts\n\nSales is allocated 172.16.8.0/23 and Engineering is allocated 172.16.10.0/24. What is the next contiguous, valid subnet address and prefix length that should be allocated to the Marketing department?",
@@ -1588,7 +1589,8 @@
         }
       ],
       "sourceName": "CCNA 200-301 Original Questions",
-      "sourceLicense": "Original content"
+      "sourceLicense": "Original content",
+      "questionFamilyId": "concept-ipv6-longest-prefix"
     },
     {
       "statementEn": "In the Border Gateway Protocol (BGP) architecture, what is the default administrative distance and primary loop-prevention mechanism difference between External BGP (eBGP) and Internal BGP (iBGP) in Cisco IOS?",

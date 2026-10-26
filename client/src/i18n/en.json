@@ -82,6 +82,9 @@
       "weight": "weight"
     },
     "options": {
+      "perQuestionTimeLimit": "Per-question time limit",
+      "noQuestionLimit": "No per-question limit",
+      "questionLimitHelp": "When time expires, the question is unanswered and advances. It also runs while reading feedback. Not combined with untimed study.",
       "title": "Simulation Options",
       "randomize": "Randomize question order",
       "groupByTopic": "Group questions by exam topic",
@@ -136,9 +139,9 @@
     "title": "Simulation Results",
     "passed": "CONGRATULATIONS! PASS",
     "failed": "DID NOT PASS",
-    "simulatorDisclaimer": "Notice: This score is calculated by the CCNA 200-301 Simulator (Passing benchmark: 82.5% / ~825 out of 1000). Official Cisco scores and scoring algorithms may vary.",
+    "simulatorDisclaimer": "Internal practice score: 300–1000 scale with an 82.5% practice target. It is not an official Cisco score or passing threshold and does not guarantee certification.",
     "yourScore": "Your Score",
-    "passingScore": "Passing Standard: 82.5%",
+    "passingScore": "Practice target: 82.5%",
     "summary": {
       "correct": "Correct",
       "incorrect": "Incorrect",
@@ -176,7 +179,8 @@
     "timeSpent": "Time spent:",
     "seconds": "seconds",
     "domain": "Domain:",
-    "difficulty": "Difficulty:"
+    "difficulty": "Difficulty:",
+    "legacyContentWarning": "This older attempt did not capture question content. Its review may reflect later bank edits."
   },
   "questionBank": {
     "title": "CCNA Question Bank",
@@ -209,10 +213,10 @@
       "validators": "Rule Validators"
     },
     "import": {
-      "title": "Import Question Dataset (JSON)",
-      "instructions": "Paste or upload valid CCNA question JSON items matching the shared QuestionImportItem schema.",
-      "dropzone": "Drag & drop JSON file here or click to browse",
-      "preview": "JSON Preview",
+      "title": "Import question dataset (JSON or CSV)",
+      "instructions": "Paste or select a file containing bilingual questions.",
+      "dropzone": "Select a JSON or CSV file",
+      "preview": "Import content",
       "button": "Process Import",
       "importing": "Validating and importing...",
       "success": "Import completed successfully!",
@@ -283,5 +287,60 @@
     "seconds": "s",
     "minutes": "min",
     "hours": "hr"
+  },
+  "study": {
+    "questionTimer": "Active question time",
+    "questionTimerHelp": "The server marks the question unanswered when time expires. Reviewing an earlier question does not pause the active deadline.",
+    "restart": "Restart exercise",
+    "restarting": "Creating practice…",
+    "restartError": "Unable to restart the exercise.",
+    "restartHelp": "Restart creates a separate untimed practice with the currently approved version. Your previous attempt and answer are preserved.",
+    "returnToSource": "Return to original attempt",
+    "untimed": "Untimed practice",
+    "previous": "Previous question",
+    "saveFavorite": "Save favorite",
+    "removeFavorite": "Remove favorite",
+    "favoriteError": "Could not save favorite",
+    "favoritesOnly": "My favorites only",
+    "adminSolutions": "Full bank solutions are restricted to administrators.",
+    "of": "of",
+    "answered": "answered",
+    "simulatorTitle": "CCNA 200-301 — Practice Simulator",
+    "mode": "Mode",
+    "strictMode": "Strict mode",
+    "studyMode": "Study mode",
+    "available": "Validated questions from distinct families available with these filters: {{count}}",
+    "useAvailable": "Use the available count"
+  },
+  "adminWorkflow": {
+    "title": "Technical review",
+    "notes": "Review notes (at least 20 characters)",
+    "evidence": "HTTPS technical reference",
+    "confirm": "I checked the answer, distractors and translations against the supplied reference.",
+    "save": "Save review",
+    "saved": "Review saved with an audit record.",
+    "saveError": "Could not save review",
+    "detailError": "Could not load question",
+    "statsError": "Could not load live statistics",
+    "editRevision": "Edit as a new revision",
+    "revisionHelp": "The original is retained for history. The new revision requires approval.",
+    "revision_statementEn": "Revision statement EN",
+    "revision_statementEs": "Revision statement ES",
+    "revision_explanationEn": "Revision explanation EN",
+    "revision_explanationEs": "Revision explanation ES",
+    "saveRevision": "Save as a new revision",
+    "saveRevisionFirst": "Save the new revision before attempting to approve its content.",
+    "revisionSaved": "New revision created; technical review is required before exams can use it.",
+    "exerciseFamily": "Exercise family",
+    "openReference": "Open technical reference",
+    "revision_sourceUrl": "Revision HTTPS reference"
+  },
+  "learning": {
+    "title": "Study plan from your history",
+    "error": "Could not load your study plan",
+    "empty": "Complete an exam to measure your performance.",
+    "practice": "Practice this area",
+    "repeated": "Repeated errors by topic",
+    "slow": "Topics requiring more time"
   }
 }

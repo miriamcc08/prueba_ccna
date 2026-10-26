@@ -1,3 +1,4 @@
+import type { Prisma } from '@prisma/client';
 import { prisma } from '../lib/prisma';
 import {
   QuestionListItem,
@@ -15,6 +16,7 @@ import {
   ValidationStatus,
 } from '../../../shared/types';
 import {
+  createQuestionSchema,
   CreateQuestionInput,
   UpdateQuestionInput,
   QuestionFilterInput,
@@ -25,7 +27,7 @@ import {
 } from '../utils/networkValidators';
 import { AppError } from '../middleware/errorHandler';
 
-export async function getQuestions(filters: QuestionFilterInput): Promise<{
+export async function getQuestions(filters: QuestionFilterInput, userId?: string): Promise<{
   questions: QuestionListItem[];
   pagination: PaginationInfo;
 }> {
@@ -42,13 +44,18 @@ export async function getQuestions(filters: QuestionFilterInput): Promise<{
   } = filters;
 
   const where: any = {};
+  if (filters.favoritesOnly) {
+    if (!userId) throw new AppError(401, 'Sign in to view favorites.');
+    where.favorites = { some: { userId } };
+  }
 
   if (topic) {
-    where.OR = [
+    where.AND = [{ OR: [
       { primaryTopicId: topic },
       { primaryTopic: { code: topic } },
       { primaryTopic: { nameEn: { contains: topic } } },
-    ];
+      { primaryTopic: { examArea: topic } },
+    ] }];
   }
 
   if (examArea) {
@@ -166,6 +173,9 @@ export async function getQuestionById(id: string): Promise<QuestionDetail> {
   }));
 
   return {
+    sourceUrl: question.sourceUrl || undefined,
+    sourceLicense: question.sourceLicense || undefined,
+    questionFamilyId: question.questionFamilyId || undefined,
     id: question.id,
     statementEn: question.statementEn,
     statementEs: question.statementEs,
@@ -219,6 +229,11 @@ export async function getQuestionForExam(
     throw new AppError(404, `Question with id "${id}" not found.`);
   }
 
+  return formatExamQuestion(question, language, examQuestionId, questionNumber, totalQuestions);
+}
+
+type ExamContent = Prisma.QuestionGetPayload<{ include: { primaryTopic: true; options: true } }>;
+export function formatExamQuestion(question: ExamContent, language: Language, examQuestionId?: string, questionNumber = 1, totalQuestions = 1): ExamQuestionView {
   return {
     id: question.id,
     examQuestionId: examQuestionId || question.id,
@@ -240,6 +255,7 @@ export async function getQuestionForExam(
 }
 
 export async function createQuestion(data: CreateQuestionInput): Promise<QuestionDetail> {
+  if (data.validationStatus === 'validated') throw new AppError(400, 'Use the technical review endpoint to approve questions.');
   // Validate question & options logic
   const validation = validateQuestionAnswers(
     {
@@ -264,8 +280,14 @@ export async function createQuestion(data: CreateQuestionInput): Promise<Questio
   }
 
   const created = await prisma.$transaction(async (tx) => {
+    const normalize = (value: string) => value.toLowerCase().replace(/[^\p{L}\p{N}]+/gu, ' ').trim();
+    const statements = await tx.question.findMany({ select: { statementEn: true, statementEs: true } });
+    if (statements.some(q => normalize(q.statementEn) === normalize(data.statementEn) || normalize(q.statementEs) === normalize(data.statementEs))) {
+      throw new AppError(409, 'An identical English or Spanish question exists. Create a revision of that question.');
+    }
     const question = await tx.question.create({
       data: {
+        questionFamilyId: data.questionFamilyId,
         statementEn: data.statementEn,
         statementEs: data.statementEs,
         questionType: data.questionType,
@@ -290,7 +312,7 @@ export async function createQuestion(data: CreateQuestionInput): Promise<Questio
             isCorrect: opt.isCorrect,
             explanationEn: opt.explanationEn,
             explanationEs: opt.explanationEs,
-            displayOrder: opt.displayOrder ?? idx,
+            displayOrder: idx,
           })),
         },
       },
@@ -312,6 +334,16 @@ export async function updateQuestion(
 
   if (!existing) {
     throw new AppError(404, `Question with id "${id}" not found.`);
+  }
+
+  if (data.validationStatus === 'validated') throw new AppError(400, 'Use the technical review endpoint to approve questions.');
+
+  if (await prisma.examQuestion.count({ where: { questionId: id, contentSnapshot: null } }) > 0) {
+    throw new AppError(409, 'This question belongs to an older attempt without captured content. Create a separate revision to preserve that history.');
+  }
+
+  if (data.options && await prisma.examQuestion.count({ where: { questionId: id } }) > 0) {
+    throw new AppError(409, 'This question is used in an exam. Create a separate revision instead of replacing its options.');
   }
 
   if (data.options) {
@@ -346,7 +378,7 @@ export async function updateQuestion(
           isCorrect: opt.isCorrect,
           explanationEn: opt.explanationEn,
           explanationEs: opt.explanationEs,
-          displayOrder: opt.displayOrder ?? idx,
+          displayOrder: idx,
         })),
       });
     }
@@ -357,6 +389,9 @@ export async function updateQuestion(
       where: { id },
       data: {
         ...questionData,
+        // Any edit invalidates a previous technical approval. History remains in review records.
+        validationStatus: data.validationStatus || 'pending_review',
+        lastVerifiedAt: null,
         ...(subtopics ? { subtopics: JSON.stringify(subtopics) } : {}),
       },
     });
@@ -456,13 +491,14 @@ export async function importQuestions(items: QuestionImportItem[]): Promise<Impo
       // 4. Create question
       const newQuestion = await prisma.question.create({
         data: {
+          questionFamilyId: item.questionFamilyId,
           statementEn: item.statementEn,
           statementEs: item.statementEs,
           questionType: item.questionType,
           difficulty: item.difficulty,
           multipleAnswerCount: item.multipleAnswerCount,
           estimatedTimeSeconds: item.estimatedTimeSeconds ?? 90,
-          validationStatus: 'validated',
+          validationStatus: 'pending_review',
           explanationEn: item.explanationEn,
           explanationEs: item.explanationEs,
           correctAnswerExplanationEn: item.correctAnswerExplanationEn,
@@ -569,4 +605,34 @@ export async function getQuestionStats(): Promise<{
     byValidationStatus,
     byQuestionType,
   };
+}
+
+// Revisions retain every original option row, including IDs referenced by past responses.
+export async function createQuestionRevision(id: string, changes: UpdateQuestionInput, reviewerId: string): Promise<QuestionDetail> {
+  const created = await prisma.$transaction(async tx => {
+    const original = await tx.question.findUnique({ where: { id }, include: { options: { orderBy: { displayOrder: 'asc' } } } });
+    if (!original) throw new AppError(404, 'Question not found.');
+    const withoutNulls = (value: Record<string, unknown>) => Object.fromEntries(Object.entries(value).filter(([, value]) => value !== null));
+    const parsed = createQuestionSchema.parse({
+      ...withoutNulls(original),
+      options: original.options.map(withoutNulls),
+      subtopics: JSON.parse(original.subtopics || '[]'),
+      ...changes, validationStatus: 'pending_review',
+    });
+    const check = validateQuestionAnswers(parsed, parsed.options);
+    if (!check.valid) throw new AppError(400, 'Revision validation failed.', check.errors);
+    const family = original.questionFamilyId || original.id;
+    const { options, subtopics, ...fields } = parsed;
+    const revision = await tx.question.create({ data: {
+      ...fields, questionFamilyId: family, subtopics: JSON.stringify(subtopics || []), lastVerifiedAt: null,
+      options: { create: options.map((option, i) => ({ ...option, displayOrder: i })) },
+    } });
+    await tx.question.update({ where: { id }, data: { questionFamilyId: family, validationStatus: 'pending_review', lastVerifiedAt: null } });
+    await tx.questionReview.create({ data: {
+      questionId: id, reviewerId, status: 'pending_review',
+      notes: `Created draft revision ${revision.id}; original content and options retained for past attempts.`,
+    } });
+    return revision;
+  });
+  return getQuestionById(created.id);
 }

@@ -1,5 +1,5 @@
 import { PrismaClient } from '@prisma/client';
-import bcrypt from 'bcryptjs';
+import { bootstrapAdmin } from './bootstrap-admin';
 
 const prisma = new PrismaClient();
 
@@ -680,24 +680,8 @@ async function main() {
   });
   console.log(`✓ Default source ensured: ${originalSource.name}`);
 
-  // 3. Seed Default Admin User
-  console.log('Seeding default administrator...');
-  const adminPasswordHash = await bcrypt.hash('admin123', 10);
-  const adminUser = await prisma.user.upsert({
-    where: { email: 'admin@ccna.local' },
-    update: {
-      passwordHash: adminPasswordHash,
-      role: 'admin',
-    },
-    create: {
-      email: 'admin@ccna.local',
-      username: 'admin',
-      passwordHash: adminPasswordHash,
-      role: 'admin',
-      language: 'en',
-    },
-  });
-  console.log(`✓ Admin user created: ${adminUser.email} (password: admin123)`);
+  const admin = await bootstrapAdmin(prisma, process.env.ADMIN_EMAIL, process.env.ADMIN_PASSWORD);
+  console.log(admin.status === 'created' ? 'Administrator account created.' : admin.status === 'unchanged' ? 'Administrator already exists; password preserved.' : 'Administrator bootstrap skipped; set ADMIN_EMAIL and ADMIN_PASSWORD to create one.');
 
   // 4. Seed Comprehensive Sample Question Bank
   console.log('Seeding initial verified CCNA questions...');

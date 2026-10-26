@@ -1,0 +1,279 @@
+{
+  "batchId": "original-20261026-b04-50",
+  "received": 50,
+  "independentChecksPassed": 9,
+  "technicalApprovals": 0,
+  "records": [
+    {
+      "id": "ccna-original-20261026-b04-001",
+      "calculation": "passed",
+      "kind": "networks_overlap",
+      "result": "The allocations overlap; the /24 lies inside the /23",
+      "technicalReview": "pending"
+    },
+    {
+      "id": "ccna-original-20261026-b04-002",
+      "calculation": "passed",
+      "kind": "vlsm_allocate",
+      "result": "192.0.2.0/25; 192.0.2.128/26",
+      "technicalReview": "pending"
+    },
+    {
+      "id": "ccna-original-20261026-b04-003",
+      "calculation": "not_applicable",
+      "technicalReview": "pending"
+    },
+    {
+      "id": "ccna-original-20261026-b04-004",
+      "calculation": "not_applicable",
+      "technicalReview": "pending"
+    },
+    {
+      "id": "ccna-original-20261026-b04-005",
+      "calculation": "not_applicable",
+      "technicalReview": "pending"
+    },
+    {
+      "id": "ccna-original-20261026-b04-006",
+      "calculation": "not_applicable",
+      "technicalReview": "pending"
+    },
+    {
+      "id": "ccna-original-20261026-b04-007",
+      "calculation": "not_applicable",
+      "technicalReview": "pending"
+    },
+    {
+      "id": "ccna-original-20261026-b04-008",
+      "calculation": "not_applicable",
+      "technicalReview": "pending"
+    },
+    {
+      "id": "ccna-original-20261026-b04-009",
+      "calculation": "passed",
+      "kind": "decimal_megabytes_per_second",
+      "result": "10 MB/s",
+      "technicalReview": "pending"
+    },
+    {
+      "id": "ccna-original-20261026-b04-010",
+      "calculation": "not_applicable",
+      "technicalReview": "pending"
+    },
+    {
+      "id": "ccna-original-20261026-b04-011",
+      "calculation": "not_applicable",
+      "technicalReview": "pending"
+    },
+    {
+      "id": "ccna-original-20261026-b04-012",
+      "calculation": "passed",
+      "kind": "switch_flood",
+      "result": [
+        "P2",
+        "P3"
+      ],
+      "technicalReview": "pending"
+    },
+    {
+      "id": "ccna-original-20261026-b04-013",
+      "calculation": "not_applicable",
+      "technicalReview": "pending"
+    },
+    {
+      "id": "ccna-original-20261026-b04-014",
+      "calculation": "not_applicable",
+      "technicalReview": "pending"
+    },
+    {
+      "id": "ccna-original-20261026-b04-015",
+      "calculation": "not_applicable",
+      "technicalReview": "pending"
+    },
+    {
+      "id": "ccna-original-20261026-b04-016",
+      "calculation": "passed",
+      "kind": "port_id_minimum",
+      "result": "128.5",
+      "technicalReview": "pending"
+    },
+    {
+      "id": "ccna-original-20261026-b04-017",
+      "calculation": "not_applicable",
+      "technicalReview": "pending"
+    },
+    {
+      "id": "ccna-original-20261026-b04-018",
+      "calculation": "not_applicable",
+      "technicalReview": "pending"
+    },
+    {
+      "id": "ccna-original-20261026-b04-019",
+      "calculation": "not_applicable",
+      "technicalReview": "pending"
+    },
+    {
+      "id": "ccna-original-20261026-b04-020",
+      "calculation": "not_applicable",
+      "technicalReview": "pending"
+    },
+    {
+      "id": "ccna-original-20261026-b04-021",
+      "calculation": "not_applicable",
+      "technicalReview": "pending"
+    },
+    {
+      "id": "ccna-original-20261026-b04-022",
+      "calculation": "passed",
+      "kind": "maximum_priority",
+      "result": "R2",
+      "technicalReview": "pending"
+    },
+    {
+      "id": "ccna-original-20261026-b04-023",
+      "calculation": "not_applicable",
+      "technicalReview": "pending"
+    },
+    {
+      "id": "ccna-original-20261026-b04-024",
+      "calculation": "not_applicable",
+      "technicalReview": "pending"
+    },
+    {
+      "id": "ccna-original-20261026-b04-025",
+      "calculation": "not_applicable",
+      "technicalReview": "pending"
+    },
+    {
+      "id": "ccna-original-20261026-b04-026",
+      "calculation": "not_applicable",
+      "technicalReview": "pending"
+    },
+    {
+      "id": "ccna-original-20261026-b04-027",
+      "calculation": "passed",
+      "kind": "graph_shortest_path",
+      "result": "R1 -> R2 -> R3 -> R4",
+      "technicalReview": "pending"
+    },
+    {
+      "id": "ccna-original-20261026-b04-028",
+      "calculation": "not_applicable",
+      "technicalReview": "pending"
+    },
+    {
+      "id": "ccna-original-20261026-b04-029",
+      "calculation": "not_applicable",
+      "technicalReview": "pending"
+    },
+    {
+      "id": "ccna-original-20261026-b04-030",
+      "calculation": "not_applicable",
+      "technicalReview": "pending"
+    },
+    {
+      "id": "ccna-original-20261026-b04-031",
+      "calculation": "not_applicable",
+      "technicalReview": "pending"
+    },
+    {
+      "id": "ccna-original-20261026-b04-032",
+      "calculation": "not_applicable",
+      "technicalReview": "pending"
+    },
+    {
+      "id": "ccna-original-20261026-b04-033",
+      "calculation": "not_applicable",
+      "technicalReview": "pending"
+    },
+    {
+      "id": "ccna-original-20261026-b04-034",
+      "calculation": "not_applicable",
+      "technicalReview": "pending"
+    },
+    {
+      "id": "ccna-original-20261026-b04-035",
+      "calculation": "passed",
+      "kind": "ntp_delay",
+      "result": "120 ms",
+      "technicalReview": "pending"
+    },
+    {
+      "id": "ccna-original-20261026-b04-036",
+      "calculation": "not_applicable",
+      "technicalReview": "pending"
+    },
+    {
+      "id": "ccna-original-20261026-b04-037",
+      "calculation": "not_applicable",
+      "technicalReview": "pending"
+    },
+    {
+      "id": "ccna-original-20261026-b04-038",
+      "calculation": "not_applicable",
+      "technicalReview": "pending"
+    },
+    {
+      "id": "ccna-original-20261026-b04-039",
+      "calculation": "not_applicable",
+      "technicalReview": "pending"
+    },
+    {
+      "id": "ccna-original-20261026-b04-040",
+      "calculation": "not_applicable",
+      "technicalReview": "pending"
+    },
+    {
+      "id": "ccna-original-20261026-b04-041",
+      "calculation": "not_applicable",
+      "technicalReview": "pending"
+    },
+    {
+      "id": "ccna-original-20261026-b04-042",
+      "calculation": "not_applicable",
+      "technicalReview": "pending"
+    },
+    {
+      "id": "ccna-original-20261026-b04-043",
+      "calculation": "not_applicable",
+      "technicalReview": "pending"
+    },
+    {
+      "id": "ccna-original-20261026-b04-044",
+      "calculation": "not_applicable",
+      "technicalReview": "pending"
+    },
+    {
+      "id": "ccna-original-20261026-b04-045",
+      "calculation": "not_applicable",
+      "technicalReview": "pending"
+    },
+    {
+      "id": "ccna-original-20261026-b04-046",
+      "calculation": "not_applicable",
+      "technicalReview": "pending"
+    },
+    {
+      "id": "ccna-original-20261026-b04-047",
+      "calculation": "passed",
+      "kind": "json_array_lookup",
+      "result": "Gi0/1",
+      "technicalReview": "pending"
+    },
+    {
+      "id": "ccna-original-20261026-b04-048",
+      "calculation": "not_applicable",
+      "technicalReview": "pending"
+    },
+    {
+      "id": "ccna-original-20261026-b04-049",
+      "calculation": "not_applicable",
+      "technicalReview": "pending"
+    },
+    {
+      "id": "ccna-original-20261026-b04-050",
+      "calculation": "not_applicable",
+      "technicalReview": "pending"
+    }
+  ]
+}

@@ -17,6 +17,11 @@ import {
   UserRole
 } from '@shared/types';
 
+export type QuestionDraftInput = Omit<QuestionImportItem, 'primaryTopicExamArea' | 'sourceName'> & {
+  primaryTopicId: string;
+  validationStatus?: 'draft' | 'pending_review';
+};
+
 export interface AuthUser {
   id: string;
   email: string;
@@ -129,20 +134,32 @@ class ApiService {
 
   // --- Auth Endpoints ---
   public login(email: string, password: string): Promise<ApiResponse<AuthResponse>> {
-    return this.post<AuthResponse>('/auth/login', { email, password });
+    return this.post<AuthResponse>('/users/login', { email, password });
   }
 
   public register(email: string, username: string, password: string): Promise<ApiResponse<AuthResponse>> {
-    return this.post<AuthResponse>('/auth/register', { email, username, password });
+    return this.post<AuthResponse>('/users/register', { email, username, password });
   }
 
   public getCurrentUser(): Promise<ApiResponse<AuthUser>> {
-    return this.get<AuthUser>('/auth/me');
+    return this.get<AuthUser>('/users/me');
   }
 
   // --- Exam Endpoints ---
+  public getExamAvailability(config: ExamConfig): Promise<ApiResponse<{ available: number }>> {
+    return this.post('/exams/availability', config);
+  }
+
   public createExam(config: ExamConfig): Promise<ApiResponse<{ examId: string }>> {
     return this.post<{ examId: string }>('/exams', config);
+  }
+
+  public changeStudyTopic(examId: string, topicId: string, questionCount: number): Promise<ApiResponse<ExamStateResponse>> {
+    return this.post(`/exams/${examId}/change-study-topic`, { topicId, questionCount });
+  }
+
+  public restartStudyExercise(examId: string, examQuestionId: string): Promise<ApiResponse<ExamStateResponse>> {
+    return this.post(`/exams/${examId}/restart-exercise`, { examQuestionId });
   }
 
   public startExam(examId: string): Promise<ApiResponse<ExamStateResponse>> {
@@ -150,11 +167,15 @@ class ApiService {
   }
 
   public getExamState(examId: string): Promise<ApiResponse<ExamStateResponse>> {
-    return this.get<ExamStateResponse>(`/exams/${examId}/state`);
+    return this.get<ExamStateResponse>(`/exams/${examId}`);
+  }
+
+  public clearExamHistory(): Promise<ApiResponse<unknown>> {
+    return this.delete('/users/me/history');
   }
 
   public getExamQuestion(examId: string, index: number): Promise<ApiResponse<ExamQuestionView>> {
-    return this.get<ExamQuestionView>(`/exams/${examId}/question/${index}`);
+    return this.get<ExamQuestionView>(`/exams/${examId}/question?index=${index}`);
   }
 
   public submitExamAnswer(examId: string, data: SubmitAnswerRequest): Promise<ApiResponse<SubmitAnswerResponse>> {
@@ -191,12 +212,14 @@ class ApiService {
     difficulty?: string;
     type?: string;
     status?: string;
+    language?: string;
+    favoritesOnly?: boolean;
   }): Promise<ApiResponse<QuestionListItem[]>> {
     const query = new URLSearchParams();
     if (params) {
       Object.entries(params).forEach(([k, v]) => {
         if (v !== undefined && v !== '') {
-          query.set(k, String(v));
+          query.set(k === 'type' ? 'questionType' : k === 'status' ? 'validationStatus' : k, String(v));
         }
       });
     }
@@ -208,13 +231,37 @@ class ApiService {
     return this.get<QuestionDetail>(`/questions/${id}`);
   }
 
-  // --- Admin Endpoints ---
-  public importQuestions(questions: QuestionImportItem[]): Promise<ApiResponse<ImportResult>> {
-    return this.post<ImportResult>('/admin/import', { questions });
+  public getLearningProfile(language: string): Promise<ApiResponse<import('@shared/types').LearningProfile>> {
+    return this.get(`/users/me/learning-profile?language=${encodeURIComponent(language)}`);
   }
 
-  public updateQuestionStatus(id: string, status: ValidationStatus): Promise<ApiResponse<QuestionDetail>> {
-    return this.put<QuestionDetail>(`/admin/questions/${id}/status`, { status });
+  public getFavorites(): Promise<ApiResponse<string[]>> {
+    return this.get<string[]>('/users/me/favorites');
+  }
+
+  public setFavorite(id: string, favorite: boolean): Promise<ApiResponse<{ favorite: boolean }>> {
+    return favorite ? this.put(`/questions/${id}/favorite`) : this.delete(`/questions/${id}/favorite`);
+  }
+
+  // --- Admin Endpoints ---
+  public createQuestion(question: QuestionDraftInput): Promise<ApiResponse<QuestionDetail>> {
+    return this.post('/questions', question);
+  }
+
+  public validateQuestion(id: string): Promise<ApiResponse<{ valid: boolean; answerValidation: { valid: boolean; errors: string[] }; subnetValidation: { valid: boolean; errors: string[] } | null }>> {
+    return this.post(`/questions/${id}/validate`);
+  }
+
+  public importQuestions(questions: QuestionImportItem[]): Promise<ApiResponse<ImportResult>> {
+    return this.post<ImportResult>('/questions/import', { questions });
+  }
+
+  public createQuestionRevision(id: string, changes: Partial<QuestionDetail>): Promise<ApiResponse<QuestionDetail>> {
+    return this.post(`/questions/${id}/revisions`, changes);
+  }
+
+  public updateQuestionStatus(id: string, status: ValidationStatus, notes: string, evidenceUrl?: string): Promise<ApiResponse<QuestionDetail>> {
+    return this.post<QuestionDetail>(`/questions/${id}/review`, { status, notes, evidenceUrl, technicalReviewConfirmed: status === 'validated' });
   }
 
   public getAdminStats(): Promise<ApiResponse<{
@@ -224,7 +271,16 @@ class ApiService {
     rejectedQuestions: number;
     coverageByArea: Record<string, number>;
   }>> {
-    return this.get('/admin/stats');
+    return this.get<{ total: number; byValidationStatus: Record<string, number>; byExamArea: Record<string, number> }>('/questions/stats').then(res => ({
+      ...res,
+      data: res.data ? {
+        totalQuestions: res.data.total,
+        validatedQuestions: res.data.byValidationStatus.validated || 0,
+        pendingQuestions: (res.data.byValidationStatus.pending_review || 0) + (res.data.byValidationStatus.draft || 0),
+        rejectedQuestions: res.data.byValidationStatus.rejected || 0,
+        coverageByArea: res.data.byExamArea,
+      } : undefined,
+    }));
   }
 }
 

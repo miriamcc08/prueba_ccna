@@ -1,0 +1,27 @@
+{
+  "reviewedAt": "2026-10-26T16:46:27.418749+00:00",
+  "scope": "Focused follow-up of three earlier documentary gaps; original question wording and keys preserved.",
+  "technicalApprovals": 0,
+  "questions": [
+    {
+      "id": "ccna-original-20261026-b04-009",
+      "result": "units_and_key_rechecked",
+      "contentSha256": "9fde70d6df73e45268180661654354676c091c921ea8e20bbb62c79d63379a4a",
+      "primaryReference": "https://www.rfc-editor.org/rfc/rfc1242.txt",
+      "supportingReference": "https://www.rfc-editor.org/rfc/rfc791.txt",
+      "calculation": "80000000 / 8 / 1000000 = 10 MB/s"
+    },
+    {
+      "id": "ccna-original-20261026-b04-020",
+      "result": "additional_evidence_required",
+      "notes": "The current platform chapter supports autostate exclusion, but the attempted legacy support articles returned 404. The complete default up/down prerequisites still need a directly supporting source or platform lab.",
+      "contentSha256": "4dd9466480257735da43cf3a208a870122a953fab634cd9500adcfd7c036a446"
+    },
+    {
+      "id": "ccna-original-20261026-b04-029",
+      "result": "additional_evidence_required",
+      "notes": "The general routing reference supports context, but no newly consulted platform source directly establishes connected-route removal for this exact administrative shutdown scenario.",
+      "contentSha256": "d1a84e22e7c7a7db5cdb199740a8bd2f657ddb8cb40405cd63e6ba8c229ad716"
+    }
+  ]
+}

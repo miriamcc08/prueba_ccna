@@ -42,10 +42,12 @@ export const useExam = (initialExamId?: string): UseExamReturn => {
 
     setStatus('loading');
     setError(null);
+    setLastFeedback(null);
     try {
       const res = await api.getExamQuestion(examId, index);
       if (res.success && res.data) {
         setCurrentQuestion(res.data);
+        setLastFeedback(res.data.feedback || null);
         setCurrentQuestionIndex(index);
         setStatus('in_progress');
         return true;
@@ -76,6 +78,7 @@ export const useExam = (initialExamId?: string): UseExamReturn => {
         const qRes = await api.getExamQuestion(examId, questionIdx);
         if (qRes.success && qRes.data) {
           setCurrentQuestion(qRes.data);
+          setLastFeedback(qRes.data.feedback || null);
           setStatus('in_progress');
           return true;
         } else {
@@ -104,6 +107,7 @@ export const useExam = (initialExamId?: string): UseExamReturn => {
       const res = await api.getExamState(examId);
       if (res.success && res.data) {
         setExamState(res.data);
+        if (res.data.status === 'configured') return await startExam(examId);
         if (res.data.status === 'completed' || res.data.status === 'expired') {
           setStatus('completed');
           return true;
@@ -114,6 +118,7 @@ export const useExam = (initialExamId?: string): UseExamReturn => {
         const qRes = await api.getExamQuestion(examId, idx);
         if (qRes.success && qRes.data) {
           setCurrentQuestion(qRes.data);
+          setLastFeedback(qRes.data.feedback || null);
           setStatus('in_progress');
           return true;
         } else {
@@ -170,6 +175,7 @@ export const useExam = (initialExamId?: string): UseExamReturn => {
           ...prev,
           answeredCount: prev.answeredCount + 1,
           currentQuestionIndex: res.data!.nextQuestionIndex,
+          ...(res.data!.questionExpiresAt !== undefined ? { questionExpiresAt: res.data!.questionExpiresAt } : {}),
         } : null);
 
         return res.data;

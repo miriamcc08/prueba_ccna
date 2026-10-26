@@ -84,8 +84,11 @@ export interface ExamConfig {
   randomize: boolean;
   strictMode: boolean;
   studyMode: boolean;
+  untimed?: boolean;
   showExplanations: boolean;
   soundEnabled: boolean;
+  /** Server-created link to the original study attempt; never grants access. */
+  practiceSourceExamId?: string;
   perQuestionTimeLimit?: number;
   groupByTopic: boolean;
 }
@@ -124,6 +127,9 @@ export interface QuestionListItem {
 }
 
 export interface QuestionDetail {
+  sourceLicense?: string;
+  sourceUrl?: string;
+  questionFamilyId?: string;
   id: string;
   statementEn: string;
   statementEs: string;
@@ -166,6 +172,8 @@ export interface ExamQuestionView {
   estimatedTimeSeconds: number;
   topicName: string;
   options: ExamOptionView[];
+  selectedOptionIds?: string[];
+  feedback?: SubmitAnswerResponse;
   questionNumber: number;
   totalQuestions: number;
 }
@@ -206,12 +214,13 @@ export interface SourceInfo {
 // ---- Exam State Types ----
 
 export interface ExamStateResponse {
+  questionExpiresAt?: string | null;
   examId: string;
   config: ExamConfig;
   currentQuestionIndex: number;
   totalQuestions: number;
   startedAt: string;
-  expiresAt: string;
+  expiresAt: string | null;
   timeRemainingSeconds: number;
   answeredCount: number;
   status: ExamStatus;
@@ -223,6 +232,7 @@ export interface SubmitAnswerRequest {
 }
 
 export interface SubmitAnswerResponse {
+  questionExpiresAt?: string | null;
   confirmed: boolean;
   nextQuestionIndex: number;
   /** Only in study mode */
@@ -287,6 +297,7 @@ export interface RecommendationItem {
 // ---- Review Types ----
 
 export interface ReviewQuestionItem {
+  historicalContentPreserved?: boolean;
   questionNumber: number;
   examQuestionId: string;
   questionId: string;
@@ -317,6 +328,7 @@ export interface ReviewOptionItem {
 // ---- History Types ----
 
 export interface ExamHistoryItem {
+  examVersion: string;
   examId: string;
   date: string;
   language: Language;
@@ -335,6 +347,7 @@ export interface ExamHistoryItem {
 // ---- Import/Export Types ----
 
 export interface QuestionImportItem {
+  questionFamilyId?: string;
   statementEn: string;
   statementEs: string;
   questionType: QuestionType;

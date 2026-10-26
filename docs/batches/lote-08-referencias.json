@@ -1,0 +1,183 @@
+{
+  "batchId": "original-20261026-b08-10",
+  "generatedAt": "2026-10-26T18:01:35.401730+00:00",
+  "scope": "Focused ten-question batch with documented machine-assisted review; no human editorial approval.",
+  "questionsWithFocusedConsultation": 10,
+  "documents": [
+    {
+      "url": "https://www.rfc-editor.org/rfc/rfc9110.txt",
+      "status": "retrieved",
+      "primary": true,
+      "sha256": "21c1cdce6ab0e5509b04d84a28000836c7a087cf786efe6f04877ebfff47232a",
+      "retrievedAt": "2026-10-26T15:17:07.867903+00:00",
+      "bytes": 502941,
+      "finalUrl": "https://www.rfc-editor.org/rfc/rfc9110.txt",
+      "cachePath": "/workspace/.ccna-cache/references/sha256/21c1cdce6ab0e5509b04d84a28000836c7a087cf786efe6f04877ebfff47232a.txt"
+    },
+    {
+      "url": "https://www.cisco.com/c/en/us/solutions/artificial-intelligence/what-is-aiops.html",
+      "status": "retrieved",
+      "primary": true,
+      "sha256": "569d8a81fa99d4a7eceec5886a7c1bb22f5d622f8571dbfbc5bea06710b951fa",
+      "bytes": 134547,
+      "cachePath": "/workspace/.ccna-cache/references/sha256/569d8a81fa99d4a7eceec5886a7c1bb22f5d622f8571dbfbc5bea06710b951fa.html",
+      "finalUrl": "https://www.cisco.com/site/us/en/learn/topics/artificial-intelligence/what-is-aiops.html",
+      "retrievedAt": "2026-10-26T17:53:03.728037+00:00"
+    },
+    {
+      "url": "https://www.rfc-editor.org/rfc/rfc6241.txt",
+      "status": "retrieved",
+      "primary": true,
+      "sha256": "989b44560e4663267618b4b6bfc4cf0c7772fa2b59b5980936d9b073cbbd5314",
+      "retrievedAt": "2026-10-26T15:17:07.681864+00:00",
+      "bytes": 209465,
+      "finalUrl": "https://www.rfc-editor.org/rfc/rfc6241.txt",
+      "cachePath": "/workspace/.ccna-cache/references/sha256/989b44560e4663267618b4b6bfc4cf0c7772fa2b59b5980936d9b073cbbd5314.txt"
+    },
+    {
+      "url": "https://www.rfc-editor.org/rfc/rfc2904.txt",
+      "retrievalUrl": "https://www.rfc-editor.org/rfc/rfc2904.txt",
+      "status": "retrieved",
+      "primary": true,
+      "sha256": "802ad25d792aa2968c48a7cde189a1aff23f9b59b350d6d4531da876b709a205",
+      "bytes": 78098,
+      "cachePath": "/workspace/.ccna-cache/references/sha256/802ad25d792aa2968c48a7cde189a1aff23f9b59b350d6d4531da876b709a205.txt",
+      "finalUrl": "https://www.rfc-editor.org/rfc/rfc2904.txt",
+      "retrievedAt": "2026-10-26T17:05:25.920657+00:00"
+    }
+  ],
+  "focusedEvidence": [
+    {
+      "questionId": "ccna-original-20261026-b08-001",
+      "url": "https://www.cisco.com/c/en/us/solutions/artificial-intelligence/what-is-aiops.html",
+      "section": "What is AIOps?",
+      "anchors": [
+        "strategic use of AI, machine learning"
+      ],
+      "sha256": "569d8a81fa99d4a7eceec5886a7c1bb22f5d622f8571dbfbc5bea06710b951fa",
+      "consultedAt": "2026-10-26T18:01:35.401730+00:00",
+      "contentSha256": "063486d790c0cd2c6e6d2a5e04c791b2ac626c55789c71e800d042f49aeaf6be"
+    },
+    {
+      "questionId": "ccna-original-20261026-b08-002",
+      "url": "https://www.cisco.com/c/en/us/solutions/artificial-intelligence/what-is-aiops.html",
+      "section": "AIOps definition",
+      "anchors": [
+        "event correlation"
+      ],
+      "sha256": "569d8a81fa99d4a7eceec5886a7c1bb22f5d622f8571dbfbc5bea06710b951fa",
+      "consultedAt": "2026-10-26T18:01:35.401730+00:00",
+      "contentSha256": "d3e208936ce4c2655aa97c425e5f8dc6124bac448064b1d78a51b82589167b15"
+    },
+    {
+      "questionId": "ccna-original-20261026-b08-003",
+      "url": "https://www.cisco.com/c/en/us/solutions/artificial-intelligence/what-is-aiops.html",
+      "section": "Examples of AIOps",
+      "anchors": [
+        "provides remediation steps"
+      ],
+      "sha256": "569d8a81fa99d4a7eceec5886a7c1bb22f5d622f8571dbfbc5bea06710b951fa",
+      "consultedAt": "2026-10-26T18:01:35.401730+00:00",
+      "contentSha256": "90e42ff7cd33041eca6ab9fc37d76d12797d29104b52fe2d4d3068817bae803e"
+    },
+    {
+      "questionId": "ccna-original-20261026-b08-004",
+      "url": "https://www.cisco.com/c/en/us/solutions/artificial-intelligence/what-is-aiops.html",
+      "section": "Is AIOps a platform?",
+      "anchors": [
+        "as well as human expertise"
+      ],
+      "sha256": "569d8a81fa99d4a7eceec5886a7c1bb22f5d622f8571dbfbc5bea06710b951fa",
+      "consultedAt": "2026-10-26T18:01:35.401730+00:00",
+      "contentSha256": "acf79edd436d5f917ed565a8f914d57043cf74fd312c46287fc74bfc6395593a"
+    },
+    {
+      "questionId": "ccna-original-20261026-b08-005",
+      "url": "https://www.cisco.com/c/en/us/solutions/artificial-intelligence/what-is-aiops.html",
+      "section": "Benefits of AIOps",
+      "anchors": [
+        "SecOps, NetOps, DevOps"
+      ],
+      "sha256": "569d8a81fa99d4a7eceec5886a7c1bb22f5d622f8571dbfbc5bea06710b951fa",
+      "consultedAt": "2026-10-26T18:01:35.401730+00:00",
+      "contentSha256": "c76659e85b3c3c66ba6c2fc691d3349b2cbb03af4b55a7056164717d1e0594cd"
+    },
+    {
+      "questionId": "ccna-original-20261026-b08-006",
+      "url": "https://www.rfc-editor.org/rfc/rfc6241.txt",
+      "section": "7.2",
+      "anchors": [
+        "test-only: Perform only the validation test, without attempting to set"
+      ],
+      "sha256": "989b44560e4663267618b4b6bfc4cf0c7772fa2b59b5980936d9b073cbbd5314",
+      "consultedAt": "2026-10-26T18:01:35.401730+00:00",
+      "contentSha256": "a6ec2f0f4efb75d633c63204b6abcb3323437fd8bd2f1d43ced0f03e62b9fec9"
+    },
+    {
+      "questionId": "ccna-original-20261026-b08-007",
+      "url": "https://www.rfc-editor.org/rfc/rfc9110.txt",
+      "section": "15.5.10",
+      "anchors": [
+        "could not be completed due to a conflict with the current state"
+      ],
+      "sha256": "21c1cdce6ab0e5509b04d84a28000836c7a087cf786efe6f04877ebfff47232a",
+      "consultedAt": "2026-10-26T18:01:35.401730+00:00",
+      "contentSha256": "6e19d190c96825060c19135912a1d3066eec7fbb7fcd18d30837df7d50c98b0a"
+    },
+    {
+      "questionId": "ccna-original-20261026-b08-008",
+      "url": "https://www.rfc-editor.org/rfc/rfc2904.txt",
+      "section": "Authorization framework",
+      "anchors": [
+        "Policy Enforcement Point"
+      ],
+      "sha256": "802ad25d792aa2968c48a7cde189a1aff23f9b59b350d6d4531da876b709a205",
+      "consultedAt": "2026-10-26T18:01:35.401730+00:00",
+      "contentSha256": "8f15c29f855a184e2b782b16565523a28d609f2b207c684cb93a283824793249"
+    },
+    {
+      "questionId": "ccna-original-20261026-b08-009",
+      "url": "https://www.cisco.com/c/en/us/solutions/artificial-intelligence/what-is-aiops.html",
+      "section": "Operational insights and explicit mathematical model",
+      "anchors": [
+        "make decisions faster"
+      ],
+      "sha256": "569d8a81fa99d4a7eceec5886a7c1bb22f5d622f8571dbfbc5bea06710b951fa",
+      "consultedAt": "2026-10-26T18:01:35.401730+00:00",
+      "contentSha256": "92a95fa7ae98776e01c9589a98491ee2db9bac5e251bf3b6bc5be912ffca8e51"
+    },
+    {
+      "questionId": "ccna-original-20261026-b08-010",
+      "url": "https://www.cisco.com/c/en/us/solutions/artificial-intelligence/what-is-aiops.html",
+      "section": "Time and cost savings",
+      "anchors": [
+        "10 minutes on one task, 15 minutes on another"
+      ],
+      "sha256": "569d8a81fa99d4a7eceec5886a7c1bb22f5d622f8571dbfbc5bea06710b951fa",
+      "consultedAt": "2026-10-26T18:01:35.401730+00:00",
+      "contentSha256": "60f8ba0bfbeea754773d03afe8fef63ac3d76a03ce3a45f3262521d5d4b010e0"
+    }
+  ],
+  "unavailableReferences": [
+    {
+      "url": "https://www.cisco.com/c/en/us/solutions/artificial-intelligence/what-is-machine-learning.html",
+      "status": "unavailable",
+      "error": "HTTP Error 404: Not Found"
+    },
+    {
+      "url": "https://docs.ansible.com/ansible/latest/network/getting_started/index.html",
+      "status": "unavailable",
+      "error": "<urlopen error Tunnel connection failed: 403 Forbidden>"
+    },
+    {
+      "url": "https://developer.hashicorp.com/terraform/intro",
+      "status": "unavailable",
+      "error": "<urlopen error Tunnel connection failed: 403 Forbidden>"
+    },
+    {
+      "url": "https://nvlpubs.nist.gov/nistpubs/ai/NIST.AI.100-1.pdf",
+      "status": "unavailable",
+      "error": "<urlopen error Tunnel connection failed: 403 Forbidden>"
+    }
+  ]
+}

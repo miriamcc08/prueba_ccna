@@ -1,3 +1,4 @@
+import { randomBytes } from 'node:crypto';
 import { Request, Response, NextFunction } from 'express';
 import jwt from 'jsonwebtoken';
 import { ApiResponse } from '../../../shared/types';
@@ -18,7 +19,10 @@ declare global {
   }
 }
 
-const JWT_SECRET = process.env.JWT_SECRET || 'dev-secret-change-in-production';
+if (process.env.NODE_ENV === 'production' && !process.env.JWT_SECRET) {
+  throw new Error('JWT_SECRET must be configured in production.');
+}
+const JWT_SECRET = process.env.JWT_SECRET || randomBytes(32).toString('hex');
 const JWT_EXPIRES_IN = process.env.JWT_EXPIRES_IN || '7d';
 
 export function generateToken(payload: AuthUser): string {
@@ -51,7 +55,8 @@ export function verifyToken(token: string): AuthUser | null {
 /**
  * Require valid JWT authentication
  */
-export function requireAuth(req: Request, res: Response, next: NextFunction): void {
+export async function requireAuth(req: Request, res: Response, next: NextFunction): Promise<void> {
+  try {
   const token = extractToken(req);
 
   if (!token) {
@@ -63,7 +68,7 @@ export function requireAuth(req: Request, res: Response, next: NextFunction): vo
     return;
   }
 
-  const user = verifyToken(token);
+  const user = await currentIdentity(token);
   if (!user) {
     const response: ApiResponse = {
       success: false,
@@ -75,21 +80,26 @@ export function requireAuth(req: Request, res: Response, next: NextFunction): vo
 
   req.user = user;
   next();
+  } catch (error) { next(error); }
 }
 
 /**
  * Optional authentication: attaches user if token is present and valid,
  * but allows unauthenticated requests to proceed.
  */
-export function optionalAuth(req: Request, res: Response, next: NextFunction): void {
-  const token = extractToken(req);
-  if (token) {
-    const user = verifyToken(token);
-    if (user) {
-      req.user = user;
-    }
-  }
-  next();
+async function currentIdentity(token: string): Promise<AuthUser | null> {
+  const claimed = verifyToken(token);
+  if (!claimed || typeof claimed.id !== 'string') return null;
+  const { prisma } = await import('../lib/prisma');
+  return prisma.user.findUnique({ where: { id: claimed.id }, select: { id: true, email: true, username: true, role: true, language: true } });
+}
+
+export async function optionalAuth(req: Request, _res: Response, next: NextFunction): Promise<void> {
+  try {
+    const token = extractToken(req);
+    if (token) req.user = await currentIdentity(token) || undefined;
+    next();
+  } catch (error) { next(error); }
 }
 
 /**

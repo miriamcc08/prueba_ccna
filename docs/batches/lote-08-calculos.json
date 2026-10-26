@@ -1,0 +1,62 @@
+{
+  "batchId": "original-20261026-b08-10",
+  "received": 10,
+  "independentChecksPassed": 2,
+  "technicalApprovals": 0,
+  "records": [
+    {
+      "id": "ccna-original-20261026-b08-001",
+      "calculation": "not_applicable",
+      "technicalReview": "pending"
+    },
+    {
+      "id": "ccna-original-20261026-b08-002",
+      "calculation": "not_applicable",
+      "technicalReview": "pending"
+    },
+    {
+      "id": "ccna-original-20261026-b08-003",
+      "calculation": "not_applicable",
+      "technicalReview": "pending"
+    },
+    {
+      "id": "ccna-original-20261026-b08-004",
+      "calculation": "not_applicable",
+      "technicalReview": "pending"
+    },
+    {
+      "id": "ccna-original-20261026-b08-005",
+      "calculation": "not_applicable",
+      "technicalReview": "pending"
+    },
+    {
+      "id": "ccna-original-20261026-b08-006",
+      "calculation": "not_applicable",
+      "technicalReview": "pending"
+    },
+    {
+      "id": "ccna-original-20261026-b08-007",
+      "calculation": "not_applicable",
+      "technicalReview": "pending"
+    },
+    {
+      "id": "ccna-original-20261026-b08-008",
+      "calculation": "not_applicable",
+      "technicalReview": "pending"
+    },
+    {
+      "id": "ccna-original-20261026-b08-009",
+      "calculation": "passed",
+      "kind": "alert_precision",
+      "result": "80%",
+      "technicalReview": "pending"
+    },
+    {
+      "id": "ccna-original-20261026-b08-010",
+      "calculation": "passed",
+      "kind": "time_savings",
+      "result": "125 minutes",
+      "technicalReview": "pending"
+    }
+  ]
+}

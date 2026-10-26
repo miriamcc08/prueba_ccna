@@ -1,0 +1,360 @@
+{
+  "batchId": "original-20261026-b05-50",
+  "received": 50,
+  "reviewBindingsPassed": 50,
+  "cachedDocumentsVerified": 36,
+  "technicalApprovals": 0,
+  "scope": "Evidence integrity and review-to-content binding only. Logical correctness, complete source coverage and translation quality are not established by keyword matching.",
+  "records": [
+    {
+      "id": "ccna-original-20261026-b05-001",
+      "reviewBinding": "passed",
+      "sourceEvidence": "cached_bytes_and_anchors_checked",
+      "humanApproval": "pending",
+      "contentSha256": "c08d60bb5ce225ccf4f5920fbdb668e3c3d3c4dcbb9e973a07d5593b5da7d4d1"
+    },
+    {
+      "id": "ccna-original-20261026-b05-002",
+      "reviewBinding": "passed",
+      "sourceEvidence": "cached_bytes_and_anchors_checked",
+      "humanApproval": "pending",
+      "contentSha256": "030b9e940e3d746a966c0fc57a80d3f5861206ab85c4b689485890956f7d0e64"
+    },
+    {
+      "id": "ccna-original-20261026-b05-003",
+      "reviewBinding": "passed",
+      "sourceEvidence": "cached_bytes_and_anchors_checked",
+      "humanApproval": "pending",
+      "contentSha256": "4abc8d93598331d0bdf540cfd99c5f23b0e626071e2fe6009782a7232372a142"
+    },
+    {
+      "id": "ccna-original-20261026-b05-004",
+      "reviewBinding": "passed",
+      "sourceEvidence": "cached_bytes_and_anchors_checked",
+      "humanApproval": "pending",
+      "contentSha256": "93ad4759b926391e38a97248a545ee7709530b201000f3c96834bf508440bd00"
+    },
+    {
+      "id": "ccna-original-20261026-b05-005",
+      "reviewBinding": "passed",
+      "sourceEvidence": "cached_bytes_and_anchors_checked",
+      "humanApproval": "pending",
+      "contentSha256": "bd934b882c588a8d7d6596b5d2e1289698b206d0bc4eadf68bd8a2872f0a776c"
+    },
+    {
+      "id": "ccna-original-20261026-b05-006",
+      "reviewBinding": "passed",
+      "sourceEvidence": "cached_bytes_and_anchors_checked",
+      "humanApproval": "pending",
+      "contentSha256": "1fa00676162e1cd41bc43d3e2bcb065f656d7048e78bd7f2b59bcc81eff11fec"
+    },
+    {
+      "id": "ccna-original-20261026-b05-007",
+      "reviewBinding": "passed",
+      "sourceEvidence": "cached_bytes_and_anchors_checked",
+      "humanApproval": "pending",
+      "contentSha256": "16e22e31a465825b2e13e7e352a4d2bc7cbd60e8d2d866812a26437dca30043e"
+    },
+    {
+      "id": "ccna-original-20261026-b05-008",
+      "reviewBinding": "passed",
+      "sourceEvidence": "cached_bytes_and_anchors_checked",
+      "humanApproval": "pending",
+      "contentSha256": "71c748949757ded6861bee497fcf81e96c9320027fb38e2b9f183a48bc263a19"
+    },
+    {
+      "id": "ccna-original-20261026-b05-009",
+      "reviewBinding": "passed",
+      "sourceEvidence": "cached_bytes_and_anchors_checked",
+      "humanApproval": "pending",
+      "contentSha256": "40c54c5012455bc92646eff4c5db77d2a0bb36d2e1361bb412920b9b0f60d7aa"
+    },
+    {
+      "id": "ccna-original-20261026-b05-010",
+      "reviewBinding": "passed",
+      "sourceEvidence": "cached_bytes_and_anchors_checked",
+      "humanApproval": "pending",
+      "contentSha256": "bf6412293d52297bfdc49b819ac2dd1d1cdee3d308728d7dc6523b3fe6895642"
+    },
+    {
+      "id": "ccna-original-20261026-b05-011",
+      "reviewBinding": "passed",
+      "sourceEvidence": "cached_bytes_and_anchors_checked",
+      "humanApproval": "pending",
+      "contentSha256": "3eb646a2cc7210ceebdaa9a851ce362b75f9343949523d455a35819c54606151"
+    },
+    {
+      "id": "ccna-original-20261026-b05-012",
+      "reviewBinding": "passed",
+      "sourceEvidence": "cached_bytes_and_anchors_checked",
+      "humanApproval": "pending",
+      "contentSha256": "4f79ce365e335a22d0db6d0d06dab314ad559a79ca470bda4b0c9eb8afe6d07e"
+    },
+    {
+      "id": "ccna-original-20261026-b05-013",
+      "reviewBinding": "passed",
+      "sourceEvidence": "cached_bytes_and_anchors_checked",
+      "humanApproval": "pending",
+      "contentSha256": "4844ed8c3639b394bef654ff12e9ca83819068ea96880d3961bf6da710eeb4f6"
+    },
+    {
+      "id": "ccna-original-20261026-b05-014",
+      "reviewBinding": "passed",
+      "sourceEvidence": "cached_bytes_and_anchors_checked",
+      "humanApproval": "pending",
+      "contentSha256": "78b705b163393eaf8579b4b4ba3eed650a717324f14e391ec0cb5cd24eaa8f0a"
+    },
+    {
+      "id": "ccna-original-20261026-b05-015",
+      "reviewBinding": "passed",
+      "sourceEvidence": "cached_bytes_and_anchors_checked",
+      "humanApproval": "pending",
+      "contentSha256": "9b1715d374ba77703746798e9a15ebf1fdb3da8d1bd22b7057f030a203536690"
+    },
+    {
+      "id": "ccna-original-20261026-b05-016",
+      "reviewBinding": "passed",
+      "sourceEvidence": "cached_bytes_and_anchors_checked",
+      "humanApproval": "pending",
+      "contentSha256": "2e0ff4e2535aeedbc12795ea2bce5f517b1a3eda91691f289fe21ebb5b11a509"
+    },
+    {
+      "id": "ccna-original-20261026-b05-017",
+      "reviewBinding": "passed",
+      "sourceEvidence": "cached_bytes_and_anchors_checked",
+      "humanApproval": "pending",
+      "contentSha256": "36be098768e918c1ce6c0103440464e6be83392af95da7c2928b9792a207be78"
+    },
+    {
+      "id": "ccna-original-20261026-b05-018",
+      "reviewBinding": "passed",
+      "sourceEvidence": "cached_bytes_and_anchors_checked",
+      "humanApproval": "pending",
+      "contentSha256": "37259e28bfad1d75227aa5d26728e274ba38ca1ec63701dda54dd203a6173c09"
+    },
+    {
+      "id": "ccna-original-20261026-b05-019",
+      "reviewBinding": "passed",
+      "sourceEvidence": "cached_bytes_and_anchors_checked",
+      "humanApproval": "pending",
+      "contentSha256": "e1f09ad5dcb65d7d02be6a354131a75518d416e346f25c5bb8071a3d90c8e8f0"
+    },
+    {
+      "id": "ccna-original-20261026-b05-020",
+      "reviewBinding": "passed",
+      "sourceEvidence": "cached_bytes_and_anchors_checked",
+      "humanApproval": "pending",
+      "contentSha256": "8fe862af8e18b44470c0b6def54593f4eab58190bf732680186bde6fefed83c2"
+    },
+    {
+      "id": "ccna-original-20261026-b05-021",
+      "reviewBinding": "passed",
+      "sourceEvidence": "cached_bytes_and_anchors_checked",
+      "humanApproval": "pending",
+      "contentSha256": "b4301f519bc3700ccb392f4649942b714b7d3be03b542e0241484437df541a9b"
+    },
+    {
+      "id": "ccna-original-20261026-b05-022",
+      "reviewBinding": "passed",
+      "sourceEvidence": "cached_bytes_and_anchors_checked",
+      "humanApproval": "pending",
+      "contentSha256": "7df8946118a457b6d18c191c0247c249b51a97114ce5a8067d8ee321a2c7d9d9"
+    },
+    {
+      "id": "ccna-original-20261026-b05-023",
+      "reviewBinding": "passed",
+      "sourceEvidence": "cached_bytes_and_anchors_checked",
+      "humanApproval": "pending",
+      "contentSha256": "045ef3a97b80627390cdf00ec19be6350520c806ae71f84084826d99413ce876"
+    },
+    {
+      "id": "ccna-original-20261026-b05-024",
+      "reviewBinding": "passed",
+      "sourceEvidence": "cached_bytes_and_anchors_checked",
+      "humanApproval": "pending",
+      "contentSha256": "c78f84e2bbe3c712f053478300ed76cd320b7150de0f747590e4189f4f9a5a8b"
+    },
+    {
+      "id": "ccna-original-20261026-b05-025",
+      "reviewBinding": "passed",
+      "sourceEvidence": "cached_bytes_and_anchors_checked",
+      "humanApproval": "pending",
+      "contentSha256": "ea7eb436871b7456b52f8b6cbdb17c369bada97491c9f9c61c056d5c630e5c85"
+    },
+    {
+      "id": "ccna-original-20261026-b05-026",
+      "reviewBinding": "passed",
+      "sourceEvidence": "cached_bytes_and_anchors_checked",
+      "humanApproval": "pending",
+      "contentSha256": "a56b67c592950403661f1dbfa542cc6806d56af40fef4b6e71a8c6703fd8161e"
+    },
+    {
+      "id": "ccna-original-20261026-b05-027",
+      "reviewBinding": "passed",
+      "sourceEvidence": "cached_bytes_and_anchors_checked",
+      "humanApproval": "pending",
+      "contentSha256": "b94e22ed6c0aa86e940e8bf342eb508839fa5e782e0723d379511a48784e1836"
+    },
+    {
+      "id": "ccna-original-20261026-b05-028",
+      "reviewBinding": "passed",
+      "sourceEvidence": "cached_bytes_and_anchors_checked",
+      "humanApproval": "pending",
+      "contentSha256": "b99f6800b6f73bb575c9c8a33ab18ab3797466e1fa85608905722df2f7f6d466"
+    },
+    {
+      "id": "ccna-original-20261026-b05-029",
+      "reviewBinding": "passed",
+      "sourceEvidence": "cached_bytes_and_anchors_checked",
+      "humanApproval": "pending",
+      "contentSha256": "80dd675d303cf0b5e2b90d5e0d194a0ef9628a877784475da64d5cadb56834cf"
+    },
+    {
+      "id": "ccna-original-20261026-b05-030",
+      "reviewBinding": "passed",
+      "sourceEvidence": "cached_bytes_and_anchors_checked",
+      "humanApproval": "pending",
+      "contentSha256": "de7f3d9a8b040268023137729768c51990d366ea0122f420af46fbab1ac7fd32"
+    },
+    {
+      "id": "ccna-original-20261026-b05-031",
+      "reviewBinding": "passed",
+      "sourceEvidence": "cached_bytes_and_anchors_checked",
+      "humanApproval": "pending",
+      "contentSha256": "1096a0b3fde100687da4a2f6bb36c687c9f4a8380a58ca60fd78cfa984ea07de"
+    },
+    {
+      "id": "ccna-original-20261026-b05-032",
+      "reviewBinding": "passed",
+      "sourceEvidence": "cached_bytes_and_anchors_checked",
+      "humanApproval": "pending",
+      "contentSha256": "27236b0f52985a15f89a8c5d147b5118be7c299dd1e773fe27bbe5fd5295eb6e"
+    },
+    {
+      "id": "ccna-original-20261026-b05-033",
+      "reviewBinding": "passed",
+      "sourceEvidence": "cached_bytes_and_anchors_checked",
+      "humanApproval": "pending",
+      "contentSha256": "0d3327bd4d58637efdafd7651df7fc489a3a9a9eea3ac93e6fb77ff046bb5bc9"
+    },
+    {
+      "id": "ccna-original-20261026-b05-034",
+      "reviewBinding": "passed",
+      "sourceEvidence": "cached_bytes_and_anchors_checked",
+      "humanApproval": "pending",
+      "contentSha256": "8229a91ac407e76ec9ec5a0f454f1375384287faaa3d029692c0e26f880a8946"
+    },
+    {
+      "id": "ccna-original-20261026-b05-035",
+      "reviewBinding": "passed",
+      "sourceEvidence": "cached_bytes_and_anchors_checked",
+      "humanApproval": "pending",
+      "contentSha256": "4c0990ce059d3e931d33dc7052c9226b8d449a636eb21f8d12e4ba5b50b509dd"
+    },
+    {
+      "id": "ccna-original-20261026-b05-036",
+      "reviewBinding": "passed",
+      "sourceEvidence": "cached_bytes_and_anchors_checked",
+      "humanApproval": "pending",
+      "contentSha256": "4232241dc23198f6e6465567c9229ca6b8d06062c6954e5db5ff7b4ffcfc6ce7"
+    },
+    {
+      "id": "ccna-original-20261026-b05-037",
+      "reviewBinding": "passed",
+      "sourceEvidence": "cached_bytes_and_anchors_checked",
+      "humanApproval": "pending",
+      "contentSha256": "bb06fb7bf657ffbc8441491037f68dd4a1d5baf56463b4bd7b810f06f79d60d5"
+    },
+    {
+      "id": "ccna-original-20261026-b05-038",
+      "reviewBinding": "passed",
+      "sourceEvidence": "cached_bytes_and_anchors_checked",
+      "humanApproval": "pending",
+      "contentSha256": "096c95d11d588ac09774ab946b2d54299bff76dd438c78c6864760e0b8b5fc1b"
+    },
+    {
+      "id": "ccna-original-20261026-b05-039",
+      "reviewBinding": "passed",
+      "sourceEvidence": "cached_bytes_and_anchors_checked",
+      "humanApproval": "pending",
+      "contentSha256": "4a4f98a986cc75c9488b1c685ac41ee50a7ba4b4fa1e147f25e3b568e8379eb5"
+    },
+    {
+      "id": "ccna-original-20261026-b05-040",
+      "reviewBinding": "passed",
+      "sourceEvidence": "cached_bytes_and_anchors_checked",
+      "humanApproval": "pending",
+      "contentSha256": "519b5f282555f9544355fc1f74e9dd1ea31f849b1e68837242a6eff0a1f73bb9"
+    },
+    {
+      "id": "ccna-original-20261026-b05-041",
+      "reviewBinding": "passed",
+      "sourceEvidence": "cached_bytes_and_anchors_checked",
+      "humanApproval": "pending",
+      "contentSha256": "ed9883f39509027465c90bf5974c6c94df35b44298132a8b6191abc67ec87e41"
+    },
+    {
+      "id": "ccna-original-20261026-b05-042",
+      "reviewBinding": "passed",
+      "sourceEvidence": "cached_bytes_and_anchors_checked",
+      "humanApproval": "pending",
+      "contentSha256": "5825d1f99c1d5f7281bd2234a9bd2df7cc5903981c10e2cdfda37f3673fb15b8"
+    },
+    {
+      "id": "ccna-original-20261026-b05-043",
+      "reviewBinding": "passed",
+      "sourceEvidence": "cached_bytes_and_anchors_checked",
+      "humanApproval": "pending",
+      "contentSha256": "1a5cffaf03c81d36cd47752e6edf094c07a60d9a269e3191b8377fb6c8ecca60"
+    },
+    {
+      "id": "ccna-original-20261026-b05-044",
+      "reviewBinding": "passed",
+      "sourceEvidence": "cached_bytes_and_anchors_checked",
+      "humanApproval": "pending",
+      "contentSha256": "36141b11f9332a75b75da2b54eba1185482f538908e2cce0cc8abf586c14f0ec"
+    },
+    {
+      "id": "ccna-original-20261026-b05-045",
+      "reviewBinding": "passed",
+      "sourceEvidence": "cached_bytes_and_anchors_checked",
+      "humanApproval": "pending",
+      "contentSha256": "908d5b3faa741c2418e03722bf2c201662add528647600e6ca0d7b3c8ae70b65"
+    },
+    {
+      "id": "ccna-original-20261026-b05-046",
+      "reviewBinding": "passed",
+      "sourceEvidence": "cached_bytes_and_anchors_checked",
+      "humanApproval": "pending",
+      "contentSha256": "52e7041cde3eedf0645bb99e3eafea46737794d01898ebb4c977d0b44009cae2"
+    },
+    {
+      "id": "ccna-original-20261026-b05-047",
+      "reviewBinding": "passed",
+      "sourceEvidence": "cached_bytes_and_anchors_checked",
+      "humanApproval": "pending",
+      "contentSha256": "ad208a5a5b661f127477a1d838c23757438646feafea917ab088382d5b4d1656"
+    },
+    {
+      "id": "ccna-original-20261026-b05-048",
+      "reviewBinding": "passed",
+      "sourceEvidence": "cached_bytes_and_anchors_checked",
+      "humanApproval": "pending",
+      "contentSha256": "3153e0cb2fe385655510a6a2df9a1471504734410ac7ec27b61728df483b4af4"
+    },
+    {
+      "id": "ccna-original-20261026-b05-049",
+      "reviewBinding": "passed",
+      "sourceEvidence": "cached_bytes_and_anchors_checked",
+      "humanApproval": "pending",
+      "contentSha256": "d8157ce3c9cfc57e9b1d1fa6be4f9557619c98cb76b1a50e0a51de1c507babb5"
+    },
+    {
+      "id": "ccna-original-20261026-b05-050",
+      "reviewBinding": "passed",
+      "sourceEvidence": "cached_bytes_and_anchors_checked",
+      "humanApproval": "pending",
+      "contentSha256": "66ce91a93c9886fdd23ee8558b3eb1b262e97b98a7a23ba893685f9352d8c72d"
+    }
+  ]
+}

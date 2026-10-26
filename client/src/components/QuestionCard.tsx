@@ -5,7 +5,7 @@ import { CheckIcon, CheckCircleIcon, XCircleIcon, InfoIcon, ShieldIcon } from '.
 
 interface QuestionCardProps {
   question: ExamQuestionView;
-  onConfirm: (selectedOptionIds: string[]) => void;
+  onConfirm: (selectedOptionIds: string[]) => Promise<boolean>;
   mode?: 'strict' | 'study' | string;
   isSubmitting?: boolean;
   // Study mode feedback if available
@@ -16,6 +16,7 @@ interface QuestionCardProps {
   } | null;
   onNext?: () => void;
   hasNext?: boolean;
+  showExplanations?: boolean;
 }
 
 export const QuestionCard: React.FC<QuestionCardProps> = ({
@@ -26,6 +27,7 @@ export const QuestionCard: React.FC<QuestionCardProps> = ({
   studyFeedback,
   onNext,
   hasNext = true,
+  showExplanations = true,
 }) => {
   const { t } = useTranslation();
   const [selectedIds, setSelectedIds] = useState<string[]>([]);
@@ -33,8 +35,8 @@ export const QuestionCard: React.FC<QuestionCardProps> = ({
 
   // Reset local state whenever the question changes
   useEffect(() => {
-    setSelectedIds([]);
-    setHasConfirmed(false);
+    setSelectedIds(question.selectedOptionIds || []);
+    setHasConfirmed(!!question.feedback);
   }, [question.id, question.examQuestionId]);
 
   const isMultiple =
@@ -66,10 +68,10 @@ export const QuestionCard: React.FC<QuestionCardProps> = ({
     ? selectedIds.length === requiredCount
     : selectedIds.length === 1;
 
-  const handleConfirm = () => {
+  const handleConfirm = async () => {
     if (!isSelectionValid || isSubmitting) return;
-    setHasConfirmed(true);
-    onConfirm(selectedIds);
+    const confirmed = await onConfirm(selectedIds);
+    if (confirmed) setHasConfirmed(true);
   };
 
   const getDifficultyBadge = (difficulty: string) => {
@@ -214,7 +216,7 @@ export const QuestionCard: React.FC<QuestionCardProps> = ({
               )}
             </div>
 
-            {studyFeedback.explanation && (
+            {showExplanations && studyFeedback.explanation && (
               <div className="text-sm text-slate-300 leading-relaxed">
                 <span className="font-semibold text-slate-200 block mb-1">
                   {t('exam.studyExplanation')}:
@@ -235,13 +237,13 @@ export const QuestionCard: React.FC<QuestionCardProps> = ({
         </div>
 
         <div className="flex items-center gap-3">
-          {hasConfirmed && mode === 'study' && hasNext ? (
+          {hasConfirmed && mode === 'study' ? (
             <button
               type="button"
               onClick={onNext}
               className="btn-primary"
             >
-              <span>{t('exam.nextQuestion')}</span>
+              <span>{t(hasNext ? 'exam.nextQuestion' : 'exam.finishExam')}</span>
             </button>
           ) : (
             <button

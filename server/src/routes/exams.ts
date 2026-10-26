@@ -1,3 +1,4 @@
+import { z } from 'zod';
 import { Router, Request, Response, NextFunction } from 'express';
 import {
   ApiResponse,
@@ -42,6 +43,7 @@ router.get(
         // Calculate or retrieve topic breakdown
         const results = await scoringEngine.calculateResults(e.id);
         historyItems.push({
+          examVersion: e.examVersion,
           examId: e.id,
           date: e.createdAt.toISOString(),
           language: e.language as any,
@@ -95,6 +97,43 @@ router.post(
   }
 );
 
+router.post('/availability', optionalAuth, async (req: Request, res: Response, next: NextFunction) => {
+  try {
+    const config = createExamSchema.parse(req.body);
+    res.json({ success: true, data: await examEngine.getExamAvailability(config, req.user?.id) });
+  } catch (error) { next(error); }
+});
+
+// Account-backed attempts are private to their owner (or an administrator).
+// Guest attempts use their unguessable exam ID as the local session capability.
+router.use('/:id', optionalAuth, async (req: Request, _res: Response, next: NextFunction) => {
+  try {
+    const exam = await prisma.exam.findUnique({ where: { id: req.params.id } });
+    if (!exam) throw new AppError(404, 'Exam not found.');
+    if (exam.userId && exam.userId !== req.user?.id && req.user?.role !== 'admin') {
+      throw new AppError(403, 'This exam belongs to another user.');
+    }
+    await examEngine.checkExpiry(exam.id);
+    next();
+  } catch (error) { next(error); }
+});
+
+router.post('/:id/change-study-topic', async (req: Request, res: Response, next: NextFunction) => {
+  try {
+    const body = z.object({ topicId: z.string().min(1), questionCount: z.number().int().min(1).max(200).default(1) }).parse(req.body);
+    const state = await examEngine.createStudyTopicPractice(req.params.id, body.topicId, body.questionCount, req.user?.id);
+    res.status(201).json({ success: true, data: state });
+  } catch (error) { next(error); }
+});
+
+router.post('/:id/restart-exercise', async (req: Request, res: Response, next: NextFunction) => {
+  try {
+    const { examQuestionId } = z.object({ examQuestionId: z.string().min(1) }).parse(req.body);
+    const state = await examEngine.restartStudyExercise(req.params.id, examQuestionId, req.user?.id);
+    res.status(201).json({ success: true, data: state });
+  } catch (error) { next(error); }
+});
+
 /**
  * GET /api/exams/:id
  * Get current exam state and time remaining
@@ -144,7 +183,7 @@ router.get(
   '/:id/question',
   async (req: Request, res: Response, next: NextFunction): Promise<void> => {
     try {
-      const question = await examEngine.getCurrentQuestion(req.params.id);
+      const question = await examEngine.getCurrentQuestion(req.params.id, req.query.index === undefined ? undefined : Number(req.query.index));
       const response: ApiResponse<ExamQuestionView> = {
         success: true,
         data: question,

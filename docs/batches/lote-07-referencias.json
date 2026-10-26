@@ -1,0 +1,868 @@
+{
+  "batchId": "original-20261026-b07-50",
+  "generatedAt": "2026-10-26T17:08:42.614557+00:00",
+  "scope": "Machine-assisted documentary review with reproducible provenance; no human approval.",
+  "questionsWithFocusedConsultation": 50,
+  "documents": [
+    {
+      "url": "https://www.cisco.com/c/en/us/support/docs/ip/access-lists/26448-ACLsamples.html",
+      "status": "retrieved",
+      "primary": true,
+      "sha256": "d004fd75573b4f98df59c86de4448a69abd072947aad8a5aac3a838e1e04b8a8",
+      "retrievedAt": "2026-10-26T15:17:06.175969+00:00",
+      "bytes": 71442,
+      "finalUrl": "https://www.cisco.com/c/en/us/support/docs/ip/access-lists/26448-ACLsamples.html",
+      "cachePath": "/workspace/.ccna-cache/references/sha256/d004fd75573b4f98df59c86de4448a69abd072947aad8a5aac3a838e1e04b8a8.html"
+    },
+    {
+      "url": "https://www.cisco.com/c/en/us/support/docs/ip/border-gateway-protocol-bgp/15986-admin-distance.html",
+      "status": "retrieved",
+      "primary": true,
+      "sha256": "3a85eeac0c4496d17ddccd2f3dbb1b09bd6f06370d2c3b573f06da1b7254dcea",
+      "bytes": 73410,
+      "cachePath": "/workspace/.ccna-cache/references/sha256/3a85eeac0c4496d17ddccd2f3dbb1b09bd6f06370d2c3b573f06da1b7254dcea.html",
+      "finalUrl": "https://www.cisco.com/c/en/us/support/docs/ip/border-gateway-protocol-bgp/15986-admin-distance.html",
+      "retrievedAt": "2026-10-26T16:40:07.797627+00:00"
+    },
+    {
+      "url": "https://www.cisco.com/c/en/us/td/docs/solutions/CVD/Campus/cisco-campus-lan-wlan-design-guide.html",
+      "status": "retrieved",
+      "primary": true,
+      "sha256": "7e2a0b3a5f2e913ce9642527280d6a82c9d147ee125fee90da3976ae82974642",
+      "bytes": 451283,
+      "cachePath": "/workspace/.ccna-cache/references/sha256/7e2a0b3a5f2e913ce9642527280d6a82c9d147ee125fee90da3976ae82974642.html",
+      "finalUrl": "https://www.cisco.com/c/en/us/td/docs/solutions/CVD/Campus/cisco-campus-lan-wlan-design-guide.html",
+      "retrievedAt": "2026-10-26T17:00:11.223152+00:00"
+    },
+    {
+      "url": "https://www.cisco.com/c/en/us/td/docs/switches/lan/catalyst9300/software/release/17-15/configuration_guide/lyr2/b_1715_lyr2_9300_cg/configuring_etherchannels.html",
+      "status": "retrieved",
+      "primary": true,
+      "sha256": "45ce331b4fdaa8879ab0b9d9a3fe9d9ea47f074e76df4d6d42823fc7a9e2cb86",
+      "retrievedAt": "2026-10-26T15:17:06.179456+00:00",
+      "bytes": 457157,
+      "finalUrl": "https://www.cisco.com/c/en/us/td/docs/switches/lan/catalyst9300/software/release/17-15/configuration_guide/lyr2/b_1715_lyr2_9300_cg/configuring_etherchannels.html",
+      "cachePath": "/workspace/.ccna-cache/references/sha256/45ce331b4fdaa8879ab0b9d9a3fe9d9ea47f074e76df4d6d42823fc7a9e2cb86.html"
+    },
+    {
+      "url": "https://www.cisco.com/c/en/us/td/docs/switches/lan/catalyst9300/software/release/17-15/configuration_guide/lyr2/b_1715_lyr2_9300_cg/configuring_spanning_tree_protocol.html",
+      "primary": true,
+      "status": "retrieved",
+      "sha256": "bd4a22940684e9d2516551f3e9032737bca5fd15736962bfc778c6b21962fdc7",
+      "bytes": 360720,
+      "retrievedAt": "2026-10-26T14:24:18.153947+00:00",
+      "finalUrl": "https://www.cisco.com/c/en/us/td/docs/switches/lan/catalyst9300/software/release/17-15/configuration_guide/lyr2/b_1715_lyr2_9300_cg/configuring_spanning_tree_protocol.html",
+      "cachePath": "/workspace/.ccna-cache/references/sha256/bd4a22940684e9d2516551f3e9032737bca5fd15736962bfc778c6b21962fdc7.html"
+    },
+    {
+      "url": "https://www.cisco.com/c/en/us/td/docs/switches/lan/catalyst9300/software/release/17-15/configuration_guide/vlan/b_1715_vlan_9300_cg/configuring_vlan_trunks.html",
+      "status": "retrieved",
+      "primary": true,
+      "sha256": "99ba29253329bba1c5edd2bb8780e155945eec145433000463e78519f598b858",
+      "bytes": 245217,
+      "cachePath": "/workspace/.ccna-cache/references/sha256/99ba29253329bba1c5edd2bb8780e155945eec145433000463e78519f598b858.html",
+      "finalUrl": "https://www.cisco.com/c/en/us/td/docs/switches/lan/catalyst9300/software/release/17-15/configuration_guide/vlan/b_1715_vlan_9300_cg/configuring_vlan_trunks.html",
+      "retrievedAt": "2026-10-26T16:40:08.310633+00:00"
+    },
+    {
+      "url": "https://www.rfc-editor.org/rfc/rfc1034.txt",
+      "retrievalUrl": "https://www.rfc-editor.org/rfc/rfc1034.txt",
+      "status": "retrieved",
+      "primary": true,
+      "sha256": "d6b10a71441df879cc2817d23f2dad120c8a5f87e74eba1e4ed4b743a76a891a",
+      "bytes": 126103,
+      "cachePath": "/workspace/.ccna-cache/references/sha256/d6b10a71441df879cc2817d23f2dad120c8a5f87e74eba1e4ed4b743a76a891a.txt",
+      "finalUrl": "https://www.rfc-editor.org/rfc/rfc1034.txt",
+      "retrievedAt": "2026-10-26T17:05:25.921775+00:00"
+    },
+    {
+      "url": "https://www.rfc-editor.org/rfc/rfc1812.txt",
+      "status": "retrieved",
+      "primary": true,
+      "sha256": "72c2c27fecd3eef085f978a8c0ee5f364877708bfc0251af1c8437b56ad2f56d",
+      "retrievedAt": "2026-10-26T15:17:06.768093+00:00",
+      "bytes": 415740,
+      "finalUrl": "https://www.rfc-editor.org/rfc/rfc1812.txt",
+      "cachePath": "/workspace/.ccna-cache/references/sha256/72c2c27fecd3eef085f978a8c0ee5f364877708bfc0251af1c8437b56ad2f56d.txt"
+    },
+    {
+      "url": "https://www.rfc-editor.org/rfc/rfc2308.txt",
+      "primary": true,
+      "status": "retrieved",
+      "sha256": "7fdfca474a92f7dfee13e70998c40c263104087da46cac91944f643562ce3fba",
+      "bytes": 41428,
+      "retrievedAt": "2026-10-26T14:24:20.084350+00:00",
+      "finalUrl": "https://www.rfc-editor.org/rfc/rfc2308.txt",
+      "cachePath": "/workspace/.ccna-cache/references/35589f64c1f298d8.txt"
+    },
+    {
+      "url": "https://www.rfc-editor.org/rfc/rfc2328.txt",
+      "status": "retrieved",
+      "primary": true,
+      "sha256": "981690e297fbba9e8ef655802552b5529cb17f1ffe790ad2d55706cc522ff50c",
+      "retrievedAt": "2026-10-26T15:17:06.882896+00:00",
+      "bytes": 524985,
+      "finalUrl": "https://www.rfc-editor.org/rfc/rfc2328.txt",
+      "cachePath": "/workspace/.ccna-cache/references/sha256/981690e297fbba9e8ef655802552b5529cb17f1ffe790ad2d55706cc522ff50c.txt"
+    },
+    {
+      "url": "https://www.rfc-editor.org/rfc/rfc2904.txt",
+      "retrievalUrl": "https://www.rfc-editor.org/rfc/rfc2904.txt",
+      "status": "retrieved",
+      "primary": true,
+      "sha256": "802ad25d792aa2968c48a7cde189a1aff23f9b59b350d6d4531da876b709a205",
+      "bytes": 78098,
+      "cachePath": "/workspace/.ccna-cache/references/sha256/802ad25d792aa2968c48a7cde189a1aff23f9b59b350d6d4531da876b709a205.txt",
+      "finalUrl": "https://www.rfc-editor.org/rfc/rfc2904.txt",
+      "retrievedAt": "2026-10-26T17:05:25.920657+00:00"
+    },
+    {
+      "url": "https://www.rfc-editor.org/rfc/rfc3022.txt",
+      "retrievalUrl": "https://www.rfc-editor.org/rfc/rfc3022.txt",
+      "status": "retrieved",
+      "primary": true,
+      "sha256": "c57fe60c46eff630d4d82eece5bf624ba3ac80f16711e7acdb44a28e01331d86",
+      "bytes": 37675,
+      "cachePath": "/workspace/.ccna-cache/references/sha256/c57fe60c46eff630d4d82eece5bf624ba3ac80f16711e7acdb44a28e01331d86.txt",
+      "finalUrl": "https://www.rfc-editor.org/rfc/rfc3022.txt",
+      "retrievedAt": "2026-10-26T17:05:25.951081+00:00"
+    },
+    {
+      "url": "https://www.rfc-editor.org/rfc/rfc3376.txt",
+      "retrievalUrl": "https://www.rfc-editor.org/rfc/rfc3376.txt",
+      "status": "retrieved",
+      "primary": true,
+      "sha256": "0f28032de6034da1e13d85f2a34ff9f2956c0e7bb9ad9dd3be84c7ddcde780ed",
+      "bytes": 119726,
+      "cachePath": "/workspace/.ccna-cache/references/sha256/0f28032de6034da1e13d85f2a34ff9f2956c0e7bb9ad9dd3be84c7ddcde780ed.txt",
+      "finalUrl": "https://www.rfc-editor.org/rfc/rfc3376.txt",
+      "retrievedAt": "2026-10-26T17:05:25.946429+00:00"
+    },
+    {
+      "url": "https://www.rfc-editor.org/rfc/rfc4007.txt",
+      "retrievalUrl": "https://www.rfc-editor.org/rfc/rfc4007.txt",
+      "status": "retrieved",
+      "primary": true,
+      "sha256": "d39c1d5327dd2c21f8eef9aa93d260353be5c6e3f6d2c157d1f4e3f784a259a3",
+      "bytes": 53555,
+      "cachePath": "/workspace/.ccna-cache/references/sha256/d39c1d5327dd2c21f8eef9aa93d260353be5c6e3f6d2c157d1f4e3f784a259a3.txt",
+      "finalUrl": "https://www.rfc-editor.org/rfc/rfc4007.txt",
+      "retrievedAt": "2026-10-26T17:05:25.900541+00:00"
+    },
+    {
+      "url": "https://www.rfc-editor.org/rfc/rfc4861.txt",
+      "status": "retrieved",
+      "primary": true,
+      "sha256": "1a4309c117d765a7c0edfcb2297fc90c3c09f0fcae255f15e53b20748bcc09fb",
+      "retrievedAt": "2026-10-26T15:17:07.392284+00:00",
+      "bytes": 235106,
+      "finalUrl": "https://www.rfc-editor.org/rfc/rfc4861.txt",
+      "cachePath": "/workspace/.ccna-cache/references/sha256/1a4309c117d765a7c0edfcb2297fc90c3c09f0fcae255f15e53b20748bcc09fb.txt"
+    },
+    {
+      "url": "https://www.rfc-editor.org/rfc/rfc4862.txt",
+      "status": "retrieved",
+      "primary": true,
+      "sha256": "6d3d2af5d2f6c9109b4ebd038ff7a6cec56771bbb0b5d8bd520357e03f097aa2",
+      "bytes": 72482,
+      "cachePath": "/workspace/.ccna-cache/references/sha256/6d3d2af5d2f6c9109b4ebd038ff7a6cec56771bbb0b5d8bd520357e03f097aa2.txt",
+      "finalUrl": "https://www.rfc-editor.org/rfc/rfc4862.txt",
+      "retrievedAt": "2026-10-26T16:40:08.225551+00:00"
+    },
+    {
+      "url": "https://www.rfc-editor.org/rfc/rfc4949.txt",
+      "primary": true,
+      "status": "retrieved",
+      "sha256": "32d1e3837ae5a7d2e99a63f43c6fea3dd350ffc6ac55b3aaadad250546ad7f87",
+      "bytes": 867626,
+      "retrievedAt": "2026-10-26T14:24:20.854164+00:00",
+      "finalUrl": "https://www.rfc-editor.org/rfc/rfc4949.txt",
+      "cachePath": "/workspace/.ccna-cache/references/sha256/32d1e3837ae5a7d2e99a63f43c6fea3dd350ffc6ac55b3aaadad250546ad7f87.txt"
+    },
+    {
+      "url": "https://www.rfc-editor.org/rfc/rfc5415.txt",
+      "status": "retrieved",
+      "primary": true,
+      "sha256": "48e0ebb6efe752602694a25db0a50d9777eeda4a565119d1f17bba0b1f522ed0",
+      "retrievedAt": "2026-10-26T15:17:07.550949+00:00",
+      "bytes": 345381,
+      "finalUrl": "https://www.rfc-editor.org/rfc/rfc5415.txt",
+      "cachePath": "/workspace/.ccna-cache/references/sha256/48e0ebb6efe752602694a25db0a50d9777eeda4a565119d1f17bba0b1f522ed0.txt"
+    },
+    {
+      "url": "https://www.rfc-editor.org/rfc/rfc5416.txt",
+      "status": "retrieved",
+      "primary": true,
+      "sha256": "ef326f22d2302b43547dcad37fbc545b075dcae7941372b0569fd84e0f5a4af2",
+      "retrievedAt": "2026-10-26T15:17:07.551535+00:00",
+      "bytes": 175870,
+      "finalUrl": "https://www.rfc-editor.org/rfc/rfc5416.txt",
+      "cachePath": "/workspace/.ccna-cache/references/sha256/ef326f22d2302b43547dcad37fbc545b075dcae7941372b0569fd84e0f5a4af2.txt"
+    },
+    {
+      "url": "https://www.rfc-editor.org/rfc/rfc5905.txt",
+      "status": "retrieved",
+      "primary": true,
+      "sha256": "8b7abd903c60202e2953ee012fefa6916666c3b0c71825c748cdd262024fb268",
+      "retrievedAt": "2026-10-26T15:17:07.643829+00:00",
+      "bytes": 241096,
+      "finalUrl": "https://www.rfc-editor.org/rfc/rfc5905.txt",
+      "cachePath": "/workspace/.ccna-cache/references/sha256/8b7abd903c60202e2953ee012fefa6916666c3b0c71825c748cdd262024fb268.txt"
+    },
+    {
+      "url": "https://www.rfc-editor.org/rfc/rfc7009.txt",
+      "status": "retrieved",
+      "primary": true,
+      "sha256": "b2f346d5a87ba9d7f09047901257a65f7ac0b26352095969c25821afab447829",
+      "bytes": 23517,
+      "cachePath": "/workspace/.ccna-cache/references/sha256/b2f346d5a87ba9d7f09047901257a65f7ac0b26352095969c25821afab447829.txt",
+      "finalUrl": "https://www.rfc-editor.org/rfc/rfc7009.txt",
+      "retrievedAt": "2026-10-26T17:00:09.401323+00:00"
+    },
+    {
+      "url": "https://www.rfc-editor.org/rfc/rfc7348.txt",
+      "status": "retrieved",
+      "primary": true,
+      "sha256": "731475429b30bf4b29a102a0c9217cb0d3522c34fd546ba7b134fec931e83574",
+      "bytes": 49406,
+      "cachePath": "/workspace/.ccna-cache/references/sha256/731475429b30bf4b29a102a0c9217cb0d3522c34fd546ba7b134fec931e83574.txt",
+      "finalUrl": "https://www.rfc-editor.org/rfc/rfc7348.txt",
+      "retrievedAt": "2026-10-26T17:00:09.080419+00:00"
+    },
+    {
+      "url": "https://www.rfc-editor.org/rfc/rfc7365.txt",
+      "status": "retrieved",
+      "primary": true,
+      "sha256": "1d81d81d350153f4327cf40695a77d7ea194a246ec463a888ee2468e46691250",
+      "bytes": 57811,
+      "cachePath": "/workspace/.ccna-cache/references/sha256/1d81d81d350153f4327cf40695a77d7ea194a246ec463a888ee2468e46691250.txt",
+      "finalUrl": "https://www.rfc-editor.org/rfc/rfc7365.txt",
+      "retrievedAt": "2026-10-26T17:00:09.045009+00:00"
+    },
+    {
+      "url": "https://www.rfc-editor.org/rfc/rfc7426.txt",
+      "status": "retrieved",
+      "primary": true,
+      "sha256": "24924cddb9b235cb19d6d0ee2d9ce28702a11105d3d9858459cee3cbeb76f12c",
+      "bytes": 85111,
+      "cachePath": "/workspace/.ccna-cache/references/sha256/24924cddb9b235cb19d6d0ee2d9ce28702a11105d3d9858459cee3cbeb76f12c.txt",
+      "finalUrl": "https://www.rfc-editor.org/rfc/rfc7426.txt",
+      "retrievedAt": "2026-10-26T17:00:09.075008+00:00"
+    },
+    {
+      "url": "https://www.rfc-editor.org/rfc/rfc7938.txt",
+      "status": "retrieved",
+      "primary": true,
+      "sha256": "d71d4e87fca8229964568357aaa38b2b2e0c8387baac895f7620908f017940ed",
+      "bytes": 89682,
+      "cachePath": "/workspace/.ccna-cache/references/sha256/d71d4e87fca8229964568357aaa38b2b2e0c8387baac895f7620908f017940ed.txt",
+      "finalUrl": "https://www.rfc-editor.org/rfc/rfc7938.txt",
+      "retrievedAt": "2026-10-26T17:00:09.049292+00:00"
+    },
+    {
+      "url": "https://www.rfc-editor.org/rfc/rfc8259.txt",
+      "primary": true,
+      "status": "retrieved",
+      "sha256": "61a5378f4255c720beb2a4b4a63b29540147c140f36988bf086291989b4cd2d7",
+      "bytes": 28360,
+      "retrievedAt": "2026-10-26T14:24:21.101480+00:00",
+      "finalUrl": "https://www.rfc-editor.org/rfc/rfc8259.txt",
+      "cachePath": "/workspace/.ccna-cache/references/sha256/61a5378f4255c720beb2a4b4a63b29540147c140f36988bf086291989b4cd2d7.txt"
+    },
+    {
+      "url": "https://www.rfc-editor.org/rfc/rfc9110.txt",
+      "status": "retrieved",
+      "primary": true,
+      "sha256": "21c1cdce6ab0e5509b04d84a28000836c7a087cf786efe6f04877ebfff47232a",
+      "retrievedAt": "2026-10-26T15:17:07.867903+00:00",
+      "bytes": 502941,
+      "finalUrl": "https://www.rfc-editor.org/rfc/rfc9110.txt",
+      "cachePath": "/workspace/.ccna-cache/references/sha256/21c1cdce6ab0e5509b04d84a28000836c7a087cf786efe6f04877ebfff47232a.txt"
+    },
+    {
+      "url": "https://www.rfc-editor.org/rfc/rfc9190.txt",
+      "status": "retrieved",
+      "primary": true,
+      "sha256": "009cbd6aa418567ddb9f87fbe32092d17bfc4fbe39457521c5e0129c0a2e464e",
+      "bytes": 83835,
+      "cachePath": "/workspace/.ccna-cache/references/sha256/009cbd6aa418567ddb9f87fbe32092d17bfc4fbe39457521c5e0129c0a2e464e.txt",
+      "finalUrl": "https://www.rfc-editor.org/rfc/rfc9190.txt",
+      "retrievedAt": "2026-10-26T17:00:09.600309+00:00"
+    },
+    {
+      "url": "https://www.rfc-editor.org/rfc/rfc9315.txt",
+      "status": "retrieved",
+      "primary": true,
+      "sha256": "10c4a4293dc27be8eeb31dec8ded32b0e0355334deffc1772b50179106be6997",
+      "bytes": 71565,
+      "cachePath": "/workspace/.ccna-cache/references/sha256/10c4a4293dc27be8eeb31dec8ded32b0e0355334deffc1772b50179106be6997.txt",
+      "finalUrl": "https://www.rfc-editor.org/rfc/rfc9315.txt",
+      "retrievedAt": "2026-10-26T17:00:09.288625+00:00"
+    },
+    {
+      "url": "https://www.rfc-editor.org/rfc/rfc3748.txt",
+      "status": "retrieved",
+      "primary": true,
+      "sha256": "47b3a35dcc8b52f8e0ff67477a8d38b3d801a5478e62b9f6b3c20246428d1d74",
+      "retrievedAt": "2026-10-26T15:17:07.223923+00:00",
+      "bytes": 157994,
+      "finalUrl": "https://www.rfc-editor.org/rfc/rfc3748.txt",
+      "cachePath": "/workspace/.ccna-cache/references/sha256/47b3a35dcc8b52f8e0ff67477a8d38b3d801a5478e62b9f6b3c20246428d1d74.txt"
+    }
+  ],
+  "focusedEvidence": [
+    {
+      "questionId": "ccna-original-20261026-b07-001",
+      "url": "https://www.cisco.com/c/en/us/td/docs/solutions/CVD/Campus/cisco-campus-lan-wlan-design-guide.html",
+      "section": "Access layer",
+      "anchors": [
+        "Access layer —Provides endpoints and users direct access"
+      ],
+      "sha256": "7e2a0b3a5f2e913ce9642527280d6a82c9d147ee125fee90da3976ae82974642",
+      "consultedAt": "2026-10-26T17:08:42.614557+00:00",
+      "contentSha256": "2ac5aad87912ce30af0cf415c2ed4effc8dff26add45f0afb5caba852a51447e"
+    },
+    {
+      "questionId": "ccna-original-20261026-b07-002",
+      "url": "https://www.cisco.com/c/en/us/td/docs/solutions/CVD/Campus/cisco-campus-lan-wlan-design-guide.html",
+      "section": "Distribution layer",
+      "anchors": [
+        "Distribution layer —Aggregates access layers"
+      ],
+      "sha256": "7e2a0b3a5f2e913ce9642527280d6a82c9d147ee125fee90da3976ae82974642",
+      "consultedAt": "2026-10-26T17:08:42.614557+00:00",
+      "contentSha256": "3280ee946d9af269a18e8b3a7b8b74526d387084244e84b5fb63c16331816a4b"
+    },
+    {
+      "questionId": "ccna-original-20261026-b07-003",
+      "url": "https://www.cisco.com/c/en/us/td/docs/solutions/CVD/Campus/cisco-campus-lan-wlan-design-guide.html",
+      "section": "Two-tier design",
+      "anchors": [
+        "Distribution layer functioning as a collapsed core"
+      ],
+      "sha256": "7e2a0b3a5f2e913ce9642527280d6a82c9d147ee125fee90da3976ae82974642",
+      "consultedAt": "2026-10-26T17:08:42.614557+00:00",
+      "contentSha256": "f354efd69478ef62473583302319bf8b4e5c04fd6b4578ac1ae459060e0b1570"
+    },
+    {
+      "questionId": "ccna-original-20261026-b07-004",
+      "url": "https://www.rfc-editor.org/rfc/rfc7938.txt",
+      "section": "3",
+      "anchors": [
+        "Leaf and Spine"
+      ],
+      "sha256": "d71d4e87fca8229964568357aaa38b2b2e0c8387baac895f7620908f017940ed",
+      "consultedAt": "2026-10-26T17:08:42.614557+00:00",
+      "contentSha256": "c7aa478692aee773c6c77f2f41a95cfa72e02deb7df1a55527f44c1dc4f1f910"
+    },
+    {
+      "questionId": "ccna-original-20261026-b07-005",
+      "url": "https://www.rfc-editor.org/rfc/rfc7938.txt",
+      "section": "3",
+      "anchors": [
+        "Clos Network Topology"
+      ],
+      "sha256": "d71d4e87fca8229964568357aaa38b2b2e0c8387baac895f7620908f017940ed",
+      "consultedAt": "2026-10-26T17:08:42.614557+00:00",
+      "contentSha256": "c4cea7cb19631135cbc6acece853b26d64ffb6dc1216db0774d74b9c0447de7d"
+    },
+    {
+      "questionId": "ccna-original-20261026-b07-006",
+      "url": "https://www.rfc-editor.org/rfc/rfc7365.txt",
+      "section": "Underlay and overlay definitions",
+      "anchors": [
+        "underlay"
+      ],
+      "sha256": "1d81d81d350153f4327cf40695a77d7ea194a246ec463a888ee2468e46691250",
+      "consultedAt": "2026-10-26T17:08:42.614557+00:00",
+      "contentSha256": "3759b3a54160b4aac0f539fe4817f0349cee79436e6eb4f87be57624c05104f6"
+    },
+    {
+      "questionId": "ccna-original-20261026-b07-007",
+      "url": "https://www.rfc-editor.org/rfc/rfc7365.txt",
+      "section": "2",
+      "anchors": [
+        "virtual switch within a hypervisor"
+      ],
+      "sha256": "1d81d81d350153f4327cf40695a77d7ea194a246ec463a888ee2468e46691250",
+      "consultedAt": "2026-10-26T17:08:42.614557+00:00",
+      "contentSha256": "809ffd10c04221889f2aa701572d12606a365a5637197dda80f1249f17b8283d"
+    },
+    {
+      "questionId": "ccna-original-20261026-b07-008",
+      "url": "https://www.rfc-editor.org/rfc/rfc7348.txt",
+      "section": "5",
+      "anchors": [
+        "24-bit segment ID"
+      ],
+      "sha256": "731475429b30bf4b29a102a0c9217cb0d3522c34fd546ba7b134fec931e83574",
+      "consultedAt": "2026-10-26T17:08:42.614557+00:00",
+      "contentSha256": "254e436328a033533ff791ce55131b75267f09bbf43a70d5641b58c64549bbec"
+    },
+    {
+      "questionId": "ccna-original-20261026-b07-009",
+      "url": "https://www.rfc-editor.org/rfc/rfc7348.txt",
+      "section": "4",
+      "anchors": [
+        "VM never sees it"
+      ],
+      "sha256": "731475429b30bf4b29a102a0c9217cb0d3522c34fd546ba7b134fec931e83574",
+      "consultedAt": "2026-10-26T17:08:42.614557+00:00",
+      "contentSha256": "9e795f8d34374c48068184669b70553cae02a3c994adfb01d438057874aa48eb"
+    },
+    {
+      "questionId": "ccna-original-20261026-b07-010",
+      "url": "https://www.rfc-editor.org/rfc/rfc7348.txt",
+      "section": "7. Security Considerations",
+      "anchors": [
+        "Security Considerations"
+      ],
+      "sha256": "731475429b30bf4b29a102a0c9217cb0d3522c34fd546ba7b134fec931e83574",
+      "consultedAt": "2026-10-26T17:08:42.614557+00:00",
+      "contentSha256": "2db90633445854c069c811b7f715f1605d53b9b4a6e79b338b36833701315cc4"
+    },
+    {
+      "questionId": "ccna-original-20261026-b07-011",
+      "url": "https://www.rfc-editor.org/rfc/rfc5416.txt",
+      "section": "2.5",
+      "anchors": [
+        "BSSID to WLAN ID Mapping"
+      ],
+      "sha256": "ef326f22d2302b43547dcad37fbc545b075dcae7941372b0569fd84e0f5a4af2",
+      "consultedAt": "2026-10-26T17:08:42.614557+00:00",
+      "contentSha256": "3d1f0d67905f3d1030e0e8f398897d829bad02480723bd6920134a031958f205"
+    },
+    {
+      "questionId": "ccna-original-20261026-b07-012",
+      "url": "https://www.rfc-editor.org/rfc/rfc5416.txt",
+      "section": "Transmit-power fields",
+      "anchors": [
+        "transmit power, in dBm"
+      ],
+      "sha256": "ef326f22d2302b43547dcad37fbc545b075dcae7941372b0569fd84e0f5a4af2",
+      "consultedAt": "2026-10-26T17:08:42.614557+00:00",
+      "contentSha256": "383e6c77a12c08c7cff3a2667f57ac37d73a152b28da79773201c9f25cc065e8"
+    },
+    {
+      "questionId": "ccna-original-20261026-b07-013",
+      "url": "https://www.rfc-editor.org/rfc/rfc5415.txt",
+      "section": "2.1",
+      "anchors": [
+        "CAPWAP Control Channel",
+        "CAPWAP Data Channel"
+      ],
+      "sha256": "48e0ebb6efe752602694a25db0a50d9777eeda4a565119d1f17bba0b1f522ed0",
+      "consultedAt": "2026-10-26T17:08:42.614557+00:00",
+      "contentSha256": "d44fbc153008e9242615e51b1b91f62216795b9954680eead2153f9e8f56eaa5"
+    },
+    {
+      "questionId": "ccna-original-20261026-b07-014",
+      "url": "https://www.cisco.com/c/en/us/td/docs/solutions/CVD/Campus/cisco-campus-lan-wlan-design-guide.html",
+      "section": "Oversubscription ratios",
+      "anchors": [
+        "Oversubscription ratios"
+      ],
+      "sha256": "7e2a0b3a5f2e913ce9642527280d6a82c9d147ee125fee90da3976ae82974642",
+      "consultedAt": "2026-10-26T17:08:42.614557+00:00",
+      "contentSha256": "a9633dde0eb374e6242ac71824d1d8e063223a7f2c9e405f6bb75b91c4142180"
+    },
+    {
+      "questionId": "ccna-original-20261026-b07-015",
+      "url": "https://www.cisco.com/c/en/us/td/docs/switches/lan/catalyst9300/software/release/17-15/configuration_guide/lyr2/b_1715_lyr2_9300_cg/configuring_spanning_tree_protocol.html",
+      "section": "Port Priority",
+      "anchors": [
+        "port priority"
+      ],
+      "sha256": "bd4a22940684e9d2516551f3e9032737bca5fd15736962bfc778c6b21962fdc7",
+      "consultedAt": "2026-10-26T17:08:42.614557+00:00",
+      "contentSha256": "71e072d09d5548a0d4288cb622af6e96c88206c8ee2a03fda31322d7f9dbd24b"
+    },
+    {
+      "questionId": "ccna-original-20261026-b07-016",
+      "url": "https://www.cisco.com/c/en/us/td/docs/switches/lan/catalyst9300/software/release/17-15/configuration_guide/lyr2/b_1715_lyr2_9300_cg/configuring_spanning_tree_protocol.html",
+      "section": "Accelerated Aging",
+      "anchors": [
+        "spanning-tree reconfiguration can cause many station locations to change"
+      ],
+      "sha256": "bd4a22940684e9d2516551f3e9032737bca5fd15736962bfc778c6b21962fdc7",
+      "consultedAt": "2026-10-26T17:08:42.614557+00:00",
+      "contentSha256": "e35d90e754194f1f072fa0c1ab8ac9f74e6c649db7b503714fd0422d346b9614"
+    },
+    {
+      "questionId": "ccna-original-20261026-b07-017",
+      "url": "https://www.cisco.com/c/en/us/td/docs/switches/lan/catalyst9300/software/release/17-15/configuration_guide/lyr2/b_1715_lyr2_9300_cg/configuring_etherchannels.html",
+      "section": "LACP Rate",
+      "anchors": [
+        "default rate (30 seconds) to the fast rate (1 second)"
+      ],
+      "sha256": "45ce331b4fdaa8879ab0b9d9a3fe9d9ea47f074e76df4d6d42823fc7a9e2cb86",
+      "consultedAt": "2026-10-26T17:08:42.614557+00:00",
+      "contentSha256": "59c97e01c3da1139e8d136185d551cf3a09a0261fb962e7cd2b4f71ef95039df"
+    },
+    {
+      "questionId": "ccna-original-20261026-b07-018",
+      "url": "https://www.cisco.com/c/en/us/td/docs/switches/lan/catalyst9300/software/release/17-15/configuration_guide/lyr2/b_1715_lyr2_9300_cg/configuring_etherchannels.html",
+      "section": "LACP Port Priority",
+      "anchors": [
+        "port priority"
+      ],
+      "sha256": "45ce331b4fdaa8879ab0b9d9a3fe9d9ea47f074e76df4d6d42823fc7a9e2cb86",
+      "consultedAt": "2026-10-26T17:08:42.614557+00:00",
+      "contentSha256": "580eeeadbc26b090c6d20cded186eedb54f04007b5d556019c9430a212c46101"
+    },
+    {
+      "questionId": "ccna-original-20261026-b07-019",
+      "url": "https://www.cisco.com/c/en/us/td/docs/switches/lan/catalyst9300/software/release/17-15/configuration_guide/vlan/b_1715_vlan_9300_cg/configuring_vlan_trunks.html",
+      "section": "Trunking Modes",
+      "anchors": [
+        "You must manually configure the neighboring interface as a trunk"
+      ],
+      "sha256": "99ba29253329bba1c5edd2bb8780e155945eec145433000463e78519f598b858",
+      "consultedAt": "2026-10-26T17:08:42.614557+00:00",
+      "contentSha256": "d88a2ba07a79af6e0900265fc1bd3b2f650a978abc6796f67beffbd37e66049f"
+    },
+    {
+      "questionId": "ccna-original-20261026-b07-020",
+      "url": "https://www.cisco.com/c/en/us/td/docs/switches/lan/catalyst9300/software/release/17-15/configuration_guide/vlan/b_1715_vlan_9300_cg/configuring_vlan_trunks.html",
+      "section": "Trunking Modes",
+      "anchors": [
+        "Prevents the interface from generating DTP frames"
+      ],
+      "sha256": "99ba29253329bba1c5edd2bb8780e155945eec145433000463e78519f598b858",
+      "consultedAt": "2026-10-26T17:08:42.614557+00:00",
+      "contentSha256": "edc44a4ab7ab74daa336401c09863dfb1a73943e0afb7a8cf52be0a9fb305536"
+    },
+    {
+      "questionId": "ccna-original-20261026-b07-021",
+      "url": "https://www.rfc-editor.org/rfc/rfc3376.txt",
+      "section": "1",
+      "anchors": [
+        "report their IP multicast group memberships"
+      ],
+      "sha256": "0f28032de6034da1e13d85f2a34ff9f2956c0e7bb9ad9dd3be84c7ddcde780ed",
+      "consultedAt": "2026-10-26T17:08:42.614557+00:00",
+      "contentSha256": "6de601b4b9d2a8eade74fcd309436e83b3a2f8ca565ae71b747420b7f2a46ef7"
+    },
+    {
+      "questionId": "ccna-original-20261026-b07-022",
+      "url": "https://www.rfc-editor.org/rfc/rfc4862.txt",
+      "section": "2",
+      "anchors": [
+        "A deprecated address should be used only by applications"
+      ],
+      "sha256": "6d3d2af5d2f6c9109b4ebd038ff7a6cec56771bbb0b5d8bd520357e03f097aa2",
+      "consultedAt": "2026-10-26T17:08:42.614557+00:00",
+      "contentSha256": "766d378badeee4d5d6eeea5fb89655eb59d4b8f346b40df91c9fca83e7ff4ab8"
+    },
+    {
+      "questionId": "ccna-original-20261026-b07-023",
+      "url": "https://www.rfc-editor.org/rfc/rfc4862.txt",
+      "section": "5.5.4",
+      "anchors": [
+        "A valid address becomes invalid when its valid lifetime expires"
+      ],
+      "sha256": "6d3d2af5d2f6c9109b4ebd038ff7a6cec56771bbb0b5d8bd520357e03f097aa2",
+      "consultedAt": "2026-10-26T17:08:42.614557+00:00",
+      "contentSha256": "88b46fb26de4ad95360efbaf4769024bf2a4695c01051cb1268ad2df5aa050b4"
+    },
+    {
+      "questionId": "ccna-original-20261026-b07-024",
+      "url": "https://www.rfc-editor.org/rfc/rfc2328.txt",
+      "section": "10.5",
+      "anchors": [
+        "Network Mask in the received Hello Packet should be ignored"
+      ],
+      "sha256": "981690e297fbba9e8ef655802552b5529cb17f1ffe790ad2d55706cc522ff50c",
+      "consultedAt": "2026-10-26T17:08:42.614557+00:00",
+      "contentSha256": "c6428a1ae87297a7bb53984478bea758a0407554921b6944f06ca953e7ab8d3b"
+    },
+    {
+      "questionId": "ccna-original-20261026-b07-025",
+      "url": "https://www.rfc-editor.org/rfc/rfc2328.txt",
+      "section": "9.4 and 10.4",
+      "anchors": [
+        "Priority of 0 are ineligible",
+        "Whether to become adjacent"
+      ],
+      "sha256": "981690e297fbba9e8ef655802552b5529cb17f1ffe790ad2d55706cc522ff50c",
+      "consultedAt": "2026-10-26T17:08:42.614557+00:00",
+      "contentSha256": "e5debf420b53aef3938e0e1c7b5b4690fa9ab61a8951c6a46d12bf52e7b3b9ef"
+    },
+    {
+      "questionId": "ccna-original-20261026-b07-026",
+      "url": "https://www.rfc-editor.org/rfc/rfc2328.txt",
+      "section": "A.1",
+      "anchors": [
+        "OSPF is IP protocol number 89"
+      ],
+      "sha256": "981690e297fbba9e8ef655802552b5529cb17f1ffe790ad2d55706cc522ff50c",
+      "consultedAt": "2026-10-26T17:08:42.614557+00:00",
+      "contentSha256": "bc81e78eb143018fec69adad99cf422fdcebc9d4386b558804f50d2bde5d5270"
+    },
+    {
+      "questionId": "ccna-original-20261026-b07-027",
+      "url": "https://www.rfc-editor.org/rfc/rfc2328.txt",
+      "section": "A.1",
+      "anchors": [
+        "AllDRouters This multicast address has been assigned the value 224.0.0.6"
+      ],
+      "sha256": "981690e297fbba9e8ef655802552b5529cb17f1ffe790ad2d55706cc522ff50c",
+      "consultedAt": "2026-10-26T17:08:42.614557+00:00",
+      "contentSha256": "f942863fc2a7341003d9365a5300132572c3c6655bc0cb2b75b4f02098e62acf"
+    },
+    {
+      "questionId": "ccna-original-20261026-b07-028",
+      "url": "https://www.rfc-editor.org/rfc/rfc4861.txt",
+      "section": "5.1",
+      "anchors": [
+        "Neighbor Cache"
+      ],
+      "sha256": "1a4309c117d765a7c0edfcb2297fc90c3c09f0fcae255f15e53b20748bcc09fb",
+      "consultedAt": "2026-10-26T17:08:42.614557+00:00",
+      "contentSha256": "b3ea528258d49f0dd539d4db6f2e4c2de73cb444ab928aa1455981503710e08e"
+    },
+    {
+      "questionId": "ccna-original-20261026-b07-029",
+      "url": "https://www.rfc-editor.org/rfc/rfc1812.txt",
+      "section": "5.2.1",
+      "anchors": [
+        "Link Layer"
+      ],
+      "sha256": "72c2c27fecd3eef085f978a8c0ee5f364877708bfc0251af1c8437b56ad2f56d",
+      "consultedAt": "2026-10-26T17:08:42.614557+00:00",
+      "contentSha256": "debd7ba5a102a3a95b24377917082d68727b9ff5fabddd26115efcf8e10efb5d"
+    },
+    {
+      "questionId": "ccna-original-20261026-b07-030",
+      "url": "https://www.rfc-editor.org/rfc/rfc4007.txt",
+      "section": "5",
+      "anchors": [
+        "zone"
+      ],
+      "sha256": "d39c1d5327dd2c21f8eef9aa93d260353be5c6e3f6d2c157d1f4e3f784a259a3",
+      "consultedAt": "2026-10-26T17:08:42.614557+00:00",
+      "contentSha256": "9eedd8d52facc8e4b95020926af33eb645e15bd394975972297b206525bcae19"
+    },
+    {
+      "questionId": "ccna-original-20261026-b07-031",
+      "url": "https://www.rfc-editor.org/rfc/rfc2328.txt",
+      "section": "C.3",
+      "anchors": [
+        "interface output cost must always be greater than 0"
+      ],
+      "sha256": "981690e297fbba9e8ef655802552b5529cb17f1ffe790ad2d55706cc522ff50c",
+      "consultedAt": "2026-10-26T17:08:42.614557+00:00",
+      "contentSha256": "7507797e04e2ce9b1fe1f312fd97428ba88154737c64f745b0f7a44372f3532e"
+    },
+    {
+      "questionId": "ccna-original-20261026-b07-032",
+      "url": "https://www.cisco.com/c/en/us/support/docs/ip/border-gateway-protocol-bgp/15986-admin-distance.html",
+      "section": "Administrative Distance",
+      "anchors": [
+        "administrative distance of 110"
+      ],
+      "sha256": "3a85eeac0c4496d17ddccd2f3dbb1b09bd6f06370d2c3b573f06da1b7254dcea",
+      "consultedAt": "2026-10-26T17:08:42.614557+00:00",
+      "contentSha256": "6b1dabfe1cca55334ba58f94879950b1e9b975c6a477ee1b31c05ea40de09a16"
+    },
+    {
+      "questionId": "ccna-original-20261026-b07-033",
+      "url": "https://www.rfc-editor.org/rfc/rfc2308.txt",
+      "section": "5",
+      "anchors": [
+        "minimum of the MINIMUM field of the SOA record and the TTL of the SOA itself"
+      ],
+      "sha256": "7fdfca474a92f7dfee13e70998c40c263104087da46cac91944f643562ce3fba",
+      "consultedAt": "2026-10-26T17:08:42.614557+00:00",
+      "contentSha256": "c4cabaa924749bc61f411fa194944d7dd9dd80562287cd64dccb23b744dbddf0"
+    },
+    {
+      "questionId": "ccna-original-20261026-b07-034",
+      "url": "https://www.rfc-editor.org/rfc/rfc3022.txt",
+      "section": "2.1",
+      "anchors": [
+        "after the last global address from the address list is used up"
+      ],
+      "sha256": "c57fe60c46eff630d4d82eece5bf624ba3ac80f16711e7acdb44a28e01331d86",
+      "consultedAt": "2026-10-26T17:08:42.614557+00:00",
+      "contentSha256": "d9b2a3818168cc5e4a7d79627540cbbca527b0506b6e0b280e083b551cd583f3"
+    },
+    {
+      "questionId": "ccna-original-20261026-b07-035",
+      "url": "https://www.rfc-editor.org/rfc/rfc3022.txt",
+      "section": "2.2",
+      "anchors": [
+        "Network Address Port Translation"
+      ],
+      "sha256": "c57fe60c46eff630d4d82eece5bf624ba3ac80f16711e7acdb44a28e01331d86",
+      "consultedAt": "2026-10-26T17:08:42.614557+00:00",
+      "contentSha256": "082619f94a2b8016e3f619cfd2d990ad34cc25a0efb2d5ab46b51a2fbe444d93"
+    },
+    {
+      "questionId": "ccna-original-20261026-b07-036",
+      "url": "https://www.rfc-editor.org/rfc/rfc5905.txt",
+      "section": "7.3",
+      "anchors": [
+        "3 | unknown (clock unsynchronized)"
+      ],
+      "sha256": "8b7abd903c60202e2953ee012fefa6916666c3b0c71825c748cdd262024fb268",
+      "consultedAt": "2026-10-26T17:08:42.614557+00:00",
+      "contentSha256": "578275a6fbdc779e9f7a09519ccdf65ee7b161128c5116514e2625cb4c0004ff"
+    },
+    {
+      "questionId": "ccna-original-20261026-b07-037",
+      "url": "https://www.rfc-editor.org/rfc/rfc1034.txt",
+      "section": "4.3.1",
+      "anchors": [
+        "the first server pursues the query for the client"
+      ],
+      "sha256": "d6b10a71441df879cc2817d23f2dad120c8a5f87e74eba1e4ed4b743a76a891a",
+      "consultedAt": "2026-10-26T17:08:42.614557+00:00",
+      "contentSha256": "0b229191bcb2835ce42147564823e69fc3e38a28bc806b453882dfa28958a510"
+    },
+    {
+      "questionId": "ccna-original-20261026-b07-038",
+      "url": "https://www.rfc-editor.org/rfc/rfc9190.txt",
+      "section": "2",
+      "anchors": [
+        "certificate-based mutual authentication"
+      ],
+      "sha256": "009cbd6aa418567ddb9f87fbe32092d17bfc4fbe39457521c5e0129c0a2e464e",
+      "consultedAt": "2026-10-26T17:08:42.614557+00:00",
+      "contentSha256": "aac20c2876acad8bef91d04c03cdcf84a2c88238e5f672bb594ef752bc31d403"
+    },
+    {
+      "questionId": "ccna-original-20261026-b07-039",
+      "url": "https://www.rfc-editor.org/rfc/rfc9190.txt",
+      "section": "1",
+      "anchors": [
+        "mutual authentication"
+      ],
+      "sha256": "009cbd6aa418567ddb9f87fbe32092d17bfc4fbe39457521c5e0129c0a2e464e",
+      "consultedAt": "2026-10-26T17:08:42.614557+00:00",
+      "contentSha256": "50a5e9dd48058cca6d6307cb910e56cf036aca197ad5d48e6d1ad815e18ebfda"
+    },
+    {
+      "questionId": "ccna-original-20261026-b07-040",
+      "url": "https://www.rfc-editor.org/rfc/rfc3748.txt",
+      "section": "1",
+      "anchors": [
+        "without requiring IP"
+      ],
+      "sha256": "47b3a35dcc8b52f8e0ff67477a8d38b3d801a5478e62b9f6b3c20246428d1d74",
+      "consultedAt": "2026-10-26T17:08:42.614557+00:00",
+      "contentSha256": "7e00520a740292d3fb30b99c9e417330608ccf5ff455b8f8547a59a501c10c1d"
+    },
+    {
+      "questionId": "ccna-original-20261026-b07-041",
+      "url": "https://www.rfc-editor.org/rfc/rfc4949.txt",
+      "section": "accountability",
+      "anchors": [
+        "actions of a system entity may be traced uniquely to that entity"
+      ],
+      "sha256": "32d1e3837ae5a7d2e99a63f43c6fea3dd350ffc6ac55b3aaadad250546ad7f87",
+      "consultedAt": "2026-10-26T17:08:42.614557+00:00",
+      "contentSha256": "28c45a4f5f10b4eeddda06aa620638e5247572f684c8051cb20c3bf5a4f20a14"
+    },
+    {
+      "questionId": "ccna-original-20261026-b07-042",
+      "url": "https://www.cisco.com/c/en/us/support/docs/ip/access-lists/26448-ACLsamples.html",
+      "section": "ACL Examples",
+      "anchors": [
+        "access-list 1 permit 192.168.10.1 0.0.0.0 is another way"
+      ],
+      "sha256": "d004fd75573b4f98df59c86de4448a69abd072947aad8a5aac3a838e1e04b8a8",
+      "consultedAt": "2026-10-26T17:08:42.614557+00:00",
+      "contentSha256": "ec10d6345f50a2f6029373de3732908e870114362ccb58c41fbde94c631adeff"
+    },
+    {
+      "questionId": "ccna-original-20261026-b07-043",
+      "url": "https://www.cisco.com/c/en/us/support/docs/ip/access-lists/26448-ACLsamples.html",
+      "section": "Standard and Extended ACLs",
+      "anchors": [
+        "syntax format of a standard ACL"
+      ],
+      "sha256": "d004fd75573b4f98df59c86de4448a69abd072947aad8a5aac3a838e1e04b8a8",
+      "consultedAt": "2026-10-26T17:08:42.614557+00:00",
+      "contentSha256": "c5ccbd0e4491596dadbd509abdcbffcc464a096cf34d2cea6ee666250f0521d5"
+    },
+    {
+      "questionId": "ccna-original-20261026-b07-044",
+      "url": "https://www.rfc-editor.org/rfc/rfc2904.txt",
+      "section": "1",
+      "anchors": [
+        "enforced at a Policy Enforcement Point"
+      ],
+      "sha256": "802ad25d792aa2968c48a7cde189a1aff23f9b59b350d6d4531da876b709a205",
+      "consultedAt": "2026-10-26T17:08:42.614557+00:00",
+      "contentSha256": "beb92b3faf82ea3b9cc49e2fcbe0138865d958f2b6b26a61fd6bab9b41795d63"
+    },
+    {
+      "questionId": "ccna-original-20261026-b07-045",
+      "url": "https://www.rfc-editor.org/rfc/rfc7009.txt",
+      "section": "1",
+      "anchors": [
+        "revocation request will invalidate the actual token"
+      ],
+      "sha256": "b2f346d5a87ba9d7f09047901257a65f7ac0b26352095969c25821afab447829",
+      "consultedAt": "2026-10-26T17:08:42.614557+00:00",
+      "contentSha256": "20c4753644260d9dcc3862831bee3b0759b21d4c3388dce91f04d0924063b868"
+    },
+    {
+      "questionId": "ccna-original-20261026-b07-046",
+      "url": "https://www.rfc-editor.org/rfc/rfc7426.txt",
+      "section": "3",
+      "anchors": [
+        "northbound interface for applications",
+        "Control-Plane Southbound Interface"
+      ],
+      "sha256": "24924cddb9b235cb19d6d0ee2d9ce28702a11105d3d9858459cee3cbeb76f12c",
+      "consultedAt": "2026-10-26T17:08:42.614557+00:00",
+      "contentSha256": "5c39cc5ca23f904abe420c8ba013c210ca850e56785de023905ab2f27ca9994e"
+    },
+    {
+      "questionId": "ccna-original-20261026-b07-047",
+      "url": "https://www.rfc-editor.org/rfc/rfc7365.txt",
+      "section": "Network Virtualization Authority control implementation",
+      "anchors": [
+        "logically centralized controller"
+      ],
+      "sha256": "1d81d81d350153f4327cf40695a77d7ea194a246ec463a888ee2468e46691250",
+      "consultedAt": "2026-10-26T17:08:42.614557+00:00",
+      "contentSha256": "123810c33541039d597f61e82815cbc06fbfeeb6e3bf5c8be092b5bfd80c938d"
+    },
+    {
+      "questionId": "ccna-original-20261026-b07-048",
+      "url": "https://www.rfc-editor.org/rfc/rfc9315.txt",
+      "section": "2",
+      "anchors": [
+        "declarative manner without specifying how to achieve"
+      ],
+      "sha256": "10c4a4293dc27be8eeb31dec8ded32b0e0355334deffc1772b50179106be6997",
+      "consultedAt": "2026-10-26T17:08:42.614557+00:00",
+      "contentSha256": "354ece7ce3b2e066b3bb8a552be83d68521a7e0a4cf72557092b25bb53c8d040"
+    },
+    {
+      "questionId": "ccna-original-20261026-b07-049",
+      "url": "https://www.rfc-editor.org/rfc/rfc8259.txt",
+      "section": "4",
+      "anchors": [
+        "names within an object SHOULD be unique"
+      ],
+      "sha256": "61a5378f4255c720beb2a4b4a63b29540147c140f36988bf086291989b4cd2d7",
+      "consultedAt": "2026-10-26T17:08:42.614557+00:00",
+      "contentSha256": "960ad2abc622b4c8c0997d34e37bdb5089a59437cce8a96fcd4daa73a3aae12d"
+    },
+    {
+      "questionId": "ccna-original-20261026-b07-050",
+      "url": "https://www.rfc-editor.org/rfc/rfc9110.txt",
+      "section": "9.2.1",
+      "anchors": [
+        "GET, HEAD, OPTIONS, and TRACE methods are defined to be safe"
+      ],
+      "sha256": "21c1cdce6ab0e5509b04d84a28000836c7a087cf786efe6f04877ebfff47232a",
+      "consultedAt": "2026-10-26T17:08:42.614557+00:00",
+      "contentSha256": "578bbcd07f00a9e0f031da7d1fdfd514203b0dd035326d16058e10a606b2c293"
+    }
+  ]
+}

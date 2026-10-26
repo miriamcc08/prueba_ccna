@@ -68,7 +68,7 @@ export function validateQuestionAnswers(
 
   const qType = question.questionType;
 
-  if (qType === 'single_choice' || qType === 'true_false') {
+  if (qType !== 'multiple_choice') {
     if (correctOptions.length !== 1) {
       errors.push(
         `${qType} questions must have exactly 1 correct option. Found ${correctOptions.length}.`
@@ -78,6 +78,9 @@ export function validateQuestionAnswers(
       errors.push(`true_false questions must have exactly 2 options. Found ${options.length}.`);
     }
   } else if (qType === 'multiple_choice') {
+    if (!question.multipleAnswerCount || question.multipleAnswerCount < 2) {
+      errors.push('Multiple-choice questions must declare how many answers to select.');
+    }
     if (correctOptions.length < 2) {
       errors.push(
         `multiple_choice questions must have at least 2 correct options. Found ${correctOptions.length}.`

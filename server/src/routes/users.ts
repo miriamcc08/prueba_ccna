@@ -1,3 +1,4 @@
+import { storedQuestion } from '../lib/examSnapshot';
 import { Router, Request, Response, NextFunction } from 'express';
 import bcrypt from 'bcryptjs';
 import {
@@ -192,6 +193,9 @@ router.get(
   async (req: Request, res: Response, next: NextFunction): Promise<void> => {
     try {
       const userId = req.user!.id;
+      const isEs = (req.query.language || req.user!.language) === 'es';
+      const slowTopics = new Set<string>();
+      const topicAreas = new Map<string, string>();
 
       // 1. Fetch user's completed exams
       const completedExams = await prisma.exam.findMany({
@@ -250,8 +254,10 @@ router.get(
         let examTotal = 0;
 
         for (const eq of exam.questions) {
-          const q = eq.question;
+          const q = storedQuestion(eq);
           const area = q.primaryTopic.examArea as ExamArea;
+          topicAreas.set(q.primaryTopic.id, area);
+          if ((eq.timeSpentSeconds || 0) > q.estimatedTimeSeconds * 1.5) slowTopics.add(isEs ? q.primaryTopic.nameEs : q.primaryTopic.nameEn);
           totalQuestions++;
           examTotal++;
 
@@ -273,7 +279,7 @@ router.get(
             const tId = q.primaryTopic.id;
             const cur = topicErrors.get(tId) || {
               topicId: tId,
-              topicName: q.primaryTopic.nameEn,
+              topicName: isEs ? q.primaryTopic.nameEs : q.primaryTopic.nameEn,
               errorCount: 0,
               lastSeen: eq.answeredAt || exam.createdAt,
             };
@@ -306,14 +312,14 @@ router.get(
         const total = stat?.total || 0;
         const correct = stat?.correct || 0;
         const accuracy = total > 0 ? Math.round((correct / total) * 100) : 0;
-        const areaLabel = EXAM_AREA_LABELS[area]?.en || area;
+        const areaLabel = EXAM_AREA_LABELS[area]?.[isEs ? 'es' : 'en'] || area;
 
         weakAreas.push({
           area,
           areaName: areaLabel,
           accuracy,
           totalAttempted: total,
-          trend: accuracy >= 75 ? 'improving' : accuracy >= 50 ? 'stable' : 'declining',
+          trend: 'stable', // No change is inferred from a single aggregate percentage.
         });
       }
 
@@ -340,13 +346,13 @@ router.get(
           suggestedQuestionCount: 25,
           suggestedDifficulty: (w.accuracy < 50 ? 'basic' : 'intermediate') as Difficulty,
           focusTopics: repeatedErrors
-            .filter(() => true)
+            .filter(e => topicAreas.get(e.topicId) === w.area)
             .slice(0, 3)
             .map((e) => e.topicName),
           message:
             w.totalAttempted === 0
-              ? `You haven't practiced ${w.areaName} yet. Take a targeted practice exam.`
-              : `Accuracy in ${w.areaName} is currently ${w.accuracy}%. Targeted practice is recommended.`,
+              ? (isEs ? `Aún no has practicado ${w.areaName}. Comienza con una sesión por tema.` : `You haven't practiced ${w.areaName} yet. Take a targeted practice exam.`)
+              : (isEs ? `Tu precisión en ${w.areaName} es ${w.accuracy} %. Repasa los conceptos antes de otra sesión.` : `Accuracy in ${w.areaName} is currently ${w.accuracy}%. Targeted practice is recommended.`),
         }));
 
       const overallAccuracy =
@@ -367,7 +373,7 @@ router.get(
         userId,
         weakAreas,
         repeatedErrors,
-        slowTopics: [],
+        slowTopics: Array.from(slowTopics),
         overallProgress,
         studyPlan,
       };
@@ -410,3 +416,10 @@ router.delete(
 );
 
 export default router;
+
+router.get('/me/favorites', requireAuth, async (req: Request, res: Response, next: NextFunction) => {
+  try {
+    const favorites = await prisma.questionFavorite.findMany({ where: { userId: req.user!.id }, orderBy: { createdAt: 'desc' }, select: { questionId: true } });
+    res.json({ success: true, data: favorites.map(f => f.questionId) });
+  } catch (error) { next(error); }
+});

@@ -18,7 +18,7 @@ interface TopicChartProps {
 }
 
 export const TopicChart: React.FC<TopicChartProps> = ({ data, className = '' }) => {
-  const { language } = useTranslation();
+  const { language, t } = useTranslation();
 
   // Prepare data with localized area names if matching ExamArea
   const chartData = data.map((item) => {
@@ -79,7 +79,7 @@ export const TopicChart: React.FC<TopicChartProps> = ({ data, className = '' }) 
               tick={{ fill: '#cbd5e1', fontSize: 11 }}
             />
             <Tooltip content={<CustomTooltip />} />
-            <ReferenceLine x={82.5} stroke="#06b6d4" strokeDasharray="3 3" label={{ value: 'Passing 82.5%', fill: '#06b6d4', fontSize: 10, position: 'top' }} />
+            <ReferenceLine x={82.5} stroke="#06b6d4" strokeDasharray="3 3" label={{ value: t('results.passingScore'), fill: '#06b6d4', fontSize: 10, position: 'top' }} />
             <Bar dataKey="percentage" radius={[0, 6, 6, 0]} barSize={18}>
               {chartData.map((entry, index) => (
                 <Cell key={`cell-${index}`} fill={getBarColor(entry.percentage)} />
