@@ -10,7 +10,7 @@ El usuario ha pausado la creación de preguntas. Esa pausa se mantiene. Revisar 
 
 Configuración y disponibilidad real; exámenes estrictos; estudio sin tiempo; fecha límite del servidor y recuperación; confirmación de respuestas; resultados y revisión; contenido inmutable por intento nuevo; historial; favoritos; recomendaciones por reglas; registro e inicio de sesión; roles actuales comprobados en servidor; CORS restrictivo; sonidos opcionales; borrado confirmado del historial propio. Administración permite crear, importar **JSON/CSV**, buscar, filtrar, paginar, revisar y aprobar/rechazar candidatos con evidencia. Resultados ya muestra el rendimiento por dificultad que calcula la API.
 
-Última comprobación: compilación de cliente y servidor correcta, **592 pruebas de servidor y 21 de Chromium aprobadas**. Esto comprueba escenarios concretos, no todas las preguntas ni todos los dispositivos.
+Última comprobación: compilación de cliente y servidor correcta, **593 pruebas de servidor y 21 de Chromium aprobadas**. Esto comprueba escenarios concretos, no todas las preguntas ni todos los dispositivos.
 
 ## 1. Para entregar un simulador útil con contenido suficiente
 
@@ -63,7 +63,7 @@ CSV deja de ser un pendiente: usa la plantilla y [la guía de formato](importaci
 | P02 | Límites de peticiones y abuso | Proteger acceso/registro y operaciones costosas; probar respuestas de exceso y recuperación. Configurar IP/proxy según la infraestructura, sin confiar en cabeceras arbitrarias. |
 | P03 | Copias y restauración | Crear copia consistente, restaurarla en otro entorno, ejecutar migraciones y comprobar cuentas, intentos y capturas. Definir periodicidad y retención; un archivo copiado sin prueba de restauración no cierra el punto. |
 | P04 | Resolver datos y dependencias versionados del proyecto heredado | Preparar retirada segura de `node_modules`, `.env` y SQLite del seguimiento de Git, preservando datos necesarios y revisando secretos históricos. La entrega los ha preservado; no se hizo una limpieza destructiva. |
-| P05 | Revisar dependencias y configuración de seguridad | Ejecutar auditoría del conjunto desplegado y resolver hallazgos; comprobar autorización en operación, secretos, encabezados y política de sesión/token. CORS y rol vigente ya están corregidos, pero no equivalen a una auditoría de seguridad completa. |
+| P05 | Revisar configuración de seguridad de despliegue y mantener auditoría de dependencias | Ejecutar auditoría del conjunto desplegado y resolver hallazgos; comprobar autorización en operación, secretos, encabezados y política de sesión/token. CORS y rol vigente ya están corregidos, pero no equivalen a una auditoría de seguridad completa. |
 | P06 | Registro y observabilidad de producción | Registrar eventos de autenticación/administración y fallos sin secretos, conservar registros y comprobar alertas de salud. Existe auditoría editorial y logging de desarrollo, no una operación completa monitorizada. |
 | P07 | Verificación de privacidad y operación | Comprobar aislamiento de datos, borrado, retención de copias y límites de sesión invitada. La invitada usa el ID opaco del intento como capacidad de acceso; no tiene credencial independiente. |
 | P08 | Automatizar las comprobaciones de entrega | Compilación, pruebas y control de migraciones en el flujo de publicación para no depender solo de ejecuciones manuales de esta sesión. |
@@ -80,3 +80,5 @@ CSV deja de ser un pendiente: usa la plantilla y [la guía de formato](importaci
 4. Reanudar el objetivo de 1000 preguntas solo cuando el usuario retome la ampliación, con aprobación editorial y cobertura real.
 
 Para declarar completo el **alcance original**, todos sus requisitos deben pasar criterios de aceptación, incluido el banco. Para declarar una **versión utilizable en producción**, debe definirse qué funciones se publican y cerrar además la operación y seguridad de esa versión. No se retira silenciosamente un requisito para llamarlo 100 % terminado.
+
+Las dependencias se actualizaron para resolver los avisos detectados en la instalación: [informe y comprobación](actualizacion-dependencias-20261026.md). Esto avanza P05, pero no sustituye la revisión de secretos, permisos, encabezados y operación del despliegue.

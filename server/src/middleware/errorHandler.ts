@@ -47,7 +47,7 @@ export function errorHandler(
 
   // Zod validation errors
   if (err instanceof ZodError) {
-    const errorDetails = err.errors.map((e) => `${e.path.join('.')}: ${e.message}`).join('; ');
+    const errorDetails = err.issues.map((e) => `${e.path.join('.')}: ${e.message}`).join('; ');
     const response: ApiResponse = {
       success: false,
       error: 'Validation failed',

@@ -4,7 +4,7 @@ Aplicación React/TypeScript y Express/Prisma con SQLite para desarrollo. La pun
 
 ## Entorno en la nube
 
-Requisitos: Node.js 22 o 24, npm, Python 3, Chromium (`/usr/bin/chromium` o `CHROMIUM_PATH`) y acceso HTTPS a registry.npmjs.org y binaries.prisma.sh. Usa el checkout existente; cada tarea de nube ya está aislada y no necesita worktrees.
+Requisitos: Node.js 22.12 o superior de la rama 22, o Node.js 24, npm, Python 3, Chromium (`/usr/bin/chromium` o `CHROMIUM_PATH`) y acceso HTTPS a registry.npmjs.org y binaries.prisma.sh. Usa el checkout existente; cada tarea de nube ya está aislada y no necesita worktrees.
 
 El repositorio heredado contiene `node_modules`, `.env` y una base SQLite versionados. Para preservarlos, instala y ejecuta desde una copia separada:
 
@@ -175,3 +175,7 @@ En estudio, `showExplanations` ahora se aplica tanto al responder como al recupe
 El cargador admite exactamente 10 o 50 preguntas según el tamaño declarado, y el setup detecta ambos. Para cargar solo el focalizado desde `server/`: `npm run db:load-original -- --file prisma/questions/original_20261026_b08_10.json`.
 
 Estado actual: **660 candidatos, 586 familias declaradas y 360 originales pendientes**. Pasaron compilación, 540 pruebas de servidor y ocho del navegador. [Informe y límites](docs/batches/lote-08-informe.md); la aprobación editorial y matriz oficial siguen abiertas.
+
+## Dependencias actualizadas
+
+Se actualizaron Vitest, Zod, Express y React Router, además de dependencias transitivas, para resolver los avisos detectados durante la instalación en Windows. Usa los lockfiles con `npm ci`; no apliques `npm audit fix --force`. Versiones, cambios de compatibilidad y evidencia en [actualizacion-dependencias-20261026.md](docs/actualizacion-dependencias-20261026.md). Node 24.5.0 es compatible.

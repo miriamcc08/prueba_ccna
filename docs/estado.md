@@ -142,3 +142,9 @@ F08 muestra la versión guardada y el idioma original del intento, con comprobac
 F04 crea otra práctica filtrada por el tema elegido, manteniendo preferencias y un enlace para regresar. No cambia preguntas, respuestas, capturas ni fechas límite del original; su reloj sigue corriendo. Consulta disponibilidad elegible y bloquea temas vacíos o fallos de consulta, con reintento. Propiedad y modo se comprueban en servidor. [Guía](cambio-tema-estudio.md) y [registro de cambios/validación](mejoras-temas-20261026.md). No se modificó el banco.
 
 Última comprobación tras F04: compilación correcta, **592 pruebas de servidor y 21 de Chromium aprobadas**, con permisos, disponibilidad, conservación y reintento comprobados.
+
+## Dependencias de instalación corregidas
+
+Se actualizan dependencias vulnerables del servidor e interfaz y se adaptan errores/actualizaciones parciales a Zod 4, con prueba de conservación de metadatos. Prisma/cliente permanecen en 6.19.3 con overrides transitivos documentados. No se modifican bases ni preguntas. [Informe](actualizacion-dependencias-20261026.md) y [auditoría npm](auditoria-dependencias-20261026.json). Las pruebas en nube no se presentan como ejecución Windows.
+
+Última comprobación tras actualizar dependencias: instalación limpia, compilación y **593 pruebas de servidor + 21 de Chromium aprobadas**; `npm audit` con cero avisos conocidos en los tres paquetes del proyecto.

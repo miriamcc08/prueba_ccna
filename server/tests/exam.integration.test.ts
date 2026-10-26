@@ -833,3 +833,17 @@ describe('Independent topic changes in study mode', () => {
     expect((await request(`/exams/${source.examId}/change-study-topic`, 'POST', { ...body, questionCount: 0 }, generateToken(owner))).status).toBe(400);
   });
 });
+
+describe('Partial editorial updates after validator upgrade', () => {
+  it('preserves omitted metadata while invalidating the previous approval', async () => {
+    const admin = await prisma.user.create({ data: { email: 'patch-validator@example.test', username: 'patch-validator', passwordHash: 'unused', role: 'admin' } });
+    await prisma.question.update({ where: { id: question.id }, data: { estimatedTimeSeconds: 180, subtopics: JSON.stringify(['preserved-topic']) } });
+    const response = await request('/questions/' + question.id, 'PUT', { explanationEn: 'Revised explanation only; metadata is unchanged.' }, generateToken(admin));
+    expect(response.status).toBe(200);
+    const current = await prisma.question.findUniqueOrThrow({ where: { id: question.id } });
+    expect(current.estimatedTimeSeconds).toBe(180);
+    expect(JSON.parse(current.subtopics!)).toEqual(['preserved-topic']);
+    expect(current.validationStatus).toBe('pending_review');
+    expect(current.statementEs).toBe(question.statementEs);
+  });
+});

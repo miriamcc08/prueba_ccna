@@ -137,7 +137,12 @@ export const createQuestionSchema = z.object({
 export type CreateQuestionInput = z.infer<typeof createQuestionSchema>;
 
 // ---- 7. Update Question Schema ----
-export const updateQuestionSchema = createQuestionSchema.partial();
+// Zod 4 applies nested defaults inside optional fields. PATCH must preserve omitted fields.
+export const updateQuestionSchema = createQuestionSchema.partial().extend({
+  subtopics: createQuestionSchema.shape.subtopics.unwrap().optional(),
+  estimatedTimeSeconds: createQuestionSchema.shape.estimatedTimeSeconds.unwrap().optional(),
+  validationStatus: createQuestionSchema.shape.validationStatus.unwrap().optional(),
+});
 export type UpdateQuestionInput = z.infer<typeof updateQuestionSchema>;
 
 // ---- 8. Import Question Item Schema ----

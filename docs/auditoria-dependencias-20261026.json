@@ -1,0 +1,86 @@
+{
+  "date": "2026-10-26",
+  "scope": "npm dependency advisories, not a full security review",
+  "testedNode": "24.19.0",
+  "userNodeCompatibleNotExecuted": "24.5.0",
+  "projects": {
+    "root": {
+      "before": {
+        "info": 0,
+        "low": 0,
+        "moderate": 0,
+        "high": 0,
+        "critical": 0,
+        "total": 0
+      },
+      "after": {
+        "info": 0,
+        "low": 0,
+        "moderate": 0,
+        "high": 0,
+        "critical": 0,
+        "total": 0
+      },
+      "lockSha256": "7d648f33203e907392a763b450da66b33927417db6a7db0ff0d2aa7d1cfccf49"
+    },
+    "server": {
+      "before": {
+        "info": 0,
+        "low": 0,
+        "moderate": 3,
+        "high": 8,
+        "critical": 2,
+        "total": 13
+      },
+      "after": {
+        "info": 0,
+        "low": 0,
+        "moderate": 0,
+        "high": 0,
+        "critical": 0,
+        "total": 0
+      },
+      "lockSha256": "8992e318a9413a77592f636334e2fb151046d1f185a77b4bcb2c862156e601bd"
+    },
+    "client": {
+      "before": {
+        "info": 0,
+        "low": 0,
+        "moderate": 5,
+        "high": 0,
+        "critical": 0,
+        "total": 5
+      },
+      "after": {
+        "info": 0,
+        "low": 0,
+        "moderate": 0,
+        "high": 0,
+        "critical": 0,
+        "total": 0
+      },
+      "lockSha256": "c3c4094ffa2416d19c3cb49a80cf539ec46893e61da31b100d7509afbee92683"
+    }
+  },
+  "versions": {
+    "server": {
+      "vitest": "5.0.5",
+      "vite": "7.3.7",
+      "zod": "4.6.7",
+      "express": "4.22.3",
+      "body-parser": "1.20.9",
+      "prisma": "6.19.3",
+      "@prisma/client": "6.19.3",
+      "@prisma/config": "6.19.3",
+      "deepmerge-ts": "8.0.2"
+    },
+    "client": {
+      "react-router-dom": "7.18.4",
+      "react-router": "7.18.4",
+      "tailwindcss": "3.4.19",
+      "postcss-nested": "6.2.0",
+      "postcss-selector-parser": "6.1.5",
+      "vite": "6.4.4"
+    }
+  }
+}
