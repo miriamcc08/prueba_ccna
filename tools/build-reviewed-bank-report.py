@@ -132,7 +132,7 @@ def build(cache):
   if not any(ref['url'] == url and ref['documentSha256'] == h for ref in reference_list): raise ValueError('Unbound source: '+identity)
   if not any(ref['url'] == url and ref['documentSha256'] == h for ref in report['references']):
    report['references'].append({'url':url,'documentSha256':h,'consultedOn':'2026-10-29','retrieval':'Primary document and focused passage inspected; the round records retrieval provenance.','excerpts':[{'anchor':' '.join(passage.split()[:4]),'excerpt':' '.join(passage.split()[:12]),'normalizedOffset':evidence['normalizedOffset']}]})
- for filename in ['continuation-20261029.json', 'legacy-20261029.json']:
+ for filename in ['continuation-20261029.json', 'legacy-20261029.json', 'routing-20261029.json']:
   continuation = json.loads((ROOT/'server/prisma/reviews'/filename).read_text())
   report['reviewRounds'].append(continuation['id']); seen = set()
   for review in continuation['records']:
@@ -167,7 +167,7 @@ def build(cache):
     for extra in review['additionalEvidence']: register_reference(extra['url'], extra, continuation['references'], identity)
  report['summary'] = dict(collections.Counter(r['decision'] for r in records))
  report['revision'] = len(report['reviewRounds'])
- report['scope'] = f"{len(records)} structurally checked candidates. All 360 originals, the first 50 legacy questions, ten other previously reviewed legacy questions and their corrected versions have assisted technical dispositions. {report['summary']['pending_review']} other legacy records remain pending complete technical review. Superseded originals are rejected with approved linked replacements. No human certification is asserted."
+ report['scope'] = f"{len(records)} structurally checked candidates. All 360 originals, the first 50 legacy questions, sixteen other explicitly reviewed legacy questions and their corrected versions have assisted technical dispositions. {report['summary']['pending_review']} other legacy records remain pending complete technical review. Superseded originals are rejected with approved linked replacements. No human certification is asserted."
  quoted = collections.Counter()
  for ref in report['references']: quoted[ref['url']] += sum(len(e['excerpt'].split()) for e in ref['excerpts'])
  if any(total > 90 for total in quoted.values()): raise ValueError('Too much source text quoted for one URL')

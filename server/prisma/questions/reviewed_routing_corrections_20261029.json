@@ -1,0 +1,167 @@
+{
+  "batchId": "reviewed-routing-corrections-20261029",
+  "questions": [
+    {
+      "statementEn": "Using default administrative distances, consider this routing-table excerpt.\n\nRefer to the exhibit displaying an excerpt from the routing table of a Cisco router:\n\nRouter# show ip route\nCodes: L - local, C - connected, S - static, R - RIP, M - mobile, B - BGP\n       D - EIGRP, EX - EIGRP external, O - OSPF, IA - OSPF inter area \n       N1 - OSPF NSSA external type 1, N2 - OSPF NSSA external type 2\n       E1 - OSPF external type 1, E2 - OSPF external type 2\n       i - IS-IS, su - IS-IS summary, L1 - IS-IS level-1, L2 - IS-IS level-2\n       ia - IS-IS inter area, * - candidate default, U - per-user static route\n       o - ODR, P - periodic downloaded static route, H - NHRP, l - LISP\n       a - application route\n       + - replicated route, % - next hop override, p - overrides from PfR\n\nGateway of last resort is not set\n\n      192.168.0.0/16 is variably subnetted, 5 subnets, 1 mask\nC        192.168.10.0/24 is directly connected, GigabitEthernet0/0\nS        192.168.20.0/24 [1/0] via 10.1.1.2\nD        192.168.30.0/24 [90/2560] via 10.1.1.3, 01:12:04, GigabitEthernet0/1\nO        192.168.40.0/24 [110/11] via 10.1.1.4, 00:45:10, GigabitEthernet0/1\nR        192.168.50.0/24 [120/2] via 10.1.1.5, 00:00:15, GigabitEthernet0/1\n\nSuppose the router simultaneously receives an advertisement for the exact same destination prefix 192.168.30.0/24 from OSPF (cost 5), RIP (metric 1), and internal EIGRP (metric 2560). Which routing protocol's route will be installed in the Routing Information Base (RIB), and what fundamental criterion determines this selection?",
+      "statementEs": "Con las distancias administrativas predeterminadas, considera este extracto de la tabla de rutas.\n\nConsulte la exhibición que muestra un extracto de la tabla de enrutamiento de un router Cisco:\n\nRouter# show ip route\nCodes: L - local, C - connected, S - static, R - RIP, M - mobile, B - BGP\n       D - EIGRP, EX - EIGRP external, O - OSPF, IA - OSPF inter area \n       N1 - OSPF NSSA external type 1, N2 - OSPF NSSA external type 2\n       E1 - OSPF external type 1, E2 - OSPF external type 2\n       i - IS-IS, su - IS-IS summary, L1 - IS-IS level-1, L2 - IS-IS level-2\n       ia - IS-IS inter area, * - candidate default, U - per-user static route\n       o - ODR, P - periodic downloaded static route, H - NHRP, l - LISP\n       a - application route\n       + - replicated route, % - next hop override, p - overrides from PfR\n\nGateway of last resort is not set\n\n      192.168.0.0/16 is variably subnetted, 5 subnets, 1 mask\nC        192.168.10.0/24 is directly connected, GigabitEthernet0/0\nS        192.168.20.0/24 [1/0] via 10.1.1.2\nD        192.168.30.0/24 [90/2560] via 10.1.1.3, 01:12:04, GigabitEthernet0/1\nO        192.168.40.0/24 [110/11] via 10.1.1.4, 00:45:10, GigabitEthernet0/1\nR        192.168.50.0/24 [120/2] via 10.1.1.5, 00:00:15, GigabitEthernet0/1\n\nSuponga que el router recibe simultáneamente una publicación para exactamente el mismo prefijo de destino 192.168.30.0/24 desde OSPF (costo 5), RIP (métrica 1) y EIGRP interno (métrica 2560). ¿La ruta de qué protocolo de enrutamiento se instalará en la Routing Information Base (RIB) y qué criterio fundamental determina esta selección?",
+      "questionType": "routing_table",
+      "difficulty": "basic",
+      "primaryTopicExamArea": "ip_connectivity",
+      "multipleAnswerCount": null,
+      "estimatedTimeSeconds": 60,
+      "explanationEn": "When a Cisco router receives advertisements for the exact same destination prefix and prefix length from multiple routing sources, it uses Administrative Distance (AD) to decide which route enters the Routing Information Base (RIB). Administrative Distance evaluates the trustworthiness of the source, where a lower numerical value indicates a more trusted protocol. In Cisco IOS, the default AD for internal EIGRP is 90, OSPF is 110, and RIP is 120. Because 90 is lower than 110 and 120, EIGRP is selected as the most trustworthy source and its route is installed in the routing table. Metrics from different protocols cannot be directly compared against one another because each protocol uses a completely different metric calculation formula.",
+      "explanationEs": "Cuando un router Cisco recibe publicaciones para exactamente el mismo prefijo de destino y longitud de prefijo desde múltiples orígenes de enrutamiento, utiliza la Distancia Administrativa (AD) para decidir qué ruta entra en la Routing Information Base (RIB). La Distancia Administrativa evalúa la confiabilidad del origen, donde un valor numérico menor indica un protocolo más confiable. En Cisco IOS, el AD predeterminado para EIGRP interno es 90, para OSPF es 110 y para RIP es 120. Debido a que 90 es menor que 110 y 120, EIGRP es seleccionado como el origen más confiable y su ruta se instala en la tabla de enrutamiento. Las métricas de diferentes protocolos no pueden compararse directamente entre sí porque cada protocolo utiliza una fórmula de cálculo de métrica completamente distinta.",
+      "correctAnswerExplanationEn": "Internal EIGRP has a default Administrative Distance of 90, which is lower (more trusted) than OSPF (110) and RIP (120), so the EIGRP route is installed into the RIB.",
+      "correctAnswerExplanationEs": "EIGRP interno tiene una Distancia Administrativa predeterminada de 90, la cual es menor (más confiable) que OSPF (110) y RIP (120), por lo que la ruta EIGRP se instala en la RIB.",
+      "options": [
+        {
+          "optionLabel": "A",
+          "optionTextEn": "EIGRP is installed because internal EIGRP has a lower Administrative Distance (90) than OSPF (110) and RIP (120).",
+          "optionTextEs": "EIGRP se instala porque EIGRP interno tiene una menor Distancia Administrativa (90) que OSPF (110) y RIP (120).",
+          "isCorrect": true,
+          "explanationEn": "Correct. Administrative Distance is the primary tiebreaker used by Cisco IOS when comparing identical routes from different protocols, and internal EIGRP has an AD of 90.",
+          "explanationEs": "Correcto. La Distancia Administrativa es el criterio principal de desempate utilizado por Cisco IOS al comparar rutas idénticas de diferentes protocolos, y EIGRP interno tiene un AD de 90."
+        },
+        {
+          "optionLabel": "B",
+          "optionTextEn": "OSPF is installed because its link-state metric of 5 is numerically smaller than EIGRP's composite metric of 2560.",
+          "optionTextEs": "OSPF se instala porque su métrica de estado de enlace de 5 es numéricamente menor que la métrica compuesta de 2560 de EIGRP.",
+          "isCorrect": false,
+          "explanationEn": "Incorrect. Metrics from different routing protocols cannot be compared against each other; Administrative Distance is evaluated first.",
+          "explanationEs": "Incorrecto. Las métricas de diferentes protocolos de enrutamiento no pueden compararse entre sí; la Distancia Administrativa se evalúa primero."
+        },
+        {
+          "optionLabel": "C",
+          "optionTextEn": "RIP is installed because hop count takes precedence over bandwidth-based metrics during route conflicts.",
+          "optionTextEs": "RIP se instala porque el conteo de saltos tiene prioridad sobre las métricas basadas en ancho de banda durante conflictos de ruta.",
+          "isCorrect": false,
+          "explanationEn": "Incorrect. RIP has an Administrative Distance of 120, making it less preferred than both EIGRP (90) and OSPF (110).",
+          "explanationEs": "Incorrecto. RIP tiene una Distancia Administrativa de 120, lo que lo hace menos preferido que EIGRP (90) y OSPF (110)."
+        },
+        {
+          "optionLabel": "D",
+          "optionTextEn": "All three routes are installed simultaneously to perform Equal-Cost Multi-Path (ECMP) load balancing across the protocols.",
+          "optionTextEs": "Las tres rutas se instalan simultáneamente para realizar balanceo de carga por Rutas de Igual Costo (ECMP) entre los protocolos.",
+          "isCorrect": false,
+          "explanationEn": "The candidate routes have unequal administrative distances, so these three sources are not installed together for this prefix. Equal metrics from different protocols cannot be compared directly.",
+          "explanationEs": "Las rutas candidatas tienen distancias administrativas diferentes, por lo que estos tres orígenes no se instalan juntos para este prefijo. Las métricas de protocolos distintos no se comparan directamente."
+        }
+      ],
+      "sourceName": "CCNA 200-301 Original Questions",
+      "sourceLicense": "Original content",
+      "id": "ccna-legacy-batch2_ip_connectivity-001-review-r1",
+      "supersedesQuestionId": "ccna-legacy-batch2_ip_connectivity-001",
+      "questionFamilyId": "ccna-legacy-batch2_ip_connectivity-001",
+      "validationStatus": "pending_review",
+      "reviewCorrection": "Se corrige el conteo de máscaras del extracto y se elimina la afirmación universal de que ECMP exige el mismo protocolo."
+    },
+    {
+      "statementEn": "For this RIB selection exercise, no more-specific route or policy-based routing applies.\n\nRefer to the exhibit displaying an excerpt from a Cisco router's routing table:\n\nRouter# show ip route\nGateway of last resort is not set\n\n      10.0.0.0/8 is variably subnetted, 5 subnets, 2 masks\nC        10.1.1.0/24 is directly connected, GigabitEthernet0/0\nL        10.1.1.1/32 is directly connected, GigabitEthernet0/0\nO        10.200.1.0/24 [110/20] via 10.1.1.2, 02:14:22, GigabitEthernet0/0\nD EX     10.200.2.0/24 [170/2816000] via 10.1.1.3, 01:05:11, GigabitEthernet0/0\nS        10.200.3.0/24 [1/0] via 10.1.1.4\n\nThe router currently routes traffic to 10.200.1.0/24 via OSPF with administrative distance 110. A network engineer executes the configuration command:\n\nRouter(config)# ip route 10.200.1.0 255.255.255.0 10.1.1.254 90\n\nAssuming next-hop 10.1.1.254 is reachable via GigabitEthernet0/0, what immediate change occurs in the routing table (RIB), and how does the router forward packets destined for 10.200.1.50?",
+      "statementEs": "En este ejercicio de selección de la RIB no hay rutas más específicas ni enrutamiento basado en políticas.\n\nConsulte la exhibición que muestra un extracto de la tabla de enrutamiento de un router Cisco:\n\nRouter# show ip route\nGateway of last resort is not set\n\n      10.0.0.0/8 is variably subnetted, 5 subnets, 2 masks\nC        10.1.1.0/24 is directly connected, GigabitEthernet0/0\nL        10.1.1.1/32 is directly connected, GigabitEthernet0/0\nO        10.200.1.0/24 [110/20] via 10.1.1.2, 02:14:22, GigabitEthernet0/0\nD EX     10.200.2.0/24 [170/2816000] via 10.1.1.3, 01:05:11, GigabitEthernet0/0\nS        10.200.3.0/24 [1/0] via 10.1.1.4\n\nEl router actualmente enruta el tráfico hacia 10.200.1.0/24 a través de OSPF con una distancia administrativa de 110. Un ingeniero de red ejecuta el siguiente comando de configuración:\n\nRouter(config)# ip route 10.200.1.0 255.255.255.0 10.1.1.254 90\n\nAsumiendo que el siguiente salto 10.1.1.254 es alcanzable a través de GigabitEthernet0/0, ¿qué cambio inmediato ocurre en la tabla de enrutamiento (RIB) y cómo reenvía el router los paquetes destinados a 10.200.1.50?",
+      "questionType": "routing_table",
+      "difficulty": "advanced",
+      "primaryTopicExamArea": "ip_connectivity",
+      "multipleAnswerCount": null,
+      "estimatedTimeSeconds": 90,
+      "explanationEn": "For the same destination prefix, the valid static route with AD 90 is preferred to OSPF with AD 110. Its next hop 10.1.1.254 is explicitly reachable. The configured route replaces OSPF in the RIB and supplies the next hop for 10.200.1.50. IOS permits a static-route distance of 1 through 255, but distance 255 prevents installation. Resolving the next hop does not prove end-to-end application reachability.",
+      "explanationEs": "Para el mismo prefijo de destino, la ruta estática válida con AD 90 se prefiere a OSPF con AD 110. El siguiente salto 10.1.1.254 es explícitamente alcanzable. La ruta configurada reemplaza OSPF en la RIB y proporciona el siguiente salto para 10.200.1.50. IOS permite configurar una distancia estática de 1 a 255, pero la distancia 255 impide instalar la ruta. Resolver el siguiente salto no demuestra la accesibilidad de una aplicación extremo a extremo.",
+      "correctAnswerExplanationEn": "The static route replaces the OSPF route in the routing table because its configured AD of 90 is lower than OSPF's AD of 110, causing packets destined for 10.200.1.50 to be forwarded to 10.1.1.254.",
+      "correctAnswerExplanationEs": "La ruta estática reemplaza a la ruta OSPF en la tabla de enrutamiento porque su AD configurado de 90 es menor que el AD de 110 de OSPF, causando que los paquetes destinados a 10.200.1.50 sean reenviados a 10.1.1.254.",
+      "options": [
+        {
+          "optionLabel": "A",
+          "optionTextEn": "The static route replaces the OSPF route in the routing table because its configured AD of 90 is lower than OSPF's AD of 110; packets to 10.200.1.50 are forwarded to 10.1.1.254.",
+          "optionTextEs": "La ruta estática reemplaza a la ruta OSPF en la tabla de enrutamiento porque su AD configurado de 90 es menor que el AD de 110 de OSPF; los paquetes hacia 10.200.1.50 se reenvían a 10.1.1.254.",
+          "isCorrect": true,
+          "explanationEn": "Correct. Since 90 is lower than 110, the static route is more trustworthy than OSPF for prefix 10.200.1.0/24 and replaces it in the RIB.",
+          "explanationEs": "Correcto. Dado que 90 es menor que 110, la ruta estática es más confiable que OSPF para el prefijo 10.200.1.0/24 y la reemplaza en la RIB."
+        },
+        {
+          "optionLabel": "B",
+          "optionTextEn": "The OSPF route remains in the routing table because dynamic routing protocols always take precedence over static routes regardless of AD; packets continue forwarding to 10.1.1.2.",
+          "optionTextEs": "La ruta OSPF permanece en la tabla de enrutamiento porque los protocolos de enrutamiento dinámico siempre tienen prioridad sobre las rutas estáticas sin importar el AD; los paquetes continúan reenviándose a 10.1.1.2.",
+          "isCorrect": false,
+          "explanationEn": "Incorrect. Dynamic protocols do not automatically supersede static routes; Administrative Distance is the deciding factor.",
+          "explanationEs": "Incorrecto. Los protocolos dinámicos no reemplazan automáticamente a las rutas estáticas; la Distancia Administrativa es el factor decisivo."
+        },
+        {
+          "optionLabel": "C",
+          "optionTextEn": "Both routes are installed in the routing table simultaneously and traffic to 10.200.1.50 is load-balanced between 10.1.1.2 and 10.1.1.254.",
+          "optionTextEs": "Ambas rutas se instalan en la tabla de enrutamiento simultáneamente y el tráfico hacia 10.200.1.50 se balancea entre 10.1.1.2 y 10.1.1.254.",
+          "isCorrect": false,
+          "explanationEn": "Incorrect. Load balancing cannot occur between different routing sources with unequal administrative distances.",
+          "explanationEs": "Incorrecto. El balanceo de carga no puede ocurrir entre diferentes fuentes de enrutamiento con distancias administrativas desiguales."
+        },
+        {
+          "optionLabel": "D",
+          "optionTextEn": "The static route is rejected by Cisco IOS because an administrative distance of 90 is reserved exclusively for internal EIGRP.",
+          "optionTextEs": "La ruta estática es rechazada por Cisco IOS porque una distancia administrativa de 90 está reservada exclusivamente para EIGRP interno.",
+          "isCorrect": false,
+          "explanationEn": "90 is not reserved for EIGRP; a static route may use it. Distance 255 is configurable but prevents installation.",
+          "explanationEs": "90 no está reservado para EIGRP; una ruta estática puede usarlo. La distancia 255 se puede configurar, pero impide la instalación."
+        }
+      ],
+      "sourceName": "CCNA 200-301 Original Questions",
+      "sourceLicense": "Original content",
+      "id": "ccna-legacy-batch2_ip_connectivity-003-review-r1",
+      "supersedesQuestionId": "ccna-legacy-batch2_ip_connectivity-003",
+      "questionFamilyId": "ccna-legacy-batch2_ip_connectivity-003",
+      "validationStatus": "pending_review",
+      "reviewCorrection": "Se aclara que AD 255 impide instalar la ruta y que el siguiente salto resoluble no equivale a verificar entrega extremo a extremo."
+    },
+    {
+      "statementEn": "A Catalyst switch uses Rapid PVST+ with the extended system ID. The administrator sets 'spanning-tree vlan 45 priority 4096'. What combined 16-bit priority/system-ID-extension value appears for VLAN 45 in BPDUs and 'show spanning-tree vlan 45'? Root election still depends on the other switches' bridge IDs.",
+      "statementEs": "Un switch Catalyst usa Rapid PVST+ con el ID de sistema extendido. El administrador configura 'spanning-tree vlan 45 priority 4096'. ¿Qué valor combinado de prioridad y extensión del ID de sistema de 16 bits aparece para VLAN 45 en las BPDU y en 'show spanning-tree vlan 45'? La elección de raíz sigue dependiendo de los ID de bridge de los demás switches.",
+      "questionType": "ios_commands",
+      "difficulty": "basic",
+      "primaryTopicExamArea": "network_access",
+      "multipleAnswerCount": null,
+      "estimatedTimeSeconds": 60,
+      "explanationEn": "The field combines the configured priority 4096 with VLAN ID 45: 4096 | 45 = 4141. The upper four bits encode the priority in increments of 4096; the lower twelve encode the system-ID extension. Usable VLAN IDs are 1–4094, with 4095 reserved. Setting priority 4096 increases preference but cannot guarantee root election against a lower bridge ID. 32813 is the default 32768 plus 45; 4096 omits the extension; 4051 incorrectly subtracts it.",
+      "explanationEs": "El campo combina la prioridad configurada 4096 con el ID de VLAN 45: 4096 | 45 = 4141. Los cuatro bits superiores codifican la prioridad en incrementos de 4096; los doce inferiores codifican la extensión del ID de sistema. Los ID de VLAN utilizables son 1–4094; 4095 está reservado. Configurar prioridad 4096 aumenta la preferencia, pero no garantiza ser raíz frente a un ID de bridge menor. 32813 es el valor predeterminado 32768 más 45; 4096 omite la extensión; 4051 la resta incorrectamente.",
+      "correctAnswerExplanationEn": "The field combines the configured priority 4096 with VLAN ID 45: 4096 | 45 = 4141. The upper four bits encode the priority in increments of 4096; the lower twelve encode the system-ID extension. Usable VLAN IDs are 1–4094, with 4095 reserved. Setting priority 4096 increases preference but cannot guarantee root election against a lower bridge ID. 32813 is the default 32768 plus 45; 4096 omits the extension; 4051 incorrectly subtracts it.",
+      "correctAnswerExplanationEs": "El campo combina la prioridad configurada 4096 con el ID de VLAN 45: 4096 | 45 = 4141. Los cuatro bits superiores codifican la prioridad en incrementos de 4096; los doce inferiores codifican la extensión del ID de sistema. Los ID de VLAN utilizables son 1–4094; 4095 está reservado. Configurar prioridad 4096 aumenta la preferencia, pero no garantiza ser raíz frente a un ID de bridge menor. 32813 es el valor predeterminado 32768 más 45; 4096 omite la extensión; 4051 la resta incorrectamente.",
+      "options": [
+        {
+          "optionLabel": "A",
+          "optionTextEn": "4141",
+          "optionTextEs": "4141",
+          "isCorrect": true,
+          "explanationEn": "The field combines the configured priority 4096 with VLAN ID 45: 4096 | 45 = 4141. The upper four bits encode the priority in increments of 4096; the lower twelve encode the system-ID extension. Usable VLAN IDs are 1–4094, with 4095 reserved. Setting priority 4096 increases preference but cannot guarantee root election against a lower bridge ID. 32813 is the default 32768 plus 45; 4096 omits the extension; 4051 incorrectly subtracts it.",
+          "explanationEs": "El campo combina la prioridad configurada 4096 con el ID de VLAN 45: 4096 | 45 = 4141. Los cuatro bits superiores codifican la prioridad en incrementos de 4096; los doce inferiores codifican la extensión del ID de sistema. Los ID de VLAN utilizables son 1–4094; 4095 está reservado. Configurar prioridad 4096 aumenta la preferencia, pero no garantiza ser raíz frente a un ID de bridge menor. 32813 es el valor predeterminado 32768 más 45; 4096 omite la extensión; 4051 la resta incorrectamente."
+        },
+        {
+          "optionLabel": "B",
+          "optionTextEn": "4096",
+          "optionTextEs": "4096",
+          "isCorrect": false,
+          "explanationEn": "Incorrect. 4096 is the 4-bit base priority value alone; it ignores the 12-bit Extended System ID (VLAN 45) appended to it.",
+          "explanationEs": "Incorrecto. 4096 es solo el valor de prioridad base de 4 bits; ignora el Extended System ID de 12 bits (VLAN 45) que se le añade."
+        },
+        {
+          "optionLabel": "C",
+          "optionTextEn": "32813",
+          "optionTextEs": "32813",
+          "isCorrect": false,
+          "explanationEn": "Incorrect. 32813 is the default bridge priority (32768 + 45), which was explicitly overridden by the configured priority 4096.",
+          "explanationEs": "Incorrecto. 32813 es la prioridad de bridge predeterminada (32768 + 45), la cual fue reemplazada explícitamente por la prioridad configurada 4096."
+        },
+        {
+          "optionLabel": "D",
+          "optionTextEn": "4051",
+          "optionTextEs": "4051",
+          "isCorrect": false,
+          "explanationEn": "Incorrect. The VLAN ID is added to, not subtracted from, the base priority value.",
+          "explanationEs": "Incorrecto. El ID de VLAN se suma, no se resta, al valor de prioridad base."
+        }
+      ],
+      "sourceName": "CCNA 200-301 Original Questions",
+      "sourceLicense": "Original content",
+      "id": "ccna-legacy-batch2_network_access-007-review-r1",
+      "supersedesQuestionId": "ccna-legacy-batch2_network_access-007",
+      "questionFamilyId": "ccna-legacy-batch2_network_access-007",
+      "validationStatus": "pending_review",
+      "reviewCorrection": "Se elimina la garantía de elección de raíz y se distingue el campo de 12 bits de los ID de VLAN utilizables (1–4094; 4095 reservado)."
+    }
+  ]
+}

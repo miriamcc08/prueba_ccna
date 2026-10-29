@@ -6,7 +6,7 @@ Estado vigente del cierre funcional: [auditoría del 26/10/2026](auditoria-funci
 
 ## Actualización del 29/10/2026
 
-[Revisión de heredadas y cierre de fuentes originales](revision-heredadas-20261029.md): 698 registros estructuralmente comprobados; 420 versiones aprobadas, 38 originales rechazados con reemplazo y 240 heredadas pendientes de revisión técnica. Las 50 del primer lote heredado tienen una versión utilizable; se corrigieron 34 en esta tanda. La nube contiene 706 registros, 428 validados y 353 familias disponibles. Pruebas actuales: 608 de servidor y 22 de Chromium. Las cifras de secciones posteriores y de las dos primeras rondas conservan su valor histórico.
+[Revisión de rutas y STP](revision-rutas-stp-20261029.md): 701 registros estructuralmente comprobados; 426 versiones aprobadas, 41 originales rechazados con reemplazo y 234 heredadas pendientes de revisión técnica. La nueva ronda resuelve seis candidatos, tres mediante versiones corregidas. La nube contiene 709 registros, 434 validados y 358 familias disponibles. Pruebas: 609 de servidor y 22 de Chromium aprobadas. Las cifras de las rondas anteriores conservan su valor histórico.
 
 ## Implementado y comprobado
 

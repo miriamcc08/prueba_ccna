@@ -15,7 +15,7 @@ ROOT = Path(__file__).resolve().parents[1] / 'server/prisma/questions'
 def question(file, number, revised=False):
     identity = f'ccna-legacy-{file}-{number:03}' + ('-review-r1' if revised else '')
     if revised:
-        items = json.loads((ROOT / 'reviewed_legacy_corrections_20261029.json').read_text())['questions']
+        items = [q for path in ROOT.glob('reviewed_*corrections_20261029.json') for q in json.loads(path.read_text())['questions']]
         return identity, next(q for q in items if q['id'] == identity)
     return identity, json.loads((ROOT / (file + '.json')).read_text())['questions'][number - 1]
 
@@ -140,6 +140,50 @@ def review():
     assert 'no resolvable forwarding anchor' in original['options'][0]['optionTextEn']
     assert 'carece de un punto de reenvío resoluble' in original['options'][0]['optionTextEs']
     records.append({'id': original['id'], 'kind': 'recursive_dependency_cycle', 'result': {'AResolves': False, 'BResolves': False}, 'expectedCorrectLabels': ['A'], 'passed': True})
+    # Second legacy batch: derive forwarding from the displayed prefixes, in both languages.
+    for number, destination in [(4, '172.16.25.100'), (5, '10.40.12.180')]:
+        _, q = question('batch2_ip_connectivity', number)
+        winners = []
+        for language in ['En', 'Es']:
+            routes = []
+            for line in q['statement' + language].splitlines():
+                match = re.search(r'([0-9.]+/\d+).*?via ([0-9.]+), (GigabitEthernet[0-9/]+)', line)
+                if match:
+                    prefix, hop, interface = match.groups()
+                    network = ip.ip_network(prefix)
+                    if ip.ip_address(destination) in network:
+                        routes.append((network, hop, interface))
+            winner = max(routes, key=lambda route: route[0].prefixlen)
+            winners.append(tuple(map(str, winner)))
+        assert winners[0] == winners[1]
+        prefix, hop, interface = winners[0]
+        check('batch2_ip_connectivity', number, 'parsed_longest_prefix',
+              {'destination': destination, 'prefix': prefix, 'nextHop': hop, 'interface': interface},
+              lambda text, lang: (hop in text and interface in text) if number == 4 else prefix in text and destination in text)
+
+    distances = {'EIGRP': 90, 'OSPF': 110, 'RIP': 120}
+    chosen = min(distances, key=distances.get)
+    check('batch2_ip_connectivity', 1, 'administrative_distance', {'candidates': distances, 'winner': chosen},
+          lambda text, lang: text.startswith(chosen) and all(str(value) in text for value in distances.values()), True)
+    routes = [(110, '10.1.1.2'), (90, '10.1.1.254')]
+    distance, hop = min(routes)
+    check('batch2_ip_connectivity', 3, 'static_route_preference', {'distance': distance, 'nextHop': hop},
+          lambda text, lang: hop in text and '90' in text and '110' in text, True)
+    priority, vlan = 4096, 45
+    assert priority & vlan == 0 and 1 <= vlan <= 4094
+    check('batch2_network_access', 7, 'extended_system_id', priority | vlan,
+          lambda text, lang: text.strip() == str(priority | vlan), True)
+    # Enumerate the two simple B-to-A paths in the stated triangle.
+    graph = {'A': {'B': 19, 'C': 4}, 'B': {'A': 19, 'C': 4}, 'C': {'A': 4, 'B': 4}}
+    def paths(node, target, seen):
+        if node == target:
+            return [(0, [node])]
+        return [(cost + rest, [node] + path) for nxt, cost in graph[node].items() if nxt not in seen
+                for rest, path in paths(nxt, target, seen | {nxt})]
+    cost, path = min(paths('B', 'A', {'B'}))
+    assert path == ['B', 'C', 'A'] and cost == 8 < graph['B']['A']
+    check('batch2_network_access', 8, 'stp_shortest_path', {'rootPath': path, 'rootCost': cost, 'directCost': 19, 'role': 'alternate', 'state': 'discarding'},
+          lambda text, lang: 'alternate' in text.lower() and 'discarding' in text.lower())
     return {'checked': len(records), 'records': records, 'scope': 'Only these explicitly inspected scenarios; technical/source review is separate.'}
 
 

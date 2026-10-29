@@ -10,16 +10,16 @@ El usuario ha pausado la creación de preguntas. Esa pausa se mantiene. Revisar 
 
 Configuración y disponibilidad real; exámenes estrictos; estudio sin tiempo; fecha límite del servidor y recuperación; confirmación de respuestas; resultados y revisión; contenido inmutable por intento nuevo; historial; favoritos; recomendaciones por reglas; registro e inicio de sesión; roles actuales comprobados en servidor; CORS restrictivo; sonidos opcionales; borrado confirmado del historial propio. Administración permite crear, importar **JSON/CSV**, buscar, filtrar, paginar, revisar y aprobar/rechazar candidatos con evidencia. Resultados ya muestra el rendimiento por dificultad que calcula la API.
 
-Última comprobación: compilación de cliente y servidor correcta, **608 pruebas de servidor y 22 de Chromium aprobadas**. Esto comprueba escenarios concretos, no todas las preguntas ni todos los dispositivos.
+Última comprobación: compilación de cliente y servidor correcta, **609 pruebas de servidor y 22 de Chromium aprobadas**. Esto comprueba escenarios concretos, no todas las preguntas ni todos los dispositivos.
 
 ## 1. Para entregar un simulador útil con contenido suficiente
 
 | ID | Pendiente | Criterio de cierre |
 |---|---|---|
 | C01 | Activar la primera cuenta administradora en el entorno que se vaya a utilizar | Configurar correo/contraseña mediante variables seguras, ejecutar `admin:bootstrap` y comprobar acceso a `/admin` y denegación a una cuenta normal. La última consulta de la copia de desarrollo mostró 0 administradores; no se inventaron credenciales. |
-| C02 | Revisar técnicamente el material existente | Hay decisiones técnicas asistidas para 458 registros: 420 aprobados y 38 rechazados con reemplazo; quedan 240 heredadas pendientes de revisión técnica. Completar respuesta, distractores, explicación, traducción, referencia vigente y licencia por candidato. Registrar decisión y evidencia; mantener fuera de exámenes lo no aprobado. |
+| C02 | Revisar técnicamente el material existente | Hay decisiones técnicas asistidas para 467 registros: 426 aprobados y 41 rechazados con reemplazo; quedan 234 heredadas pendientes de revisión técnica. Completar respuesta, distractores, explicación, traducción, referencia vigente y licencia por candidato. Registrar decisión y evidencia; mantener fuera de exámenes lo no aprobado. |
 | C03 | Completar el mapa del temario oficial vigente | Vincular las preguntas aprobadas a los subobjetivos, contrastar pesos/versiones con fuente oficial y mostrar huecos. Las coincidencias por palabras actuales no certifican cobertura. |
-| C04 | Disponer de suficientes familias aprobadas por modalidad y dificultad | Probar las cantidades ofrecidas, incluidos simulacros largos. Tras aplicar el manifiesto, la instalación aislada contiene 706 registros, 428 validados y 353 familias validadas; se probó un simulacro de 100 con dificultad mixta. Otros filtros siguen teniendo menos disponibilidad. La interfaz informa la escasez, no inventa disponibilidad. |
+| C04 | Disponer de suficientes familias aprobadas por modalidad y dificultad | Probar las cantidades ofrecidas, incluidos simulacros largos. Tras aplicar el manifiesto, la instalación aislada contiene 709 registros, 434 validados y 358 familias validadas; se probó un simulacro de 100 con dificultad mixta. Otros filtros siguen teniendo menos disponibilidad. La interfaz informa la escasez, no inventa disponibilidad. |
 | C05 | Revisar duplicados semánticos | Agrupar equivalencias en familias y comprobar que un examen no repite el mismo ejercicio conceptual. Ya hay comprobaciones exactas/heurísticas, no una deduplicación semántica completa. |
 | C06 | Completar revisión de explicaciones pedagógicas | Verificar pasos, por qué fallan distractores, comandos y referencias; contrastar escenarios de routing, ACL y configuración con laboratorio o fuente de plataforma cuando corresponda. |
 

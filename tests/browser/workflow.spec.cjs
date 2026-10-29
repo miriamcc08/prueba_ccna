@@ -655,8 +655,8 @@ test('reviewed bank approvals are audited and enable a real 100-question exam wi
     cwd: resolve(__dirname, '../../server'), encoding: 'utf8',
     env: { ...process.env, DATABASE_URL: process.env.CCNA_BROWSER_DATABASE_URL },
   }));
-  expect(result.appliedApprovals).toBe(420);
-  expect(result.appliedRejections).toBe(38);
+  expect(result.appliedApprovals).toBe(426);
+  expect(result.appliedRejections).toBe(41);
   const setup = await page.evaluate(async () => {
     const { default: api } = await import('/src/services/api.ts');
     const stats = (await api.getAdminStats()).data;
@@ -665,8 +665,8 @@ test('reviewed bank approvals are audited and enable a real 100-question exam wi
     await api.startExam(exam.data.examId);
     return { stats, id: exam.data.examId };
   });
-  expect(setup.stats.totalQuestions - before.totalQuestions).toBe(698);
-  expect(setup.stats.validatedQuestions - before.validatedQuestions).toBe(420);
+  expect(setup.stats.totalQuestions - before.totalQuestions).toBe(701);
+  expect(setup.stats.validatedQuestions - before.validatedQuestions).toBe(426);
   await page.goto('/exam/' + setup.id);
   await expect(page.getByText('Pregunta 1 de 100', { exact: true }).first()).toBeVisible();
   await expect(page.getByRole('button', { name: 'Confirmar y Continuar' })).toBeVisible();
@@ -676,7 +676,7 @@ test('reviewed bank approvals are audited and enable a real 100-question exam wi
   expect(selected).toHaveLength(100);
   expect(selected.every(item => item.question.validationStatus === 'validated' && item.contentSnapshot)).toBe(true);
   expect(new Set(selected.map(item => item.question.questionFamilyId || item.questionId)).size).toBe(100);
-  expect(await db.questionReview.count({ where: { reviewerId: 'system-assisted-bank-review', status: 'validated' } })).toBe(420);
-  expect(await db.questionReview.count({ where: { reviewerId: 'system-assisted-bank-review', status: 'rejected' } })).toBe(38);
+  expect(await db.questionReview.count({ where: { reviewerId: 'system-assisted-bank-review', status: 'validated' } })).toBe(426);
+  expect(await db.questionReview.count({ where: { reviewerId: 'system-assisted-bank-review', status: 'rejected' } })).toBe(41);
   await db.$disconnect();
 });

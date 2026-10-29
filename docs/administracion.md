@@ -47,3 +47,5 @@ La [revisión del 29/10/2026](revision-y-aprobaciones-20261029.md) incorpora una
 La [continuación de la revisión](continuacion-revision-20261029.md) acumula 366 aprobaciones y 298 pendientes. El mismo comando reconoce las 131 decisiones previas y añade 235; conserva los originales y crea cuatro versiones corregidas con la misma familia. No crea un administrador interactivo.
 
 La [tercera ronda](revision-heredadas-20261029.md) acumula 420 aprobaciones y registra 38 versiones antiguas rechazadas, cada una con reemplazo aprobado; quedan 240 heredadas pendientes. Se preservan las decisiones editoriales existentes: una aprobación previa incompatible o una decisión cambiada después de importarse cancela la operación para exigir reconciliación. La aplicación y su repetición están probadas desde las dos versiones publicadas anteriores.
+
+La [cuarta ronda, rutas y STP](revision-rutas-stp-20261029.md) acumula 426 aprobaciones, 41 rechazos con reemplazo y 234 pendientes. Añade seis aprobaciones y tres versiones corregidas. Está probada la actualización desde la entrega de 420 aprobaciones sin sobrescribir los originales.

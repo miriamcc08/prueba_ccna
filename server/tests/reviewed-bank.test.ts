@@ -8,10 +8,10 @@ import { digest, contentRecord } from '../prisma/bank-review-format';
 describe('Evidence-bound bank review decisions', () => {
   it('allows only the documented reviewed subset, not all structurally passing candidates', () => {
     const bank = readReviewedBank();
-    expect(bank.candidates).toHaveLength(698);
-    expect(bank.manifest.summary).toEqual({ validated: 420, pending_review: 240, rejected: 38 });
+    expect(bank.candidates).toHaveLength(701);
+    expect(bank.manifest.summary).toEqual({ validated: 426, pending_review: 234, rejected: 41 });
     expect(bank.candidates.filter(item => item.row.decision === 'validated' && item.row.file.startsWith('original_'))).toHaveLength(356);
-    expect(bank.candidates.filter(item => item.row.decision === 'validated' && item.row.file.startsWith('batch'))).toHaveLength(26);
+    expect(bank.candidates.filter(item => item.row.decision === 'validated' && item.row.file.startsWith('batch'))).toHaveLength(29);
     for (const id of ['ccna-original-20261024-b03-026', 'ccna-original-20261026-b04-025']) expect(bank.candidates.find(item => item.row.id === id)?.row.decision).toBe('rejected');
     expect(bank.candidates.find(item => item.row.id === 'ccna-original-20261026-b04-012')?.row.decision).toBe('validated');
     for (const item of bank.candidates) expect(digest(contentRecord(item.q))).toBe(item.row.contentSha256);
@@ -32,7 +32,7 @@ describe('Evidence-bound bank review decisions', () => {
   it('uses corrected versions while preserving rejected originals and assigned families', () => {
     const bank = readReviewedBank();
     const revised = bank.candidates.filter(item => item.row.supersedesQuestionId);
-    expect(revised).toHaveLength(38);
+    expect(revised).toHaveLength(41);
     for (const item of revised) {
       const original = bank.candidates.find(candidate => candidate.row.id === item.row.supersedesQuestionId)!;
       expect(original.row.decision).toBe('rejected');

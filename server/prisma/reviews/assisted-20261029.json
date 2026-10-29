@@ -2,7 +2,7 @@
   "id": "assisted-review-20261029-v1",
   "reviewerType": "automated_assistant",
   "authorization": "User explicitly requested review and approval of questions that pass technical checks on 2026-10-29. No human certification is asserted.",
-  "scope": "698 structurally checked candidates. All 360 originals, the first 50 legacy questions, ten other previously reviewed legacy questions and their corrected versions have assisted technical dispositions. 240 other legacy records remain pending complete technical review. Superseded originals are rejected with approved linked replacements. No human certification is asserted.",
+  "scope": "701 structurally checked candidates. All 360 originals, the first 50 legacy questions, sixteen other explicitly reviewed legacy questions and their corrected versions have assisted technical dispositions. 234 other legacy records remain pending complete technical review. Superseded originals are rejected with approved linked replacements. No human certification is asserted.",
   "references": [
     {
       "url": "https://www.rfc-editor.org/rfc/rfc1878.txt",
@@ -2104,9 +2104,9 @@
     }
   ],
   "summary": {
-    "rejected": 38,
-    "validated": 420,
-    "pending_review": 240
+    "rejected": 41,
+    "validated": 426,
+    "pending_review": 234
   },
   "records": [
     {
@@ -3434,8 +3434,29 @@
       "id": "ccna-legacy-batch2_ip_connectivity-001",
       "sourceSha256": "a17ea686f1852864dd2357ccd9d99b50f36d17321b8c9bac0a9382052de1d409",
       "contentSha256": "d10e83950150a0dda320dce6a24f0c1fadac09224bd11be73a524058b0566d7b",
-      "decision": "pending_review",
-      "reason": "Sin revisión técnica integral documentada en esta entrega; no se aprueba por superar únicamente validación estructural."
+      "decision": "rejected",
+      "reason": "Se corrige el conteo de máscaras del extracto y se elimina la afirmación universal de que ECMP exige el mismo protocolo.",
+      "reviewRound": "assisted-routing-review-20261029-v1",
+      "evidenceUrl": "https://www.cisco.com/c/en/us/support/docs/ip/border-gateway-protocol-bgp/15986-admin-distance.html",
+      "evidenceDocumentSha256": "3a85eeac0c4496d17ddccd2f3dbb1b09bd6f06370d2c3b573f06da1b7254dcea",
+      "evidenceSection": "lowest administrative distance",
+      "supportingPassage": {
+        "documentSha256": "3a85eeac0c4496d17ddccd2f3dbb1b09bd6f06370d2c3b573f06da1b7254dcea",
+        "normalizedOffset": 2491,
+        "normalizedLength": 1200,
+        "sha256": "55d97b73a95800fdd8e20cf906294222ee822608b976d5280ff8d08886bf971f"
+      },
+      "supersededByQuestionId": "ccna-legacy-batch2_ip_connectivity-001-review-r1",
+      "additionalEvidence": [
+        {
+          "url": "https://www.cisco.com/c/en/us/support/docs/ip/border-gateway-protocol-bgp/15986-admin-distance.html",
+          "documentSha256": "3a85eeac0c4496d17ddccd2f3dbb1b09bd6f06370d2c3b573f06da1b7254dcea",
+          "normalizedOffset": 6896,
+          "normalizedLength": 1000,
+          "sha256": "ac392130a76bc1c22fc0e22e7eec96246fce695f20158330516e11646e59211e",
+          "section": "Default AD values and distance 255"
+        }
+      ]
     },
     {
       "file": "batch2_ip_connectivity.json",
@@ -3452,8 +3473,29 @@
       "id": "ccna-legacy-batch2_ip_connectivity-003",
       "sourceSha256": "9eba2a191ad6bf0d3f409922dfe426eb74fe15803658b745b578d162229fd59d",
       "contentSha256": "0a62af4f40a1dfdef67cd623e49b2eed94d154b28431183e4f1191900e22b39b",
-      "decision": "pending_review",
-      "reason": "Sin revisión técnica integral documentada en esta entrega; no se aprueba por superar únicamente validación estructural."
+      "decision": "rejected",
+      "reason": "Se aclara que AD 255 impide instalar la ruta y que el siguiente salto resoluble no equivale a verificar entrega extremo a extremo.",
+      "reviewRound": "assisted-routing-review-20261029-v1",
+      "evidenceUrl": "https://www.cisco.com/c/en/us/support/docs/ip/border-gateway-protocol-bgp/15986-admin-distance.html",
+      "evidenceDocumentSha256": "3a85eeac0c4496d17ddccd2f3dbb1b09bd6f06370d2c3b573f06da1b7254dcea",
+      "evidenceSection": "lowest administrative distance",
+      "supportingPassage": {
+        "documentSha256": "3a85eeac0c4496d17ddccd2f3dbb1b09bd6f06370d2c3b573f06da1b7254dcea",
+        "normalizedOffset": 2491,
+        "normalizedLength": 1200,
+        "sha256": "55d97b73a95800fdd8e20cf906294222ee822608b976d5280ff8d08886bf971f"
+      },
+      "supersededByQuestionId": "ccna-legacy-batch2_ip_connectivity-003-review-r1",
+      "additionalEvidence": [
+        {
+          "url": "https://www.cisco.com/c/en/us/support/docs/ip/border-gateway-protocol-bgp/15986-admin-distance.html",
+          "documentSha256": "3a85eeac0c4496d17ddccd2f3dbb1b09bd6f06370d2c3b573f06da1b7254dcea",
+          "normalizedOffset": 6896,
+          "normalizedLength": 1000,
+          "sha256": "ac392130a76bc1c22fc0e22e7eec96246fce695f20158330516e11646e59211e",
+          "section": "Default AD values and distance 255"
+        }
+      ]
     },
     {
       "file": "batch2_ip_connectivity.json",
@@ -3461,8 +3503,41 @@
       "id": "ccna-legacy-batch2_ip_connectivity-004",
       "sourceSha256": "4d242792c97956e35791cd8126afe82f5dc166571a2ff4a509ce670e85ba31cc",
       "contentSha256": "a99147e43d1b4775a3994d6fd227c761a8a24486385d0eb15495584d44948989",
-      "decision": "pending_review",
-      "reason": "Sin revisión técnica integral documentada en esta entrega; no se aprueba por superar únicamente validación estructural."
+      "decision": "validated",
+      "reason": "ES/EN y distractores revisados: 172.16.25.100 coincide hasta /22 y no con /23; se reenvía por Gi0/3 a 10.0.3.2.",
+      "reviewRound": "assisted-routing-review-20261029-v1",
+      "evidenceUrl": "https://www.rfc-editor.org/rfc/rfc1812.txt",
+      "evidenceDocumentSha256": "72c2c27fecd3eef085f978a8c0ee5f364877708bfc0251af1c8437b56ad2f56d",
+      "evidenceSection": "Routers must use the most specific matching route",
+      "supportingPassage": {
+        "documentSha256": "72c2c27fecd3eef085f978a8c0ee5f364877708bfc0251af1c8437b56ad2f56d",
+        "normalizedOffset": 56661,
+        "normalizedLength": 1200,
+        "sha256": "e4fcefec4e1f41639d052e9e5be855d05f4c1f4dbd3d229fa269d352b227d90e"
+      },
+      "checks": {
+        "answerAndDistractors": true,
+        "bilingualConsistency": true,
+        "explicitAssumptions": true,
+        "authorship": "Original project wording; primary source supports the technical claim."
+      },
+      "independentCheck": {
+        "kind": "documentary_independent_key",
+        "result": [
+          "A"
+        ],
+        "passed": true
+      },
+      "scenarioCheck": {
+        "kind": "parsed_longest_prefix",
+        "result": {
+          "destination": "172.16.25.100",
+          "prefix": "172.16.24.0/22",
+          "nextHop": "10.0.3.2",
+          "interface": "GigabitEthernet0/3"
+        },
+        "passed": true
+      }
     },
     {
       "file": "batch2_ip_connectivity.json",
@@ -3470,8 +3545,41 @@
       "id": "ccna-legacy-batch2_ip_connectivity-005",
       "sourceSha256": "ff665a7d9920dd8dcb50e58683519406de24a968b8a3d33cfad3ca67716882b1",
       "contentSha256": "19b925880e8d1d3aed06b0de178db84d7fb4ca928fbe6fba60f1d1903d1e55c2",
-      "decision": "pending_review",
-      "reason": "Sin revisión técnica integral documentada en esta entrega; no se aprueba por superar únicamente validación estructural."
+      "decision": "validated",
+      "reason": "ES/EN y distractores revisados: 10.40.12.180 está en /26, fuera de /25 y /27; la AD no hace coincidir una subred ajena.",
+      "reviewRound": "assisted-routing-review-20261029-v1",
+      "evidenceUrl": "https://www.rfc-editor.org/rfc/rfc1812.txt",
+      "evidenceDocumentSha256": "72c2c27fecd3eef085f978a8c0ee5f364877708bfc0251af1c8437b56ad2f56d",
+      "evidenceSection": "Routers must use the most specific matching route",
+      "supportingPassage": {
+        "documentSha256": "72c2c27fecd3eef085f978a8c0ee5f364877708bfc0251af1c8437b56ad2f56d",
+        "normalizedOffset": 56661,
+        "normalizedLength": 1200,
+        "sha256": "e4fcefec4e1f41639d052e9e5be855d05f4c1f4dbd3d229fa269d352b227d90e"
+      },
+      "checks": {
+        "answerAndDistractors": true,
+        "bilingualConsistency": true,
+        "explicitAssumptions": true,
+        "authorship": "Original project wording; primary source supports the technical claim."
+      },
+      "independentCheck": {
+        "kind": "documentary_independent_key",
+        "result": [
+          "A"
+        ],
+        "passed": true
+      },
+      "scenarioCheck": {
+        "kind": "parsed_longest_prefix",
+        "result": {
+          "destination": "10.40.12.180",
+          "prefix": "10.40.12.128/26",
+          "nextHop": "192.168.30.1",
+          "interface": "GigabitEthernet0/3"
+        },
+        "passed": true
+      }
     },
     {
       "file": "batch2_ip_connectivity.json",
@@ -3650,8 +3758,19 @@
       "id": "ccna-legacy-batch2_network_access-007",
       "sourceSha256": "b3dfd110e777692d0cf505d59151fef67c9b49d0ad1699dfab9dee01f753bd1b",
       "contentSha256": "da8b3bbd333260a04a6183dcd1b9b8be4d5a8c60706a2c32fa8bf96e5e42cd53",
-      "decision": "pending_review",
-      "reason": "Sin revisión técnica integral documentada en esta entrega; no se aprueba por superar únicamente validación estructural."
+      "decision": "rejected",
+      "reason": "Se elimina la garantía de elección de raíz y se distingue el campo de 12 bits de los ID de VLAN utilizables (1–4094; 4095 reservado).",
+      "reviewRound": "assisted-routing-review-20261029-v1",
+      "evidenceUrl": "https://www.cisco.com/c/en/us/td/docs/switches/lan/catalyst9300/software/release/17-15/configuration_guide/lyr2/b_1715_lyr2_9300_cg/configuring_spanning_tree_protocol.html",
+      "evidenceDocumentSha256": "bd4a22940684e9d2516551f3e9032737bca5fd15736962bfc778c6b21962fdc7",
+      "evidenceSection": "Bridge ID, Device Priority, and Extended System ID",
+      "supportingPassage": {
+        "documentSha256": "bd4a22940684e9d2516551f3e9032737bca5fd15736962bfc778c6b21962fdc7",
+        "normalizedOffset": 11788,
+        "normalizedLength": 1700,
+        "sha256": "030783b1bbb9a1d8f31b25fc7da5f9d65036e3675f8c5c3ae2fc850931011f85"
+      },
+      "supersededByQuestionId": "ccna-legacy-batch2_network_access-007-review-r1"
     },
     {
       "file": "batch2_network_access.json",
@@ -3659,8 +3778,46 @@
       "id": "ccna-legacy-batch2_network_access-008",
       "sourceSha256": "17634e6be7f0eaf22fd9bc59038bf1f96bcbb76db2a0a93117656399e9b83ec0",
       "contentSha256": "37d0eec962240692bb9cacebe49a1e0cb61929079b4219591bd58783599e6808",
-      "decision": "pending_review",
-      "reason": "Sin revisión técnica integral documentada en esta entrega; no se aprueba por superar únicamente validación estructural."
+      "decision": "validated",
+      "reason": "ES/EN y todos los distractores revisados: costo vía C = 8 < 19; A es designado y Fa0/1 de B queda alternate/discarding.",
+      "reviewRound": "assisted-routing-review-20261029-v1",
+      "evidenceUrl": "https://www.cisco.com/c/en/us/td/docs/switches/lan/catalyst9300/software/release/17-15/configuration_guide/lyr2/b_1715_lyr2_9300_cg/configuring_spanning_tree_protocol.html",
+      "evidenceDocumentSha256": "bd4a22940684e9d2516551f3e9032737bca5fd15736962bfc778c6b21962fdc7",
+      "evidenceSection": "lowest path cost",
+      "supportingPassage": {
+        "documentSha256": "bd4a22940684e9d2516551f3e9032737bca5fd15736962bfc778c6b21962fdc7",
+        "normalizedOffset": 11474,
+        "normalizedLength": 1200,
+        "sha256": "9b52f799bf8eb6f42b94af17874d765e6d09e65b16f40750015d9d23c92b7d28"
+      },
+      "checks": {
+        "answerAndDistractors": true,
+        "bilingualConsistency": true,
+        "explicitAssumptions": true,
+        "authorship": "Original project wording; primary source supports the technical claim."
+      },
+      "independentCheck": {
+        "kind": "documentary_independent_key",
+        "result": [
+          "A"
+        ],
+        "passed": true
+      },
+      "scenarioCheck": {
+        "kind": "stp_shortest_path",
+        "result": {
+          "rootPath": [
+            "B",
+            "C",
+            "A"
+          ],
+          "rootCost": 8,
+          "directCost": 19,
+          "role": "alternate",
+          "state": "discarding"
+        },
+        "passed": true
+      }
     },
     {
       "file": "batch2_network_access.json",
@@ -17459,12 +17616,165 @@
         "passed": true
       },
       "supersedesQuestionId": "ccna-legacy-batch1_ip_services-002"
+    },
+    {
+      "file": "reviewed_routing_corrections_20261029.json",
+      "index": 0,
+      "id": "ccna-legacy-batch2_ip_connectivity-001-review-r1",
+      "sourceSha256": "bb8a9186ee69b806f72b47edabe4d503ee3f1fcb2990d0e0c76497bfedae10ab",
+      "contentSha256": "12f9f03f75dcfdc682160c75cbdd37cd26c48a307f61c5bb13e0b0bcd659fd15",
+      "decision": "validated",
+      "reason": "Se corrige el conteo de máscaras del extracto y se elimina la afirmación universal de que ECMP exige el mismo protocolo.",
+      "reviewRound": "assisted-routing-review-20261029-v1",
+      "evidenceUrl": "https://www.cisco.com/c/en/us/support/docs/ip/border-gateway-protocol-bgp/15986-admin-distance.html",
+      "evidenceDocumentSha256": "3a85eeac0c4496d17ddccd2f3dbb1b09bd6f06370d2c3b573f06da1b7254dcea",
+      "evidenceSection": "lowest administrative distance",
+      "supportingPassage": {
+        "documentSha256": "3a85eeac0c4496d17ddccd2f3dbb1b09bd6f06370d2c3b573f06da1b7254dcea",
+        "normalizedOffset": 2491,
+        "normalizedLength": 1200,
+        "sha256": "55d97b73a95800fdd8e20cf906294222ee822608b976d5280ff8d08886bf971f"
+      },
+      "checks": {
+        "answerAndDistractors": true,
+        "bilingualConsistency": true,
+        "explicitAssumptions": true,
+        "authorship": "Original project wording; primary source supports the technical claim."
+      },
+      "independentCheck": {
+        "kind": "documentary_independent_key",
+        "result": [
+          "A"
+        ],
+        "passed": true
+      },
+      "supersedesQuestionId": "ccna-legacy-batch2_ip_connectivity-001",
+      "scenarioCheck": {
+        "kind": "administrative_distance",
+        "result": {
+          "candidates": {
+            "EIGRP": 90,
+            "OSPF": 110,
+            "RIP": 120
+          },
+          "winner": "EIGRP"
+        },
+        "passed": true
+      },
+      "additionalEvidence": [
+        {
+          "url": "https://www.cisco.com/c/en/us/support/docs/ip/border-gateway-protocol-bgp/15986-admin-distance.html",
+          "documentSha256": "3a85eeac0c4496d17ddccd2f3dbb1b09bd6f06370d2c3b573f06da1b7254dcea",
+          "normalizedOffset": 6896,
+          "normalizedLength": 1000,
+          "sha256": "ac392130a76bc1c22fc0e22e7eec96246fce695f20158330516e11646e59211e",
+          "section": "Default AD values and distance 255"
+        }
+      ]
+    },
+    {
+      "file": "reviewed_routing_corrections_20261029.json",
+      "index": 1,
+      "id": "ccna-legacy-batch2_ip_connectivity-003-review-r1",
+      "sourceSha256": "45a47cfb677d618c714930768ac8cbe4a0ec78cfca24ffed9711d04f47fb2dc6",
+      "contentSha256": "9fedffd6e777ed5396fab8c18d11302ca2e832eabced45e6d7c7cc8adb6dd12f",
+      "decision": "validated",
+      "reason": "Se aclara que AD 255 impide instalar la ruta y que el siguiente salto resoluble no equivale a verificar entrega extremo a extremo.",
+      "reviewRound": "assisted-routing-review-20261029-v1",
+      "evidenceUrl": "https://www.cisco.com/c/en/us/support/docs/ip/border-gateway-protocol-bgp/15986-admin-distance.html",
+      "evidenceDocumentSha256": "3a85eeac0c4496d17ddccd2f3dbb1b09bd6f06370d2c3b573f06da1b7254dcea",
+      "evidenceSection": "lowest administrative distance",
+      "supportingPassage": {
+        "documentSha256": "3a85eeac0c4496d17ddccd2f3dbb1b09bd6f06370d2c3b573f06da1b7254dcea",
+        "normalizedOffset": 2491,
+        "normalizedLength": 1200,
+        "sha256": "55d97b73a95800fdd8e20cf906294222ee822608b976d5280ff8d08886bf971f"
+      },
+      "checks": {
+        "answerAndDistractors": true,
+        "bilingualConsistency": true,
+        "explicitAssumptions": true,
+        "authorship": "Original project wording; primary source supports the technical claim."
+      },
+      "independentCheck": {
+        "kind": "documentary_independent_key",
+        "result": [
+          "A"
+        ],
+        "passed": true
+      },
+      "supersedesQuestionId": "ccna-legacy-batch2_ip_connectivity-003",
+      "scenarioCheck": {
+        "kind": "static_route_preference",
+        "result": {
+          "distance": 90,
+          "nextHop": "10.1.1.254"
+        },
+        "passed": true
+      },
+      "additionalEvidence": [
+        {
+          "url": "https://www.cisco.com/c/en/us/support/docs/ip/border-gateway-protocol-bgp/15986-admin-distance.html",
+          "documentSha256": "3a85eeac0c4496d17ddccd2f3dbb1b09bd6f06370d2c3b573f06da1b7254dcea",
+          "normalizedOffset": 7396,
+          "normalizedLength": 1200,
+          "sha256": "b79caecf3dbf6207752c05b8dc8e358480782455ac357fd16fb17d7e0de793bd",
+          "section": "AD 255 prevents installation"
+        },
+        {
+          "url": "https://www.cisco.com/c/en/us/support/docs/ip/border-gateway-protocol-bgp/15986-admin-distance.html",
+          "documentSha256": "3a85eeac0c4496d17ddccd2f3dbb1b09bd6f06370d2c3b573f06da1b7254dcea",
+          "normalizedOffset": 6896,
+          "normalizedLength": 1000,
+          "sha256": "ac392130a76bc1c22fc0e22e7eec96246fce695f20158330516e11646e59211e",
+          "section": "Default AD values and distance 255"
+        }
+      ]
+    },
+    {
+      "file": "reviewed_routing_corrections_20261029.json",
+      "index": 2,
+      "id": "ccna-legacy-batch2_network_access-007-review-r1",
+      "sourceSha256": "bcfd4ed4dc045913534f2137a8a036901aaf112401fafa18ae6fc1dd66971cfc",
+      "contentSha256": "a021b0d779f130d9c7562484ae9368b23eafe3c9d5803878a680166e4cf0f4a7",
+      "decision": "validated",
+      "reason": "Se elimina la garantía de elección de raíz y se distingue el campo de 12 bits de los ID de VLAN utilizables (1–4094; 4095 reservado).",
+      "reviewRound": "assisted-routing-review-20261029-v1",
+      "evidenceUrl": "https://www.cisco.com/c/en/us/td/docs/switches/lan/catalyst9300/software/release/17-15/configuration_guide/lyr2/b_1715_lyr2_9300_cg/configuring_spanning_tree_protocol.html",
+      "evidenceDocumentSha256": "bd4a22940684e9d2516551f3e9032737bca5fd15736962bfc778c6b21962fdc7",
+      "evidenceSection": "Bridge ID, Device Priority, and Extended System ID",
+      "supportingPassage": {
+        "documentSha256": "bd4a22940684e9d2516551f3e9032737bca5fd15736962bfc778c6b21962fdc7",
+        "normalizedOffset": 11788,
+        "normalizedLength": 1700,
+        "sha256": "030783b1bbb9a1d8f31b25fc7da5f9d65036e3675f8c5c3ae2fc850931011f85"
+      },
+      "checks": {
+        "answerAndDistractors": true,
+        "bilingualConsistency": true,
+        "explicitAssumptions": true,
+        "authorship": "Original project wording; primary source supports the technical claim."
+      },
+      "independentCheck": {
+        "kind": "documentary_independent_key",
+        "result": [
+          "A"
+        ],
+        "passed": true
+      },
+      "supersedesQuestionId": "ccna-legacy-batch2_network_access-007",
+      "scenarioCheck": {
+        "kind": "extended_system_id",
+        "result": 4141,
+        "passed": true
+      }
     }
   ],
   "reviewRounds": [
     "assisted-review-20261029-v1",
     "assisted-continuation-20261029-v1",
-    "assisted-legacy-review-20261029-v1"
+    "assisted-legacy-review-20261029-v1",
+    "assisted-routing-review-20261029-v1"
   ],
-  "revision": 3
+  "revision": 4
 }

@@ -30,9 +30,9 @@ Para ejecutar el servidor compilado: desde la carpeta de ejecución, exporta `DA
 
 ## Banco revisado: actualización del 29/10/2026
 
-La carga inicial de 360 originales más ocho ejemplos explica las 368 preguntas visibles. La [revisión vigente](docs/revision-heredadas-20261029.md) acumula **420 versiones aprobadas, 240 pendientes y 38 antiguas rechazadas con reemplazo**. Incluye 38 correcciones que conservan sus originales. Desde `server`, `npm run db:sync-reviewed` muestra la previsión y `npm run db:sync-reviewed -- --apply` aplica las decisiones. No se ejecuta automáticamente en el setup ni sobrescribe contenido local diferente o decisiones editoriales incompatibles.
+La carga inicial de 360 originales más ocho ejemplos explica las 368 preguntas visibles. La [revisión vigente](docs/revision-rutas-stp-20261029.md) acumula **426 versiones aprobadas, 234 pendientes y 41 antiguas rechazadas con reemplazo**. Incluye 41 correcciones que conservan sus originales. Desde `server`, `npm run db:sync-reviewed` muestra la previsión y `npm run db:sync-reviewed -- --apply` aplica las decisiones. No se ejecuta automáticamente en el setup ni sobrescribe contenido local diferente o decisiones editoriales incompatibles.
 
-La copia de nube actualizada tiene **706 registros, 428 validados y 353 familias validadas**; permite un simulacro de 100 con dificultad mixta. Esto no actualiza por sí solo la base de tu PC. La [primera ronda](docs/revision-y-aprobaciones-20261029.md) y la [segunda](docs/continuacion-revision-20261029.md) conservan el detalle histórico.
+La copia de nube actualizada tiene **709 registros, 434 validados y 358 familias validadas**; permite un simulacro de 100 con dificultad mixta. Esto no actualiza por sí solo la base de tu PC. La [primera ronda](docs/revision-y-aprobaciones-20261029.md) y la [segunda](docs/continuacion-revision-20261029.md) conservan el detalle histórico.
 
 ## Cuentas y administración
 
