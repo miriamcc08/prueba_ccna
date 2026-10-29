@@ -10,20 +10,20 @@ El usuario ha pausado la creación de preguntas. Esa pausa se mantiene. Revisar 
 
 Configuración y disponibilidad real; exámenes estrictos; estudio sin tiempo; fecha límite del servidor y recuperación; confirmación de respuestas; resultados y revisión; contenido inmutable por intento nuevo; historial; favoritos; recomendaciones por reglas; registro e inicio de sesión; roles actuales comprobados en servidor; CORS restrictivo; sonidos opcionales; borrado confirmado del historial propio. Administración permite crear, importar **JSON/CSV**, buscar, filtrar, paginar, revisar y aprobar/rechazar candidatos con evidencia. Resultados ya muestra el rendimiento por dificultad que calcula la API.
 
-Última comprobación: compilación de cliente y servidor correcta, **602 pruebas de servidor y 22 de Chromium aprobadas**. Esto comprueba escenarios concretos, no todas las preguntas ni todos los dispositivos.
+Última comprobación: compilación de cliente y servidor correcta, **608 pruebas de servidor y 22 de Chromium aprobadas**. Esto comprueba escenarios concretos, no todas las preguntas ni todos los dispositivos.
 
 ## 1. Para entregar un simulador útil con contenido suficiente
 
 | ID | Pendiente | Criterio de cierre |
 |---|---|---|
 | C01 | Activar la primera cuenta administradora en el entorno que se vaya a utilizar | Configurar correo/contraseña mediante variables seguras, ejecutar `admin:bootstrap` y comprobar acceso a `/admin` y denegación a una cuenta normal. La última consulta de la copia de desarrollo mostró 0 administradores; no se inventaron credenciales. |
-| C02 | Revisar técnicamente el material existente | Se inspeccionaron técnicamente 375 registros y se aprobaron 366 mediante revisión asistida documentada; quedan 298 pendientes (289 heredadas y nueve originales, incluidos cuatro originales sustituidos por versiones corregidas). Completar respuesta, distractores, explicación, traducción, referencia vigente y licencia por candidato. Registrar decisión y evidencia; mantener fuera de exámenes lo no aprobado. |
+| C02 | Revisar técnicamente el material existente | Hay decisiones técnicas asistidas para 458 registros: 420 aprobados y 38 rechazados con reemplazo; quedan 240 heredadas pendientes de revisión técnica. Completar respuesta, distractores, explicación, traducción, referencia vigente y licencia por candidato. Registrar decisión y evidencia; mantener fuera de exámenes lo no aprobado. |
 | C03 | Completar el mapa del temario oficial vigente | Vincular las preguntas aprobadas a los subobjetivos, contrastar pesos/versiones con fuente oficial y mostrar huecos. Las coincidencias por palabras actuales no certifican cobertura. |
-| C04 | Disponer de suficientes familias aprobadas por modalidad y dificultad | Probar las cantidades ofrecidas, incluidos simulacros largos. Tras aplicar el manifiesto, la instalación aislada contiene 672 preguntas, 374 validadas y 312 familias validadas; se probó un simulacro de 100 con dificultad mixta. Otros filtros siguen teniendo menos disponibilidad. La interfaz informa la escasez, no inventa disponibilidad. |
+| C04 | Disponer de suficientes familias aprobadas por modalidad y dificultad | Probar las cantidades ofrecidas, incluidos simulacros largos. Tras aplicar el manifiesto, la instalación aislada contiene 706 registros, 428 validados y 353 familias validadas; se probó un simulacro de 100 con dificultad mixta. Otros filtros siguen teniendo menos disponibilidad. La interfaz informa la escasez, no inventa disponibilidad. |
 | C05 | Revisar duplicados semánticos | Agrupar equivalencias en familias y comprobar que un examen no repite el mismo ejercicio conceptual. Ya hay comprobaciones exactas/heurísticas, no una deduplicación semántica completa. |
 | C06 | Completar revisión de explicaciones pedagógicas | Verificar pasos, por qué fallan distractores, comandos y referencias; contrastar escenarios de routing, ACL y configuración con laboratorio o fuente de plataforma cuando corresponda. |
 
-Inventario documental: 664 candidatos JSON: 360 originales, 300 heredados y cuatro versiones corregidas que conservan la familia de su original. Las 108 preguntas de la base histórica etiquetadas `validated` tampoco acreditan revisión independiente. Los 660 JSON no se suman a los registros de bases como si todos fueran distintos. El objetivo de 1000 aprobadas permanece pendiente; no se reanuda su generación en esta entrega.
+Inventario documental: 698 registros JSON: 360 originales, 300 heredados y 38 versiones corregidas. Se conservan familias asignadas y se alinean nueve correcciones antes sin familia con conceptos existentes. Las 108 preguntas de la base histórica etiquetadas `validated` tampoco acreditan revisión independiente. Los 660 JSON no se suman a los registros de bases como si todos fueran distintos. El objetivo de 1000 aprobadas permanece pendiente; no se reanuda su generación en esta entrega.
 
 **F01 completado:** [tiempo por pregunta](tiempo-por-pregunta.md), activación persistida, rechazo de respuestas tardías, avance y resultado sin responder; configuración y recuperación de conexión comprobadas. No se combina con estudio sin cronómetro.
 
@@ -83,4 +83,4 @@ Para declarar completo el **alcance original**, todos sus requisitos deben pasar
 
 Las dependencias se actualizaron para resolver los avisos detectados en la instalación: [informe y comprobación](actualizacion-dependencias-20261026.md). Esto avanza P05, pero no sustituye la revisión de secretos, permisos, encabezados y operación del despliegue.
 
-Revisión vigente y procedimiento para actualizar cada base local: [continuación del 29/10](continuacion-revision-20261029.md). El actor técnico de revisión no es un administrador interactivo.
+Revisión vigente y procedimiento para actualizar cada base local: [revisión vigente del 29/10](revision-heredadas-20261029.md). El actor técnico de revisión no es un administrador interactivo.

@@ -11,12 +11,14 @@ const REVIEW_EMAIL = 'assisted-bank-review@system.invalid';
 const hash = z.string().regex(/^[a-f0-9]{64}$/);
 const recordSchema = z.object({
   file: z.string(), index: z.number().int().min(0), id: z.string().min(1), sourceSha256: hash, contentSha256: hash,
-  decision: z.enum(['validated', 'pending_review']), reason: z.string().min(20),
+  decision: z.enum(['validated', 'pending_review', 'rejected']), reason: z.string().min(20),
   independentCheck: z.object({ kind: z.string(), result: z.unknown(), passed: z.literal(true) }).optional(),
+  scenarioCheck: z.object({ kind: z.string(), result: z.unknown(), passed: z.literal(true) }).optional(),
   evidenceUrl: z.string().url().startsWith('https://').optional(),
   evidenceDocumentSha256: hash.optional(),
   evidenceSection: z.string().optional().nullable(),
   supersedesQuestionId: z.string().optional(),
+  supersededByQuestionId: z.string().optional(),
   reviewRound: z.string().optional(),
   supportingPassage: z.object({ documentSha256: hash, normalizedOffset: z.number().int().min(0), normalizedLength: z.number().int().positive(), sha256: hash }).optional(),
   additionalEvidence: z.array(z.object({ url: z.string().url().startsWith('https://'), documentSha256: hash, section: z.string(), normalizedOffset: z.number().int().min(0), normalizedLength: z.number().int().positive(), sha256: hash })).optional(),
@@ -25,7 +27,7 @@ const recordSchema = z.object({
 const manifestSchema = z.object({
   id: z.literal('assisted-review-20261029-v1'), reviewerType: z.literal('automated_assistant'), authorization: z.string().min(20),
   references: z.array(z.object({ url: z.string().url().startsWith('https://'), documentSha256: hash, excerpts: z.array(z.object({ anchor: z.string().min(1), excerpt: z.string().min(8), normalizedOffset: z.number().int().min(0) })).min(1) })),
-  summary: z.object({ validated: z.number().int().min(0), pending_review: z.number().int().min(0) }), records: z.array(recordSchema),
+  summary: z.object({ validated: z.number().int().min(0), pending_review: z.number().int().min(0), rejected: z.number().int().min(0).default(0) }), records: z.array(recordSchema),
 });
 
 export function readReviewedBank(directory = resolve(__dirname, 'questions'), manifestPath = resolve(__dirname, 'reviews/assisted-20261029.json')) {
@@ -63,7 +65,13 @@ export function readReviewedBank(directory = resolve(__dirname, 'questions'), ma
       candidates.push({ q, row, sourceId: 'source-' + (batch.batchId || file.replace(/\.json$/, '')) });
     });
   }
-  if (candidates.length !== manifest.records.length || candidates.filter(item => item.row.decision === 'validated').length !== manifest.summary.validated || candidates.filter(item => item.row.decision === 'pending_review').length !== manifest.summary.pending_review) throw new Error('Review manifest summary or inventory mismatch.');
+  if (candidates.length !== manifest.records.length || candidates.filter(item => item.row.decision === 'validated').length !== manifest.summary.validated || candidates.filter(item => item.row.decision === 'pending_review').length !== manifest.summary.pending_review || candidates.filter(item => item.row.decision === 'rejected').length !== manifest.summary.rejected) throw new Error('Review manifest summary or inventory mismatch.');
+  const byId = new Map(candidates.map(item => [item.row.id, item]));
+  for (const { q, row } of candidates.filter(item => item.row.decision === 'rejected')) {
+    const replacement = row.supersededByQuestionId && byId.get(row.supersededByQuestionId);
+    if (!replacement || replacement.row.decision !== 'validated' || replacement.row.supersedesQuestionId !== row.id || (q.questionFamilyId && q.questionFamilyId !== replacement.q.questionFamilyId)) throw new Error(`${row.id}: rejection requires an approved, linked correction in the same assigned family.`);
+    if (!manifest.references.some(ref => ref.url === row.evidenceUrl && ref.documentSha256 === row.evidenceDocumentSha256)) throw new Error(`${row.id}: rejected correction lacks source evidence.`);
+  }
   return { manifest, candidates };
 }
 
@@ -87,6 +95,7 @@ export async function syncReviewedBank(db: PrismaClient, apply = false, director
       if (current && digest(contentRecord(current)) !== item.row.contentSha256) throw new Error(`${item.row.id}: existing content differs; preserve it and create an explicit revision before applying.`);
       if (!topicByArea.has(item.q.primaryTopicExamArea)) throw new Error(`Missing root topic: ${item.q.primaryTopicExamArea}. Run the seed first.`);
       if (current && item.row.decision === 'validated' && current.validationStatus === 'rejected') throw new Error(`${current.id}: a previous rejection must be resolved explicitly.`);
+      if (current && item.row.decision === 'rejected' && current.validationStatus === 'validated') throw new Error(`${current.id}: an existing approval cannot be withdrawn by this correction import.`);
       return { ...item, current, id: current?.id || item.row.id };
     });
     const summary = {
@@ -94,6 +103,7 @@ export async function syncReviewedBank(db: PrismaClient, apply = false, director
       questionsToCreate: plans.filter(p => !p.current).length, existingMatched: plans.filter(p => p.current).length,
       reviewedApprovals: bank.manifest.summary.validated, remainingCandidatesPending: bank.manifest.summary.pending_review,
       appliedApprovals: 0, approvalsAlreadyPresent: 0,
+      reviewedRejections: bank.manifest.summary.rejected, appliedRejections: 0, rejectionsAlreadyPresent: 0,
     };
     if (!apply) return summary;
     const service = await tx.user.findUnique({ where: { id: REVIEW_SERVICE_ID } });
@@ -113,20 +123,25 @@ export async function syncReviewedBank(db: PrismaClient, apply = false, director
           options: { create: q.options.map((option: any, index: number) => ({ id: `${id}-option-${option.optionLabel}`, optionLabel: option.optionLabel, optionTextEn: option.optionTextEn, optionTextEs: option.optionTextEs, isCorrect: option.isCorrect, explanationEn: option.explanationEn, explanationEs: option.explanationEs, displayOrder: index })) },
         } });
       }
-      if (row.decision !== 'validated') continue;
+      if (row.decision === 'pending_review') continue;
       const reviewId = `${bank.manifest.id}:${id}`;
       const previous = await tx.questionReview.findUnique({ where: { id: reviewId } });
-      if (plan.current?.validationStatus === 'validated') { summary.approvalsAlreadyPresent++; continue; }
+      if (plan.current?.validationStatus === row.decision) {
+        if (row.decision === 'validated') summary.approvalsAlreadyPresent++;
+        else summary.rejectionsAlreadyPresent++;
+        continue;
+      }
       if (previous) throw new Error(`${id}: status changed after review; refusing to restore an approval silently.`);
       const humanReview = await tx.questionReview.findFirst({ where: { questionId: id, reviewerId: { not: REVIEW_SERVICE_ID } } });
       if (humanReview) throw new Error(`${id}: an existing editorial decision requires explicit reconciliation.`);
       const reference = bank.manifest.references.find(ref => ref.url === row.evidenceUrl && (!row.evidenceDocumentSha256 || ref.documentSha256 === row.evidenceDocumentSha256))!;
       await tx.questionReview.create({ data: {
-        id: reviewId, questionId: id, reviewerId: REVIEW_SERVICE_ID, status: 'validated', evidenceUrl: row.evidenceUrl,
-        notes: `ASSISTED EVIDENCE REVIEW; not human certification. ${row.reason} Manifest=${bank.manifest.id}; round=${row.reviewRound || 'initial'}; contentSHA256=${row.contentSha256}; sourceSHA256=${reference.documentSha256}; additionalEvidence=${JSON.stringify(row.additionalEvidence || [])}; independent=${JSON.stringify(row.independentCheck)}; supersedes=${row.supersedesQuestionId || 'none'}; ES/EN and distractors checked. Authorized by the user; reviewed by an automated assistant.`,
+        id: reviewId, questionId: id, reviewerId: REVIEW_SERVICE_ID, status: row.decision, evidenceUrl: row.evidenceUrl,
+        notes: `ASSISTED EVIDENCE REVIEW; not human certification. Decision=${row.decision}. ${row.reason} Manifest=${bank.manifest.id}; round=${row.reviewRound || 'initial'}; contentSHA256=${row.contentSha256}; sourceSHA256=${reference.documentSha256}; additionalEvidence=${JSON.stringify(row.additionalEvidence || [])}; independent=${JSON.stringify(row.independentCheck)}; scenario=${JSON.stringify(row.scenarioCheck)}; supersedes=${row.supersedesQuestionId || 'none'}; supersededBy=${row.supersededByQuestionId || 'none'}; ES/EN and distractors inspected. Authorized by the user; reviewed by an automated assistant.`,
       } });
-      await tx.question.update({ where: { id }, data: { validationStatus: 'validated', lastVerifiedAt: new Date() } });
-      summary.appliedApprovals++;
+      await tx.question.update({ where: { id }, data: { validationStatus: row.decision, lastVerifiedAt: new Date() } });
+      if (row.decision === 'validated') summary.appliedApprovals++;
+      else summary.appliedRejections++;
     }
     return summary;
   }, { timeout: 60000 });

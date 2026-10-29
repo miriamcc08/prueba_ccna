@@ -1,6 +1,6 @@
 # Revisión y aprobaciones del 29/10/2026
 
-> Registro de la primera ronda. El estado vigente y las 235 aprobaciones adicionales están en [continuación de la revisión](continuacion-revision-20261029.md).
+> Registro de la primera ronda. La segunda ronda está en [continuación de la revisión](continuacion-revision-20261029.md) y el estado vigente en [revisión de heredadas](revision-heredadas-20261029.md).
 
 ## Resultado y límites
 

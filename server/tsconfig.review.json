@@ -4,5 +4,5 @@
     "noEmit": true,
     "types": ["node"]
   },
-  "include": ["prisma/sync-reviewed-bank.ts", "prisma/bank-review-format.ts"]
+  "include": ["prisma/sync-reviewed-bank.ts", "prisma/bank-review-format.ts", "prisma/audit-questions.ts"]
 }

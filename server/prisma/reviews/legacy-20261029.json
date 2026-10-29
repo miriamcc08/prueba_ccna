@@ -1,0 +1,2821 @@
+{
+  "id": "assisted-legacy-review-20261029-v1",
+  "reviewerType": "automated_assistant",
+  "authorization": "User requested continued validation and correction of remaining questions, retaining tested and documented changes.",
+  "scope": "Full bilingual content and distractor review of the first 50 legacy questions. 34 corrected versions preserve their originals; 15 unchanged candidates and five prior source holds are approved. 38 superseded originals, including four previous corrections, are explicitly rejected. One first-batch arithmetic question was already approved.",
+  "references": [
+    {
+      "url": "https://www.cisco.com/c/en/us/products/collateral/interfaces-modules/transceiver-modules/data_sheet_c78-455693.html",
+      "documentSha256": "8946adb3964733f19097fc82dc3ac97514a2084011f27e2f706d29cc80c23c94",
+      "consultedOn": "2026-10-29",
+      "retrieval": "Primary reference consulted for this review; document integrity and focused passage checked."
+    },
+    {
+      "url": "https://www.rfc-editor.org/rfc/rfc1878",
+      "documentSha256": "2869b124b9258cc11a34527d330e5310519d0cc6182bf0e103b1a65b7856dc3c",
+      "consultedOn": "2026-10-29",
+      "retrieval": "Primary reference consulted for this review; document integrity and focused passage checked."
+    },
+    {
+      "url": "https://www.rfc-editor.org/rfc/rfc4291.txt",
+      "documentSha256": "4d58dff6b432d5d524bf3a3b7f0337a4177fa65f92ed72f2a92e97b471de48b2",
+      "consultedOn": "2026-10-29",
+      "retrieval": "Primary reference consulted for this review; document integrity and focused passage checked."
+    },
+    {
+      "url": "https://www.cisco.com/c/en/us/td/docs/switches/lan/catalyst9300/software/release/17-15/configuration_guide/vlan/b_1715_vlan_9300_cg/configuring_voice_vlans.html",
+      "documentSha256": "4cdcb68f86f1f96f62d81a4a9f88f2195f2986bc31655debdd2c976b43ea8268",
+      "consultedOn": "2026-10-29",
+      "retrieval": "Primary reference consulted for this review; document integrity and focused passage checked."
+    },
+    {
+      "url": "https://www.cisco.com/c/en/us/td/docs/switches/lan/catalyst9300/software/release/17-15/configuration_guide/vlan/b_1715_vlan_9300_cg/configuring_vlan_trunks.html",
+      "documentSha256": "99ba29253329bba1c5edd2bb8780e155945eec145433000463e78519f598b858",
+      "consultedOn": "2026-10-29",
+      "retrieval": "Primary reference consulted for this review; document integrity and focused passage checked."
+    },
+    {
+      "url": "https://www.cisco.com/c/en/us/td/docs/switches/lan/catalyst9300/software/release/17-15/configuration_guide/lyr2/b_1715_lyr2_9300_cg/configuring_etherchannels.html",
+      "documentSha256": "45ce331b4fdaa8879ab0b9d9a3fe9d9ea47f074e76df4d6d42823fc7a9e2cb86",
+      "consultedOn": "2026-10-29",
+      "retrieval": "Primary reference consulted for this review; document integrity and focused passage checked."
+    },
+    {
+      "url": "https://www.cisco.com/c/en/us/td/docs/switches/lan/catalyst9300/software/release/17-15/configuration_guide/lyr2/b_1715_lyr2_9300_cg/configuring_spanning_tree_protocol.html",
+      "documentSha256": "bd4a22940684e9d2516551f3e9032737bca5fd15736962bfc778c6b21962fdc7",
+      "consultedOn": "2026-10-29",
+      "retrieval": "Primary reference consulted for this review; document integrity and focused passage checked."
+    },
+    {
+      "url": "https://www.cisco.com/c/en/us/support/docs/dial-access/floating-static-route/118263-technote-nexthop-00.html",
+      "documentSha256": "88692b604edd7daad37ed68c08fb48ec56bba1f1a92aa373b1f0ebb5088c7012",
+      "consultedOn": "2026-10-29",
+      "retrieval": "Public primary document downloaded on 2026-10-29 and inspected for the specified technical claim.",
+      "retrievedOn": "2026-10-29"
+    },
+    {
+      "url": "https://www.rfc-editor.org/rfc/rfc1812.txt",
+      "documentSha256": "72c2c27fecd3eef085f978a8c0ee5f364877708bfc0251af1c8437b56ad2f56d",
+      "consultedOn": "2026-10-29",
+      "retrieval": "Primary reference consulted for this review; document integrity and focused passage checked."
+    },
+    {
+      "url": "https://www.cisco.com/c/en/us/support/docs/ip/border-gateway-protocol-bgp/15986-admin-distance.html",
+      "documentSha256": "3a85eeac0c4496d17ddccd2f3dbb1b09bd6f06370d2c3b573f06da1b7254dcea",
+      "consultedOn": "2026-10-29",
+      "retrieval": "Primary reference consulted for this review; document integrity and focused passage checked."
+    },
+    {
+      "url": "https://www.cisco.com/c/en/us/td/docs/routers/ios/config/17-x/ip-routing/b-ip-routing/m_iro-cfg-0.html",
+      "documentSha256": "12ba932a16c065ee07d9f17a9bce077709fae7589e2b6336be71d42e55472a36",
+      "consultedOn": "2026-10-29",
+      "retrieval": "Primary reference consulted for this review; document integrity and focused passage checked."
+    },
+    {
+      "url": "https://www.rfc-editor.org/rfc/rfc2328.txt",
+      "documentSha256": "981690e297fbba9e8ef655802552b5529cb17f1ffe790ad2d55706cc522ff50c",
+      "consultedOn": "2026-10-29",
+      "retrieval": "Primary reference consulted for this review; document integrity and focused passage checked."
+    },
+    {
+      "url": "https://www.cisco.com/c/en/us/td/docs/switches/lan/catalyst9300/software/release/17-15/configuration_guide/sys_mgmt/b_1715_sys_mgmt_9300_cg/configuring_system_message_logs.html",
+      "documentSha256": "aa288172b1838ecce49edcb43087a2a15d99d353eaf0918eef7d75fa9327190e",
+      "consultedOn": "2026-10-29",
+      "retrieval": "Public primary document downloaded on 2026-10-29 and inspected for the specified technical claim.",
+      "retrievedOn": "2026-10-29"
+    },
+    {
+      "url": "https://www.cisco.com/c/en/us/support/docs/ip/access-lists/26448-ACLsamples.html",
+      "documentSha256": "d004fd75573b4f98df59c86de4448a69abd072947aad8a5aac3a838e1e04b8a8",
+      "consultedOn": "2026-10-29",
+      "retrieval": "Primary reference consulted for this review; document integrity and focused passage checked."
+    },
+    {
+      "url": "https://www.cisco.com/c/en/us/solutions/enterprise-networks/what-is-power-over-ethernet.html",
+      "documentSha256": "70e2f38a1d18e97d1f8393bde673b2a2c89b100221ed35b3fa8922baa3e5b2d4",
+      "consultedOn": "2026-10-29",
+      "retrieval": "Public primary document downloaded on 2026-10-29 and inspected for the specified technical claim.",
+      "retrievedOn": "2026-10-29"
+    },
+    {
+      "url": "https://www.cisco.com/c/en/us/products/security/firewalls/what-is-a-next-generation-firewall.html",
+      "documentSha256": "889bc1eb4744d4b3da7cc513aa9d5421ce8538442df44fe5ba782ed1d9a6c763",
+      "consultedOn": "2026-10-29",
+      "retrieval": "Public primary document downloaded on 2026-10-29 and inspected for the specified technical claim.",
+      "retrievedOn": "2026-10-29"
+    },
+    {
+      "url": "https://www.rfc-editor.org/rfc/rfc7938.txt",
+      "documentSha256": "d71d4e87fca8229964568357aaa38b2b2e0c8387baac895f7620908f017940ed",
+      "consultedOn": "2026-10-29",
+      "retrieval": "Primary reference consulted for this review; document integrity and focused passage checked."
+    },
+    {
+      "url": "https://www.cisco.com/c/en/us/support/docs/lan-switching/ethernet/10561-3.html",
+      "documentSha256": "0d2e6f8db4de5645a757bd72d475c7a062e941130b877a832ab81333d54091dc",
+      "consultedOn": "2026-10-29",
+      "retrieval": "Primary reference consulted for this review; document integrity and focused passage checked."
+    },
+    {
+      "url": "https://www.rfc-editor.org/rfc/rfc9293.txt",
+      "documentSha256": "6d9ac8be4b0286f8c3d337addf442b2eb6a9b14e1366594ea7fbc273f93dc2d9",
+      "consultedOn": "2026-10-29",
+      "retrieval": "Primary reference consulted for this review; document integrity and focused passage checked."
+    },
+    {
+      "url": "https://www.rfc-editor.org/rfc/rfc6598.txt",
+      "documentSha256": "b04d16c5c98b89324d35dc6dc783eface0bedf94c14c9e289b646d39ea55c4c0",
+      "consultedOn": "2026-10-29",
+      "retrieval": "Public primary document downloaded on 2026-10-29 and inspected for the specified technical claim.",
+      "retrievedOn": "2026-10-29"
+    },
+    {
+      "url": "https://www.cisco.com/c/en/us/td/docs/switches/lan/catalyst2960/software/release/12-2_55_se/configuration/guide/scg_2960/swvlan.html",
+      "documentSha256": "5b5b1a65fb920d974ef2ad1098c28c17a096bc00de6a5e408344ee16b1aff715",
+      "consultedOn": "2026-10-29",
+      "retrieval": "Public primary document downloaded on 2026-10-29 and inspected for the specified technical claim.",
+      "retrievedOn": "2026-10-29"
+    },
+    {
+      "url": "https://www.cisco.com/c/en/us/td/docs/switches/lan/catalyst9300/software/release/17-15/configuration_guide/int_hw/b_1715_int_and_hw_9300_cg/configuring_lldp__lldp_med__and_wired_location_service.html",
+      "documentSha256": "72eaa7d31c06aa7dc43c5d43e596af33f229a50e5f39fff2896eb6a0acea9624",
+      "consultedOn": "2026-10-29",
+      "retrieval": "Public primary document downloaded on 2026-10-29 and inspected for the specified technical claim.",
+      "retrievedOn": "2026-10-29"
+    },
+    {
+      "url": "https://www.cisco.com/c/en/us/td/docs/switches/lan/catalyst9300/software/release/17-15/configuration_guide/lyr2/b_1715_lyr2_9300_cg/configuring_optional_spanning_tree_features.html",
+      "documentSha256": "5a30d2e387a6fe2cf616c620687041f2bb4e53fa672d6c787c505b6fb71b9c05",
+      "consultedOn": "2026-10-29",
+      "retrieval": "Primary reference consulted for this review; document integrity and focused passage checked."
+    },
+    {
+      "url": "https://www.rfc-editor.org/rfc/rfc5416.txt",
+      "documentSha256": "ef326f22d2302b43547dcad37fbc545b075dcae7941372b0569fd84e0f5a4af2",
+      "consultedOn": "2026-10-29",
+      "retrieval": "Primary reference consulted for this review; document integrity and focused passage checked."
+    },
+    {
+      "url": "https://www.cisco.com/c/en/us/support/docs/ip/ip-routing/116264-technote-ios-00.html",
+      "documentSha256": "49bd595fab4a2d2267222a224a7b2520336c0ffd4431f921ff719d1632574b3e",
+      "consultedOn": "2026-10-29",
+      "retrieval": "Primary reference consulted for this review; document integrity and focused passage checked."
+    },
+    {
+      "url": "https://www.cisco.com/c/en/us/td/docs/switches/lan/catalyst9300/software/release/17-15/configuration_guide/rtng/b_1715_rtng_9300_cg/configuring_ipv6_unicast_routing.html",
+      "documentSha256": "59f2f1becce60afd035d92c28c71ce9a26f955b33efbccba568670fc38804524",
+      "consultedOn": "2026-10-29",
+      "retrieval": "Public primary document downloaded on 2026-10-29 and inspected for the specified technical claim.",
+      "retrievedOn": "2026-10-29"
+    },
+    {
+      "url": "https://www.cisco.com/c/en/us/support/docs/ip/open-shortest-path-first-ospf/9237-9.html",
+      "documentSha256": "d065dca39f2e841aa736ec606b4e37dae0b92d29cd7d34ad0f030b113bbe69df",
+      "consultedOn": "2026-10-29",
+      "retrieval": "Primary reference consulted for this review; document integrity and focused passage checked."
+    },
+    {
+      "url": "https://www.cisco.com/c/en/us/support/docs/ip/hot-standby-router-protocol-hsrp/13780-6.html",
+      "documentSha256": "51828ba414fccc2d5f6f50a6f4ed4981fe8d919065ba1b3327eca3ff39e9618a",
+      "consultedOn": "2026-10-29",
+      "retrieval": "Public primary document downloaded on 2026-10-29 and inspected for the specified technical claim.",
+      "retrievedOn": "2026-10-29"
+    },
+    {
+      "url": "https://www.rfc-editor.org/rfc/rfc3022.txt",
+      "documentSha256": "c57fe60c46eff630d4d82eece5bf624ba3ac80f16711e7acdb44a28e01331d86",
+      "consultedOn": "2026-10-29",
+      "retrieval": "Primary reference consulted for this review; document integrity and focused passage checked."
+    },
+    {
+      "url": "https://www.cisco.com/c/en/us/td/docs/switches/lan/catalyst9300/software/release/17-15/configuration_guide/ip/b_1715_ip_9300_cg/configuring_dhcp.html",
+      "documentSha256": "71d216f55b550ea22a47ade614168d9cd87f4cfe9329a6b658c9c6f2354c3bd4",
+      "consultedOn": "2026-10-29",
+      "retrieval": "Public primary document downloaded on 2026-10-29 and inspected for the specified technical claim.",
+      "retrievedOn": "2026-10-29"
+    },
+    {
+      "url": "https://www.rfc-editor.org/rfc/rfc5905.txt",
+      "documentSha256": "8b7abd903c60202e2953ee012fefa6916666c3b0c71825c748cdd262024fb268",
+      "consultedOn": "2026-10-29",
+      "retrieval": "Primary reference consulted for this review; document integrity and focused passage checked."
+    },
+    {
+      "url": "https://www.rfc-editor.org/rfc/rfc2475.txt",
+      "documentSha256": "3d239ebc304b7be7d43f79f813a4cdcd32952e5ad4c5ea4805cc040bca60f475",
+      "consultedOn": "2026-10-29",
+      "retrieval": "Primary reference consulted for this review; document integrity and focused passage checked."
+    },
+    {
+      "url": "https://www.rfc-editor.org/rfc/rfc4949.txt",
+      "documentSha256": "32d1e3837ae5a7d2e99a63f43c6fea3dd350ffc6ac55b3aaadad250546ad7f87",
+      "consultedOn": "2026-10-29",
+      "retrieval": "Primary reference consulted for this review; document integrity and focused passage checked."
+    },
+    {
+      "url": "https://www.cisco.com/c/en/us/td/docs/switches/lan/catalyst9300/software/release/17-15/configuration_guide/sec/b_1715_sec_9300_cg/controlling_switch_access_with_passwords_and_privilege_levels.html",
+      "documentSha256": "adf5256fc451f9a03f92da7d3c782b54a12eeb6a08b902b0fde4ee16f67e2ab8",
+      "consultedOn": "2026-10-29",
+      "retrieval": "Public primary document downloaded on 2026-10-29 and inspected for the specified technical claim.",
+      "retrievedOn": "2026-10-29"
+    },
+    {
+      "url": "https://www.rfc-editor.org/rfc/rfc4303.txt",
+      "documentSha256": "d22f9d4120e5645525b63ac7bbf8ef78c334fe003a2c48bf1e25ac25f6e7dc58",
+      "consultedOn": "2026-10-29",
+      "retrieval": "Primary reference consulted for this review; document integrity and focused passage checked."
+    },
+    {
+      "url": "https://www.cisco.com/c/en/us/td/docs/switches/lan/catalyst9300/software/release/17-15/configuration_guide/sec/b_1715_sec_9300_cg/port_security.html",
+      "documentSha256": "6dcb231f0407cb8caf3a83617b8556127d3322c1db08bc515553f75530539556",
+      "consultedOn": "2026-10-29",
+      "retrieval": "Primary reference consulted for this review; document integrity and focused passage checked."
+    },
+    {
+      "url": "https://www.rfc-editor.org/rfc/rfc8907.txt",
+      "documentSha256": "b66c86b0d996baa98ae018ae5448d76b9973c6154d5fcb6002af0a62fd879233",
+      "consultedOn": "2026-10-29",
+      "retrieval": "Primary reference consulted for this review; document integrity and focused passage checked."
+    },
+    {
+      "url": "https://raw.githubusercontent.com/ansible/ansible/devel/README.md",
+      "documentSha256": "a0d060dbbf5cc7d8881761018364e29f9b503a1b1229934d1150563f0773448c",
+      "consultedOn": "2026-10-29",
+      "retrieval": "Public primary document downloaded on 2026-10-29 and inspected for the specified technical claim.",
+      "retrievedOn": "2026-10-29"
+    },
+    {
+      "url": "https://www.rfc-editor.org/rfc/rfc7426.txt",
+      "documentSha256": "24924cddb9b235cb19d6d0ee2d9ce28702a11105d3d9858459cee3cbeb76f12c",
+      "consultedOn": "2026-10-29",
+      "retrieval": "Primary reference consulted for this review; document integrity and focused passage checked."
+    },
+    {
+      "url": "https://www.cisco.com/c/en/us/solutions/artificial-intelligence/what-is-aiops.html",
+      "documentSha256": "569d8a81fa99d4a7eceec5886a7c1bb22f5d622f8571dbfbc5bea06710b951fa",
+      "consultedOn": "2026-10-29",
+      "retrieval": "Primary reference consulted for this review; document integrity and focused passage checked."
+    },
+    {
+      "url": "https://www.rfc-editor.org/rfc/rfc9110.txt",
+      "documentSha256": "21c1cdce6ab0e5509b04d84a28000836c7a087cf786efe6f04877ebfff47232a",
+      "consultedOn": "2026-10-29",
+      "retrieval": "Primary reference consulted for this review; document integrity and focused passage checked."
+    },
+    {
+      "url": "https://raw.githubusercontent.com/ansible/ansible-documentation/devel/docs/docsite/rst/network/getting_started/network_differences.rst",
+      "documentSha256": "1210e74c6a0dfb4f29ff9c8ba9db232a42653f0de4d9845511b665e8810a09c0",
+      "consultedOn": "2026-10-29",
+      "retrieval": "Public primary document downloaded on 2026-10-29 and inspected for the specified technical claim.",
+      "retrievedOn": "2026-10-29"
+    },
+    {
+      "url": "https://www.cisco.com/c/en/us/td/docs/switches/lan/catalyst9300/software/release/17-15/configuration_guide/sec/b_1715_sec_9300_cg/configuring_ip_source_guard.html",
+      "documentSha256": "856be623d6d9025b1bc4d815875ba9f08fd82b06455dc767446b8351b14bd4dc",
+      "consultedOn": "2026-10-29",
+      "retrieval": "Public primary document downloaded on 2026-10-29 and inspected for the specified technical claim.",
+      "retrievedOn": "2026-10-29"
+    },
+    {
+      "url": "https://www.rfc-editor.org/rfc/rfc8110.txt",
+      "documentSha256": "2fb4a9bfbce8a2fb166a9713c279c89f84493456bacc1e90db583d19c100f367",
+      "consultedOn": "2026-10-29",
+      "retrieval": "Public primary document downloaded on 2026-10-29 and inspected for the specified technical claim.",
+      "retrievedOn": "2026-10-29"
+    },
+    {
+      "url": "https://www.cisco.com/c/en/us/support/docs/switches/catalyst-6000-series-switches/23563-143.html",
+      "documentSha256": "555b9ab5a0c0f8090cae4011731b8f02ac836f79b098a534920d38cba8c38191",
+      "consultedOn": "2026-10-29",
+      "retrieval": "Public primary document downloaded on 2026-10-29 and inspected for the specified technical claim.",
+      "retrievedOn": "2026-10-29"
+    },
+    {
+      "url": "https://www.cisco.com/c/en/us/td/docs/routers/ios/config/17-x/ip-routing/b-ip-routing/m_iri-default-passive-interface.html",
+      "documentSha256": "05e4661404c0e1a1f6317c94efa6648d37287833a9af7991807f701dd7142c9e",
+      "consultedOn": "2026-10-29",
+      "retrieval": "Previously consulted primary reference, retained with its exact document hash."
+    },
+    {
+      "url": "https://www.rfc-editor.org/rfc/rfc9315.txt",
+      "documentSha256": "10c4a4293dc27be8eeb31dec8ded32b0e0355334deffc1772b50179106be6997",
+      "consultedOn": "2026-10-29",
+      "retrieval": "Previously consulted primary reference, retained with its exact document hash."
+    },
+    {
+      "url": "https://www.cisco.com/c/en/us/support/docs/ip/routing-information-protocol-rip/16448-default.html",
+      "documentSha256": "05ba7f234b18ef186eb514eeaa14457222bfabe9108cfb5c03957c9455830e98",
+      "consultedOn": "2026-10-29",
+      "retrieval": "Public primary document downloaded on 2026-10-29 and inspected for the specified technical claim.",
+      "retrievedOn": "2026-10-29"
+    },
+    {
+      "url": "https://www.rfc-editor.org/rfc/rfc5737.txt",
+      "documentSha256": "9d16217614a74a9b064eff900e5cd07a525793cf8227dca1267100e880f0c410",
+      "consultedOn": "2026-10-29",
+      "retrieval": "Primary supplemental passage inspected; exact cached bytes verified."
+    },
+    {
+      "url": "https://www.rfc-editor.org/rfc/rfc7914.txt",
+      "documentSha256": "df55932f8b6a5d271f36a634d91a25903724e189ba6c120bf7257cd47f10b197",
+      "consultedOn": "2026-10-29",
+      "retrieval": "Public primary document downloaded on 2026-10-29 and inspected for the specified technical claim.",
+      "retrievedOn": "2026-10-29"
+    },
+    {
+      "url": "https://www.rfc-editor.org/rfc/rfc4302.txt",
+      "documentSha256": "c9de28181a78bb85ec6d1e6bda86da133307310de736632f26aa890e1f08e56b",
+      "consultedOn": "2026-10-29",
+      "retrieval": "Primary supplemental passage inspected; exact cached bytes verified."
+    },
+    {
+      "url": "https://www.cisco.com/c/en/us/td/docs/switches/lan/catalyst9300/software/release/17-15/configuration_guide/sec/b_1715_sec_9300_cg/configuring_authorization.html",
+      "documentSha256": "32e824893616c1d0f66399ecb25754adfb858a43005cd51eccea1f8ca8dd544d",
+      "consultedOn": "2026-10-29",
+      "retrieval": "Public primary document downloaded on 2026-10-29 and inspected for the specified technical claim.",
+      "retrievedOn": "2026-10-29"
+    },
+    {
+      "url": "https://www.rfc-editor.org/rfc/rfc3748.txt",
+      "documentSha256": "47b3a35dcc8b52f8e0ff67477a8d38b3d801a5478e62b9f6b3c20246428d1d74",
+      "consultedOn": "2026-10-29",
+      "retrieval": "Primary supplemental passage inspected; exact cached bytes verified."
+    },
+    {
+      "url": "https://raw.githubusercontent.com/ansible-collections/cisco.ios/main/README.md",
+      "documentSha256": "5e6bb61baf7889c3f3aa2dca500d4819b26d0af20079c60707c0fb180125b1b0",
+      "consultedOn": "2026-10-29",
+      "retrieval": "Public primary document downloaded on 2026-10-29 and inspected for the specified technical claim.",
+      "retrievedOn": "2026-10-29"
+    },
+    {
+      "url": "https://www.cisco.com/c/en/us/td/docs/switches/lan/catalyst9300/software/release/17-15/configuration_guide/sec/b_1715_sec_9300_cg/configuring_dynamic_arp_inspection.html",
+      "documentSha256": "114622c567ab3ce651bcaaa014035c94c3e7e7233ac98dc65c1c56e52f74d073",
+      "consultedOn": "2026-10-29",
+      "retrieval": "Primary supplemental passage inspected; exact cached bytes verified."
+    },
+    {
+      "url": "https://www.cisco.com/c/en/us/td/docs/switches/lan/catalyst9300/software/release/17-15/configuration_guide/ip/b_1715_ip_9300_cg/configuring___hsrp.html",
+      "documentSha256": "28fb29e1bae67d1850e9a18b41f63e3232697e94c2bea9e0661c5735accbb5e6",
+      "consultedOn": "2026-10-29",
+      "retrievedOn": "2026-10-29",
+      "retrieval": "Public primary document downloaded and inspected on 2026-10-29."
+    }
+  ],
+  "records": [
+    {
+      "id": "ccna-legacy-batch1_network_fundamentals-004",
+      "file": "batch1_network_fundamentals.json",
+      "index": 3,
+      "sourceSha256": "78749cd7facbc56ad6026e34b0561b419939e6d0700279bf88010fa8de5108d1",
+      "contentSha256": "6c56d8bda40879abe1450df035579953c5fd83dd1034cfa831472987a61b83b8",
+      "decision": "validated",
+      "expectedCorrectLabels": [
+        "A"
+      ],
+      "evidenceUrl": "https://www.cisco.com/c/en/us/products/collateral/interfaces-modules/transceiver-modules/data_sheet_c78-455693.html",
+      "evidenceDocumentSha256": "8946adb3964733f19097fc82dc3ac97514a2084011f27e2f706d29cc80c23c94",
+      "supportingPassage": {
+        "documentSha256": "8946adb3964733f19097fc82dc3ac97514a2084011f27e2f706d29cc80c23c94",
+        "normalizedOffset": 15171,
+        "normalizedLength": 1440,
+        "sha256": "016e3583a1da5aa2258b186151cd94194dd2d08009470e689fa6126465172460"
+      },
+      "evidenceSection": "Focused rule, definition or command table (not navigation)",
+      "reason": "Revisión técnica bilingüe y distractores contrastados con referencia primaria. Resultado contrastado: Single-Mode Fiber (SMF) with 10GBASE-LR transceivers.",
+      "checks": {
+        "answerAndDistractors": true,
+        "bilingualConsistency": true,
+        "explicitAssumptions": true,
+        "authorship": "Original project wording declared in repository; revised by the assistant where documented, with primary references cited."
+      }
+    },
+    {
+      "id": "ccna-legacy-batch1_network_fundamentals-008",
+      "file": "batch1_network_fundamentals.json",
+      "index": 7,
+      "sourceSha256": "e12cd0f576be51f6891184597281728b71d4c9b221e563c59e81850e55d0f172",
+      "contentSha256": "29b34ee6d264ead63d21f42a1145ee9741db1f3cd8d779ae5e22667ac111a943",
+      "decision": "validated",
+      "expectedCorrectLabels": [
+        "A"
+      ],
+      "evidenceUrl": "https://www.rfc-editor.org/rfc/rfc1878",
+      "evidenceDocumentSha256": "2869b124b9258cc11a34527d330e5310519d0cc6182bf0e103b1a65b7856dc3c",
+      "supportingPassage": {
+        "documentSha256": "2869b124b9258cc11a34527d330e5310519d0cc6182bf0e103b1a65b7856dc3c",
+        "normalizedOffset": 2485,
+        "normalizedLength": 1440,
+        "sha256": "bf382c6483900c3d570d608d583fdf78fc8be77d8697097bd49721dbc98667e0"
+      },
+      "evidenceSection": "/26 255.255.255.192",
+      "reason": "Revisión técnica bilingüe y distractores contrastados con referencia primaria. Resultado contrastado: Subnet mask: 255.255.255.192 (/26); Usable host range: 10.150.17.129 - 10.150.17.190.",
+      "checks": {
+        "answerAndDistractors": true,
+        "bilingualConsistency": true,
+        "explicitAssumptions": true,
+        "authorship": "Original project wording declared in repository; revised by the assistant where documented, with primary references cited."
+      },
+      "scenarioCheck": {
+        "kind": "vlsm",
+        "result": {
+          "allocated": [
+            "10.150.16.0/24",
+            "10.150.17.0/25",
+            "10.150.17.128/26",
+            "10.150.17.192/27"
+          ],
+          "finance": [
+            "255.255.255.192",
+            "10.150.17.129",
+            "10.150.17.190"
+          ]
+        },
+        "passed": true
+      }
+    },
+    {
+      "id": "ccna-legacy-batch1_network_fundamentals-009",
+      "file": "batch1_network_fundamentals.json",
+      "index": 8,
+      "sourceSha256": "14a090388f3cd729e0aab52a16d9b763d59ea6cdc11139cb86759bdd7a53e608",
+      "contentSha256": "c44c6400a8eca3bedebfb3980d31f7dcfb24cbc5887735cafc12cfeb14b412f6",
+      "decision": "validated",
+      "expectedCorrectLabels": [
+        "A"
+      ],
+      "evidenceUrl": "https://www.rfc-editor.org/rfc/rfc4291.txt",
+      "evidenceDocumentSha256": "4d58dff6b432d5d524bf3a3b7f0337a4177fa65f92ed72f2a92e97b471de48b2",
+      "supportingPassage": {
+        "documentSha256": "4d58dff6b432d5d524bf3a3b7f0337a4177fa65f92ed72f2a92e97b471de48b2",
+        "normalizedOffset": 13662,
+        "normalizedLength": 1440,
+        "sha256": "89e46df7655ba6e901df0d3e27766001861161b36cef4676688100680d88fa39"
+      },
+      "evidenceSection": "inverting the \"u\" bit",
+      "reason": "Revisión técnica bilingüe y distractores contrastados con referencia primaria. Resultado contrastado: 2001:db8:acad:1:250:56ff:febe:341a.",
+      "checks": {
+        "answerAndDistractors": true,
+        "bilingualConsistency": true,
+        "explicitAssumptions": true,
+        "authorship": "Original project wording declared in repository; revised by the assistant where documented, with primary references cited."
+      },
+      "scenarioCheck": {
+        "kind": "modified_eui64",
+        "result": "2001:db8:acad:1:250:56ff:febe:341a",
+        "passed": true
+      }
+    },
+    {
+      "id": "ccna-legacy-batch1_network_access-002",
+      "file": "batch1_network_access.json",
+      "index": 1,
+      "sourceSha256": "53ecad3582686407997f6cf0119fcbf5252ac92d74b45478eb39754c9e5460cc",
+      "contentSha256": "b81f2717940678743e71e12e4f2fdb7d20866008f51b8527b7eb9cfed4151628",
+      "decision": "validated",
+      "expectedCorrectLabels": [
+        "A"
+      ],
+      "evidenceUrl": "https://www.cisco.com/c/en/us/td/docs/switches/lan/catalyst9300/software/release/17-15/configuration_guide/vlan/b_1715_vlan_9300_cg/configuring_voice_vlans.html",
+      "evidenceDocumentSha256": "4cdcb68f86f1f96f62d81a4a9f88f2195f2986bc31655debdd2c976b43ea8268",
+      "supportingPassage": {
+        "documentSha256": "4cdcb68f86f1f96f62d81a4a9f88f2195f2986bc31655debdd2c976b43ea8268",
+        "normalizedOffset": 4321,
+        "normalizedLength": 1440,
+        "sha256": "eb6e5230958ff75dac41d81f74506af846d34a06da6bf2cd6abe35d739cc6f1a"
+      },
+      "evidenceSection": "one VLAN for voice traffic and another VLAN for data traffic",
+      "reason": "Revisión técnica bilingüe y distractores contrastados con referencia primaria. Resultado contrastado: Untagged frames from the PC are assigned to access VLAN 20, while 802.1Q tagged voice frames from the IP phone are accepted into VLAN 50..",
+      "checks": {
+        "answerAndDistractors": true,
+        "bilingualConsistency": true,
+        "explicitAssumptions": true,
+        "authorship": "Original project wording declared in repository; revised by the assistant where documented, with primary references cited."
+      }
+    },
+    {
+      "id": "ccna-legacy-batch1_network_access-004",
+      "file": "batch1_network_access.json",
+      "index": 3,
+      "sourceSha256": "6ce0d819360dcce09a74e4adce5049d076642465ee0b0a0247db81323165cceb",
+      "contentSha256": "827e890a96d24adcbd9a05dfaad020ea6116f21e415334ec8100a1806bca7686",
+      "decision": "validated",
+      "expectedCorrectLabels": [
+        "A"
+      ],
+      "evidenceUrl": "https://www.cisco.com/c/en/us/td/docs/switches/lan/catalyst9300/software/release/17-15/configuration_guide/vlan/b_1715_vlan_9300_cg/configuring_vlan_trunks.html",
+      "evidenceDocumentSha256": "99ba29253329bba1c5edd2bb8780e155945eec145433000463e78519f598b858",
+      "supportingPassage": {
+        "documentSha256": "99ba29253329bba1c5edd2bb8780e155945eec145433000463e78519f598b858",
+        "normalizedOffset": 17179,
+        "normalizedLength": 1440,
+        "sha256": "7c3f98e0e2221dfadba46537dec1a296cb3111b206bc94f60a1d2c5c604b499c"
+      },
+      "evidenceSection": "switchport trunk allowed vlan { word | add",
+      "reason": "Revisión técnica bilingüe y distractores contrastados con referencia primaria. Resultado contrastado: switchport trunk allowed vlan add 40.",
+      "checks": {
+        "answerAndDistractors": true,
+        "bilingualConsistency": true,
+        "explicitAssumptions": true,
+        "authorship": "Original project wording declared in repository; revised by the assistant where documented, with primary references cited."
+      }
+    },
+    {
+      "id": "ccna-legacy-batch1_network_access-006",
+      "file": "batch1_network_access.json",
+      "index": 5,
+      "sourceSha256": "9e2db714ff73415a1a4decd9afdbd2e123a3670829ecea109a34f8de95d5b04f",
+      "contentSha256": "1967e4870c42a27a2f363e1274976d8dbd247d7adb2f2b02f45aab406df4c7b2",
+      "decision": "validated",
+      "expectedCorrectLabels": [
+        "A"
+      ],
+      "evidenceUrl": "https://www.cisco.com/c/en/us/td/docs/switches/lan/catalyst9300/software/release/17-15/configuration_guide/lyr2/b_1715_lyr2_9300_cg/configuring_etherchannels.html",
+      "evidenceDocumentSha256": "45ce331b4fdaa8879ab0b9d9a3fe9d9ea47f074e76df4d6d42823fc7a9e2cb86",
+      "supportingPassage": {
+        "documentSha256": "45ce331b4fdaa8879ab0b9d9a3fe9d9ea47f074e76df4d6d42823fc7a9e2cb86",
+        "normalizedOffset": 17200,
+        "normalizedLength": 1440,
+        "sha256": "5fdc615e347542e450852091026b3f8c17bd8e392cec62b6813aea9d1b501c85"
+      },
+      "evidenceSection": "passive Places a port into a passive",
+      "reason": "Revisión técnica bilingüe y distractores contrastados con referencia primaria. Resultado contrastado: channel-group 1 mode active.",
+      "checks": {
+        "answerAndDistractors": true,
+        "bilingualConsistency": true,
+        "explicitAssumptions": true,
+        "authorship": "Original project wording declared in repository; revised by the assistant where documented, with primary references cited."
+      }
+    },
+    {
+      "id": "ccna-legacy-batch1_network_access-007",
+      "file": "batch1_network_access.json",
+      "index": 6,
+      "sourceSha256": "987319801c7efb3dfdcc7c2a8b58d494e52c82a7d2ba19c0f16d92cd10c5d6d8",
+      "contentSha256": "ab8653852e909c359d26058da31b08d50a66b6921cb8348b9deaf17254e7cd3f",
+      "decision": "validated",
+      "expectedCorrectLabels": [
+        "A",
+        "B"
+      ],
+      "evidenceUrl": "https://www.cisco.com/c/en/us/td/docs/switches/lan/catalyst9300/software/release/17-15/configuration_guide/lyr2/b_1715_lyr2_9300_cg/configuring_spanning_tree_protocol.html",
+      "evidenceDocumentSha256": "bd4a22940684e9d2516551f3e9032737bca5fd15736962bfc778c6b21962fdc7",
+      "supportingPassage": {
+        "documentSha256": "bd4a22940684e9d2516551f3e9032737bca5fd15736962bfc778c6b21962fdc7",
+        "normalizedOffset": 10899,
+        "normalizedLength": 1440,
+        "sha256": "97aa57662da5b39f420d50c4babddd2b5c2df0124116e4b1ef21c1778b1e695e"
+      },
+      "evidenceSection": "lowest MAC address",
+      "reason": "Revisión técnica bilingüe y distractores contrastados con referencia primaria. Resultado contrastado: Switch B is elected as the Root Bridge for VLAN 10 because it possesses the lowest Bridge Priority value.; Switch C's interface connecting to Switch A is assigned the Alternate port role and enters the Discarding state..",
+      "checks": {
+        "answerAndDistractors": true,
+        "bilingualConsistency": true,
+        "explicitAssumptions": true,
+        "authorship": "Original project wording declared in repository; revised by the assistant where documented, with primary references cited."
+      },
+      "scenarioCheck": {
+        "kind": "stp_root_and_designated",
+        "result": {
+          "root": "B",
+          "designatedOnAC": "A",
+          "alternateOnAC": "C"
+        },
+        "passed": true
+      }
+    },
+    {
+      "id": "ccna-legacy-batch1_ip_connectivity-003",
+      "file": "batch1_ip_connectivity.json",
+      "index": 2,
+      "sourceSha256": "dab9904f39d760c8448b3cd85bfd94a4aa60dd2935138f05ee89250e25901136",
+      "contentSha256": "525a7dc05f9220fa3cd3da17ff1ede2d6de6ef2c46d7de50d80791f3e1fb0afc",
+      "decision": "validated",
+      "expectedCorrectLabels": [
+        "A"
+      ],
+      "evidenceUrl": "https://www.cisco.com/c/en/us/support/docs/dial-access/floating-static-route/118263-technote-nexthop-00.html",
+      "evidenceDocumentSha256": "88692b604edd7daad37ed68c08fb48ec56bba1f1a92aa373b1f0ebb5088c7012",
+      "supportingPassage": {
+        "documentSha256": "88692b604edd7daad37ed68c08fb48ec56bba1f1a92aa373b1f0ebb5088c7012",
+        "normalizedOffset": 12194,
+        "normalizedLength": 1440,
+        "sha256": "26d8caec1c633d46279c9fb42f0295f2a5956609792ce74bf71a00edc53a6f78"
+      },
+      "evidenceSection": "as long as you have a route to the next hop",
+      "reason": "Revisión técnica bilingüe y distractores contrastados con referencia primaria. Resultado contrastado: The next-hop IP address 198.51.100.2 is not reachable because there is no matching active route or up/up interface for that subnet in the RIB..",
+      "checks": {
+        "answerAndDistractors": true,
+        "bilingualConsistency": true,
+        "explicitAssumptions": true,
+        "authorship": "Original project wording declared in repository; revised by the assistant where documented, with primary references cited."
+      }
+    },
+    {
+      "id": "ccna-legacy-batch1_ip_connectivity-004",
+      "file": "batch1_ip_connectivity.json",
+      "index": 3,
+      "sourceSha256": "e7616553c1280c519f6799d24987fd26bfcb3a9a6665d23017a99a61dd738fc0",
+      "contentSha256": "da5164098a7ba64e8aa5e35c8d88252e03459a83345d2f528558303c6d06fed1",
+      "decision": "validated",
+      "expectedCorrectLabels": [
+        "A"
+      ],
+      "evidenceUrl": "https://www.rfc-editor.org/rfc/rfc1812.txt",
+      "evidenceDocumentSha256": "72c2c27fecd3eef085f978a8c0ee5f364877708bfc0251af1c8437b56ad2f56d",
+      "supportingPassage": {
+        "documentSha256": "72c2c27fecd3eef085f978a8c0ee5f364877708bfc0251af1c8437b56ad2f56d",
+        "normalizedOffset": 56571,
+        "normalizedLength": 1440,
+        "sha256": "7507b3150d322ae5a62739257545755aecb2f2a4a438fd62d7879c1a387e490d"
+      },
+      "evidenceSection": "Routers must use the most specific matching route",
+      "reason": "Revisión técnica bilingüe y distractores contrastados con referencia primaria. Resultado contrastado: The OSPF route 10.1.5.64/26 via next hop 10.0.16.2, because /26 has the longest prefix match covering the destination address..",
+      "checks": {
+        "answerAndDistractors": true,
+        "bilingualConsistency": true,
+        "explicitAssumptions": true,
+        "authorship": "Original project wording declared in repository; revised by the assistant where documented, with primary references cited."
+      },
+      "scenarioCheck": {
+        "kind": "longest_prefix",
+        "result": {
+          "prefix": "10.1.5.64/26",
+          "nextHop": "10.0.16.2"
+        },
+        "passed": true
+      }
+    },
+    {
+      "id": "ccna-legacy-batch1_ip_connectivity-005",
+      "file": "batch1_ip_connectivity.json",
+      "index": 4,
+      "sourceSha256": "d825fe254d4798c450c969bb7acdf8de3308ae66541aaf3eca9aab4f9c9abfce",
+      "contentSha256": "d7f2cdcab094d140e1701ddc10f49900183717899203ac4337bd7f72cf1581a6",
+      "decision": "validated",
+      "expectedCorrectLabels": [
+        "A"
+      ],
+      "evidenceUrl": "https://www.cisco.com/c/en/us/support/docs/ip/border-gateway-protocol-bgp/15986-admin-distance.html",
+      "evidenceDocumentSha256": "3a85eeac0c4496d17ddccd2f3dbb1b09bd6f06370d2c3b573f06da1b7254dcea",
+      "supportingPassage": {
+        "documentSha256": "3a85eeac0c4496d17ddccd2f3dbb1b09bd6f06370d2c3b573f06da1b7254dcea",
+        "normalizedOffset": 5530,
+        "normalizedLength": 1440,
+        "sha256": "9bbbf18519ecd49285f904908e4c03535f68f267591c5435bbdcef5bc0ef172b"
+      },
+      "evidenceSection": "EIGRP",
+      "reason": "Revisión técnica bilingüe y distractores contrastados con referencia primaria. Resultado contrastado: It installs the EIGRP route for 172.16.10.0/24 (AD 90 beats OSPF AD 110) and installs 172.16.10.128/25 (OSPF); it forwards the packet to 10.3.3.2 because /25 is the longest prefix match..",
+      "checks": {
+        "answerAndDistractors": true,
+        "bilingualConsistency": true,
+        "explicitAssumptions": true,
+        "authorship": "Original project wording declared in repository; revised by the assistant where documented, with primary references cited."
+      },
+      "scenarioCheck": {
+        "kind": "rib_then_forwarding",
+        "result": {
+          "selectedPrefix": "172.16.10.128/25",
+          "nextHop": "10.3.3.2",
+          "installed24": "EIGRP"
+        },
+        "passed": true
+      },
+      "additionalEvidence": [
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc1812.txt",
+          "documentSha256": "72c2c27fecd3eef085f978a8c0ee5f364877708bfc0251af1c8437b56ad2f56d",
+          "section": "Focused supporting passage",
+          "normalizedOffset": 56611,
+          "normalizedLength": 1350,
+          "sha256": "5fb76446f1a1b00e4536cd38f3f3f2c412caf9044e4ec3e607c4cfe539dc8116"
+        }
+      ]
+    },
+    {
+      "id": "ccna-legacy-batch1_ip_connectivity-009",
+      "file": "batch1_ip_connectivity.json",
+      "index": 8,
+      "sourceSha256": "29f9b017bab9b2f55896859ed307fbc9ea1a8f59d5f2521fc0f2e560449683a3",
+      "contentSha256": "a76f9ffd8bf069dabf2d18b09e39570da8f3c9c7c603fafc5ecb298ff4242f83",
+      "decision": "validated",
+      "expectedCorrectLabels": [
+        "A"
+      ],
+      "evidenceUrl": "https://www.cisco.com/c/en/us/td/docs/routers/ios/config/17-x/ip-routing/b-ip-routing/m_iro-cfg-0.html",
+      "evidenceDocumentSha256": "12ba932a16c065ee07d9f17a9bce077709fae7589e2b6336be71d42e55472a36",
+      "supportingPassage": {
+        "documentSha256": "12ba932a16c065ee07d9f17a9bce077709fae7589e2b6336be71d42e55472a36",
+        "normalizedOffset": 27672,
+        "normalizedLength": 1440,
+        "sha256": "44675b8e331140af6487878ff28b0eb700831eaee47e729cf0f68b278cb17f81"
+      },
+      "evidenceSection": "highest IP address among all loopback interfaces",
+      "reason": "Revisión técnica bilingüe y distractores contrastados con referencia primaria. Resultado contrastado: 10.200.1.1.",
+      "checks": {
+        "answerAndDistractors": true,
+        "bilingualConsistency": true,
+        "explicitAssumptions": true,
+        "authorship": "Original project wording declared in repository; revised by the assistant where documented, with primary references cited."
+      },
+      "scenarioCheck": {
+        "kind": "loopback_router_id",
+        "result": "10.200.1.1",
+        "passed": true
+      }
+    },
+    {
+      "id": "ccna-legacy-batch1_ip_connectivity-011",
+      "file": "batch1_ip_connectivity.json",
+      "index": 10,
+      "sourceSha256": "895391957f8671ed28ece542a5884f0d7a7d1ba34bc7c59cfa139812ef394dc2",
+      "contentSha256": "f89f7271c2ed14866431a05bf2ae59ec2b135bc47beefd9a98b705d023e9fbc6",
+      "decision": "validated",
+      "expectedCorrectLabels": [
+        "A",
+        "B"
+      ],
+      "evidenceUrl": "https://www.rfc-editor.org/rfc/rfc2328.txt",
+      "evidenceDocumentSha256": "981690e297fbba9e8ef655802552b5529cb17f1ffe790ad2d55706cc522ff50c",
+      "supportingPassage": {
+        "documentSha256": "981690e297fbba9e8ef655802552b5529cb17f1ffe790ad2d55706cc522ff50c",
+        "normalizedOffset": 158866,
+        "normalizedLength": 1440,
+        "sha256": "2e3055a9a148f35cd2842cdd572e1f8bbe6a121d9178426ceabda6825abb0ac3"
+      },
+      "evidenceSection": "Network Mask, HelloInterval, and RouterDeadInterval",
+      "reason": "Revisión técnica bilingüe y distractores contrastados con referencia primaria. Resultado contrastado: Hello and Dead timer intervals; Area ID and subnet/subnet mask.",
+      "checks": {
+        "answerAndDistractors": true,
+        "bilingualConsistency": true,
+        "explicitAssumptions": true,
+        "authorship": "Original project wording declared in repository; revised by the assistant where documented, with primary references cited."
+      }
+    },
+    {
+      "id": "ccna-legacy-batch1_ip_connectivity-012",
+      "file": "batch1_ip_connectivity.json",
+      "index": 11,
+      "sourceSha256": "ab85681cf083948958f7e8a08a5d1232722dcdc9e35660abcd6564df22d67d7d",
+      "contentSha256": "af9f3bf4adfe8b84db5fe6c9d8d4023b558ea070b48ce4eb574dc3619f3c08bb",
+      "decision": "validated",
+      "expectedCorrectLabels": [
+        "A"
+      ],
+      "evidenceUrl": "https://www.rfc-editor.org/rfc/rfc2328.txt",
+      "evidenceDocumentSha256": "981690e297fbba9e8ef655802552b5529cb17f1ffe790ad2d55706cc522ff50c",
+      "supportingPassage": {
+        "documentSha256": "981690e297fbba9e8ef655802552b5529cb17f1ffe790ad2d55706cc522ff50c",
+        "normalizedOffset": 93102,
+        "normalizedLength": 1440,
+        "sha256": "09eb613f7fdb987d3e4b9b54135a0f4a91f6cd877fb9a4189d01d1358444de02"
+      },
+      "evidenceSection": "regardless of its Router Priority",
+      "reason": "Revisión técnica bilingüe y distractores contrastados con referencia primaria. Resultado contrastado: R1 is the DR, R2 is the BDR, and R3 is a DROTHER..",
+      "checks": {
+        "answerAndDistractors": true,
+        "bilingualConsistency": true,
+        "explicitAssumptions": true,
+        "authorship": "Original project wording declared in repository; revised by the assistant where documented, with primary references cited."
+      },
+      "scenarioCheck": {
+        "kind": "ospf_nonpreemptive_timeline",
+        "result": {
+          "DR": "R1",
+          "BDR": "R2",
+          "DROTHER": "R3"
+        },
+        "passed": true
+      }
+    },
+    {
+      "id": "ccna-legacy-batch1_ip_services-004",
+      "file": "batch1_ip_services.json",
+      "index": 3,
+      "sourceSha256": "8f2003c54078f466ae2c4982f36066e23eda108bc245faead07175e7fadded11",
+      "contentSha256": "c8ed163ca81ec9b276319a3c240ace01ece52a239d922f32444447ef60d5f6fc",
+      "decision": "validated",
+      "expectedCorrectLabels": [
+        "A"
+      ],
+      "evidenceUrl": "https://www.cisco.com/c/en/us/td/docs/switches/lan/catalyst9300/software/release/17-15/configuration_guide/sys_mgmt/b_1715_sys_mgmt_9300_cg/configuring_system_message_logs.html",
+      "evidenceDocumentSha256": "aa288172b1838ecce49edcb43087a2a15d99d353eaf0918eef7d75fa9327190e",
+      "supportingPassage": {
+        "documentSha256": "aa288172b1838ecce49edcb43087a2a15d99d353eaf0918eef7d75fa9327190e",
+        "normalizedOffset": 17337,
+        "normalizedLength": 1440,
+        "sha256": "c96785e4f251a4f9c66168ecf12216b20c316ef0b766f6c291f0c88507c456e2"
+      },
+      "evidenceSection": "logging trap",
+      "reason": "Revisión técnica bilingüe y distractores contrastados con referencia primaria. Resultado contrastado: Severity levels 0 through 4 (Emergencies, Alerts, Critical, Errors, and Warnings).",
+      "checks": {
+        "answerAndDistractors": true,
+        "bilingualConsistency": true,
+        "explicitAssumptions": true,
+        "authorship": "Original project wording declared in repository; revised by the assistant where documented, with primary references cited."
+      },
+      "scenarioCheck": {
+        "kind": "severity_threshold",
+        "result": [
+          0,
+          1,
+          2,
+          3,
+          4
+        ],
+        "passed": true
+      }
+    },
+    {
+      "id": "ccna-legacy-batch1_security_fundamentals-005",
+      "file": "batch1_security_fundamentals.json",
+      "index": 4,
+      "sourceSha256": "d89fef2ab78c0b62c74ea3549d8cc006062317ea4f6b0bd2e1e45a0a3fc49f7a",
+      "contentSha256": "a727e0308ddfc80e4b6265af86d334b5e0b7523cf37198f6e64128813fef02ba",
+      "decision": "validated",
+      "expectedCorrectLabels": [
+        "A"
+      ],
+      "evidenceUrl": "https://www.cisco.com/c/en/us/support/docs/ip/access-lists/26448-ACLsamples.html",
+      "evidenceDocumentSha256": "d004fd75573b4f98df59c86de4448a69abd072947aad8a5aac3a838e1e04b8a8",
+      "supportingPassage": {
+        "documentSha256": "d004fd75573b4f98df59c86de4448a69abd072947aad8a5aac3a838e1e04b8a8",
+        "normalizedOffset": 3721,
+        "normalizedLength": 1440,
+        "sha256": "67d935c1fa20e1c17291955b686c2bf236005cdfd5d9b2b89cdead4e1212116e"
+      },
+      "evidenceSection": "first match determines",
+      "reason": "Revisión técnica bilingüe y distractores contrastados con referencia primaria. Resultado contrastado: The packet is dropped by sequence line 30 because sequence line 20 only matches the 172.16.20.0/24 subnet..",
+      "checks": {
+        "answerAndDistractors": true,
+        "bilingualConsistency": true,
+        "explicitAssumptions": true,
+        "authorship": "Original project wording declared in repository; revised by the assistant where documented, with primary references cited."
+      },
+      "scenarioCheck": {
+        "kind": "ordered_acl",
+        "result": {
+          "sequence": 30,
+          "action": "deny"
+        },
+        "passed": true
+      }
+    },
+    {
+      "id": "ccna-legacy-batch1_network_fundamentals-001-review-r1",
+      "file": "reviewed_legacy_corrections_20261029.json",
+      "index": 0,
+      "sourceSha256": "14d08ca56ee640884f7de28614c1c4d305ac8dff6f69faa1f64fd1c880cbb758",
+      "contentSha256": "04066430c0b5912c8c863da85d800170a794c52d29e81c5a8e70d9cb1f91d948",
+      "decision": "validated",
+      "expectedCorrectLabels": [
+        "B"
+      ],
+      "evidenceUrl": "https://www.cisco.com/c/en/us/solutions/enterprise-networks/what-is-power-over-ethernet.html",
+      "evidenceDocumentSha256": "70e2f38a1d18e97d1f8393bde673b2a2c89b100221ed35b3fa8922baa3e5b2d4",
+      "supportingPassage": {
+        "documentSha256": "70e2f38a1d18e97d1f8393bde673b2a2c89b100221ed35b3fa8922baa3e5b2d4",
+        "normalizedOffset": 3935,
+        "normalizedLength": 1440,
+        "sha256": "541e30e8db36355945e9afde0fd289c2bfb2e1acd1b971395b0a62705a6f4416"
+      },
+      "evidenceSection": "IEEE 802.3at, known as PoE+ or Type 2",
+      "reason": "Versión corregida: La pregunta no pedía el estándar mínimo y 802.3bt también cumple la potencia; no debe atribuirse un consumo fijo a toda una familia de AP.. Resultado contrastado: IEEE 802.3at (PoE+).",
+      "checks": {
+        "answerAndDistractors": true,
+        "bilingualConsistency": true,
+        "explicitAssumptions": true,
+        "authorship": "Original project wording declared in repository; revised by the assistant where documented, with primary references cited."
+      },
+      "supersedesQuestionId": "ccna-legacy-batch1_network_fundamentals-001"
+    },
+    {
+      "id": "ccna-legacy-batch1_network_fundamentals-002-review-r1",
+      "file": "reviewed_legacy_corrections_20261029.json",
+      "index": 1,
+      "sourceSha256": "ded00dfc93cd67a15a5c7cee5aca3125bdea928d356c1817ba18e24ebbd87017",
+      "contentSha256": "00903b8111afdf3acf2b38757446597f23471980cc0b732dda2088f9e5798c2f",
+      "decision": "validated",
+      "expectedCorrectLabels": [
+        "A",
+        "C"
+      ],
+      "evidenceUrl": "https://www.cisco.com/c/en/us/products/security/firewalls/what-is-a-next-generation-firewall.html",
+      "evidenceDocumentSha256": "889bc1eb4744d4b3da7cc513aa9d5421ce8538442df44fe5ba782ed1d9a6c763",
+      "supportingPassage": {
+        "documentSha256": "889bc1eb4744d4b3da7cc513aa9d5421ce8538442df44fe5ba782ed1d9a6c763",
+        "normalizedOffset": 3468,
+        "normalizedLength": 1440,
+        "sha256": "ac0806fb5595b6f158c5880daf7abf1ef75ecfa91567a3672211d3ec59360d29"
+      },
+      "evidenceSection": "TLS/SSL decryption",
+      "reason": "Versión corregida: La inspección de carga TLS no ocurre automáticamente: requiere descifrado autorizado y compatibilidad.. Resultado contrastado: Deep packet inspection with Application Visibility and Control (AVC) up to Layer 7; Integrated Next-Generation Intrusion Prevention System (NGIPS) with contextual threat intelligence.",
+      "checks": {
+        "answerAndDistractors": true,
+        "bilingualConsistency": true,
+        "explicitAssumptions": true,
+        "authorship": "Original project wording declared in repository; revised by the assistant where documented, with primary references cited."
+      },
+      "supersedesQuestionId": "ccna-legacy-batch1_network_fundamentals-002"
+    },
+    {
+      "id": "ccna-legacy-batch1_network_fundamentals-003-review-r1",
+      "file": "reviewed_legacy_corrections_20261029.json",
+      "index": 2,
+      "sourceSha256": "d9b3670f1eae0c929143caf84605c3bc59f8d5797c35f84326fead0c962d7cc8",
+      "contentSha256": "bb61a04f8ed2c8c9dcac5918c8103861b1a40c1055c6276e212fb89a632849ff",
+      "decision": "validated",
+      "expectedCorrectLabels": [
+        "A"
+      ],
+      "evidenceUrl": "https://www.rfc-editor.org/rfc/rfc7938.txt",
+      "evidenceDocumentSha256": "d71d4e87fca8229964568357aaa38b2b2e0c8387baac895f7620908f017940ed",
+      "supportingPassage": {
+        "documentSha256": "d71d4e87fca8229964568357aaa38b2b2e0c8387baac895f7620908f017940ed",
+        "normalizedOffset": 16231,
+        "normalizedLength": 1440,
+        "sha256": "ec4b086357f2410e99c994e2daa0ed2de47a47e9fd18f1c6090161f14301de04"
+      },
+      "evidenceSection": "Leaf and Spine",
+      "reason": "Versión corregida: La explicación decía que cualesquiera dos servidores estaban a dos saltos; no es cierto para servidores del mismo leaf.. Resultado contrastado: Every leaf connects to every spine, with no direct leaf-to-leaf or spine-to-spine links in this model..",
+      "checks": {
+        "answerAndDistractors": true,
+        "bilingualConsistency": true,
+        "explicitAssumptions": true,
+        "authorship": "Original project wording declared in repository; revised by the assistant where documented, with primary references cited."
+      },
+      "supersedesQuestionId": "ccna-legacy-batch1_network_fundamentals-003"
+    },
+    {
+      "id": "ccna-legacy-batch1_network_fundamentals-005-review-r1",
+      "file": "reviewed_legacy_corrections_20261029.json",
+      "index": 3,
+      "sourceSha256": "91ec3176325a3a482834aecb5f8a6ec1e4ab6785b655c080bf06e1a431103802",
+      "contentSha256": "184fa5aa78bd5a924379722d50317ad4b4ba8ef55de1658d027d6d9a5ed818af",
+      "decision": "validated",
+      "expectedCorrectLabels": [
+        "A"
+      ],
+      "evidenceUrl": "https://www.cisco.com/c/en/us/support/docs/lan-switching/ethernet/10561-3.html",
+      "evidenceDocumentSha256": "0d2e6f8db4de5645a757bd72d475c7a062e941130b877a832ab81333d54091dc",
+      "supportingPassage": {
+        "documentSha256": "0d2e6f8db4de5645a757bd72d475c7a062e941130b877a832ab81333d54091dc",
+        "normalizedOffset": 27525,
+        "normalizedLength": 1440,
+        "sha256": "f98f7df257a88b028a3409c821615a35aa698b8d7922f5536efd463cdff034c9"
+      },
+      "evidenceSection": "late collisions",
+      "reason": "Versión corregida: Un puerto full-duplex no debe diagnosticarse como el lado que detecta late collisions; se separan los contadores de ambos extremos.. Resultado contrastado: A duplex mismatch: the server NIC failed to negotiate duplex and defaulted to Half-Duplex, causing collisions when both sides transmit simultaneously..",
+      "checks": {
+        "answerAndDistractors": true,
+        "bilingualConsistency": true,
+        "explicitAssumptions": true,
+        "authorship": "Original project wording declared in repository; revised by the assistant where documented, with primary references cited."
+      },
+      "supersedesQuestionId": "ccna-legacy-batch1_network_fundamentals-005"
+    },
+    {
+      "id": "ccna-legacy-batch1_network_fundamentals-006-review-r1",
+      "file": "reviewed_legacy_corrections_20261029.json",
+      "index": 4,
+      "sourceSha256": "b373a721c47f126006a9c9fe19a1a3aba70d9c5040628df596dd724a47c7da05",
+      "contentSha256": "fad89c9a6562404e830f0466ceaea7b86f7055b7e3a6de2c4295e4a692744d02",
+      "decision": "validated",
+      "expectedCorrectLabels": [
+        "A"
+      ],
+      "evidenceUrl": "https://www.rfc-editor.org/rfc/rfc9293.txt",
+      "evidenceDocumentSha256": "6d9ac8be4b0286f8c3d337addf442b2eb6a9b14e1366594ea7fbc273f93dc2d9",
+      "supportingPassage": {
+        "documentSha256": "6d9ac8be4b0286f8c3d337addf442b2eb6a9b14e1366594ea7fbc273f93dc2d9",
+        "normalizedOffset": 13875,
+        "normalizedLength": 1440,
+        "sha256": "be1f1709909343ef0cf0fc2ba3e768bc2441d7b6816495504185b0db106bcb8d"
+      },
+      "evidenceSection": "Window: 16 bits",
+      "reason": "Versión corregida: La ventana de recepción no significa bytes antes de requerir un ACK; ventana cero permite sondeos.. Resultado contrastado: Sliding Window using the Window Size field in the TCP header.",
+      "checks": {
+        "answerAndDistractors": true,
+        "bilingualConsistency": true,
+        "explicitAssumptions": true,
+        "authorship": "Original project wording declared in repository; revised by the assistant where documented, with primary references cited."
+      },
+      "supersedesQuestionId": "ccna-legacy-batch1_network_fundamentals-006"
+    },
+    {
+      "id": "ccna-legacy-batch1_network_fundamentals-010-review-r1",
+      "file": "reviewed_legacy_corrections_20261029.json",
+      "index": 5,
+      "sourceSha256": "0e290fb588c64551bb25205b0c8d83b61207ba93f3a35b9a20489005227e4f72",
+      "contentSha256": "5774e070d21149a1cada1755a120d3dfb72a59e927db45025effd1b0af06226e",
+      "decision": "validated",
+      "expectedCorrectLabels": [
+        "A"
+      ],
+      "evidenceUrl": "https://www.rfc-editor.org/rfc/rfc6598.txt",
+      "evidenceDocumentSha256": "b04d16c5c98b89324d35dc6dc783eface0bedf94c14c9e289b646d39ea55c4c0",
+      "supportingPassage": {
+        "documentSha256": "b04d16c5c98b89324d35dc6dc783eface0bedf94c14c9e289b646d39ea55c4c0",
+        "normalizedOffset": 16272,
+        "normalizedLength": 1440,
+        "sha256": "a8ab347dd8ccd6bc49d4be2f993470c792b915e2f03fd652e636df84e061026e"
+      },
+      "evidenceSection": "Focused rule, definition or command table (not navigation)",
+      "reason": "Versión corregida: Separar espacio compartido de RFC 1918 y evitar afirmar un mecanismo de traducción universal.. Resultado contrastado: Shared Address Space for Carrier-Grade NAT (CGNAT) under RFC 6598 (100.64.0.0/10).",
+      "checks": {
+        "answerAndDistractors": true,
+        "bilingualConsistency": true,
+        "explicitAssumptions": true,
+        "authorship": "Original project wording declared in repository; revised by the assistant where documented, with primary references cited."
+      },
+      "supersedesQuestionId": "ccna-legacy-batch1_network_fundamentals-010"
+    },
+    {
+      "id": "ccna-legacy-batch1_network_access-001-review-r1",
+      "file": "reviewed_legacy_corrections_20261029.json",
+      "index": 6,
+      "sourceSha256": "ef085025119156747f95f37474c82eac83a07323700299a965f91f1f254add01",
+      "contentSha256": "cabb026826c9a5ed652a4440ae8d214c601a4cab14395b468e7e15b9bf76b0b2",
+      "decision": "validated",
+      "expectedCorrectLabels": [
+        "A"
+      ],
+      "evidenceUrl": "https://www.cisco.com/c/en/us/td/docs/switches/lan/catalyst2960/software/release/12-2_55_se/configuration/guide/scg_2960/swvlan.html",
+      "evidenceDocumentSha256": "5b5b1a65fb920d974ef2ad1098c28c17a096bc00de6a5e408344ee16b1aff715",
+      "supportingPassage": {
+        "documentSha256": "5b5b1a65fb920d974ef2ad1098c28c17a096bc00de6a5e408344ee16b1aff715",
+        "normalizedOffset": 38110,
+        "normalizedLength": 1440,
+        "sha256": "63c3c88c145f21913827c52ddc8264e4c0d83dfb70d9c3ee4c8892ac47ff0def"
+      },
+      "evidenceSection": "Default VLAN (for access ports)",
+      "reason": "Versión corregida: Limitar la pregunta a valores predeterminados documentados y no generalizar restricciones de nombre a cualquier plataforma.. Resultado contrastado: VLAN 1.",
+      "checks": {
+        "answerAndDistractors": true,
+        "bilingualConsistency": true,
+        "explicitAssumptions": true,
+        "authorship": "Original project wording declared in repository; revised by the assistant where documented, with primary references cited."
+      },
+      "supersedesQuestionId": "ccna-legacy-batch1_network_access-001"
+    },
+    {
+      "id": "ccna-legacy-batch1_network_access-003-review-r1",
+      "file": "reviewed_legacy_corrections_20261029.json",
+      "index": 7,
+      "sourceSha256": "bc5b0a501756b73a06ef83a9880f6f0720fa001c770aa4af019f836bbe74668c",
+      "contentSha256": "aa29c9a20f92a9d25faefb5b95a5ad09e6a9f35990ecfb0bab19ad886482a8de",
+      "decision": "validated",
+      "expectedCorrectLabels": [
+        "A"
+      ],
+      "evidenceUrl": "https://www.cisco.com/c/en/us/td/docs/switches/lan/catalyst9300/software/release/17-15/configuration_guide/vlan/b_1715_vlan_9300_cg/configuring_vlan_trunks.html",
+      "evidenceDocumentSha256": "99ba29253329bba1c5edd2bb8780e155945eec145433000463e78519f598b858",
+      "supportingPassage": {
+        "documentSha256": "99ba29253329bba1c5edd2bb8780e155945eec145433000463e78519f598b858",
+        "normalizedOffset": 19880,
+        "normalizedLength": 1440,
+        "sha256": "3c46999b6ca675a37ac8bc1efd49d1aecfcaccb5bf40a53b06c3af1a936183d3"
+      },
+      "evidenceSection": "Focused rule, definition or command table (not navigation)",
+      "reason": "Versión corregida: Distinguir clasificación sin etiqueta de bloqueos STP; PVID inconsistency no es type inconsistency.. Resultado contrastado: It classifies the untagged frame into VLAN 20; STP forwarding permission must be checked separately..",
+      "checks": {
+        "answerAndDistractors": true,
+        "bilingualConsistency": true,
+        "explicitAssumptions": true,
+        "authorship": "Original project wording declared in repository; revised by the assistant where documented, with primary references cited."
+      },
+      "supersedesQuestionId": "ccna-legacy-batch1_network_access-003"
+    },
+    {
+      "id": "ccna-legacy-batch1_network_access-005-review-r1",
+      "file": "reviewed_legacy_corrections_20261029.json",
+      "index": 8,
+      "sourceSha256": "f65413a3abdb836b34b29aac63432a1bb4eeed345a5943f75e60f7f0369e5fc7",
+      "contentSha256": "77248e951180d52172ab045c7ee6282e0babaecc6d42e19d6ae8a6c00b500c6d",
+      "decision": "validated",
+      "expectedCorrectLabels": [
+        "A"
+      ],
+      "evidenceUrl": "https://www.cisco.com/c/en/us/td/docs/switches/lan/catalyst9300/software/release/17-15/configuration_guide/int_hw/b_1715_int_and_hw_9300_cg/configuring_lldp__lldp_med__and_wired_location_service.html",
+      "evidenceDocumentSha256": "72eaa7d31c06aa7dc43c5d43e596af33f229a50e5f39fff2896eb6a0acea9624",
+      "supportingPassage": {
+        "documentSha256": "72eaa7d31c06aa7dc43c5d43e596af33f229a50e5f39fff2896eb6a0acea9624",
+        "normalizedOffset": 5421,
+        "normalizedLength": 1440,
+        "sha256": "6d2298ab29efbe7d290679ca9a4767c48aebc16ef0d210ef12ef431138b24087"
+      },
+      "evidenceSection": "IEEE 802.1AB Link Layer Discovery Protocol",
+      "reason": "Versión corregida: LLDP no está soportado universalmente ni los valores predeterminados de CDP son iguales en todo hardware.. Resultado contrastado: LLDP is IEEE 802.1AB for multivendor Layer 2 discovery; CDP is Cisco-specific Layer 2 discovery..",
+      "checks": {
+        "answerAndDistractors": true,
+        "bilingualConsistency": true,
+        "explicitAssumptions": true,
+        "authorship": "Original project wording declared in repository; revised by the assistant where documented, with primary references cited."
+      },
+      "supersedesQuestionId": "ccna-legacy-batch1_network_access-005"
+    },
+    {
+      "id": "ccna-legacy-batch1_network_access-008-review-r1",
+      "file": "reviewed_legacy_corrections_20261029.json",
+      "index": 9,
+      "sourceSha256": "96f80002c1a255333e0f3947ed72d1a5d8f497ddce6cac26ffc0f24c989a42f0",
+      "contentSha256": "e5526d759b0afc360eaa2d0c58768ce01c3bf3652e266b4160bc0229b644fc92",
+      "decision": "validated",
+      "expectedCorrectLabels": [
+        "A"
+      ],
+      "evidenceUrl": "https://www.cisco.com/c/en/us/td/docs/switches/lan/catalyst9300/software/release/17-15/configuration_guide/lyr2/b_1715_lyr2_9300_cg/configuring_optional_spanning_tree_features.html",
+      "evidenceDocumentSha256": "5a30d2e387a6fe2cf616c620687041f2bb4e53fa672d6c787c505b6fb71b9c05",
+      "supportingPassage": {
+        "documentSha256": "5a30d2e387a6fe2cf616c620687041f2bb4e53fa672d6c787c505b6fb71b9c05",
+        "normalizedOffset": 4992,
+        "normalizedLength": 1440,
+        "sha256": "dd6703a96f5d952cf2b8f08a7a7b806b590b49af4f25ebe97ee273b7e906532f"
+      },
+      "evidenceSection": "BPDU guard feature puts the port",
+      "reason": "Versión corregida: No todo switch no administrado genera BPDU; err-disabled por sí solo no identifica la causa y puede haber recuperación automática.. Resultado contrastado: Correct the BPDU source/topology, then issue shutdown followed by no shutdown on the protected port..",
+      "checks": {
+        "answerAndDistractors": true,
+        "bilingualConsistency": true,
+        "explicitAssumptions": true,
+        "authorship": "Original project wording declared in repository; revised by the assistant where documented, with primary references cited."
+      },
+      "supersedesQuestionId": "ccna-legacy-batch1_network_access-008"
+    },
+    {
+      "id": "ccna-legacy-batch1_network_access-009-review-r1",
+      "file": "reviewed_legacy_corrections_20261029.json",
+      "index": 10,
+      "sourceSha256": "beb1b13028f1d69ead616a26059ff597162e51912453ead9d23a109ac61f5760",
+      "contentSha256": "e9963ef3dddb8494d6e20dd7d3e95caa314693711d3783a99f05a3aade020ead",
+      "decision": "validated",
+      "expectedCorrectLabels": [
+        "A"
+      ],
+      "evidenceUrl": "https://www.rfc-editor.org/rfc/rfc5416.txt",
+      "evidenceDocumentSha256": "ef326f22d2302b43547dcad37fbc545b075dcae7941372b0569fd84e0f5a4af2",
+      "supportingPassage": {
+        "documentSha256": "ef326f22d2302b43547dcad37fbc545b075dcae7941372b0569fd84e0f5a4af2",
+        "normalizedOffset": 16526,
+        "normalizedLength": 1440,
+        "sha256": "4bd95650ab5a0deca9a537d722b90b8df0df1e8f8115e28f9920e51161bdc4a2"
+      },
+      "evidenceSection": "Beacon Generation WTP",
+      "reason": "Versión corregida: Distinguir el autenticador WLC que retransmite EAP de terminar necesariamente el método EAP del usuario.. Resultado contrastado: Generating 802.11 beacons and transmitting Layer 2 frame acknowledgments (ACKs)..",
+      "checks": {
+        "answerAndDistractors": true,
+        "bilingualConsistency": true,
+        "explicitAssumptions": true,
+        "authorship": "Original project wording declared in repository; revised by the assistant where documented, with primary references cited."
+      },
+      "supersedesQuestionId": "ccna-legacy-batch1_network_access-009",
+      "additionalEvidence": [
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc3748.txt",
+          "documentSha256": "47b3a35dcc8b52f8e0ff67477a8d38b3d801a5478e62b9f6b3c20246428d1d74",
+          "section": "Focused supporting passage",
+          "normalizedOffset": 1799,
+          "normalizedLength": 1350,
+          "sha256": "026ca823f0b8cfa0a290626455bd0a7256642eb3aa9c3c0953d70dba4591bba8"
+        }
+      ]
+    },
+    {
+      "id": "ccna-legacy-batch1_network_access-010-review-r1",
+      "file": "reviewed_legacy_corrections_20261029.json",
+      "index": 11,
+      "sourceSha256": "48a59679ab0dcd400dca97cb372d2a1b2a1049d5201a2adef0381d328c505988",
+      "contentSha256": "1183a4c8e6be228939ad2c0182ba4a89b931fae87d084f9c480c7cffa543ebd4",
+      "decision": "validated",
+      "expectedCorrectLabels": [
+        "A"
+      ],
+      "evidenceUrl": "https://www.cisco.com/c/en/us/td/docs/switches/lan/catalyst9300/software/release/17-15/configuration_guide/lyr2/b_1715_lyr2_9300_cg/configuring_etherchannels.html",
+      "evidenceDocumentSha256": "45ce331b4fdaa8879ab0b9d9a3fe9d9ea47f074e76df4d6d42823fc7a9e2cb86",
+      "supportingPassage": {
+        "documentSha256": "45ce331b4fdaa8879ab0b9d9a3fe9d9ea47f074e76df4d6d42823fc7a9e2cb86",
+        "normalizedOffset": 10629,
+        "normalizedLength": 1440,
+        "sha256": "1c776b43c53990b3172a6a1c37f7c7ca8ed07d3d4bf70beff31db55c360108de"
+      },
+      "evidenceSection": "on mode do not exchange",
+      "reason": "Versión corregida: LAG y sus modos dependen del modelo WLC; se explicita una capacidad estática única en el escenario.. Resultado contrastado: One static EtherChannel in mode on, configured as an 802.1Q trunk carrying the required tagged VLANs..",
+      "checks": {
+        "answerAndDistractors": true,
+        "bilingualConsistency": true,
+        "explicitAssumptions": true,
+        "authorship": "Original project wording declared in repository; revised by the assistant where documented, with primary references cited."
+      },
+      "supersedesQuestionId": "ccna-legacy-batch1_network_access-010",
+      "additionalEvidence": [
+        {
+          "url": "https://www.cisco.com/c/en/us/td/docs/switches/lan/catalyst9300/software/release/17-15/configuration_guide/vlan/b_1715_vlan_9300_cg/configuring_vlan_trunks.html",
+          "documentSha256": "99ba29253329bba1c5edd2bb8780e155945eec145433000463e78519f598b858",
+          "section": "Focused supporting passage",
+          "normalizedOffset": 2303,
+          "normalizedLength": 1350,
+          "sha256": "a6fc1c9dcf634146222a7d981c1d3ec710cf2d023d62d9a1281e1db00b3f3cb2"
+        }
+      ]
+    },
+    {
+      "id": "ccna-legacy-batch1_ip_connectivity-001-review-r1",
+      "file": "reviewed_legacy_corrections_20261029.json",
+      "index": 12,
+      "sourceSha256": "07c4a3c13103b5a748836fdc1dc415c064add8cac777a7989f017aa954bd6c2e",
+      "contentSha256": "d10c257b1a3faa98789890646b9c8b61706687a32ea66f877ec5b8e94b20f9f1",
+      "decision": "validated",
+      "expectedCorrectLabels": [
+        "A"
+      ],
+      "evidenceUrl": "https://www.cisco.com/c/en/us/support/docs/ip/border-gateway-protocol-bgp/15986-admin-distance.html",
+      "evidenceDocumentSha256": "3a85eeac0c4496d17ddccd2f3dbb1b09bd6f06370d2c3b573f06da1b7254dcea",
+      "supportingPassage": {
+        "documentSha256": "3a85eeac0c4496d17ddccd2f3dbb1b09bd6f06370d2c3b573f06da1b7254dcea",
+        "normalizedOffset": 6142,
+        "normalizedLength": 1440,
+        "sha256": "d70ee8b83721a96a180866297b7f3a21286ed6fe320c16fb5c18437b740d0144"
+      },
+      "evidenceSection": "values in brackets use the format",
+      "reason": "Versión corregida: La traducción generalizaba que toda ruta muestra corchetes; se interpreta solo la entrada observada.. Resultado contrastado: 110 is the administrative distance, and 65 is the metric (cost)..",
+      "checks": {
+        "answerAndDistractors": true,
+        "bilingualConsistency": true,
+        "explicitAssumptions": true,
+        "authorship": "Original project wording declared in repository; revised by the assistant where documented, with primary references cited."
+      },
+      "supersedesQuestionId": "ccna-legacy-batch1_ip_connectivity-001"
+    },
+    {
+      "id": "ccna-legacy-batch1_ip_connectivity-002-review-r1",
+      "file": "reviewed_legacy_corrections_20261029.json",
+      "index": 13,
+      "sourceSha256": "05cec5b568e5ad17d80b25795532af6cc9737134cf448200ca8b4c5c2bc1d34f",
+      "contentSha256": "52529ae88986af0e8de85de34874cbff84609dce331763280d0a52e6f52530f4",
+      "decision": "validated",
+      "expectedCorrectLabels": [
+        "A"
+      ],
+      "evidenceUrl": "https://www.cisco.com/c/en/us/support/docs/ip/ip-routing/116264-technote-ios-00.html",
+      "evidenceDocumentSha256": "49bd595fab4a2d2267222a224a7b2520336c0ffd4431f921ff719d1632574b3e",
+      "supportingPassage": {
+        "documentSha256": "49bd595fab4a2d2267222a224a7b2520336c0ffd4431f921ff719d1632574b3e",
+        "normalizedOffset": 5719,
+        "normalizedLength": 1440,
+        "sha256": "df9557f5af0b91a8c5109b64a704795cc20705573a70c40174662f58d2fc8842"
+      },
+      "evidenceSection": "Focused rule, definition or command table (not navigation)",
+      "reason": "Versión corregida: Retirar una fecha de introducción universal de las rutas locales y explicar su propósito observado.. Resultado contrastado: It identifies the router's own interface IP address, allowing CEF to quickly direct traffic destined for the router itself to the local control plane..",
+      "checks": {
+        "answerAndDistractors": true,
+        "bilingualConsistency": true,
+        "explicitAssumptions": true,
+        "authorship": "Original project wording declared in repository; revised by the assistant where documented, with primary references cited."
+      },
+      "supersedesQuestionId": "ccna-legacy-batch1_ip_connectivity-002"
+    },
+    {
+      "id": "ccna-legacy-batch1_ip_connectivity-006-review-r1",
+      "file": "reviewed_legacy_corrections_20261029.json",
+      "index": 14,
+      "sourceSha256": "f9d1877bbd7d6b3a77bd7a603f8e0c6a6533d7d12c0e2236a9f0975c43ec8e4a",
+      "contentSha256": "6524cc272407c2d34563c35c071f9adc62b9a5710fb679217bffe709e4c804e4",
+      "decision": "validated",
+      "expectedCorrectLabels": [
+        "A"
+      ],
+      "evidenceUrl": "https://www.cisco.com/c/en/us/td/docs/switches/lan/catalyst9300/software/release/17-15/configuration_guide/rtng/b_1715_rtng_9300_cg/configuring_ipv6_unicast_routing.html",
+      "evidenceDocumentSha256": "59f2f1becce60afd035d92c28c71ce9a26f955b33efbccba568670fc38804524",
+      "supportingPassage": {
+        "documentSha256": "59f2f1becce60afd035d92c28c71ce9a26f955b33efbccba568670fc38804524",
+        "normalizedOffset": 29845,
+        "normalizedLength": 1440,
+        "sha256": "d5e031555b2403baafa0a1450c532e4b687fba500f4ef91cfcc933748012c3e3"
+      },
+      "evidenceSection": "Focused rule, definition or command table (not navigation)",
+      "reason": "Versión corregida: ip default-gateway puede aplicarse a equipos IOS sin ip routing, no solo switches Capa 2.. Resultado contrastado: ip route 0.0.0.0 0.0.0.0 203.0.113.1\nipv6 route ::/0 2001:db8:acad::1.",
+      "checks": {
+        "answerAndDistractors": true,
+        "bilingualConsistency": true,
+        "explicitAssumptions": true,
+        "authorship": "Original project wording declared in repository; revised by the assistant where documented, with primary references cited."
+      },
+      "supersedesQuestionId": "ccna-legacy-batch1_ip_connectivity-006",
+      "additionalEvidence": [
+        {
+          "url": "https://www.cisco.com/c/en/us/support/docs/ip/routing-information-protocol-rip/16448-default.html",
+          "documentSha256": "05ba7f234b18ef186eb514eeaa14457222bfabe9108cfb5c03957c9455830e98",
+          "section": "Focused supporting passage",
+          "normalizedOffset": 16553,
+          "normalizedLength": 872,
+          "sha256": "05a036b9bbdd46b07e8aa856c9af5357ddcc7780f27ec7b507b5c84c941c2c27"
+        }
+      ]
+    },
+    {
+      "id": "ccna-legacy-batch1_ip_connectivity-007-review-r1",
+      "file": "reviewed_legacy_corrections_20261029.json",
+      "index": 15,
+      "sourceSha256": "778f7f2d7bfa90a476d6dc3a77519002a9772e6d1f657e4a342323299da02d20",
+      "contentSha256": "8340443df55e88ed176467eaf2bec82809a769d94973a562dbaaabcc9a43e01e",
+      "decision": "validated",
+      "expectedCorrectLabels": [
+        "A"
+      ],
+      "evidenceUrl": "https://www.cisco.com/c/en/us/support/docs/ip/border-gateway-protocol-bgp/15986-admin-distance.html",
+      "evidenceDocumentSha256": "3a85eeac0c4496d17ddccd2f3dbb1b09bd6f06370d2c3b573f06da1b7254dcea",
+      "supportingPassage": {
+        "documentSha256": "3a85eeac0c4496d17ddccd2f3dbb1b09bd6f06370d2c3b573f06da1b7254dcea",
+        "normalizedOffset": 15214,
+        "normalizedLength": 1440,
+        "sha256": "37b808c5f14145c39cd1c1078f377d2cc4ff0e640c1782c36e82e2941b10f2d8"
+      },
+      "evidenceSection": "Floating Static",
+      "reason": "Versión corregida: Explicitar distancia OSPF y disponibilidad del respaldo sin prometer conmutación instantánea.. Resultado contrastado: ip route 192.168.50.0 255.255.255.0 10.200.1.2 115.",
+      "checks": {
+        "answerAndDistractors": true,
+        "bilingualConsistency": true,
+        "explicitAssumptions": true,
+        "authorship": "Original project wording declared in repository; revised by the assistant where documented, with primary references cited."
+      },
+      "supersedesQuestionId": "ccna-legacy-batch1_ip_connectivity-007"
+    },
+    {
+      "id": "ccna-legacy-batch1_ip_connectivity-008-review-r1",
+      "file": "reviewed_legacy_corrections_20261029.json",
+      "index": 16,
+      "sourceSha256": "8ce7f5ed2ce2f2574f8882c64a90fa519414346605fc08f324442ea9a54cbb2e",
+      "contentSha256": "ad46dc4f01974c7e5b2b519bf7a54b047e9523f3e400c129da1540349b7db283",
+      "decision": "validated",
+      "expectedCorrectLabels": [
+        "A"
+      ],
+      "evidenceUrl": "https://www.cisco.com/c/en/us/support/docs/dial-access/floating-static-route/118263-technote-nexthop-00.html",
+      "evidenceDocumentSha256": "88692b604edd7daad37ed68c08fb48ec56bba1f1a92aa373b1f0ebb5088c7012",
+      "supportingPassage": {
+        "documentSha256": "88692b604edd7daad37ed68c08fb48ec56bba1f1a92aa373b1f0ebb5088c7012",
+        "normalizedOffset": 4365,
+        "normalizedLength": 1440,
+        "sha256": "cca9bd95e826c76fbfa183f0e7c14124e788af3face411335d84a2e0e38291f6"
+      },
+      "evidenceSection": "performs Address Resolution Protocol (ARP)",
+      "reason": "Versión corregida: El ARP por destino es un riesgo de carga, no agotamiento inevitable ni prohibición universal de rutas por interfaz.. Resultado contrastado: The router considers the target subnet as directly connected and sends an ARP request for every destination host IP, which can deplete ARP cache memory and increase CPU utilization..",
+      "checks": {
+        "answerAndDistractors": true,
+        "bilingualConsistency": true,
+        "explicitAssumptions": true,
+        "authorship": "Original project wording declared in repository; revised by the assistant where documented, with primary references cited."
+      },
+      "supersedesQuestionId": "ccna-legacy-batch1_ip_connectivity-008"
+    },
+    {
+      "id": "ccna-legacy-batch1_ip_connectivity-010-review-r1",
+      "file": "reviewed_legacy_corrections_20261029.json",
+      "index": 17,
+      "sourceSha256": "b6bdf9e5058eb41c893543c2c79546dd6628d4ea25ae034a7de736f4d6370c8a",
+      "contentSha256": "32bd08272285d0cbc26d239dc7bf4c0e76bf6c8cf9102271cb7781351acedfed",
+      "decision": "validated",
+      "expectedCorrectLabels": [
+        "A"
+      ],
+      "evidenceUrl": "https://www.cisco.com/c/en/us/support/docs/ip/open-shortest-path-first-ospf/9237-9.html",
+      "evidenceDocumentSha256": "d065dca39f2e841aa736ec606b4e37dae0b92d29cd7d34ad0f030b113bbe69df",
+      "supportingPassage": {
+        "documentSha256": "d065dca39f2e841aa736ec606b4e37dae0b92d29cd7d34ad0f030b113bbe69df",
+        "normalizedOffset": 8092,
+        "normalizedLength": 1440,
+        "sha256": "a08eec405561ceffa1d806467e9ebc6735090d55733a4628b83d930802a98e01"
+      },
+      "evidenceSection": "reference bandwidth divided by interface bandwidth",
+      "reason": "Versión corregida: No generalizar que todos los cocientes fraccionarios se redondean hacia arriba; aquí se aplica costo mínimo 1.. Resultado contrastado: Both interfaces receive a cost of 1; the command auto-cost reference-bandwidth 10000 under router ospf must be configured to differentiate them..",
+      "checks": {
+        "answerAndDistractors": true,
+        "bilingualConsistency": true,
+        "explicitAssumptions": true,
+        "authorship": "Original project wording declared in repository; revised by the assistant where documented, with primary references cited."
+      },
+      "supersedesQuestionId": "ccna-legacy-batch1_ip_connectivity-010",
+      "scenarioCheck": {
+        "kind": "reference_bandwidth",
+        "result": {
+          "default": [
+            1,
+            1
+          ],
+          "reference10000": [
+            10,
+            1
+          ]
+        },
+        "passed": true
+      },
+      "additionalEvidence": [
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc2328.txt",
+          "documentSha256": "981690e297fbba9e8ef655802552b5529cb17f1ffe790ad2d55706cc522ff50c",
+          "section": "Focused supporting passage",
+          "normalizedOffset": 215449,
+          "normalizedLength": 1350,
+          "sha256": "efacaecf7a541c84d8d6426ff4587383c7d8e9ee2c9e058e84c5ef09b5a2e437"
+        }
+      ]
+    },
+    {
+      "id": "ccna-legacy-batch1_ip_connectivity-013-review-r1",
+      "file": "reviewed_legacy_corrections_20261029.json",
+      "index": 18,
+      "sourceSha256": "d08952de8a205a1039025c05ab3219c2f5c43191c50e408c1fb007bf40ea8119",
+      "contentSha256": "867c47fcc01c57af30d2d89d48a27e9f68af009691fd8f3d8d1f726446ce295a",
+      "decision": "validated",
+      "expectedCorrectLabels": [
+        "A"
+      ],
+      "evidenceUrl": "https://www.cisco.com/c/en/us/td/docs/switches/lan/catalyst9300/software/release/17-15/configuration_guide/ip/b_1715_ip_9300_cg/configuring___hsrp.html",
+      "evidenceDocumentSha256": "28fb29e1bae67d1850e9a18b41f63e3232697e94c2bea9e0661c5735accbb5e6",
+      "supportingPassage": {
+        "documentSha256": "28fb29e1bae67d1850e9a18b41f63e3232697e94c2bea9e0661c5735accbb5e6",
+        "normalizedOffset": 13040,
+        "normalizedLength": 1440,
+        "sha256": "aea13fc4e2d2f35b50a11eb5454a887fc43af1353312a9e0a52feec63407a4c5"
+      },
+      "evidenceSection": "Focused rule, definition or command table (not navigation)",
+      "reason": "Versión corregida: La comparación GLBP describía incorrectamente el ancho del identificador; se conserva solo el formato HSRPv1 necesario.. Resultado contrastado: The protocol is HSRP version 1, and the last byte represents HSRP standby group 10 in hexadecimal (0a hex = 10 decimal)..",
+      "checks": {
+        "answerAndDistractors": true,
+        "bilingualConsistency": true,
+        "explicitAssumptions": true,
+        "authorship": "Original project wording declared in repository; revised by the assistant where documented, with primary references cited."
+      },
+      "supersedesQuestionId": "ccna-legacy-batch1_ip_connectivity-013"
+    },
+    {
+      "id": "ccna-legacy-batch1_ip_services-001-review-r1",
+      "file": "reviewed_legacy_corrections_20261029.json",
+      "index": 19,
+      "sourceSha256": "8a3f1a88e6f1c810d7ec9b7fcff2e6b893b4a9cc0c3fcd19f0dd2cdc30c7fbe4",
+      "contentSha256": "46d5524eb7870d42de1d916ef947551f91c6a4e8d4414b16d5ea60260c089ecd",
+      "decision": "validated",
+      "expectedCorrectLabels": [
+        "A"
+      ],
+      "evidenceUrl": "https://www.rfc-editor.org/rfc/rfc3022.txt",
+      "evidenceDocumentSha256": "c57fe60c46eff630d4d82eece5bf624ba3ac80f16711e7acdb44a28e01331d86",
+      "supportingPassage": {
+        "documentSha256": "c57fe60c46eff630d4d82eece5bf624ba3ac80f16711e7acdb44a28e01331d86",
+        "normalizedOffset": 454,
+        "normalizedLength": 1440,
+        "sha256": "69cc2216813ba3d7894e76e371c9d48bc7d7f38eb30358aefea6b9984b5ee02c"
+      },
+      "evidenceSection": "translation",
+      "reason": "Versión corregida: Los rangos documentales no son asignaciones públicas reales y inside local no implica siempre RFC 1918.. Resultado contrastado: Source IP: 198.51.100.77 (Outside Local) and Destination IP: 192.168.10.50 (Inside Local).",
+      "checks": {
+        "answerAndDistractors": true,
+        "bilingualConsistency": true,
+        "explicitAssumptions": true,
+        "authorship": "Original project wording declared in repository; revised by the assistant where documented, with primary references cited."
+      },
+      "supersedesQuestionId": "ccna-legacy-batch1_ip_services-001",
+      "additionalEvidence": [
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc5737.txt",
+          "documentSha256": "9d16217614a74a9b064eff900e5cd07a525793cf8227dca1267100e880f0c410",
+          "section": "Focused supporting passage",
+          "normalizedOffset": 2776,
+          "normalizedLength": 1350,
+          "sha256": "b1f5920d214ed1c6109fb111495dc887c0380a7860620c23c410a63cf2c20a16"
+        }
+      ]
+    },
+    {
+      "id": "ccna-legacy-batch1_ip_services-002-review-r1",
+      "file": "reviewed_legacy_corrections_20261029.json",
+      "index": 33,
+      "sourceSha256": "ad5c072654d68c0cb923671c81153b6a85ad8d2a44d846567decb7136d5c97ab",
+      "contentSha256": "865705375d50595864a398ce92c7c3cb526ddc3ce2d12d59d5d23bea3018004b",
+      "decision": "validated",
+      "expectedCorrectLabels": [
+        "A"
+      ],
+      "evidenceUrl": "https://www.cisco.com/c/en/us/td/docs/switches/lan/catalyst9300/software/release/17-15/configuration_guide/ip/b_1715_ip_9300_cg/configuring_dhcp.html",
+      "evidenceDocumentSha256": "71d216f55b550ea22a47ade614168d9cd87f4cfe9329a6b658c9c6f2354c3bd4",
+      "supportingPassage": {
+        "documentSha256": "71d216f55b550ea22a47ade614168d9cd87f4cfe9329a6b658c9c6f2354c3bd4",
+        "normalizedOffset": 27746,
+        "normalizedLength": 1440,
+        "sha256": "419e871b1f83daff8d88b0d5e47cd6d633f2e9ddbeed3be41c44f3b19bb37af3"
+      },
+      "evidenceSection": "ip helper-address address",
+      "reason": "Versión corregida: No afirmar que ip dhcp-server no existe en todo IOS; distinguir el comando de relay por interfaz.. Resultado contrastado: ip helper-address 10.10.100.5.",
+      "checks": {
+        "answerAndDistractors": true,
+        "bilingualConsistency": true,
+        "explicitAssumptions": true,
+        "authorship": "Original project wording declared in repository; revised by the assistant where documented, with primary references cited."
+      },
+      "supersedesQuestionId": "ccna-legacy-batch1_ip_services-002"
+    },
+    {
+      "id": "ccna-legacy-batch1_ip_services-003-review-r1",
+      "file": "reviewed_legacy_corrections_20261029.json",
+      "index": 20,
+      "sourceSha256": "c9cf198bb7d5b1ee370feb5913fd5d72072568dd9d390ef07215ba6b7f88e9cb",
+      "contentSha256": "7a03731519f715dba5e6bee9583341acfd51a128d38f8d32e3c9dc1fd60b0725",
+      "decision": "validated",
+      "expectedCorrectLabels": [
+        "A"
+      ],
+      "evidenceUrl": "https://www.rfc-editor.org/rfc/rfc5905.txt",
+      "evidenceDocumentSha256": "8b7abd903c60202e2953ee012fefa6916666c3b0c71825c748cdd262024fb268",
+      "supportingPassage": {
+        "documentSha256": "8b7abd903c60202e2953ee012fefa6916666c3b0c71825c748cdd262024fb268",
+        "normalizedOffset": 168292,
+        "normalizedLength": 1440,
+        "sha256": "b9652d9e53af7c20b7018a3ebaa6b2fe8901a3775013b5fb3ff5171f2a8afb6e"
+      },
+      "evidenceSection": "s.stratum = p->stratum + 1",
+      "reason": "Versión corregida: Separar referencias físicas de estrato 0 y los valores de estrato transportados por NTP.. Resultado contrastado: Core-R1 operates at Stratum 2, and the distribution switches operate at Stratum 3..",
+      "checks": {
+        "answerAndDistractors": true,
+        "bilingualConsistency": true,
+        "explicitAssumptions": true,
+        "authorship": "Original project wording declared in repository; revised by the assistant where documented, with primary references cited."
+      },
+      "supersedesQuestionId": "ccna-legacy-batch1_ip_services-003",
+      "scenarioCheck": {
+        "kind": "ntp_stratum_chain",
+        "result": [
+          2,
+          3
+        ],
+        "passed": true
+      }
+    },
+    {
+      "id": "ccna-legacy-batch1_ip_services-005-review-r1",
+      "file": "reviewed_legacy_corrections_20261029.json",
+      "index": 21,
+      "sourceSha256": "e42be0535189d2e67bd3323a2a18b2cf603b05a34fa7d03cdec84a99d6e09395",
+      "contentSha256": "04fc607e7f7f36574c86810803a0069fc455c3a5a0adb7926c0756e7dcf86cb5",
+      "decision": "validated",
+      "expectedCorrectLabels": [
+        "A"
+      ],
+      "evidenceUrl": "https://www.rfc-editor.org/rfc/rfc2475.txt",
+      "evidenceDocumentSha256": "3d239ebc304b7be7d43f79f813a4cdcd32952e5ad4c5ea4805cc040bca60f475",
+      "supportingPassage": {
+        "documentSha256": "3d239ebc304b7be7d43f79f813a4cdcd32952e5ad4c5ea4805cc040bca60f475",
+        "normalizedOffset": 34768,
+        "normalizedLength": 1440,
+        "sha256": "e5b81085b551fd10ecf1355209761408b4578637e7f678680b6fc6322122c5bb"
+      },
+      "evidenceSection": "A shaper usually has a finite-size buffer",
+      "reason": "Versión corregida: El shaping no garantiza ausencia de pérdidas: las colas son finitas y el perfil debe corresponder al policer.. Resultado contrastado: Traffic shaping; it buffers excess packets in memory queues and delays their transmission to achieve a smooth egress rate, whereas traffic policing drops or remarks excess packets without buffering..",
+      "checks": {
+        "answerAndDistractors": true,
+        "bilingualConsistency": true,
+        "explicitAssumptions": true,
+        "authorship": "Original project wording declared in repository; revised by the assistant where documented, with primary references cited."
+      },
+      "supersedesQuestionId": "ccna-legacy-batch1_ip_services-005"
+    },
+    {
+      "id": "ccna-legacy-batch1_security_fundamentals-001-review-r1",
+      "file": "reviewed_legacy_corrections_20261029.json",
+      "index": 22,
+      "sourceSha256": "8e0642a0b3f5060a72ed2bd9b718696f8248920ed5a0003235c284b13c588d33",
+      "contentSha256": "77df1f3d32d43042d683504e57282a89b96e0ae07a0335547be498c1fe38543a",
+      "decision": "validated",
+      "expectedCorrectLabels": [
+        "A"
+      ],
+      "evidenceUrl": "https://www.rfc-editor.org/rfc/rfc4949.txt",
+      "evidenceDocumentSha256": "32d1e3837ae5a7d2e99a63f43c6fea3dd350ffc6ac55b3aaadad250546ad7f87",
+      "supportingPassage": {
+        "documentSha256": "32d1e3837ae5a7d2e99a63f43c6fea3dd350ffc6ac55b3aaadad250546ad7f87",
+        "normalizedOffset": 694071,
+        "normalizedLength": 1440,
+        "sha256": "ff36ee274f5487b1570e532764393320088a95e04f226a8aabf2ea855a7faf04"
+      },
+      "evidenceSection": "Focused rule, definition or command table (not navigation)",
+      "reason": "Versión corregida: Eliminar fórmulas universales de riesgo y comandos de hardening ajenos al concepto que calificaban HTTPS como inseguro.. Resultado contrastado: Vulnerability.",
+      "checks": {
+        "answerAndDistractors": true,
+        "bilingualConsistency": true,
+        "explicitAssumptions": true,
+        "authorship": "Original project wording declared in repository; revised by the assistant where documented, with primary references cited."
+      },
+      "supersedesQuestionId": "ccna-legacy-batch1_security_fundamentals-001"
+    },
+    {
+      "id": "ccna-legacy-batch1_security_fundamentals-002-review-r1",
+      "file": "reviewed_legacy_corrections_20261029.json",
+      "index": 23,
+      "sourceSha256": "90843de5065fb6b21af9fab1b10fb07c9f179626c9849e339a3d077ced4caea3",
+      "contentSha256": "fc1c1265ebc7136adc28ae3dbc7c8677694e89b1bde1d7f3842b602cadd7b2b5",
+      "decision": "validated",
+      "expectedCorrectLabels": [
+        "A"
+      ],
+      "evidenceUrl": "https://www.cisco.com/c/en/us/td/docs/switches/lan/catalyst9300/software/release/17-15/configuration_guide/sec/b_1715_sec_9300_cg/controlling_switch_access_with_passwords_and_privilege_levels.html",
+      "evidenceDocumentSha256": "adf5256fc451f9a03f92da7d3c782b54a12eeb6a08b902b0fde4ee16f67e2ab8",
+      "supportingPassage": {
+        "documentSha256": "adf5256fc451f9a03f92da7d3c782b54a12eeb6a08b902b0fde4ee16f67e2ab8",
+        "normalizedOffset": 25142,
+        "normalizedLength": 1440,
+        "sha256": "806bd47f794b96311b6f3183d001b6e0e7f80b14720ccd057f354112480803c1"
+      },
+      "evidenceSection": "enable algorithm-type scrypt secret",
+      "reason": "Versión corregida: scrypt encarece intentos, no neutraliza hardware de ataque; Type 7 no protege universalmente todo secreto.. Resultado contrastado: Router(config)# enable algorithm-type scrypt secret Cisco123!\nRouter(config)# service password-encryption.",
+      "checks": {
+        "answerAndDistractors": true,
+        "bilingualConsistency": true,
+        "explicitAssumptions": true,
+        "authorship": "Original project wording declared in repository; revised by the assistant where documented, with primary references cited."
+      },
+      "supersedesQuestionId": "ccna-legacy-batch1_security_fundamentals-002",
+      "additionalEvidence": [
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc7914.txt",
+          "documentSha256": "df55932f8b6a5d271f36a634d91a25903724e189ba6c120bf7257cd47f10b197",
+          "section": "Focused supporting passage",
+          "normalizedOffset": 324,
+          "normalizedLength": 1350,
+          "sha256": "5f2ba653d7bdc822b7b5bd1140bcca754026bda5cdff3c44ed21d5d7e535fa4d"
+        }
+      ]
+    },
+    {
+      "id": "ccna-legacy-batch1_security_fundamentals-003-review-r1",
+      "file": "reviewed_legacy_corrections_20261029.json",
+      "index": 24,
+      "sourceSha256": "710cfeadb7ff665352f6801a97869f5d42f1ae398d0bbb99fcec60c46b68cba4",
+      "contentSha256": "e16e7def5e954050171b90472a0d81dfe992fe1d15b2cae75c6dfad5f64163d3",
+      "decision": "validated",
+      "expectedCorrectLabels": [
+        "A"
+      ],
+      "evidenceUrl": "https://www.rfc-editor.org/rfc/rfc4303.txt",
+      "evidenceDocumentSha256": "d22f9d4120e5645525b63ac7bbf8ef78c334fe003a2c48bf1e25ac25f6e7dc58",
+      "supportingPassage": {
+        "documentSha256": "d22f9d4120e5645525b63ac7bbf8ef78c334fe003a2c48bf1e25ac25f6e7dc58",
+        "normalizedOffset": 8040,
+        "normalizedLength": 1440,
+        "sha256": "295fb3bdc1a9cfb7683596b8a9abf69b200731f4b1bee57cbf77261020f94899"
+      },
+      "evidenceSection": "integrity-only ESP",
+      "reason": "Versión corregida: AH no autentica campos mutables con sus valores variables; ESP depende de algoritmos y anti-replay configurados.. Resultado contrastado: Encapsulating Security Payload (ESP), using IP protocol 50.",
+      "checks": {
+        "answerAndDistractors": true,
+        "bilingualConsistency": true,
+        "explicitAssumptions": true,
+        "authorship": "Original project wording declared in repository; revised by the assistant where documented, with primary references cited."
+      },
+      "supersedesQuestionId": "ccna-legacy-batch1_security_fundamentals-003",
+      "additionalEvidence": [
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc4302.txt",
+          "documentSha256": "c9de28181a78bb85ec6d1e6bda86da133307310de736632f26aa890e1f08e56b",
+          "section": "Focused supporting passage",
+          "normalizedOffset": 30218,
+          "normalizedLength": 1350,
+          "sha256": "13b26e5ce7e143d5629ce41f0c780c838907e4387fe958e10a85c8a15c04acc8"
+        }
+      ]
+    },
+    {
+      "id": "ccna-legacy-batch1_security_fundamentals-004-review-r1",
+      "file": "reviewed_legacy_corrections_20261029.json",
+      "index": 25,
+      "sourceSha256": "5cfd42730f93010c4668291811fb0deef5586ef9f814870758fce45a3ec18cc1",
+      "contentSha256": "b21c66fd5479ab1953764bcef35fdb09224a84c6ce088fba6df3103631a975d0",
+      "decision": "validated",
+      "expectedCorrectLabels": [
+        "A"
+      ],
+      "evidenceUrl": "https://www.cisco.com/c/en/us/support/docs/ip/access-lists/26448-ACLsamples.html",
+      "evidenceDocumentSha256": "d004fd75573b4f98df59c86de4448a69abd072947aad8a5aac3a838e1e04b8a8",
+      "supportingPassage": {
+        "documentSha256": "d004fd75573b4f98df59c86de4448a69abd072947aad8a5aac3a838e1e04b8a8",
+        "normalizedOffset": 4456,
+        "normalizedLength": 1440,
+        "sha256": "2762ea4bb1a670485a93a4b20bf387d5c24f8052760752e882f933cd75b00aaf"
+      },
+      "evidenceSection": "Standard ACLs compare the source address",
+      "reason": "Versión corregida: Una ACL que permite ingeniería no bloquea a esos hosts por implicit deny; la ubicación es una guía dependiente de topología.. Resultado contrastado: Wildcard mask 0.0.7.255, applied as close to the destination (database server farm) as possible..",
+      "checks": {
+        "answerAndDistractors": true,
+        "bilingualConsistency": true,
+        "explicitAssumptions": true,
+        "authorship": "Original project wording declared in repository; revised by the assistant where documented, with primary references cited."
+      },
+      "supersedesQuestionId": "ccna-legacy-batch1_security_fundamentals-004",
+      "scenarioCheck": {
+        "kind": "wildcard_and_policy_scope",
+        "result": "0.0.7.255",
+        "passed": true
+      }
+    },
+    {
+      "id": "ccna-legacy-batch1_security_fundamentals-006-review-r1",
+      "file": "reviewed_legacy_corrections_20261029.json",
+      "index": 26,
+      "sourceSha256": "a1492a1f24bb29c3334f0b867404943d1f180312f62f5ab4894c6fdd304786f2",
+      "contentSha256": "0d0f11ddb8f6f99537b63297f0da8dba504ce7626dab1c6fec2077a7f96d7ccf",
+      "decision": "validated",
+      "expectedCorrectLabels": [
+        "A",
+        "B"
+      ],
+      "evidenceUrl": "https://www.cisco.com/c/en/us/td/docs/switches/lan/catalyst9300/software/release/17-15/configuration_guide/sec/b_1715_sec_9300_cg/port_security.html",
+      "evidenceDocumentSha256": "6dcb231f0407cb8caf3a83617b8556127d3322c1db08bc515553f75530539556",
+      "supportingPassage": {
+        "documentSha256": "6dcb231f0407cb8caf3a83617b8556127d3322c1db08bc515553f75530539556",
+        "normalizedOffset": 11325,
+        "normalizedLength": 1440,
+        "sha256": "fda738d583a5ee21b0b82db755faa7c8ccede13fd1ddec90e318cbfc2c7fb8b0"
+      },
+      "evidenceSection": "restrict—when",
+      "reason": "Versión corregida: No prometer entrega SNMP sin receptor y configuración; asegurar que el máximo de MAC ya fue aprendido.. Resultado contrastado: The switch drops frames received from the unauthorized MAC address while continuing to forward frames from the two authorized MAC addresses.; The security violation counter increments; available notifications depend on logging/SNMP configuration..",
+      "checks": {
+        "answerAndDistractors": true,
+        "bilingualConsistency": true,
+        "explicitAssumptions": true,
+        "authorship": "Original project wording declared in repository; revised by the assistant where documented, with primary references cited."
+      },
+      "supersedesQuestionId": "ccna-legacy-batch1_security_fundamentals-006"
+    },
+    {
+      "id": "ccna-legacy-batch1_security_fundamentals-007-review-r1",
+      "file": "reviewed_legacy_corrections_20261029.json",
+      "index": 27,
+      "sourceSha256": "ab05c01b64984289bc203f46b03bb1ebe38ab0de96c616f466690cd06a1e6880",
+      "contentSha256": "9aa0660c363ee7a7cbdff3da826a782170fafe235782e80ac8d483ffd665e1b5",
+      "decision": "validated",
+      "expectedCorrectLabels": [
+        "A"
+      ],
+      "evidenceUrl": "https://www.rfc-editor.org/rfc/rfc8907.txt",
+      "evidenceDocumentSha256": "b66c86b0d996baa98ae018ae5448d76b9973c6154d5fcb6002af0a62fd879233",
+      "supportingPassage": {
+        "documentSha256": "b66c86b0d996baa98ae018ae5448d76b9973c6154d5fcb6002af0a62fd879233",
+        "normalizedOffset": 18819,
+        "normalizedLength": 1440,
+        "sha256": "9303b7a4dfe1de074494c1ba2f72e28217bf9da146065f8824ba7c71e6711f22"
+      },
+      "evidenceSection": "will not be termed as encryption",
+      "reason": "Versión corregida: TACACS+ clásico ofusca y no aporta cifrado moderno; commands 15 no cubre todo comando EXEC y local es fallback.. Resultado contrastado: TACACS+; using 'aaa authorization commands 15 default group tacacs+ local'.",
+      "checks": {
+        "answerAndDistractors": true,
+        "bilingualConsistency": true,
+        "explicitAssumptions": true,
+        "authorship": "Original project wording declared in repository; revised by the assistant where documented, with primary references cited."
+      },
+      "supersedesQuestionId": "ccna-legacy-batch1_security_fundamentals-007",
+      "additionalEvidence": [
+        {
+          "url": "https://www.cisco.com/c/en/us/td/docs/switches/lan/catalyst9300/software/release/17-15/configuration_guide/sec/b_1715_sec_9300_cg/configuring_authorization.html",
+          "documentSha256": "32e824893616c1d0f66399ecb25754adfb858a43005cd51eccea1f8ca8dd544d",
+          "section": "Focused supporting passage",
+          "normalizedOffset": 15731,
+          "normalizedLength": 1350,
+          "sha256": "cb31d217fa94003ed7f3a5f156a6d9f648665206507d0674738ada50e5ba97b3"
+        }
+      ]
+    },
+    {
+      "id": "ccna-legacy-batch1_automation-001-review-r1",
+      "file": "reviewed_legacy_corrections_20261029.json",
+      "index": 28,
+      "sourceSha256": "77f329037f807bed5f224f2630fe32693d9b68935d22211f09dc27b110583676",
+      "contentSha256": "8fea45689317f30ce42442ed68717401664350246e878fb468b16c61de481515",
+      "decision": "validated",
+      "expectedCorrectLabels": [
+        "A"
+      ],
+      "evidenceUrl": "https://raw.githubusercontent.com/ansible/ansible/devel/README.md",
+      "evidenceDocumentSha256": "a0d060dbbf5cc7d8881761018364e29f9b503a1b1229934d1150563f0773448c",
+      "supportingPassage": {
+        "documentSha256": "a0d060dbbf5cc7d8881761018364e29f9b503a1b1229934d1150563f0773448c",
+        "normalizedOffset": 1132,
+        "normalizedLength": 1440,
+        "sha256": "d70bde3169fcdf888c2a2ca9618b73cb218eb86ed625a75fd6218bdd03c8ff02"
+      },
+      "evidenceSection": "configuration management",
+      "reason": "Versión corregida: Automatizar no garantiza revisión humana, CI ni ausencia de errores; una plantilla errónea puede propagarse.. Resultado contrastado: Use a versioned intended baseline, detect differences, and apply authorized corrections through a controlled workflow..",
+      "checks": {
+        "answerAndDistractors": true,
+        "bilingualConsistency": true,
+        "explicitAssumptions": true,
+        "authorship": "Original project wording declared in repository; revised by the assistant where documented, with primary references cited."
+      },
+      "supersedesQuestionId": "ccna-legacy-batch1_automation-001"
+    },
+    {
+      "id": "ccna-legacy-batch1_automation-002-review-r1",
+      "file": "reviewed_legacy_corrections_20261029.json",
+      "index": 29,
+      "sourceSha256": "0792045d8f7b53892e4b40864b5d86908ae326425f959e0fa5b4c680564fc694",
+      "contentSha256": "d6b2e28a582581d755461c020dea31e061832647b04a9f5bfed8bb42f4d20229",
+      "decision": "validated",
+      "expectedCorrectLabels": [
+        "A",
+        "B"
+      ],
+      "evidenceUrl": "https://www.rfc-editor.org/rfc/rfc7426.txt",
+      "evidenceDocumentSha256": "24924cddb9b235cb19d6d0ee2d9ce28702a11105d3d9858459cee3cbeb76f12c",
+      "supportingPassage": {
+        "documentSha256": "24924cddb9b235cb19d6d0ee2d9ce28702a11105d3d9858459cee3cbeb76f12c",
+        "normalizedOffset": 5224,
+        "normalizedLength": 1440,
+        "sha256": "5c8b6e0f91eda38e6c1fdda81c161a281979fb3dc3255a250bc9403bffd7a4c0"
+      },
+      "evidenceSection": "forwarding and control planes",
+      "reason": "Versión corregida: Separar roles SDN genéricos de los protocolos realmente admitidos por SD-Access; northbound no exige REST universal.. Resultado contrastado: Application-facing interfaces allow applications to use controller abstractions.; Device-facing interfaces connect control functions to the forwarding devices they control..",
+      "checks": {
+        "answerAndDistractors": true,
+        "bilingualConsistency": true,
+        "explicitAssumptions": true,
+        "authorship": "Original project wording declared in repository; revised by the assistant where documented, with primary references cited."
+      },
+      "supersedesQuestionId": "ccna-legacy-batch1_automation-002"
+    },
+    {
+      "id": "ccna-legacy-batch1_automation-003-review-r1",
+      "file": "reviewed_legacy_corrections_20261029.json",
+      "index": 30,
+      "sourceSha256": "bab9365bceb8c30a8bf8ef0b2dc3ff3b3228658410e0135c320d572b107b0e07",
+      "contentSha256": "786a49a447824f623ca9562fe70fc1dc2e2127a26e9365e81cccbb1062da2886",
+      "decision": "validated",
+      "expectedCorrectLabels": [
+        "A"
+      ],
+      "evidenceUrl": "https://www.cisco.com/c/en/us/solutions/artificial-intelligence/what-is-aiops.html",
+      "evidenceDocumentSha256": "569d8a81fa99d4a7eceec5886a7c1bb22f5d622f8571dbfbc5bea06710b951fa",
+      "supportingPassage": {
+        "documentSha256": "569d8a81fa99d4a7eceec5886a7c1bb22f5d622f8571dbfbc5bea06710b951fa",
+        "normalizedOffset": 2679,
+        "normalizedLength": 1440,
+        "sha256": "e2f0947970dd42418dbc52748598c8f865a92d59f8db8903000ebec8a2853905"
+      },
+      "evidenceSection": "anomaly detection",
+      "reason": "Versión corregida: Retirar la cifra no demostrada del 99 %, causa exacta garantizada y afirmaciones absolutas sobre alertas.. Resultado contrastado: Use learned behavior and correlated telemetry to assist anomaly detection and guided investigation..",
+      "checks": {
+        "answerAndDistractors": true,
+        "bilingualConsistency": true,
+        "explicitAssumptions": true,
+        "authorship": "Original project wording declared in repository; revised by the assistant where documented, with primary references cited."
+      },
+      "supersedesQuestionId": "ccna-legacy-batch1_automation-003"
+    },
+    {
+      "id": "ccna-legacy-batch1_automation-004-review-r1",
+      "file": "reviewed_legacy_corrections_20261029.json",
+      "index": 31,
+      "sourceSha256": "3309b8e3194222b7c3d1eba381fdd2987e0f0806a1a0cd3fa00859da29335a0f",
+      "contentSha256": "4d61f9018a1978eee108b5af65e8bf98f334254dd88d477751a9cce02501c8fe",
+      "decision": "validated",
+      "expectedCorrectLabels": [
+        "A"
+      ],
+      "evidenceUrl": "https://www.rfc-editor.org/rfc/rfc9110.txt",
+      "evidenceDocumentSha256": "21c1cdce6ab0e5509b04d84a28000836c7a087cf786efe6f04877ebfff47232a",
+      "supportingPassage": {
+        "documentSha256": "21c1cdce6ab0e5509b04d84a28000836c7a087cf786efe6f04877ebfff47232a",
+        "normalizedOffset": 302033,
+        "normalizedLength": 1440,
+        "sha256": "53ab08618e51cb2a9bf8003fcccbe327d081a1954180e742cfd879e6c1c3ba65"
+      },
+      "evidenceSection": "201 (Created) status code",
+      "reason": "Versión corregida: No atribuir un endpoint hipotético a Catalyst Center ni deducir configuración aplicada solo de 201.. Resultado contrastado: The job resource was created; configuration completion must be checked through the documented GET status URL..",
+      "checks": {
+        "answerAndDistractors": true,
+        "bilingualConsistency": true,
+        "explicitAssumptions": true,
+        "authorship": "Original project wording declared in repository; revised by the assistant where documented, with primary references cited."
+      },
+      "supersedesQuestionId": "ccna-legacy-batch1_automation-004"
+    },
+    {
+      "id": "ccna-legacy-batch1_automation-005-review-r1",
+      "file": "reviewed_legacy_corrections_20261029.json",
+      "index": 32,
+      "sourceSha256": "f2bb9531473a481c125738874ee512115d487a8b529867814f4249299ae9328d",
+      "contentSha256": "f91d6401f6bdf7d73e88a2259c2e4b11f93bc3897314fc7a9a525bfcdb3f07b0",
+      "decision": "validated",
+      "expectedCorrectLabels": [
+        "A"
+      ],
+      "evidenceUrl": "https://raw.githubusercontent.com/ansible/ansible-documentation/devel/docs/docsite/rst/network/getting_started/network_differences.rst",
+      "evidenceDocumentSha256": "1210e74c6a0dfb4f29ff9c8ba9db232a42653f0de4d9845511b665e8810a09c0",
+      "supportingPassage": {
+        "documentSha256": "1210e74c6a0dfb4f29ff9c8ba9db232a42653f0de4d9845511b665e8810a09c0",
+        "normalizedOffset": 842,
+        "normalizedLength": 1440,
+        "sha256": "61fe5c9820abf1521c4265cc3ac890e75dab5d8d76bfb91906ed3b308805185c"
+      },
+      "evidenceSection": "network modules are executed on the Ansible control node",
+      "reason": "Versión corregida: Corregir el nombre YAML y evitar extrapolar agentes, módulos o protocolos idénticos a toda herramienta y plataforma.. Resultado contrastado: Ansible; it uses an agentless architecture over SSH and executes configuration routines called playbooks written in YAML..",
+      "checks": {
+        "answerAndDistractors": true,
+        "bilingualConsistency": true,
+        "explicitAssumptions": true,
+        "authorship": "Original project wording declared in repository; revised by the assistant where documented, with primary references cited."
+      },
+      "supersedesQuestionId": "ccna-legacy-batch1_automation-005",
+      "additionalEvidence": [
+        {
+          "url": "https://raw.githubusercontent.com/ansible-collections/cisco.ios/main/README.md",
+          "documentSha256": "5e6bb61baf7889c3f3aa2dca500d4819b26d0af20079c60707c0fb180125b1b0",
+          "section": "Focused supporting passage",
+          "normalizedOffset": 2933,
+          "normalizedLength": 1350,
+          "sha256": "e6ee2df5e3c9e783b5fc228ef89f889e60bcb5778d4ebe9f9b1ac7c9c042113d"
+        }
+      ]
+    },
+    {
+      "id": "ccna-original-20261024-b02-042",
+      "file": "original_20261024_b02_50.json",
+      "index": 41,
+      "sourceSha256": "5238d7c112b60b744c18cab339319f19a307a9147a68d6426a1686fb3237900d",
+      "contentSha256": "cd38c922f5fec15064de5e5d880163b3e6660cdcbf21b991161ec037da6a8fa4",
+      "decision": "validated",
+      "expectedCorrectLabels": [
+        "B"
+      ],
+      "evidenceUrl": "https://www.cisco.com/c/en/us/td/docs/switches/lan/catalyst9300/software/release/17-15/configuration_guide/ip/b_1715_ip_9300_cg/configuring_dhcp.html",
+      "evidenceDocumentSha256": "71d216f55b550ea22a47ade614168d9cd87f4cfe9329a6b658c9c6f2354c3bd4",
+      "supportingPassage": {
+        "documentSha256": "71d216f55b550ea22a47ade614168d9cd87f4cfe9329a6b658c9c6f2354c3bd4",
+        "normalizedOffset": 10152,
+        "normalizedLength": 1440,
+        "sha256": "f1ba82ebc821920f3d395841ed2060882fb86808433499dee7b0ff3780a7cde6"
+      },
+      "evidenceSection": "The switch drops a DHCP packet",
+      "reason": "Revisión técnica bilingüe y distractores contrastados con referencia primaria. Resultado contrastado: Drop unauthorized server-originated DHCP traffic on that untrusted port.",
+      "checks": {
+        "answerAndDistractors": true,
+        "bilingualConsistency": true,
+        "explicitAssumptions": true,
+        "authorship": "Original project wording declared in repository; revised by the assistant where documented, with primary references cited."
+      }
+    },
+    {
+      "id": "ccna-original-20261024-b03-021",
+      "file": "original_20261024_b03_50.json",
+      "index": 20,
+      "sourceSha256": "08c9594442941c2f1b9351f8e1c60b512e7d39a86a8ca8b8a7f9c6e856b6e17f",
+      "contentSha256": "6ab1ab72ad8cab97f51e7d619bac8309172683e91036c11f012f17a5c59c8ee0",
+      "decision": "validated",
+      "expectedCorrectLabels": [
+        "A"
+      ],
+      "evidenceUrl": "https://www.cisco.com/c/en/us/support/docs/dial-access/floating-static-route/118263-technote-nexthop-00.html",
+      "evidenceDocumentSha256": "88692b604edd7daad37ed68c08fb48ec56bba1f1a92aa373b1f0ebb5088c7012",
+      "supportingPassage": {
+        "documentSha256": "88692b604edd7daad37ed68c08fb48ec56bba1f1a92aa373b1f0ebb5088c7012",
+        "normalizedOffset": 12194,
+        "normalizedLength": 1440,
+        "sha256": "26d8caec1c633d46279c9fb42f0295f2a5956609792ce74bf71a00edc53a6f78"
+      },
+      "evidenceSection": "as long as you have a route to the next hop",
+      "reason": "Revisión técnica bilingüe y distractores contrastados con referencia primaria. Resultado contrastado: The recursive lookup has no resolvable forwarding anchor.",
+      "checks": {
+        "answerAndDistractors": true,
+        "bilingualConsistency": true,
+        "explicitAssumptions": true,
+        "authorship": "Original project wording declared in repository; revised by the assistant where documented, with primary references cited."
+      },
+      "scenarioCheck": {
+        "kind": "recursive_dependency_cycle",
+        "result": {
+          "AResolves": false,
+          "BResolves": false
+        },
+        "passed": true
+      }
+    },
+    {
+      "id": "ccna-original-20261024-b03-039",
+      "file": "original_20261024_b03_50.json",
+      "index": 38,
+      "sourceSha256": "688913cf7fdd2e9cb05cd471b68337eaa5dd171417206f2da38b329718abf085",
+      "contentSha256": "1e15986641692046696aafe9184550a9f6cd461f94b718cd4d5b9173e9b7fe97",
+      "decision": "validated",
+      "expectedCorrectLabels": [
+        "B"
+      ],
+      "evidenceUrl": "https://www.cisco.com/c/en/us/td/docs/switches/lan/catalyst9300/software/release/17-15/configuration_guide/sec/b_1715_sec_9300_cg/configuring_ip_source_guard.html",
+      "evidenceDocumentSha256": "856be623d6d9025b1bc4d815875ba9f08fd82b06455dc767446b8351b14bd4dc",
+      "supportingPassage": {
+        "documentSha256": "856be623d6d9025b1bc4d815875ba9f08fd82b06455dc767446b8351b14bd4dc",
+        "normalizedOffset": 5661,
+        "normalizedLength": 1440,
+        "sha256": "d10b6e3cbd957110dd9e966cf5e8e2ca1036ddb51146af9308f8dca91de9ac57"
+      },
+      "evidenceSection": "It filters traffic based on the DHCP snooping binding database",
+      "reason": "Revisión técnica bilingüe y distractores contrastados con referencia primaria. Resultado contrastado: IP Source Guard filters applicable source-IP traffic; DAI validates ARP associations.",
+      "checks": {
+        "answerAndDistractors": true,
+        "bilingualConsistency": true,
+        "explicitAssumptions": true,
+        "authorship": "Original project wording declared in repository; revised by the assistant where documented, with primary references cited."
+      },
+      "additionalEvidence": [
+        {
+          "url": "https://www.cisco.com/c/en/us/td/docs/switches/lan/catalyst9300/software/release/17-15/configuration_guide/sec/b_1715_sec_9300_cg/configuring_dynamic_arp_inspection.html",
+          "documentSha256": "114622c567ab3ce651bcaaa014035c94c3e7e7233ac98dc65c1c56e52f74d073",
+          "section": "Focused supporting passage",
+          "normalizedOffset": 5278,
+          "normalizedLength": 1350,
+          "sha256": "fb01968ed62d456d7f3f299e391669b28d7116822fc73e53cb47c7e97d94048b"
+        }
+      ]
+    },
+    {
+      "id": "ccna-original-20261024-b03-042",
+      "file": "original_20261024_b03_50.json",
+      "index": 41,
+      "sourceSha256": "ce68b06a8eefba6d573d56c6da05250bdf41709277a3d2ee85720387535543d0",
+      "contentSha256": "7ad7525524641aa6e51224a891cb2b095e0402bbb7a922799c19008e0cb02816",
+      "decision": "validated",
+      "expectedCorrectLabels": [
+        "A"
+      ],
+      "evidenceUrl": "https://www.rfc-editor.org/rfc/rfc8110.txt",
+      "evidenceDocumentSha256": "2fb4a9bfbce8a2fb166a9713c279c89f84493456bacc1e90db583d19c100f367",
+      "supportingPassage": {
+        "documentSha256": "2fb4a9bfbce8a2fb166a9713c279c89f84493456bacc1e90db583d19c100f367",
+        "normalizedOffset": 5741,
+        "normalizedLength": 1440,
+        "sha256": "6975381081ff8e09fc32327a183890900ab14d1cb09cfdbbfa2d3e5f8f5e0c9b"
+      },
+      "evidenceSection": "Since the PSK is known by everyone",
+      "reason": "Revisión técnica bilingüe y distractores contrastados con referencia primaria. Resultado contrastado: The shared secret cannot be unlearned by one user; rotating it affects other users of that same key.",
+      "checks": {
+        "answerAndDistractors": true,
+        "bilingualConsistency": true,
+        "explicitAssumptions": true,
+        "authorship": "Original project wording declared in repository; revised by the assistant where documented, with primary references cited."
+      }
+    },
+    {
+      "id": "ccna-original-20261026-b04-012",
+      "file": "original_20261026_b04_50.json",
+      "index": 11,
+      "sourceSha256": "6994f0356279d9b4a1755e7f04f6729925013b031c192fd0b1325327c9ccefd7",
+      "contentSha256": "5db3bb52fa9da92dd844ab62c305ba23152aebef9483c5a6f38fc268452db4bc",
+      "decision": "validated",
+      "expectedCorrectLabels": [
+        "A",
+        "D"
+      ],
+      "evidenceUrl": "https://www.cisco.com/c/en/us/support/docs/switches/catalyst-6000-series-switches/23563-143.html",
+      "evidenceDocumentSha256": "555b9ab5a0c0f8090cae4011731b8f02ac836f79b098a534920d38cba8c38191",
+      "supportingPassage": {
+        "documentSha256": "555b9ab5a0c0f8090cae4011731b8f02ac836f79b098a534920d38cba8c38191",
+        "normalizedOffset": 3186,
+        "normalizedLength": 1440,
+        "sha256": "7da65242a4b12d775be2ac8195ed95fcff98fa29cceba2fa66be531422c97735"
+      },
+      "evidenceSection": "except the port it was received on",
+      "reason": "Revisión técnica bilingüe y distractores contrastados con referencia primaria. Resultado contrastado: P3; P2.",
+      "checks": {
+        "answerAndDistractors": true,
+        "bilingualConsistency": true,
+        "explicitAssumptions": true,
+        "authorship": "Original project wording declared in repository; revised by the assistant where documented, with primary references cited."
+      },
+      "scenarioCheck": {
+        "kind": "switch_flood",
+        "result": [
+          "P2",
+          "P3"
+        ],
+        "passed": true
+      }
+    },
+    {
+      "id": "ccna-legacy-batch1_network_fundamentals-001",
+      "file": "batch1_network_fundamentals.json",
+      "index": 0,
+      "sourceSha256": "7c85885eaa518dd45143103318279e4ce6b643aefd389242d2b0aa450bbde468",
+      "contentSha256": "4d816facaf1d6730a3bc8599a433b804be97db899089abf3dc55978b3eeb0536",
+      "decision": "rejected",
+      "supersededByQuestionId": "ccna-legacy-batch1_network_fundamentals-001-review-r1",
+      "expectedCorrectLabels": [],
+      "evidenceUrl": "https://www.cisco.com/c/en/us/solutions/enterprise-networks/what-is-power-over-ethernet.html",
+      "evidenceDocumentSha256": "70e2f38a1d18e97d1f8393bde673b2a2c89b100221ed35b3fa8922baa3e5b2d4",
+      "supportingPassage": {
+        "documentSha256": "70e2f38a1d18e97d1f8393bde673b2a2c89b100221ed35b3fa8922baa3e5b2d4",
+        "normalizedOffset": 3935,
+        "normalizedLength": 1440,
+        "sha256": "541e30e8db36355945e9afde0fd289c2bfb2e1acd1b971395b0a62705a6f4416"
+      },
+      "reason": "Versión anterior rechazada y conservada como historial: La pregunta no pedía el estándar mínimo y 802.3bt también cumple la potencia; no debe atribuirse un consumo fijo a toda una familia de AP. Reemplazo aprobado: ccna-legacy-batch1_network_fundamentals-001-review-r1."
+    },
+    {
+      "id": "ccna-legacy-batch1_network_fundamentals-002",
+      "file": "batch1_network_fundamentals.json",
+      "index": 1,
+      "sourceSha256": "b16ad60cdd0c196473e8e2d9d4ef4ad096e26081cc4293b6a05644124933b12b",
+      "contentSha256": "f03b956720f1227389cecb3a440ea681890d12e12dbcd743b9d1fd72b3774530",
+      "decision": "rejected",
+      "supersededByQuestionId": "ccna-legacy-batch1_network_fundamentals-002-review-r1",
+      "expectedCorrectLabels": [],
+      "evidenceUrl": "https://www.cisco.com/c/en/us/products/security/firewalls/what-is-a-next-generation-firewall.html",
+      "evidenceDocumentSha256": "889bc1eb4744d4b3da7cc513aa9d5421ce8538442df44fe5ba782ed1d9a6c763",
+      "supportingPassage": {
+        "documentSha256": "889bc1eb4744d4b3da7cc513aa9d5421ce8538442df44fe5ba782ed1d9a6c763",
+        "normalizedOffset": 3468,
+        "normalizedLength": 1440,
+        "sha256": "ac0806fb5595b6f158c5880daf7abf1ef75ecfa91567a3672211d3ec59360d29"
+      },
+      "reason": "Versión anterior rechazada y conservada como historial: La inspección de carga TLS no ocurre automáticamente: requiere descifrado autorizado y compatibilidad. Reemplazo aprobado: ccna-legacy-batch1_network_fundamentals-002-review-r1."
+    },
+    {
+      "id": "ccna-legacy-batch1_network_fundamentals-003",
+      "file": "batch1_network_fundamentals.json",
+      "index": 2,
+      "sourceSha256": "6d047ffd38801294960c549cb42c68639cee8f8db9def416f8c80a0247a91443",
+      "contentSha256": "2c884c88902051611d58556c872d3219e7fd563106d16d54c007de594385f952",
+      "decision": "rejected",
+      "supersededByQuestionId": "ccna-legacy-batch1_network_fundamentals-003-review-r1",
+      "expectedCorrectLabels": [],
+      "evidenceUrl": "https://www.rfc-editor.org/rfc/rfc7938.txt",
+      "evidenceDocumentSha256": "d71d4e87fca8229964568357aaa38b2b2e0c8387baac895f7620908f017940ed",
+      "supportingPassage": {
+        "documentSha256": "d71d4e87fca8229964568357aaa38b2b2e0c8387baac895f7620908f017940ed",
+        "normalizedOffset": 16231,
+        "normalizedLength": 1440,
+        "sha256": "ec4b086357f2410e99c994e2daa0ed2de47a47e9fd18f1c6090161f14301de04"
+      },
+      "reason": "Versión anterior rechazada y conservada como historial: La explicación decía que cualesquiera dos servidores estaban a dos saltos; no es cierto para servidores del mismo leaf. Reemplazo aprobado: ccna-legacy-batch1_network_fundamentals-003-review-r1."
+    },
+    {
+      "id": "ccna-legacy-batch1_network_fundamentals-005",
+      "file": "batch1_network_fundamentals.json",
+      "index": 4,
+      "sourceSha256": "ebf8bfeee6cb15e7162222acb0cac557c9dc754dd1730ed756aae3cf0efc8ee1",
+      "contentSha256": "7f230b33e47df1308f70f14002a8ae5dfe2c2595d72b0169ec3ad2095e09f352",
+      "decision": "rejected",
+      "supersededByQuestionId": "ccna-legacy-batch1_network_fundamentals-005-review-r1",
+      "expectedCorrectLabels": [],
+      "evidenceUrl": "https://www.cisco.com/c/en/us/support/docs/lan-switching/ethernet/10561-3.html",
+      "evidenceDocumentSha256": "0d2e6f8db4de5645a757bd72d475c7a062e941130b877a832ab81333d54091dc",
+      "supportingPassage": {
+        "documentSha256": "0d2e6f8db4de5645a757bd72d475c7a062e941130b877a832ab81333d54091dc",
+        "normalizedOffset": 27525,
+        "normalizedLength": 1440,
+        "sha256": "f98f7df257a88b028a3409c821615a35aa698b8d7922f5536efd463cdff034c9"
+      },
+      "reason": "Versión anterior rechazada y conservada como historial: Un puerto full-duplex no debe diagnosticarse como el lado que detecta late collisions; se separan los contadores de ambos extremos. Reemplazo aprobado: ccna-legacy-batch1_network_fundamentals-005-review-r1."
+    },
+    {
+      "id": "ccna-legacy-batch1_network_fundamentals-006",
+      "file": "batch1_network_fundamentals.json",
+      "index": 5,
+      "sourceSha256": "29cb5f763d9e287b32dbba7da6d45e2a0e6d5642304de7a26c8c7929b00796b3",
+      "contentSha256": "3dcc02bdf670e43ea609ee0c68c64608feac759b74c13549937414889deed6a7",
+      "decision": "rejected",
+      "supersededByQuestionId": "ccna-legacy-batch1_network_fundamentals-006-review-r1",
+      "expectedCorrectLabels": [],
+      "evidenceUrl": "https://www.rfc-editor.org/rfc/rfc9293.txt",
+      "evidenceDocumentSha256": "6d9ac8be4b0286f8c3d337addf442b2eb6a9b14e1366594ea7fbc273f93dc2d9",
+      "supportingPassage": {
+        "documentSha256": "6d9ac8be4b0286f8c3d337addf442b2eb6a9b14e1366594ea7fbc273f93dc2d9",
+        "normalizedOffset": 13875,
+        "normalizedLength": 1440,
+        "sha256": "be1f1709909343ef0cf0fc2ba3e768bc2441d7b6816495504185b0db106bcb8d"
+      },
+      "reason": "Versión anterior rechazada y conservada como historial: La ventana de recepción no significa bytes antes de requerir un ACK; ventana cero permite sondeos. Reemplazo aprobado: ccna-legacy-batch1_network_fundamentals-006-review-r1."
+    },
+    {
+      "id": "ccna-legacy-batch1_network_fundamentals-010",
+      "file": "batch1_network_fundamentals.json",
+      "index": 9,
+      "sourceSha256": "113442820ebe75fe003be79732788e7f8e0f0218afd04f1929f3e26c6aa28844",
+      "contentSha256": "0b23c251a1310ebba37911979d5876c18eaa10c62cc79a67ba6356cc1f7cfa9e",
+      "decision": "rejected",
+      "supersededByQuestionId": "ccna-legacy-batch1_network_fundamentals-010-review-r1",
+      "expectedCorrectLabels": [],
+      "evidenceUrl": "https://www.rfc-editor.org/rfc/rfc6598.txt",
+      "evidenceDocumentSha256": "b04d16c5c98b89324d35dc6dc783eface0bedf94c14c9e289b646d39ea55c4c0",
+      "supportingPassage": {
+        "documentSha256": "b04d16c5c98b89324d35dc6dc783eface0bedf94c14c9e289b646d39ea55c4c0",
+        "normalizedOffset": 16314,
+        "normalizedLength": 1440,
+        "sha256": "256028ec70033846813cbc29fd00d5dbc9d1d1f6e5a0dd9c094038c86ba84418"
+      },
+      "reason": "Versión anterior rechazada y conservada como historial: Separar espacio compartido de RFC 1918 y evitar afirmar un mecanismo de traducción universal. Reemplazo aprobado: ccna-legacy-batch1_network_fundamentals-010-review-r1."
+    },
+    {
+      "id": "ccna-legacy-batch1_network_access-001",
+      "file": "batch1_network_access.json",
+      "index": 0,
+      "sourceSha256": "99d25d567bddddc92ee77b4de9f6490061d410af348869d2d5e166cbe85883e3",
+      "contentSha256": "0d64d30c78d42099df45d7cd02d825c5963e4adc809e5402172577932cf47582",
+      "decision": "rejected",
+      "supersededByQuestionId": "ccna-legacy-batch1_network_access-001-review-r1",
+      "expectedCorrectLabels": [],
+      "evidenceUrl": "https://www.cisco.com/c/en/us/td/docs/switches/lan/catalyst2960/software/release/12-2_55_se/configuration/guide/scg_2960/swvlan.html",
+      "evidenceDocumentSha256": "5b5b1a65fb920d974ef2ad1098c28c17a096bc00de6a5e408344ee16b1aff715",
+      "supportingPassage": {
+        "documentSha256": "5b5b1a65fb920d974ef2ad1098c28c17a096bc00de6a5e408344ee16b1aff715",
+        "normalizedOffset": 38110,
+        "normalizedLength": 1440,
+        "sha256": "63c3c88c145f21913827c52ddc8264e4c0d83dfb70d9c3ee4c8892ac47ff0def"
+      },
+      "reason": "Versión anterior rechazada y conservada como historial: Limitar la pregunta a valores predeterminados documentados y no generalizar restricciones de nombre a cualquier plataforma. Reemplazo aprobado: ccna-legacy-batch1_network_access-001-review-r1."
+    },
+    {
+      "id": "ccna-legacy-batch1_network_access-003",
+      "file": "batch1_network_access.json",
+      "index": 2,
+      "sourceSha256": "d0fad4c73ce2a811a501dfbdc62d4aa2494a3bd411bc74e12fb80abbceeffdd6",
+      "contentSha256": "b90dda6f31b86ea63bb0524f7a4357d1aa77c94ad6e5ad4722d00c6495f58368",
+      "decision": "rejected",
+      "supersededByQuestionId": "ccna-legacy-batch1_network_access-003-review-r1",
+      "expectedCorrectLabels": [],
+      "evidenceUrl": "https://www.cisco.com/c/en/us/td/docs/switches/lan/catalyst9300/software/release/17-15/configuration_guide/vlan/b_1715_vlan_9300_cg/configuring_vlan_trunks.html",
+      "evidenceDocumentSha256": "99ba29253329bba1c5edd2bb8780e155945eec145433000463e78519f598b858",
+      "supportingPassage": {
+        "documentSha256": "99ba29253329bba1c5edd2bb8780e155945eec145433000463e78519f598b858",
+        "normalizedOffset": 2263,
+        "normalizedLength": 1440,
+        "sha256": "549d8bb1aa9af32adb1a60befa9a9fb6c1ef41c10b47193631f4fe74b4900ee8"
+      },
+      "reason": "Versión anterior rechazada y conservada como historial: Distinguir clasificación sin etiqueta de bloqueos STP; PVID inconsistency no es type inconsistency. Reemplazo aprobado: ccna-legacy-batch1_network_access-003-review-r1."
+    },
+    {
+      "id": "ccna-legacy-batch1_network_access-005",
+      "file": "batch1_network_access.json",
+      "index": 4,
+      "sourceSha256": "693e929af14fbc639bfcc890f9d38847a2cf9b00e6526a313ea4ef3f76419440",
+      "contentSha256": "e8864f292bb5356d836ebc04a15bcadb1b90c4a37fb65674fe3d443dc3d27748",
+      "decision": "rejected",
+      "supersededByQuestionId": "ccna-legacy-batch1_network_access-005-review-r1",
+      "expectedCorrectLabels": [],
+      "evidenceUrl": "https://www.cisco.com/c/en/us/td/docs/switches/lan/catalyst9300/software/release/17-15/configuration_guide/int_hw/b_1715_int_and_hw_9300_cg/configuring_lldp__lldp_med__and_wired_location_service.html",
+      "evidenceDocumentSha256": "72eaa7d31c06aa7dc43c5d43e596af33f229a50e5f39fff2896eb6a0acea9624",
+      "supportingPassage": {
+        "documentSha256": "72eaa7d31c06aa7dc43c5d43e596af33f229a50e5f39fff2896eb6a0acea9624",
+        "normalizedOffset": 5421,
+        "normalizedLength": 1440,
+        "sha256": "6d2298ab29efbe7d290679ca9a4767c48aebc16ef0d210ef12ef431138b24087"
+      },
+      "reason": "Versión anterior rechazada y conservada como historial: LLDP no está soportado universalmente ni los valores predeterminados de CDP son iguales en todo hardware. Reemplazo aprobado: ccna-legacy-batch1_network_access-005-review-r1."
+    },
+    {
+      "id": "ccna-legacy-batch1_network_access-008",
+      "file": "batch1_network_access.json",
+      "index": 7,
+      "sourceSha256": "7fdcf71111ccff423cadfaacb97b5c989055b96464fae709a9d49f1d1b96a21e",
+      "contentSha256": "a93053ff243f6d069e1484d361abf9ef78a6de7c4e2b958dd5a670c645b943c3",
+      "decision": "rejected",
+      "supersededByQuestionId": "ccna-legacy-batch1_network_access-008-review-r1",
+      "expectedCorrectLabels": [],
+      "evidenceUrl": "https://www.cisco.com/c/en/us/td/docs/switches/lan/catalyst9300/software/release/17-15/configuration_guide/lyr2/b_1715_lyr2_9300_cg/configuring_optional_spanning_tree_features.html",
+      "evidenceDocumentSha256": "5a30d2e387a6fe2cf616c620687041f2bb4e53fa672d6c787c505b6fb71b9c05",
+      "supportingPassage": {
+        "documentSha256": "5a30d2e387a6fe2cf616c620687041f2bb4e53fa672d6c787c505b6fb71b9c05",
+        "normalizedOffset": 4992,
+        "normalizedLength": 1440,
+        "sha256": "dd6703a96f5d952cf2b8f08a7a7b806b590b49af4f25ebe97ee273b7e906532f"
+      },
+      "reason": "Versión anterior rechazada y conservada como historial: No todo switch no administrado genera BPDU; err-disabled por sí solo no identifica la causa y puede haber recuperación automática. Reemplazo aprobado: ccna-legacy-batch1_network_access-008-review-r1."
+    },
+    {
+      "id": "ccna-legacy-batch1_network_access-009",
+      "file": "batch1_network_access.json",
+      "index": 8,
+      "sourceSha256": "c52f571a5f204da336bae62c5c96e72951e719b2828d17245c95adbc5592e70c",
+      "contentSha256": "e5cc55f77860005164688cdfa103c9217b6ed93db44ecce4c2833fb7f16e5a61",
+      "decision": "rejected",
+      "supersededByQuestionId": "ccna-legacy-batch1_network_access-009-review-r1",
+      "expectedCorrectLabels": [],
+      "evidenceUrl": "https://www.rfc-editor.org/rfc/rfc5416.txt",
+      "evidenceDocumentSha256": "ef326f22d2302b43547dcad37fbc545b075dcae7941372b0569fd84e0f5a4af2",
+      "supportingPassage": {
+        "documentSha256": "ef326f22d2302b43547dcad37fbc545b075dcae7941372b0569fd84e0f5a4af2",
+        "normalizedOffset": 16526,
+        "normalizedLength": 1440,
+        "sha256": "4bd95650ab5a0deca9a537d722b90b8df0df1e8f8115e28f9920e51161bdc4a2"
+      },
+      "reason": "Versión anterior rechazada y conservada como historial: Distinguir el autenticador WLC que retransmite EAP de terminar necesariamente el método EAP del usuario. Reemplazo aprobado: ccna-legacy-batch1_network_access-009-review-r1."
+    },
+    {
+      "id": "ccna-legacy-batch1_network_access-010",
+      "file": "batch1_network_access.json",
+      "index": 9,
+      "sourceSha256": "a13a9dbc5347bff3efaa844e51f48c54948790fea1a260ddb606bb510a03da80",
+      "contentSha256": "d62a4c0212b07cfa83a6a995c26091913a21dbe83b05049000db78954c30d153",
+      "decision": "rejected",
+      "supersededByQuestionId": "ccna-legacy-batch1_network_access-010-review-r1",
+      "expectedCorrectLabels": [],
+      "evidenceUrl": "https://www.cisco.com/c/en/us/td/docs/switches/lan/catalyst9300/software/release/17-15/configuration_guide/lyr2/b_1715_lyr2_9300_cg/configuring_etherchannels.html",
+      "evidenceDocumentSha256": "45ce331b4fdaa8879ab0b9d9a3fe9d9ea47f074e76df4d6d42823fc7a9e2cb86",
+      "supportingPassage": {
+        "documentSha256": "45ce331b4fdaa8879ab0b9d9a3fe9d9ea47f074e76df4d6d42823fc7a9e2cb86",
+        "normalizedOffset": 10629,
+        "normalizedLength": 1440,
+        "sha256": "1c776b43c53990b3172a6a1c37f7c7ca8ed07d3d4bf70beff31db55c360108de"
+      },
+      "reason": "Versión anterior rechazada y conservada como historial: LAG y sus modos dependen del modelo WLC; se explicita una capacidad estática única en el escenario. Reemplazo aprobado: ccna-legacy-batch1_network_access-010-review-r1."
+    },
+    {
+      "id": "ccna-legacy-batch1_ip_connectivity-001",
+      "file": "batch1_ip_connectivity.json",
+      "index": 0,
+      "sourceSha256": "d5e02c2022e87c148a0cf72043c64500ee1c68d7595f416597b44331a4e17efb",
+      "contentSha256": "82c51cb09fc58dc80eda1062504ad094d912fb7a6e0431d2522fe7a0bc2d9db1",
+      "decision": "rejected",
+      "supersededByQuestionId": "ccna-legacy-batch1_ip_connectivity-001-review-r1",
+      "expectedCorrectLabels": [],
+      "evidenceUrl": "https://www.cisco.com/c/en/us/support/docs/ip/border-gateway-protocol-bgp/15986-admin-distance.html",
+      "evidenceDocumentSha256": "3a85eeac0c4496d17ddccd2f3dbb1b09bd6f06370d2c3b573f06da1b7254dcea",
+      "supportingPassage": {
+        "documentSha256": "3a85eeac0c4496d17ddccd2f3dbb1b09bd6f06370d2c3b573f06da1b7254dcea",
+        "normalizedOffset": 6142,
+        "normalizedLength": 1440,
+        "sha256": "d70ee8b83721a96a180866297b7f3a21286ed6fe320c16fb5c18437b740d0144"
+      },
+      "reason": "Versión anterior rechazada y conservada como historial: La traducción generalizaba que toda ruta muestra corchetes; se interpreta solo la entrada observada. Reemplazo aprobado: ccna-legacy-batch1_ip_connectivity-001-review-r1."
+    },
+    {
+      "id": "ccna-legacy-batch1_ip_connectivity-002",
+      "file": "batch1_ip_connectivity.json",
+      "index": 1,
+      "sourceSha256": "6d3531c22d93b791075767c6f99e6d420ec8042c30d78caf7d7bc042e1106120",
+      "contentSha256": "ec3ca61d7809c7e75896a9240e41c5745a63cb328187bf18435afa1631e5823c",
+      "decision": "rejected",
+      "supersededByQuestionId": "ccna-legacy-batch1_ip_connectivity-002-review-r1",
+      "expectedCorrectLabels": [],
+      "evidenceUrl": "https://www.cisco.com/c/en/us/support/docs/ip/ip-routing/116264-technote-ios-00.html",
+      "evidenceDocumentSha256": "49bd595fab4a2d2267222a224a7b2520336c0ffd4431f921ff719d1632574b3e",
+      "supportingPassage": {
+        "documentSha256": "49bd595fab4a2d2267222a224a7b2520336c0ffd4431f921ff719d1632574b3e",
+        "normalizedOffset": 3835,
+        "normalizedLength": 1440,
+        "sha256": "4dbe4e5b2df546876648ac1c0798a0fbf258d3d78ce260c9aad208f48dd5f55e"
+      },
+      "reason": "Versión anterior rechazada y conservada como historial: Retirar una fecha de introducción universal de las rutas locales y explicar su propósito observado. Reemplazo aprobado: ccna-legacy-batch1_ip_connectivity-002-review-r1."
+    },
+    {
+      "id": "ccna-legacy-batch1_ip_connectivity-006",
+      "file": "batch1_ip_connectivity.json",
+      "index": 5,
+      "sourceSha256": "93f63326152054701aee3a7e1474870697eac86762397b312d8a7f39eb5799fe",
+      "contentSha256": "ad280b25f55699576596776fd490a2b37fa56061b99d00899165fe9438d80cfc",
+      "decision": "rejected",
+      "supersededByQuestionId": "ccna-legacy-batch1_ip_connectivity-006-review-r1",
+      "expectedCorrectLabels": [],
+      "evidenceUrl": "https://www.cisco.com/c/en/us/td/docs/switches/lan/catalyst9300/software/release/17-15/configuration_guide/rtng/b_1715_rtng_9300_cg/configuring_ipv6_unicast_routing.html",
+      "evidenceDocumentSha256": "59f2f1becce60afd035d92c28c71ce9a26f955b33efbccba568670fc38804524",
+      "supportingPassage": {
+        "documentSha256": "59f2f1becce60afd035d92c28c71ce9a26f955b33efbccba568670fc38804524",
+        "normalizedOffset": 3081,
+        "normalizedLength": 1440,
+        "sha256": "e1206d316fd153e5f05edf530f916893aad85f5ff396851c4462983ffb43ce39"
+      },
+      "reason": "Versión anterior rechazada y conservada como historial: ip default-gateway puede aplicarse a equipos IOS sin ip routing, no solo switches Capa 2. Reemplazo aprobado: ccna-legacy-batch1_ip_connectivity-006-review-r1."
+    },
+    {
+      "id": "ccna-legacy-batch1_ip_connectivity-007",
+      "file": "batch1_ip_connectivity.json",
+      "index": 6,
+      "sourceSha256": "175bc0408b5d1bd550e6eb2f27ff1b6f4f1cbba2a608ef319eb2c8e26619fbd4",
+      "contentSha256": "97f7c793f80c0816e47a80673095b588f932e541d287c2b2594d9df05b465d37",
+      "decision": "rejected",
+      "supersededByQuestionId": "ccna-legacy-batch1_ip_connectivity-007-review-r1",
+      "expectedCorrectLabels": [],
+      "evidenceUrl": "https://www.cisco.com/c/en/us/support/docs/ip/border-gateway-protocol-bgp/15986-admin-distance.html",
+      "evidenceDocumentSha256": "3a85eeac0c4496d17ddccd2f3dbb1b09bd6f06370d2c3b573f06da1b7254dcea",
+      "supportingPassage": {
+        "documentSha256": "3a85eeac0c4496d17ddccd2f3dbb1b09bd6f06370d2c3b573f06da1b7254dcea",
+        "normalizedOffset": 15214,
+        "normalizedLength": 1440,
+        "sha256": "37b808c5f14145c39cd1c1078f377d2cc4ff0e640c1782c36e82e2941b10f2d8"
+      },
+      "reason": "Versión anterior rechazada y conservada como historial: Explicitar distancia OSPF y disponibilidad del respaldo sin prometer conmutación instantánea. Reemplazo aprobado: ccna-legacy-batch1_ip_connectivity-007-review-r1."
+    },
+    {
+      "id": "ccna-legacy-batch1_ip_connectivity-008",
+      "file": "batch1_ip_connectivity.json",
+      "index": 7,
+      "sourceSha256": "20ce307678f346aa74adc5b01057406b57d1e8ed60562dadef7799eaf2bf6ce4",
+      "contentSha256": "b202eed7e0ceecf6ddde72b8fe8c93a8dcc264bd5c8830ad9024908b26cc9083",
+      "decision": "rejected",
+      "supersededByQuestionId": "ccna-legacy-batch1_ip_connectivity-008-review-r1",
+      "expectedCorrectLabels": [],
+      "evidenceUrl": "https://www.cisco.com/c/en/us/support/docs/dial-access/floating-static-route/118263-technote-nexthop-00.html",
+      "evidenceDocumentSha256": "88692b604edd7daad37ed68c08fb48ec56bba1f1a92aa373b1f0ebb5088c7012",
+      "supportingPassage": {
+        "documentSha256": "88692b604edd7daad37ed68c08fb48ec56bba1f1a92aa373b1f0ebb5088c7012",
+        "normalizedOffset": 4365,
+        "normalizedLength": 1440,
+        "sha256": "cca9bd95e826c76fbfa183f0e7c14124e788af3face411335d84a2e0e38291f6"
+      },
+      "reason": "Versión anterior rechazada y conservada como historial: El ARP por destino es un riesgo de carga, no agotamiento inevitable ni prohibición universal de rutas por interfaz. Reemplazo aprobado: ccna-legacy-batch1_ip_connectivity-008-review-r1."
+    },
+    {
+      "id": "ccna-legacy-batch1_ip_connectivity-010",
+      "file": "batch1_ip_connectivity.json",
+      "index": 9,
+      "sourceSha256": "68d3a8e1bde85f6fc67f953cb1f422500a46ef52ecd2c805d2781786e751bda0",
+      "contentSha256": "abbdb326738e079b3fe4a0d5096192d2ff57317459bff9ab71eff0be08753b40",
+      "decision": "rejected",
+      "supersededByQuestionId": "ccna-legacy-batch1_ip_connectivity-010-review-r1",
+      "expectedCorrectLabels": [],
+      "evidenceUrl": "https://www.cisco.com/c/en/us/support/docs/ip/open-shortest-path-first-ospf/9237-9.html",
+      "evidenceDocumentSha256": "d065dca39f2e841aa736ec606b4e37dae0b92d29cd7d34ad0f030b113bbe69df",
+      "supportingPassage": {
+        "documentSha256": "d065dca39f2e841aa736ec606b4e37dae0b92d29cd7d34ad0f030b113bbe69df",
+        "normalizedOffset": 8092,
+        "normalizedLength": 1440,
+        "sha256": "a08eec405561ceffa1d806467e9ebc6735090d55733a4628b83d930802a98e01"
+      },
+      "reason": "Versión anterior rechazada y conservada como historial: No generalizar que todos los cocientes fraccionarios se redondean hacia arriba; aquí se aplica costo mínimo 1. Reemplazo aprobado: ccna-legacy-batch1_ip_connectivity-010-review-r1."
+    },
+    {
+      "id": "ccna-legacy-batch1_ip_connectivity-013",
+      "file": "batch1_ip_connectivity.json",
+      "index": 12,
+      "sourceSha256": "916ba26af1184f5c69b087d15b33fed0cc6cccf381808b1f2712fed72e5e90b8",
+      "contentSha256": "375321229582cd9a89abc75c2c20010146bae963063c7545760bbc48eda22428",
+      "decision": "rejected",
+      "supersededByQuestionId": "ccna-legacy-batch1_ip_connectivity-013-review-r1",
+      "expectedCorrectLabels": [],
+      "evidenceUrl": "https://www.cisco.com/c/en/us/support/docs/ip/hot-standby-router-protocol-hsrp/13780-6.html",
+      "evidenceDocumentSha256": "51828ba414fccc2d5f6f50a6f4ed4981fe8d919065ba1b3327eca3ff39e9618a",
+      "supportingPassage": {
+        "documentSha256": "51828ba414fccc2d5f6f50a6f4ed4981fe8d919065ba1b3327eca3ff39e9618a",
+        "normalizedOffset": 8813,
+        "normalizedLength": 1440,
+        "sha256": "e6818dfd714d28ebba97e6acc97bbc655bd83c4827dd4e6170fcbe412ea7e371"
+      },
+      "reason": "Versión anterior rechazada y conservada como historial: La comparación GLBP describía incorrectamente el ancho del identificador; se conserva solo el formato HSRPv1 necesario. Reemplazo aprobado: ccna-legacy-batch1_ip_connectivity-013-review-r1."
+    },
+    {
+      "id": "ccna-legacy-batch1_ip_services-001",
+      "file": "batch1_ip_services.json",
+      "index": 0,
+      "sourceSha256": "b8b8402d06bf9d96239c8fc66a2db9fb613a39789a9dc620a79866f38988708c",
+      "contentSha256": "f68e13a899233e19707c8dc5acdd529e650d3c040885a7d80360b21d1ad8b7db",
+      "decision": "rejected",
+      "supersededByQuestionId": "ccna-legacy-batch1_ip_services-001-review-r1",
+      "expectedCorrectLabels": [],
+      "evidenceUrl": "https://www.rfc-editor.org/rfc/rfc3022.txt",
+      "evidenceDocumentSha256": "c57fe60c46eff630d4d82eece5bf624ba3ac80f16711e7acdb44a28e01331d86",
+      "supportingPassage": {
+        "documentSha256": "c57fe60c46eff630d4d82eece5bf624ba3ac80f16711e7acdb44a28e01331d86",
+        "normalizedOffset": 454,
+        "normalizedLength": 1440,
+        "sha256": "69cc2216813ba3d7894e76e371c9d48bc7d7f38eb30358aefea6b9984b5ee02c"
+      },
+      "reason": "Versión anterior rechazada y conservada como historial: Los rangos documentales no son asignaciones públicas reales y inside local no implica siempre RFC 1918. Reemplazo aprobado: ccna-legacy-batch1_ip_services-001-review-r1."
+    },
+    {
+      "id": "ccna-legacy-batch1_ip_services-002",
+      "file": "batch1_ip_services.json",
+      "index": 1,
+      "sourceSha256": "7cdb89b9d28062d06dd6c7752f644a1acb128cdb25218ccdac7127eb707f7668",
+      "contentSha256": "5653207d7999adb3e882ed88245d00fb586cae88a8ad6be3aaec485ac1362629",
+      "decision": "rejected",
+      "supersededByQuestionId": "ccna-legacy-batch1_ip_services-002-review-r1",
+      "expectedCorrectLabels": [],
+      "evidenceUrl": "https://www.cisco.com/c/en/us/td/docs/switches/lan/catalyst9300/software/release/17-15/configuration_guide/ip/b_1715_ip_9300_cg/configuring_dhcp.html",
+      "evidenceDocumentSha256": "71d216f55b550ea22a47ade614168d9cd87f4cfe9329a6b658c9c6f2354c3bd4",
+      "supportingPassage": {
+        "documentSha256": "71d216f55b550ea22a47ade614168d9cd87f4cfe9329a6b658c9c6f2354c3bd4",
+        "normalizedOffset": 27746,
+        "normalizedLength": 1440,
+        "sha256": "419e871b1f83daff8d88b0d5e47cd6d633f2e9ddbeed3be41c44f3b19bb37af3"
+      },
+      "reason": "Versión anterior rechazada y conservada como historial: No afirmar que ip dhcp-server no existe en todo IOS; distinguir el comando de relay por interfaz. Reemplazo aprobado: ccna-legacy-batch1_ip_services-002-review-r1."
+    },
+    {
+      "id": "ccna-legacy-batch1_ip_services-003",
+      "file": "batch1_ip_services.json",
+      "index": 2,
+      "sourceSha256": "0ca24871f9333bbf5056b2f34bd1a0361f527716c455b24e037e45810ada72b6",
+      "contentSha256": "3b2ebc3bfbd1f5253497bdf5b89d5a46c76fb361e7714d42b543874a81054124",
+      "decision": "rejected",
+      "supersededByQuestionId": "ccna-legacy-batch1_ip_services-003-review-r1",
+      "expectedCorrectLabels": [],
+      "evidenceUrl": "https://www.rfc-editor.org/rfc/rfc5905.txt",
+      "evidenceDocumentSha256": "8b7abd903c60202e2953ee012fefa6916666c3b0c71825c748cdd262024fb268",
+      "supportingPassage": {
+        "documentSha256": "8b7abd903c60202e2953ee012fefa6916666c3b0c71825c748cdd262024fb268",
+        "normalizedOffset": 168292,
+        "normalizedLength": 1440,
+        "sha256": "b9652d9e53af7c20b7018a3ebaa6b2fe8901a3775013b5fb3ff5171f2a8afb6e"
+      },
+      "reason": "Versión anterior rechazada y conservada como historial: Separar referencias físicas de estrato 0 y los valores de estrato transportados por NTP. Reemplazo aprobado: ccna-legacy-batch1_ip_services-003-review-r1."
+    },
+    {
+      "id": "ccna-legacy-batch1_ip_services-005",
+      "file": "batch1_ip_services.json",
+      "index": 4,
+      "sourceSha256": "81db7480b7372ab24f1f2185483fa9c8cc2151e054202890df1b797092c0dc37",
+      "contentSha256": "4d78b43b05267f3c2ee430218904cfcb3ccfdf3fab9c307527165c8c87de3d52",
+      "decision": "rejected",
+      "supersededByQuestionId": "ccna-legacy-batch1_ip_services-005-review-r1",
+      "expectedCorrectLabels": [],
+      "evidenceUrl": "https://www.rfc-editor.org/rfc/rfc2475.txt",
+      "evidenceDocumentSha256": "3d239ebc304b7be7d43f79f813a4cdcd32952e5ad4c5ea4805cc040bca60f475",
+      "supportingPassage": {
+        "documentSha256": "3d239ebc304b7be7d43f79f813a4cdcd32952e5ad4c5ea4805cc040bca60f475",
+        "normalizedOffset": 34768,
+        "normalizedLength": 1440,
+        "sha256": "e5b81085b551fd10ecf1355209761408b4578637e7f678680b6fc6322122c5bb"
+      },
+      "reason": "Versión anterior rechazada y conservada como historial: El shaping no garantiza ausencia de pérdidas: las colas son finitas y el perfil debe corresponder al policer. Reemplazo aprobado: ccna-legacy-batch1_ip_services-005-review-r1."
+    },
+    {
+      "id": "ccna-legacy-batch1_security_fundamentals-001",
+      "file": "batch1_security_fundamentals.json",
+      "index": 0,
+      "sourceSha256": "84e27213dd94cdab36c5a0745c52c83df8719d45d36749a846cebddc8be5abbd",
+      "contentSha256": "651a35eafe44417902f01e82923818880fc95fe223685fccdac8d891c77cffc5",
+      "decision": "rejected",
+      "supersededByQuestionId": "ccna-legacy-batch1_security_fundamentals-001-review-r1",
+      "expectedCorrectLabels": [],
+      "evidenceUrl": "https://www.rfc-editor.org/rfc/rfc4949.txt",
+      "evidenceDocumentSha256": "32d1e3837ae5a7d2e99a63f43c6fea3dd350ffc6ac55b3aaadad250546ad7f87",
+      "supportingPassage": {
+        "documentSha256": "32d1e3837ae5a7d2e99a63f43c6fea3dd350ffc6ac55b3aaadad250546ad7f87",
+        "normalizedOffset": 20337,
+        "normalizedLength": 1440,
+        "sha256": "51a81045c070035c4e126450ad167e3d4c5f8cc2bcc3327eeb699cd75b091f9b"
+      },
+      "reason": "Versión anterior rechazada y conservada como historial: Eliminar fórmulas universales de riesgo y comandos de hardening ajenos al concepto que calificaban HTTPS como inseguro. Reemplazo aprobado: ccna-legacy-batch1_security_fundamentals-001-review-r1."
+    },
+    {
+      "id": "ccna-legacy-batch1_security_fundamentals-002",
+      "file": "batch1_security_fundamentals.json",
+      "index": 1,
+      "sourceSha256": "49e1bc0af97b7b261fbd542a32a070229215956ab50c2605b489e6b1d52f76de",
+      "contentSha256": "62d329b96c22bcf1787c4e03f960d1b851a64ce0bf4ac6819039732605fd7708",
+      "decision": "rejected",
+      "supersededByQuestionId": "ccna-legacy-batch1_security_fundamentals-002-review-r1",
+      "expectedCorrectLabels": [],
+      "evidenceUrl": "https://www.cisco.com/c/en/us/td/docs/switches/lan/catalyst9300/software/release/17-15/configuration_guide/sec/b_1715_sec_9300_cg/controlling_switch_access_with_passwords_and_privilege_levels.html",
+      "evidenceDocumentSha256": "adf5256fc451f9a03f92da7d3c782b54a12eeb6a08b902b0fde4ee16f67e2ab8",
+      "supportingPassage": {
+        "documentSha256": "adf5256fc451f9a03f92da7d3c782b54a12eeb6a08b902b0fde4ee16f67e2ab8",
+        "normalizedOffset": 25142,
+        "normalizedLength": 1440,
+        "sha256": "806bd47f794b96311b6f3183d001b6e0e7f80b14720ccd057f354112480803c1"
+      },
+      "reason": "Versión anterior rechazada y conservada como historial: scrypt encarece intentos, no neutraliza hardware de ataque; Type 7 no protege universalmente todo secreto. Reemplazo aprobado: ccna-legacy-batch1_security_fundamentals-002-review-r1."
+    },
+    {
+      "id": "ccna-legacy-batch1_security_fundamentals-003",
+      "file": "batch1_security_fundamentals.json",
+      "index": 2,
+      "sourceSha256": "b4cea91aaf1620c0029e1ab020e5f5360bc2180109d7ea525c79c3f0ddbba731",
+      "contentSha256": "a1b2f55ba8f3ce8cce8a5e176886c471b0a805bf1897d6f5fa2d3c3078a424cf",
+      "decision": "rejected",
+      "supersededByQuestionId": "ccna-legacy-batch1_security_fundamentals-003-review-r1",
+      "expectedCorrectLabels": [],
+      "evidenceUrl": "https://www.rfc-editor.org/rfc/rfc4303.txt",
+      "evidenceDocumentSha256": "d22f9d4120e5645525b63ac7bbf8ef78c334fe003a2c48bf1e25ac25f6e7dc58",
+      "supportingPassage": {
+        "documentSha256": "d22f9d4120e5645525b63ac7bbf8ef78c334fe003a2c48bf1e25ac25f6e7dc58",
+        "normalizedOffset": 8040,
+        "normalizedLength": 1440,
+        "sha256": "295fb3bdc1a9cfb7683596b8a9abf69b200731f4b1bee57cbf77261020f94899"
+      },
+      "reason": "Versión anterior rechazada y conservada como historial: AH no autentica campos mutables con sus valores variables; ESP depende de algoritmos y anti-replay configurados. Reemplazo aprobado: ccna-legacy-batch1_security_fundamentals-003-review-r1."
+    },
+    {
+      "id": "ccna-legacy-batch1_security_fundamentals-004",
+      "file": "batch1_security_fundamentals.json",
+      "index": 3,
+      "sourceSha256": "5265c66d18fb6e692e8ad57add706a0af80aed310f4f006d2cf4c81fcd319f4a",
+      "contentSha256": "e225366dec2f4ff8703e01c545a05e452b1e7be0d60678e27f71c4ce2d74f92c",
+      "decision": "rejected",
+      "supersededByQuestionId": "ccna-legacy-batch1_security_fundamentals-004-review-r1",
+      "expectedCorrectLabels": [],
+      "evidenceUrl": "https://www.cisco.com/c/en/us/support/docs/ip/access-lists/26448-ACLsamples.html",
+      "evidenceDocumentSha256": "d004fd75573b4f98df59c86de4448a69abd072947aad8a5aac3a838e1e04b8a8",
+      "supportingPassage": {
+        "documentSha256": "d004fd75573b4f98df59c86de4448a69abd072947aad8a5aac3a838e1e04b8a8",
+        "normalizedOffset": 4456,
+        "normalizedLength": 1440,
+        "sha256": "2762ea4bb1a670485a93a4b20bf387d5c24f8052760752e882f933cd75b00aaf"
+      },
+      "reason": "Versión anterior rechazada y conservada como historial: Una ACL que permite ingeniería no bloquea a esos hosts por implicit deny; la ubicación es una guía dependiente de topología. Reemplazo aprobado: ccna-legacy-batch1_security_fundamentals-004-review-r1."
+    },
+    {
+      "id": "ccna-legacy-batch1_security_fundamentals-006",
+      "file": "batch1_security_fundamentals.json",
+      "index": 5,
+      "sourceSha256": "d50f4cb2bf76c1dbeeff6643297a57c43e572d075b5a81b6c9b6758e23fc07cb",
+      "contentSha256": "7754c3255e9474299ab36306b01a735e3586b94eb9152d230b9ac5fb6889bd95",
+      "decision": "rejected",
+      "supersededByQuestionId": "ccna-legacy-batch1_security_fundamentals-006-review-r1",
+      "expectedCorrectLabels": [],
+      "evidenceUrl": "https://www.cisco.com/c/en/us/td/docs/switches/lan/catalyst9300/software/release/17-15/configuration_guide/sec/b_1715_sec_9300_cg/port_security.html",
+      "evidenceDocumentSha256": "6dcb231f0407cb8caf3a83617b8556127d3322c1db08bc515553f75530539556",
+      "supportingPassage": {
+        "documentSha256": "6dcb231f0407cb8caf3a83617b8556127d3322c1db08bc515553f75530539556",
+        "normalizedOffset": 11325,
+        "normalizedLength": 1440,
+        "sha256": "fda738d583a5ee21b0b82db755faa7c8ccede13fd1ddec90e318cbfc2c7fb8b0"
+      },
+      "reason": "Versión anterior rechazada y conservada como historial: No prometer entrega SNMP sin receptor y configuración; asegurar que el máximo de MAC ya fue aprendido. Reemplazo aprobado: ccna-legacy-batch1_security_fundamentals-006-review-r1."
+    },
+    {
+      "id": "ccna-legacy-batch1_security_fundamentals-007",
+      "file": "batch1_security_fundamentals.json",
+      "index": 6,
+      "sourceSha256": "2039d266cf645003b9b44b927df6937273a92f06d0d2a74a262c73b7cf749764",
+      "contentSha256": "25677f085cb45a7080b13f8fd857ed0deadcf0fbe6b0ce262e044b973e8e94fa",
+      "decision": "rejected",
+      "supersededByQuestionId": "ccna-legacy-batch1_security_fundamentals-007-review-r1",
+      "expectedCorrectLabels": [],
+      "evidenceUrl": "https://www.rfc-editor.org/rfc/rfc8907.txt",
+      "evidenceDocumentSha256": "b66c86b0d996baa98ae018ae5448d76b9973c6154d5fcb6002af0a62fd879233",
+      "supportingPassage": {
+        "documentSha256": "b66c86b0d996baa98ae018ae5448d76b9973c6154d5fcb6002af0a62fd879233",
+        "normalizedOffset": 18819,
+        "normalizedLength": 1440,
+        "sha256": "9303b7a4dfe1de074494c1ba2f72e28217bf9da146065f8824ba7c71e6711f22"
+      },
+      "reason": "Versión anterior rechazada y conservada como historial: TACACS+ clásico ofusca y no aporta cifrado moderno; commands 15 no cubre todo comando EXEC y local es fallback. Reemplazo aprobado: ccna-legacy-batch1_security_fundamentals-007-review-r1."
+    },
+    {
+      "id": "ccna-legacy-batch1_automation-001",
+      "file": "batch1_automation.json",
+      "index": 0,
+      "sourceSha256": "68846b4a28faac5cb0f3a7436dfa2698697f36512ada837fb321959296a58c23",
+      "contentSha256": "95c937380d4d1dfe2a0437f8d94c9277a83f0f00e10e4c544203bdc92e5919fc",
+      "decision": "rejected",
+      "supersededByQuestionId": "ccna-legacy-batch1_automation-001-review-r1",
+      "expectedCorrectLabels": [],
+      "evidenceUrl": "https://raw.githubusercontent.com/ansible/ansible/devel/README.md",
+      "evidenceDocumentSha256": "a0d060dbbf5cc7d8881761018364e29f9b503a1b1229934d1150563f0773448c",
+      "supportingPassage": {
+        "documentSha256": "a0d060dbbf5cc7d8881761018364e29f9b503a1b1229934d1150563f0773448c",
+        "normalizedOffset": 1132,
+        "normalizedLength": 1440,
+        "sha256": "d70bde3169fcdf888c2a2ca9618b73cb218eb86ed625a75fd6218bdd03c8ff02"
+      },
+      "reason": "Versión anterior rechazada y conservada como historial: Automatizar no garantiza revisión humana, CI ni ausencia de errores; una plantilla errónea puede propagarse. Reemplazo aprobado: ccna-legacy-batch1_automation-001-review-r1."
+    },
+    {
+      "id": "ccna-legacy-batch1_automation-002",
+      "file": "batch1_automation.json",
+      "index": 1,
+      "sourceSha256": "e5d766cdcff83535ffb7afbaf23c153bf192b18be98747cfdcdaa5f98a926209",
+      "contentSha256": "d519baf11d104895e79cea0de1470fc39daf5c1fcf6b5c19c32728bf937380e1",
+      "decision": "rejected",
+      "supersededByQuestionId": "ccna-legacy-batch1_automation-002-review-r1",
+      "expectedCorrectLabels": [],
+      "evidenceUrl": "https://www.rfc-editor.org/rfc/rfc7426.txt",
+      "evidenceDocumentSha256": "24924cddb9b235cb19d6d0ee2d9ce28702a11105d3d9858459cee3cbeb76f12c",
+      "supportingPassage": {
+        "documentSha256": "24924cddb9b235cb19d6d0ee2d9ce28702a11105d3d9858459cee3cbeb76f12c",
+        "normalizedOffset": 5224,
+        "normalizedLength": 1440,
+        "sha256": "5c8b6e0f91eda38e6c1fdda81c161a281979fb3dc3255a250bc9403bffd7a4c0"
+      },
+      "reason": "Versión anterior rechazada y conservada como historial: Separar roles SDN genéricos de los protocolos realmente admitidos por SD-Access; northbound no exige REST universal. Reemplazo aprobado: ccna-legacy-batch1_automation-002-review-r1."
+    },
+    {
+      "id": "ccna-legacy-batch1_automation-003",
+      "file": "batch1_automation.json",
+      "index": 2,
+      "sourceSha256": "d5f8c2fc2788f00ce0cc354cc43611a9244686d64bca469a7700dc7d47999277",
+      "contentSha256": "186c492787b6abf8a7bff01638d2d1261fd19726d8883f08c4108fe92d8f36f0",
+      "decision": "rejected",
+      "supersededByQuestionId": "ccna-legacy-batch1_automation-003-review-r1",
+      "expectedCorrectLabels": [],
+      "evidenceUrl": "https://www.cisco.com/c/en/us/solutions/artificial-intelligence/what-is-aiops.html",
+      "evidenceDocumentSha256": "569d8a81fa99d4a7eceec5886a7c1bb22f5d622f8571dbfbc5bea06710b951fa",
+      "supportingPassage": {
+        "documentSha256": "569d8a81fa99d4a7eceec5886a7c1bb22f5d622f8571dbfbc5bea06710b951fa",
+        "normalizedOffset": 2679,
+        "normalizedLength": 1440,
+        "sha256": "e2f0947970dd42418dbc52748598c8f865a92d59f8db8903000ebec8a2853905"
+      },
+      "reason": "Versión anterior rechazada y conservada como historial: Retirar la cifra no demostrada del 99 %, causa exacta garantizada y afirmaciones absolutas sobre alertas. Reemplazo aprobado: ccna-legacy-batch1_automation-003-review-r1."
+    },
+    {
+      "id": "ccna-legacy-batch1_automation-004",
+      "file": "batch1_automation.json",
+      "index": 3,
+      "sourceSha256": "1a09679c49f00ba24b9b2f1f2d7c3f1fef799b06be4a1702f1771177e89d05a1",
+      "contentSha256": "e89c8f38d9d3008be015fcd3f2cbee0a016fe30900c67f189d557d57c27324bf",
+      "decision": "rejected",
+      "supersededByQuestionId": "ccna-legacy-batch1_automation-004-review-r1",
+      "expectedCorrectLabels": [],
+      "evidenceUrl": "https://www.rfc-editor.org/rfc/rfc9110.txt",
+      "evidenceDocumentSha256": "21c1cdce6ab0e5509b04d84a28000836c7a087cf786efe6f04877ebfff47232a",
+      "supportingPassage": {
+        "documentSha256": "21c1cdce6ab0e5509b04d84a28000836c7a087cf786efe6f04877ebfff47232a",
+        "normalizedOffset": 302033,
+        "normalizedLength": 1440,
+        "sha256": "53ab08618e51cb2a9bf8003fcccbe327d081a1954180e742cfd879e6c1c3ba65"
+      },
+      "reason": "Versión anterior rechazada y conservada como historial: No atribuir un endpoint hipotético a Catalyst Center ni deducir configuración aplicada solo de 201. Reemplazo aprobado: ccna-legacy-batch1_automation-004-review-r1."
+    },
+    {
+      "id": "ccna-legacy-batch1_automation-005",
+      "file": "batch1_automation.json",
+      "index": 4,
+      "sourceSha256": "c2ca43e800088e8a2ba072d01c39130e21058bbf6b3d42f6ba4e411a2c39bcd7",
+      "contentSha256": "901621fcaf4b75a9c989afa2e64039578751e17bae2c079baccc297ed34a793f",
+      "decision": "rejected",
+      "supersededByQuestionId": "ccna-legacy-batch1_automation-005-review-r1",
+      "expectedCorrectLabels": [],
+      "evidenceUrl": "https://raw.githubusercontent.com/ansible/ansible-documentation/devel/docs/docsite/rst/network/getting_started/network_differences.rst",
+      "evidenceDocumentSha256": "1210e74c6a0dfb4f29ff9c8ba9db232a42653f0de4d9845511b665e8810a09c0",
+      "supportingPassage": {
+        "documentSha256": "1210e74c6a0dfb4f29ff9c8ba9db232a42653f0de4d9845511b665e8810a09c0",
+        "normalizedOffset": 842,
+        "normalizedLength": 1440,
+        "sha256": "61fe5c9820abf1521c4265cc3ac890e75dab5d8d76bfb91906ed3b308805185c"
+      },
+      "reason": "Versión anterior rechazada y conservada como historial: Corregir el nombre YAML y evitar extrapolar agentes, módulos o protocolos idénticos a toda herramienta y plataforma. Reemplazo aprobado: ccna-legacy-batch1_automation-005-review-r1."
+    },
+    {
+      "id": "ccna-original-20261024-b03-026",
+      "file": "original_20261024_b03_50.json",
+      "index": 25,
+      "sourceSha256": "e5734171650dd451e010cc04afa322d2d1f5d50906188acbcc2cabcdca6ceb6d",
+      "contentSha256": "c56ea0551954b8aab72ba23ee612d53cf64259a61ec8adde0f7c268e78a27032",
+      "decision": "rejected",
+      "supersededByQuestionId": "ccna-original-20261024-b03-026-review-r1",
+      "expectedCorrectLabels": [],
+      "evidenceUrl": "https://www.cisco.com/c/en/us/td/docs/routers/ios/config/17-x/ip-routing/b-ip-routing/m_iri-default-passive-interface.html",
+      "evidenceDocumentSha256": "05e4661404c0e1a1f6317c94efa6648d37287833a9af7991807f701dd7142c9e",
+      "supportingPassage": {
+        "documentSha256": "05e4661404c0e1a1f6317c94efa6648d37287833a9af7991807f701dd7142c9e",
+        "normalizedOffset": 19882,
+        "normalizedLength": 1090,
+        "sha256": "b0513ecb5300efa0ebdda0591cbb7c3a014a6578fae1c857e4d2852bdb3b3219"
+      },
+      "reason": "Versión anterior rechazada y conservada como historial: Corrección bilingüe/de supuestos documentada en la revisión anterior. Reemplazo aprobado: ccna-original-20261024-b03-026-review-r1."
+    },
+    {
+      "id": "ccna-original-20261026-b04-025",
+      "file": "original_20261026_b04_50.json",
+      "index": 24,
+      "sourceSha256": "8a3952d12d947282ca23b7e7fe5f2c528062f864e18ce1faf875dae61b785a92",
+      "contentSha256": "d9faaa3290e13782e2592d5773fc7a73081a53540f46182a6c43dd3cbdd2ed60",
+      "decision": "rejected",
+      "supersededByQuestionId": "ccna-original-20261026-b04-025-review-r1",
+      "expectedCorrectLabels": [],
+      "evidenceUrl": "https://www.rfc-editor.org/rfc/rfc2328.txt",
+      "evidenceDocumentSha256": "981690e297fbba9e8ef655802552b5529cb17f1ffe790ad2d55706cc522ff50c",
+      "supportingPassage": {
+        "documentSha256": "981690e297fbba9e8ef655802552b5529cb17f1ffe790ad2d55706cc522ff50c",
+        "normalizedOffset": 104176,
+        "normalizedLength": 1090,
+        "sha256": "7a55611a281e3d586c4b1d24e397cfaffd285a3fc50567e001df37ca305cce3d"
+      },
+      "reason": "Versión anterior rechazada y conservada como historial: Corrección bilingüe/de supuestos documentada en la revisión anterior. Reemplazo aprobado: ccna-original-20261026-b04-025-review-r1."
+    },
+    {
+      "id": "ccna-original-20261026-b05-022",
+      "file": "original_20261026_b05_50.json",
+      "index": 21,
+      "sourceSha256": "12d860f2b48c1495b06b2a4984c1aaffa4e721d2c005c891463fd4d6c8096f9c",
+      "contentSha256": "2effa53e103a29129bb3b3d6ecb7941d0a7014c1e6fcfe49460e6e286eb3c01a",
+      "decision": "rejected",
+      "supersededByQuestionId": "ccna-original-20261026-b05-022-review-r1",
+      "expectedCorrectLabels": [],
+      "evidenceUrl": "https://www.cisco.com/c/en/us/td/docs/routers/ios/config/17-x/ip-routing/b-ip-routing/m_iro-cfg-0.html",
+      "evidenceDocumentSha256": "12ba932a16c065ee07d9f17a9bce077709fae7589e2b6336be71d42e55472a36",
+      "supportingPassage": {
+        "documentSha256": "12ba932a16c065ee07d9f17a9bce077709fae7589e2b6336be71d42e55472a36",
+        "normalizedOffset": 48213,
+        "normalizedLength": 1090,
+        "sha256": "fa6e70aa4011dc0fb7c057d2b4ce5b3b6f7556c2b3bfb0de762327f334b7cc1b"
+      },
+      "reason": "Versión anterior rechazada y conservada como historial: Corrección bilingüe/de supuestos documentada en la revisión anterior. Reemplazo aprobado: ccna-original-20261026-b05-022-review-r1."
+    },
+    {
+      "id": "ccna-original-20261026-b07-048",
+      "file": "original_20261026_b07_50.json",
+      "index": 47,
+      "sourceSha256": "80f7bca8981cc63b800a778bced0fb01abe6089e0fcffbad4272bc2c14b5590d",
+      "contentSha256": "e14e75191ea6b248dc7557dba81110decc3f90fb5d66a2ccfce3e5059d2d2acc",
+      "decision": "rejected",
+      "supersededByQuestionId": "ccna-original-20261026-b07-048-review-r1",
+      "expectedCorrectLabels": [],
+      "evidenceUrl": "https://www.rfc-editor.org/rfc/rfc9315.txt",
+      "evidenceDocumentSha256": "10c4a4293dc27be8eeb31dec8ded32b0e0355334deffc1772b50179106be6997",
+      "supportingPassage": {
+        "documentSha256": "10c4a4293dc27be8eeb31dec8ded32b0e0355334deffc1772b50179106be6997",
+        "normalizedOffset": 6630,
+        "normalizedLength": 1090,
+        "sha256": "e2a4e485aa336c020cc73bb6a601afc6bfe09cc67dca3f9cd0b7521d86ad03c9"
+      },
+      "reason": "Versión anterior rechazada y conservada como historial: Corrección bilingüe/de supuestos documentada en la revisión anterior. Reemplazo aprobado: ccna-original-20261026-b07-048-review-r1."
+    }
+  ]
+}

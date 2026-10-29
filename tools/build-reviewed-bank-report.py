@@ -117,41 +117,60 @@ def build(cache):
    record['checks']={'answerAndDistractors':True,'bilingualConsistency':True,'explicitAssumptions':True,'authorship':'Original project wording declared in repository; cited source text not reproduced as questions.'}
   records.append(record)
  report = {'id':'assisted-review-20261029-v1','reviewerType':'automated_assistant','authorization':'User explicitly requested review and approval of questions that pass technical checks on 2026-10-29. No human certification is asserted.','scope':'Initial review: 101 original executable scenarios, 22 documentary questions and 11 legacy numeric scenarios.','references':list(references.values()),'summary':dict(collections.Counter(r['decision']for r in records)),'records':records}
- continuation = json.loads((ROOT/'server/prisma/reviews/continuation-20261029.json').read_text())
  positions = {(file, i): q for file, i, q in candidates}
  by_id = {r['id']: r for r in records}
- seen = set()
- for review in continuation['records']:
-  identity = review['id']
-  if identity in seen: raise ValueError('Repeated continuation decision: '+identity)
-  seen.add(identity)
-  row = by_id[identity]; q = positions[(row['file'], row['index'])]
-  if review['sourceSha256'] != digest(q) or review['contentSha256'] != digest(content(q)): raise ValueError('Stale continuation content: '+identity)
-  actual = sorted(o['optionLabel'] for o in q['options'] if o['isCorrect'])
-  if actual != sorted(review['expectedCorrectLabels']): raise ValueError('Independent editorial key mismatch: '+identity)
-  row['decision'] = review['decision']; row['reason'] = review['reason']
-  row['reviewRound'] = continuation['id']
-  if row['decision'] != 'validated': continue
-  evidence = review['supportingPassage']; h = evidence['documentSha256']
-  body = text(index[h]); start = evidence['normalizedOffset']; passage = body[start:start+evidence['normalizedLength']]
-  if hashlib.sha256(passage.encode()).hexdigest() != evidence['sha256']: raise ValueError('Changed evidence passage: '+identity)
-  url = review['evidenceUrl']
-  if not any(ref['url'] == url and ref['documentSha256'] == h for ref in continuation['references']): raise ValueError('Unbound source: '+identity)
+ scenario_module = runpy.run_path(str(ROOT/'tools/check-reviewed-legacy-scenarios.py'))
+ scenario_results = {r['id']: {k:r[k] for k in ['kind','result','passed']} for r in scenario_module['review']()['records']}
+ report['reviewRounds'] = ['assisted-review-20261029-v1']
+ def verify_passage(evidence, identity):
+  body = text(index[evidence['documentSha256']]); start = evidence['normalizedOffset']
+  passage = body[start:start+evidence['normalizedLength']]
+  if not passage or hashlib.sha256(passage.encode()).hexdigest() != evidence['sha256']: raise ValueError('Changed evidence passage: '+identity)
+  return passage
+ def register_reference(url, evidence, reference_list, identity):
+  h = evidence['documentSha256']; passage = verify_passage(evidence, identity)
+  if not any(ref['url'] == url and ref['documentSha256'] == h for ref in reference_list): raise ValueError('Unbound source: '+identity)
   if not any(ref['url'] == url and ref['documentSha256'] == h for ref in report['references']):
-   report['references'].append({'url':url,'documentSha256':h,'consultedOn':'2026-10-29','retrieval':'Cached primary source, integrity and focused passage checked during continuation.','excerpts':[{'anchor':' '.join(passage.split()[:4]),'excerpt':' '.join(passage.split()[:12]),'normalizedOffset':start}]})
-  row.update({'evidenceUrl':url,'evidenceDocumentSha256':h,'evidenceSection':review.get('evidenceSection'),'supportingPassage':evidence,'checks':review['checks'],'independentCheck':{'kind':'documentary_independent_key','result':review['expectedCorrectLabels'],'passed':True}})
-  if review.get('additionalEvidence'):
-   row['additionalEvidence'] = review['additionalEvidence']
-   for extra in review['additionalEvidence']:
-    extra_body = text(index[extra['documentSha256']]); offset = extra['normalizedOffset']; extra_passage = extra_body[offset:offset+extra['normalizedLength']]
-    if hashlib.sha256(extra_passage.encode()).hexdigest() != extra['sha256']: raise ValueError('Changed supplemental evidence: '+identity)
-    if not any(ref['url'] == extra['url'] and ref['documentSha256'] == extra['documentSha256'] for ref in report['references']):
-     report['references'].append({'url':extra['url'],'documentSha256':extra['documentSha256'],'consultedOn':'2026-10-29','retrieval':'Cached supplemental primary source; focused passage checked.','excerpts':[{'anchor':' '.join(extra_passage.split()[:4]),'excerpt':' '.join(extra_passage.split()[:12]),'normalizedOffset':offset}]})
-  if review.get('supersedesQuestionId'): row['supersedesQuestionId'] = review['supersedesQuestionId']
- report['scope'] = '664 structurally checked candidates. Deep review: all 360 original questions, four corrected versions, and 11 legacy questions (375 records). Nine original records remain pending, including four superseded originals; 289 other legacy candidates have no complete technical review in this delivery.'
- report['revision'] = 2
- report['reviewRounds'] = ['assisted-review-20261029-v1', continuation['id']]
+   report['references'].append({'url':url,'documentSha256':h,'consultedOn':'2026-10-29','retrieval':'Primary document and focused passage inspected; the round records retrieval provenance.','excerpts':[{'anchor':' '.join(passage.split()[:4]),'excerpt':' '.join(passage.split()[:12]),'normalizedOffset':evidence['normalizedOffset']}]})
+ for filename in ['continuation-20261029.json', 'legacy-20261029.json']:
+  continuation = json.loads((ROOT/'server/prisma/reviews'/filename).read_text())
+  report['reviewRounds'].append(continuation['id']); seen = set()
+  for review in continuation['records']:
+   identity = review['id']
+   if identity in seen: raise ValueError('Repeated decision in one review round: '+identity)
+   seen.add(identity)
+   row = by_id[identity]; q = positions[(row['file'], row['index'])]
+   if review['sourceSha256'] != digest(q) or review['contentSha256'] != digest(content(q)): raise ValueError('Stale reviewed content: '+identity)
+   if row['decision'] == 'validated' and review['decision'] != 'validated': raise ValueError('Existing approval requires an explicit editorial revision: '+identity)
+   if review['decision'] == 'validated':
+    actual = sorted(o['optionLabel'] for o in q['options'] if o['isCorrect'])
+    if actual != sorted(review['expectedCorrectLabels']): raise ValueError('Independent editorial key mismatch: '+identity)
+   row.update({'decision':review['decision'], 'reason':review['reason'], 'reviewRound':continuation['id']})
+   if row['decision'] == 'pending_review': continue
+   evidence = review['supportingPassage']; url = review['evidenceUrl']; h = evidence['documentSha256']
+   register_reference(url, evidence, continuation['references'], identity)
+   row.update({'evidenceUrl':url,'evidenceDocumentSha256':h,'evidenceSection':review.get('evidenceSection'),'supportingPassage':evidence})
+   if row['decision'] == 'validated':
+    row.update({'checks':review['checks'],'independentCheck':{'kind':'documentary_independent_key','result':review['expectedCorrectLabels'],'passed':True}})
+    if review.get('supersedesQuestionId'): row['supersedesQuestionId'] = review['supersedesQuestionId']
+    if review.get('scenarioCheck'):
+     proof = q.get('verification', {}).get('calculation')
+     computed = {'kind':proof['kind'],'result':calculations['calculate'](proof,q),'passed':True} if proof else scenario_results.get(identity)
+     if computed != review['scenarioCheck']: raise ValueError('Independent scenario result changed: '+identity)
+     row['scenarioCheck'] = computed
+   elif row['decision'] == 'rejected':
+    row['supersededByQuestionId'] = review['supersededByQuestionId']
+    row.pop('independentCheck',None); row.pop('checks',None)
+   else: raise ValueError('Unsupported review decision: '+identity)
+   if review.get('additionalEvidence'):
+    row['additionalEvidence'] = review['additionalEvidence']
+    for extra in review['additionalEvidence']: register_reference(extra['url'], extra, continuation['references'], identity)
  report['summary'] = dict(collections.Counter(r['decision'] for r in records))
+ report['revision'] = len(report['reviewRounds'])
+ report['scope'] = f"{len(records)} structurally checked candidates. All 360 originals, the first 50 legacy questions, ten other previously reviewed legacy questions and their corrected versions have assisted technical dispositions. {report['summary']['pending_review']} other legacy records remain pending complete technical review. Superseded originals are rejected with approved linked replacements. No human certification is asserted."
+ quoted = collections.Counter()
+ for ref in report['references']: quoted[ref['url']] += sum(len(e['excerpt'].split()) for e in ref['excerpts'])
+ if any(total > 90 for total in quoted.values()): raise ValueError('Too much source text quoted for one URL')
  return report
 if __name__=='__main__':
  parser=argparse.ArgumentParser();parser.add_argument('--cache',type=Path,default=Path('/workspace/.ccna-cache/references'));parser.add_argument('--output',type=Path,default=ROOT/'server/prisma/reviews/assisted-20261029.json');args=parser.parse_args()

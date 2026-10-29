@@ -1,6 +1,8 @@
 # Continuación de la revisión técnica — 29/10/2026
 
-## Resultado vigente
+> Registro histórico de la segunda ronda. El estado vigente está en [revisión de heredadas](revision-heredadas-20261029.md).
+
+## Resultado de aquella ronda
 
 Esta entrega añade **235 aprobaciones** a las 131 anteriores: 230 originales pendientes, una pregunta protect-mode que antes carecía del capítulo concreto y cuatro versiones corregidas. No se añadieron ejercicios ni conceptos nuevos; las cuatro entradas adicionales son revisiones que conservan los registros originales y sus familias.
 
