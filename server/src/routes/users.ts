@@ -105,7 +105,7 @@ router.post(
         },
       });
 
-      if (!user) {
+      if (!user || user.role === 'review_service') {
         throw new AppError(401, 'Invalid email or password.');
       }
 

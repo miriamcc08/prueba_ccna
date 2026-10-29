@@ -91,7 +91,8 @@ async function currentIdentity(token: string): Promise<AuthUser | null> {
   const claimed = verifyToken(token);
   if (!claimed || typeof claimed.id !== 'string') return null;
   const { prisma } = await import('../lib/prisma');
-  return prisma.user.findUnique({ where: { id: claimed.id }, select: { id: true, email: true, username: true, role: true, language: true } });
+  const user = await prisma.user.findUnique({ where: { id: claimed.id }, select: { id: true, email: true, username: true, role: true, language: true } });
+  return user?.role === 'review_service' ? null : user;
 }
 
 export async function optionalAuth(req: Request, _res: Response, next: NextFunction): Promise<void> {

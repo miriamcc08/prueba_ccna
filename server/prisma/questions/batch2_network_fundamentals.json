@@ -336,8 +336,8 @@
           "optionTextEn": "Subnet mask: 255.255.255.128 (/25); usable host range: 192.168.10.1 - 192.168.10.126",
           "optionTextEs": "Máscara de subred: 255.255.255.128 (/25); rango de host utilizable: 192.168.10.1 - 192.168.10.126",
           "isCorrect": false,
-          "explanationEn": "While a /25 mask supports 126 usable hosts (2^7 - 2 = 126), it wastes 68 unallocated IP addresses and does not conserve the maximum number of addresses for other subnets.",
-          "explanationEs": "Aunque una máscara /25 admite 126 hosts utilizables (2^7 - 2 = 126), desperdicia 68 direcciones IP sin asignar y no conserva el número máximo de direcciones para otras subredes."
+          "explanationEn": "A /25 provides 126 usable hosts but allocates 128 total addresses. A /26 already supports the required 58 hosts with only 64 total addresses, so /25 is not the most address-efficient choice.",
+          "explanationEs": "Un /25 ofrece 126 hosts utilizables, pero asigna 128 direcciones totales. Un /26 ya admite los 58 hosts con solo 64 direcciones totales; por eso /25 no es la opción más eficiente."
         },
         {
           "optionLabel": "D",
@@ -349,7 +349,8 @@
         }
       ],
       "sourceName": "CCNA 200-301 Original Questions",
-      "sourceLicense": "Original content"
+      "sourceLicense": "Original content",
+      "sourceUrl": "https://www.rfc-editor.org/rfc/rfc1878.txt"
     },
     {
       "statementEn": "A network administrator executes the command `show ipv6 route` on a Cisco router and notices that several dynamic routing protocol routes have next-hop addresses beginning with `fe80::`. Which statement correctly describes the architectural properties and operational scope of this IPv6 address type?",

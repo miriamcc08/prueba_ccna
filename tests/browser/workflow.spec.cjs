@@ -642,3 +642,39 @@ test('study topic availability errors block creation and recover through retry',
   await expect(form.getByRole('button', { name: 'Iniciar práctica del tema' })).toBeEnabled();
   await expect(page).toHaveURL('/exam/' + source.id);
 });
+
+test('reviewed bank approvals are audited and enable a real 100-question exam without pending candidates', async ({ page }) => {
+  await page.goto('/');
+  const before = await page.evaluate(async () => {
+    const { default: api } = await import('/src/services/api.ts');
+    return (await api.getAdminStats()).data;
+  });
+  const { execFileSync } = require('node:child_process');
+  const { resolve } = require('node:path');
+  const result = JSON.parse(execFileSync(process.execPath, ['--import', 'tsx', 'prisma/sync-reviewed-bank.ts', '--apply'], {
+    cwd: resolve(__dirname, '../../server'), encoding: 'utf8',
+    env: { ...process.env, DATABASE_URL: process.env.CCNA_BROWSER_DATABASE_URL },
+  }));
+  expect(result.appliedApprovals).toBe(131);
+  const setup = await page.evaluate(async () => {
+    const { default: api } = await import('/src/services/api.ts');
+    const stats = (await api.getAdminStats()).data;
+    const exam = await api.createExam({ questionCount: 100, durationMinutes: 120, language: 'es', mode: 'full_simulation', strictMode: true, randomize: true });
+    if (!exam.success) throw new Error(exam.error);
+    await api.startExam(exam.data.examId);
+    return { stats, id: exam.data.examId };
+  });
+  expect(setup.stats.totalQuestions - before.totalQuestions).toBe(660);
+  expect(setup.stats.validatedQuestions - before.validatedQuestions).toBe(131);
+  await page.goto('/exam/' + setup.id);
+  await expect(page.getByText('Pregunta 1 de 100', { exact: true }).first()).toBeVisible();
+  await expect(page.getByRole('button', { name: 'Confirmar y Continuar' })).toBeVisible();
+  const { PrismaClient } = require('../../server/node_modules/@prisma/client');
+  const db = new PrismaClient({ datasourceUrl: process.env.CCNA_BROWSER_DATABASE_URL });
+  const selected = await db.examQuestion.findMany({ where: { examId: setup.id }, include: { question: true } });
+  expect(selected).toHaveLength(100);
+  expect(selected.every(item => item.question.validationStatus === 'validated' && item.contentSnapshot)).toBe(true);
+  expect(new Set(selected.map(item => item.question.questionFamilyId || item.questionId)).size).toBe(100);
+  expect(await db.questionReview.count({ where: { reviewerId: 'system-assisted-bank-review' } })).toBe(131);
+  await db.$disconnect();
+});

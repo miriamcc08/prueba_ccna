@@ -39,3 +39,7 @@ La pestaña de importación admite CSV UTF-8 con plantilla descargable y JSON: u
 ## Configuración del servicio
 
 En producción son obligatorios `JWT_SECRET` y `CORS_ORIGIN`, con orígenes exactos separados por comas; no se admite `*`. En desarrollo se permiten además orígenes locales HTTP/HTTPS. CORS es una restricción del navegador, no sustituye autenticación ni autorización. Revisa los pendientes de despliegue, restauración y límites de peticiones en [la auditoría funcional](auditoria-funcional-20261026.md).
+
+## Aplicar la revisión asistida versionada
+
+La [revisión del 29/10/2026](revision-y-aprobaciones-20261029.md) incorpora una lista de 131 aprobaciones vinculadas a hashes del contenido, con evidencia y auditoría. `npm run db:sync-reviewed` desde `server` muestra la previsión; añadir `-- --apply` aplica la operación transaccional. No requiere crear un admin para esta carga expresamente autorizada. El actor `review_service` está bloqueado para login y tokens y no otorga acceso a `/admin`. Las 529 restantes conservan su estado pendiente. Las decisiones humanas o ediciones locales incompatibles requieren reconciliación explícita.

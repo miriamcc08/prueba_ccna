@@ -4,6 +4,10 @@ Lista vigente de pendientes y criterios de cierre: [pendientes-cierre.md](pendie
 
 Estado vigente del cierre funcional: [auditoría del 26/10/2026](auditoria-funcional-20261026.md). Incluye matriz de requisitos, cambios y pendientes. Las secciones de lotes posteriores conservan su historia; sus cifras de pruebas no sustituyen la última comprobación.
 
+## Actualización del 29/10/2026
+
+[Revisión asistida y aprobaciones](revision-y-aprobaciones-20261029.md): 660 candidatos comprobados estructuralmente, 134 revisados en profundidad y 131 aprobados; 529 siguen pendientes. Después de aplicar el manifiesto, la copia de nube contiene 668 registros, 139 validados y 120 familias disponibles. Pruebas actuales: 599 de servidor y 22 de Chromium. Las cifras posteriores del 26/10 son históricas, anteriores a esta aplicación.
+
 ## Implementado y comprobado
 
 - Compilación del cliente y servidor; ruta correcta del servidor compilado.
@@ -19,7 +23,7 @@ Estado vigente del cierre funcional: [auditoría del 26/10/2026](auditoria-funci
 - Importaciones pendientes de revisión. Panel con preguntas y estadísticas reales, sin números de demostración cuando falla una petición.
 - Revisión administrativa con notas, referencia HTTPS y confirmación explícita de revisión técnica; auditoría con autor y fecha. Los cambios posteriores invalidan una aprobación. Las validaciones estructurales no sustituyen la revisión técnica humana.
 - Plan de estudio visible en inicio para cuentas: áreas débiles, errores repetidos y temas lentos según el historial. Los temas recomendados se filtran por su área; textos del plan en español e inglés.
-- Auditoría reproducible de los JSON en lotes de 50: 660 recibidas, 0 rechazos estructurales, 0 duplicados exactos y 660 pendientes de revisión técnica. Ninguna se aprobó automáticamente. Reporte: `auditoria-banco.json`.
+- Auditoría reproducible de los JSON en lotes de 50: 660 recibidas, 0 rechazos estructurales, 0 duplicados exactos y 660 pendientes de revisión técnica en aquella auditoría inicial. La revisión asistida posterior aprobó 131 mediante un manifiesto separado. Reporte histórico: `auditoria-banco.json`.
 - Seed administrativo optativo, sin contraseña fija ni restablecimiento de cuentas; producción exige JWT_SECRET.
 - Documentación de ejecución y puntuación interna sin atribuirla a Cisco.
 - Pruebas unitarias y de integración SQLite en bases temporales, y pruebas Chromium de recorridos de interfaz y del cliente API real. Las pruebas del navegador usan su propia base temporal.

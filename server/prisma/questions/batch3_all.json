@@ -341,7 +341,8 @@
         }
       ],
       "sourceName": "CCNA 200-301 Original Questions",
-      "sourceLicense": "Original content"
+      "sourceLicense": "Original content",
+      "sourceUrl": "https://www.rfc-editor.org/rfc/rfc1878.txt"
     },
     {
       "statementEn": "A network engineer configures an interface on a Cisco IOS router to broadcast ICMPv6 Router Advertisement (RA) messages with the Managed Address Configuration flag (M-flag) set to 1 and the Other Stateful Configuration flag (O-flag) set to 1. How does a newly attached IPv6 client host obtain its IPv6 address and domain configuration parameters on this link?",
@@ -393,8 +394,8 @@
       "sourceLicense": "Original content"
     },
     {
-      "statementEn": "An Internet Service Provider allocates four contiguous Class C network blocks to an enterprise customer: 198.51.100.0/24, 198.51.101.0/24, 198.51.102.0/24, and 198.51.103.0/24. The enterprise border router must advertise a single aggregated summary route to the upstream provider using Classless Inter-Domain Routing (CIDR). What is the most specific CIDR summary route that encompasses all four networks without advertising any unassigned IP space?",
-      "statementEs": "Un proveedor de servicios de Internet asigna cuatro bloques de red Clase C contiguos a un cliente empresarial: 198.51.100.0/24, 198.51.101.0/24, 198.51.102.0/24 y 198.51.103.0/24. El router de borde empresarial debe anunciar una sola ruta de resumen agregada al proveedor upstream utilizando Classless Inter-Domain Routing (CIDR). ¿Cuál es la ruta de resumen CIDR más específica que engloba las cuatro redes sin anunciar espacio IP no asignado?",
+      "statementEn": "In a hypothetical CIDR addressing exercise, four allocated contiguous IPv4 blocks are 198.51.100.0/24, 198.51.101.0/24, 198.51.102.0/24 and 198.51.103.0/24. Which single most-specific summary includes exactly these four networks and no additional addresses?",
+      "statementEs": "En un ejercicio hipotético de direccionamiento CIDR, se asignan cuatro bloques IPv4 contiguos: 198.51.100.0/24, 198.51.101.0/24, 198.51.102.0/24 y 198.51.103.0/24. ¿Qué resumen único más específico incluye exactamente esas cuatro redes y ninguna dirección adicional?",
       "questionType": "subnetting",
       "difficulty": "advanced",
       "primaryTopicExamArea": "network_fundamentals",
@@ -415,8 +416,8 @@
         },
         {
           "optionLabel": "B",
-          "optionTextEn": "198.51.100.0/21 (subnet mask 255.255.248.0)",
-          "optionTextEs": "198.51.100.0/21 (subnet mask 255.255.248.0)",
+          "optionTextEn": "198.51.96.0/21 (subnet mask 255.255.248.0)",
+          "optionTextEs": "198.51.96.0/21 (máscara de subred 255.255.248.0)",
           "isCorrect": false,
           "explanationEn": "A /21 mask spans 8 consecutive /24 networks (block size of 8), which would encompass 198.51.96.0 to 198.51.103.255 and advertise unassigned address space.",
           "explanationEs": "Una máscara /21 abarca 8 redes /24 consecutivas (tamaño de bloque de 8), lo que abarcaría de 198.51.96.0 a 198.51.103.255 y anunciaría espacio no asignado."
@@ -426,8 +427,8 @@
           "optionTextEn": "198.51.0.0/16 (subnet mask 255.255.0.0)",
           "optionTextEs": "198.51.0.0/16 (subnet mask 255.255.0.0)",
           "isCorrect": false,
-          "explanationEn": "A /16 mask summarizes 256 Class C networks, far broader than the four networks owned by the customer.",
-          "explanationEs": "Una máscara /16 resume 256 redes Clase C, mucho más amplio que las cuatro redes propiedad del cliente."
+          "explanationEn": "A /16 contains 256 /24 networks, far more than the four networks in the exercise.",
+          "explanationEs": "Un /16 contiene 256 redes /24, muchas más que las cuatro del ejercicio."
         },
         {
           "optionLabel": "D",
@@ -440,7 +441,8 @@
       ],
       "sourceName": "CCNA 200-301 Original Questions",
       "sourceLicense": "Original content",
-      "questionFamilyId": "concept-ipv4-route-aggregation"
+      "questionFamilyId": "concept-ipv4-route-aggregation",
+      "sourceUrl": "https://www.rfc-editor.org/rfc/rfc4632.txt"
     },
     {
       "statementEn": "A network field technician needs to establish a direct Ethernet back-to-back link between the FastEthernet 100BASE-TX port of a desktop workstation and the FastEthernet 0/0 port of a Cisco ISR router. Both devices have Auto-MDIX disabled and no switch is available. Which cable type and TIA/EIA pinout arrangement must be fabricated to establish physical link connectivity?",

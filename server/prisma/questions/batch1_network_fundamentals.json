@@ -378,7 +378,8 @@
         }
       ],
       "sourceName": "CCNA 200-301 Original Questions",
-      "sourceLicense": "Original content"
+      "sourceLicense": "Original content",
+      "sourceUrl": "https://www.rfc-editor.org/rfc/rfc1878.txt"
     },
     {
       "statementEn": "A network architect allocates subnets from the summary block 10.150.16.0/22 for a new corporate branch. The branch requires four distinct subnets:\n• Department 1 (Sales): 230 usable hosts\n• Department 2 (Engineering): 110 usable hosts\n• Department 3 (Finance): 55 usable hosts\n• Department 4 (Guest Wi-Fi): 28 usable hosts\nApplying Variable-Length Subnet Masking (VLSM) starting from the beginning of the block in order from the largest requirement to the smallest, what is the subnet mask and usable host range for Department 3 (Finance)?",

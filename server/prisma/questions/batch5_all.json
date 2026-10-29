@@ -189,12 +189,13 @@
           "optionTextEn": "172.20.3.0/24",
           "optionTextEs": "172.20.3.0/24",
           "isCorrect": false,
-          "explanationEn": "Incorrect. Assigning 172.20.3.0/24 skips 172.20.2.0/24, creating an unallocated gap and leaving insufficient space in the /22 block for Branch Charlie and Delta.",
-          "explanationEs": "Incorrecto. Asignar 172.20.3.0/24 salta 172.20.2.0/24, creando un hueco no asignado y dejando espacio insuficiente en el bloque /22 para Branch Charlie y Delta."
+          "explanationEn": "172.20.3.0/24 could provide enough hosts, but it skips the lowest available block 172.20.2.0/24 and violates the stated sequential allocation rule. The skipped /24 could still fit the smaller branches; lack of capacity is not the reason this answer is wrong.",
+          "explanationEs": "172.20.3.0/24 podría alojar los hosts, pero omite el bloque libre más bajo 172.20.2.0/24 e incumple la regla de asignación secuencial. El /24 omitido aún podría alojar las sucursales menores; la falta de capacidad no es la razón del error."
         }
       ],
       "sourceName": "CCNA 200-301 Original Questions",
-      "sourceLicense": "Original content"
+      "sourceLicense": "Original content",
+      "sourceUrl": "https://www.rfc-editor.org/rfc/rfc1878.txt"
     },
     {
       "statementEn": "A network engineer needs to configure the IPv6 address 2001:0db8:0000:0000:0008:0800:200c:417a on an interface. According to RFC 5952 standard compression rules, which representation is the most correctly compressed form of this IPv6 address?",
@@ -243,7 +244,8 @@
         }
       ],
       "sourceName": "CCNA 200-301 Original Questions",
-      "sourceLicense": "Original content"
+      "sourceLicense": "Original content",
+      "sourceUrl": "https://www.rfc-editor.org/rfc/rfc5952.txt"
     },
     {
       "statementEn": "Refer to the exhibit displaying the ARP table of a Cisco Layer 3 switch:\n\nSwitch# show ip arp\nProtocol  Address          Age (min)  Hardware Addr   Type   Interface\nInternet  192.168.1.1             -   0008.e3ff.fd90  ARPA   Vlan1\nInternet  192.168.1.25           14   0050.56a1.23de  ARPA   Vlan1\nInternet  192.168.1.50            0   Incomplete      ARPA   Vlan1\nInternet  192.168.1.88            8   001b.d45a.1102  ARPA   Vlan1\n\nA network administrator observes the entry for 192.168.1.50 showing 'Incomplete'. What does this entry signify regarding the Address Resolution Protocol (ARP) resolution process?",
@@ -1473,20 +1475,21 @@
           "optionTextEn": "summary-address 10.4.16.0 255.255.252.0",
           "optionTextEs": "summary-address 10.4.16.0 255.255.252.0",
           "isCorrect": false,
-          "explanationEn": "Incorrect. 'summary-address' is used exclusively on ASBRs to summarize external redistributed routes (Type 5 LSAs), not on ABRs for internal inter-area routes.",
-          "explanationEs": "Incorrecto. 'summary-address' se usa exclusivamente en ASBRs para resumir rutas externas redistribuidas (LSAs Tipo 5), no en ABRs para rutas inter-área internas."
+          "explanationEn": "In OSPF, summary-address aggregates redistributed external routes, not these internal inter-area subnets. A router can be both ABR and ASBR; the distinction is the route type being summarized.",
+          "explanationEs": "En OSPF, summary-address agrega rutas externas redistribuidas, no estas subredes internas interárea. Un router puede ser ABR y ASBR a la vez; la distinción es el tipo de ruta que se resume."
         },
         {
           "optionLabel": "D",
           "optionTextEn": "area 1 range 10.4.16.0 255.255.248.0",
           "optionTextEs": "area 1 range 10.4.16.0 255.255.248.0",
           "isCorrect": false,
-          "explanationEn": "Incorrect. A mask of 255.255.248.0 is a /21 prefix spanning 8 full Class C blocks (10.4.16.0 to 10.4.23.255), which over-summarizes unassigned subnets.",
-          "explanationEs": "Incorrecto. Una máscara de 255.255.248.0 es un prefijo /21 que abarca 8 bloques Clase C completos (10.4.16.0 a 10.4.23.255), lo que sobresumariza subredes no asignadas."
+          "explanationEn": "The /21 contains eight /24 blocks, 10.4.16.0 through 10.4.23.255, so it adds four unassigned networks.",
+          "explanationEs": "El /21 contiene ocho bloques /24, de 10.4.16.0 a 10.4.23.255, por lo que añade cuatro redes no asignadas."
         }
       ],
       "sourceName": "CCNA 200-301 Original Questions",
-      "sourceLicense": "Original content"
+      "sourceLicense": "Original content",
+      "sourceUrl": "https://www.cisco.com/c/en/us/td/docs/ios-xml/ios/iproute_ospf/configuration/xe-17/iro-xe-17-book/iro-cfg.html"
     },
     {
       "statementEn": "Refer to the exhibit displaying static route configuration and diagnostic outputs on branch router R1:\n\nR1(config)# ip route 192.168.100.0 255.255.255.0 10.10.20.2\n\nR1# show ip route 192.168.100.0\n% Network not in table\n\nR1# show ip route 10.10.20.2\n% Network not in table\n\nR1# show interfaces GigabitEthernet0/1\nGigabitEthernet0/1 is up, line protocol is up\n  Internet address is 10.10.10.1/30\n\nThe engineer verified that the syntax of the static route is completely error-free. Why does Cisco IOS refuse to install the configured static route for 192.168.100.0/24 into the routing table?",

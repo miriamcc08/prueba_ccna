@@ -847,3 +847,58 @@ describe('Partial editorial updates after validator upgrade', () => {
     expect(current.statementEs).toBe(question.statementEs);
   });
 });
+
+describe('Applying assisted technical bank decisions', () => {
+  async function reviewTopics() {
+    const areas = ['network_fundamentals', 'network_access', 'ip_connectivity', 'ip_services', 'security_fundamentals', 'automation_programmability'];
+    for (const [i, area] of areas.entries()) await prisma.topic.upsert({ where: { code: `${i + 1}.0` }, update: {}, create: { code: `${i + 1}.0`, nameEn: area, nameEs: area, examArea: area, examAreaNumber: `${i + 1}.0`, weightPercentage: 10 } });
+  }
+  it('is opt-in, idempotent, audited and makes only reviewed families eligible for a 100-question exam', async () => {
+    const { syncReviewedBank, REVIEW_SERVICE_ID, readReviewedBank } = await import('../prisma/sync-reviewed-bank');
+    await reviewTopics();
+    const preview = await syncReviewedBank(prisma);
+    expect(preview.mode).toBe('dry-run');
+    expect(preview.questionsToCreate).toBe(660);
+    expect(await prisma.question.count()).toBe(5);
+    expect(await prisma.user.findUnique({ where: { id: REVIEW_SERVICE_ID } })).toBeNull();
+    const applied = await syncReviewedBank(prisma, true);
+    expect(applied.appliedApprovals).toBe(131);
+    expect(await prisma.question.count()).toBe(665);
+    const pending = readReviewedBank().candidates.filter(item => item.row.decision === 'pending_review').map(item => item.row.id);
+    expect(await prisma.question.count({ where: { id: { in: pending }, validationStatus: 'pending_review' } })).toBe(529);
+    expect(await prisma.questionReview.count({ where: { reviewerId: REVIEW_SERVICE_ID } })).toBe(131);
+    const again = await syncReviewedBank(prisma, true);
+    expect(again.appliedApprovals).toBe(0);
+    expect(again.approvalsAlreadyPresent).toBe(131);
+    expect(await prisma.questionReview.count({ where: { reviewerId: REVIEW_SERVICE_ID } })).toBe(131);
+    const exam = await engine.createExam(config({ questionCount: 100, mode: 'full_simulation' }));
+    const selected = await prisma.examQuestion.findMany({ where: { examId: exam.examId }, include: { question: true } });
+    expect(selected).toHaveLength(100);
+    expect(selected.every(item => item.question.validationStatus === 'validated' && item.contentSnapshot)).toBe(true);
+    expect(new Set(selected.map(item => item.question.questionFamilyId || item.questionId)).size).toBe(100);
+    const service = await prisma.user.findUniqueOrThrow({ where: { id: REVIEW_SERVICE_ID } });
+    expect((await request('/users/login', 'POST', { email: service.email, password: 'any-password' })).status).toBe(401);
+    expect((await request('/users/me', 'GET', undefined, generateToken(service))).status).toBe(401);
+  }, 60000);
+  it('never overwrites a local edit and rolls back the complete batch', async () => {
+    const { syncReviewedBank } = await import('../prisma/sync-reviewed-bank');
+    const { loadOriginalBatch } = await import('../prisma/load-original-batch');
+    const { resolve } = await import('node:path');
+    await reviewTopics();
+    await loadOriginalBatch(resolve(__dirname, '../prisma/questions/original_20261024_50.json'), prisma);
+    await prisma.question.update({ where: { id: 'ccna-original-20261024-001' }, data: { explanationEs: 'Edición local que debe conservarse sin sobrescritura.' } });
+    await expect(syncReviewedBank(prisma, true)).rejects.toThrow('existing content differs');
+    expect(await prisma.question.count()).toBe(55);
+    expect(await prisma.questionReview.count()).toBe(0);
+    expect((await prisma.question.findUniqueOrThrow({ where: { id: 'ccna-original-20261024-001' } })).explanationEs).toContain('Edición local');
+  }, 30000);
+  it('does not silently restore an approval withdrawn after a previous import', async () => {
+    const { syncReviewedBank } = await import('../prisma/sync-reviewed-bank');
+    await reviewTopics();
+    await syncReviewedBank(prisma, true);
+    await prisma.question.update({ where: { id: 'ccna-original-20261024-001' }, data: { validationStatus: 'pending_review' } });
+    await expect(syncReviewedBank(prisma, true)).rejects.toThrow('status changed after review');
+    expect((await prisma.question.findUniqueOrThrow({ where: { id: 'ccna-original-20261024-001' } })).validationStatus).toBe('pending_review');
+    expect(await prisma.questionReview.count()).toBe(131);
+  }, 60000);
+});

@@ -345,8 +345,8 @@
           "optionTextEn": "192.168.16.0/21",
           "optionTextEs": "192.168.16.0/21",
           "isCorrect": false,
-          "explanationEn": "Incorrect. A /21 prefix covers 8 class C networks (192.168.16.0 through 192.168.23.255), which includes 4 unallocated subnets (20-23).",
-          "explanationEs": "Incorrecto. Un prefijo /21 cubre 8 redes clase C (192.168.16.0 a 192.168.23.255), incluyendo 4 subredes no asignadas (20 a 23).",
+          "explanationEn": "A /21 beginning at 192.168.16.0 contains eight /24 networks through 192.168.23.255, adding four networks not requested.",
+          "explanationEs": "Un /21 que comienza en 192.168.16.0 contiene ocho redes /24 hasta 192.168.23.255 e incluye cuatro redes no solicitadas.",
           "displayOrder": 1
         },
         {
@@ -354,8 +354,8 @@
           "optionTextEn": "192.168.0.0/20",
           "optionTextEs": "192.168.0.0/20",
           "isCorrect": false,
-          "explanationEn": "Incorrect. A /20 prefix covers 16 /24 networks (192.168.0.0 - 192.168.15.255 or 192.168.16.0 - 192.168.31.255), which is far too broad.",
-          "explanationEs": "Incorrecto. Un prefijo /20 cubre 16 redes /24 (192.168.0.0 a 192.168.15.255 o 192.168.16.0 a 192.168.31.255), lo cual es excesivamente amplio.",
+          "explanationEn": "192.168.0.0/20 covers 192.168.0.0 through 192.168.15.255 and does not contain the requested networks.",
+          "explanationEs": "192.168.0.0/20 abarca de 192.168.0.0 a 192.168.15.255 y no contiene las redes solicitadas.",
           "displayOrder": 2
         },
         {
@@ -370,7 +370,8 @@
       ],
       "sourceName": "CCNA 200-301 Original Questions",
       "sourceLicense": "Original content",
-      "questionFamilyId": "concept-ipv4-route-aggregation"
+      "questionFamilyId": "concept-ipv4-route-aggregation",
+      "sourceUrl": "https://www.rfc-editor.org/rfc/rfc4632.txt"
     },
     {
       "statementEn": "An enterprise network architect is assigned the parent IPv4 block 172.16.8.0/21 to create subnets using Variable-Length Subnet Masking (VLSM). The subnets must be allocated sequentially in descending order of size to maximize address efficiency. The department host requirements are:\n- Sales: 500 hosts\n- Engineering: 220 hosts\n- Marketing: 100 hosts\n- Finance: 55 hosts\n\nSales is allocated 172.16.8.0/23 and Engineering is allocated 172.16.10.0/24. What is the next contiguous, valid subnet address and prefix length that should be allocated to the Marketing department?",
@@ -423,7 +424,8 @@
         }
       ],
       "sourceName": "CCNA 200-301 Original Questions",
-      "sourceLicense": "Original content"
+      "sourceLicense": "Original content",
+      "sourceUrl": "https://www.rfc-editor.org/rfc/rfc1878.txt"
     },
     {
       "statementEn": "An enterprise is planning a multi-phase migration from an IPv4-only network to an IPv6 network. Which two statements accurately describe standard IPv6 transition mechanisms according to IETF specifications? (Choose two.)",

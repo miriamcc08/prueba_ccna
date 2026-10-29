@@ -1,6 +1,6 @@
 # Lista de cierre del simulador
 
-Actualizada el 26/10/2026: CSV, resultados por dificultad, reinicio independiente de estudio, tiempo por pregunta, cambio de tema en estudio e historial con versión del temario visible.
+Base funcional del 26/10/2026; revisión de contenido actualizada el 29/10/2026: CSV, resultados por dificultad, reinicio independiente de estudio, tiempo por pregunta, cambio de tema en estudio e historial con versión del temario visible.
 
 **Estado:** el recorrido principal está probado, pero no está completo el alcance original ni certificado el despliegue de producción. No se asigna un porcentaje de avance: las preguntas candidatas, las pruebas automatizadas y los requisitos entregados miden cosas diferentes.
 
@@ -10,16 +10,16 @@ El usuario ha pausado la creación de preguntas. Esa pausa se mantiene. Revisar 
 
 Configuración y disponibilidad real; exámenes estrictos; estudio sin tiempo; fecha límite del servidor y recuperación; confirmación de respuestas; resultados y revisión; contenido inmutable por intento nuevo; historial; favoritos; recomendaciones por reglas; registro e inicio de sesión; roles actuales comprobados en servidor; CORS restrictivo; sonidos opcionales; borrado confirmado del historial propio. Administración permite crear, importar **JSON/CSV**, buscar, filtrar, paginar, revisar y aprobar/rechazar candidatos con evidencia. Resultados ya muestra el rendimiento por dificultad que calcula la API.
 
-Última comprobación: compilación de cliente y servidor correcta, **593 pruebas de servidor y 21 de Chromium aprobadas**. Esto comprueba escenarios concretos, no todas las preguntas ni todos los dispositivos.
+Última comprobación: compilación de cliente y servidor correcta, **599 pruebas de servidor y 22 de Chromium aprobadas**. Esto comprueba escenarios concretos, no todas las preguntas ni todos los dispositivos.
 
 ## 1. Para entregar un simulador útil con contenido suficiente
 
 | ID | Pendiente | Criterio de cierre |
 |---|---|---|
 | C01 | Activar la primera cuenta administradora en el entorno que se vaya a utilizar | Configurar correo/contraseña mediante variables seguras, ejecutar `admin:bootstrap` y comprobar acceso a `/admin` y denegación a una cuenta normal. La última consulta de la copia de desarrollo mostró 0 administradores; no se inventaron credenciales. |
-| C02 | Revisar técnicamente el material existente | Comprobar respuesta, distractores, explicación, traducción, referencia vigente y licencia por candidato. Registrar decisión y evidencia; mantener fuera de exámenes lo no aprobado. |
+| C02 | Revisar técnicamente el material existente | Se revisaron en profundidad 134 candidatos y se aprobaron 131 mediante revisión asistida documentada; quedan 529 pendientes. Completar respuesta, distractores, explicación, traducción, referencia vigente y licencia por candidato. Registrar decisión y evidencia; mantener fuera de exámenes lo no aprobado. |
 | C03 | Completar el mapa del temario oficial vigente | Vincular las preguntas aprobadas a los subobjetivos, contrastar pesos/versiones con fuente oficial y mostrar huecos. Las coincidencias por palabras actuales no certifican cobertura. |
-| C04 | Disponer de suficientes familias aprobadas por modalidad y dificultad | Probar las cantidades ofrecidas, incluidos simulacros largos. La instalación aislada contiene 8 ejemplos validados y 360 originales pendientes; todavía no permite un simulacro de 100 preguntas. La interfaz informa la escasez, no inventa disponibilidad. |
+| C04 | Disponer de suficientes familias aprobadas por modalidad y dificultad | Probar las cantidades ofrecidas, incluidos simulacros largos. Tras aplicar el manifiesto, la instalación aislada contiene 668 preguntas, 139 validadas y 120 familias validadas; se probó un simulacro de 100 con dificultad mixta. Otros filtros siguen teniendo menos disponibilidad. La interfaz informa la escasez, no inventa disponibilidad. |
 | C05 | Revisar duplicados semánticos | Agrupar equivalencias en familias y comprobar que un examen no repite el mismo ejercicio conceptual. Ya hay comprobaciones exactas/heurísticas, no una deduplicación semántica completa. |
 | C06 | Completar revisión de explicaciones pedagógicas | Verificar pasos, por qué fallan distractores, comandos y referencias; contrastar escenarios de routing, ACL y configuración con laboratorio o fuente de plataforma cuando corresponda. |
 
@@ -82,3 +82,5 @@ CSV deja de ser un pendiente: usa la plantilla y [la guía de formato](importaci
 Para declarar completo el **alcance original**, todos sus requisitos deben pasar criterios de aceptación, incluido el banco. Para declarar una **versión utilizable en producción**, debe definirse qué funciones se publican y cerrar además la operación y seguridad de esa versión. No se retira silenciosamente un requisito para llamarlo 100 % terminado.
 
 Las dependencias se actualizaron para resolver los avisos detectados en la instalación: [informe y comprobación](actualizacion-dependencias-20261026.md). Esto avanza P05, pero no sustituye la revisión de secretos, permisos, encabezados y operación del despliegue.
+
+Revisión vigente y procedimiento para actualizar cada base local: [aprobaciones del 29/10](revision-y-aprobaciones-20261029.md). El actor técnico de revisión no es un administrador interactivo.

@@ -27,8 +27,8 @@
           "optionTextEn": "255.255.255.240 with binary fourth octet 11110000",
           "optionTextEs": "255.255.255.240 con el cuarto octeto binario 11110000",
           "isCorrect": false,
-          "explanationEn": "255.255.255.240 corresponds to a /28 prefix length (four borrowed bits: 128 + 64 + 32 + 16 = 240), not /27.",
-          "explanationEs": "255.255.255.240 corresponde a una longitud de prefijo /28 (cuatro bits prestados: 128 + 64 + 32 + 16 = 240), no /27.",
+          "explanationEn": "255.255.255.240 has prefix /28 and fourth-octet bits 11110000, not /27.",
+          "explanationEs": "255.255.255.240 tiene prefijo /28 y bits 11110000 en el cuarto octeto, no /27.",
           "displayOrder": 1
         },
         {
@@ -36,8 +36,8 @@
           "optionTextEn": "255.255.255.192 with binary fourth octet 11000000",
           "optionTextEs": "255.255.255.192 con el cuarto octeto binario 11000000",
           "isCorrect": false,
-          "explanationEn": "255.255.255.192 corresponds to a /26 prefix length (two borrowed bits: 128 + 64 = 192), not /27.",
-          "explanationEs": "255.255.255.192 corresponde a una longitud de prefijo /26 (dos bits prestados: 128 + 64 = 192), no /27.",
+          "explanationEn": "255.255.255.192 has prefix /26 and fourth-octet bits 11000000, not /27.",
+          "explanationEs": "255.255.255.192 tiene prefijo /26 y bits 11000000 en el cuarto octeto, no /27.",
           "displayOrder": 2
         },
         {
@@ -45,13 +45,14 @@
           "optionTextEn": "255.255.255.248 with binary fourth octet 11111000",
           "optionTextEs": "255.255.255.248 con el cuarto octeto binario 11111000",
           "isCorrect": false,
-          "explanationEn": "255.255.255.248 corresponds to a /29 prefix length (five borrowed bits: 128 + 64 + 32 + 16 + 8 = 248), not /27.",
-          "explanationEs": "255.255.255.248 corresponde a una longitud de prefijo /29 (cinco bits prestados: 128 + 64 + 32 + 16 + 8 = 248), no /27.",
+          "explanationEn": "255.255.255.248 has prefix /29 and fourth-octet bits 11111000, not /27.",
+          "explanationEs": "255.255.255.248 tiene prefijo /29 y bits 11111000 en el cuarto octeto, no /27.",
           "displayOrder": 3
         }
       ],
       "sourceName": "CCNA 200-301 Original Questions",
-      "sourceLicense": "Original content"
+      "sourceLicense": "Original content",
+      "sourceUrl": "https://www.rfc-editor.org/rfc/rfc1878.txt"
     },
     {
       "statementEn": "An enterprise edge router connects to four contiguous departmental subnets: 172.16.16.0/24, 172.16.17.0/24, 172.16.18.0/24, and 172.16.19.0/24. To optimize the routing table sent to upstream WAN routers, the network engineer must summarize these four networks into a single summary static route. Which summary route and subnet mask represent the most specific route containing all four subnets without including extraneous networks?",
@@ -98,14 +99,15 @@
           "optionTextEn": "172.16.16.0 255.255.254.0 (/23)",
           "optionTextEs": "172.16.16.0 255.255.254.0 (/23)",
           "isCorrect": false,
-          "explanationEn": "A /23 mask covers only two /24 networks (172.16.16.0 and 172.16.17.255), omitting subnets 172.16.18.0/24 and 172.16.19.0/24.",
-          "explanationEs": "Una máscara /23 cubre únicamente dos redes /24 (172.16.16.0 y 172.16.17.255), omitiendo las subnets 172.16.18.0/24 y 172.16.19.0/24.",
+          "explanationEn": "172.16.16.0/23 covers 172.16.16.0 through 172.16.17.255: the two networks 172.16.16.0/24 and 172.16.17.0/24. It omits 172.16.18.0/24 and 172.16.19.0/24.",
+          "explanationEs": "172.16.16.0/23 abarca de 172.16.16.0 a 172.16.17.255: las redes 172.16.16.0/24 y 172.16.17.0/24. Omite 172.16.18.0/24 y 172.16.19.0/24.",
           "displayOrder": 3
         }
       ],
       "sourceName": "CCNA 200-301 Original Questions",
       "sourceLicense": "Original content",
-      "questionFamilyId": "concept-ipv4-route-aggregation"
+      "questionFamilyId": "concept-ipv4-route-aggregation",
+      "sourceUrl": "https://www.rfc-editor.org/rfc/rfc4632.txt"
     },
     {
       "statementEn": "An enterprise network design team is allocated the Class B IPv4 network block 172.24.0.0/16. The team decides to subnet this entire address space using a prefix length of /22 for all remote corporate facilities. How many total subnets are created from this allocation, and how many usable IPv4 host addresses are available per individual subnet?",

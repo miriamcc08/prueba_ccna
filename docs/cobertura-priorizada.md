@@ -47,3 +47,7 @@ La ampliación de preguntas queda pausada por petición del usuario. El cierre f
 El reinicio de un ejercicio ya está implementado mediante una práctica independiente; no amplía el banco ni sustituye variantes recalculadas. Ver [reinicio-estudio.md](reinicio-estudio.md).
 
 El tiempo por pregunta ya está implementado y probado; no amplía el banco ni sustituye las variantes recalculadas. Política: [tiempo-por-pregunta.md](tiempo-por-pregunta.md).
+
+## Actualización del 29/10/2026
+
+Las cifras de candidatos anteriores no equivalen a contenido aprobado. La [revisión asistida](revision-y-aprobaciones-20261029.md) aprobó 131 de los 660 candidatos y dejó 529 pendientes. La copia de ejecución actualizada, incluidos ocho ejemplos anteriores, tiene 120 familias validadas y permite 100 preguntas de dificultad mixta. Sigue pendiente certificar cobertura por subobjetivos y pesos oficiales.

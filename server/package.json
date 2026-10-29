@@ -15,7 +15,8 @@
     "db:generate": "prisma generate",
     "db:audit": "tsx prisma/audit-questions.ts",
     "db:load-original": "tsx prisma/load-original-batch.ts",
-    "admin:bootstrap": "tsx prisma/bootstrap-admin.ts"
+    "admin:bootstrap": "tsx prisma/bootstrap-admin.ts",
+    "db:sync-reviewed": "node --import tsx prisma/sync-reviewed-bank.ts"
   },
   "prisma": {
     "seed": "tsx prisma/seed.ts"
