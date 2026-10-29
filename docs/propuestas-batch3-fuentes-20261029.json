@@ -1,0 +1,114 @@
+{
+  "status": "draft_not_approved_not_imported",
+  "reason": "Se conservan propuestas corregidas de 19 (PVID) y 30 (IP SLA); requieren pasajes primarios focalizados antes de aprobarse.",
+  "questions": [
+    {
+      "statementEn": "In the following explicitly scoped scenario: Two Cisco Catalyst switches, SW-1 and SW-2, are interconnected via an 802.1Q trunk on interface GigabitEthernet0/1 running Per-VLAN Spanning Tree Plus (PVST+). SW-1 is configured with 'switchport trunk native vlan 10', whereas SW-2 is configured with 'switchport trunk native vlan 20'. Shortly after the trunk link becomes active, SW-1 generates the following console log messages:\n\n%CDP-4-NATIVE_VLAN_MISMATCH: Native VLAN mismatch discovered on GigabitEthernet0/1 (10), with SW-2 GigabitEthernet0/1 (20).\n%SPANTREE-2-RECV_PVID_ERR: Received BPDU with inconsistent peer vlan id 20 on GigabitEthernet0/1 VLAN10.\n\nWhat is the direct operational impact on Layer 2 traffic forwarding across this trunk?",
+      "statementEs": "En el siguiente escenario con los supuestos indicados: Dos switches Cisco Catalyst, SW-1 y SW-2, están interconectados mediante un troncal 802.1Q en la interfaz GigabitEthernet0/1 ejecutando Per-VLAN Spanning Tree Plus (PVST+). SW-1 está configurado con 'switchport trunk native vlan 10', mientras que SW-2 está configurado con 'switchport trunk native vlan 20'. Poco después de que el enlace troncal se activa, SW-1 genera los siguientes mensajes de log en consola:\n\n%CDP-4-NATIVE_VLAN_MISMATCH: Native VLAN mismatch discovered on GigabitEthernet0/1 (10), with SW-2 GigabitEthernet0/1 (20).\n%SPANTREE-2-RECV_PVID_ERR: Received BPDU with inconsistent peer vlan id 20 on GigabitEthernet0/1 VLAN10.\n\n¿Cuál es el impacto operativo directo en el reenvío de tráfico de Capa 2 a través de este troncal?",
+      "questionType": "troubleshooting",
+      "difficulty": "advanced",
+      "primaryTopicExamArea": "network_access",
+      "multipleAnswerCount": null,
+      "estimatedTimeSeconds": 100,
+      "explanationEn": "With native VLAN 10 on SW-1 and 20 on SW-2, an untagged peer BPDU advertising PVID 20 is received in local VLAN 10. PVST+ detects the inconsistency and blocks the affected VLAN instances on that port to avoid loops or VLAN leakage. Other VLANs are not automatically err-disabled; they can forward if their own STP state and trunk permissions allow it. PVID-inconsistent and type-inconsistent are distinct conditions, not synonyms.",
+      "explanationEs": "Con VLAN nativa 10 en SW-1 y 20 en SW-2, una BPDU remota sin etiqueta que anuncia PVID 20 se recibe en VLAN local 10. PVST+ detecta la inconsistencia y bloquea las instancias VLAN afectadas de ese puerto para evitar bucles o filtración entre VLAN. Las demás VLAN no quedan automáticamente err-disabled; pueden reenviar si su propio estado STP y los permisos del troncal lo permiten. PVID-inconsistent y type-inconsistent son condiciones distintas, no sinónimos.",
+      "correctAnswerExplanationEn": "With native VLAN 10 on SW-1 and 20 on SW-2, an untagged peer BPDU advertising PVID 20 is received in local VLAN 10. PVST+ detects the inconsistency and blocks the affected VLAN instances on that port to avoid loops or VLAN leakage. Other VLANs are not automatically err-disabled; they can forward if their own STP state and trunk permissions allow it. PVID-inconsistent and type-inconsistent are distinct conditions, not synonyms.",
+      "correctAnswerExplanationEs": "Con VLAN nativa 10 en SW-1 y 20 en SW-2, una BPDU remota sin etiqueta que anuncia PVID 20 se recibe en VLAN local 10. PVST+ detecta la inconsistencia y bloquea las instancias VLAN afectadas de ese puerto para evitar bucles o filtración entre VLAN. Las demás VLAN no quedan automáticamente err-disabled; pueden reenviar si su propio estado STP y los permisos del troncal lo permiten. PVID-inconsistent y type-inconsistent son condiciones distintas, no sinónimos.",
+      "options": [
+        {
+          "optionLabel": "A",
+          "optionTextEn": "PVST+ blocks the affected VLAN 10/20 instances for PVID inconsistency; other permitted VLANs can forward according to their own STP state.",
+          "optionTextEs": "PVST+ bloquea las instancias VLAN 10/20 afectadas por inconsistencia PVID; otras VLAN permitidas pueden reenviar según su propio estado STP.",
+          "isCorrect": true,
+          "explanationEn": "With native VLAN 10 on SW-1 and 20 on SW-2, an untagged peer BPDU advertising PVID 20 is received in local VLAN 10. PVST+ detects the inconsistency and blocks the affected VLAN instances on that port to avoid loops or VLAN leakage. Other VLANs are not automatically err-disabled; they can forward if their own STP state and trunk permissions allow it. PVID-inconsistent and type-inconsistent are distinct conditions, not synonyms.",
+          "explanationEs": "Con VLAN nativa 10 en SW-1 y 20 en SW-2, una BPDU remota sin etiqueta que anuncia PVID 20 se recibe en VLAN local 10. PVST+ detecta la inconsistencia y bloquea las instancias VLAN afectadas de ese puerto para evitar bucles o filtración entre VLAN. Las demás VLAN no quedan automáticamente err-disabled; pueden reenviar si su propio estado STP y los permisos del troncal lo permiten. PVID-inconsistent y type-inconsistent son condiciones distintas, no sinónimos."
+        },
+        {
+          "optionLabel": "B",
+          "optionTextEn": "The entire physical trunk port GigabitEthernet0/1 is placed into an err-disabled state, dropping traffic for all VLANs",
+          "optionTextEs": "Todo el puerto troncal físico GigabitEthernet0/1 se coloca en estado err-disabled, descartando el tráfico de todas las VLANs",
+          "isCorrect": false,
+          "explanationEn": "Native VLAN mismatch causes a per-VLAN PVID-inconsistent block, not a port-level err-disable shutdown (unlike BPDU guard violations).",
+          "explanationEs": "El desajuste de VLAN nativa causa un bloqueo PVID-inconsistent por VLAN, no un apagado err-disable a nivel de puerto (a diferencia de las violaciones de BPDU guard)."
+        },
+        {
+          "optionLabel": "C",
+          "optionTextEn": "Dynamic Trunking Protocol (DTP) automatically renegotiates both switches to use default VLAN 1 as the native VLAN",
+          "optionTextEs": "Dynamic Trunking Protocol (DTP) renegocia automáticamente ambos switches para utilizar la VLAN 1 predeterminada como VLAN nativa",
+          "isCorrect": false,
+          "explanationEn": "DTP negotiates trunking operational mode (trunk vs access), not native VLAN IDs.",
+          "explanationEs": "DTP negocia el modo operativo de trunking (trunk vs access), no los IDs de VLAN nativa."
+        },
+        {
+          "optionLabel": "D",
+          "optionTextEn": "Untagged frames from VLAN 10 are transparently merged into VLAN 20 on SW-2 without any blocking or error detection",
+          "optionTextEs": "Las tramas no etiquetadas de la VLAN 10 se fusionan de forma transparente en la VLAN 20 en SW-2 sin ningún bloqueo ni detección de errores",
+          "isCorrect": false,
+          "explanationEn": "Without the stated PVST+ protection, mismatched native VLANs can misclassify untagged traffic. Here PVST+ detects the mismatch.",
+          "explanationEs": "Sin la protección PVST+ indicada, VLAN nativas distintas pueden clasificar mal el tráfico sin etiqueta. Aquí PVST+ detecta el desajuste."
+        }
+      ],
+      "sourceName": "CCNA 200-301 Original Questions",
+      "sourceLicense": "Original content",
+      "id": "ccna-legacy-batch3_all-019-review-r1",
+      "supersedesQuestionId": "ccna-legacy-batch3_all-019",
+      "questionFamilyId": "ccna-legacy-batch3_all-019",
+      "validationStatus": "pending_review",
+      "reviewCorrection": "Se corrige el PVID del log en SW-1 y se distingue PVID-inconsistent de type-inconsistent."
+    },
+    {
+      "statementEn": "Assume secondary next hop 198.51.100.2 remains independently reachable and no other default route competes. Evaluate after probe timeout and tracking convergence. A network administrator configures an edge router for redundant Internet connectivity using Cisco IP SLA and object tracking with static routes:\n\nip sla 10\n icmp-echo 203.0.113.1 source-interface GigabitEthernet0/0\n frequency 5\nip sla schedule 10 life forever start-time now\ntrack 1 ip sla 10 reachability\nip route 0.0.0.0 0.0.0.0 203.0.113.1 track 1\nip route 0.0.0.0 0.0.0.0 198.51.100.2 200\n\nThe primary ISP gateway at 203.0.113.1 continues to forward standard HTTP/HTTPS traffic, but the ISP applies a security filter that begins dropping all inbound ICMP echo requests destined for 203.0.113.1. What is the operational impact on the router's default routing behavior?",
+      "statementEs": "Supón que el siguiente salto secundario 198.51.100.2 sigue siendo alcanzable de forma independiente y no compite otra ruta predeterminada. Evalúa después del timeout de la sonda y la convergencia del seguimiento. Un administrador de red configura un router de borde para conectividad a Internet redundante utilizando Cisco IP SLA y seguimiento de objetos (object tracking) con rutas estáticas:\n\nip sla 10\n icmp-echo 203.0.113.1 source-interface GigabitEthernet0/0\n frequency 5\nip sla schedule 10 life forever start-time now\ntrack 1 ip sla 10 reachability\nip route 0.0.0.0 0.0.0.0 203.0.113.1 track 1\nip route 0.0.0.0 0.0.0.0 198.51.100.2 200\n\nEl gateway del ISP principal en 203.0.113.1 continúa reenviando tráfico HTTP/HTTPS estándar, pero el ISP aplica un filtro de seguridad que comienza a descartar todas las solicitudes ICMP echo entrantes destinadas a 203.0.113.1. ¿Cuál es el impacto operativo en el comportamiento de enrutamiento predeterminado del router?",
+      "questionType": "troubleshooting",
+      "difficulty": "advanced",
+      "primaryTopicExamArea": "ip_connectivity",
+      "multipleAnswerCount": null,
+      "estimatedTimeSeconds": 105,
+      "explanationEn": "After the ICMP operation times out and tracking reports down, the static default tied to track 1 is withdrawn. With the secondary next hop independently reachable and no other competing default, the AD 200 route becomes eligible. The ICMP-only probe does not observe healthy TCP traffic. This configured action changes route installation, not the interface administrative state. Detection takes the probe/timeout/track processing time; it is not instantaneous at the first filtered packet.",
+      "explanationEs": "Tras expirar la operación ICMP y notificarse el estado down del seguimiento, se retira la default estática vinculada a track 1. Con el siguiente salto secundario alcanzable de forma independiente y sin otra default competidora, la ruta AD 200 pasa a ser elegible. La sonda solo ICMP no observa el tráfico TCP que funciona. Esta acción configurada cambia la instalación de rutas, no el estado administrativo de la interfaz. La detección tarda lo que requieren la sonda, su timeout y el procesamiento del seguimiento; no es instantánea ante el primer paquete filtrado.",
+      "correctAnswerExplanationEn": "After the ICMP operation times out and tracking reports down, the static default tied to track 1 is withdrawn. With the secondary next hop independently reachable and no other competing default, the AD 200 route becomes eligible. The ICMP-only probe does not observe healthy TCP traffic. This configured action changes route installation, not the interface administrative state. Detection takes the probe/timeout/track processing time; it is not instantaneous at the first filtered packet.",
+      "correctAnswerExplanationEs": "Tras expirar la operación ICMP y notificarse el estado down del seguimiento, se retira la default estática vinculada a track 1. Con el siguiente salto secundario alcanzable de forma independiente y sin otra default competidora, la ruta AD 200 pasa a ser elegible. La sonda solo ICMP no observa el tráfico TCP que funciona. Esta acción configurada cambia la instalación de rutas, no el estado administrativo de la interfaz. La detección tarda lo que requieren la sonda, su timeout y el procesamiento del seguimiento; no es instantánea ante el primer paquete filtrado.",
+      "options": [
+        {
+          "optionLabel": "A",
+          "optionTextEn": "Track 1 transitions to DOWN state, causing the primary default route to be removed from the RIB and traffic to fail over to the secondary route via 198.51.100.2",
+          "optionTextEs": "Track 1 pasa al estado DOWN, provocando que la ruta predeterminada principal se elimine de la RIB y el tráfico conmute a la ruta secundaria vía 198.51.100.2",
+          "isCorrect": true,
+          "explanationEn": "After the ICMP operation times out and tracking reports down, the static default tied to track 1 is withdrawn. With the secondary next hop independently reachable and no other competing default, the AD 200 route becomes eligible. The ICMP-only probe does not observe healthy TCP traffic. This configured action changes route installation, not the interface administrative state. Detection takes the probe/timeout/track processing time; it is not instantaneous at the first filtered packet.",
+          "explanationEs": "Tras expirar la operación ICMP y notificarse el estado down del seguimiento, se retira la default estática vinculada a track 1. Con el siguiente salto secundario alcanzable de forma independiente y sin otra default competidora, la ruta AD 200 pasa a ser elegible. La sonda solo ICMP no observa el tráfico TCP que funciona. Esta acción configurada cambia la instalación de rutas, no el estado administrativo de la interfaz. La detección tarda lo que requieren la sonda, su timeout y el procesamiento del seguimiento; no es instantánea ante el primer paquete filtrado."
+        },
+        {
+          "optionLabel": "B",
+          "optionTextEn": "The router maintains the primary route in the RIB because IP SLA detects ongoing TCP payload traffic on GigabitEthernet0/0",
+          "optionTextEs": "El router mantiene la ruta principal en la RIB porque IP SLA detecta tráfico TCP continuo en GigabitEthernet0/0",
+          "isCorrect": false,
+          "explanationEn": "Configured as 'icmp-echo', IP SLA evaluates only ICMP echo replies; it does not inspect passing TCP user traffic.",
+          "explanationEs": "Configurado como 'icmp-echo', IP SLA evalúa únicamente las respuestas ICMP echo; no inspecciona el tráfico de usuario TCP que pasa."
+        },
+        {
+          "optionLabel": "C",
+          "optionTextEn": "Both default routes are installed simultaneously into the routing table and equal-cost multi-path (ECMP) load balancing begins",
+          "optionTextEs": "Ambas rutas predeterminadas se instalan simultáneamente en la tabla de enrutamiento y comienza el balanceo de carga de múltiples rutas de igual costo (ECMP)",
+          "isCorrect": false,
+          "explanationEn": "The two routes have different administrative distances (1 vs 200); routes with unequal AD cannot load-balance.",
+          "explanationEs": "Las dos rutas tienen distancias administrativas diferentes (1 frente a 200); las rutas con AD desigual no pueden balancear carga."
+        },
+        {
+          "optionLabel": "D",
+          "optionTextEn": "The router places interface GigabitEthernet0/0 into an err-disabled state and terminates all routing processes",
+          "optionTextEs": "El router coloca la interfaz GigabitEthernet0/0 en estado err-disabled y finaliza todos los procesos de enrutamiento",
+          "isCorrect": false,
+          "explanationEn": "No shutdown or err-disable action is configured here; the tracked static route is withdrawn.",
+          "explanationEs": "Aquí no hay una acción shutdown ni err-disable configurada; se retira la ruta estática seguida."
+        }
+      ],
+      "sourceName": "CCNA 200-301 Original Questions",
+      "sourceLicense": "Original content",
+      "id": "ccna-legacy-batch3_all-030-review-r1",
+      "supersedesQuestionId": "ccna-legacy-batch3_all-030",
+      "questionFamilyId": "ccna-legacy-batch3_all-030",
+      "validationStatus": "pending_review",
+      "reviewCorrection": "Se explicita siguiente salto de respaldo alcanzable; se evita conmutación instantánea y generalizar todas las acciones posibles de tracking."
+    }
+  ]
+}

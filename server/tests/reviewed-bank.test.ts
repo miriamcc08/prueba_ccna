@@ -8,10 +8,10 @@ import { digest, contentRecord } from '../prisma/bank-review-format';
 describe('Evidence-bound bank review decisions', () => {
   it('allows only the documented reviewed subset, not all structurally passing candidates', () => {
     const bank = readReviewedBank();
-    expect(bank.candidates).toHaveLength(701);
-    expect(bank.manifest.summary).toEqual({ validated: 426, pending_review: 234, rejected: 41 });
+    expect(bank.candidates).toHaveLength(738);
+    expect(bank.manifest.summary).toEqual({ validated: 472, pending_review: 188, rejected: 78 });
     expect(bank.candidates.filter(item => item.row.decision === 'validated' && item.row.file.startsWith('original_'))).toHaveLength(356);
-    expect(bank.candidates.filter(item => item.row.decision === 'validated' && item.row.file.startsWith('batch'))).toHaveLength(29);
+    expect(bank.candidates.filter(item => item.row.decision === 'validated' && item.row.file.startsWith('batch'))).toHaveLength(38);
     for (const id of ['ccna-original-20261024-b03-026', 'ccna-original-20261026-b04-025']) expect(bank.candidates.find(item => item.row.id === id)?.row.decision).toBe('rejected');
     expect(bank.candidates.find(item => item.row.id === 'ccna-original-20261026-b04-012')?.row.decision).toBe('validated');
     for (const item of bank.candidates) expect(digest(contentRecord(item.q))).toBe(item.row.contentSha256);
@@ -32,7 +32,7 @@ describe('Evidence-bound bank review decisions', () => {
   it('uses corrected versions while preserving rejected originals and assigned families', () => {
     const bank = readReviewedBank();
     const revised = bank.candidates.filter(item => item.row.supersedesQuestionId);
-    expect(revised).toHaveLength(41);
+    expect(revised).toHaveLength(78);
     for (const item of revised) {
       const original = bank.candidates.find(candidate => candidate.row.id === item.row.supersedesQuestionId)!;
       expect(original.row.decision).toBe('rejected');
@@ -49,6 +49,26 @@ describe('Evidence-bound bank review decisions', () => {
     expect(corrections).not.toContain('No debe coincidir con el ID del vecino');
     expect(corrections).not.toContain('Los ID de proceso locales no deben coincidir');
     expect(corrections).not.toContain('Send one specific CLI keystroke every segundo');
+  });
+  it('resolves 46 third-batch candidates while keeping two evidence holds and their drafts outside exams', () => {
+    const bank = readReviewedBank();
+    const third = bank.candidates.filter(item => item.row.file === 'batch3_all.json');
+    expect(third).toHaveLength(50);
+    const pending = third.filter(item => item.row.decision === 'pending_review');
+    expect(pending.map(item => item.row.index)).toEqual([18, 29]);
+    const drafts = JSON.parse(readFileSync(resolve(__dirname, '../../docs/propuestas-batch3-fuentes-20261029.json'), 'utf8'));
+    expect(drafts.questions).toHaveLength(2);
+    for (const draft of drafts.questions) expect(bank.candidates.some(item => item.row.id === draft.id)).toBe(false);
+    const corrected = bank.candidates.filter(item => item.row.file === 'reviewed_batch3_corrections_20261029.json');
+    expect(corrected).toHaveLength(37);
+    expect(corrected.every(item => item.row.decision === 'validated')).toBe(true);
+    const sae = corrected.find(item => item.row.id.endsWith('-045-review-r1'))!;
+    expect(sae.q.explanationEn).toContain('four-way handshake is still used');
+    const ipv6 = corrected.find(item => item.row.id.endsWith('-008-review-r1'))!;
+    expect(ipv6.q.explanationEn).toContain('M=1 does not disable SLAAC');
+    const restconf = corrected.find(item => item.row.id.endsWith('-048-review-r1'))!;
+    expect(restconf.q.statementEn).not.toContain('verify=False');
+    expect(restconf.q.statementEn).not.toContain('C1sco123!');
   });
   it('rejects a key changed after review even when the source still has one correct answer', () => {
     const directory = mkdtempSync(join(tmpdir(), 'ccna-stale-review-'));
