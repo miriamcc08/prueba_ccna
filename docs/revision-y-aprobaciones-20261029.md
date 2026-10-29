@@ -1,5 +1,7 @@
 # Revisión y aprobaciones del 29/10/2026
 
+> Registro de la primera ronda. El estado vigente y las 235 aprobaciones adicionales están en [continuación de la revisión](continuacion-revision-20261029.md).
+
 ## Resultado y límites
 
 Se comprobaron estructuralmente los 660 candidatos existentes y se revisaron técnicamente en profundidad 134: respuesta, distractores, explicación, supuestos y coherencia español/inglés. Se aprobaron **131 (120 originales y 11 heredadas)**. Permanecen **529 pendientes**: tres revisadas que necesitan aclaración o evidencia y 526 sin revisión técnica completa en esta entrega. No se generaron preguntas nuevas.

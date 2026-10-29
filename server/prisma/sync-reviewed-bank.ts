@@ -14,6 +14,12 @@ const recordSchema = z.object({
   decision: z.enum(['validated', 'pending_review']), reason: z.string().min(20),
   independentCheck: z.object({ kind: z.string(), result: z.unknown(), passed: z.literal(true) }).optional(),
   evidenceUrl: z.string().url().startsWith('https://').optional(),
+  evidenceDocumentSha256: hash.optional(),
+  evidenceSection: z.string().optional().nullable(),
+  supersedesQuestionId: z.string().optional(),
+  reviewRound: z.string().optional(),
+  supportingPassage: z.object({ documentSha256: hash, normalizedOffset: z.number().int().min(0), normalizedLength: z.number().int().positive(), sha256: hash }).optional(),
+  additionalEvidence: z.array(z.object({ url: z.string().url().startsWith('https://'), documentSha256: hash, section: z.string(), normalizedOffset: z.number().int().min(0), normalizedLength: z.number().int().positive(), sha256: hash })).optional(),
   checks: z.object({ answerAndDistractors: z.literal(true), bilingualConsistency: z.literal(true), explicitAssumptions: z.literal(true), authorship: z.string().min(10) }).optional(),
 });
 const manifestSchema = z.object({
@@ -44,7 +50,15 @@ export function readReviewedBank(directory = resolve(__dirname, 'questions'), ma
       if (ids.has(row.id) || en.has(ne) || es.has(ns)) throw new Error(`${row.id}: duplicate reviewed content.`);
       ids.add(row.id); en.add(ne); es.add(ns);
       if (row.decision === 'validated') {
-        if (!row.checks || !row.independentCheck || !q.sourceLicense?.trim() || !manifest.references.some(ref => ref.url === row.evidenceUrl)) throw new Error(`${row.id}: incomplete technical approval evidence.`);
+        if (!row.checks || !row.independentCheck || !q.sourceLicense?.trim() || !manifest.references.some(ref => ref.url === row.evidenceUrl && (!row.evidenceDocumentSha256 || ref.documentSha256 === row.evidenceDocumentSha256))) throw new Error(`${row.id}: incomplete technical approval evidence.`);
+        if (row.supportingPassage && row.supportingPassage.documentSha256 !== row.evidenceDocumentSha256) throw new Error(`${row.id}: inconsistent evidence document hash.`);
+        if (row.additionalEvidence?.some(extra => !manifest.references.some(ref => ref.url === extra.url && ref.documentSha256 === extra.documentSha256))) throw new Error(`${row.id}: unbound supplemental evidence.`);
+        if (row.supersedesQuestionId && (q.supersedesQuestionId !== row.supersedesQuestionId || row.supersedesQuestionId === row.id)) throw new Error(`${row.id}: invalid reviewed correction provenance.`);
+        if (row.independentCheck.kind === 'documentary_independent_key') {
+          const expected = row.independentCheck.result;
+          const actual = q.options.filter((option: any) => option.isCorrect).map((option: any) => option.optionLabel).sort();
+          if (!Array.isArray(expected) || expected.some(label => typeof label !== 'string') || JSON.stringify([...expected].sort()) !== JSON.stringify(actual)) throw new Error(`${row.id}: independent editorial key mismatch.`);
+        }
       }
       candidates.push({ q, row, sourceId: 'source-' + (batch.batchId || file.replace(/\.json$/, '')) });
     });
@@ -106,10 +120,10 @@ export async function syncReviewedBank(db: PrismaClient, apply = false, director
       if (previous) throw new Error(`${id}: status changed after review; refusing to restore an approval silently.`);
       const humanReview = await tx.questionReview.findFirst({ where: { questionId: id, reviewerId: { not: REVIEW_SERVICE_ID } } });
       if (humanReview) throw new Error(`${id}: an existing editorial decision requires explicit reconciliation.`);
-      const reference = bank.manifest.references.find(ref => ref.url === row.evidenceUrl)!;
+      const reference = bank.manifest.references.find(ref => ref.url === row.evidenceUrl && (!row.evidenceDocumentSha256 || ref.documentSha256 === row.evidenceDocumentSha256))!;
       await tx.questionReview.create({ data: {
         id: reviewId, questionId: id, reviewerId: REVIEW_SERVICE_ID, status: 'validated', evidenceUrl: row.evidenceUrl,
-        notes: `ASSISTED EVIDENCE REVIEW; not human certification. ${row.reason} Manifest=${bank.manifest.id}; contentSHA256=${row.contentSha256}; sourceSHA256=${reference.documentSha256}; independent=${JSON.stringify(row.independentCheck)}; ES/EN and distractors checked. Authorized by the user; reviewed by an automated assistant.`,
+        notes: `ASSISTED EVIDENCE REVIEW; not human certification. ${row.reason} Manifest=${bank.manifest.id}; round=${row.reviewRound || 'initial'}; contentSHA256=${row.contentSha256}; sourceSHA256=${reference.documentSha256}; additionalEvidence=${JSON.stringify(row.additionalEvidence || [])}; independent=${JSON.stringify(row.independentCheck)}; supersedes=${row.supersedesQuestionId || 'none'}; ES/EN and distractors checked. Authorized by the user; reviewed by an automated assistant.`,
       } });
       await tx.question.update({ where: { id }, data: { validationStatus: 'validated', lastVerifiedAt: new Date() } });
       summary.appliedApprovals++;

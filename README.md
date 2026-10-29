@@ -30,9 +30,9 @@ Para ejecutar el servidor compilado: desde la carpeta de ejecución, exporta `DA
 
 ## Banco revisado: actualización del 29/10/2026
 
-El repositorio conserva 660 candidatos; la carga inicial de 360 originales más ocho ejemplos explica las 368 preguntas visibles. Se aprobaron 131 candidatos mediante revisión asistida con evidencia. Para incorporar las 300 heredadas y aplicar esas decisiones a tu propia base, consulta [resultado, límites y comandos de aplicación](docs/revision-y-aprobaciones-20261029.md). Desde `server`, `npm run db:sync-reviewed` muestra la previsión y `npm run db:sync-reviewed -- --apply` la aplica. No se ejecuta automáticamente en el setup.
+La carga inicial de 360 originales más ocho ejemplos explica las 368 preguntas visibles. La [continuación de la revisión](docs/continuacion-revision-20261029.md) acumula **366 candidatos aprobados y 298 pendientes**, incluidos cuatro registros corregidos que conservan sus originales. Desde `server`, `npm run db:sync-reviewed` muestra la previsión y `npm run db:sync-reviewed -- --apply` incorpora lo que falta y aplica las decisiones. No se ejecuta automáticamente en el setup ni sobrescribe contenido local diferente.
 
-La copia de nube actualizada tiene 668 preguntas, 139 validadas y 529 pendientes, y permite un simulacro de 100 preguntas de dificultad mixta. Esto no actualiza por sí solo la base de tu PC.
+La copia de nube actualizada tiene **672 preguntas, 374 validadas y 312 familias validadas**; permite un simulacro de 100 con dificultad mixta. Esto no actualiza por sí solo la base de tu PC. La [revisión inicial](docs/revision-y-aprobaciones-20261029.md) conserva el detalle histórico de las primeras 131 aprobaciones.
 
 ## Cuentas y administración
 

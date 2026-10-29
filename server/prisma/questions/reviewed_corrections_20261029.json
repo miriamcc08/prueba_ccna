@@ -1,0 +1,320 @@
+{
+  "batchId": "reviewed-corrections-20261029",
+  "questions": [
+    {
+      "id": "ccna-original-20261024-b03-026-review-r1",
+      "questionFamilyId": "concept-ospf-passive-interface-behavior",
+      "concept": "ospf-passive-default-exception",
+      "statementEn": "All three interfaces G0/0, G0/1 and G0/2 are up and enabled in the same OSPF process. The process has passive-interface default and only no passive-interface G0/1. Which listed interface sends normal OSPF Hellos?",
+      "statementEs": "Las tres interfaces G0/0, G0/1 y G0/2 están activas y habilitadas en el mismo proceso OSPF. El proceso usa passive-interface default y solo no passive-interface G0/1. ¿Qué interfaz listada envía Hello OSPF normales?",
+      "questionType": "single_choice",
+      "multipleAnswerCount": null,
+      "difficulty": "intermediate",
+      "primaryTopicExamArea": "ip_connectivity",
+      "estimatedTimeSeconds": 90,
+      "explanationEn": "The default suppresses neighbor formation on all interfaces, and the explicit exception enables it on G0/1. The other interfaces can still advertise their associated networks without sending Hellos.",
+      "explanationEs": "El valor por defecto suprime vecinos en todas las interfaces y la excepción explícita los habilita en G0/1. Las demás pueden seguir anunciando sus redes sin enviar Hello.",
+      "correctAnswerExplanationEn": "The default suppresses neighbor formation on all interfaces, and the explicit exception enables it on G0/1. The other interfaces can still advertise their associated networks without sending Hellos.",
+      "correctAnswerExplanationEs": "El valor por defecto suprime vecinos en todas las interfaces y la excepción explícita los habilita en G0/1. Las demás pueden seguir anunciando sus redes sin enviar Hello.",
+      "sourceName": "Reviewed corrections — 2026-10-29",
+      "sourceUrl": "https://www.cisco.com/c/en/us/td/docs/routers/ios/config/17-x/ip-routing/b-ip-routing/m_iri-default-passive-interface.html",
+      "sourceSection": "Default Passive Interfaces",
+      "sourceLicense": "Original project wording; cited technical documents are not reproduced.",
+      "examVersion": "200-301-v1.1",
+      "validationStatus": "pending_review",
+      "verification": {
+        "referenceAccess": "retrieved_pending_review",
+        "humanReviewRequired": true,
+        "referenceDocumentUrl": "https://www.cisco.com/c/en/us/td/docs/routers/ios/config/17-x/ip-routing/b-ip-routing/m_iri-default-passive-interface.html",
+        "referenceSha256": "05e4661404c0e1a1f6317c94efa6648d37287833a9af7991807f701dd7142c9e",
+        "retrievedAt": "2026-10-24T16:07:21.870453+00:00",
+        "calculation": {
+          "kind": "passive_interface_exception",
+          "interfaces": [
+            "G0/0",
+            "G0/1",
+            "G0/2"
+          ],
+          "exceptions": [
+            "G0/1"
+          ]
+        },
+        "reviewCorrection": "Versioned correction; preserves the original candidate and family."
+      },
+      "options": [
+        {
+          "optionTextEn": "G0/1",
+          "optionTextEs": "G0/1",
+          "isCorrect": true,
+          "explanationEn": "The default suppresses neighbor formation on all interfaces, and the explicit exception enables it on G0/1. The other interfaces can still advertise their associated networks without sending Hellos.",
+          "explanationEs": "El valor por defecto suprime vecinos en todas las interfaces y la excepción explícita los habilita en G0/1. Las demás pueden seguir anunciando sus redes sin enviar Hello.",
+          "optionLabel": "A",
+          "displayOrder": 0
+        },
+        {
+          "optionTextEn": "All three",
+          "optionTextEs": "Las tres",
+          "isCorrect": false,
+          "explanationEn": "The proposed choice (All three) does not match the required result (G0/1). The default suppresses neighbor formation on all interfaces, and the explicit exception enables it on G0/1. The other interfaces can still advertise their associated networks without sending Hellos.",
+          "explanationEs": "La alternativa (Las tres) no coincide con el resultado requerido (G0/1). El valor por defecto suprime vecinos en todas las interfaces y la excepción explícita los habilita en G0/1. Las demás pueden seguir anunciando sus redes sin enviar Hello.",
+          "optionLabel": "B",
+          "displayOrder": 1
+        },
+        {
+          "optionTextEn": "G0/0",
+          "optionTextEs": "G0/0",
+          "isCorrect": false,
+          "explanationEn": "The proposed choice (G0/0) does not match the required result (G0/1). The default suppresses neighbor formation on all interfaces, and the explicit exception enables it on G0/1. The other interfaces can still advertise their associated networks without sending Hellos.",
+          "explanationEs": "La alternativa (G0/0) no coincide con el resultado requerido (G0/1). El valor por defecto suprime vecinos en todas las interfaces y la excepción explícita los habilita en G0/1. Las demás pueden seguir anunciando sus redes sin enviar Hello.",
+          "optionLabel": "C",
+          "displayOrder": 2
+        },
+        {
+          "optionTextEn": "G0/2",
+          "optionTextEs": "G0/2",
+          "isCorrect": false,
+          "explanationEn": "The proposed choice (G0/2) does not match the required result (G0/1). The default suppresses neighbor formation on all interfaces, and the explicit exception enables it on G0/1. The other interfaces can still advertise their associated networks without sending Hellos.",
+          "explanationEs": "La alternativa (G0/2) no coincide con el resultado requerido (G0/1). El valor por defecto suprime vecinos en todas las interfaces y la excepción explícita los habilita en G0/1. Las demás pueden seguir anunciando sus redes sin enviar Hello.",
+          "optionLabel": "D",
+          "displayOrder": 3
+        }
+      ],
+      "supersedesQuestionId": "ccna-original-20261024-b03-026"
+    },
+    {
+      "id": "ccna-original-20261026-b04-025-review-r1",
+      "questionFamilyId": "concept-ospf-area-id-mismatch",
+      "concept": "ospf-area-id-mismatch",
+      "statementEn": "Two OSPFv2 routers are on the same ordinary Ethernet subnet, with otherwise compatible settings. One interface is assigned to area 0 and the other to area 1. Which mismatch prevents their intended adjacency?",
+      "statementEs": "Dos routers OSPFv2 están en la misma subred Ethernet normal y tienen los demás ajustes compatibles. Una interfaz está asignada al área 0 y la otra al área 1. ¿Qué diferencia impide su adyacencia prevista?",
+      "questionType": "single_choice",
+      "multipleAnswerCount": null,
+      "difficulty": "intermediate",
+      "primaryTopicExamArea": "ip_connectivity",
+      "estimatedTimeSeconds": 90,
+      "explanationEn": "For a normal shared link, received OSPF packets must belong to the interface area. Local process IDs need not match; router IDs should be unique. Virtual links are outside this scenario.",
+      "explanationEs": "En un enlace compartido normal los paquetes OSPF recibidos deben corresponder al área de la interfaz. Los ID de proceso locales no necesitan coincidir; los router ID deben ser únicos. Se excluyen los enlaces virtuales.",
+      "correctAnswerExplanationEn": "For a normal shared link, received OSPF packets must belong to the interface area. Local process IDs need not match; router IDs should be unique. Virtual links are outside this scenario.",
+      "correctAnswerExplanationEs": "En un enlace compartido normal los paquetes OSPF recibidos deben corresponder al área de la interfaz. Los ID de proceso locales no necesitan coincidir; los router ID deben ser únicos. Se excluyen los enlaces virtuales.",
+      "sourceName": "Reviewed corrections — 2026-10-29",
+      "sourceUrl": "https://www.rfc-editor.org/rfc/rfc2328.txt",
+      "sourceSection": "8.2",
+      "sourceLicense": "Original project wording; cited technical documents are not reproduced.",
+      "examVersion": "200-301-v1.1",
+      "validationStatus": "pending_review",
+      "verification": {
+        "referenceAccess": "retrieved_pending_review",
+        "humanReviewRequired": true,
+        "referenceDocumentUrl": "https://www.rfc-editor.org/rfc/rfc2328.txt",
+        "referenceSha256": "981690e297fbba9e8ef655802552b5529cb17f1ffe790ad2d55706cc522ff50c",
+        "retrievedAt": "2026-10-26T14:24:20.292848+00:00",
+        "reviewCorrection": "Versioned correction; preserves the original candidate and family."
+      },
+      "options": [
+        {
+          "optionTextEn": "The process IDs must both equal the area number",
+          "optionTextEs": "Ambos ID de proceso deben igualar el número de área",
+          "isCorrect": false,
+          "explanationEn": "This choice conflicts with the scenario. For a normal shared link, received OSPF packets must belong to the interface area. Local process IDs need not match; router IDs should be unique. Virtual links are outside this scenario.",
+          "explanationEs": "Esta alternativa contradice el escenario. En un enlace compartido normal los paquetes OSPF recibidos deben corresponder al área de la interfaz. Los ID de proceso locales no necesitan coincidir; los router ID deben ser únicos. Se excluyen los enlaces virtuales.",
+          "optionLabel": "A",
+          "displayOrder": 0
+        },
+        {
+          "optionTextEn": "The OSPF Area ID does not match on this link",
+          "optionTextEs": "El Area ID OSPF no coincide en este enlace",
+          "isCorrect": true,
+          "explanationEn": "For a normal shared link, received OSPF packets must belong to the interface area. Local process IDs need not match; router IDs should be unique. Virtual links are outside this scenario.",
+          "explanationEs": "En un enlace compartido normal los paquetes OSPF recibidos deben corresponder al área de la interfaz. Los ID de proceso locales no necesitan coincidir; los router ID deben ser únicos. Se excluyen los enlaces virtuales.",
+          "optionLabel": "B",
+          "displayOrder": 1
+        },
+        {
+          "optionTextEn": "OSPF forbids Ethernet adjacencies",
+          "optionTextEs": "OSPF prohíbe adyacencias Ethernet",
+          "isCorrect": false,
+          "explanationEn": "This choice conflicts with the scenario. For a normal shared link, received OSPF packets must belong to the interface area. Local process IDs need not match; router IDs should be unique. Virtual links are outside this scenario.",
+          "explanationEs": "Esta alternativa contradice el escenario. En un enlace compartido normal los paquetes OSPF recibidos deben corresponder al área de la interfaz. Los ID de proceso locales no necesitan coincidir; los router ID deben ser únicos. Se excluyen los enlaces virtuales.",
+          "optionLabel": "C",
+          "displayOrder": 2
+        },
+        {
+          "optionTextEn": "Router IDs must be identical first",
+          "optionTextEs": "Primero deben ser idénticos los router ID",
+          "isCorrect": false,
+          "explanationEn": "This choice conflicts with the scenario. For a normal shared link, received OSPF packets must belong to the interface area. Local process IDs need not match; router IDs should be unique. Virtual links are outside this scenario.",
+          "explanationEs": "Esta alternativa contradice el escenario. En un enlace compartido normal los paquetes OSPF recibidos deben corresponder al área de la interfaz. Los ID de proceso locales no necesitan coincidir; los router ID deben ser únicos. Se excluyen los enlaces virtuales.",
+          "optionLabel": "D",
+          "displayOrder": 3
+        }
+      ],
+      "supersedesQuestionId": "ccna-original-20261026-b04-025"
+    },
+    {
+      "id": "ccna-original-20261026-b05-022-review-r1",
+      "questionFamilyId": "concept-ospf-process-id-local-significance",
+      "concept": "ospf-process-id-local-significance",
+      "statementEn": "On a shared subnet, R1 uses IOS OSPF process 10 and R2 uses process 20. All on-link adjacency requirements, including area, timers, authentication and network type, are satisfied. Is matching those local process numbers also required?",
+      "statementEs": "En una subred compartida, R1 usa el proceso OSPF IOS 10 y R2 el 20. Se cumplen todos los requisitos de adyacencia del enlace, incluidos área, temporizadores, autenticación y tipo de red. ¿También es obligatorio igualar esos números locales de proceso?",
+      "questionType": "single_choice",
+      "multipleAnswerCount": null,
+      "difficulty": "intermediate",
+      "primaryTopicExamArea": "ip_connectivity",
+      "estimatedTimeSeconds": 90,
+      "explanationEn": "An IOS OSPF process ID identifies the local routing process. It need not match a neighbor process ID; the on-link OSPF protocol fields and settings determine adjacency compatibility.",
+      "explanationEs": "El ID de proceso OSPF de IOS identifica el proceso local. No necesita coincidir con el ID del vecino; los campos y ajustes del protocolo en el enlace determinan la compatibilidad.",
+      "correctAnswerExplanationEn": "An IOS OSPF process ID identifies the local routing process. It need not match a neighbor process ID; the on-link OSPF protocol fields and settings determine adjacency compatibility.",
+      "correctAnswerExplanationEs": "El ID de proceso OSPF de IOS identifica el proceso local. No necesita coincidir con el ID del vecino; los campos y ajustes del protocolo en el enlace determinan la compatibilidad.",
+      "sourceName": "Reviewed corrections — 2026-10-29",
+      "sourceUrl": "https://www.cisco.com/c/en/us/support/docs/ip/open-shortest-path-first-ospf/9237-9.html",
+      "sourceSection": "Same OSPF process number on multiple routers",
+      "sourceLicense": "Original project wording; primary reference documents are not reproduced.",
+      "examVersion": "200-301-v1.1",
+      "validationStatus": "pending_review",
+      "verification": {
+        "referenceAccess": "consulted",
+        "humanReviewRequired": true,
+        "referenceSha256": "d065dca39f2e841aa736ec606b4e37dae0b92d29cd7d34ad0f030b113bbe69df",
+        "referenceDocumentUrl": "https://www.cisco.com/c/en/us/support/docs/ip/open-shortest-path-first-ospf/9237-9.html",
+        "retrievedAt": "2026-10-26T15:19:05.330464+00:00",
+        "consultedAt": "2026-10-26T15:21:14.673055+00:00",
+        "evidenceSection": "Same OSPF process number on multiple routers",
+        "evidenceAnchor": "does not check the process number",
+        "evidenceAnchors": [
+          "does not check the process number"
+        ],
+        "consultationNotes": "Key, scenario assumptions and distractors checked against the cited passages by an automated assistant. This is not independent human editorial approval.",
+        "documentaryReview": {
+          "reviewerType": "automated_assistant",
+          "checkedAt": "2026-10-26T15:21:14.673055+00:00",
+          "contentSha256": "7df8946118a457b6d18c191c0247c249b51a97114ce5a8067d8ee321a2c7d9d9",
+          "scope": "source passage, proposed answer, scenario assumptions, distractor logic and bilingual consistency",
+          "humanApproval": "pending"
+        },
+        "reviewCorrection": "Versioned correction; preserves the original candidate and family."
+      },
+      "options": [
+        {
+          "optionTextEn": "Yes; the process ID must equal the VLAN ID everywhere",
+          "optionTextEs": "Sí; debe igualar al ID VLAN en toda la red",
+          "isCorrect": false,
+          "explanationEn": "This alternative does not satisfy the stated conditions. An IOS OSPF process ID identifies the local routing process. It need not match a neighbor process ID; the on-link OSPF protocol fields and settings determine adjacency compatibility.",
+          "explanationEs": "Esta alternativa no satisface las condiciones indicadas. El ID de proceso OSPF de IOS identifica el proceso local. No necesita coincidir con el ID del vecino; los campos y ajustes del protocolo en el enlace determinan la compatibilidad.",
+          "optionLabel": "A",
+          "displayOrder": 0
+        },
+        {
+          "optionTextEn": "Yes; process IDs are the remote router IP addresses",
+          "optionTextEs": "Sí; los ID de proceso son las IP del router remoto",
+          "isCorrect": false,
+          "explanationEn": "This alternative does not satisfy the stated conditions. An IOS OSPF process ID identifies the local routing process. It need not match a neighbor process ID; the on-link OSPF protocol fields and settings determine adjacency compatibility.",
+          "explanationEs": "Esta alternativa no satisface las condiciones indicadas. El ID de proceso OSPF de IOS identifica el proceso local. No necesita coincidir con el ID del vecino; los campos y ajustes del protocolo en el enlace determinan la compatibilidad.",
+          "optionLabel": "B",
+          "displayOrder": 1
+        },
+        {
+          "optionTextEn": "Only if both routers use Ethernet",
+          "optionTextEs": "Solo si ambos usan Ethernet",
+          "isCorrect": false,
+          "explanationEn": "This alternative does not satisfy the stated conditions. An IOS OSPF process ID identifies the local routing process. It need not match a neighbor process ID; the on-link OSPF protocol fields and settings determine adjacency compatibility.",
+          "explanationEs": "Esta alternativa no satisface las condiciones indicadas. El ID de proceso OSPF de IOS identifica el proceso local. No necesita coincidir con el ID del vecino; los campos y ajustes del protocolo en el enlace determinan la compatibilidad.",
+          "optionLabel": "C",
+          "displayOrder": 2
+        },
+        {
+          "optionTextEn": "No; the IOS OSPF process ID has local significance",
+          "optionTextEs": "No; el ID de proceso OSPF de IOS tiene significado local",
+          "isCorrect": true,
+          "explanationEn": "An IOS OSPF process ID identifies the local routing process. It need not match a neighbor process ID; the on-link OSPF protocol fields and settings determine adjacency compatibility.",
+          "explanationEs": "El ID de proceso OSPF de IOS identifica el proceso local. No necesita coincidir con el ID del vecino; los campos y ajustes del protocolo en el enlace determinan la compatibilidad.",
+          "optionLabel": "D",
+          "displayOrder": 3
+        }
+      ],
+      "supersedesQuestionId": "ccna-original-20261026-b05-022"
+    },
+    {
+      "id": "ccna-original-20261026-b07-048-review-r1",
+      "concept": "intent-declarative-outcome-versus-steps",
+      "questionFamilyId": "concept-intent-declarative-outcome-versus-steps",
+      "statementEn": "A team is comparing automation requests. Which alternative states the desired network outcome without prescribing device implementation steps?",
+      "statementEs": "Un equipo compara solicitudes de automatización. ¿Qué alternativa expresa el resultado de red deseado sin prescribir los pasos de implementación del equipo?",
+      "questionType": "single_choice",
+      "multipleAnswerCount": null,
+      "difficulty": "intermediate",
+      "primaryTopicExamArea": "automation_programmability",
+      "estimatedTimeSeconds": 90,
+      "explanationEn": "Intent states desired outcomes and constraints without prescribing the implementation steps. It still needs interpretation, validation and assurance; wording an outcome alone does not prove it is achieved.",
+      "explanationEs": "La intención expresa resultados y restricciones sin prescribir pasos de implementación. Sigue necesitando interpretación, validación y verificación; expresarla no prueba que se cumpla.",
+      "correctAnswerExplanationEn": "Intent states desired outcomes and constraints without prescribing the implementation steps. It still needs interpretation, validation and assurance; wording an outcome alone does not prove it is achieved.",
+      "correctAnswerExplanationEs": "La intención expresa resultados y restricciones sin prescribir pasos de implementación. Sigue necesitando interpretación, validación y verificación; expresarla no prueba que se cumpla.",
+      "sourceName": "Reviewed corrections — 2026-10-29",
+      "sourceUrl": "https://www.rfc-editor.org/rfc/rfc9315.txt",
+      "sourceSection": "2",
+      "sourceLicense": "Original project wording; cited technical documents are not reproduced.",
+      "examVersion": "200-301-v1.1",
+      "validationStatus": "pending_review",
+      "verification": {
+        "referenceAccess": "consulted",
+        "humanReviewRequired": true,
+        "referenceDocumentUrl": "https://www.rfc-editor.org/rfc/rfc9315.txt",
+        "referenceSha256": "10c4a4293dc27be8eeb31dec8ded32b0e0355334deffc1772b50179106be6997",
+        "retrievedAt": "2026-10-26T17:00:09.288625+00:00",
+        "consultedAt": "2026-10-26T17:08:42.614557+00:00",
+        "evidenceSection": "2",
+        "evidenceAnchor": "declarative manner without specifying how to achieve",
+        "evidenceAnchors": [
+          "declarative manner without specifying how to achieve"
+        ],
+        "consultationNotes": "Scenario, proposed key, distractor logic and bilingual wording reviewed by an automated assistant; human editorial approval remains pending.",
+        "documentaryReview": {
+          "reviewerType": "automated_assistant",
+          "checkedAt": "2026-10-26T17:08:42.614557+00:00",
+          "contentSha256": "354ece7ce3b2e066b3bb8a552be83d68521a7e0a4cf72557092b25bb53c8d040",
+          "scope": "source passage, proposed answer, assumptions, distractors and bilingual consistency",
+          "humanApproval": "pending"
+        },
+        "reviewCorrection": "Versioned correction; preserves the original candidate and family."
+      },
+      "options": [
+        {
+          "optionTextEn": "Send one specific CLI keystroke every second",
+          "optionTextEs": "Enviar una pulsación específica de CLI cada segundo",
+          "isCorrect": false,
+          "explanationEn": "This choice does not meet the stated conditions. Intent states desired outcomes and constraints without prescribing the implementation steps. It still needs interpretation, validation and assurance; wording an outcome alone does not prove it is achieved.",
+          "explanationEs": "Esta opción no cumple las condiciones indicadas. La intención expresa resultados y restricciones sin prescribir pasos de implementación. Sigue necesitando interpretación, validación y verificación; expresarla no prueba que se cumpla.",
+          "optionLabel": "A",
+          "displayOrder": 0
+        },
+        {
+          "optionTextEn": "Enter interface G0/1, then type these exact commands in this exact order",
+          "optionTextEs": "Entrar a G0/1 y escribir comandos exactos en orden exacto",
+          "isCorrect": false,
+          "explanationEn": "This choice does not meet the stated conditions. Intent states desired outcomes and constraints without prescribing the implementation steps. It still needs interpretation, validation and assurance; wording an outcome alone does not prove it is achieved.",
+          "explanationEs": "Esta opción no cumple las condiciones indicadas. La intención expresa resultados y restricciones sin prescribir pasos de implementación. Sigue necesitando interpretación, validación y verificación; expresarla no prueba que se cumpla.",
+          "optionLabel": "B",
+          "displayOrder": 1
+        },
+        {
+          "optionTextEn": "Copy a console prompt without stating a desired outcome",
+          "optionTextEs": "Copiar un prompt sin indicar resultado deseado",
+          "isCorrect": false,
+          "explanationEn": "This choice does not meet the stated conditions. Intent states desired outcomes and constraints without prescribing the implementation steps. It still needs interpretation, validation and assurance; wording an outcome alone does not prove it is achieved.",
+          "explanationEs": "Esta opción no cumple las condiciones indicadas. La intención expresa resultados y restricciones sin prescribir pasos de implementación. Sigue necesitando interpretación, validación y verificación; expresarla no prueba que se cumpla.",
+          "optionLabel": "C",
+          "displayOrder": 2
+        },
+        {
+          "optionTextEn": "Keep the specified application traffic isolated between the named tenant groups",
+          "optionTextEs": "Mantener aislado el tráfico de aplicación indicado entre los grupos de clientes nombrados",
+          "isCorrect": true,
+          "explanationEn": "Intent states desired outcomes and constraints without prescribing the implementation steps. It still needs interpretation, validation and assurance; wording an outcome alone does not prove it is achieved.",
+          "explanationEs": "La intención expresa resultados y restricciones sin prescribir pasos de implementación. Sigue necesitando interpretación, validación y verificación; expresarla no prueba que se cumpla.",
+          "optionLabel": "D",
+          "displayOrder": 3
+        }
+      ],
+      "supersedesQuestionId": "ccna-original-20261026-b07-048"
+    }
+  ]
+}

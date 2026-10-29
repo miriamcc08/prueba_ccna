@@ -51,3 +51,5 @@ El tiempo por pregunta ya está implementado y probado; no amplía el banco ni s
 ## Actualización del 29/10/2026
 
 Las cifras de candidatos anteriores no equivalen a contenido aprobado. La [revisión asistida](revision-y-aprobaciones-20261029.md) aprobó 131 de los 660 candidatos y dejó 529 pendientes. La copia de ejecución actualizada, incluidos ocho ejemplos anteriores, tiene 120 familias validadas y permite 100 preguntas de dificultad mixta. Sigue pendiente certificar cobertura por subobjetivos y pesos oficiales.
+
+La [segunda ronda](continuacion-revision-20261029.md) lleva el inventario a 664 registros (cuatro versiones corregidas adicionales), 366 aprobaciones del manifiesto y 298 pendientes. Incluidos los ocho ejemplos previos, la nube tiene 312 familias validadas; la cobertura completa por subobjetivos sigue sin certificarse.

@@ -6,7 +6,7 @@ Estado vigente del cierre funcional: [auditoría del 26/10/2026](auditoria-funci
 
 ## Actualización del 29/10/2026
 
-[Revisión asistida y aprobaciones](revision-y-aprobaciones-20261029.md): 660 candidatos comprobados estructuralmente, 134 revisados en profundidad y 131 aprobados; 529 siguen pendientes. Después de aplicar el manifiesto, la copia de nube contiene 668 registros, 139 validados y 120 familias disponibles. Pruebas actuales: 599 de servidor y 22 de Chromium. Las cifras posteriores del 26/10 son históricas, anteriores a esta aplicación.
+[Continuación de la revisión asistida](continuacion-revision-20261029.md): 664 candidatos comprobados estructuralmente, 375 inspeccionados técnicamente (360 originales, cuatro versiones corregidas y 11 heredadas), 366 aprobados y 298 pendientes. Tras aplicar el manifiesto, la nube contiene 672 registros, 374 validados y 312 familias disponibles. Pruebas actuales: 602 de servidor y 22 de Chromium. Las cifras posteriores del 26/10 y de la primera ronda de 131 son históricas.
 
 ## Implementado y comprobado
 
