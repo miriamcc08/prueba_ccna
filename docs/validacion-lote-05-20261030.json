@@ -1,0 +1,170 @@
+{
+  "date": "2026-10-30",
+  "roundId": "assisted-batch5-review-20261030-v1",
+  "importableRecords": 869,
+  "initialCandidates": 660,
+  "correctedVersions": 209,
+  "summary": {
+    "rejected": 209,
+    "validated": 619,
+    "pending_review": 41
+  },
+  "pendingByFile": {
+    "batch2_ip_connectivity.json": 9,
+    "batch2_ip_services.json": 5,
+    "batch2_network_access.json": 8,
+    "batch2_network_fundamentals.json": 9,
+    "batch2_security_fundamentals.json": 7,
+    "batch4_all.json": 2,
+    "batch6_all.json": 1
+  },
+  "currentRound": {
+    "previouslyPending": 47,
+    "approvedVersions": 47,
+    "correctedVersions": 46,
+    "unchangedApproval": 1,
+    "rejectedOriginalsWithApprovedReplacement": 46,
+    "references": 50,
+    "executableScenarios": 7
+  },
+  "cumulativeReferences": 221,
+  "validation": {
+    "serverTests": 622,
+    "serverFiles": 14,
+    "chromiumTests": 22,
+    "strictReviewTypes": "passed",
+    "serverBuild": "passed",
+    "manifestByteExactReproduction": true,
+    "structuralAudit": {
+      "received": 869,
+      "rejected": 0,
+      "duplicates": 0,
+      "editorialReview": {
+        "integrity": "verified",
+        "summary": {
+          "validated": 619,
+          "pending_review": 41,
+          "rejected": 209
+        }
+      }
+    },
+    "isolatedDatabase": {
+      "path": "/workspace/.ccna-runtime/server/prisma/cloud-reviewed-fifth.db",
+      "total": 877,
+      "validated": 627,
+      "rejected": 209,
+      "pending": 41,
+      "declaredValidatedFamilies": 544,
+      "assistedAuditRecords": 828,
+      "seedExamplesNotRecertified": 8
+    },
+    "apply": {
+      "mode": "applied",
+      "manifestId": "assisted-review-20261029-v1",
+      "candidates": 869,
+      "questionsToCreate": 869,
+      "existingMatched": 0,
+      "reviewedApprovals": 619,
+      "remainingCandidatesPending": 41,
+      "appliedApprovals": 619,
+      "approvalsAlreadyPresent": 0,
+      "reviewedRejections": 209,
+      "appliedRejections": 209,
+      "rejectionsAlreadyPresent": 0
+    },
+    "repeat": {
+      "mode": "applied",
+      "manifestId": "assisted-review-20261029-v1",
+      "candidates": 869,
+      "questionsToCreate": 0,
+      "existingMatched": 869,
+      "reviewedApprovals": 619,
+      "remainingCandidatesPending": 41,
+      "appliedApprovals": 0,
+      "approvalsAlreadyPresent": 619,
+      "reviewedRejections": 209,
+      "appliedRejections": 0,
+      "rejectionsAlreadyPresent": 209
+    }
+  },
+  "scenarioResults": {
+    "records": [
+      {
+        "id": "ccna-legacy-batch5_all-003-review-r1",
+        "kind": "cumulative_ack_two_out_of_order_segments",
+        "result": {
+          "duplicateAcks": 2,
+          "fastRetransmitThreshold": 3,
+          "thresholdReached": false
+        },
+        "passed": true
+      },
+      {
+        "id": "ccna-legacy-batch5_all-018-review-r1",
+        "kind": "stp_sender_bid_with_equal_total_cost",
+        "result": {
+          "port": "Gi0/2",
+          "rootCost": 8
+        },
+        "passed": true
+      },
+      {
+        "id": "ccna-legacy-batch5_all-022-review-r1",
+        "kind": "parsed_ipv4_longest_matching_prefix",
+        "result": {
+          "prefix": "10.20.30.128/26",
+          "nextHop": "10.1.15.5"
+        },
+        "passed": true
+      },
+      {
+        "id": "ccna-legacy-batch5_all-028-review-r1",
+        "kind": "parsed_ipv6_longest_matching_prefix",
+        "result": {
+          "prefix": "2001:db8:acad:10:100::/80",
+          "nextHopAndInterface": "FE80::3, GigabitEthernet0/2"
+        },
+        "passed": true
+      },
+      {
+        "id": "ccna-legacy-batch5_all-039-review-r1",
+        "kind": "ordered_acl_packet_matrix",
+        "result": {
+          "packets": 5,
+          "onlyPolicyCompliantChoice": "A"
+        },
+        "passed": true
+      },
+      {
+        "id": "ccna-legacy-batch5_all-041-review-r1",
+        "kind": "supplied_ssh_retry_plus_initial_rule",
+        "result": {
+          "totalAttempts": 3,
+          "configuredRetries": 2,
+          "authenticationSeconds": 60
+        },
+        "passed": true
+      },
+      {
+        "id": "ccna-legacy-batch5_all-049-review-r1",
+        "kind": "executed_bilingual_restconf_fixture_no_network",
+        "result": {
+          "printed": [
+            "Administratively enabled: Gi0/2 - Type: iana-if-type:ethernetCsmacd"
+          ],
+          "explicitFalseOmitted": true,
+          "omittedLeafSkippedWithoutApplyingYangDefault": true
+        },
+        "passed": true
+      }
+    ],
+    "passed": true,
+    "limitations": "Python fixture and protocol calculations only; no IOS, live RESTCONF, WLC or SSH server execution."
+  },
+  "limitations": [
+    "Assisted technical review, not human/Cisco certification.",
+    "No IOS, WLC, SSH server, Ansible or live RESTCONF execution.",
+    "41 unresolved candidates remain excluded from scored exams.",
+    "Semantic family grouping and blueprint coverage remain separate open tasks."
+  ]
+}

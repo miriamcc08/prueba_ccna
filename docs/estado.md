@@ -6,6 +6,10 @@ Estado vigente del cierre funcional: [auditoría del 26/10/2026](auditoria-funci
 
 ## Actualización vigente del 30/10/2026
 
+[Revisión del quinto lote heredado](revision-lote-heredado-05-20261030.md): se cierran sus 47 pendientes con 46 versiones corregidas y una aprobación sin cambios. Banco vigente: 869 registros importables, 619 validados, 209 rechazados con reemplazo aprobado y 41 pendientes. Pasan 622 pruebas de servidor y 22 de Chromium, tipado estricto, compilación, auditoría e idempotencia; reconstrucción del manifiesto idéntica byte a byte. Nueva base aislada: 877 registros, 627 validados y 544 familias declaradas validadas. Las cifras siguientes son históricas.
+
+## Revisión de automatización del segundo lote — 30/10/2026
+
 [Cierre de automatización del segundo lote](revision-automatizacion-segundo-lote-20261030.md): se corrigen y aprueban sus cinco pendientes. Acumulado de esta continuación: 52 versiones utilizables más (44 corregidas y ocho sin cambios), 572 validadas, 163 rechazadas con reemplazo y 88 pendientes entre 823 registros importables. Pasan 619 pruebas de servidor y 22 de Chromium; tipado estricto, compilación, auditoría e idempotencia correctos. La carga aislada nueva tiene 831 registros, 580 validados y 499 familias declaradas validadas. La validación YAML se distingue explícitamente de ejecución Ansible/IOS y de la posterior vinculación de su artefacto. Las cifras siguientes son históricas.
 
 ## Revisión del sexto lote — 30/10/2026

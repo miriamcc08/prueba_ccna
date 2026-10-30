@@ -125,6 +125,7 @@ def build(cache):
  scenario_results.update({r['id']: {k:r[k] for k in ['kind','result','passed']} for r in runpy.run_path(str(ROOT/'tools/check-reviewed-batch4-scenarios.py'))['review']()['records']})
  scenario_results.update({r['id']: {k:r[k] for k in ['kind','result','passed']} for r in runpy.run_path(str(ROOT/'tools/check-reviewed-batch6-scenarios.py'))['review']()['records']})
  scenario_results.update({r['id']: {k:r[k] for k in ['kind','result','passed']} for r in runpy.run_path(str(ROOT/'tools/check-reviewed-automation-scenarios.py'))['review']()['records']})
+ scenario_results.update({r['id']: {k:r[k] for k in ['kind','result','passed']} for r in runpy.run_path(str(ROOT/'tools/check-reviewed-batch5-scenarios.py'))['review']()['records']})
  report['reviewRounds'] = ['assisted-review-20261029-v1']
  def verify_passage(evidence, identity):
   body = text(index[evidence['documentSha256']]); start = evidence['normalizedOffset']
@@ -136,7 +137,7 @@ def build(cache):
   if not any(ref['url'] == url and ref['documentSha256'] == h for ref in reference_list): raise ValueError('Unbound source: '+identity)
   if not any(ref['url'] == url and ref['documentSha256'] == h for ref in report['references']):
    report['references'].append({'url':url,'documentSha256':h,'consultedOn':'2026-10-29','retrieval':'Primary document and focused passage inspected; the round records retrieval provenance.','excerpts':[{'anchor':' '.join(passage.split()[:4]),'excerpt':' '.join(passage.split()[:12]),'normalizedOffset':evidence['normalizedOffset']}]})
- for filename in ['continuation-20261029.json', 'legacy-20261029.json', 'routing-20261029.json', 'batch3-20261029.json', 'batch4-20261030.json', 'batch6-20261030.json', 'automation-20261030.json']:
+ for filename in ['continuation-20261029.json', 'legacy-20261029.json', 'routing-20261029.json', 'batch3-20261029.json', 'batch4-20261030.json', 'batch6-20261030.json', 'automation-20261030.json', 'batch5-20261030.json']:
   continuation = json.loads((ROOT/'server/prisma/reviews'/filename).read_text())
   report['reviewRounds'].append(continuation['id']); seen = set()
   for review in continuation['records']:
@@ -171,7 +172,7 @@ def build(cache):
     for extra in review['additionalEvidence']: register_reference(extra['url'], extra, continuation['references'], identity)
  report['summary'] = dict(collections.Counter(r['decision'] for r in records))
  report['revision'] = len(report['reviewRounds'])
- report['scope'] = f"{len(records)} structurally checked candidates. All 360 originals, the first 50 legacy questions, sixteen other previously reviewed legacy questions, all 48 previously pending third-batch candidates, and all 48 previously pending fourth-batch candidates and all 48 previously pending sixth-batch candidates and the five second-batch automation candidates have been inspected in ES/EN. Documentary holds remain pending; corrected versions have explicit assisted technical dispositions. {report['summary']['pending_review']} other legacy records remain pending complete technical review. Superseded originals are rejected with approved linked replacements. No human certification is asserted."
+ report['scope'] = f"{len(records)} structurally checked candidates. All 360 originals, the first 50 legacy questions, sixteen other previously reviewed legacy questions, all 48 previously pending third-batch candidates, and all 48 previously pending fourth-batch candidates and all 48 previously pending sixth-batch candidates and the five second-batch automation candidates and all 47 previously pending fifth-batch candidates have been inspected in ES/EN. Documentary holds remain pending; corrected versions have explicit assisted technical dispositions. {report['summary']['pending_review']} other legacy records remain pending complete technical review. Superseded originals are rejected with approved linked replacements. No human certification is asserted."
  quoted = collections.Counter()
  for ref in report['references']: quoted[ref['url']] += sum(len(e['excerpt'].split()) for e in ref['excerpts'])
  if any(total > 90 for total in quoted.values()): raise ValueError('Too much source text quoted for one URL')
