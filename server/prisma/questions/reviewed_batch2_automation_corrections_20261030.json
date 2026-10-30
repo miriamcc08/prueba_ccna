@@ -1,0 +1,283 @@
+{
+  "batchId": "reviewed-batch2-automation-20261030",
+  "questions": [
+    {
+      "statementEn": "After a switch upgrade, manual SSH login and commands still work. Comparing before/after output confirms that changed table columns broke an inventory script using regular expressions. What limitation does this illustrate, and how can supported structured APIs reduce it without guaranteeing compatibility across every release?",
+      "statementEs": "Tras actualizar un switch, el acceso SSH manual y los comandos siguen funcionando. Comparar las salidas anteriores y posteriores confirma que cambiar columnas rompió un script de inventario basado en expresiones regulares. ¿Qué limitación ilustra y cómo pueden reducirla las API estructuradas compatibles, sin garantizar compatibilidad entre todas las versiones?",
+      "questionType": "single_choice",
+      "difficulty": "basic",
+      "primaryTopicExamArea": "automation_programmability",
+      "multipleAnswerCount": null,
+      "estimatedTimeSeconds": 60,
+      "explanationEn": "Here the verified CLI formatting change breaks a parser coupled to human-readable presentation. Supported structured APIs/models reduce this coupling by exposing defined fields rather than terminal columns. They still have versions, capabilities, schemas and compatibility requirements; controllers may also use CLI southbound. SSH negotiates session keys and protects subsequent packets, rather than encrypting only once or requiring asymmetric encryption for every CLI command. Persistent configuration storage and command limits depend on platform/policy, not merely on using a controller.",
+      "explanationEs": "Aquí el cambio de formato CLI verificado rompe un parser ligado a presentación humana. Las API y modelos estructurados compatibles reducen esa dependencia al exponer campos definidos en vez de columnas de terminal. Conservan versiones, capacidades, esquemas y requisitos de compatibilidad; los controladores también pueden usar CLI southbound. SSH negocia claves de sesión y protege paquetes posteriores, no cifra solo una vez ni exige cifrado asimétrico por comando. Almacenamiento persistente y límites de comandos dependen de plataforma y política, no solo de usar controlador.",
+      "correctAnswerExplanationEn": "Here the verified CLI formatting change breaks a parser coupled to human-readable presentation. Supported structured APIs/models reduce this coupling by exposing defined fields rather than terminal columns. They still have versions, capabilities, schemas and compatibility requirements; controllers may also use CLI southbound. SSH negotiates session keys and protects subsequent packets, rather than encrypting only once or requiring asymmetric encryption for every CLI command. Persistent configuration storage and command limits depend on platform/policy, not merely on using a controller.",
+      "correctAnswerExplanationEs": "Aquí el cambio de formato CLI verificado rompe un parser ligado a presentación humana. Las API y modelos estructurados compatibles reducen esa dependencia al exponer campos definidos en vez de columnas de terminal. Conservan versiones, capacidades, esquemas y requisitos de compatibilidad; los controladores también pueden usar CLI southbound. SSH negocia claves de sesión y protege paquetes posteriores, no cifra solo una vez ni exige cifrado asimétrico por comando. Almacenamiento persistente y límites de comandos dependen de plataforma y política, no solo de usar controlador.",
+      "options": [
+        {
+          "optionLabel": "A",
+          "optionTextEn": "The parser depends on human-readable CLI formatting; supported structured APIs expose schema-defined fields, reducing presentation coupling while still requiring version/capability checks.",
+          "optionTextEs": "El parser depende del formato CLI para humanos; las API estructuradas compatibles exponen campos definidos por esquema y reducen esa dependencia, aunque exigen comprobar versiones y capacidades.",
+          "isCorrect": true,
+          "explanationEn": "Here the verified CLI formatting change breaks a parser coupled to human-readable presentation. Supported structured APIs/models reduce this coupling by exposing defined fields rather than terminal columns. They still have versions, capabilities, schemas and compatibility requirements; controllers may also use CLI southbound. SSH negotiates session keys and protects subsequent packets, rather than encrypting only once or requiring asymmetric encryption for every CLI command. Persistent configuration storage and command limits depend on platform/policy, not merely on using a controller.",
+          "explanationEs": "Aquí el cambio de formato CLI verificado rompe un parser ligado a presentación humana. Las API y modelos estructurados compatibles reducen esa dependencia al exponer campos definidos en vez de columnas de terminal. Conservan versiones, capacidades, esquemas y requisitos de compatibilidad; los controladores también pueden usar CLI southbound. SSH negocia claves de sesión y protege paquetes posteriores, no cifra solo una vez ni exige cifrado asimétrico por comando. Almacenamiento persistente y límites de comandos dependen de plataforma y política, no solo de usar controlador."
+        },
+        {
+          "optionLabel": "B",
+          "optionTextEn": "Traditional CLI management requires asymmetric public-key encryption for every interface command, whereas controllers eliminate transport encryption to accelerate script throughput.",
+          "optionTextEs": "La gestión tradicional mediante CLI requiere cifrado asimétrico de clave pública para cada comando de interfaz, mientras que los controladores eliminan el cifrado de transporte para acelerar el rendimiento de los scripts.",
+          "isCorrect": false,
+          "explanationEn": "SSH uses negotiated session protection for subsequent packets; asymmetric encryption per command is not required, and APIs do not need to discard encryption.",
+          "explanationEs": "SSH protege los paquetes posteriores con claves de sesión negociadas; no exige cifrado asimétrico por comando y las API no necesitan abandonar el cifrado."
+        },
+        {
+          "optionLabel": "C",
+          "optionTextEn": "Traditional CLI management prevents routers from saving startup configuration files to NVRAM, whereas controller-based networking permanently stores running configurations exclusively in switch flash memory.",
+          "optionTextEs": "La gestión tradicional de CLI impide que los routers guarden archivos de configuración de inicio en la NVRAM, mientras que las redes basadas en controladores almacenan de forma permanente las configuraciones activas exclusivamente en la memoria flash del switch.",
+          "isCorrect": false,
+          "explanationEn": "CLI can save persistent configuration. Moving to a controller does not imply the exclusive flash-storage architecture described; physical storage varies by platform.",
+          "explanationEs": "CLI permite guardar configuración persistente. Usar controlador no implica el almacenamiento exclusivo en flash descrito; el medio físico varía por plataforma."
+        },
+        {
+          "optionLabel": "D",
+          "optionTextEn": "Traditional CLI management enforces strict synchronous rate-limiting of one command execution per minute per device, whereas controllers bypass all device CPU scheduling mechanisms.",
+          "optionTextEs": "La gestión tradicional mediante CLI impone una limitación de tasa sincrónica estricta de una ejecución de comando por minuto por dispositivo, mientras que los controladores eluden todos los mecanismos de planificación de CPU del dispositivo.",
+          "isCorrect": false,
+          "explanationEn": "There is no universal one-command-per-minute CLI rule, and a controller does not bypass device resource scheduling or configured policy.",
+          "explanationEs": "No existe una regla CLI universal de un comando por minuto y un controlador no evita planificación de recursos ni políticas configuradas."
+        }
+      ],
+      "sourceName": "CCNA 200-301 Original Questions",
+      "sourceLicense": "Original content",
+      "id": "ccna-legacy-batch2_automation-001-review-r1",
+      "supersedesQuestionId": "ccna-legacy-batch2_automation-001",
+      "questionFamilyId": "ccna-legacy-batch2_automation-001",
+      "validationStatus": "pending_review",
+      "reviewCorrection": "Los modelos/API no son independientes de versión ni eliminan todo CLI; SSH cifra paquetes de sesión y no una sola vez al iniciar."
+    },
+    {
+      "statementEn": "Consider an SD-Access fabric with a routed Layer 3 underlay and an IP-transit border to external networks. Which two statements correctly describe fabric-edge and border functions, keeping control-plane route exchange separate from data-plane encapsulation? Choose two.",
+      "statementEs": "Considera un fabric SD-Access con underlay enrutado de Capa 3 y border de tránsito IP hacia redes externas. ¿Cuáles dos afirmaciones describen correctamente funciones edge y border, separando intercambio de rutas de control de encapsulación de datos? Elige dos.",
+      "questionType": "multiple_choice",
+      "difficulty": "intermediate",
+      "primaryTopicExamArea": "automation_programmability",
+      "multipleAnswerCount": 2,
+      "estimatedTimeSeconds": 90,
+      "explanationEn": "In the stated routed-underlay SD-Access design, fabric edges attach/onboard endpoints, apply supported policy, register endpoint mappings through LISP and encapsulate fabric traffic with VXLAN. An IP-transit border connects to external IP domains: data-plane encapsulation/decapsulation and control-plane route exchange are different operations, not conversion of VXLAN headers into BGP messages. LISP provides endpoint-location mapping; it does not imply that all broadcast/unknown/multicast handling vanishes. Catalyst Center orchestrates the fabric rather than being the mandatory hop for every client packet. Hardware/software forwarding details depend on platform and packet type.",
+      "explanationEs": "En el diseño SD-Access indicado con underlay enrutado, los fabric edge conectan e incorporan terminales, aplican políticas compatibles, registran mapeos mediante LISP y encapsulan tráfico fabric con VXLAN. Un border de tránsito IP conecta dominios externos: encapsular o desencapsular datos e intercambiar rutas de control son operaciones diferentes, no convertir cabeceras VXLAN en mensajes BGP. LISP aporta mapeo de ubicación; no implica eliminar todo tratamiento broadcast, desconocido o multicast. Catalyst Center orquesta el fabric, no es salto obligatorio de cada paquete cliente. El reenvío por hardware o software depende de plataforma y tipo de paquete.",
+      "correctAnswerExplanationEn": "In the stated routed-underlay SD-Access design, fabric edges attach/onboard endpoints, apply supported policy, register endpoint mappings through LISP and encapsulate fabric traffic with VXLAN. An IP-transit border connects to external IP domains: data-plane encapsulation/decapsulation and control-plane route exchange are different operations, not conversion of VXLAN headers into BGP messages. LISP provides endpoint-location mapping; it does not imply that all broadcast/unknown/multicast handling vanishes. Catalyst Center orchestrates the fabric rather than being the mandatory hop for every client packet. Hardware/software forwarding details depend on platform and packet type.",
+      "correctAnswerExplanationEs": "En el diseño SD-Access indicado con underlay enrutado, los fabric edge conectan e incorporan terminales, aplican políticas compatibles, registran mapeos mediante LISP y encapsulan tráfico fabric con VXLAN. Un border de tránsito IP conecta dominios externos: encapsular o desencapsular datos e intercambiar rutas de control son operaciones diferentes, no convertir cabeceras VXLAN en mensajes BGP. LISP aporta mapeo de ubicación; no implica eliminar todo tratamiento broadcast, desconocido o multicast. Catalyst Center orquesta el fabric, no es salto obligatorio de cada paquete cliente. El reenvío por hardware o software depende de plataforma y tipo de paquete.",
+      "options": [
+        {
+          "optionLabel": "A",
+          "optionTextEn": "Fabric edges onboard endpoints, apply supported policy, register endpoint mappings with the control plane and encapsulate client traffic into VXLAN for fabric transport.",
+          "optionTextEs": "Los fabric edge incorporan terminales, aplican políticas compatibles, registran mapeos con el plano de control y encapsulan tráfico cliente en VXLAN para transportarlo por el fabric.",
+          "isCorrect": true,
+          "explanationEn": "In the stated routed-underlay SD-Access design, fabric edges attach/onboard endpoints, apply supported policy, register endpoint mappings through LISP and encapsulate fabric traffic with VXLAN. An IP-transit border connects to external IP domains: data-plane encapsulation/decapsulation and control-plane route exchange are different operations, not conversion of VXLAN headers into BGP messages. LISP provides endpoint-location mapping; it does not imply that all broadcast/unknown/multicast handling vanishes. Catalyst Center orchestrates the fabric rather than being the mandatory hop for every client packet. Hardware/software forwarding details depend on platform and packet type.",
+          "explanationEs": "En el diseño SD-Access indicado con underlay enrutado, los fabric edge conectan e incorporan terminales, aplican políticas compatibles, registran mapeos mediante LISP y encapsulan tráfico fabric con VXLAN. Un border de tránsito IP conecta dominios externos: encapsular o desencapsular datos e intercambiar rutas de control son operaciones diferentes, no convertir cabeceras VXLAN en mensajes BGP. LISP aporta mapeo de ubicación; no implica eliminar todo tratamiento broadcast, desconocido o multicast. Catalyst Center orquesta el fabric, no es salto obligatorio de cada paquete cliente. El reenvío por hardware o software depende de plataforma y tipo de paquete."
+        },
+        {
+          "optionLabel": "B",
+          "optionTextEn": "An IP-transit border connects the fabric to external IP networks, performs appropriate data encapsulation/decapsulation, and separately exchanges routing information, for example using BGP.",
+          "optionTextEs": "Un border de tránsito IP conecta el fabric con redes IP externas, encapsula o desencapsula datos según corresponda e intercambia por separado información de rutas, por ejemplo mediante BGP.",
+          "isCorrect": true,
+          "explanationEn": "In the stated routed-underlay SD-Access design, fabric edges attach/onboard endpoints, apply supported policy, register endpoint mappings through LISP and encapsulate fabric traffic with VXLAN. An IP-transit border connects to external IP domains: data-plane encapsulation/decapsulation and control-plane route exchange are different operations, not conversion of VXLAN headers into BGP messages. LISP provides endpoint-location mapping; it does not imply that all broadcast/unknown/multicast handling vanishes. Catalyst Center orchestrates the fabric rather than being the mandatory hop for every client packet. Hardware/software forwarding details depend on platform and packet type.",
+          "explanationEs": "En el diseño SD-Access indicado con underlay enrutado, los fabric edge conectan e incorporan terminales, aplican políticas compatibles, registran mapeos mediante LISP y encapsulan tráfico fabric con VXLAN. Un border de tránsito IP conecta dominios externos: encapsular o desencapsular datos e intercambiar rutas de control son operaciones diferentes, no convertir cabeceras VXLAN en mensajes BGP. LISP aporta mapeo de ubicación; no implica eliminar todo tratamiento broadcast, desconocido o multicast. Catalyst Center orquesta el fabric, no es salto obligatorio de cada paquete cliente. El reenvío por hardware o software depende de plataforma y tipo de paquete."
+        },
+        {
+          "optionLabel": "C",
+          "optionTextEn": "The Fabric Control Plane node relies on traditional Spanning Tree Protocol (STP) BPDUs to maintain Layer 2 loop-free topologies across the physical underlay infrastructure.",
+          "optionTextEs": "El nodo Fabric Control Plane depende de las BPDUs del protocolo tradicional Spanning Tree Protocol (STP) para mantener topologías libres de bucles de Capa 2 en la infraestructura underlay física.",
+          "isCorrect": false,
+          "explanationEn": "The stated routed underlay uses Layer 3 routing, and LISP manages fabric endpoint mappings. This does not assert that STP or BUM handling is absent everywhere else.",
+          "explanationEs": "El underlay enrutado indicado usa routing L3 y LISP gestiona mapeos de terminales. Eso no afirma ausencia de STP o tratamiento BUM en todo otro lugar."
+        },
+        {
+          "optionLabel": "D",
+          "optionTextEn": "In the Intent-Based Networking lifecycle, the Assurance pillar is solely responsible for parsing initial human business goals into programmatic CLI syntax before device deployment.",
+          "optionTextEs": "En el ciclo de vida de Intent-Based Networking, el pilar de Assurance es el único responsable de analizar los objetivos de negocio humanos iniciales y convertirlos en sintaxis CLI programática antes del despliegue en los dispositivos.",
+          "isCorrect": false,
+          "explanationEn": "Translation captures intent, activation applies it and assurance monitors actual outcomes. Assurance is not solely a predeployment CLI parser.",
+          "explanationEs": "Translation captura intención, activation la aplica y assurance supervisa resultados reales. Assurance no es solo parser CLI previo al despliegue."
+        },
+        {
+          "optionLabel": "E",
+          "optionTextEn": "Cisco Catalyst Center requires every access switch to forward its raw data plane packets through the controller CPU for centralized deep packet inspection before delivery.",
+          "optionTextEs": "Cisco Catalyst Center exige que cada switch de acceso reenvíe sus paquetes de datos del data plane sin procesar a través de la CPU del controlador para una inspección profunda de paquetes centralizada antes de su entrega.",
+          "isCorrect": false,
+          "explanationEn": "Ordinary client forwarding is distributed across fabric devices, not obligatorily relayed through Catalyst Center CPU. This is not a guarantee of hardware/line-rate forwarding for every packet.",
+          "explanationEs": "El reenvío ordinario se distribuye entre equipos del fabric, no pasa obligatoriamente por CPU de Catalyst Center. No garantiza reenvío por hardware o a velocidad de línea para cada paquete."
+        }
+      ],
+      "sourceName": "CCNA 200-301 Original Questions",
+      "sourceLicense": "Original content",
+      "id": "ccna-legacy-batch2_automation-002-review-r1",
+      "supersedesQuestionId": "ccna-legacy-batch2_automation-002",
+      "questionFamilyId": "ccna-legacy-batch2_automation-002",
+      "validationStatus": "pending_review",
+      "reviewCorrection": "Se separa desencapsulación VXLAN del intercambio BGP y se eliminan garantías de ausencia de flooding y reenvío siempre ASIC/a velocidad de línea."
+    },
+    {
+      "statementEn": "A NOC compares two example uses: forecasting capacity trends from measured telemetry and using an LLM to draft configuration or summarize incident logs. Which statement best describes their typical predictive and generative roles? Treat these as overlapping capabilities, not guaranteed outcomes.",
+      "statementEs": "Un NOC compara dos usos de ejemplo: pronosticar tendencias de capacidad desde telemetría medida y usar un LLM para redactar configuración o resumir incidentes. ¿Qué afirmación describe mejor sus roles predictivo y generativo típicos? Son capacidades que pueden solaparse, no resultados garantizados.",
+      "questionType": "single_choice",
+      "difficulty": "basic",
+      "primaryTopicExamArea": "automation_programmability",
+      "multipleAnswerCount": null,
+      "estimatedTimeSeconds": 60,
+      "explanationEn": "Forecasting capacity or likely faults from telemetry is a typical predictive use; drafting configuration text or summarizing incidents with an LLM is a typical generative use. These are examples rather than disjoint capabilities: generative systems may predict or produce numbers, and not all AI runs continuously or uses an LLM. Forecast accuracy depends on data/model quality, and generated configuration needs technical validation. Neither category is defined as a Puppet compiler or STP replacement. TTL forwarding is a networking function that may be implemented in hardware or software, without per-packet human approval.",
+      "explanationEs": "Pronosticar capacidad o fallas probables desde telemetría es uso predictivo típico; redactar configuración o resumir incidentes con un LLM es uso generativo típico. Son ejemplos, no capacidades disjuntas: sistemas generativos pueden predecir o producir números y no toda IA funciona continuamente ni usa LLM. La exactitud depende de datos y modelo y la configuración generada necesita validación técnica. Ninguna categoría se define como compilador Puppet o sustituto STP. El tratamiento TTL es función de red implementable por hardware o software, sin aprobación humana por paquete.",
+      "correctAnswerExplanationEn": "Forecasting capacity or likely faults from telemetry is a typical predictive use; drafting configuration text or summarizing incidents with an LLM is a typical generative use. These are examples rather than disjoint capabilities: generative systems may predict or produce numbers, and not all AI runs continuously or uses an LLM. Forecast accuracy depends on data/model quality, and generated configuration needs technical validation. Neither category is defined as a Puppet compiler or STP replacement. TTL forwarding is a networking function that may be implemented in hardware or software, without per-packet human approval.",
+      "correctAnswerExplanationEs": "Pronosticar capacidad o fallas probables desde telemetría es uso predictivo típico; redactar configuración o resumir incidentes con un LLM es uso generativo típico. Son ejemplos, no capacidades disjuntas: sistemas generativos pueden predecir o producir números y no toda IA funciona continuamente ni usa LLM. La exactitud depende de datos y modelo y la configuración generada necesita validación técnica. Ninguna categoría se define como compilador Puppet o sustituto STP. El tratamiento TTL es función de red implementable por hardware o software, sin aprobación humana por paquete.",
+      "options": [
+        {
+          "optionLabel": "A",
+          "optionTextEn": "Predictive AI analyzes historical telemetry data and statistical patterns to forecast network anomalies, link congestion, or hardware degradation, whereas Generative AI uses Large Language Models (LLMs) to synthesize configuration scripts, summarize complex incident logs, and answer operational inquiries in natural language.",
+          "optionTextEs": "La IA predictiva (Predictive AI) analiza datos de telemetría histórica y patrones estadísticos para pronosticar anomalías en la red, congestión de enlaces o degradación de hardware, mientras que la IA generativa (Generative AI) utiliza modelos de lenguaje extenso (LLMs) para sintetizar scripts de configuración, resumir registros de incidentes complejos y responder consultas operativas en lenguaje natural.",
+          "isCorrect": true,
+          "explanationEn": "Forecasting capacity or likely faults from telemetry is a typical predictive use; drafting configuration text or summarizing incidents with an LLM is a typical generative use. These are examples rather than disjoint capabilities: generative systems may predict or produce numbers, and not all AI runs continuously or uses an LLM. Forecast accuracy depends on data/model quality, and generated configuration needs technical validation. Neither category is defined as a Puppet compiler or STP replacement. TTL forwarding is a networking function that may be implemented in hardware or software, without per-packet human approval.",
+          "explanationEs": "Pronosticar capacidad o fallas probables desde telemetría es uso predictivo típico; redactar configuración o resumir incidentes con un LLM es uso generativo típico. Son ejemplos, no capacidades disjuntas: sistemas generativos pueden predecir o producir números y no toda IA funciona continuamente ni usa LLM. La exactitud depende de datos y modelo y la configuración generada necesita validación técnica. Ninguna categoría se define como compilador Puppet o sustituto STP. El tratamiento TTL es función de red implementable por hardware o software, sin aprobación humana por paquete."
+        },
+        {
+          "optionLabel": "B",
+          "optionTextEn": "Predictive AI uses Large Language Models to interactively converse with network engineers in human language, whereas Generative AI is limited exclusively to calculating mathematical moving averages of CPU utilization.",
+          "optionTextEs": "La IA predictiva utiliza modelos de lenguaje extenso para conversar interactivamente con los ingenieros de red en lenguaje humano, mientras que la IA generativa se limita exclusivamente a calcular promedios móviles matemáticos de utilización de CPU.",
+          "isCorrect": false,
+          "explanationEn": "A generative LLM is not restricted to moving averages; conversational text generation is a typical generative use, while telemetry forecasting is a typical predictive use.",
+          "explanationEs": "Un LLM generativo no se limita a promedios móviles; generar texto conversacional es uso generativo típico y pronosticar desde telemetría es uso predictivo típico."
+        },
+        {
+          "optionLabel": "C",
+          "optionTextEn": "Predictive AI runs as an agentless background daemon to compile Puppet manifests on border routers, whereas Generative AI functions strictly as a hardware layer protocol that replaces Spanning Tree Protocol.",
+          "optionTextEs": "La IA predictiva se ejecuta como un demonio en segundo plano sin agentes para compilar manifiestos de Puppet en routers de frontera, mientras que la IA generativa funciona estrictamente como un protocolo de capa de hardware que reemplaza a Spanning Tree Protocol.",
+          "isCorrect": false,
+          "explanationEn": "Neither role is defined by compiling Puppet manifests or replacing STP. Toolchains can use AI assistance without changing these definitions.",
+          "explanationEs": "Ningún rol se define por compilar manifiestos Puppet o sustituir STP. Las herramientas pueden usar asistencia IA sin cambiar esas definiciones."
+        },
+        {
+          "optionLabel": "D",
+          "optionTextEn": "Predictive AI requires administrative pre-approval before every packet forwarding decision, whereas Generative AI operates autonomously inside switch ASICs to modify IP packet TTL values.",
+          "optionTextEs": "La IA predictiva requiere la aprobación administrativa previa antes de cada decisión de reenvío de paquetes, mientras que la IA generativa opera de forma autónoma dentro de los ASICs de los switches para modificar los valores TTL de los paquetes IP.",
+          "isCorrect": false,
+          "explanationEn": "Forwarding does not require human preapproval of each packet; TTL processing can use hardware or software and is not the defining role of generative AI.",
+          "explanationEs": "Reenviar no requiere aprobación humana por paquete; procesar TTL puede usar hardware o software y no define el rol de IA generativa."
+        }
+      ],
+      "sourceName": "CCNA 200-301 Original Questions",
+      "sourceLicense": "Original content",
+      "id": "ccna-legacy-batch2_automation-003-review-r1",
+      "supersedesQuestionId": "ccna-legacy-batch2_automation-003",
+      "questionFamilyId": "ccna-legacy-batch2_automation-003",
+      "validationStatus": "pending_review",
+      "reviewCorrection": "Se eliminan dicotomía exclusiva cuantitativo/cualitativo y afirmaciones de compilador Puppet/TTL siempre en ASIC; se explicitan límites de predicción/generación."
+    },
+    {
+      "statementEn": "A controller-style lab API uses X-Auth-Token. The supplied response excerpt below shows only status, content type and illustrative JSON; other headers are omitted and no particular vendor error schema or token encoding is asserted. What does this explicit response mean, compared with general HTTP 403 and 400 semantics?\n\n```http\nHTTP/1.1 401 Unauthorized\nContent-Type: application/json\n\n{\"error\":{\"statusCode\":401,\"errorCode\":\"AUTH_TOKEN_EXPIRED\",\"message\":\"The supplied token expired.\"}}\n```",
+      "statementEs": "Una API de controlador en laboratorio usa X-Auth-Token. El extracto de respuesta muestra solo estado, tipo de contenido y JSON ilustrativo; se omiten otras cabeceras y no se afirma esquema de error de fabricante ni codificación del token específicos. ¿Qué significa esta respuesta explícita frente a la semántica general HTTP 403 y 400?\n\n```http\nHTTP/1.1 401 Unauthorized\nContent-Type: application/json\n\n{\"error\":{\"statusCode\":401,\"errorCode\":\"AUTH_TOKEN_EXPIRED\",\"message\":\"The supplied token expired.\"}}\n```",
+      "questionType": "automation",
+      "difficulty": "advanced",
+      "primaryTopicExamArea": "automation_programmability",
+      "multipleAnswerCount": null,
+      "estimatedTimeSeconds": 120,
+      "explanationEn": "The supplied lab response explicitly reports an expired token and 401: the request lacks valid authentication credentials for this resource. Obtain a fresh token through the supported authentication workflow. In general, 403 means the server understood the request but refuses it; insufficient permissions are common, not proof that authentication necessarily succeeded. 400 indicates a perceived client request error and is broader than JSON syntax. A missing/concealed resource can produce 404; an unavailable device does not universally map to a particular HTTP status or even guarantee an HTTP response. Token encoding, lifetime and accepted headers depend on the API/version.",
+      "explanationEs": "La respuesta de laboratorio indica explícitamente token expirado y 401: la solicitud carece de credenciales de autenticación válidas para ese recurso. Debe obtenerse otro token mediante el flujo admitido. En general, 403 significa que el servidor entendió pero rechaza la solicitud; permisos insuficientes son causa común, no prueba de autenticación necesariamente exitosa. 400 indica error percibido de solicitud cliente y abarca más que sintaxis JSON. Un recurso ausente u ocultado puede dar 404; un equipo no disponible no implica universalmente un código HTTP concreto ni garantiza respuesta HTTP. Codificación del token, vigencia y cabeceras aceptadas dependen de API y versión.",
+      "correctAnswerExplanationEn": "The supplied lab response explicitly reports an expired token and 401: the request lacks valid authentication credentials for this resource. Obtain a fresh token through the supported authentication workflow. In general, 403 means the server understood the request but refuses it; insufficient permissions are common, not proof that authentication necessarily succeeded. 400 indicates a perceived client request error and is broader than JSON syntax. A missing/concealed resource can produce 404; an unavailable device does not universally map to a particular HTTP status or even guarantee an HTTP response. Token encoding, lifetime and accepted headers depend on the API/version.",
+      "correctAnswerExplanationEs": "La respuesta de laboratorio indica explícitamente token expirado y 401: la solicitud carece de credenciales de autenticación válidas para ese recurso. Debe obtenerse otro token mediante el flujo admitido. En general, 403 significa que el servidor entendió pero rechaza la solicitud; permisos insuficientes son causa común, no prueba de autenticación necesariamente exitosa. 400 indica error percibido de solicitud cliente y abarca más que sintaxis JSON. Un recurso ausente u ocultado puede dar 404; un equipo no disponible no implica universalmente un código HTTP concreto ni garantiza respuesta HTTP. Codificación del token, vigencia y cabeceras aceptadas dependen de API y versión.",
+      "options": [
+        {
+          "optionLabel": "A",
+          "optionTextEn": "This response explicitly reports token expiration with 401; 403 means the server refuses an understood request, and 400 indicates a perceived client request error such as malformed syntax or invalid parameters.",
+          "optionTextEs": "Esta respuesta informa explícitamente expiración del token con 401; 403 significa rechazo de una solicitud entendida y 400 indica error percibido de solicitud cliente, como sintaxis o parámetros inválidos.",
+          "isCorrect": true,
+          "explanationEn": "The supplied lab response explicitly reports an expired token and 401: the request lacks valid authentication credentials for this resource. Obtain a fresh token through the supported authentication workflow. In general, 403 means the server understood the request but refuses it; insufficient permissions are common, not proof that authentication necessarily succeeded. 400 indicates a perceived client request error and is broader than JSON syntax. A missing/concealed resource can produce 404; an unavailable device does not universally map to a particular HTTP status or even guarantee an HTTP response. Token encoding, lifetime and accepted headers depend on the API/version.",
+          "explanationEs": "La respuesta de laboratorio indica explícitamente token expirado y 401: la solicitud carece de credenciales de autenticación válidas para ese recurso. Debe obtenerse otro token mediante el flujo admitido. En general, 403 significa que el servidor entendió pero rechaza la solicitud; permisos insuficientes son causa común, no prueba de autenticación necesariamente exitosa. 400 indica error percibido de solicitud cliente y abarca más que sintaxis JSON. Un recurso ausente u ocultado puede dar 404; un equipo no disponible no implica universalmente un código HTTP concreto ni garantiza respuesta HTTP. Codificación del token, vigencia y cabeceras aceptadas dependen de API y versión."
+        },
+        {
+          "optionLabel": "B",
+          "optionTextEn": "The request failed because HTTP GET requires an XML request payload rather than JSON; HTTP 401 indicates unsupported media types, whereas HTTP 403 indicates that the network switch has crashed, and HTTP 400 indicates a successful asynchronous operation.",
+          "optionTextEs": "La solicitud falló porque HTTP GET requiere una carga de solicitud en XML en lugar de JSON; HTTP 401 indica tipos de medios no compatibles, mientras que HTTP 403 indica que el switch de red se ha caído y HTTP 400 indica una operación asíncrona exitosa.",
+          "isCorrect": false,
+          "explanationEn": "GET does not require an XML body, and this explicit 401 is an authentication failure, not a media-type error, device-crash diagnosis or asynchronous success.",
+          "explanationEs": "GET no exige cuerpo XML y este 401 explícito es falla de autenticación, no error de medios, diagnóstico de caída del equipo ni éxito asíncrono."
+        },
+        {
+          "optionLabel": "C",
+          "optionTextEn": "The request failed because the device UUID in the URL path is unknown to the controller; HTTP 401 indicates a resource was not found on the server, whereas HTTP 403 indicates invalid authentication tokens, and HTTP 400 indicates a database connection timeout.",
+          "optionTextEs": "La solicitud falló porque el UUID del dispositivo en la ruta URL es desconocido para el controlador; HTTP 401 indica que no se encontró un recurso en el servidor, mientras que HTTP 403 indica tokens de autenticación no válidos y HTTP 400 indica un tiempo de espera agotado en la base de datos.",
+          "isCorrect": false,
+          "explanationEn": "The supplied error identifies expiration. HTTP statuses are not universal mappings from a device UUID or database fault; authentication may be checked before resource existence.",
+          "explanationEs": "El error suministrado identifica expiración. Los estados HTTP no son mapeos universales de UUID o falla de base; la autenticación puede comprobarse antes de revelar existencia de recursos."
+        },
+        {
+          "optionLabel": "D",
+          "optionTextEn": "The request succeeded because the HTTP 401 code confirms that the controller received the request; HTTP 401 indicates successful token creation, HTTP 403 indicates a successful configuration update, and HTTP 400 indicates a successful device deletion.",
+          "optionTextEs": "La solicitud tuvo éxito porque el código HTTP 401 confirma que el controlador recibió la solicitud; HTTP 401 indica la creación exitosa del token, HTTP 403 indica una actualización de configuración exitosa y HTTP 400 indica una eliminación exitosa de dispositivo.",
+          "isCorrect": false,
+          "explanationEn": "These 4xx responses are not success-class responses. Receipt of a request is not confirmation that token creation, configuration or deletion succeeded.",
+          "explanationEs": "Estas respuestas 4xx no son de clase de éxito. Recibir una solicitud no confirma éxito al crear token, configurar o eliminar."
+        }
+      ],
+      "sourceName": "CCNA 200-301 Original Questions",
+      "sourceLicense": "Original content",
+      "id": "ccna-legacy-batch2_automation-004-review-r1",
+      "supersedesQuestionId": "ccna-legacy-batch2_automation-004",
+      "questionFamilyId": "ccna-legacy-batch2_automation-004",
+      "validationStatus": "pending_review",
+      "reviewCorrection": "403 no demuestra autenticación exitosa; se eliminan Bearer intercambiable, plazo fijo/JWT obligatorio, timestamp incoherente y mapeo automático de caída de switch a HTTP 500."
+    },
+    {
+      "statementEn": "Assume compatible IOS devices, installed cisco.ios/ansible.netcommon collections and valid inventory credentials/privileges. Analyze the following playbook structure and its shown network_cli execution, without generalizing to every mode supported by each tool.\n\n```yaml\n---\n- name: Apply Enterprise Infrastructure Baseline\n  hosts: access_switches\n  gather_facts: false\n  connection: ansible.netcommon.network_cli\n  vars:\n    ansible_network_os: cisco.ios.ios\n  tasks:\n    - name: Configure Corporate NTP Servers\n      cisco.ios.ios_ntp_global:\n        config:\n          servers:\n            - server: 172.16.1.50\n              prefer: true\n        state: merged\n    - name: Ensure Domain Name Configuration\n      cisco.ios.ios_system:\n        domain_name:\n          - corp.example.com\n        state: present\n```\n\nWhich statement correctly describes the play/task hierarchy and this push workflow?",
+      "statementEs": "Supón IOS compatibles, colecciones cisco.ios/ansible.netcommon instaladas y credenciales y privilegios válidos de inventario. Analiza la estructura y ejecución network_cli mostradas, sin generalizar a todos los modos admitidos por cada herramienta.\n\n```yaml\n---\n- name: Apply Enterprise Infrastructure Baseline\n  hosts: access_switches\n  gather_facts: false\n  connection: ansible.netcommon.network_cli\n  vars:\n    ansible_network_os: cisco.ios.ios\n  tasks:\n    - name: Configure Corporate NTP Servers\n      cisco.ios.ios_ntp_global:\n        config:\n          servers:\n            - server: 172.16.1.50\n              prefer: true\n        state: merged\n    - name: Ensure Domain Name Configuration\n      cisco.ios.ios_system:\n        domain_name:\n          - corp.example.com\n        state: present\n```\n\n¿Qué afirmación describe correctamente la jerarquía play/tareas y este flujo push?",
+      "questionType": "automation",
+      "difficulty": "intermediate",
+      "primaryTopicExamArea": "automation_programmability",
+      "multipleAnswerCount": null,
+      "estimatedTimeSeconds": 90,
+      "explanationEn": "The YAML has one play targeting access_switches and two tasks ordered per host. ios_ntp_global accepts config plus merged; ios_system instead accepts domain_name directly and present/absent, not config or merged. With the required collections, compatible IOS devices, inventory/authentication and privilege settings, the shown network_cli execution uses SSH connections initiated by the control node and needs no Ansible agent on IOS. This is the displayed push workflow, not a claim that Ansible has no pull mode: ansible-pull exists for suitable hosts. Puppet/Chef server-agent polling is a common comparison, not their only possible execution mode. Idempotence depends on module/operation, not the word module alone.",
+      "explanationEs": "El YAML contiene un play dirigido a access_switches y dos tareas ordenadas por host. ios_ntp_global admite config y merged; ios_system admite domain_name directamente y present/absent, no config ni merged. Con colecciones requeridas, IOS compatibles, inventario, autenticación y privilegios adecuados, network_cli usa SSH iniciado por el nodo de control y no necesita agente Ansible en IOS. Es el flujo push mostrado, no afirmar ausencia de modo pull: existe ansible-pull para hosts aptos. El sondeo servidor-agente Puppet/Chef es comparación común, no su único modo. La idempotencia depende de módulo y operación, no solo de llamarse módulo.",
+      "correctAnswerExplanationEn": "The YAML has one play targeting access_switches and two tasks ordered per host. ios_ntp_global accepts config plus merged; ios_system instead accepts domain_name directly and present/absent, not config or merged. With the required collections, compatible IOS devices, inventory/authentication and privilege settings, the shown network_cli execution uses SSH connections initiated by the control node and needs no Ansible agent on IOS. This is the displayed push workflow, not a claim that Ansible has no pull mode: ansible-pull exists for suitable hosts. Puppet/Chef server-agent polling is a common comparison, not their only possible execution mode. Idempotence depends on module/operation, not the word module alone.",
+      "correctAnswerExplanationEs": "El YAML contiene un play dirigido a access_switches y dos tareas ordenadas por host. ios_ntp_global admite config y merged; ios_system admite domain_name directamente y present/absent, no config ni merged. Con colecciones requeridas, IOS compatibles, inventario, autenticación y privilegios adecuados, network_cli usa SSH iniciado por el nodo de control y no necesita agente Ansible en IOS. Es el flujo push mostrado, no afirmar ausencia de modo pull: existe ansible-pull para hosts aptos. El sondeo servidor-agente Puppet/Chef es comparación común, no su único modo. La idempotencia depende de módulo y operación, no solo de llamarse módulo.",
+      "options": [
+        {
+          "optionLabel": "A",
+          "optionTextEn": "One play targets access_switches with two tasks ordered per host; in this network_cli workflow the control node initiates SSH to apply settings without an Ansible agent on IOS, unlike the usual server-agent polling comparison.",
+          "optionTextEs": "Un play se dirige a access_switches con dos tareas ordenadas por host; en este flujo network_cli el control inicia SSH para aplicar ajustes sin agente Ansible en IOS, a diferencia de la comparación usual de sondeo servidor-agente.",
+          "isCorrect": true,
+          "explanationEn": "The YAML has one play targeting access_switches and two tasks ordered per host. ios_ntp_global accepts config plus merged; ios_system instead accepts domain_name directly and present/absent, not config or merged. With the required collections, compatible IOS devices, inventory/authentication and privilege settings, the shown network_cli execution uses SSH connections initiated by the control node and needs no Ansible agent on IOS. This is the displayed push workflow, not a claim that Ansible has no pull mode: ansible-pull exists for suitable hosts. Puppet/Chef server-agent polling is a common comparison, not their only possible execution mode. Idempotence depends on module/operation, not the word module alone.",
+          "explanationEs": "El YAML contiene un play dirigido a access_switches y dos tareas ordenadas por host. ios_ntp_global admite config y merged; ios_system admite domain_name directamente y present/absent, no config ni merged. Con colecciones requeridas, IOS compatibles, inventario, autenticación y privilegios adecuados, network_cli usa SSH iniciado por el nodo de control y no necesita agente Ansible en IOS. Es el flujo push mostrado, no afirmar ausencia de modo pull: existe ansible-pull para hosts aptos. El sondeo servidor-agente Puppet/Chef es comparación común, no su único modo. La idempotencia depende de módulo y operación, no solo de llamarse módulo."
+        },
+        {
+          "optionLabel": "B",
+          "optionTextEn": "The playbook defines a single task containing two separate plays; Ansible uses an agent-based pull model where switches download YAML recipes from an Ansible master server over HTTPS every 30 minutes.",
+          "optionTextEs": "El playbook define una única tarea que contiene dos plays separados; Ansible utiliza un modelo pull basado en agentes donde los switches descargan recetas YAML desde un servidor maestro de Ansible a través de HTTPS cada 30 minutos.",
+          "isCorrect": false,
+          "explanationEn": "The play contains two tasks, not a task containing two plays. The shown network_cli workflow is not the claimed thirty-minute agent polling scheme; other supported modes do not change this YAML.",
+          "explanationEs": "El play contiene dos tareas, no una tarea con dos plays. El flujo network_cli mostrado no es el sondeo por agente cada treinta minutos descrito; otros modos admitidos no cambian este YAML."
+        },
+        {
+          "optionLabel": "C",
+          "optionTextEn": "The playbook represents a single module containing two separate playbooks; Ansible uses a pull model where the control node queries switch SNMP MIBs to detect drift before triggering manual TFTP downloads.",
+          "optionTextEs": "El playbook representa un único módulo que contiene dos playbooks separados; Ansible utiliza un modelo pull donde el nodo de control consulta MIBs de SNMP del switch para detectar desviaciones antes de activar descargas manuales por TFTP.",
+          "isCorrect": false,
+          "explanationEn": "A module is not a container of playbooks, and this YAML does not specify SNMP-triggered manual TFTP transfer.",
+          "explanationEs": "Un módulo no contiene playbooks y este YAML no especifica transferencias TFTP manuales disparadas por SNMP."
+        },
+        {
+          "optionLabel": "D",
+          "optionTextEn": "The playbook defines an inventory file containing two Chef recipes; Ansible requires proprietary agent daemons installed in Cisco IOS flash memory to pull configuration policies over unencrypted Telnet.",
+          "optionTextEs": "El playbook define un archivo de inventario que contiene dos recetas de Chef; Ansible requiere demonios de agente propietarios instalados en la memoria flash de Cisco IOS para descargar políticas de configuración mediante Telnet no cifrado.",
+          "isCorrect": false,
+          "explanationEn": "This is an Ansible playbook, not a Chef inventory; network_cli here uses SSH without installing the alleged IOS agent.",
+          "explanationEs": "Es playbook Ansible, no inventario Chef; aquí network_cli usa SSH sin instalar el supuesto agente IOS."
+        }
+      ],
+      "sourceName": "CCNA 200-301 Original Questions",
+      "sourceLicense": "Original content",
+      "id": "ccna-legacy-batch2_automation-005-review-r1",
+      "supersedesQuestionId": "ccna-legacy-batch2_automation-005",
+      "questionFamilyId": "ccna-legacy-batch2_automation-005",
+      "validationStatus": "pending_review",
+      "reviewCorrection": "ios_system no admite config/state merged; se usan argumentos publicados, conexión cualificada y modelo push del ejemplo sin negar ansible-pull ni otros modos Puppet/Chef."
+    }
+  ]
+}

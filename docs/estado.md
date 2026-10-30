@@ -6,6 +6,10 @@ Estado vigente del cierre funcional: [auditoría del 26/10/2026](auditoria-funci
 
 ## Actualización vigente del 30/10/2026
 
+[Cierre de automatización del segundo lote](revision-automatizacion-segundo-lote-20261030.md): se corrigen y aprueban sus cinco pendientes. Acumulado de esta continuación: 52 versiones utilizables más (44 corregidas y ocho sin cambios), 572 validadas, 163 rechazadas con reemplazo y 88 pendientes entre 823 registros importables. Pasan 619 pruebas de servidor y 22 de Chromium; tipado estricto, compilación, auditoría e idempotencia correctos. La carga aislada nueva tiene 831 registros, 580 validados y 499 familias declaradas validadas. La validación YAML se distingue explícitamente de ejecución Ansible/IOS y de la posterior vinculación de su artefacto. Las cifras siguientes son históricas.
+
+## Revisión del sexto lote — 30/10/2026
+
 [Revisión del sexto lote heredado](revision-lote-heredado-06-20261030.md): 818 registros importables; 567 versiones validadas, 158 originales rechazados con reemplazo aprobado y 93 pendientes. Se incorporan 47 versiones utilizables (39 corregidas y ocho sin cambios). Agile conserva retención documental; los dos borradores actuales no son importables. Pasan 617 pruebas de servidor y 22 de Chromium, tipado estricto y compilación. La carga aislada nueva tiene 826 preguntas, 575 validadas y 494 familias declaradas validadas. Las rondas anteriores conservan sus cifras históricas.
 
 ## Actualización del 30/10/2026

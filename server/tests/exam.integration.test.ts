@@ -853,17 +853,54 @@ describe('Applying assisted technical bank decisions', () => {
     const areas = ['network_fundamentals', 'network_access', 'ip_connectivity', 'ip_services', 'security_fundamentals', 'automation_programmability'];
     for (const [i, area] of areas.entries()) await prisma.topic.upsert({ where: { code: `${i + 1}.0` }, update: {}, create: { code: `${i + 1}.0`, nameEn: area, nameEs: area, examArea: area, examAreaNumber: `${i + 1}.0`, weightPercentage: 10 } });
   }
+  it('upgrades the published 567 approvals with all five second-batch automation corrections', async () => {
+    const { syncReviewedBank, REVIEW_SERVICE_ID } = await import('../prisma/sync-reviewed-bank');
+    const { digest, contentRecord } = await import('../prisma/bank-review-format');
+    const source = join(__dirname, '../prisma/questions');
+    const prior = mkdtempSync(join(tmpdir(), 'ccna-automation-review-'));
+    try {
+      const omitted = ['reviewed_batch2_automation_corrections_20261030.json'];
+      for (const file of readdirSync(source).filter(name => name.endsWith('.json') && !omitted.includes(name))) writeFileSync(join(prior, file), readFileSync(join(source, file)));
+      const manifest = JSON.parse(readFileSync(join(__dirname, '../prisma/reviews/assisted-20261029.json'), 'utf8'));
+      manifest.records = manifest.records.filter((row: any) => !omitted.includes(row.file));
+      for (const row of manifest.records) if (row.reviewRound === 'assisted-automation-review-20261030-v1') row.decision = 'pending_review';
+      manifest.summary = { validated: 567, pending_review: 93, rejected: 158 };
+      const manifestPath = join(prior, 'previous-manifest.snapshot');
+      writeFileSync(manifestPath, JSON.stringify(manifest));
+      await reviewTopics();
+      expect((await syncReviewedBank(prisma, true, prior, manifestPath)).appliedApprovals).toBe(567);
+      const id = 'ccna-legacy-batch2_automation-005';
+      const before = await prisma.question.findUniqueOrThrow({ where: { id }, include: { options: true, primaryTopic: true } });
+      const result = await syncReviewedBank(prisma, true);
+      expect(result.questionsToCreate).toBe(5);
+      expect(result.appliedApprovals).toBe(5);
+      expect(result.appliedRejections).toBe(5);
+      expect(result.approvalsAlreadyPresent).toBe(567);
+      expect(result.rejectionsAlreadyPresent).toBe(158);
+      const after = await prisma.question.findUniqueOrThrow({ where: { id }, include: { options: true, primaryTopic: true } });
+      expect(digest(contentRecord(after))).toBe(digest(contentRecord(before)));
+      expect(after.validationStatus).toBe('rejected');
+      expect((await prisma.question.findUniqueOrThrow({ where: { id: id + '-review-r1' } })).validationStatus).toBe('validated');
+      for (const held of ['050']) {
+        expect((await prisma.question.findUniqueOrThrow({ where: { id: 'ccna-legacy-batch6_all-' + held } })).validationStatus).toBe('pending_review');
+        expect(await prisma.question.findUnique({ where: { id: 'ccna-legacy-batch6_all-' + held + '-review-r1' } })).toBeNull();
+      }
+      expect(await prisma.questionReview.count({ where: { reviewerId: REVIEW_SERVICE_ID } })).toBe(735);
+      const again = await syncReviewedBank(prisma, true);
+      expect(again.appliedApprovals + again.appliedRejections + again.questionsToCreate).toBe(0);
+    } finally { rmSync(prior, { recursive: true, force: true }); }
+  }, 60000);
   it('upgrades the published 520 approvals with sixth-batch corrections and preserves the Agile hold', async () => {
     const { syncReviewedBank, REVIEW_SERVICE_ID } = await import('../prisma/sync-reviewed-bank');
     const { digest, contentRecord } = await import('../prisma/bank-review-format');
     const source = join(__dirname, '../prisma/questions');
     const prior = mkdtempSync(join(tmpdir(), 'ccna-sixth-batch-review-'));
     try {
-      const omitted = ['reviewed_batch6_corrections_20261030.json'];
+      const omitted = ['reviewed_batch6_corrections_20261030.json', 'reviewed_batch2_automation_corrections_20261030.json'];
       for (const file of readdirSync(source).filter(name => name.endsWith('.json') && !omitted.includes(name))) writeFileSync(join(prior, file), readFileSync(join(source, file)));
       const manifest = JSON.parse(readFileSync(join(__dirname, '../prisma/reviews/assisted-20261029.json'), 'utf8'));
       manifest.records = manifest.records.filter((row: any) => !omitted.includes(row.file));
-      for (const row of manifest.records) if (row.reviewRound === 'assisted-batch6-review-20261030-v1') row.decision = 'pending_review';
+      for (const row of manifest.records) if (['assisted-batch6-review-20261030-v1', 'assisted-automation-review-20261030-v1'].includes(row.reviewRound)) row.decision = 'pending_review';
       manifest.summary = { validated: 520, pending_review: 140, rejected: 119 };
       const manifestPath = join(prior, 'previous-manifest.snapshot');
       writeFileSync(manifestPath, JSON.stringify(manifest));
@@ -872,9 +909,9 @@ describe('Applying assisted technical bank decisions', () => {
       const id = 'ccna-legacy-batch6_all-004';
       const before = await prisma.question.findUniqueOrThrow({ where: { id }, include: { options: true, primaryTopic: true } });
       const result = await syncReviewedBank(prisma, true);
-      expect(result.questionsToCreate).toBe(39);
-      expect(result.appliedApprovals).toBe(47);
-      expect(result.appliedRejections).toBe(39);
+      expect(result.questionsToCreate).toBe(44);
+      expect(result.appliedApprovals).toBe(52);
+      expect(result.appliedRejections).toBe(44);
       expect(result.approvalsAlreadyPresent).toBe(520);
       expect(result.rejectionsAlreadyPresent).toBe(119);
       const after = await prisma.question.findUniqueOrThrow({ where: { id }, include: { options: true, primaryTopic: true } });
@@ -885,7 +922,7 @@ describe('Applying assisted technical bank decisions', () => {
         expect((await prisma.question.findUniqueOrThrow({ where: { id: 'ccna-legacy-batch6_all-' + held } })).validationStatus).toBe('pending_review');
         expect(await prisma.question.findUnique({ where: { id: 'ccna-legacy-batch6_all-' + held + '-review-r1' } })).toBeNull();
       }
-      expect(await prisma.questionReview.count({ where: { reviewerId: REVIEW_SERVICE_ID } })).toBe(725);
+      expect(await prisma.questionReview.count({ where: { reviewerId: REVIEW_SERVICE_ID } })).toBe(735);
       const again = await syncReviewedBank(prisma, true);
       expect(again.appliedApprovals + again.appliedRejections + again.questionsToCreate).toBe(0);
     } finally { rmSync(prior, { recursive: true, force: true }); }
@@ -896,11 +933,11 @@ describe('Applying assisted technical bank decisions', () => {
     const source = join(__dirname, '../prisma/questions');
     const prior = mkdtempSync(join(tmpdir(), 'ccna-fourth-batch-review-'));
     try {
-      const omitted = ['reviewed_batch4_corrections_20261030.json', 'reviewed_batch6_corrections_20261030.json'];
+      const omitted = ['reviewed_batch4_corrections_20261030.json', 'reviewed_batch6_corrections_20261030.json', 'reviewed_batch2_automation_corrections_20261030.json'];
       for (const file of readdirSync(source).filter(name => name.endsWith('.json') && !omitted.includes(name))) writeFileSync(join(prior, file), readFileSync(join(source, file)));
       const manifest = JSON.parse(readFileSync(join(__dirname, '../prisma/reviews/assisted-20261029.json'), 'utf8'));
       manifest.records = manifest.records.filter((row: any) => !omitted.includes(row.file));
-      for (const row of manifest.records) if (['assisted-batch4-review-20261030-v1', 'assisted-batch6-review-20261030-v1'].includes(row.reviewRound)) row.decision = 'pending_review';
+      for (const row of manifest.records) if (['assisted-batch4-review-20261030-v1', 'assisted-batch6-review-20261030-v1', 'assisted-automation-review-20261030-v1'].includes(row.reviewRound)) row.decision = 'pending_review';
       manifest.summary = { validated: 472, pending_review: 188, rejected: 78 };
       const manifestPath = join(prior, 'previous-manifest.snapshot');
       writeFileSync(manifestPath, JSON.stringify(manifest));
@@ -909,9 +946,9 @@ describe('Applying assisted technical bank decisions', () => {
       const id = 'ccna-legacy-batch4_all-016';
       const before = await prisma.question.findUniqueOrThrow({ where: { id }, include: { options: true, primaryTopic: true } });
       const result = await syncReviewedBank(prisma, true);
-      expect(result.questionsToCreate).toBe(80);
-      expect(result.appliedApprovals).toBe(95);
-      expect(result.appliedRejections).toBe(80);
+      expect(result.questionsToCreate).toBe(85);
+      expect(result.appliedApprovals).toBe(100);
+      expect(result.appliedRejections).toBe(85);
       expect(result.approvalsAlreadyPresent).toBe(472);
       expect(result.rejectionsAlreadyPresent).toBe(78);
       const after = await prisma.question.findUniqueOrThrow({ where: { id }, include: { options: true, primaryTopic: true } });
@@ -922,7 +959,7 @@ describe('Applying assisted technical bank decisions', () => {
         expect((await prisma.question.findUniqueOrThrow({ where: { id: 'ccna-legacy-batch4_all-' + held } })).validationStatus).toBe('pending_review');
         expect(await prisma.question.findUnique({ where: { id: 'ccna-legacy-batch4_all-' + held + '-review-r1' } })).toBeNull();
       }
-      expect(await prisma.questionReview.count({ where: { reviewerId: REVIEW_SERVICE_ID } })).toBe(725);
+      expect(await prisma.questionReview.count({ where: { reviewerId: REVIEW_SERVICE_ID } })).toBe(735);
       const again = await syncReviewedBank(prisma, true);
       expect(again.appliedApprovals + again.appliedRejections + again.questionsToCreate).toBe(0);
     } finally { rmSync(prior, { recursive: true, force: true }); }
@@ -934,10 +971,10 @@ describe('Applying assisted technical bank decisions', () => {
     const prior = mkdtempSync(join(tmpdir(), 'ccna-second-review-'));
     try {
       const source = resolve(__dirname, '../prisma/questions');
-      for (const file of readdirSync(source).filter(name => name.endsWith('.json') && !['reviewed_legacy_corrections_20261029.json', 'reviewed_routing_corrections_20261029.json', 'reviewed_batch3_corrections_20261029.json', 'reviewed_batch4_corrections_20261030.json', 'reviewed_batch6_corrections_20261030.json'].includes(name))) writeFileSync(join(prior, file), readFileSync(join(source, file)));
+      for (const file of readdirSync(source).filter(name => name.endsWith('.json') && !['reviewed_legacy_corrections_20261029.json', 'reviewed_routing_corrections_20261029.json', 'reviewed_batch3_corrections_20261029.json', 'reviewed_batch4_corrections_20261030.json', 'reviewed_batch6_corrections_20261030.json', 'reviewed_batch2_automation_corrections_20261030.json'].includes(name))) writeFileSync(join(prior, file), readFileSync(join(source, file)));
       const manifest = JSON.parse(readFileSync(resolve(__dirname, '../prisma/reviews/assisted-20261029.json'), 'utf8'));
-      manifest.records = manifest.records.filter((row: any) => !['reviewed_legacy_corrections_20261029.json', 'reviewed_routing_corrections_20261029.json', 'reviewed_batch3_corrections_20261029.json', 'reviewed_batch4_corrections_20261030.json', 'reviewed_batch6_corrections_20261030.json'].includes(row.file));
-      for (const row of manifest.records) if (['assisted-legacy-review-20261029-v1', 'assisted-routing-review-20261029-v1', 'assisted-batch3-review-20261029-v1', 'assisted-batch4-review-20261030-v1', 'assisted-batch6-review-20261030-v1'].includes(row.reviewRound)) row.decision = 'pending_review';
+      manifest.records = manifest.records.filter((row: any) => !['reviewed_legacy_corrections_20261029.json', 'reviewed_routing_corrections_20261029.json', 'reviewed_batch3_corrections_20261029.json', 'reviewed_batch4_corrections_20261030.json', 'reviewed_batch6_corrections_20261030.json', 'reviewed_batch2_automation_corrections_20261030.json'].includes(row.file));
+      for (const row of manifest.records) if (['assisted-legacy-review-20261029-v1', 'assisted-routing-review-20261029-v1', 'assisted-batch3-review-20261029-v1', 'assisted-batch4-review-20261030-v1', 'assisted-batch6-review-20261030-v1', 'assisted-automation-review-20261030-v1'].includes(row.reviewRound)) row.decision = 'pending_review';
       manifest.summary = { validated: 366, pending_review: 298 };
       const manifestPath = join(prior, 'previous-manifest.snapshot');
       writeFileSync(manifestPath, JSON.stringify(manifest));
@@ -946,20 +983,20 @@ describe('Applying assisted technical bank decisions', () => {
       const id = 'ccna-legacy-batch1_network_fundamentals-001';
       const before = await prisma.question.findUniqueOrThrow({ where: { id }, include: { options: true, primaryTopic: true } });
       const result = await syncReviewedBank(prisma, true);
-      expect(result.questionsToCreate).toBe(154);
-      expect(result.appliedApprovals).toBe(201);
-      expect(result.appliedRejections).toBe(158);
+      expect(result.questionsToCreate).toBe(159);
+      expect(result.appliedApprovals).toBe(206);
+      expect(result.appliedRejections).toBe(163);
       expect(result.approvalsAlreadyPresent).toBe(366);
       const after = await prisma.question.findUniqueOrThrow({ where: { id }, include: { options: true, primaryTopic: true } });
       expect(digest(contentRecord(after))).toBe(digest(contentRecord(before)));
       expect(after.validationStatus).toBe('rejected');
       expect((await prisma.question.findUniqueOrThrow({ where: { id: id + '-review-r1' } })).validationStatus).toBe('validated');
-      expect(await prisma.questionReview.count({ where: { reviewerId: REVIEW_SERVICE_ID, status: 'validated' } })).toBe(567);
-      expect(await prisma.questionReview.count({ where: { reviewerId: REVIEW_SERVICE_ID, status: 'rejected' } })).toBe(158);
+      expect(await prisma.questionReview.count({ where: { reviewerId: REVIEW_SERVICE_ID, status: 'validated' } })).toBe(572);
+      expect(await prisma.questionReview.count({ where: { reviewerId: REVIEW_SERVICE_ID, status: 'rejected' } })).toBe(163);
       const again = await syncReviewedBank(prisma, true);
       expect(again.appliedApprovals).toBe(0);
       expect(again.appliedRejections).toBe(0);
-      expect(again.rejectionsAlreadyPresent).toBe(158);
+      expect(again.rejectionsAlreadyPresent).toBe(163);
     } finally { rmSync(prior, { recursive: true, force: true }); }
   }, 60000);
   it('upgrades the published 420 approvals including later documented corrections', async () => {
@@ -968,10 +1005,10 @@ describe('Applying assisted technical bank decisions', () => {
     const source = join(__dirname, '../prisma/questions');
     const prior = mkdtempSync(join(tmpdir(), 'ccna-routing-review-'));
     try {
-      for (const file of readdirSync(source).filter(name => name.endsWith('.json') && !['reviewed_routing_corrections_20261029.json', 'reviewed_batch3_corrections_20261029.json', 'reviewed_batch4_corrections_20261030.json', 'reviewed_batch6_corrections_20261030.json'].includes(name))) writeFileSync(join(prior, file), readFileSync(join(source, file)));
+      for (const file of readdirSync(source).filter(name => name.endsWith('.json') && !['reviewed_routing_corrections_20261029.json', 'reviewed_batch3_corrections_20261029.json', 'reviewed_batch4_corrections_20261030.json', 'reviewed_batch6_corrections_20261030.json', 'reviewed_batch2_automation_corrections_20261030.json'].includes(name))) writeFileSync(join(prior, file), readFileSync(join(source, file)));
       const manifest = JSON.parse(readFileSync(join(__dirname, '../prisma/reviews/assisted-20261029.json'), 'utf8'));
-      manifest.records = manifest.records.filter((row: any) => !['reviewed_routing_corrections_20261029.json', 'reviewed_batch3_corrections_20261029.json', 'reviewed_batch4_corrections_20261030.json', 'reviewed_batch6_corrections_20261030.json'].includes(row.file));
-      for (const row of manifest.records) if (['assisted-routing-review-20261029-v1', 'assisted-batch3-review-20261029-v1', 'assisted-batch4-review-20261030-v1', 'assisted-batch6-review-20261030-v1'].includes(row.reviewRound)) row.decision = 'pending_review';
+      manifest.records = manifest.records.filter((row: any) => !['reviewed_routing_corrections_20261029.json', 'reviewed_batch3_corrections_20261029.json', 'reviewed_batch4_corrections_20261030.json', 'reviewed_batch6_corrections_20261030.json', 'reviewed_batch2_automation_corrections_20261030.json'].includes(row.file));
+      for (const row of manifest.records) if (['assisted-routing-review-20261029-v1', 'assisted-batch3-review-20261029-v1', 'assisted-batch4-review-20261030-v1', 'assisted-batch6-review-20261030-v1', 'assisted-automation-review-20261030-v1'].includes(row.reviewRound)) row.decision = 'pending_review';
       manifest.summary = { validated: 420, pending_review: 240, rejected: 38 };
       const manifestPath = join(prior, 'previous-manifest.snapshot');
       writeFileSync(manifestPath, JSON.stringify(manifest));
@@ -980,16 +1017,16 @@ describe('Applying assisted technical bank decisions', () => {
       const id = 'ccna-legacy-batch2_ip_connectivity-001';
       const before = await prisma.question.findUniqueOrThrow({ where: { id }, include: { options: true, primaryTopic: true } });
       const result = await syncReviewedBank(prisma, true);
-      expect(result.questionsToCreate).toBe(120);
-      expect(result.appliedApprovals).toBe(147);
-      expect(result.appliedRejections).toBe(120);
+      expect(result.questionsToCreate).toBe(125);
+      expect(result.appliedApprovals).toBe(152);
+      expect(result.appliedRejections).toBe(125);
       expect(result.approvalsAlreadyPresent).toBe(420);
       expect(result.rejectionsAlreadyPresent).toBe(38);
       const after = await prisma.question.findUniqueOrThrow({ where: { id }, include: { options: true, primaryTopic: true } });
       expect(digest(contentRecord(after))).toBe(digest(contentRecord(before)));
       expect(after.validationStatus).toBe('rejected');
       expect((await prisma.question.findUniqueOrThrow({ where: { id: id + '-review-r1' } })).validationStatus).toBe('validated');
-      expect(await prisma.questionReview.count({ where: { reviewerId: REVIEW_SERVICE_ID } })).toBe(725);
+      expect(await prisma.questionReview.count({ where: { reviewerId: REVIEW_SERVICE_ID } })).toBe(735);
       const again = await syncReviewedBank(prisma, true);
       expect(again.appliedApprovals + again.appliedRejections + again.questionsToCreate).toBe(0);
     } finally { rmSync(prior, { recursive: true, force: true }); }
@@ -1000,10 +1037,10 @@ describe('Applying assisted technical bank decisions', () => {
     const source = join(__dirname, '../prisma/questions');
     const prior = mkdtempSync(join(tmpdir(), 'ccna-third-batch-review-'));
     try {
-      for (const file of readdirSync(source).filter(name => name.endsWith('.json') && !['reviewed_batch3_corrections_20261029.json', 'reviewed_batch4_corrections_20261030.json', 'reviewed_batch6_corrections_20261030.json'].includes(name))) writeFileSync(join(prior, file), readFileSync(join(source, file)));
+      for (const file of readdirSync(source).filter(name => name.endsWith('.json') && !['reviewed_batch3_corrections_20261029.json', 'reviewed_batch4_corrections_20261030.json', 'reviewed_batch6_corrections_20261030.json', 'reviewed_batch2_automation_corrections_20261030.json'].includes(name))) writeFileSync(join(prior, file), readFileSync(join(source, file)));
       const manifest = JSON.parse(readFileSync(join(__dirname, '../prisma/reviews/assisted-20261029.json'), 'utf8'));
-      manifest.records = manifest.records.filter((row: any) => !['reviewed_batch3_corrections_20261029.json', 'reviewed_batch4_corrections_20261030.json', 'reviewed_batch6_corrections_20261030.json'].includes(row.file));
-      for (const row of manifest.records) if (['assisted-batch3-review-20261029-v1', 'assisted-batch4-review-20261030-v1', 'assisted-batch6-review-20261030-v1'].includes(row.reviewRound)) row.decision = 'pending_review';
+      manifest.records = manifest.records.filter((row: any) => !['reviewed_batch3_corrections_20261029.json', 'reviewed_batch4_corrections_20261030.json', 'reviewed_batch6_corrections_20261030.json', 'reviewed_batch2_automation_corrections_20261030.json'].includes(row.file));
+      for (const row of manifest.records) if (['assisted-batch3-review-20261029-v1', 'assisted-batch4-review-20261030-v1', 'assisted-batch6-review-20261030-v1', 'assisted-automation-review-20261030-v1'].includes(row.reviewRound)) row.decision = 'pending_review';
       manifest.summary = { validated: 426, pending_review: 234, rejected: 41 };
       const manifestPath = join(prior, 'previous-manifest.snapshot');
       writeFileSync(manifestPath, JSON.stringify(manifest));
@@ -1012,9 +1049,9 @@ describe('Applying assisted technical bank decisions', () => {
       const id = 'ccna-legacy-batch3_all-008';
       const before = await prisma.question.findUniqueOrThrow({ where: { id }, include: { options: true, primaryTopic: true } });
       const result = await syncReviewedBank(prisma, true);
-      expect(result.questionsToCreate).toBe(117);
-      expect(result.appliedApprovals).toBe(141);
-      expect(result.appliedRejections).toBe(117);
+      expect(result.questionsToCreate).toBe(122);
+      expect(result.appliedApprovals).toBe(146);
+      expect(result.appliedRejections).toBe(122);
       expect(result.approvalsAlreadyPresent).toBe(426);
       expect(result.rejectionsAlreadyPresent).toBe(41);
       const after = await prisma.question.findUniqueOrThrow({ where: { id }, include: { options: true, primaryTopic: true } });
@@ -1025,7 +1062,7 @@ describe('Applying assisted technical bank decisions', () => {
         expect((await prisma.question.findUniqueOrThrow({ where: { id: 'ccna-legacy-batch3_all-' + number } })).validationStatus).toBe('rejected');
         expect((await prisma.question.findUniqueOrThrow({ where: { id: 'ccna-legacy-batch3_all-' + number + '-review-r1' } })).validationStatus).toBe('validated');
       }
-      expect(await prisma.questionReview.count({ where: { reviewerId: REVIEW_SERVICE_ID } })).toBe(725);
+      expect(await prisma.questionReview.count({ where: { reviewerId: REVIEW_SERVICE_ID } })).toBe(735);
       const again = await syncReviewedBank(prisma, true);
       expect(again.appliedApprovals + again.appliedRejections + again.questionsToCreate).toBe(0);
     } finally { rmSync(prior, { recursive: true, force: true }); }
@@ -1049,10 +1086,10 @@ describe('Applying assisted technical bank decisions', () => {
       const originalId = 'ccna-original-20261024-b03-026';
       const originalBefore = await prisma.question.findUniqueOrThrow({ where: { id: originalId }, include: { options: true, primaryTopic: true } });
       const result = await syncReviewedBank(prisma, true);
-      expect(result.questionsToCreate).toBe(158);
-      expect(result.appliedApprovals).toBe(436);
+      expect(result.questionsToCreate).toBe(163);
+      expect(result.appliedApprovals).toBe(441);
       expect(result.approvalsAlreadyPresent).toBe(131);
-      expect(await prisma.questionReview.count({ where: { reviewerId: REVIEW_SERVICE_ID } })).toBe(725);
+      expect(await prisma.questionReview.count({ where: { reviewerId: REVIEW_SERVICE_ID } })).toBe(735);
       const originalAfter = await prisma.question.findUniqueOrThrow({ where: { id: originalId }, include: { options: true, primaryTopic: true } });
       expect(digest(contentRecord(originalAfter))).toBe(digest(contentRecord(originalBefore)));
       expect(originalAfter.validationStatus).toBe('rejected');
@@ -1067,20 +1104,20 @@ describe('Applying assisted technical bank decisions', () => {
     await reviewTopics();
     const preview = await syncReviewedBank(prisma);
     expect(preview.mode).toBe('dry-run');
-    expect(preview.questionsToCreate).toBe(818);
+    expect(preview.questionsToCreate).toBe(823);
     expect(await prisma.question.count()).toBe(5);
     expect(await prisma.user.findUnique({ where: { id: REVIEW_SERVICE_ID } })).toBeNull();
     const applied = await syncReviewedBank(prisma, true);
-    expect(applied.appliedApprovals).toBe(567);
-    expect(applied.appliedRejections).toBe(158);
-    expect(await prisma.question.count()).toBe(823);
+    expect(applied.appliedApprovals).toBe(572);
+    expect(applied.appliedRejections).toBe(163);
+    expect(await prisma.question.count()).toBe(828);
     const pending = readReviewedBank().candidates.filter(item => item.row.decision === 'pending_review').map(item => item.row.id);
-    expect(await prisma.question.count({ where: { id: { in: pending }, validationStatus: 'pending_review' } })).toBe(93);
-    expect(await prisma.questionReview.count({ where: { reviewerId: REVIEW_SERVICE_ID } })).toBe(725);
+    expect(await prisma.question.count({ where: { id: { in: pending }, validationStatus: 'pending_review' } })).toBe(88);
+    expect(await prisma.questionReview.count({ where: { reviewerId: REVIEW_SERVICE_ID } })).toBe(735);
     const again = await syncReviewedBank(prisma, true);
     expect(again.appliedApprovals).toBe(0);
-    expect(again.approvalsAlreadyPresent).toBe(567);
-    expect(await prisma.questionReview.count({ where: { reviewerId: REVIEW_SERVICE_ID } })).toBe(725);
+    expect(again.approvalsAlreadyPresent).toBe(572);
+    expect(await prisma.questionReview.count({ where: { reviewerId: REVIEW_SERVICE_ID } })).toBe(735);
     const exam = await engine.createExam(config({ questionCount: 100, mode: 'full_simulation' }));
     const selected = await prisma.examQuestion.findMany({ where: { examId: exam.examId }, include: { question: true } });
     expect(selected).toHaveLength(100);
@@ -1109,7 +1146,7 @@ describe('Applying assisted technical bank decisions', () => {
     await prisma.question.update({ where: { id: 'ccna-original-20261024-001' }, data: { validationStatus: 'pending_review' } });
     await expect(syncReviewedBank(prisma, true)).rejects.toThrow('status changed after review');
     expect((await prisma.question.findUniqueOrThrow({ where: { id: 'ccna-original-20261024-001' } })).validationStatus).toBe('pending_review');
-    expect(await prisma.questionReview.count()).toBe(725);
+    expect(await prisma.questionReview.count()).toBe(735);
   }, 60000);
   it('does not overwrite an existing approval to reject a superseded candidate', async () => {
     const { syncReviewedBank } = await import('../prisma/sync-reviewed-bank');

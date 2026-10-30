@@ -1,0 +1,18 @@
+{
+  "questionId": "ccna-legacy-batch2_automation-005-review-r1",
+  "yamlSha256": "677b556160d9b7d40e9eef08daa378ea1948fa5633e3b33cd778600f5d5c8ee3",
+  "parser": "PyYAML 6.0.3",
+  "primaryModuleSha256": {
+    "cisco.ios.ios_system": "8417abf9397c3f53939cfe363aa6f2a97fc90d35dd228c4661ef98036176e572",
+    "cisco.ios.ios_ntp_global": "c5c9cbf6223565e62ac872833f97c2dbc61117498cff0a83d67fb7215979a643"
+  },
+  "plays": 1,
+  "tasks": 2,
+  "moduleOrder": [
+    "cisco.ios.ios_ntp_global",
+    "cisco.ios.ios_system"
+  ],
+  "argumentShapes": "matched_published_documentation",
+  "bilingualYamlIdentical": true,
+  "scope": "Parsed YAML and published parameter names/types/choices; no Ansible or IOS execution."
+}

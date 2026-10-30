@@ -1,0 +1,76 @@
+{
+  "date": "2026-10-30",
+  "serverTests": {
+    "passed": 619,
+    "files": 14
+  },
+  "chromiumTests": {
+    "passed": 22,
+    "failed": 0
+  },
+  "serverBuild": "passed",
+  "strictReviewTypes": "passed",
+  "manifestReproducedByteForByte": true,
+  "structuralAudit": {
+    "received": 823,
+    "rejected": 0,
+    "duplicates": 0,
+    "editorialReview": {
+      "integrity": "verified",
+      "summary": {
+        "validated": 572,
+        "pending_review": 88,
+        "rejected": 163
+      }
+    }
+  },
+  "manifestSummary": {
+    "rejected": 163,
+    "validated": 572,
+    "pending_review": 88
+  },
+  "isolatedDatabase": {
+    "database": "/workspace/.ccna-runtime/server/prisma/cloud-reviewed-automation.db",
+    "total": 831,
+    "statuses": {
+      "pending_review": 88,
+      "rejected": 163,
+      "validated": 580
+    },
+    "validatedDeclaredFamilies": 499,
+    "assistedAudits": 735
+  },
+  "repeatedApply": {
+    "mode": "applied",
+    "manifestId": "assisted-review-20261029-v1",
+    "candidates": 823,
+    "questionsToCreate": 0,
+    "existingMatched": 823,
+    "reviewedApprovals": 572,
+    "remainingCandidatesPending": 88,
+    "appliedApprovals": 0,
+    "approvalsAlreadyPresent": 572,
+    "reviewedRejections": 163,
+    "appliedRejections": 0,
+    "rejectionsAlreadyPresent": 163
+  },
+  "yamlCheck": {
+    "questionId": "ccna-legacy-batch2_automation-005-review-r1",
+    "yamlSha256": "677b556160d9b7d40e9eef08daa378ea1948fa5633e3b33cd778600f5d5c8ee3",
+    "parser": "PyYAML 6.0.3",
+    "primaryModuleSha256": {
+      "cisco.ios.ios_system": "8417abf9397c3f53939cfe363aa6f2a97fc90d35dd228c4661ef98036176e572",
+      "cisco.ios.ios_ntp_global": "c5c9cbf6223565e62ac872833f97c2dbc61117498cff0a83d67fb7215979a643"
+    },
+    "plays": 1,
+    "tasks": 2,
+    "moduleOrder": [
+      "cisco.ios.ios_ntp_global",
+      "cisco.ios.ios_system"
+    ],
+    "argumentShapes": "matched_published_documentation",
+    "bilingualYamlIdentical": true,
+    "scope": "Parsed YAML and published parameter names/types/choices; no Ansible or IOS execution."
+  },
+  "scopeLimit": "88 records remain pending. YAML was parsed and argument shapes checked, without executing Ansible or IOS. Routine artifact binding is not a fresh YAML parse. Eight seed examples were not recertified."
+}

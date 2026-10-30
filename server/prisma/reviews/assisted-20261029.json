@@ -2,7 +2,7 @@
   "id": "assisted-review-20261029-v1",
   "reviewerType": "automated_assistant",
   "authorization": "User explicitly requested review and approval of questions that pass technical checks on 2026-10-29. No human certification is asserted.",
-  "scope": "818 structurally checked candidates. All 360 originals, the first 50 legacy questions, sixteen other previously reviewed legacy questions, all 48 previously pending third-batch candidates, and all 48 previously pending fourth-batch candidates and all 48 previously pending sixth-batch candidates have been inspected in ES/EN. Documentary holds remain pending; corrected versions have explicit assisted technical dispositions. 93 other legacy records remain pending complete technical review. Superseded originals are rejected with approved linked replacements. No human certification is asserted.",
+  "scope": "823 structurally checked candidates. All 360 originals, the first 50 legacy questions, sixteen other previously reviewed legacy questions, all 48 previously pending third-batch candidates, and all 48 previously pending fourth-batch candidates and all 48 previously pending sixth-batch candidates and the five second-batch automation candidates have been inspected in ES/EN. Documentary holds remain pending; corrected versions have explicit assisted technical dispositions. 88 other legacy records remain pending complete technical review. Superseded originals are rejected with approved linked replacements. No human certification is asserted.",
   "references": [
     {
       "url": "https://www.rfc-editor.org/rfc/rfc1878.txt",
@@ -2855,12 +2855,90 @@
           "normalizedOffset": 12328
         }
       ]
+    },
+    {
+      "url": "https://www.cisco.com/c/en/us/td/docs/solutions/CVD/Campus/cisco-sda-design-guide.html",
+      "documentSha256": "35a439e748ef7b0577d43c60ee4b57d1534e5bf2422130297ced3877a98343b8",
+      "consultedOn": "2026-10-29",
+      "retrieval": "Primary document and focused passage inspected; the round records retrieval provenance.",
+      "excerpts": [
+        {
+          "anchor": "Edge node The SD-Access",
+          "excerpt": "Edge node The SD-Access fabric edge nodes are the equivalent of an",
+          "normalizedOffset": 65937
+        }
+      ]
+    },
+    {
+      "url": "https://raw.githubusercontent.com/scikit-learn/scikit-learn/main/examples/applications/plot_time_series_lagged_features.py",
+      "documentSha256": "49191414a48b76aa1ecea246d642ceb7e7a69dcda8197795ea0397c17707d04f",
+      "consultedOn": "2026-10-29",
+      "retrieval": "Primary document and focused passage inspected; the round records retrieval provenance.",
+      "excerpts": [
+        {
+          "anchor": "predicting the demand at",
+          "excerpt": "predicting the demand at the # next hour given past demands. Since",
+          "normalizedOffset": 2440
+        }
+      ]
+    },
+    {
+      "url": "https://raw.githubusercontent.com/openai/openai-python/main/README.md",
+      "documentSha256": "e22c0689d4253b02383aec329a1331e6850bd2f74e7b78500268120829743f39",
+      "consultedOn": "2026-10-29",
+      "retrieval": "Primary document and focused passage inspected; the round records retrieval provenance.",
+      "excerpts": [
+        {
+          "anchor": "You can generate text",
+          "excerpt": "You can generate text from the model with the code below. ```python",
+          "normalizedOffset": 1029
+        }
+      ]
+    },
+    {
+      "url": "https://raw.githubusercontent.com/ansible-collections/cisco.ios/main/plugins/modules/ios_system.py",
+      "documentSha256": "8417abf9397c3f53939cfe363aa6f2a97fc90d35dd228c4661ef98036176e572",
+      "consultedOn": "2026-10-29",
+      "retrieval": "Primary document and focused passage inspected; the round records retrieval provenance.",
+      "excerpts": [
+        {
+          "anchor": "domain_name: description: - Configure",
+          "excerpt": "domain_name: description: - Configure the IP domain name on the remote device",
+          "normalizedOffset": 1510
+        }
+      ]
+    },
+    {
+      "url": "https://raw.githubusercontent.com/ansible-collections/cisco.ios/main/plugins/modules/ios_ntp_global.py",
+      "documentSha256": "c5c9cbf6223565e62ac872833f97c2dbc61117498cff0a83d67fb7215979a643",
+      "consultedOn": "2026-10-29",
+      "retrieval": "Primary document and focused passage inspected; the round records retrieval provenance.",
+      "excerpts": [
+        {
+          "anchor": "servers: description: Configure NTP",
+          "excerpt": "servers: description: Configure NTP server type: list elements: dict suboptions: server: description:",
+          "normalizedOffset": 4202
+        }
+      ]
+    },
+    {
+      "url": "https://raw.githubusercontent.com/ansible/ansible/devel/lib/ansible/cli/pull.py",
+      "documentSha256": "f5df3b355c1b30498953f55f16f4081ba46fd257f1114e3845700c38c4d1e5b9",
+      "consultedOn": "2026-10-29",
+      "retrieval": "Primary document and focused passage inspected; the round records retrieval provenance.",
+      "excerpts": [
+        {
+          "anchor": "pulls playbooks from a",
+          "excerpt": "pulls playbooks from a VCS repo and executes them on target host\")",
+          "normalizedOffset": 2713
+        }
+      ]
     }
   ],
   "summary": {
-    "rejected": 158,
-    "validated": 567,
-    "pending_review": 93
+    "rejected": 163,
+    "validated": 572,
+    "pending_review": 88
   },
   "records": [
     {
@@ -4143,8 +4221,19 @@
       "id": "ccna-legacy-batch2_automation-001",
       "sourceSha256": "0cfa09d7fb5acf472170aafc1457e64e63370538af3ed43f1a428f4898604ead",
       "contentSha256": "7b530608658d173d3ed017a83da4955d77e4359ef6e061258b85dc8d126e2219",
-      "decision": "pending_review",
-      "reason": "Sin revisión técnica integral documentada en esta entrega; no se aprueba por superar únicamente validación estructural."
+      "decision": "rejected",
+      "reason": "Los modelos/API no son independientes de versión ni eliminan todo CLI; SSH cifra paquetes de sesión y no una sola vez al iniciar.",
+      "reviewRound": "assisted-automation-review-20261030-v1",
+      "evidenceUrl": "https://www.rfc-editor.org/rfc/rfc7950.txt",
+      "evidenceDocumentSha256": "b71ae68e7aaff84a3321e1538a0cd788f549e4889ac375bf891f67cd8876908d",
+      "evidenceSection": "11. Updating a Module",
+      "supportingPassage": {
+        "documentSha256": "b71ae68e7aaff84a3321e1538a0cd788f549e4889ac375bf891f67cd8876908d",
+        "normalizedOffset": 253804,
+        "normalizedLength": 1800,
+        "sha256": "3054a0b55c9d16eccb80182025d69bb09c61e537948f0da39a743283f5085717"
+      },
+      "supersededByQuestionId": "ccna-legacy-batch2_automation-001-review-r1"
     },
     {
       "file": "batch2_automation.json",
@@ -4152,8 +4241,19 @@
       "id": "ccna-legacy-batch2_automation-002",
       "sourceSha256": "863a21198cd3c3c8fbe7da49adf550f16dd553e2caa56260767cf586cc355309",
       "contentSha256": "fb8858e9868b2293b60cbcc6a2deeffb7df23c68dafd090b084b0bed1bbd9353",
-      "decision": "pending_review",
-      "reason": "Sin revisión técnica integral documentada en esta entrega; no se aprueba por superar únicamente validación estructural."
+      "decision": "rejected",
+      "reason": "Se separa desencapsulación VXLAN del intercambio BGP y se eliminan garantías de ausencia de flooding y reenvío siempre ASIC/a velocidad de línea.",
+      "reviewRound": "assisted-automation-review-20261030-v1",
+      "evidenceUrl": "https://www.cisco.com/c/en/us/td/docs/solutions/CVD/Campus/cisco-sda-design-guide.html",
+      "evidenceDocumentSha256": "35a439e748ef7b0577d43c60ee4b57d1534e5bf2422130297ced3877a98343b8",
+      "evidenceSection": "Edge node The SD-Access fabric edge nodes",
+      "supportingPassage": {
+        "documentSha256": "35a439e748ef7b0577d43c60ee4b57d1534e5bf2422130297ced3877a98343b8",
+        "normalizedOffset": 65937,
+        "normalizedLength": 1800,
+        "sha256": "1ceba53757dbe28dba72d600d4bb32fca07a56505e8f65ec771eeef3eda00740"
+      },
+      "supersededByQuestionId": "ccna-legacy-batch2_automation-002-review-r1"
     },
     {
       "file": "batch2_automation.json",
@@ -4161,8 +4261,19 @@
       "id": "ccna-legacy-batch2_automation-003",
       "sourceSha256": "69785145130c8c4e56a125c0a91a4a55e92d7940d5e0dc367e4c23a8ff978c99",
       "contentSha256": "326273b38d4994b5e65b93cdac2235f82c1d92c09806d8a86ce2cda6f6ac260a",
-      "decision": "pending_review",
-      "reason": "Sin revisión técnica integral documentada en esta entrega; no se aprueba por superar únicamente validación estructural."
+      "decision": "rejected",
+      "reason": "Se eliminan dicotomía exclusiva cuantitativo/cualitativo y afirmaciones de compilador Puppet/TTL siempre en ASIC; se explicitan límites de predicción/generación.",
+      "reviewRound": "assisted-automation-review-20261030-v1",
+      "evidenceUrl": "https://raw.githubusercontent.com/scikit-learn/scikit-learn/main/examples/applications/plot_time_series_lagged_features.py",
+      "evidenceDocumentSha256": "49191414a48b76aa1ecea246d642ceb7e7a69dcda8197795ea0397c17707d04f",
+      "evidenceSection": "predicting the demand at the",
+      "supportingPassage": {
+        "documentSha256": "49191414a48b76aa1ecea246d642ceb7e7a69dcda8197795ea0397c17707d04f",
+        "normalizedOffset": 2440,
+        "normalizedLength": 1800,
+        "sha256": "0178c5188ea44db0f8806d41bfe6cf6edb69494e9bec7fe08996995e1bc1cbd2"
+      },
+      "supersededByQuestionId": "ccna-legacy-batch2_automation-003-review-r1"
     },
     {
       "file": "batch2_automation.json",
@@ -4170,8 +4281,19 @@
       "id": "ccna-legacy-batch2_automation-004",
       "sourceSha256": "49328e6928ad699450a8da9c617516726d2a30c56280a35a33ae795928532ecf",
       "contentSha256": "80ae5bfdef1dd31d03bc90cd3235ffe1808c30a6ac70d9e7e4088145fdf8990c",
-      "decision": "pending_review",
-      "reason": "Sin revisión técnica integral documentada en esta entrega; no se aprueba por superar únicamente validación estructural."
+      "decision": "rejected",
+      "reason": "403 no demuestra autenticación exitosa; se eliminan Bearer intercambiable, plazo fijo/JWT obligatorio, timestamp incoherente y mapeo automático de caída de switch a HTTP 500.",
+      "reviewRound": "assisted-automation-review-20261030-v1",
+      "evidenceUrl": "https://www.rfc-editor.org/rfc/rfc9110.txt",
+      "evidenceDocumentSha256": "21c1cdce6ab0e5509b04d84a28000836c7a087cf786efe6f04877ebfff47232a",
+      "evidenceSection": "The 400 (Bad Request) status code",
+      "supportingPassage": {
+        "documentSha256": "21c1cdce6ab0e5509b04d84a28000836c7a087cf786efe6f04877ebfff47232a",
+        "normalizedOffset": 328716,
+        "normalizedLength": 1800,
+        "sha256": "5c2604ece667cf1be1492d7683c1fbd8cba83dc9bdf73f4445afed85c8a1da0c"
+      },
+      "supersededByQuestionId": "ccna-legacy-batch2_automation-004-review-r1"
     },
     {
       "file": "batch2_automation.json",
@@ -4179,8 +4301,19 @@
       "id": "ccna-legacy-batch2_automation-005",
       "sourceSha256": "5e48f0eddb69e8e87fd59ad27a38d0cb491c88d76bd50d2218927beeb4ff0859",
       "contentSha256": "5f1f93d8cb283d1729f0a4238658c7ac333446dd091601455f20925227bf091b",
-      "decision": "pending_review",
-      "reason": "Sin revisión técnica integral documentada en esta entrega; no se aprueba por superar únicamente validación estructural."
+      "decision": "rejected",
+      "reason": "ios_system no admite config/state merged; se usan argumentos publicados, conexión cualificada y modelo push del ejemplo sin negar ansible-pull ni otros modos Puppet/Chef.",
+      "reviewRound": "assisted-automation-review-20261030-v1",
+      "evidenceUrl": "https://raw.githubusercontent.com/ansible-collections/cisco.ios/main/plugins/modules/ios_system.py",
+      "evidenceDocumentSha256": "8417abf9397c3f53939cfe363aa6f2a97fc90d35dd228c4661ef98036176e572",
+      "evidenceSection": "domain_name: description:",
+      "supportingPassage": {
+        "documentSha256": "8417abf9397c3f53939cfe363aa6f2a97fc90d35dd228c4661ef98036176e572",
+        "normalizedOffset": 1510,
+        "normalizedLength": 1800,
+        "sha256": "5cd144c68be33446f5a9fc0cc4d6a81310992b95fb683d097f4dd246c75cd575"
+      },
+      "supersededByQuestionId": "ccna-legacy-batch2_automation-005-review-r1"
     },
     {
       "file": "batch2_ip_connectivity.json",
@@ -18962,6 +19095,280 @@
       }
     },
     {
+      "file": "reviewed_batch2_automation_corrections_20261030.json",
+      "index": 0,
+      "id": "ccna-legacy-batch2_automation-001-review-r1",
+      "sourceSha256": "eb9129c034745de51271a0b01fa9267f5f02e6d7401c5501814636077c502e2d",
+      "contentSha256": "1c7a26d64b8964021512c819aef1877013e37007c29d047e847aad051a8c8bb4",
+      "decision": "validated",
+      "reason": "Los modelos/API no son independientes de versión ni eliminan todo CLI; SSH cifra paquetes de sesión y no una sola vez al iniciar.",
+      "reviewRound": "assisted-automation-review-20261030-v1",
+      "evidenceUrl": "https://www.rfc-editor.org/rfc/rfc7950.txt",
+      "evidenceDocumentSha256": "b71ae68e7aaff84a3321e1538a0cd788f549e4889ac375bf891f67cd8876908d",
+      "evidenceSection": "11. Updating a Module",
+      "supportingPassage": {
+        "documentSha256": "b71ae68e7aaff84a3321e1538a0cd788f549e4889ac375bf891f67cd8876908d",
+        "normalizedOffset": 253804,
+        "normalizedLength": 1800,
+        "sha256": "3054a0b55c9d16eccb80182025d69bb09c61e537948f0da39a743283f5085717"
+      },
+      "checks": {
+        "answerAndDistractors": true,
+        "bilingualConsistency": true,
+        "explicitAssumptions": true,
+        "authorship": "Original wording and corrections; assisted technical review, not human certification or live device execution."
+      },
+      "independentCheck": {
+        "kind": "documentary_independent_key",
+        "result": [
+          "A"
+        ],
+        "passed": true
+      },
+      "supersedesQuestionId": "ccna-legacy-batch2_automation-001",
+      "additionalEvidence": [
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc4251.txt",
+          "section": "server authentication, confidentiality, and integrity",
+          "documentSha256": "23a5052796d29edc2f0ff4f5be557df244544d129cfc26ed51971a6485eff4ef",
+          "normalizedOffset": 1072,
+          "normalizedLength": 1800,
+          "sha256": "963fd494408e9a8c732053a79b5c4a5be2896f8e8139001bd2f5637264817870"
+        }
+      ]
+    },
+    {
+      "file": "reviewed_batch2_automation_corrections_20261030.json",
+      "index": 1,
+      "id": "ccna-legacy-batch2_automation-002-review-r1",
+      "sourceSha256": "fcdfb1d804a117dbf14495c03c35d2dddafce86bc059b13305a1cdd6a0b461ec",
+      "contentSha256": "c93251b7e89a66012cbf7751ddd87da689a01d4dd0301b886d36335d67f63c4a",
+      "decision": "validated",
+      "reason": "Se separa desencapsulación VXLAN del intercambio BGP y se eliminan garantías de ausencia de flooding y reenvío siempre ASIC/a velocidad de línea.",
+      "reviewRound": "assisted-automation-review-20261030-v1",
+      "evidenceUrl": "https://www.cisco.com/c/en/us/td/docs/solutions/CVD/Campus/cisco-sda-design-guide.html",
+      "evidenceDocumentSha256": "35a439e748ef7b0577d43c60ee4b57d1534e5bf2422130297ced3877a98343b8",
+      "evidenceSection": "Edge node The SD-Access fabric edge nodes",
+      "supportingPassage": {
+        "documentSha256": "35a439e748ef7b0577d43c60ee4b57d1534e5bf2422130297ced3877a98343b8",
+        "normalizedOffset": 65937,
+        "normalizedLength": 1800,
+        "sha256": "1ceba53757dbe28dba72d600d4bb32fca07a56505e8f65ec771eeef3eda00740"
+      },
+      "checks": {
+        "answerAndDistractors": true,
+        "bilingualConsistency": true,
+        "explicitAssumptions": true,
+        "authorship": "Original wording and corrections; assisted technical review, not human certification or live device execution."
+      },
+      "independentCheck": {
+        "kind": "documentary_independent_key",
+        "result": [
+          "A",
+          "B"
+        ],
+        "passed": true
+      },
+      "supersedesQuestionId": "ccna-legacy-batch2_automation-002",
+      "additionalEvidence": [
+        {
+          "url": "https://www.cisco.com/c/en/us/td/docs/solutions/CVD/Campus/cisco-sda-design-guide.html",
+          "section": "Border node The fabric border nodes",
+          "documentSha256": "35a439e748ef7b0577d43c60ee4b57d1534e5bf2422130297ced3877a98343b8",
+          "normalizedOffset": 80293,
+          "normalizedLength": 1800,
+          "sha256": "63a5889777a91dcb4911ec7006d24b0eee7d4511d3651ee1c3383f4f5de04623"
+        },
+        {
+          "url": "https://www.cisco.com/c/en/us/solutions/enterprise-networks/intent-based-networking.html",
+          "section": "Translation:",
+          "documentSha256": "64b1e75ccb8ec99e5c032bd6189e7c8cc2aa67ae0572da23b872c5b877f674f5",
+          "normalizedOffset": 1698,
+          "normalizedLength": 1800,
+          "sha256": "84810276b35072d6efaa88aab37864969f1678d4afe4e12c3f592fbf7c849efe"
+        }
+      ]
+    },
+    {
+      "file": "reviewed_batch2_automation_corrections_20261030.json",
+      "index": 2,
+      "id": "ccna-legacy-batch2_automation-003-review-r1",
+      "sourceSha256": "d3fa4cb98f59bc0e93742132cf9c5dd023290d7e651c7d88cc3c483c437a641f",
+      "contentSha256": "18e8581b97faa93aa6cacad753cae9b339c866fa95c86d16755f84d06a1e3934",
+      "decision": "validated",
+      "reason": "Se eliminan dicotomía exclusiva cuantitativo/cualitativo y afirmaciones de compilador Puppet/TTL siempre en ASIC; se explicitan límites de predicción/generación.",
+      "reviewRound": "assisted-automation-review-20261030-v1",
+      "evidenceUrl": "https://raw.githubusercontent.com/scikit-learn/scikit-learn/main/examples/applications/plot_time_series_lagged_features.py",
+      "evidenceDocumentSha256": "49191414a48b76aa1ecea246d642ceb7e7a69dcda8197795ea0397c17707d04f",
+      "evidenceSection": "predicting the demand at the",
+      "supportingPassage": {
+        "documentSha256": "49191414a48b76aa1ecea246d642ceb7e7a69dcda8197795ea0397c17707d04f",
+        "normalizedOffset": 2440,
+        "normalizedLength": 1800,
+        "sha256": "0178c5188ea44db0f8806d41bfe6cf6edb69494e9bec7fe08996995e1bc1cbd2"
+      },
+      "checks": {
+        "answerAndDistractors": true,
+        "bilingualConsistency": true,
+        "explicitAssumptions": true,
+        "authorship": "Original wording and corrections; assisted technical review, not human certification or live device execution."
+      },
+      "independentCheck": {
+        "kind": "documentary_independent_key",
+        "result": [
+          "A"
+        ],
+        "passed": true
+      },
+      "supersedesQuestionId": "ccna-legacy-batch2_automation-003",
+      "additionalEvidence": [
+        {
+          "url": "https://raw.githubusercontent.com/openai/openai-python/main/README.md",
+          "section": "You can generate text from the model",
+          "documentSha256": "e22c0689d4253b02383aec329a1331e6850bd2f74e7b78500268120829743f39",
+          "normalizedOffset": 1029,
+          "normalizedLength": 1800,
+          "sha256": "4c8cfe22714cec84e5e47dc47581a63c4e8ff7f20394fa6282035ebe69430608"
+        },
+        {
+          "url": "https://www.cisco.com/c/en/us/solutions/artificial-intelligence/what-is-aiops.html",
+          "section": "event correlation, anomaly detection",
+          "documentSha256": "569d8a81fa99d4a7eceec5886a7c1bb22f5d622f8571dbfbc5bea06710b951fa",
+          "normalizedOffset": 2750,
+          "normalizedLength": 1800,
+          "sha256": "75d3794acbea0f6c47ae4ab54cf9c13cc766466fa27ebd1617899503eefca0f4"
+        }
+      ]
+    },
+    {
+      "file": "reviewed_batch2_automation_corrections_20261030.json",
+      "index": 3,
+      "id": "ccna-legacy-batch2_automation-004-review-r1",
+      "sourceSha256": "352df059c5292e30ed308347fb6405ac36c47f4cce38ad8746bcf4962e6cf7b3",
+      "contentSha256": "3c3f8d851bffe044b6edc1d6b1e95f92c73b260ab508407df8dc4cc795a9b361",
+      "decision": "validated",
+      "reason": "403 no demuestra autenticación exitosa; se eliminan Bearer intercambiable, plazo fijo/JWT obligatorio, timestamp incoherente y mapeo automático de caída de switch a HTTP 500.",
+      "reviewRound": "assisted-automation-review-20261030-v1",
+      "evidenceUrl": "https://www.rfc-editor.org/rfc/rfc9110.txt",
+      "evidenceDocumentSha256": "21c1cdce6ab0e5509b04d84a28000836c7a087cf786efe6f04877ebfff47232a",
+      "evidenceSection": "The 400 (Bad Request) status code",
+      "supportingPassage": {
+        "documentSha256": "21c1cdce6ab0e5509b04d84a28000836c7a087cf786efe6f04877ebfff47232a",
+        "normalizedOffset": 328716,
+        "normalizedLength": 1800,
+        "sha256": "5c2604ece667cf1be1492d7683c1fbd8cba83dc9bdf73f4445afed85c8a1da0c"
+      },
+      "checks": {
+        "answerAndDistractors": true,
+        "bilingualConsistency": true,
+        "explicitAssumptions": true,
+        "authorship": "Original wording and corrections; assisted technical review, not human certification or live device execution."
+      },
+      "independentCheck": {
+        "kind": "documentary_independent_key",
+        "result": [
+          "A"
+        ],
+        "passed": true
+      },
+      "supersedesQuestionId": "ccna-legacy-batch2_automation-004",
+      "scenarioCheck": {
+        "kind": "http_excerpt_json_consistency",
+        "result": {
+          "status": 401,
+          "errorCode": "AUTH_TOKEN_EXPIRED"
+        },
+        "passed": true
+      },
+      "additionalEvidence": [
+        {
+          "url": "https://www.rfc-editor.org/rfc/rfc9110.txt",
+          "section": "The 403 (Forbidden) status code",
+          "documentSha256": "21c1cdce6ab0e5509b04d84a28000836c7a087cf786efe6f04877ebfff47232a",
+          "normalizedOffset": 329960,
+          "normalizedLength": 1800,
+          "sha256": "7a5f694c2b5ecb5bd538a15e25036c6873aeee385490db93cacb7386e35dc375"
+        }
+      ]
+    },
+    {
+      "file": "reviewed_batch2_automation_corrections_20261030.json",
+      "index": 4,
+      "id": "ccna-legacy-batch2_automation-005-review-r1",
+      "sourceSha256": "ba302fd29786ca3aba79671ae200153f59fde1d71e43faa49632e81543d15624",
+      "contentSha256": "7f8bda0bd778b35aa940119f56764b5b1666c56591b2315a4fb089dc8bf1e9b2",
+      "decision": "validated",
+      "reason": "ios_system no admite config/state merged; se usan argumentos publicados, conexión cualificada y modelo push del ejemplo sin negar ansible-pull ni otros modos Puppet/Chef.",
+      "reviewRound": "assisted-automation-review-20261030-v1",
+      "evidenceUrl": "https://raw.githubusercontent.com/ansible-collections/cisco.ios/main/plugins/modules/ios_system.py",
+      "evidenceDocumentSha256": "8417abf9397c3f53939cfe363aa6f2a97fc90d35dd228c4661ef98036176e572",
+      "evidenceSection": "domain_name: description:",
+      "supportingPassage": {
+        "documentSha256": "8417abf9397c3f53939cfe363aa6f2a97fc90d35dd228c4661ef98036176e572",
+        "normalizedOffset": 1510,
+        "normalizedLength": 1800,
+        "sha256": "5cd144c68be33446f5a9fc0cc4d6a81310992b95fb683d097f4dd246c75cd575"
+      },
+      "checks": {
+        "answerAndDistractors": true,
+        "bilingualConsistency": true,
+        "explicitAssumptions": true,
+        "authorship": "Original wording and corrections; assisted technical review, not human certification or live device execution."
+      },
+      "independentCheck": {
+        "kind": "documentary_independent_key",
+        "result": [
+          "A"
+        ],
+        "passed": true
+      },
+      "supersedesQuestionId": "ccna-legacy-batch2_automation-005",
+      "scenarioCheck": {
+        "kind": "bound_yaml_argument_check_artifact",
+        "result": {
+          "yamlSha256": "677b556160d9b7d40e9eef08daa378ea1948fa5633e3b33cd778600f5d5c8ee3",
+          "primaryModuleSha256": {
+            "cisco.ios.ios_system": "8417abf9397c3f53939cfe363aa6f2a97fc90d35dd228c4661ef98036176e572",
+            "cisco.ios.ios_ntp_global": "c5c9cbf6223565e62ac872833f97c2dbc61117498cff0a83d67fb7215979a643"
+          },
+          "plays": 1,
+          "tasks": 2,
+          "moduleOrder": [
+            "cisco.ios.ios_ntp_global",
+            "cisco.ios.ios_system"
+          ],
+          "bilingualYamlIdentical": true
+        },
+        "passed": true
+      },
+      "additionalEvidence": [
+        {
+          "url": "https://raw.githubusercontent.com/ansible-collections/cisco.ios/main/plugins/modules/ios_ntp_global.py",
+          "section": "servers: description: Configure NTP server",
+          "documentSha256": "c5c9cbf6223565e62ac872833f97c2dbc61117498cff0a83d67fb7215979a643",
+          "normalizedOffset": 4202,
+          "normalizedLength": 1800,
+          "sha256": "44636310b428999707d21df137e0131ff65eb0d183cadd6b0167c1bf4e8549a8"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/ansible/ansible-documentation/devel/docs/docsite/rst/network/getting_started/network_differences.rst",
+          "section": "Unlike most Ansible modules",
+          "documentSha256": "1210e74c6a0dfb4f29ff9c8ba9db232a42653f0de4d9845511b665e8810a09c0",
+          "normalizedOffset": 486,
+          "normalizedLength": 1800,
+          "sha256": "ace80063753e62749510ef294d0aa2faa1c6889acbc9e7cd8a74c6118993c0f6"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/ansible/ansible/devel/lib/ansible/cli/pull.py",
+          "section": "pulls playbooks from a VCS repo",
+          "documentSha256": "f5df3b355c1b30498953f55f16f4081ba46fd257f1114e3845700c38c4d1e5b9",
+          "normalizedOffset": 2713,
+          "normalizedLength": 1800,
+          "sha256": "34bd7c941dd23c55070607d3e02849bebce8e2ce723d4e5d65d6c2cb2bbb705a"
+        }
+      ]
+    },
+    {
       "file": "reviewed_batch3_corrections_20261029.json",
       "index": 0,
       "id": "ccna-legacy-batch3_all-001-review-r1",
@@ -24955,7 +25362,8 @@
     "assisted-routing-review-20261029-v1",
     "assisted-batch3-review-20261029-v1",
     "assisted-batch4-review-20261030-v1",
-    "assisted-batch6-review-20261030-v1"
+    "assisted-batch6-review-20261030-v1",
+    "assisted-automation-review-20261030-v1"
   ],
-  "revision": 7
+  "revision": 8
 }

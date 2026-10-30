@@ -36,6 +36,15 @@ describe('Legacy bank review', () => {
     expect(report.records.find((row: any) => row.kind === 'parsed_json_python_subscripts').result).toEqual({ A: '10.10.20.1', B: '10.10.20.2', C: 'TypeError', D: 'KeyError' });
     expect(report.records.find((row: any) => row.kind === 'stateless_established_flag_mask').result).toEqual({ 0: false, 2: false, 4: true, 16: true, 18: true, 20: true });
   });
+  it('checks the HTTP fixture and binds the executed Ansible YAML check to both languages', () => {
+    const report = JSON.parse(execFileSync('python3', [resolve(__dirname, '../../tools/check-reviewed-automation-scenarios.py')], { encoding: 'utf8' }));
+    expect(report.checked).toBe(2);
+    expect(report.records.find((row: any) => row.kind === 'http_excerpt_json_consistency').result).toEqual({ status: 401, errorCode: 'AUTH_TOKEN_EXPIRED' });
+    const yaml = report.records.find((row: any) => row.kind === 'bound_yaml_argument_check_artifact').result;
+    expect(yaml.moduleOrder).toEqual(['cisco.ios.ios_ntp_global', 'cisco.ios.ios_system']);
+    expect(yaml.tasks).toBe(2);
+    expect(yaml.bilingualYamlIdentical).toBe(true);
+  });
   it('checks eleven legacy arithmetic keys and the numerical Spanish alternatives independently', () => {
     const report = JSON.parse(execFileSync('python3', [resolve(__dirname, '../../tools/review-legacy-calculations.py')], { encoding: 'utf8' }));
     expect(report.arithmeticChecksPassed).toBe(11);
@@ -44,17 +53,17 @@ describe('Legacy bank review', () => {
   });
   it('groups equivalent summaries instead of treating IP substitutions as distinct families', () => {
     const report = JSON.parse(execFileSync(process.execPath, ['node_modules/tsx/dist/cli.mjs', 'prisma/audit-questions.ts'], { encoding: 'utf8' }));
-    expect(report.received).toBe(818);
+    expect(report.received).toBe(823);
     expect(report.rejected).toBe(0);
     expect(report.duplicates).toBe(0);
-    expect(report.editorialReview).toEqual({ integrity: 'verified', summary: { validated: 567, pending_review: 93, rejected: 158 } });
+    expect(report.editorialReview).toEqual({ integrity: 'verified', summary: { validated: 572, pending_review: 88, rejected: 163 } });
     const family = report.equivalentFamilies.find((g: any) => g.family === 'concept-ipv4-route-aggregation');
     expect(family.records).toEqual(expect.arrayContaining([
       { file: 'batch3_all.json', index: 8 }, { file: 'batch4_all.json', index: 6 },
       { file: 'batch6_all.json', index: 1 }, { file: 'original_20261024_50.json', index: 26 },
     ]));
     expect(report.distinctDeclaredFamilies).toBeLessThan(report.received);
-    expect(report.uniqueNormalizedEnglishStatements).toBe(818);
+    expect(report.uniqueNormalizedEnglishStatements).toBe(823);
   });
   it('classifies link-local scope as IPv6 addressing rather than subnet arithmetic', () => {
     const data = JSON.parse(readFileSync(resolve(__dirname, '../prisma/questions/batch2_network_fundamentals.json'), 'utf8'));
