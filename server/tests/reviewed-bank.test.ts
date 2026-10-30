@@ -8,10 +8,10 @@ import { digest, contentRecord } from '../prisma/bank-review-format';
 describe('Evidence-bound bank review decisions', () => {
   it('allows only the documented reviewed subset, not all structurally passing candidates', () => {
     const bank = readReviewedBank();
-    expect(bank.candidates).toHaveLength(738);
-    expect(bank.manifest.summary).toEqual({ validated: 472, pending_review: 188, rejected: 78 });
+    expect(bank.candidates).toHaveLength(779);
+    expect(bank.manifest.summary).toEqual({ validated: 520, pending_review: 140, rejected: 119 });
     expect(bank.candidates.filter(item => item.row.decision === 'validated' && item.row.file.startsWith('original_'))).toHaveLength(356);
-    expect(bank.candidates.filter(item => item.row.decision === 'validated' && item.row.file.startsWith('batch'))).toHaveLength(38);
+    expect(bank.candidates.filter(item => item.row.decision === 'validated' && item.row.file.startsWith('batch'))).toHaveLength(45);
     for (const id of ['ccna-original-20261024-b03-026', 'ccna-original-20261026-b04-025']) expect(bank.candidates.find(item => item.row.id === id)?.row.decision).toBe('rejected');
     expect(bank.candidates.find(item => item.row.id === 'ccna-original-20261026-b04-012')?.row.decision).toBe('validated');
     for (const item of bank.candidates) expect(digest(contentRecord(item.q))).toBe(item.row.contentSha256);
@@ -32,7 +32,7 @@ describe('Evidence-bound bank review decisions', () => {
   it('uses corrected versions while preserving rejected originals and assigned families', () => {
     const bank = readReviewedBank();
     const revised = bank.candidates.filter(item => item.row.supersedesQuestionId);
-    expect(revised).toHaveLength(78);
+    expect(revised).toHaveLength(119);
     for (const item of revised) {
       const original = bank.candidates.find(candidate => candidate.row.id === item.row.supersedesQuestionId)!;
       expect(original.row.decision).toBe('rejected');
@@ -40,8 +40,8 @@ describe('Evidence-bound bank review decisions', () => {
       expect(item.row.decision).toBe('validated');
       if (original.q.questionFamilyId) expect(item.q.questionFamilyId).toBe(original.q.questionFamilyId);
       else expect(item.q.questionFamilyId).toBeTruthy();
-      expect(item.q.statementEn).not.toBe(original.q.statementEn);
-      expect(item.q.statementEs).not.toBe(original.q.statementEs);
+      expect(item.q.statementEn !== original.q.statementEn || item.q.explanationEn !== original.q.explanationEn).toBe(true);
+      expect(item.q.statementEs !== original.q.statementEs || item.q.explanationEs !== original.q.explanationEs).toBe(true);
       expect(item.row.independentCheck?.kind).toBe('documentary_independent_key');
     }
     expect(bank.candidates.find(item => item.row.id === 'ccna-original-20261024-045')?.row.decision).toBe('validated');
@@ -50,15 +50,19 @@ describe('Evidence-bound bank review decisions', () => {
     expect(corrections).not.toContain('Los ID de proceso locales no deben coincidir');
     expect(corrections).not.toContain('Send one specific CLI keystroke every segundo');
   });
-  it('resolves 46 third-batch candidates while keeping two evidence holds and their drafts outside exams', () => {
+  it('resolves all third-batch candidates using scoped corrections rather than importing prior drafts verbatim', () => {
     const bank = readReviewedBank();
     const third = bank.candidates.filter(item => item.row.file === 'batch3_all.json');
     expect(third).toHaveLength(50);
     const pending = third.filter(item => item.row.decision === 'pending_review');
-    expect(pending.map(item => item.row.index)).toEqual([18, 29]);
+    expect(pending).toHaveLength(0);
     const drafts = JSON.parse(readFileSync(resolve(__dirname, '../../docs/propuestas-batch3-fuentes-20261029.json'), 'utf8'));
     expect(drafts.questions).toHaveLength(2);
-    for (const draft of drafts.questions) expect(bank.candidates.some(item => item.row.id === draft.id)).toBe(false);
+    for (const draft of drafts.questions) {
+      const replacement = bank.candidates.find(item => item.row.id === draft.id)!;
+      expect(replacement.row.decision).toBe('validated');
+      expect(digest(contentRecord(replacement.q))).not.toBe(digest(contentRecord(draft)));
+    }
     const corrected = bank.candidates.filter(item => item.row.file === 'reviewed_batch3_corrections_20261029.json');
     expect(corrected).toHaveLength(37);
     expect(corrected.every(item => item.row.decision === 'validated')).toBe(true);
@@ -69,6 +73,20 @@ describe('Evidence-bound bank review decisions', () => {
     const restconf = corrected.find(item => item.row.id.endsWith('-048-review-r1'))!;
     expect(restconf.q.statementEn).not.toContain('verify=False');
     expect(restconf.q.statementEn).not.toContain('C1sco123!');
+  });
+  it('keeps fourth-batch documentary holds and sixth-batch proposals outside approval', () => {
+    const bank = readReviewedBank();
+    const fourth = bank.candidates.filter(item => item.row.file === 'batch4_all.json');
+    expect(fourth.filter(item => item.row.decision === 'pending_review').map(item => item.row.index)).toEqual([43, 46]);
+    const corrections = bank.candidates.filter(item => item.row.file === 'reviewed_batch4_corrections_20261030.json');
+    expect(corrections).toHaveLength(41);
+    expect(corrections.every(item => item.row.decision === 'validated')).toBe(true);
+    const drafts = JSON.parse(readFileSync(resolve(__dirname, '../../docs/propuestas-cierre-heredadas-20261030.json'), 'utf8'));
+    expect(drafts.questions).toHaveLength(41);
+    for (const draft of drafts.questions) expect(bank.candidates.some(item => item.row.id === draft.id)).toBe(false);
+    const certificate = corrections.find(item => item.row.id === 'ccna-legacy-batch4_all-020-review-r1')!;
+    expect(certificate.q.statementEn).toContain('trusted time reference');
+    expect(certificate.q.statementEs).toContain('referencia temporal confiable');
   });
   it('rejects a key changed after review even when the source still has one correct answer', () => {
     const directory = mkdtempSync(join(tmpdir(), 'ccna-stale-review-'));

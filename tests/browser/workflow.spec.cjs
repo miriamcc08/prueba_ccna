@@ -459,6 +459,9 @@ test('per-question time recovers after disconnection and finishes unanswered que
   await page.goto('/exam/' + source.examId);
   await expect(page.getByRole('group', { name: 'Tiempo de la pregunta activa' })).toBeVisible();
   await page.reload();
+  // Finish restoring the page before disconnecting; otherwise a load error can
+  // satisfy the alert assertion before the question deadline has even expired.
+  await expect(page.getByRole('group', { name: 'Tiempo de la pregunta activa' })).toBeVisible();
   expect(await page.evaluate(async id => {
     const { default: api } = await import('/src/services/api.ts');
     return (await api.getExamState(id)).data.questionExpiresAt;
@@ -655,8 +658,8 @@ test('reviewed bank approvals are audited and enable a real 100-question exam wi
     cwd: resolve(__dirname, '../../server'), encoding: 'utf8',
     env: { ...process.env, DATABASE_URL: process.env.CCNA_BROWSER_DATABASE_URL },
   }));
-  expect(result.appliedApprovals).toBe(472);
-  expect(result.appliedRejections).toBe(78);
+  expect(result.appliedApprovals).toBe(520);
+  expect(result.appliedRejections).toBe(119);
   const setup = await page.evaluate(async () => {
     const { default: api } = await import('/src/services/api.ts');
     const stats = (await api.getAdminStats()).data;
@@ -665,8 +668,8 @@ test('reviewed bank approvals are audited and enable a real 100-question exam wi
     await api.startExam(exam.data.examId);
     return { stats, id: exam.data.examId };
   });
-  expect(setup.stats.totalQuestions - before.totalQuestions).toBe(738);
-  expect(setup.stats.validatedQuestions - before.validatedQuestions).toBe(472);
+  expect(setup.stats.totalQuestions - before.totalQuestions).toBe(779);
+  expect(setup.stats.validatedQuestions - before.validatedQuestions).toBe(520);
   await page.goto('/exam/' + setup.id);
   await expect(page.getByText('Pregunta 1 de 100', { exact: true }).first()).toBeVisible();
   await expect(page.getByRole('button', { name: 'Confirmar y Continuar' })).toBeVisible();
@@ -676,7 +679,7 @@ test('reviewed bank approvals are audited and enable a real 100-question exam wi
   expect(selected).toHaveLength(100);
   expect(selected.every(item => item.question.validationStatus === 'validated' && item.contentSnapshot)).toBe(true);
   expect(new Set(selected.map(item => item.question.questionFamilyId || item.questionId)).size).toBe(100);
-  expect(await db.questionReview.count({ where: { reviewerId: 'system-assisted-bank-review', status: 'validated' } })).toBe(472);
-  expect(await db.questionReview.count({ where: { reviewerId: 'system-assisted-bank-review', status: 'rejected' } })).toBe(78);
+  expect(await db.questionReview.count({ where: { reviewerId: 'system-assisted-bank-review', status: 'validated' } })).toBe(520);
+  expect(await db.questionReview.count({ where: { reviewerId: 'system-assisted-bank-review', status: 'rejected' } })).toBe(119);
   await db.$disconnect();
 });

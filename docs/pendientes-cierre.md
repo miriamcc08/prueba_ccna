@@ -1,6 +1,6 @@
 # Lista de cierre del simulador
 
-Base funcional del 26/10/2026; revisión de contenido actualizada el 29/10/2026: CSV, resultados por dificultad, reinicio independiente de estudio, tiempo por pregunta, cambio de tema en estudio e historial con versión del temario visible.
+Base funcional del 26/10/2026; revisión de contenido actualizada el 30/10/2026: CSV, resultados por dificultad, reinicio independiente de estudio, tiempo por pregunta, cambio de tema en estudio e historial con versión del temario visible.
 
 **Estado:** el recorrido principal está probado, pero no está completo el alcance original ni certificado el despliegue de producción. No se asigna un porcentaje de avance: las preguntas candidatas, las pruebas automatizadas y los requisitos entregados miden cosas diferentes.
 
@@ -10,16 +10,16 @@ El usuario ha pausado la creación de preguntas. Esa pausa se mantiene. Revisar 
 
 Configuración y disponibilidad real; exámenes estrictos; estudio sin tiempo; fecha límite del servidor y recuperación; confirmación de respuestas; resultados y revisión; contenido inmutable por intento nuevo; historial; favoritos; recomendaciones por reglas; registro e inicio de sesión; roles actuales comprobados en servidor; CORS restrictivo; sonidos opcionales; borrado confirmado del historial propio. Administración permite crear, importar **JSON/CSV**, buscar, filtrar, paginar, revisar y aprobar/rechazar candidatos con evidencia. Resultados ya muestra el rendimiento por dificultad que calcula la API.
 
-Última comprobación: compilación de cliente y servidor correcta, **612 pruebas de servidor y 22 de Chromium aprobadas**. Esto comprueba escenarios concretos, no todas las preguntas ni todos los dispositivos.
+Última comprobación: compilación de cliente y servidor correcta, **615 pruebas de servidor y 22 de Chromium aprobadas** ([detalle](revision-lote-heredado-04-20261030.md)). Esto comprueba escenarios concretos, no todas las preguntas ni todos los dispositivos.
 
 ## 1. Para entregar un simulador útil con contenido suficiente
 
 | ID | Pendiente | Criterio de cierre |
 |---|---|---|
 | C01 | Activar la primera cuenta administradora en el entorno que se vaya a utilizar | Configurar correo/contraseña mediante variables seguras, ejecutar `admin:bootstrap` y comprobar acceso a `/admin` y denegación a una cuenta normal. La última consulta de la copia de desarrollo mostró 0 administradores; no se inventaron credenciales. |
-| C02 | Revisar técnicamente el material existente | Hay decisiones técnicas asistidas para 550 registros: 472 aprobados y 78 rechazados con reemplazo; quedan 188 heredadas pendientes (dos retenciones documentales revisadas y 186 por completar). Completar respuesta, distractores, explicación, traducción, referencia vigente y licencia por candidato. Registrar decisión y evidencia; mantener fuera de exámenes lo no aprobado. |
+| C02 | Revisar técnicamente el material existente | Hay decisiones técnicas asistidas para 639 registros: 520 aprobados y 119 rechazados con reemplazo; quedan 140 heredadas pendientes (dos retenciones del lote 4, 48 del lote 6 con inspección y propuestas aún sin cerrar, 47 del lote 5 y 43 del segundo lote). Completar respuesta, distractores, explicación, traducción, referencia vigente y licencia por candidato. Registrar decisión y evidencia; mantener fuera de exámenes lo no aprobado. |
 | C03 | Completar el mapa del temario oficial vigente | Vincular las preguntas aprobadas a los subobjetivos, contrastar pesos/versiones con fuente oficial y mostrar huecos. Las coincidencias por palabras actuales no certifican cobertura. |
-| C04 | Disponer de suficientes familias aprobadas por modalidad y dificultad | Probar las cantidades ofrecidas, incluidos simulacros largos. Tras aplicar el manifiesto, la nueva base aislada de validación contiene 746 registros, 480 validados y 403 familias validadas; se probó un simulacro de 100 con dificultad mixta. Otros filtros siguen teniendo menos disponibilidad. La interfaz informa la escasez, no inventa disponibilidad. |
+| C04 | Disponer de suficientes familias aprobadas por modalidad y dificultad | Probar las cantidades ofrecidas, incluidos simulacros largos. Tras aplicar el manifiesto, la nueva base aislada de validación contiene 787 registros, 528 validados y 450 familias validadas; se probó un simulacro de 100 con dificultad mixta. Otros filtros siguen teniendo menos disponibilidad. La interfaz informa la escasez, no inventa disponibilidad. |
 | C05 | Revisar duplicados semánticos | Agrupar equivalencias en familias y comprobar que un examen no repite el mismo ejercicio conceptual. Ya hay comprobaciones exactas/heurísticas, no una deduplicación semántica completa. |
 | C06 | Completar revisión de explicaciones pedagógicas | Verificar pasos, por qué fallan distractores, comandos y referencias; contrastar escenarios de routing, ACL y configuración con laboratorio o fuente de plataforma cuando corresponda. |
 

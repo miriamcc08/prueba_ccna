@@ -110,5 +110,6 @@
       "validationStatus": "pending_review",
       "reviewCorrection": "Se explicita siguiente salto de respaldo alcanzable; se evita conmutación instantánea y generalizar todas las acciones posibles de tracking."
     }
-  ]
+  ],
+  "historicalStatusNote": "Borradores históricos no importados literalmente. El 2026-10-30 se aprobaron versiones de alcance corregido con los mismos ID previstos; consultar batch4-20261030.json y sus hashes. Este archivo no es una fuente importable."
 }

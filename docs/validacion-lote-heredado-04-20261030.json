@@ -1,0 +1,61 @@
+{
+  "date": "2026-10-30",
+  "serverTests": {
+    "passed": 615,
+    "files": 14
+  },
+  "chromiumTests": {
+    "firstRunPassed": 21,
+    "firstRunFailed": 1,
+    "diagnosis": "Test disconnected before page restoration; now awaits restored question timer. Product code unchanged.",
+    "finalPassed": 22,
+    "finalFailed": 0
+  },
+  "serverBuild": "passed",
+  "strictReviewTypes": "passed",
+  "manifestReproducedByteForByte": true,
+  "structuralAudit": {
+    "received": 779,
+    "rejected": 0,
+    "duplicates": 0,
+    "editorialReview": {
+      "integrity": "verified",
+      "summary": {
+        "validated": 520,
+        "pending_review": 140,
+        "rejected": 119
+      }
+    }
+  },
+  "manifestSummary": {
+    "rejected": 119,
+    "validated": 520,
+    "pending_review": 140
+  },
+  "isolatedDatabase": {
+    "database": "/workspace/.ccna-runtime/server/prisma/cloud-reviewed-batch4.db",
+    "total": 787,
+    "statuses": {
+      "pending_review": 140,
+      "rejected": 119,
+      "validated": 528
+    },
+    "validatedDeclaredFamilies": 450,
+    "assistedAudits": 639
+  },
+  "repeatedApply": {
+    "mode": "applied",
+    "manifestId": "assisted-review-20261029-v1",
+    "candidates": 779,
+    "questionsToCreate": 0,
+    "existingMatched": 779,
+    "reviewedApprovals": 520,
+    "remainingCandidatesPending": 140,
+    "appliedApprovals": 0,
+    "approvalsAlreadyPresent": 520,
+    "reviewedRejections": 119,
+    "appliedRejections": 0,
+    "rejectionsAlreadyPresent": 119
+  },
+  "scopeLimit": "140 records still pending. Neither schema checks nor proposed drafts grant approval. Eight seed examples were not independently recertified."
+}

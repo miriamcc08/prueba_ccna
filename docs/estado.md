@@ -4,6 +4,10 @@ Lista vigente de pendientes y criterios de cierre: [pendientes-cierre.md](pendie
 
 Estado vigente del cierre funcional: [auditoría del 26/10/2026](auditoria-funcional-20261026.md). Incluye matriz de requisitos, cambios y pendientes. Las secciones de lotes posteriores conservan su historia; sus cifras de pruebas no sustituyen la última comprobación.
 
+## Actualización del 30/10/2026
+
+[Revisión del cuarto lote heredado](revision-lote-heredado-04-20261030.md): 779 registros importables; 520 versiones aprobadas, 119 originales rechazados con reemplazo y 140 pendientes. Se incorporan 48 versiones utilizables (41 corregidas y siete sin cambios). Se cerraron las dos retenciones del lote 3 con alcance corregido. El lote 4 conserva dos retenciones documentales; las 41 propuestas restantes no son importables. Pasan 615 pruebas de servidor y 22 de Chromium; la carga aislada nueva tiene 787 registros, 528 validados y 450 familias declaradas validadas. El informe enlazado registra las comprobaciones y el resultado del navegador.
+
 ## Actualización del 29/10/2026
 
 [Revisión del tercer lote heredado](revision-lote-heredado-03-20261029.md): 738 registros estructuralmente comprobados; 472 versiones aprobadas, 78 originales rechazados con reemplazo y 188 pendientes. Se inspeccionaron las 48 pendientes del lote 3: nueve se aprobaron sin cambios, 37 tienen corrección aprobada y dos conservan retención documental. Pruebas finales: 612 de servidor y 22 de Chromium aprobadas. La carga nueva aislada contiene 746 registros, 480 validados y 403 familias declaradas validadas. Las cifras de las rondas anteriores conservan su valor histórico.
