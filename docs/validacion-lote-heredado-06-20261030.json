@@ -1,0 +1,58 @@
+{
+  "date": "2026-10-30",
+  "serverTests": {
+    "passed": 617,
+    "files": 14
+  },
+  "chromiumTests": {
+    "passed": 22,
+    "failed": 0
+  },
+  "serverBuild": "passed",
+  "strictReviewTypes": "passed",
+  "manifestReproducedByteForByte": true,
+  "structuralAudit": {
+    "received": 818,
+    "rejected": 0,
+    "duplicates": 0,
+    "editorialReview": {
+      "integrity": "verified",
+      "summary": {
+        "validated": 567,
+        "pending_review": 93,
+        "rejected": 158
+      }
+    }
+  },
+  "manifestSummary": {
+    "rejected": 158,
+    "validated": 567,
+    "pending_review": 93
+  },
+  "isolatedDatabase": {
+    "database": "/workspace/.ccna-runtime/server/prisma/cloud-reviewed-batch6.db",
+    "total": 826,
+    "statuses": {
+      "pending_review": 93,
+      "rejected": 158,
+      "validated": 575
+    },
+    "validatedDeclaredFamilies": 494,
+    "assistedAudits": 725
+  },
+  "repeatedApply": {
+    "mode": "applied",
+    "manifestId": "assisted-review-20261029-v1",
+    "candidates": 818,
+    "questionsToCreate": 0,
+    "existingMatched": 818,
+    "reviewedApprovals": 567,
+    "remainingCandidatesPending": 93,
+    "appliedApprovals": 0,
+    "approvalsAlreadyPresent": 567,
+    "reviewedRejections": 158,
+    "appliedRejections": 0,
+    "rejectionsAlreadyPresent": 158
+  },
+  "scopeLimit": "93 questions remain pending; no blanket approval or IOS execution is asserted. Eight seed examples were not independently recertified."
+}

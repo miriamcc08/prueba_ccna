@@ -28,6 +28,14 @@ describe('Legacy bank review', () => {
     expect(report.records.find((row: any) => row.kind === 'parsed_recursive_route_chain').result).toEqual({ nextHops: ['192.168.12.2', '172.16.1.2'], interface: 'GigabitEthernet0/0', ethernetNeighbor: '172.16.1.2' });
     expect(report.records.find((row: any) => row.kind === 'parsed_ipv6_longest_prefix').result.prefix).toBe('2001:db8:acad:1:1000::/80');
   });
+  it('derives ten sixth-batch keys including unique IPv6 alternatives and actual Python subscript outcomes', () => {
+    const report = JSON.parse(execFileSync('python3', [resolve(__dirname, '../../tools/check-reviewed-batch6-scenarios.py')], { encoding: 'utf8' }));
+    expect(report.checked).toBe(10);
+    expect(report.records.every((row: any) => row.passed)).toBe(true);
+    expect(report.records.find((row: any) => row.kind === 'modified_eui64_unique_alternatives').result).toBe('2001:db8:acad:10:250:56ff:fea3:8c1f');
+    expect(report.records.find((row: any) => row.kind === 'parsed_json_python_subscripts').result).toEqual({ A: '10.10.20.1', B: '10.10.20.2', C: 'TypeError', D: 'KeyError' });
+    expect(report.records.find((row: any) => row.kind === 'stateless_established_flag_mask').result).toEqual({ 0: false, 2: false, 4: true, 16: true, 18: true, 20: true });
+  });
   it('checks eleven legacy arithmetic keys and the numerical Spanish alternatives independently', () => {
     const report = JSON.parse(execFileSync('python3', [resolve(__dirname, '../../tools/review-legacy-calculations.py')], { encoding: 'utf8' }));
     expect(report.arithmeticChecksPassed).toBe(11);
@@ -36,17 +44,17 @@ describe('Legacy bank review', () => {
   });
   it('groups equivalent summaries instead of treating IP substitutions as distinct families', () => {
     const report = JSON.parse(execFileSync(process.execPath, ['node_modules/tsx/dist/cli.mjs', 'prisma/audit-questions.ts'], { encoding: 'utf8' }));
-    expect(report.received).toBe(779);
+    expect(report.received).toBe(818);
     expect(report.rejected).toBe(0);
     expect(report.duplicates).toBe(0);
-    expect(report.editorialReview).toEqual({ integrity: 'verified', summary: { validated: 520, pending_review: 140, rejected: 119 } });
+    expect(report.editorialReview).toEqual({ integrity: 'verified', summary: { validated: 567, pending_review: 93, rejected: 158 } });
     const family = report.equivalentFamilies.find((g: any) => g.family === 'concept-ipv4-route-aggregation');
     expect(family.records).toEqual(expect.arrayContaining([
       { file: 'batch3_all.json', index: 8 }, { file: 'batch4_all.json', index: 6 },
       { file: 'batch6_all.json', index: 1 }, { file: 'original_20261024_50.json', index: 26 },
     ]));
     expect(report.distinctDeclaredFamilies).toBeLessThan(report.received);
-    expect(report.uniqueNormalizedEnglishStatements).toBe(779);
+    expect(report.uniqueNormalizedEnglishStatements).toBe(818);
   });
   it('classifies link-local scope as IPv6 addressing rather than subnet arithmetic', () => {
     const data = JSON.parse(readFileSync(resolve(__dirname, '../prisma/questions/batch2_network_fundamentals.json'), 'utf8'));

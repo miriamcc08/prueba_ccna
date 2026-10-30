@@ -4,6 +4,10 @@ Lista vigente de pendientes y criterios de cierre: [pendientes-cierre.md](pendie
 
 Estado vigente del cierre funcional: [auditoría del 26/10/2026](auditoria-funcional-20261026.md). Incluye matriz de requisitos, cambios y pendientes. Las secciones de lotes posteriores conservan su historia; sus cifras de pruebas no sustituyen la última comprobación.
 
+## Actualización vigente del 30/10/2026
+
+[Revisión del sexto lote heredado](revision-lote-heredado-06-20261030.md): 818 registros importables; 567 versiones validadas, 158 originales rechazados con reemplazo aprobado y 93 pendientes. Se incorporan 47 versiones utilizables (39 corregidas y ocho sin cambios). Agile conserva retención documental; los dos borradores actuales no son importables. Pasan 617 pruebas de servidor y 22 de Chromium, tipado estricto y compilación. La carga aislada nueva tiene 826 preguntas, 575 validadas y 494 familias declaradas validadas. Las rondas anteriores conservan sus cifras históricas.
+
 ## Actualización del 30/10/2026
 
 [Revisión del cuarto lote heredado](revision-lote-heredado-04-20261030.md): 779 registros importables; 520 versiones aprobadas, 119 originales rechazados con reemplazo y 140 pendientes. Se incorporan 48 versiones utilizables (41 corregidas y siete sin cambios). Se cerraron las dos retenciones del lote 3 con alcance corregido. El lote 4 conserva dos retenciones documentales; las 41 propuestas restantes no son importables. Pasan 615 pruebas de servidor y 22 de Chromium; la carga aislada nueva tiene 787 registros, 528 validados y 450 familias declaradas validadas. El informe enlazado registra las comprobaciones y el resultado del navegador.

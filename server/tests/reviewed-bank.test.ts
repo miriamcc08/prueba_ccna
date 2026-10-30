@@ -8,10 +8,10 @@ import { digest, contentRecord } from '../prisma/bank-review-format';
 describe('Evidence-bound bank review decisions', () => {
   it('allows only the documented reviewed subset, not all structurally passing candidates', () => {
     const bank = readReviewedBank();
-    expect(bank.candidates).toHaveLength(779);
-    expect(bank.manifest.summary).toEqual({ validated: 520, pending_review: 140, rejected: 119 });
+    expect(bank.candidates).toHaveLength(818);
+    expect(bank.manifest.summary).toEqual({ validated: 567, pending_review: 93, rejected: 158 });
     expect(bank.candidates.filter(item => item.row.decision === 'validated' && item.row.file.startsWith('original_'))).toHaveLength(356);
-    expect(bank.candidates.filter(item => item.row.decision === 'validated' && item.row.file.startsWith('batch'))).toHaveLength(45);
+    expect(bank.candidates.filter(item => item.row.decision === 'validated' && item.row.file.startsWith('batch'))).toHaveLength(53);
     for (const id of ['ccna-original-20261024-b03-026', 'ccna-original-20261026-b04-025']) expect(bank.candidates.find(item => item.row.id === id)?.row.decision).toBe('rejected');
     expect(bank.candidates.find(item => item.row.id === 'ccna-original-20261026-b04-012')?.row.decision).toBe('validated');
     for (const item of bank.candidates) expect(digest(contentRecord(item.q))).toBe(item.row.contentSha256);
@@ -32,7 +32,7 @@ describe('Evidence-bound bank review decisions', () => {
   it('uses corrected versions while preserving rejected originals and assigned families', () => {
     const bank = readReviewedBank();
     const revised = bank.candidates.filter(item => item.row.supersedesQuestionId);
-    expect(revised).toHaveLength(119);
+    expect(revised).toHaveLength(158);
     for (const item of revised) {
       const original = bank.candidates.find(candidate => candidate.row.id === item.row.supersedesQuestionId)!;
       expect(original.row.decision).toBe('rejected');
@@ -74,7 +74,7 @@ describe('Evidence-bound bank review decisions', () => {
     expect(restconf.q.statementEn).not.toContain('verify=False');
     expect(restconf.q.statementEn).not.toContain('C1sco123!');
   });
-  it('keeps fourth-batch documentary holds and sixth-batch proposals outside approval', () => {
+  it('keeps unresolved documentary proposals outside approval', () => {
     const bank = readReviewedBank();
     const fourth = bank.candidates.filter(item => item.row.file === 'batch4_all.json');
     expect(fourth.filter(item => item.row.decision === 'pending_review').map(item => item.row.index)).toEqual([43, 46]);
@@ -82,7 +82,7 @@ describe('Evidence-bound bank review decisions', () => {
     expect(corrections).toHaveLength(41);
     expect(corrections.every(item => item.row.decision === 'validated')).toBe(true);
     const drafts = JSON.parse(readFileSync(resolve(__dirname, '../../docs/propuestas-cierre-heredadas-20261030.json'), 'utf8'));
-    expect(drafts.questions).toHaveLength(41);
+    expect(drafts.questions).toHaveLength(2);
     for (const draft of drafts.questions) expect(bank.candidates.some(item => item.row.id === draft.id)).toBe(false);
     const certificate = corrections.find(item => item.row.id === 'ccna-legacy-batch4_all-020-review-r1')!;
     expect(certificate.q.statementEn).toContain('trusted time reference');
