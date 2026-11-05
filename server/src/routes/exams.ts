@@ -108,7 +108,7 @@ router.post('/availability', optionalAuth, async (req: Request, res: Response, n
 // Guest attempts use their unguessable exam ID as the local session capability.
 router.use('/:id', optionalAuth, async (req: Request, _res: Response, next: NextFunction) => {
   try {
-    const exam = await prisma.exam.findUnique({ where: { id: req.params.id } });
+    const exam = await prisma.exam.findUnique({ where: { id: (req.params.id as string) } });
     if (!exam) throw new AppError(404, 'Exam not found.');
     if (exam.userId && exam.userId !== req.user?.id && req.user?.role !== 'admin') {
       throw new AppError(403, 'This exam belongs to another user.');
@@ -121,7 +121,7 @@ router.use('/:id', optionalAuth, async (req: Request, _res: Response, next: Next
 router.post('/:id/change-study-topic', async (req: Request, res: Response, next: NextFunction) => {
   try {
     const body = z.object({ topicId: z.string().min(1), questionCount: z.number().int().min(1).max(200).default(1) }).parse(req.body);
-    const state = await examEngine.createStudyTopicPractice(req.params.id, body.topicId, body.questionCount, req.user?.id);
+    const state = await examEngine.createStudyTopicPractice((req.params.id as string), body.topicId, body.questionCount, req.user?.id);
     res.status(201).json({ success: true, data: state });
   } catch (error) { next(error); }
 });
@@ -129,7 +129,7 @@ router.post('/:id/change-study-topic', async (req: Request, res: Response, next:
 router.post('/:id/restart-exercise', async (req: Request, res: Response, next: NextFunction) => {
   try {
     const { examQuestionId } = z.object({ examQuestionId: z.string().min(1) }).parse(req.body);
-    const state = await examEngine.restartStudyExercise(req.params.id, examQuestionId, req.user?.id);
+    const state = await examEngine.restartStudyExercise((req.params.id as string), examQuestionId, req.user?.id);
     res.status(201).json({ success: true, data: state });
   } catch (error) { next(error); }
 });
@@ -142,7 +142,7 @@ router.get(
   '/:id',
   async (req: Request, res: Response, next: NextFunction): Promise<void> => {
     try {
-      const state = await examEngine.getExamState(req.params.id);
+      const state = await examEngine.getExamState((req.params.id as string));
       const response: ApiResponse<ExamStateResponse> = {
         success: true,
         data: state,
@@ -162,7 +162,7 @@ router.post(
   '/:id/start',
   async (req: Request, res: Response, next: NextFunction): Promise<void> => {
     try {
-      const state = await examEngine.startExam(req.params.id);
+      const state = await examEngine.startExam((req.params.id as string));
       const response: ApiResponse<ExamStateResponse> = {
         success: true,
         data: state,
@@ -183,7 +183,7 @@ router.get(
   '/:id/question',
   async (req: Request, res: Response, next: NextFunction): Promise<void> => {
     try {
-      const question = await examEngine.getCurrentQuestion(req.params.id, req.query.index === undefined ? undefined : Number(req.query.index));
+      const question = await examEngine.getCurrentQuestion((req.params.id as string), req.query.index === undefined ? undefined : Number(req.query.index));
       const response: ApiResponse<ExamQuestionView> = {
         success: true,
         data: question,
@@ -206,7 +206,7 @@ router.post(
       const { examQuestionId, selectedOptionIds } = submitAnswerSchema.parse(req.body);
 
       const result = await examEngine.submitAnswer(
-        req.params.id,
+        (req.params.id as string),
         examQuestionId,
         selectedOptionIds
       );
@@ -230,7 +230,7 @@ router.post(
   '/:id/complete',
   async (req: Request, res: Response, next: NextFunction): Promise<void> => {
     try {
-      const results = await examEngine.completeExam(req.params.id);
+      const results = await examEngine.completeExam((req.params.id as string));
       const response: ApiResponse<ExamResultResponse> = {
         success: true,
         data: results,
@@ -251,7 +251,7 @@ router.get(
   '/:id/results',
   async (req: Request, res: Response, next: NextFunction): Promise<void> => {
     try {
-      const results = await scoringEngine.calculateResults(req.params.id);
+      const results = await scoringEngine.calculateResults((req.params.id as string));
       const response: ApiResponse<ExamResultResponse> = {
         success: true,
         data: results,
@@ -272,11 +272,11 @@ router.get(
   async (req: Request, res: Response, next: NextFunction): Promise<void> => {
     try {
       const exam = await prisma.exam.findUnique({
-        where: { id: req.params.id },
+        where: { id: (req.params.id as string) },
       });
 
       if (!exam) {
-        throw new AppError(404, `Exam "${req.params.id}" not found.`);
+        throw new AppError(404, `Exam "${(req.params.id as string)}" not found.`);
       }
 
       // In strict mode, only allow review after exam is finished
@@ -284,7 +284,7 @@ router.get(
         throw new AppError(403, 'Review is only available after completing the exam.');
       }
 
-      const review = await scoringEngine.getExamReview(req.params.id);
+      const review = await scoringEngine.getExamReview((req.params.id as string));
       const response: ApiResponse<ReviewQuestionItem[]> = {
         success: true,
         data: review,
