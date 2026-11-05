@@ -34,6 +34,8 @@ Para ejecutar el servidor compilado: desde la carpeta de ejecución, exporta `DA
 
 La carga inicial de 360 originales más ocho ejemplos explica las 368 preguntas visibles. La [revisión vigente](docs/revision-lote-heredado-05-20261030.md) acumula **619 versiones aprobadas, 41 pendientes y 209 antiguas rechazadas con reemplazo**. Incluye 209 correcciones que conservan sus originales. Desde `server`, `npm run db:sync-reviewed` muestra la previsión y `npm run db:sync-reviewed -- --apply` aplica las decisiones. No se ejecuta automáticamente en el setup ni sobrescribe contenido local diferente o decisiones editoriales incompatibles.
 
+Si tu base antigua bloquea la sincronización con `an existing approval cannot be withdrawn`, consulta [la migración explícita de versiones heredadas](docs/sincronizacion-base-heredada.md). Permite conservar los originales como borradores y cargar las versiones revisadas por separado, después de comprobar la previsión.
+
 La nueva base aislada de validación tiene **831 registros, 580 validados y 499 familias validadas**; permite un simulacro de 100 con dificultad mixta. Esto no actualiza por sí solo la base de tu PC. La [primera ronda](docs/revision-y-aprobaciones-20261029.md) y la [segunda](docs/continuacion-revision-20261029.md) conservan el detalle histórico.
 
 ## Cuentas y administración

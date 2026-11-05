@@ -1,0 +1,807 @@
+{
+  "originCommit": "cef82bb3aa6f413317b13ce773f9c9af07bd603e",
+  "originalDatabaseSha256": "f3613836de531072fdd08c06510fc1a5b73751d699b6f570b6870d1297198648",
+  "scope": "Known original database versions identified by content hashes and original approval metadata. Explicit opt-in preserves their content and IDs, records the previous validation state in an archive audit, and sets them aside as drafts while importing canonical reviewed versions.",
+  "records": [
+    {
+      "databaseId": "cmvcgz1110002acj0oyyzo7z8",
+      "manifestQuestionId": "ccna-legacy-batch1_automation-001",
+      "originalContentSha256": "95c937380d4d1dfe2a0437f8d94c9277a83f0f00e10e4c544203bdc92e5919fc",
+      "reviewedContentSha256": "95c937380d4d1dfe2a0437f8d94c9277a83f0f00e10e4c544203bdc92e5919fc",
+      "originalStatus": "validated",
+      "originalVerifiedAtEpoch": 1792245964786
+    },
+    {
+      "databaseId": "cmvcgz11l0008acj0ylapt2mr",
+      "manifestQuestionId": "ccna-legacy-batch1_automation-002",
+      "originalContentSha256": "d519baf11d104895e79cea0de1470fc39daf5c1fcf6b5c19c32728bf937380e1",
+      "reviewedContentSha256": "d519baf11d104895e79cea0de1470fc39daf5c1fcf6b5c19c32728bf937380e1",
+      "originalStatus": "validated",
+      "originalVerifiedAtEpoch": 1792245964808
+    },
+    {
+      "databaseId": "cmvcgz120000facj02f7jdwbm",
+      "manifestQuestionId": "ccna-legacy-batch1_automation-003",
+      "originalContentSha256": "186c492787b6abf8a7bff01638d2d1261fd19726d8883f08c4108fe92d8f36f0",
+      "reviewedContentSha256": "186c492787b6abf8a7bff01638d2d1261fd19726d8883f08c4108fe92d8f36f0",
+      "originalStatus": "validated",
+      "originalVerifiedAtEpoch": 1792245964822
+    },
+    {
+      "databaseId": "cmvcgz12m000lacj0nm4j73b8",
+      "manifestQuestionId": "ccna-legacy-batch1_automation-004",
+      "originalContentSha256": "e89c8f38d9d3008be015fcd3f2cbee0a016fe30900c67f189d557d57c27324bf",
+      "reviewedContentSha256": "e89c8f38d9d3008be015fcd3f2cbee0a016fe30900c67f189d557d57c27324bf",
+      "originalStatus": "validated",
+      "originalVerifiedAtEpoch": 1792245964845
+    },
+    {
+      "databaseId": "cmvcgz137000racj0s367qv32",
+      "manifestQuestionId": "ccna-legacy-batch1_automation-005",
+      "originalContentSha256": "901621fcaf4b75a9c989afa2e64039578751e17bae2c079baccc297ed34a793f",
+      "reviewedContentSha256": "901621fcaf4b75a9c989afa2e64039578751e17bae2c079baccc297ed34a793f",
+      "originalStatus": "validated",
+      "originalVerifiedAtEpoch": 1792245964865
+    },
+    {
+      "databaseId": "cmvch0rt20001acggfualwwra",
+      "manifestQuestionId": "ccna-legacy-batch1_ip_connectivity-001",
+      "originalContentSha256": "6b7e9a7c24305f1433a6dae02facb908f040a8fa54ed2b14ff94d9221dc7906c",
+      "reviewedContentSha256": "82c51cb09fc58dc80eda1062504ad094d912fb7a6e0431d2522fe7a0bc2d9db1",
+      "originalStatus": "validated",
+      "originalVerifiedAtEpoch": 1792246046148
+    },
+    {
+      "databaseId": "cmvch0rti0007acgg4c1bix6e",
+      "manifestQuestionId": "ccna-legacy-batch1_ip_connectivity-002",
+      "originalContentSha256": "ec3ca61d7809c7e75896a9240e41c5745a63cb328187bf18435afa1631e5823c",
+      "reviewedContentSha256": "ec3ca61d7809c7e75896a9240e41c5745a63cb328187bf18435afa1631e5823c",
+      "originalStatus": "validated",
+      "originalVerifiedAtEpoch": 1792246046165
+    },
+    {
+      "databaseId": "cmvch0rtu000dacgg00vqvqqs",
+      "manifestQuestionId": "ccna-legacy-batch1_ip_connectivity-003",
+      "originalContentSha256": "525a7dc05f9220fa3cd3da17ff1ede2d6de6ef2c46d7de50d80791f3e1fb0afc",
+      "reviewedContentSha256": "525a7dc05f9220fa3cd3da17ff1ede2d6de6ef2c46d7de50d80791f3e1fb0afc",
+      "originalStatus": "validated",
+      "originalVerifiedAtEpoch": 1792246046177
+    },
+    {
+      "databaseId": "cmvch0ru7000jacggb0mj5f43",
+      "manifestQuestionId": "ccna-legacy-batch1_ip_connectivity-004",
+      "originalContentSha256": "26fc2aceec5c5a82d429d8140fbd204abdb73d9d3bf4bef4a4c3fd04c4943d1b",
+      "reviewedContentSha256": "da5164098a7ba64e8aa5e35c8d88252e03459a83345d2f528558303c6d06fed1",
+      "originalStatus": "validated",
+      "originalVerifiedAtEpoch": 1792246046190
+    },
+    {
+      "databaseId": "cmvch0ruj000pacgg9he4yxly",
+      "manifestQuestionId": "ccna-legacy-batch1_ip_connectivity-005",
+      "originalContentSha256": "d7f2cdcab094d140e1701ddc10f49900183717899203ac4337bd7f72cf1581a6",
+      "reviewedContentSha256": "d7f2cdcab094d140e1701ddc10f49900183717899203ac4337bd7f72cf1581a6",
+      "originalStatus": "validated",
+      "originalVerifiedAtEpoch": 1792246046203
+    },
+    {
+      "databaseId": "cmvch0rv1000vacgg9x1zbgdr",
+      "manifestQuestionId": "ccna-legacy-batch1_ip_connectivity-006",
+      "originalContentSha256": "ad280b25f55699576596776fd490a2b37fa56061b99d00899165fe9438d80cfc",
+      "reviewedContentSha256": "ad280b25f55699576596776fd490a2b37fa56061b99d00899165fe9438d80cfc",
+      "originalStatus": "validated",
+      "originalVerifiedAtEpoch": 1792246046221
+    },
+    {
+      "databaseId": "cmvch0rve0011acggr2c3jhfc",
+      "manifestQuestionId": "ccna-legacy-batch1_ip_connectivity-007",
+      "originalContentSha256": "97f7c793f80c0816e47a80673095b588f932e541d287c2b2594d9df05b465d37",
+      "reviewedContentSha256": "97f7c793f80c0816e47a80673095b588f932e541d287c2b2594d9df05b465d37",
+      "originalStatus": "validated",
+      "originalVerifiedAtEpoch": 1792246046234
+    },
+    {
+      "databaseId": "cmvch0rvt0017acggc8u6bttd",
+      "manifestQuestionId": "ccna-legacy-batch1_ip_connectivity-008",
+      "originalContentSha256": "b202eed7e0ceecf6ddde72b8fe8c93a8dcc264bd5c8830ad9024908b26cc9083",
+      "reviewedContentSha256": "b202eed7e0ceecf6ddde72b8fe8c93a8dcc264bd5c8830ad9024908b26cc9083",
+      "originalStatus": "validated",
+      "originalVerifiedAtEpoch": 1792246046248
+    },
+    {
+      "databaseId": "cmvch0rw6001dacggt2gw7s7m",
+      "manifestQuestionId": "ccna-legacy-batch1_ip_connectivity-009",
+      "originalContentSha256": "a76f9ffd8bf069dabf2d18b09e39570da8f3c9c7c603fafc5ecb298ff4242f83",
+      "reviewedContentSha256": "a76f9ffd8bf069dabf2d18b09e39570da8f3c9c7c603fafc5ecb298ff4242f83",
+      "originalStatus": "validated",
+      "originalVerifiedAtEpoch": 1792246046261
+    },
+    {
+      "databaseId": "cmvch0rwk001jacggjlno5cbx",
+      "manifestQuestionId": "ccna-legacy-batch1_ip_connectivity-010",
+      "originalContentSha256": "abbdb326738e079b3fe4a0d5096192d2ff57317459bff9ab71eff0be08753b40",
+      "reviewedContentSha256": "abbdb326738e079b3fe4a0d5096192d2ff57317459bff9ab71eff0be08753b40",
+      "originalStatus": "validated",
+      "originalVerifiedAtEpoch": 1792246046275
+    },
+    {
+      "databaseId": "cmvch0rww001pacggcrnk9mrw",
+      "manifestQuestionId": "ccna-legacy-batch1_ip_connectivity-011",
+      "originalContentSha256": "f89f7271c2ed14866431a05bf2ae59ec2b135bc47beefd9a98b705d023e9fbc6",
+      "reviewedContentSha256": "f89f7271c2ed14866431a05bf2ae59ec2b135bc47beefd9a98b705d023e9fbc6",
+      "originalStatus": "validated",
+      "originalVerifiedAtEpoch": 1792246046287
+    },
+    {
+      "databaseId": "cmvch0rxc001wacggiw29h2eg",
+      "manifestQuestionId": "ccna-legacy-batch1_ip_connectivity-012",
+      "originalContentSha256": "af9f3bf4adfe8b84db5fe6c9d8d4023b558ea070b48ce4eb574dc3619f3c08bb",
+      "reviewedContentSha256": "af9f3bf4adfe8b84db5fe6c9d8d4023b558ea070b48ce4eb574dc3619f3c08bb",
+      "originalStatus": "validated",
+      "originalVerifiedAtEpoch": 1792246046303
+    },
+    {
+      "databaseId": "cmvch0rxs0022acggthw70mh5",
+      "manifestQuestionId": "ccna-legacy-batch1_ip_connectivity-013",
+      "originalContentSha256": "375321229582cd9a89abc75c2c20010146bae963063c7545760bbc48eda22428",
+      "reviewedContentSha256": "375321229582cd9a89abc75c2c20010146bae963063c7545760bbc48eda22428",
+      "originalStatus": "validated",
+      "originalVerifiedAtEpoch": 1792246046320
+    },
+    {
+      "databaseId": "cmvcgz13p000xacj0wijm9a90",
+      "manifestQuestionId": "ccna-legacy-batch1_ip_services-001",
+      "originalContentSha256": "f68e13a899233e19707c8dc5acdd529e650d3c040885a7d80360b21d1ad8b7db",
+      "reviewedContentSha256": "f68e13a899233e19707c8dc5acdd529e650d3c040885a7d80360b21d1ad8b7db",
+      "originalStatus": "validated",
+      "originalVerifiedAtEpoch": 1792245964884
+    },
+    {
+      "databaseId": "cmvcgz1470013acj0i2h6svdf",
+      "manifestQuestionId": "ccna-legacy-batch1_ip_services-002",
+      "originalContentSha256": "5653207d7999adb3e882ed88245d00fb586cae88a8ad6be3aaec485ac1362629",
+      "reviewedContentSha256": "5653207d7999adb3e882ed88245d00fb586cae88a8ad6be3aaec485ac1362629",
+      "originalStatus": "validated",
+      "originalVerifiedAtEpoch": 1792245964902
+    },
+    {
+      "databaseId": "cmvcgz14q0019acj0bzhg9g22",
+      "manifestQuestionId": "ccna-legacy-batch1_ip_services-003",
+      "originalContentSha256": "3b2ebc3bfbd1f5253497bdf5b89d5a46c76fb361e7714d42b543874a81054124",
+      "reviewedContentSha256": "3b2ebc3bfbd1f5253497bdf5b89d5a46c76fb361e7714d42b543874a81054124",
+      "originalStatus": "validated",
+      "originalVerifiedAtEpoch": 1792245964921
+    },
+    {
+      "databaseId": "cmvcgz15a001facj0w3gejk26",
+      "manifestQuestionId": "ccna-legacy-batch1_ip_services-004",
+      "originalContentSha256": "c8ed163ca81ec9b276319a3c240ace01ece52a239d922f32444447ef60d5f6fc",
+      "reviewedContentSha256": "c8ed163ca81ec9b276319a3c240ace01ece52a239d922f32444447ef60d5f6fc",
+      "originalStatus": "validated",
+      "originalVerifiedAtEpoch": 1792245964941
+    },
+    {
+      "databaseId": "cmvcgz15p001lacj0osp7amlj",
+      "manifestQuestionId": "ccna-legacy-batch1_ip_services-005",
+      "originalContentSha256": "8a424980f5d99f66d63762ae9b5c609466e38c4b86fce060977a8222d31017f8",
+      "reviewedContentSha256": "4d78b43b05267f3c2ee430218904cfcb3ccfdf3fab9c307527165c8c87de3d52",
+      "originalStatus": "validated",
+      "originalVerifiedAtEpoch": 1792245964956
+    },
+    {
+      "databaseId": "cmvch0ryo0028acgglt1ww3tr",
+      "manifestQuestionId": "ccna-legacy-batch1_network_access-001",
+      "originalContentSha256": "0d64d30c78d42099df45d7cd02d825c5963e4adc809e5402172577932cf47582",
+      "reviewedContentSha256": "0d64d30c78d42099df45d7cd02d825c5963e4adc809e5402172577932cf47582",
+      "originalStatus": "validated",
+      "originalVerifiedAtEpoch": 1792246046351
+    },
+    {
+      "databaseId": "cmvch0rz2002eacgga14x66v3",
+      "manifestQuestionId": "ccna-legacy-batch1_network_access-002",
+      "originalContentSha256": "b81f2717940678743e71e12e4f2fdb7d20866008f51b8527b7eb9cfed4151628",
+      "reviewedContentSha256": "b81f2717940678743e71e12e4f2fdb7d20866008f51b8527b7eb9cfed4151628",
+      "originalStatus": "validated",
+      "originalVerifiedAtEpoch": 1792246046365
+    },
+    {
+      "databaseId": "cmvch0rzj002kacgg5rrp2wpe",
+      "manifestQuestionId": "ccna-legacy-batch1_network_access-003",
+      "originalContentSha256": "b90dda6f31b86ea63bb0524f7a4357d1aa77c94ad6e5ad4722d00c6495f58368",
+      "reviewedContentSha256": "b90dda6f31b86ea63bb0524f7a4357d1aa77c94ad6e5ad4722d00c6495f58368",
+      "originalStatus": "validated",
+      "originalVerifiedAtEpoch": 1792246046382
+    },
+    {
+      "databaseId": "cmvch0rzv002qacggg22hnqgp",
+      "manifestQuestionId": "ccna-legacy-batch1_network_access-004",
+      "originalContentSha256": "827e890a96d24adcbd9a05dfaad020ea6116f21e415334ec8100a1806bca7686",
+      "reviewedContentSha256": "827e890a96d24adcbd9a05dfaad020ea6116f21e415334ec8100a1806bca7686",
+      "originalStatus": "validated",
+      "originalVerifiedAtEpoch": 1792246046395
+    },
+    {
+      "databaseId": "cmvch0s09002wacggqu6eduaj",
+      "manifestQuestionId": "ccna-legacy-batch1_network_access-005",
+      "originalContentSha256": "e8864f292bb5356d836ebc04a15bcadb1b90c4a37fb65674fe3d443dc3d27748",
+      "reviewedContentSha256": "e8864f292bb5356d836ebc04a15bcadb1b90c4a37fb65674fe3d443dc3d27748",
+      "originalStatus": "validated",
+      "originalVerifiedAtEpoch": 1792246046408
+    },
+    {
+      "databaseId": "cmvch0s0l0032acggm68pom2s",
+      "manifestQuestionId": "ccna-legacy-batch1_network_access-006",
+      "originalContentSha256": "1967e4870c42a27a2f363e1274976d8dbd247d7adb2f2b02f45aab406df4c7b2",
+      "reviewedContentSha256": "1967e4870c42a27a2f363e1274976d8dbd247d7adb2f2b02f45aab406df4c7b2",
+      "originalStatus": "validated",
+      "originalVerifiedAtEpoch": 1792246046420
+    },
+    {
+      "databaseId": "cmvch0s100038acggy91kymup",
+      "manifestQuestionId": "ccna-legacy-batch1_network_access-007",
+      "originalContentSha256": "ab8653852e909c359d26058da31b08d50a66b6921cb8348b9deaf17254e7cd3f",
+      "reviewedContentSha256": "ab8653852e909c359d26058da31b08d50a66b6921cb8348b9deaf17254e7cd3f",
+      "originalStatus": "validated",
+      "originalVerifiedAtEpoch": 1792246046434
+    },
+    {
+      "databaseId": "cmvch0s1f003facgg6uv0r8kn",
+      "manifestQuestionId": "ccna-legacy-batch1_network_access-008",
+      "originalContentSha256": "a93053ff243f6d069e1484d361abf9ef78a6de7c4e2b958dd5a670c645b943c3",
+      "reviewedContentSha256": "a93053ff243f6d069e1484d361abf9ef78a6de7c4e2b958dd5a670c645b943c3",
+      "originalStatus": "validated",
+      "originalVerifiedAtEpoch": 1792246046450
+    },
+    {
+      "databaseId": "cmvch0s25003lacggr3gekz3h",
+      "manifestQuestionId": "ccna-legacy-batch1_network_access-009",
+      "originalContentSha256": "e5cc55f77860005164688cdfa103c9217b6ed93db44ecce4c2833fb7f16e5a61",
+      "reviewedContentSha256": "e5cc55f77860005164688cdfa103c9217b6ed93db44ecce4c2833fb7f16e5a61",
+      "originalStatus": "validated",
+      "originalVerifiedAtEpoch": 1792246046476
+    },
+    {
+      "databaseId": "cmvch0s2t003racgg0hkqfq4o",
+      "manifestQuestionId": "ccna-legacy-batch1_network_access-010",
+      "originalContentSha256": "d62a4c0212b07cfa83a6a995c26091913a21dbe83b05049000db78954c30d153",
+      "reviewedContentSha256": "d62a4c0212b07cfa83a6a995c26091913a21dbe83b05049000db78954c30d153",
+      "originalStatus": "validated",
+      "originalVerifiedAtEpoch": 1792246046500
+    },
+    {
+      "databaseId": "cmvcgz167001racj0xn23uzy3",
+      "manifestQuestionId": "ccna-legacy-batch1_network_fundamentals-001",
+      "originalContentSha256": "4d816facaf1d6730a3bc8599a433b804be97db899089abf3dc55978b3eeb0536",
+      "reviewedContentSha256": "4d816facaf1d6730a3bc8599a433b804be97db899089abf3dc55978b3eeb0536",
+      "originalStatus": "validated",
+      "originalVerifiedAtEpoch": 1792245964973
+    },
+    {
+      "databaseId": "cmvcgz16n001xacj04unhk1gj",
+      "manifestQuestionId": "ccna-legacy-batch1_network_fundamentals-002",
+      "originalContentSha256": "f03b956720f1227389cecb3a440ea681890d12e12dbcd743b9d1fd72b3774530",
+      "reviewedContentSha256": "f03b956720f1227389cecb3a440ea681890d12e12dbcd743b9d1fd72b3774530",
+      "originalStatus": "validated",
+      "originalVerifiedAtEpoch": 1792245964990
+    },
+    {
+      "databaseId": "cmvcgz1750024acj028wt2axg",
+      "manifestQuestionId": "ccna-legacy-batch1_network_fundamentals-003",
+      "originalContentSha256": "2c884c88902051611d58556c872d3219e7fd563106d16d54c007de594385f952",
+      "reviewedContentSha256": "2c884c88902051611d58556c872d3219e7fd563106d16d54c007de594385f952",
+      "originalStatus": "validated",
+      "originalVerifiedAtEpoch": 1792245965008
+    },
+    {
+      "databaseId": "cmvcgz17m002aacj04i28ogig",
+      "manifestQuestionId": "ccna-legacy-batch1_network_fundamentals-004",
+      "originalContentSha256": "6c56d8bda40879abe1450df035579953c5fd83dd1034cfa831472987a61b83b8",
+      "reviewedContentSha256": "6c56d8bda40879abe1450df035579953c5fd83dd1034cfa831472987a61b83b8",
+      "originalStatus": "validated",
+      "originalVerifiedAtEpoch": 1792245965026
+    },
+    {
+      "databaseId": "cmvcgz181002gacj0qa2apyyd",
+      "manifestQuestionId": "ccna-legacy-batch1_network_fundamentals-005",
+      "originalContentSha256": "7f230b33e47df1308f70f14002a8ae5dfe2c2595d72b0169ec3ad2095e09f352",
+      "reviewedContentSha256": "7f230b33e47df1308f70f14002a8ae5dfe2c2595d72b0169ec3ad2095e09f352",
+      "originalStatus": "validated",
+      "originalVerifiedAtEpoch": 1792245965041
+    },
+    {
+      "databaseId": "cmvcgz18h002macj056dtrmxl",
+      "manifestQuestionId": "ccna-legacy-batch1_network_fundamentals-006",
+      "originalContentSha256": "3dcc02bdf670e43ea609ee0c68c64608feac759b74c13549937414889deed6a7",
+      "reviewedContentSha256": "3dcc02bdf670e43ea609ee0c68c64608feac759b74c13549937414889deed6a7",
+      "originalStatus": "validated",
+      "originalVerifiedAtEpoch": 1792245965056
+    },
+    {
+      "databaseId": "cmvcgz18w002sacj0sazhzrqh",
+      "manifestQuestionId": "ccna-legacy-batch1_network_fundamentals-007",
+      "originalContentSha256": "222acfe46042a55cfae459fa87b93077b4aad5d46a2a2326bc848c34ea1a5fdc",
+      "reviewedContentSha256": "653359283eb28915f84d19842c104d4efaa1a47c49c3de58bcb6f6ac1defe3e6",
+      "originalStatus": "validated",
+      "originalVerifiedAtEpoch": 1792245965071
+    },
+    {
+      "databaseId": "cmvcgz19c002yacj08nuy1cbp",
+      "manifestQuestionId": "ccna-legacy-batch1_network_fundamentals-008",
+      "originalContentSha256": "29b34ee6d264ead63d21f42a1145ee9741db1f3cd8d779ae5e22667ac111a943",
+      "reviewedContentSha256": "29b34ee6d264ead63d21f42a1145ee9741db1f3cd8d779ae5e22667ac111a943",
+      "originalStatus": "validated",
+      "originalVerifiedAtEpoch": 1792245965087
+    },
+    {
+      "databaseId": "cmvcgz19t0034acj0aie8o0al",
+      "manifestQuestionId": "ccna-legacy-batch1_network_fundamentals-009",
+      "originalContentSha256": "c44c6400a8eca3bedebfb3980d31f7dcfb24cbc5887735cafc12cfeb14b412f6",
+      "reviewedContentSha256": "c44c6400a8eca3bedebfb3980d31f7dcfb24cbc5887735cafc12cfeb14b412f6",
+      "originalStatus": "validated",
+      "originalVerifiedAtEpoch": 1792245965104
+    },
+    {
+      "databaseId": "cmvcgz1ac003aacj0yiye1nwb",
+      "manifestQuestionId": "ccna-legacy-batch1_network_fundamentals-010",
+      "originalContentSha256": "0b23c251a1310ebba37911979d5876c18eaa10c62cc79a67ba6356cc1f7cfa9e",
+      "reviewedContentSha256": "0b23c251a1310ebba37911979d5876c18eaa10c62cc79a67ba6356cc1f7cfa9e",
+      "originalStatus": "validated",
+      "originalVerifiedAtEpoch": 1792245965123
+    },
+    {
+      "databaseId": "cmvcgz1av003gacj0fj3z5rd3",
+      "manifestQuestionId": "ccna-legacy-batch1_security_fundamentals-001",
+      "originalContentSha256": "651a35eafe44417902f01e82923818880fc95fe223685fccdac8d891c77cffc5",
+      "reviewedContentSha256": "651a35eafe44417902f01e82923818880fc95fe223685fccdac8d891c77cffc5",
+      "originalStatus": "validated",
+      "originalVerifiedAtEpoch": 1792245965143
+    },
+    {
+      "databaseId": "cmvcgz1bd003macj0byy5kijl",
+      "manifestQuestionId": "ccna-legacy-batch1_security_fundamentals-002",
+      "originalContentSha256": "62d329b96c22bcf1787c4e03f960d1b851a64ce0bf4ac6819039732605fd7708",
+      "reviewedContentSha256": "62d329b96c22bcf1787c4e03f960d1b851a64ce0bf4ac6819039732605fd7708",
+      "originalStatus": "validated",
+      "originalVerifiedAtEpoch": 1792245965160
+    },
+    {
+      "databaseId": "cmvcgz1bs003sacj0bikwvmrx",
+      "manifestQuestionId": "ccna-legacy-batch1_security_fundamentals-003",
+      "originalContentSha256": "a1b2f55ba8f3ce8cce8a5e176886c471b0a805bf1897d6f5fa2d3c3078a424cf",
+      "reviewedContentSha256": "a1b2f55ba8f3ce8cce8a5e176886c471b0a805bf1897d6f5fa2d3c3078a424cf",
+      "originalStatus": "validated",
+      "originalVerifiedAtEpoch": 1792245965175
+    },
+    {
+      "databaseId": "cmvcgz1ca003yacj06l6qsue2",
+      "manifestQuestionId": "ccna-legacy-batch1_security_fundamentals-004",
+      "originalContentSha256": "e225366dec2f4ff8703e01c545a05e452b1e7be0d60678e27f71c4ce2d74f92c",
+      "reviewedContentSha256": "e225366dec2f4ff8703e01c545a05e452b1e7be0d60678e27f71c4ce2d74f92c",
+      "originalStatus": "validated",
+      "originalVerifiedAtEpoch": 1792245965193
+    },
+    {
+      "databaseId": "cmvcgz1cp0044acj0ef29a89e",
+      "manifestQuestionId": "ccna-legacy-batch1_security_fundamentals-005",
+      "originalContentSha256": "a727e0308ddfc80e4b6265af86d334b5e0b7523cf37198f6e64128813fef02ba",
+      "reviewedContentSha256": "a727e0308ddfc80e4b6265af86d334b5e0b7523cf37198f6e64128813fef02ba",
+      "originalStatus": "validated",
+      "originalVerifiedAtEpoch": 1792245965208
+    },
+    {
+      "databaseId": "cmvcgz1d4004aacj0sz6cc1vt",
+      "manifestQuestionId": "ccna-legacy-batch1_security_fundamentals-006",
+      "originalContentSha256": "7754c3255e9474299ab36306b01a735e3586b94eb9152d230b9ac5fb6889bd95",
+      "reviewedContentSha256": "7754c3255e9474299ab36306b01a735e3586b94eb9152d230b9ac5fb6889bd95",
+      "originalStatus": "validated",
+      "originalVerifiedAtEpoch": 1792245965224
+    },
+    {
+      "databaseId": "cmvcgz1dk004hacj0fmtw69kk",
+      "manifestQuestionId": "ccna-legacy-batch1_security_fundamentals-007",
+      "originalContentSha256": "25677f085cb45a7080b13f8fd857ed0deadcf0fbe6b0ce262e044b973e8e94fa",
+      "reviewedContentSha256": "25677f085cb45a7080b13f8fd857ed0deadcf0fbe6b0ce262e044b973e8e94fa",
+      "originalStatus": "validated",
+      "originalVerifiedAtEpoch": 1792245965239
+    },
+    {
+      "databaseId": "cmvmezs9n0001acwooaaknpyi",
+      "manifestQuestionId": "ccna-legacy-batch2_automation-001",
+      "originalContentSha256": "7b530608658d173d3ed017a83da4955d77e4359ef6e061258b85dc8d126e2219",
+      "reviewedContentSha256": "7b530608658d173d3ed017a83da4955d77e4359ef6e061258b85dc8d126e2219",
+      "originalStatus": "validated",
+      "originalVerifiedAtEpoch": 1792847302614
+    },
+    {
+      "databaseId": "cmvmezsac0007acwohueb8eb4",
+      "manifestQuestionId": "ccna-legacy-batch2_automation-002",
+      "originalContentSha256": "fb8858e9868b2293b60cbcc6a2deeffb7df23c68dafd090b084b0bed1bbd9353",
+      "reviewedContentSha256": "fb8858e9868b2293b60cbcc6a2deeffb7df23c68dafd090b084b0bed1bbd9353",
+      "originalStatus": "validated",
+      "originalVerifiedAtEpoch": 1792847302643
+    },
+    {
+      "databaseId": "cmvmezsau000eacwo5znbqcox",
+      "manifestQuestionId": "ccna-legacy-batch2_automation-003",
+      "originalContentSha256": "326273b38d4994b5e65b93cdac2235f82c1d92c09806d8a86ce2cda6f6ac260a",
+      "reviewedContentSha256": "326273b38d4994b5e65b93cdac2235f82c1d92c09806d8a86ce2cda6f6ac260a",
+      "originalStatus": "validated",
+      "originalVerifiedAtEpoch": 1792847302661
+    },
+    {
+      "databaseId": "cmvmezsbb000kacwoer4vvvx3",
+      "manifestQuestionId": "ccna-legacy-batch2_automation-004",
+      "originalContentSha256": "80ae5bfdef1dd31d03bc90cd3235ffe1808c30a6ac70d9e7e4088145fdf8990c",
+      "reviewedContentSha256": "80ae5bfdef1dd31d03bc90cd3235ffe1808c30a6ac70d9e7e4088145fdf8990c",
+      "originalStatus": "validated",
+      "originalVerifiedAtEpoch": 1792847302678
+    },
+    {
+      "databaseId": "cmvmezsbz000qacwoxfvlwogn",
+      "manifestQuestionId": "ccna-legacy-batch2_automation-005",
+      "originalContentSha256": "5f1f93d8cb283d1729f0a4238658c7ac333446dd091601455f20925227bf091b",
+      "reviewedContentSha256": "5f1f93d8cb283d1729f0a4238658c7ac333446dd091601455f20925227bf091b",
+      "originalStatus": "validated",
+      "originalVerifiedAtEpoch": 1792847302702
+    },
+    {
+      "databaseId": "cmvmezsco000wacwom3o0k1p7",
+      "manifestQuestionId": "ccna-legacy-batch2_ip_connectivity-001",
+      "originalContentSha256": "d10e83950150a0dda320dce6a24f0c1fadac09224bd11be73a524058b0566d7b",
+      "reviewedContentSha256": "d10e83950150a0dda320dce6a24f0c1fadac09224bd11be73a524058b0566d7b",
+      "originalStatus": "validated",
+      "originalVerifiedAtEpoch": 1792847302727
+    },
+    {
+      "databaseId": "cmvmezsd50012acwo2zyz3b96",
+      "manifestQuestionId": "ccna-legacy-batch2_ip_connectivity-002",
+      "originalContentSha256": "580ec6f40e11e572d795e6bea5cb0344cedaf14c1e404c5035c7bf4f4b07a1f8",
+      "reviewedContentSha256": "580ec6f40e11e572d795e6bea5cb0344cedaf14c1e404c5035c7bf4f4b07a1f8",
+      "originalStatus": "validated",
+      "originalVerifiedAtEpoch": 1792847302744
+    },
+    {
+      "databaseId": "cmvmezsdl0018acwojpghr7o8",
+      "manifestQuestionId": "ccna-legacy-batch2_ip_connectivity-003",
+      "originalContentSha256": "0a62af4f40a1dfdef67cd623e49b2eed94d154b28431183e4f1191900e22b39b",
+      "reviewedContentSha256": "0a62af4f40a1dfdef67cd623e49b2eed94d154b28431183e4f1191900e22b39b",
+      "originalStatus": "validated",
+      "originalVerifiedAtEpoch": 1792847302760
+    },
+    {
+      "databaseId": "cmvmezsdz001eacwod83r4o1b",
+      "manifestQuestionId": "ccna-legacy-batch2_ip_connectivity-004",
+      "originalContentSha256": "baaaa55260fbacb59df23554103173e8bbeb17f42d30a56d0188020b5c3cc087",
+      "reviewedContentSha256": "a99147e43d1b4775a3994d6fd227c761a8a24486385d0eb15495584d44948989",
+      "originalStatus": "validated",
+      "originalVerifiedAtEpoch": 1792847302774
+    },
+    {
+      "databaseId": "cmvmezsed001kacwos2lphvra",
+      "manifestQuestionId": "ccna-legacy-batch2_ip_connectivity-005",
+      "originalContentSha256": "19b925880e8d1d3aed06b0de178db84d7fb4ca928fbe6fba60f1d1903d1e55c2",
+      "reviewedContentSha256": "19b925880e8d1d3aed06b0de178db84d7fb4ca928fbe6fba60f1d1903d1e55c2",
+      "originalStatus": "validated",
+      "originalVerifiedAtEpoch": 1792847302788
+    },
+    {
+      "databaseId": "cmvmezser001qacwo0gjld15p",
+      "manifestQuestionId": "ccna-legacy-batch2_ip_connectivity-006",
+      "originalContentSha256": "ac0bb7aaf725896f98d1b8ab2a2ac2ab57e6749a0c536aeec6ab406915a5687b",
+      "reviewedContentSha256": "ac0bb7aaf725896f98d1b8ab2a2ac2ab57e6749a0c536aeec6ab406915a5687b",
+      "originalStatus": "validated",
+      "originalVerifiedAtEpoch": 1792847302803
+    },
+    {
+      "databaseId": "cmvmezsf3001wacwodyl2skmg",
+      "manifestQuestionId": "ccna-legacy-batch2_ip_connectivity-007",
+      "originalContentSha256": "0d1039140021ae5db1f3443dc04cfc6dfb8a7a9e732fdddbe9a0ccb32a513e35",
+      "reviewedContentSha256": "0d1039140021ae5db1f3443dc04cfc6dfb8a7a9e732fdddbe9a0ccb32a513e35",
+      "originalStatus": "validated",
+      "originalVerifiedAtEpoch": 1792847302815
+    },
+    {
+      "databaseId": "cmvmezsfm0022acwoqcov6xo6",
+      "manifestQuestionId": "ccna-legacy-batch2_ip_connectivity-008",
+      "originalContentSha256": "a06341cf4845c88259090ef4fde176a63dbfa918ea4424a01f212c851dbd8d70",
+      "reviewedContentSha256": "a06341cf4845c88259090ef4fde176a63dbfa918ea4424a01f212c851dbd8d70",
+      "originalStatus": "validated",
+      "originalVerifiedAtEpoch": 1792847302833
+    },
+    {
+      "databaseId": "cmvmezsfy0028acwozxn8wivd",
+      "manifestQuestionId": "ccna-legacy-batch2_ip_connectivity-009",
+      "originalContentSha256": "ecc3d61058eccfbbdf51f0edd406a8752d9ee9ecf2126574bf8a4de4be985a6e",
+      "reviewedContentSha256": "ecc3d61058eccfbbdf51f0edd406a8752d9ee9ecf2126574bf8a4de4be985a6e",
+      "originalStatus": "validated",
+      "originalVerifiedAtEpoch": 1792847302846
+    },
+    {
+      "databaseId": "cmvmezsga002eacwod9wd7ukp",
+      "manifestQuestionId": "ccna-legacy-batch2_ip_connectivity-010",
+      "originalContentSha256": "58796500c54583b4808650038f4448f2e43c0e0e2f1cd18292afeeb5961f7b79",
+      "reviewedContentSha256": "58796500c54583b4808650038f4448f2e43c0e0e2f1cd18292afeeb5961f7b79",
+      "originalStatus": "validated",
+      "originalVerifiedAtEpoch": 1792847302858
+    },
+    {
+      "databaseId": "cmvmezsgm002kacwodmeyoyoy",
+      "manifestQuestionId": "ccna-legacy-batch2_ip_connectivity-011",
+      "originalContentSha256": "998f69bea123c33844a31cbf014ba8cef13d7161c7666f62c3d8cb216bcc95c2",
+      "reviewedContentSha256": "998f69bea123c33844a31cbf014ba8cef13d7161c7666f62c3d8cb216bcc95c2",
+      "originalStatus": "validated",
+      "originalVerifiedAtEpoch": 1792847302870
+    },
+    {
+      "databaseId": "cmvmezsh0002racwou0fgx4fl",
+      "manifestQuestionId": "ccna-legacy-batch2_ip_connectivity-012",
+      "originalContentSha256": "58db6bae556590fe6503f0ad86612d2c8d9ba9541bcb803088555ee020ddd32a",
+      "reviewedContentSha256": "58db6bae556590fe6503f0ad86612d2c8d9ba9541bcb803088555ee020ddd32a",
+      "originalStatus": "validated",
+      "originalVerifiedAtEpoch": 1792847302884
+    },
+    {
+      "databaseId": "cmvmezshh002xacwofjcyf1le",
+      "manifestQuestionId": "ccna-legacy-batch2_ip_connectivity-013",
+      "originalContentSha256": "74ac0e7dcc9fac2b3879d08929a2d85a904332c5a49107502cd890f727acc12b",
+      "reviewedContentSha256": "74ac0e7dcc9fac2b3879d08929a2d85a904332c5a49107502cd890f727acc12b",
+      "originalStatus": "validated",
+      "originalVerifiedAtEpoch": 1792847302900
+    },
+    {
+      "databaseId": "cmvmezshx0033acwok76xniyf",
+      "manifestQuestionId": "ccna-legacy-batch2_ip_services-001",
+      "originalContentSha256": "7a056944093cef3c9bbe880afef9116c83e4ab4bb2ca90081731cd4522d9f081",
+      "reviewedContentSha256": "7a056944093cef3c9bbe880afef9116c83e4ab4bb2ca90081731cd4522d9f081",
+      "originalStatus": "validated",
+      "originalVerifiedAtEpoch": 1792847302916
+    },
+    {
+      "databaseId": "cmvmezsif0039acwo5okr0okw",
+      "manifestQuestionId": "ccna-legacy-batch2_ip_services-002",
+      "originalContentSha256": "f4c3ca510b4dd93836879e6ad76428a1024da2108a13b9c19a2c1582cf4402a5",
+      "reviewedContentSha256": "f4c3ca510b4dd93836879e6ad76428a1024da2108a13b9c19a2c1582cf4402a5",
+      "originalStatus": "validated",
+      "originalVerifiedAtEpoch": 1792847302934
+    },
+    {
+      "databaseId": "cmvmezsir003facwowecv3ys8",
+      "manifestQuestionId": "ccna-legacy-batch2_ip_services-003",
+      "originalContentSha256": "1b95d909fa4affcfa729f4520bc50651514f018f6148f601ceeda4a4841448b2",
+      "reviewedContentSha256": "1b95d909fa4affcfa729f4520bc50651514f018f6148f601ceeda4a4841448b2",
+      "originalStatus": "validated",
+      "originalVerifiedAtEpoch": 1792847302947
+    },
+    {
+      "databaseId": "cmvmezsj5003lacwotcsmkl74",
+      "manifestQuestionId": "ccna-legacy-batch2_ip_services-004",
+      "originalContentSha256": "db5cce7ffbd77f27dc20f4706962d59e91f92b3fdec951404c28519245b8823f",
+      "reviewedContentSha256": "db5cce7ffbd77f27dc20f4706962d59e91f92b3fdec951404c28519245b8823f",
+      "originalStatus": "validated",
+      "originalVerifiedAtEpoch": 1792847302961
+    },
+    {
+      "databaseId": "cmvmezsjj003racwoqybdclvd",
+      "manifestQuestionId": "ccna-legacy-batch2_ip_services-005",
+      "originalContentSha256": "2c64541a96a7c84a3c469e853b6cad619644d9f8b45922ea530c02085b709b9e",
+      "reviewedContentSha256": "2c64541a96a7c84a3c469e853b6cad619644d9f8b45922ea530c02085b709b9e",
+      "originalStatus": "validated",
+      "originalVerifiedAtEpoch": 1792847302974
+    },
+    {
+      "databaseId": "cmvmezsk1003xacwoq93w0szc",
+      "manifestQuestionId": "ccna-legacy-batch2_network_access-001",
+      "originalContentSha256": "ec7ff1500056274a2bee3bbd85faf13262aef26d48966df6dc12e547a5d2a38f",
+      "reviewedContentSha256": "ec7ff1500056274a2bee3bbd85faf13262aef26d48966df6dc12e547a5d2a38f",
+      "originalStatus": "validated",
+      "originalVerifiedAtEpoch": 1792847302992
+    },
+    {
+      "databaseId": "cmvmezskh0043acwo9c375zoc",
+      "manifestQuestionId": "ccna-legacy-batch2_network_access-002",
+      "originalContentSha256": "0bdc61037ef502f3a9a3ea5a9ba6f2423c1d77e5459a306efa3949ab19ece941",
+      "reviewedContentSha256": "0bdc61037ef502f3a9a3ea5a9ba6f2423c1d77e5459a306efa3949ab19ece941",
+      "originalStatus": "validated",
+      "originalVerifiedAtEpoch": 1792847303008
+    },
+    {
+      "databaseId": "cmvmezskw0049acwom8u11ry7",
+      "manifestQuestionId": "ccna-legacy-batch2_network_access-003",
+      "originalContentSha256": "39cf8764517ade56228ead85a35162605396426133459d7b861d0c09a67216aa",
+      "reviewedContentSha256": "39cf8764517ade56228ead85a35162605396426133459d7b861d0c09a67216aa",
+      "originalStatus": "validated",
+      "originalVerifiedAtEpoch": 1792847303024
+    },
+    {
+      "databaseId": "cmvmezsld004facwozi2zdos3",
+      "manifestQuestionId": "ccna-legacy-batch2_network_access-004",
+      "originalContentSha256": "1f1931e6343dfe2df9ba40203523a48056d98851ec43e46744aec639c0189e9f",
+      "reviewedContentSha256": "1f1931e6343dfe2df9ba40203523a48056d98851ec43e46744aec639c0189e9f",
+      "originalStatus": "validated",
+      "originalVerifiedAtEpoch": 1792847303040
+    },
+    {
+      "databaseId": "cmvmezslq004lacwoqrkqk4lx",
+      "manifestQuestionId": "ccna-legacy-batch2_network_access-005",
+      "originalContentSha256": "599159aae3211324dfa67e5d068aac80f8c1399e3fb4a92a48ff5df5e2dc12df",
+      "reviewedContentSha256": "599159aae3211324dfa67e5d068aac80f8c1399e3fb4a92a48ff5df5e2dc12df",
+      "originalStatus": "validated",
+      "originalVerifiedAtEpoch": 1792847303054
+    },
+    {
+      "databaseId": "cmvmezsm4004racwolsxuhkmf",
+      "manifestQuestionId": "ccna-legacy-batch2_network_access-006",
+      "originalContentSha256": "d3a9ee4ee23611dbe042228b78508b7d9f62109eb032cba1d43ed5590fdf7dc1",
+      "reviewedContentSha256": "d3a9ee4ee23611dbe042228b78508b7d9f62109eb032cba1d43ed5590fdf7dc1",
+      "originalStatus": "validated",
+      "originalVerifiedAtEpoch": 1792847303068
+    },
+    {
+      "databaseId": "cmvmezsmi004yacwopzug5q20",
+      "manifestQuestionId": "ccna-legacy-batch2_network_access-007",
+      "originalContentSha256": "da8b3bbd333260a04a6183dcd1b9b8be4d5a8c60706a2c32fa8bf96e5e42cd53",
+      "reviewedContentSha256": "da8b3bbd333260a04a6183dcd1b9b8be4d5a8c60706a2c32fa8bf96e5e42cd53",
+      "originalStatus": "validated",
+      "originalVerifiedAtEpoch": 1792847303081
+    },
+    {
+      "databaseId": "cmvmezsn60054acwo1u8n0wzp",
+      "manifestQuestionId": "ccna-legacy-batch2_network_access-008",
+      "originalContentSha256": "37d0eec962240692bb9cacebe49a1e0cb61929079b4219591bd58783599e6808",
+      "reviewedContentSha256": "37d0eec962240692bb9cacebe49a1e0cb61929079b4219591bd58783599e6808",
+      "originalStatus": "validated",
+      "originalVerifiedAtEpoch": 1792847303106
+    },
+    {
+      "databaseId": "cmvmezsnl005aacwo1c291e20",
+      "manifestQuestionId": "ccna-legacy-batch2_network_access-009",
+      "originalContentSha256": "30cf3cc8e50a50819fbab0183be1fd1912458e71c70ac1ddf1f6512166f28c46",
+      "reviewedContentSha256": "30cf3cc8e50a50819fbab0183be1fd1912458e71c70ac1ddf1f6512166f28c46",
+      "originalStatus": "validated",
+      "originalVerifiedAtEpoch": 1792847303120
+    },
+    {
+      "databaseId": "cmvmezso1005gacwouel5ety3",
+      "manifestQuestionId": "ccna-legacy-batch2_network_access-010",
+      "originalContentSha256": "200dcafcaff1d9bfc61ebeac093881aa7a7c7fbf96eef103bc8a3bd5317322da",
+      "reviewedContentSha256": "200dcafcaff1d9bfc61ebeac093881aa7a7c7fbf96eef103bc8a3bd5317322da",
+      "originalStatus": "validated",
+      "originalVerifiedAtEpoch": 1792847303136
+    },
+    {
+      "databaseId": "cmvmezsok005macwo5rp261of",
+      "manifestQuestionId": "ccna-legacy-batch2_network_fundamentals-001",
+      "originalContentSha256": "462641a065a0cb27095f88ea62ae57d8c287e39079ff182535164a50e8feef15",
+      "reviewedContentSha256": "462641a065a0cb27095f88ea62ae57d8c287e39079ff182535164a50e8feef15",
+      "originalStatus": "validated",
+      "originalVerifiedAtEpoch": 1792847303155
+    },
+    {
+      "databaseId": "cmvmezsoy005sacwog79yw5xr",
+      "manifestQuestionId": "ccna-legacy-batch2_network_fundamentals-002",
+      "originalContentSha256": "62d65975eed1cb9d3fa380d437820e95011d2d19b1e2a79835a866d9c9f40e20",
+      "reviewedContentSha256": "62d65975eed1cb9d3fa380d437820e95011d2d19b1e2a79835a866d9c9f40e20",
+      "originalStatus": "validated",
+      "originalVerifiedAtEpoch": 1792847303170
+    },
+    {
+      "databaseId": "cmvmezspg005yacwoxz90gswo",
+      "manifestQuestionId": "ccna-legacy-batch2_network_fundamentals-003",
+      "originalContentSha256": "01306446daa93ec3b318534935aca6cb41ee5a75036cdebfa022609af0730661",
+      "reviewedContentSha256": "01306446daa93ec3b318534935aca6cb41ee5a75036cdebfa022609af0730661",
+      "originalStatus": "validated",
+      "originalVerifiedAtEpoch": 1792847303187
+    },
+    {
+      "databaseId": "cmvmezspu0064acwo0cfynwn7",
+      "manifestQuestionId": "ccna-legacy-batch2_network_fundamentals-004",
+      "originalContentSha256": "161dc8951e5541224502c5b354d5ea94914618abfd1090cdb91621567d7d137d",
+      "reviewedContentSha256": "161dc8951e5541224502c5b354d5ea94914618abfd1090cdb91621567d7d137d",
+      "originalStatus": "validated",
+      "originalVerifiedAtEpoch": 1792847303201
+    },
+    {
+      "databaseId": "cmvmezsqb006bacwogdvc2twi",
+      "manifestQuestionId": "ccna-legacy-batch2_network_fundamentals-005",
+      "originalContentSha256": "7954fa011cda288af0bb3c762fbc2866fcf303cb11ccd53077e43cc4015c621c",
+      "reviewedContentSha256": "7954fa011cda288af0bb3c762fbc2866fcf303cb11ccd53077e43cc4015c621c",
+      "originalStatus": "validated",
+      "originalVerifiedAtEpoch": 1792847303218
+    },
+    {
+      "databaseId": "cmvmezsqq006hacwoztdvi6ng",
+      "manifestQuestionId": "ccna-legacy-batch2_network_fundamentals-006",
+      "originalContentSha256": "e8f2ccc99de92205bfbbb0cdc15dfdeb19345ab03c9279f3fce0d109d7163a40",
+      "reviewedContentSha256": "e8f2ccc99de92205bfbbb0cdc15dfdeb19345ab03c9279f3fce0d109d7163a40",
+      "originalStatus": "validated",
+      "originalVerifiedAtEpoch": 1792847303233
+    },
+    {
+      "databaseId": "cmvmezsr5006nacwoorfa5ank",
+      "manifestQuestionId": "ccna-legacy-batch2_network_fundamentals-007",
+      "originalContentSha256": "ac2aa42a7af916efc998b193ac78cd5cb53aacaefc4acf8897d2fda5bb88b832",
+      "reviewedContentSha256": "1ca62f476c2efe787a52f924f23b05869599e85ca91cc1e25ac9beade10880cc",
+      "originalStatus": "validated",
+      "originalVerifiedAtEpoch": 1792847303248
+    },
+    {
+      "databaseId": "cmvmezsrk006tacwo7zaxl8pw",
+      "manifestQuestionId": "ccna-legacy-batch2_network_fundamentals-008",
+      "originalContentSha256": "3cd68e4cb3fb0e7882f3e84ce457b73db361851465526fb677b6b07460f53f8d",
+      "reviewedContentSha256": "08a4ec809bfdf7869615a5ddaf70f20e301485d5a37580b824b163208fd35deb",
+      "originalStatus": "validated",
+      "originalVerifiedAtEpoch": 1792847303263
+    },
+    {
+      "databaseId": "cmvmezsry006zacwosl8zlxzi",
+      "manifestQuestionId": "ccna-legacy-batch2_network_fundamentals-009",
+      "originalContentSha256": "2a5e059b98b4df39a82dc2b3ec3e9b8ed3ba38496b8ca315dd033a066f188033",
+      "reviewedContentSha256": "2a5e059b98b4df39a82dc2b3ec3e9b8ed3ba38496b8ca315dd033a066f188033",
+      "originalStatus": "validated",
+      "originalVerifiedAtEpoch": 1792847303277
+    },
+    {
+      "databaseId": "cmvmezssd0075acwops2qpziw",
+      "manifestQuestionId": "ccna-legacy-batch2_network_fundamentals-010",
+      "originalContentSha256": "e0d2cf1e7e0c4d874f8b38eb344e6cc0f5e828b535acfb7eaecfe93df6a3957f",
+      "reviewedContentSha256": "e0d2cf1e7e0c4d874f8b38eb344e6cc0f5e828b535acfb7eaecfe93df6a3957f",
+      "originalStatus": "validated",
+      "originalVerifiedAtEpoch": 1792847303292
+    },
+    {
+      "databaseId": "cmvmezssy007bacwoi5dbhu5b",
+      "manifestQuestionId": "ccna-legacy-batch2_security_fundamentals-001",
+      "originalContentSha256": "834c0c20b3c5c60107ea051be5cb3febbc3b4481f8865fbbd0ad75bca867308e",
+      "reviewedContentSha256": "834c0c20b3c5c60107ea051be5cb3febbc3b4481f8865fbbd0ad75bca867308e",
+      "originalStatus": "validated",
+      "originalVerifiedAtEpoch": 1792847303314
+    },
+    {
+      "databaseId": "cmvmezstf007hacwo5br9ccza",
+      "manifestQuestionId": "ccna-legacy-batch2_security_fundamentals-002",
+      "originalContentSha256": "b465d9a8967a0081413d0a1a516afa04914cccce7bd0859188317fc9d731d00f",
+      "reviewedContentSha256": "b465d9a8967a0081413d0a1a516afa04914cccce7bd0859188317fc9d731d00f",
+      "originalStatus": "validated",
+      "originalVerifiedAtEpoch": 1792847303330
+    },
+    {
+      "databaseId": "cmvmezstx007nacwo9f7x6tn9",
+      "manifestQuestionId": "ccna-legacy-batch2_security_fundamentals-003",
+      "originalContentSha256": "5aca5448f83be64bf27d6ecf56168d50bee7db5f542f163a96601bda04729edd",
+      "reviewedContentSha256": "5aca5448f83be64bf27d6ecf56168d50bee7db5f542f163a96601bda04729edd",
+      "originalStatus": "validated",
+      "originalVerifiedAtEpoch": 1792847303348
+    },
+    {
+      "databaseId": "cmvmezsub007uacwor4jwz6gt",
+      "manifestQuestionId": "ccna-legacy-batch2_security_fundamentals-004",
+      "originalContentSha256": "3d0be1564a646b2d9b02b8af114066e6b86150492a4a255f21677b3510ead781",
+      "reviewedContentSha256": "3d0be1564a646b2d9b02b8af114066e6b86150492a4a255f21677b3510ead781",
+      "originalStatus": "validated",
+      "originalVerifiedAtEpoch": 1792847303363
+    },
+    {
+      "databaseId": "cmvmezsur0080acwoo2b7opcn",
+      "manifestQuestionId": "ccna-legacy-batch2_security_fundamentals-005",
+      "originalContentSha256": "89519ee5f8bc7b105f2c12dc7a8e922f8cc66237a800ffaba2e2ca468ac75bb7",
+      "reviewedContentSha256": "89519ee5f8bc7b105f2c12dc7a8e922f8cc66237a800ffaba2e2ca468ac75bb7",
+      "originalStatus": "validated",
+      "originalVerifiedAtEpoch": 1792847303378
+    },
+    {
+      "databaseId": "cmvmezsv60086acwoabxmzg2k",
+      "manifestQuestionId": "ccna-legacy-batch2_security_fundamentals-006",
+      "originalContentSha256": "e0a167416eb941d80dc51277cc8e66088aca513238452890dff39e2ebedb72d0",
+      "reviewedContentSha256": "e0a167416eb941d80dc51277cc8e66088aca513238452890dff39e2ebedb72d0",
+      "originalStatus": "validated",
+      "originalVerifiedAtEpoch": 1792847303394
+    },
+    {
+      "databaseId": "cmvmezsvo008cacwode4zeo73",
+      "manifestQuestionId": "ccna-legacy-batch2_security_fundamentals-007",
+      "originalContentSha256": "f2d1eee27da5aa5871ae1477bb14b56894758a1690109fe10600a73e545532e7",
+      "reviewedContentSha256": "f2d1eee27da5aa5871ae1477bb14b56894758a1690109fe10600a73e545532e7",
+      "originalStatus": "validated",
+      "originalVerifiedAtEpoch": 1792847303411
+    }
+  ]
+}

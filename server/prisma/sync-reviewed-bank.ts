@@ -76,13 +76,40 @@ export function readReviewedBank(directory = resolve(__dirname, 'questions'), ma
 }
 
 /** Deliberately opt-in: reviewed allowlist, all-or-nothing import and no silent overwrite. */
-export async function syncReviewedBank(db: PrismaClient, apply = false, directory?: string, manifestPath?: string) {
+export interface ReviewedBankSyncOptions {
+  archiveLegacyVersions?: boolean;
+}
+
+export async function syncReviewedBank(db: PrismaClient, apply = false, directory?: string, manifestPath?: string, options: ReviewedBankSyncOptions = {}) {
   const bank = readReviewedBank(directory, manifestPath);
+  const baseline = z.object({ records: z.array(z.object({
+    databaseId: z.string(), manifestQuestionId: z.string(), originalContentSha256: hash, reviewedContentSha256: hash, originalStatus: z.string(), originalVerifiedAtEpoch: z.number().nullable(),
+  })) }).parse(JSON.parse(readFileSync(resolve(__dirname, 'reviews/legacy-approval-baseline.json'), 'utf8'))).records;
   return db.$transaction(async tx => {
     const existing = await tx.question.findMany({ include: { options: true, primaryTopic: true } });
     const byId = new Map(existing.map(q => [q.id, q]));
+    const reviews = await tx.questionReview.findMany({ select: { id: true, questionId: true, reviewerId: true, status: true } });
+    const ignoredLegacyIds = new Set<string>();
+    const legacyArchives: Array<{ id: string; canonicalId: string; originalStatus: string; targetStatus: string; contentSha256: string }> = [];
+    for (const entry of baseline) {
+      const current = byId.get(entry.databaseId);
+      const candidate = bank.candidates.find(item => item.row.id === entry.manifestQuestionId);
+      if (!current || !candidate) continue;
+      const archiveId = `${bank.manifest.id}:legacy-archive:${current.id}`;
+      const archived = reviews.some(row => row.id === archiveId && row.questionId === current.id && row.reviewerId === REVIEW_SERVICE_ID && row.status === 'archived');
+      if (archived && current.validationStatus === 'draft') {
+        if (!byId.has(candidate.row.id)) throw new Error(`${current.id}: canonical version of archived legacy record is missing; explicit reconciliation required.`);
+        ignoredLegacyIds.add(current.id);
+      } else if (options.archiveLegacyVersions) {
+        if (digest(contentRecord(current)) !== entry.originalContentSha256 || candidate.row.contentSha256 !== entry.reviewedContentSha256 || current.validationStatus !== entry.originalStatus || (current.lastVerifiedAt?.getTime() ?? null) !== entry.originalVerifiedAtEpoch) throw new Error(`${current.id}: legacy content differs from the recorded baseline; no changes applied.`);
+        if (reviews.some(row => row.questionId === current.id)) throw new Error(`${current.id}: an existing editorial review prevents automatic legacy archiving.`);
+        if (byId.has(candidate.row.id)) throw new Error(`${current.id}: canonical version already exists without a matching archive; explicit reconciliation required.`);
+        ignoredLegacyIds.add(current.id);
+        legacyArchives.push({ id: current.id, canonicalId: candidate.row.id, originalStatus: current.validationStatus, targetStatus: candidate.row.decision, contentSha256: entry.originalContentSha256 });
+      }
+    }
     const en = new Map<string, typeof existing>(), es = new Map<string, typeof existing>();
-    for (const q of existing) {
+    for (const q of existing.filter(q => !ignoredLegacyIds.has(q.id))) {
       const ne = normalized(q.statementEn), ns = normalized(q.statementEs);
       en.set(ne, [...en.get(ne) || [], q]); es.set(ns, [...es.get(ns) || [], q]);
     }
@@ -95,7 +122,7 @@ export async function syncReviewedBank(db: PrismaClient, apply = false, director
       if (current && digest(contentRecord(current)) !== item.row.contentSha256) throw new Error(`${item.row.id}: existing content differs; preserve it and create an explicit revision before applying.`);
       if (!topicByArea.has(item.q.primaryTopicExamArea)) throw new Error(`Missing root topic: ${item.q.primaryTopicExamArea}. Run the seed first.`);
       if (current && item.row.decision === 'validated' && current.validationStatus === 'rejected') throw new Error(`${current.id}: a previous rejection must be resolved explicitly.`);
-      if (current && item.row.decision === 'rejected' && current.validationStatus === 'validated') throw new Error(`${current.id}: an existing approval cannot be withdrawn by this correction import.`);
+      if (current && item.row.decision === 'rejected' && current.validationStatus === 'validated') throw new Error(`${current.id}: an existing approval cannot be withdrawn by this correction import. Known original-database versions can be previewed with --archive-legacy-versions.`);
       return { ...item, current, id: current?.id || item.row.id };
     });
     const summary = {
@@ -104,11 +131,20 @@ export async function syncReviewedBank(db: PrismaClient, apply = false, director
       reviewedApprovals: bank.manifest.summary.validated, remainingCandidatesPending: bank.manifest.summary.pending_review,
       appliedApprovals: 0, approvalsAlreadyPresent: 0,
       reviewedRejections: bank.manifest.summary.rejected, appliedRejections: 0, rejectionsAlreadyPresent: 0,
+      ...(options.archiveLegacyVersions ? { legacyVersionsToArchive: legacyArchives.length, archivedLegacyVersions: 0, legacyArchives } : {}),
     };
     if (!apply) return summary;
     const service = await tx.user.findUnique({ where: { id: REVIEW_SERVICE_ID } });
     if (service && (service.role !== 'review_service' || service.email !== REVIEW_EMAIL)) throw new Error('Review service identity collision; no accounts changed.');
     if (!service) await tx.user.create({ data: { id: REVIEW_SERVICE_ID, email: REVIEW_EMAIL, username: 'assisted-bank-review', role: 'review_service', passwordHash: '!interactive-login-disabled!', language: 'es' } });
+    for (const legacy of legacyArchives) {
+      await tx.question.update({ where: { id: legacy.id }, data: { validationStatus: 'draft' } });
+      await tx.questionReview.create({ data: {
+        id: `${bank.manifest.id}:legacy-archive:${legacy.id}`, questionId: legacy.id, reviewerId: REVIEW_SERVICE_ID, status: 'archived',
+        notes: `LEGACY VERSION ARCHIVE ONLY; not a technical approval or rejection. Content, option IDs and verification date preserved. Original validation status recorded below; legacy version set to draft to exclude future exams. CanonicalVersion=${legacy.canonicalId}; canonicalDecision=${legacy.targetStatus}; originalStatus=${legacy.originalStatus}; originalContentSHA256=${legacy.contentSha256}; explicitOption=--archive-legacy-versions; baselineCommit=cef82bb3aa6f413317b13ce773f9c9af07bd603e.`,
+      } });
+    }
+    if (options.archiveLegacyVersions) summary.archivedLegacyVersions = legacyArchives.length;
     for (const plan of plans) {
       const { q, row, id } = plan;
       if (!plan.current) {
@@ -149,6 +185,6 @@ export async function syncReviewedBank(db: PrismaClient, apply = false, director
 
 if (require.main === module) {
   const db = new PrismaClient();
-  syncReviewedBank(db, process.argv.includes('--apply')).then(result => console.log(JSON.stringify(result, null, 2)))
+  syncReviewedBank(db, process.argv.includes('--apply'), undefined, undefined, { archiveLegacyVersions: process.argv.includes('--archive-legacy-versions') }).then(result => console.log(JSON.stringify(result, null, 2)))
     .catch(error => { console.error(error.message); process.exitCode = 1; }).finally(() => db.$disconnect());
 }

@@ -1185,6 +1185,83 @@ describe('Applying assisted technical bank decisions', () => {
     expect((await prisma.question.findUniqueOrThrow({ where: { id: 'ccna-original-20261024-001' } })).validationStatus).toBe('pending_review');
     expect(await prisma.questionReview.count()).toBe(828);
   }, 60000);
+  async function legacyFixture(decision: 'rejected' | 'pending_review' = 'rejected') {
+    const { readReviewedBank } = await import('../prisma/sync-reviewed-bank');
+    const { contentRecord } = await import('../prisma/bank-review-format');
+    await reviewTopics();
+    const bank = readReviewedBank();
+    const baseline = JSON.parse(readFileSync(join(__dirname, '../prisma/reviews/legacy-approval-baseline.json'), 'utf8'));
+    const entry = baseline.records.find((entry: any) => entry.originalContentSha256 === entry.reviewedContentSha256 && bank.candidates.find(item => item.row.id === entry.manifestQuestionId)?.row.decision === decision);
+    const candidate = bank.candidates.find(item => item.row.id === entry.manifestQuestionId)!;
+    const { primaryTopicExamArea, options, ...fields } = contentRecord(candidate.q);
+    const topic = await prisma.topic.findFirstOrThrow({ where: { examArea: primaryTopicExamArea, parentTopicId: null } });
+    const old = await prisma.question.create({ data: {
+      ...fields, id: entry.databaseId, primaryTopicId: topic.id, validationStatus: 'validated',
+      lastVerifiedAt: entry.originalVerifiedAtEpoch === null ? null : new Date(entry.originalVerifiedAtEpoch),
+      options: { create: options.map((option, index) => ({ ...option, displayOrder: index })) },
+    }, include: { options: true, primaryTopic: true } });
+    return { old, entry, candidate };
+  }
+  it('explicitly archives known legacy versions without editing content, option IDs or older exam history, while auditing the previous approval', async () => {
+    const { syncReviewedBank, REVIEW_SERVICE_ID } = await import('../prisma/sync-reviewed-bank');
+    const { contentRecord, digest } = await import('../prisma/bank-review-format');
+    const { old, entry } = await legacyFixture();
+    const exam = await engine.createExam(config({ topics: [old.primaryTopic.examArea] }));
+    await engine.startExam(exam.examId);
+    const shown = await engine.getCurrentQuestion(exam.examId);
+    await prisma.examQuestion.updateMany({ where: { examId: exam.examId }, data: { contentSnapshot: null } });
+    await engine.submitAnswer(exam.examId, shown.examQuestionId, [old.options.find(option => option.isCorrect)!.id]);
+    await engine.completeExam(exam.examId);
+    const historical = await getExamReview(exam.examId);
+    await expect(syncReviewedBank(prisma)).rejects.toThrow('existing approval cannot be withdrawn');
+    const count = await prisma.question.count();
+    const preview = await syncReviewedBank(prisma, false, undefined, undefined, { archiveLegacyVersions: true });
+    expect(preview.legacyVersionsToArchive).toBe(1);
+    expect(preview.archivedLegacyVersions).toBe(0);
+    expect(await prisma.question.count()).toBe(count);
+    expect(await prisma.questionReview.count()).toBe(0);
+    expect((await prisma.question.findUniqueOrThrow({ where: { id: old.id } })).validationStatus).toBe('validated');
+    const result = await syncReviewedBank(prisma, true, undefined, undefined, { archiveLegacyVersions: true });
+    expect(result.archivedLegacyVersions).toBe(1);
+    const after = await prisma.question.findUniqueOrThrow({ where: { id: old.id }, include: { options: true, primaryTopic: true } });
+    expect(digest(contentRecord(after))).toBe(digest(contentRecord(old)));
+    expect(after.validationStatus).toBe('draft');
+    expect(after.lastVerifiedAt).toEqual(old.lastVerifiedAt);
+    expect(after.options.map(option => option.id).sort()).toEqual(old.options.map(option => option.id).sort());
+    expect(after.validationStatus).toBe('draft');
+    expect(await getExamReview(exam.examId)).toEqual(historical);
+    expect((await prisma.question.findUniqueOrThrow({ where: { id: entry.manifestQuestionId } })).validationStatus).toBe('rejected');
+    expect(await prisma.questionReview.count({ where: { reviewerId: REVIEW_SERVICE_ID, status: 'archived' } })).toBe(1);
+    const again = await syncReviewedBank(prisma, true);
+    expect(again.questionsToCreate + again.appliedApprovals + again.appliedRejections).toBe(0);
+    const repeated = await syncReviewedBank(prisma, true, undefined, undefined, { archiveLegacyVersions: true });
+    expect(repeated.legacyVersionsToArchive).toBe(0);
+    expect(repeated.archivedLegacyVersions).toBe(0);
+  }, 60000);
+  it('refuses to archive a known legacy version that was edited locally', async () => {
+    const { syncReviewedBank } = await import('../prisma/sync-reviewed-bank');
+    const { old } = await legacyFixture();
+    await prisma.question.update({ where: { id: old.id }, data: { explanationEs: 'Contenido local que se debe conservar.' } });
+    await expect(syncReviewedBank(prisma, true, undefined, undefined, { archiveLegacyVersions: true })).rejects.toThrow('legacy content differs');
+    expect((await prisma.question.findUniqueOrThrow({ where: { id: old.id } })).validationStatus).toBe('validated');
+    expect(await prisma.questionReview.count()).toBe(0);
+  }, 30000);
+  it('refuses legacy archiving when a recorded editorial decision already exists', async () => {
+    const { syncReviewedBank } = await import('../prisma/sync-reviewed-bank');
+    const { old } = await legacyFixture();
+    const reviewer = await prisma.user.create({ data: { email: 'legacy-editor@example.test', username: 'legacy-editor', passwordHash: 'not-used' } });
+    await prisma.questionReview.create({ data: { questionId: old.id, reviewerId: reviewer.id, status: 'validated', notes: 'Explicit editor approval.' } });
+    await expect(syncReviewedBank(prisma, true, undefined, undefined, { archiveLegacyVersions: true })).rejects.toThrow('editorial review prevents');
+    expect((await prisma.question.findUniqueOrThrow({ where: { id: old.id } })).validationStatus).toBe('validated');
+    expect(await prisma.questionReview.count()).toBe(1);
+  }, 30000);
+  it('keeps an unreviewed canonical version pending even when its archived predecessor was marked validated', async () => {
+    const { syncReviewedBank } = await import('../prisma/sync-reviewed-bank');
+    const { old, entry } = await legacyFixture('pending_review');
+    await syncReviewedBank(prisma, true, undefined, undefined, { archiveLegacyVersions: true });
+    expect((await prisma.question.findUniqueOrThrow({ where: { id: old.id } })).validationStatus).toBe('draft');
+    expect((await prisma.question.findUniqueOrThrow({ where: { id: entry.manifestQuestionId } })).validationStatus).toBe('pending_review');
+  }, 60000);
   it('does not overwrite an existing approval to reject a superseded candidate', async () => {
     const { syncReviewedBank } = await import('../prisma/sync-reviewed-bank');
     const { loadOriginalBatch } = await import('../prisma/load-original-batch');
@@ -1194,6 +1271,7 @@ describe('Applying assisted technical bank decisions', () => {
     const id = 'ccna-original-20261024-b03-026';
     await prisma.question.update({ where: { id }, data: { validationStatus: 'validated' } });
     await expect(syncReviewedBank(prisma, true)).rejects.toThrow('existing approval cannot be withdrawn');
+    await expect(syncReviewedBank(prisma, true, undefined, undefined, { archiveLegacyVersions: true })).rejects.toThrow('existing approval cannot be withdrawn');
     expect(await prisma.questionReview.count()).toBe(0);
     expect(await prisma.question.count()).toBe(55);
     expect((await prisma.question.findUniqueOrThrow({ where: { id } })).validationStatus).toBe('validated');

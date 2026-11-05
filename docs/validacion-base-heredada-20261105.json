@@ -1,0 +1,109 @@
+{
+  "date": "2026-11-05",
+  "originSnapshotCommit": "cef82bb3aa6f413317b13ce773f9c9af07bd603e",
+  "option": "--archive-legacy-versions",
+  "automaticDefaultUnchanged": true,
+  "tests": {
+    "os": "Linux",
+    "filesPassed": 15,
+    "passed": 632,
+    "failed": 0,
+    "command": "npm test -- --maxWorkers=1",
+    "strictReviewTypecheck": "passed",
+    "testLogSha256": "94673df1ca871cbcfeca883b81355658f77105a84b38db7c29e3d27997a4a37e"
+  },
+  "preview": {
+    "mode": "dry-run",
+    "candidates": 869,
+    "questionsToCreate": 869,
+    "existingMatched": 0,
+    "reviewedApprovals": 619,
+    "remainingCandidatesPending": 41,
+    "appliedApprovals": 0,
+    "approvalsAlreadyPresent": 0,
+    "reviewedRejections": 209,
+    "appliedRejections": 0,
+    "rejectionsAlreadyPresent": 0,
+    "legacyVersionsToArchive": 100,
+    "archivedLegacyVersions": 0
+  },
+  "isolatedApply": {
+    "mode": "applied",
+    "candidates": 869,
+    "questionsToCreate": 869,
+    "existingMatched": 0,
+    "reviewedApprovals": 619,
+    "remainingCandidatesPending": 41,
+    "appliedApprovals": 619,
+    "approvalsAlreadyPresent": 0,
+    "reviewedRejections": 209,
+    "appliedRejections": 209,
+    "rejectionsAlreadyPresent": 0,
+    "legacyVersionsToArchive": 100,
+    "archivedLegacyVersions": 100
+  },
+  "repeatWithOption": {
+    "mode": "applied",
+    "candidates": 869,
+    "questionsToCreate": 0,
+    "existingMatched": 869,
+    "reviewedApprovals": 619,
+    "remainingCandidatesPending": 41,
+    "appliedApprovals": 0,
+    "approvalsAlreadyPresent": 619,
+    "reviewedRejections": 209,
+    "appliedRejections": 0,
+    "rejectionsAlreadyPresent": 209,
+    "legacyVersionsToArchive": 0,
+    "archivedLegacyVersions": 0
+  },
+  "defaultPreviewAfterMigration": {
+    "mode": "dry-run",
+    "candidates": 869,
+    "questionsToCreate": 0,
+    "existingMatched": 869,
+    "reviewedApprovals": 619,
+    "remainingCandidatesPending": 41,
+    "appliedApprovals": 0,
+    "approvalsAlreadyPresent": 0,
+    "reviewedRejections": 209,
+    "appliedRejections": 0,
+    "rejectionsAlreadyPresent": 0
+  },
+  "preservation": {
+    "originalRowsPreservedByTable": {
+      "User": 1,
+      "Topic": 51,
+      "Source": 2,
+      "Question": 108,
+      "QuestionOption": 442,
+      "QuestionVariant": 0,
+      "Exam": 4,
+      "ExamQuestion": 70,
+      "ExamResponse": 0,
+      "QuestionFavorite": 0
+    },
+    "allowedLegacyChanges": {
+      "validationStatus": "draft for100known versions",
+      "updatedAt": "automatic timestamp for those100rows"
+    },
+    "contentOptionIdsVerificationDatesAndExamHistoryPreserved": true,
+    "totals": {
+      "draft": 100,
+      "pending_review": 41,
+      "rejected": 209,
+      "validated": 627
+    },
+    "totalQuestions": 977,
+    "archiveAudits": 100,
+    "reviewAudits": 828,
+    "sqliteIntegrity": "ok",
+    "foreignKeyViolations": 0
+  },
+  "limits": [
+    "No changes made to the original tracked database or the user PC database.",
+    "Real user-PC preview remains pending.",
+    "Old statuses are recorded in archive audits; the100legacy rows become drafts explicitly, not technical rejections.",
+    "No new question approvals beyond the existing versioned manifest."
+  ]
+}
