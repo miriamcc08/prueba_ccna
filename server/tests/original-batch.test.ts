@@ -1,8 +1,8 @@
+import { execPythonSync } from './helpers/python';
 import { describe, it, expect } from 'vitest';
 import { mkdtempSync, writeFileSync, rmSync, readFileSync } from 'node:fs';
 import { tmpdir } from 'node:os';
 import { resolve, join } from 'node:path';
-import { execFileSync } from 'node:child_process';
 import { questionImportItemSchema } from '../src/validators/schemas';
 import { validateQuestionAnswers } from '../src/utils/networkValidators';
 
@@ -34,7 +34,7 @@ describe('Original 50-question batch', () => {
     expect(q.options.every((o: any) => o.explanationEn && o.explanationEs)).toBe(true);
   });
   it('independently recomputes 28 calculation/scenario answers with Python standard libraries', () => {
-    const report = JSON.parse(execFileSync('python3', [resolve(__dirname, '../../tools/check-question-calculations.py'), file], { encoding: 'utf8' }));
+    const report = JSON.parse(execPythonSync([resolve(__dirname, '../../tools/check-question-calculations.py'), file], { encoding: 'utf8' }));
     expect(report.received).toBe(50);
     expect(report.independentChecksPassed).toBe(28);
     expect(report.technicalApprovals).toBe(0);
@@ -50,7 +50,7 @@ describe('Original 50-question batch', () => {
       expect(validateQuestionAnswers(q, q.options).valid).toBe(true);
       const path = join(directory, 'corrupted.json');
       writeFileSync(path, JSON.stringify(modified));
-      expect(() => execFileSync('python3', [resolve(__dirname, '../../tools/check-question-calculations.py'), path], { stdio: 'pipe' })).toThrow();
+      expect(() => execPythonSync([resolve(__dirname, '../../tools/check-question-calculations.py'), path], { stdio: 'pipe' })).toThrow();
     } finally { rmSync(directory, { recursive: true, force: true }); }
   });
 

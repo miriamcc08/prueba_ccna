@@ -1,3 +1,4 @@
+import { execPythonSync } from './helpers/python';
 import { describe, expect, it } from 'vitest';
 import { execFileSync } from 'node:child_process';
 import { resolve } from 'node:path';
@@ -5,7 +6,7 @@ import { readFileSync } from 'node:fs';
 
 describe('Legacy bank review', () => {
   it('independently derives bilingual keys for nineteen reviewed arithmetic and protocol scenarios', () => {
-    const report = JSON.parse(execFileSync('python3', [resolve(__dirname, '../../tools/check-reviewed-legacy-scenarios.py')], { encoding: 'utf8' }));
+    const report = JSON.parse(execPythonSync([resolve(__dirname, '../../tools/check-reviewed-legacy-scenarios.py')], { encoding: 'utf8' }));
     expect(report.checked).toBe(19);
     expect(report.records.every((row: any) => row.passed)).toBe(true);
     expect(report.records.find((row: any) => row.kind === 'modified_eui64').result).toBe('2001:db8:acad:1:250:56ff:febe:341a');
@@ -13,7 +14,7 @@ describe('Legacy bank review', () => {
     expect(report.records.find((row: any) => row.kind === 'recursive_dependency_cycle').result).toEqual({ AResolves: false, BResolves: false });
   });
   it('derives ten third-batch scenarios including valid MAC bits, YANG arrays and a fresh OSPF election', () => {
-    const report = JSON.parse(execFileSync('python3', [resolve(__dirname, '../../tools/check-reviewed-batch3-scenarios.py')], { encoding: 'utf8' }));
+    const report = JSON.parse(execPythonSync([resolve(__dirname, '../../tools/check-reviewed-batch3-scenarios.py')], { encoding: 'utf8' }));
     expect(report.checked).toBe(10);
     expect(report.records.every((row: any) => row.passed)).toBe(true);
     expect(report.records.find((row: any) => row.kind === 'fresh_ospf_election').result).toEqual({ DR: 'R2', BDR: 'R4', ineligible: ['R3'] });
@@ -21,7 +22,7 @@ describe('Legacy bank review', () => {
     expect(report.records.find((row: any) => row.kind === 'ethernet_rewrite_and_unicast_bits').result).toEqual(['2222.2222.2222', '3233.3333.3333', '10.1.1.50', '10.2.2.80']);
   });
   it('derives seven fourth-batch scenarios from bilingual inputs and recursive route exhibits', () => {
-    const report = JSON.parse(execFileSync('python3', [resolve(__dirname, '../../tools/check-reviewed-batch4-scenarios.py')], { encoding: 'utf8' }));
+    const report = JSON.parse(execPythonSync([resolve(__dirname, '../../tools/check-reviewed-batch4-scenarios.py')], { encoding: 'utf8' }));
     expect(report.checked).toBe(7);
     expect(report.records.every((row: any) => row.passed)).toBe(true);
     expect(report.records.find((row: any) => row.kind === 'scoped_stp_timer_sum').result.totalSeconds).toBe(50);
@@ -29,7 +30,7 @@ describe('Legacy bank review', () => {
     expect(report.records.find((row: any) => row.kind === 'parsed_ipv6_longest_prefix').result.prefix).toBe('2001:db8:acad:1:1000::/80');
   });
   it('derives ten sixth-batch keys including unique IPv6 alternatives and actual Python subscript outcomes', () => {
-    const report = JSON.parse(execFileSync('python3', [resolve(__dirname, '../../tools/check-reviewed-batch6-scenarios.py')], { encoding: 'utf8' }));
+    const report = JSON.parse(execPythonSync([resolve(__dirname, '../../tools/check-reviewed-batch6-scenarios.py')], { encoding: 'utf8' }));
     expect(report.checked).toBe(10);
     expect(report.records.every((row: any) => row.passed)).toBe(true);
     expect(report.records.find((row: any) => row.kind === 'modified_eui64_unique_alternatives').result).toBe('2001:db8:acad:10:250:56ff:fea3:8c1f');
@@ -37,7 +38,7 @@ describe('Legacy bank review', () => {
     expect(report.records.find((row: any) => row.kind === 'stateless_established_flag_mask').result).toEqual({ 0: false, 2: false, 4: true, 16: true, 18: true, 20: true });
   });
   it('checks the HTTP fixture and binds the executed Ansible YAML check to both languages', () => {
-    const report = JSON.parse(execFileSync('python3', [resolve(__dirname, '../../tools/check-reviewed-automation-scenarios.py')], { encoding: 'utf8' }));
+    const report = JSON.parse(execPythonSync([resolve(__dirname, '../../tools/check-reviewed-automation-scenarios.py')], { encoding: 'utf8' }));
     expect(report.checked).toBe(2);
     expect(report.records.find((row: any) => row.kind === 'http_excerpt_json_consistency').result).toEqual({ status: 401, errorCode: 'AUTH_TOKEN_EXPIRED' });
     const yaml = report.records.find((row: any) => row.kind === 'bound_yaml_argument_check_artifact').result;
@@ -46,7 +47,7 @@ describe('Legacy bank review', () => {
     expect(yaml.bilingualYamlIdentical).toBe(true);
   });
   it('recomputes fifth-batch routing/STP/ACL and executes both RESTCONF snippets with mocked transport', () => {
-    const report = JSON.parse(execFileSync('python3', [resolve(__dirname, '../../tools/check-reviewed-batch5-scenarios.py')], { encoding: 'utf8' }));
+    const report = JSON.parse(execPythonSync([resolve(__dirname, '../../tools/check-reviewed-batch5-scenarios.py')], { encoding: 'utf8' }));
     expect(report.passed).toBe(true);
     expect(report.records).toHaveLength(7);
     expect(report.records.find((row: any) => row.kind === 'cumulative_ack_two_out_of_order_segments').result).toEqual({ duplicateAcks: 2, fastRetransmitThreshold: 3, thresholdReached: false });
@@ -54,7 +55,7 @@ describe('Legacy bank review', () => {
     expect(report.records.find((row: any) => row.kind === 'executed_bilingual_restconf_fixture_no_network').result.printed).toEqual(['Administratively enabled: Gi0/2 - Type: iana-if-type:ethernetCsmacd']);
   });
   it('checks eleven legacy arithmetic keys and the numerical Spanish alternatives independently', () => {
-    const report = JSON.parse(execFileSync('python3', [resolve(__dirname, '../../tools/review-legacy-calculations.py')], { encoding: 'utf8' }));
+    const report = JSON.parse(execPythonSync([resolve(__dirname, '../../tools/review-legacy-calculations.py')], { encoding: 'utf8' }));
     expect(report.arithmeticChecksPassed).toBe(11);
     expect(report.fullTechnicalApprovals).toBe(0);
     expect(report.legacySingleAnswerKeys.A).toBe(266);

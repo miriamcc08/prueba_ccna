@@ -1,0 +1,35 @@
+{
+  "date": "2026-11-05",
+  "issue": "Windows has py launcher (reported Python3.13.6) but python3 resolves to the Microsoft Store alias.",
+  "changes": {
+    "windowsCommand": [
+      "py",
+      "-3",
+      "-X",
+      "utf8"
+    ],
+    "unixCommand": [
+      "python3",
+      "-X",
+      "utf8"
+    ],
+    "override": "CCNA_PYTHON executable path",
+    "shell": false,
+    "suitesUpdated": 9,
+    "newRegressionTests": 6
+  },
+  "validation": {
+    "osExecuted": "Linux",
+    "testFilesPassed": 15,
+    "testsPassed": 628,
+    "testsFailed": 0,
+    "strictHelperTypecheck": "passed",
+    "realWindowsExecution": "pending user rerun",
+    "testLogSha256": "6f709f110df95b2175b03901b4921a5f86bd74320fdc8ecfb4d6c75abb81ca35"
+  },
+  "unmodifiedScope": [
+    "question content and approvals",
+    "database and migrations",
+    "client dependency files, including the user-local Vite6.4.5 update"
+  ]
+}

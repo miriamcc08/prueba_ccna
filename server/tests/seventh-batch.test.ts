@@ -1,8 +1,8 @@
+import { execPythonSync } from './helpers/python';
 import { describe, it, expect } from 'vitest';
 import { readFileSync, writeFileSync, mkdtempSync, rmSync } from 'node:fs';
 import { tmpdir } from 'node:os';
 import { join, resolve } from 'node:path';
-import { execFileSync } from 'node:child_process';
 import { questionImportItemSchema } from '../src/validators/schemas';
 import { validateQuestionAnswers } from '../src/utils/networkValidators';
 const file = resolve(__dirname, '../prisma/questions/original_20261026_b07_50.json');
@@ -11,7 +11,7 @@ const batch = JSON.parse(readFileSync(file, 'utf8'));
 const references = JSON.parse(readFileSync(referencesFile, 'utf8'));
 const calculations = resolve(__dirname, '../../tools/check-question-calculations.py');
 const evidenceChecker = resolve(__dirname, '../../tools/check-question-evidence.py');
-const evidence = (path = file) => JSON.parse(execFileSync('python3', [evidenceChecker, path, '--references', referencesFile], { encoding: 'utf8', stdio: 'pipe' }));
+const evidence = (path = file) => JSON.parse(execPythonSync([evidenceChecker, path, '--references', referencesFile], { encoding: 'utf8', stdio: 'pipe' }));
 const calculated = batch.questions.filter((q: any) => q.verification.calculation);
 
 describe('Seventh original batch: architecture, virtualization and controller models', () => {
@@ -44,7 +44,7 @@ describe('Seventh original batch: architecture, virtualization and controller mo
     expect(references.focusedEvidence.some((e: any) => e.questionId === q.id)).toBe(true);
   });
   it('recomputes ten independent cases without awarding technical approval', () => {
-    const report = JSON.parse(execFileSync('python3', [calculations, file], { encoding: 'utf8' }));
+    const report = JSON.parse(execPythonSync([calculations, file], { encoding: 'utf8' }));
     expect(report.independentChecksPassed).toBe(10);
     expect(report.technicalApprovals).toBe(0);
     expect(calculated).toHaveLength(10);
@@ -63,13 +63,13 @@ describe('Seventh original batch: architecture, virtualization and controller mo
       correct.isCorrect = false; incorrect.isCorrect = true;
       expect(validateQuestionAnswers(q, q.options).valid).toBe(true);
       const path = join(dir, 'changed.json'); writeFileSync(path, JSON.stringify(changed));
-      expect(() => execFileSync('python3', [calculations, path], { stdio: 'pipe' })).toThrow();
+      expect(() => execPythonSync([calculations, path], { stdio: 'pipe' })).toThrow();
       expect(() => evidence(path)).toThrow(/content changed since documentary review/);
     } finally { rmSync(dir, { recursive: true, force: true }); }
   });
   const oldFile = resolve(__dirname, '../prisma/questions/original_20261024_50.json');
   const oldReferences = resolve(__dirname, '../../docs/batches/lote-01-referencias.json');
-  const runOld = (path = oldFile, refs = oldReferences, partial = true) => JSON.parse(execFileSync('python3', [evidenceChecker, path, '--references', refs, ...(partial ? ['--reviewed-only'] : [])], { encoding: 'utf8', stdio: 'pipe' }));
+  const runOld = (path = oldFile, refs = oldReferences, partial = true) => JSON.parse(execPythonSync([evidenceChecker, path, '--references', refs, ...(partial ? ['--reviewed-only'] : [])], { encoding: 'utf8', stdio: 'pipe' }));
   it('does not silently present twenty old reviews as a complete fifty-question review', () => {
     expect(() => runOld(oldFile, oldReferences, false)).toThrow(/Evidence question IDs do not match/);
   });

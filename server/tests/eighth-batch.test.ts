@@ -1,8 +1,8 @@
+import { execPythonSync } from './helpers/python';
 import { describe, expect, it } from 'vitest';
 import { readFileSync, writeFileSync, mkdtempSync, rmSync } from 'node:fs';
 import { resolve, join } from 'node:path';
 import { tmpdir } from 'node:os';
-import { execFileSync } from 'node:child_process';
 import { questionImportItemSchema } from '../src/validators/schemas';
 import { validateQuestionAnswers } from '../src/utils/networkValidators';
 const file = resolve(__dirname, '../prisma/questions/original_20261026_b08_10.json');
@@ -32,11 +32,11 @@ describe('Focused AIOps batch and direct platform evidence', () => {
     expect(q.verification.referenceAccess).toBe('consulted');
   });
   it('checks full evidence for the focused ten without assuming a fifty-question batch', () => {
-    const r = JSON.parse(execFileSync('python3', [checker, file, '--references', refs], { encoding: 'utf8' }));
+    const r = JSON.parse(execPythonSync([checker, file, '--references', refs], { encoding: 'utf8' }));
     expect(r).toMatchObject({ received: 10, batchReceived: 10, questionsWithoutReview: 0, technicalApprovals: 0 });
   });
   it('independently verifies both explicit numeric models', () => {
-    const r = JSON.parse(execFileSync('python3', [calc, file], { encoding: 'utf8' }));
+    const r = JSON.parse(execPythonSync([calc, file], { encoding: 'utf8' }));
     expect(r.independentChecksPassed).toBe(2);
   });
   it.each(['alert_precision', 'time_savings'])('rejects an incorrect %s answer while preserving selection count', kind => {
@@ -48,7 +48,7 @@ describe('Focused AIOps batch and direct platform evidence', () => {
       correct.isCorrect = false; wrong.isCorrect = true;
       expect(validateQuestionAnswers(q, q.options).valid).toBe(true);
       const path = join(dir, 'changed.json'); writeFileSync(path, JSON.stringify(changed));
-      expect(() => execFileSync('python3', [calc, path], { stdio: 'pipe' })).toThrow();
+      expect(() => execPythonSync([calc, path], { stdio: 'pipe' })).toThrow();
     } finally { rmSync(dir, { recursive: true, force: true }); }
   });
   it('rejects a consulted chapter substituted after a review despite the retained general citation', () => {
@@ -59,7 +59,7 @@ describe('Focused AIOps batch and direct platform evidence', () => {
       const entry = oldRefs.focusedEvidence.find((e: any) => e.documentUrl);
       entry.documentUrl = 'https://www.cisco.com/unrelated-chapter.html';
       const path = join(dir, 'refs.json'); writeFileSync(path, JSON.stringify(oldRefs));
-      expect(() => execFileSync('python3', [checker, oldFile, '--references', path, '--reviewed-only'], { stdio: 'pipe' })).toThrow();
+      expect(() => execPythonSync([checker, oldFile, '--references', path, '--reviewed-only'], { stdio: 'pipe' })).toThrow();
     } finally { rmSync(dir, { recursive: true, force: true }); }
   });
 });

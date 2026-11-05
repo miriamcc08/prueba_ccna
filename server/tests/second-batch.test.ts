@@ -1,8 +1,8 @@
+import { execPythonSync } from './helpers/python';
 import { describe, expect, it } from 'vitest';
 import { readFileSync, writeFileSync, mkdtempSync, rmSync } from 'node:fs';
 import { tmpdir } from 'node:os';
 import { join, resolve } from 'node:path';
-import { execFileSync } from 'node:child_process';
 import { questionImportItemSchema } from '../src/validators/schemas';
 import { validateQuestionAnswers } from '../src/utils/networkValidators';
 const file = resolve(__dirname, '../prisma/questions/original_20261024_b02_50.json');
@@ -41,7 +41,7 @@ describe('Second original question batch', () => {
     }
   });
   it('recomputes 13 single- and multiple-answer cases independently', () => {
-    const report = JSON.parse(execFileSync('python3', [resolve(__dirname, '../../tools/check-question-calculations.py'), file], { encoding: 'utf8' }));
+    const report = JSON.parse(execPythonSync([resolve(__dirname, '../../tools/check-question-calculations.py'), file], { encoding: 'utf8' }));
     expect(report.independentChecksPassed).toBe(13);
     expect(report.technicalApprovals).toBe(0);
     expect(references.questionsWithFocusedConsultation).toBe(24);
@@ -57,7 +57,7 @@ describe('Second original question batch', () => {
       wrong.isCorrect = true;
       expect(validateQuestionAnswers(question, question.options).valid).toBe(true);
       const path = join(directory, 'corrupt.json'); writeFileSync(path, JSON.stringify(corrupted));
-      expect(() => execFileSync('python3', [resolve(__dirname, '../../tools/check-question-calculations.py'), path], { stdio: 'pipe' })).toThrow();
+      expect(() => execPythonSync([resolve(__dirname, '../../tools/check-question-calculations.py'), path], { stdio: 'pipe' })).toThrow();
     } finally { rmSync(directory, { recursive: true, force: true }); }
   });
 });

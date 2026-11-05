@@ -1,8 +1,8 @@
+import { execPythonSync } from './helpers/python';
 import { describe, it, expect } from 'vitest';
 import { readFileSync, writeFileSync, mkdtempSync, rmSync } from 'node:fs';
 import { tmpdir } from 'node:os';
 import { join, resolve } from 'node:path';
-import { execFileSync } from 'node:child_process';
 import { questionImportItemSchema } from '../src/validators/schemas';
 import { validateQuestionAnswers } from '../src/utils/networkValidators';
 const file = resolve(__dirname, '../prisma/questions/original_20261024_b03_50.json');
@@ -44,7 +44,7 @@ describe('Third original question batch', () => {
     }
   });
   it('independently recomputes twenty-one numeric, address and policy cases', () => {
-    const result = JSON.parse(execFileSync('python3', [resolve(__dirname, '../../tools/check-question-calculations.py'), file], { encoding: 'utf8' }));
+    const result = JSON.parse(execPythonSync([resolve(__dirname, '../../tools/check-question-calculations.py'), file], { encoding: 'utf8' }));
     expect(result.received).toBe(50);
     expect(result.independentChecksPassed).toBe(21);
     expect(result.technicalApprovals).toBe(0);
@@ -59,7 +59,7 @@ describe('Third original question batch', () => {
       q.options.find((o: any) => o.optionTextEn === 'TCP request to destination port 443').isCorrect = true;
       expect(validateQuestionAnswers(q, q.options).valid).toBe(true);
       const path = join(directory, 'corrupt.json'); writeFileSync(path, JSON.stringify(corrupted));
-      expect(() => execFileSync('python3', [resolve(__dirname, '../../tools/check-question-calculations.py'), path], { stdio: 'pipe' })).toThrow();
+      expect(() => execPythonSync([resolve(__dirname, '../../tools/check-question-calculations.py'), path], { stdio: 'pipe' })).toThrow();
     } finally { rmSync(directory, { recursive: true, force: true }); }
   });
 });

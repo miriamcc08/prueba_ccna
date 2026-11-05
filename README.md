@@ -6,6 +6,8 @@ Aplicación React/TypeScript y Express/Prisma con SQLite para desarrollo. La pun
 
 Requisitos: Node.js 22.12 o superior de la rama 22, o Node.js 24, npm, Python 3, Chromium (`/usr/bin/chromium` o `CHROMIUM_PATH`) y acceso HTTPS a registry.npmjs.org y binaries.prisma.sh. Usa el checkout existente; cada tarea de nube ya está aislada y no necesita worktrees.
 
+En Windows, las pruebas de preguntas usan el lanzador `py -3` (compruébalo con `py --version`); en Linux/macOS usan `python3`. Consulta [la compatibilidad Python de las pruebas](docs/pruebas-python-windows.md) si aparece el aviso de Microsoft Store o necesitas indicar otro intérprete.
+
 El repositorio heredado contiene `node_modules`, `.env` y una base SQLite versionados. Para preservarlos, instala y ejecuta desde una copia separada:
 
 ```bash

@@ -1,8 +1,8 @@
+import { execPythonSync } from './helpers/python';
 import { describe, it, expect } from 'vitest';
 import { readFileSync, writeFileSync, mkdtempSync, rmSync } from 'node:fs';
 import { tmpdir } from 'node:os';
 import { join, resolve } from 'node:path';
-import { execFileSync } from 'node:child_process';
 import { questionImportItemSchema } from '../src/validators/schemas';
 import { validateQuestionAnswers } from '../src/utils/networkValidators';
 const file = resolve(__dirname, '../prisma/questions/original_20261026_b04_50.json');
@@ -47,7 +47,7 @@ describe('Fourth original question batch', () => {
     if (q.verification.referenceCoverage === 'partial') expect(q.verification.referenceCoverageNotes.length).toBeGreaterThan(20);
   });
   it('independently recomputes nine allocation, switching, routing and data cases', () => {
-    const result = JSON.parse(execFileSync('python3', [checker, file], { encoding: 'utf8' }));
+    const result = JSON.parse(execPythonSync([checker, file], { encoding: 'utf8' }));
     expect(result.independentChecksPassed).toBe(9);
     expect(result.technicalApprovals).toBe(0);
     expect(references.questionsWithFocusedConsultation).toBe(14);
@@ -63,7 +63,7 @@ describe('Fourth original question batch', () => {
       incorrect.isCorrect = true;
       expect(validateQuestionAnswers(q, q.options).valid).toBe(true);
       const path = join(directory, 'corrupt.json'); writeFileSync(path, JSON.stringify(corrupted));
-      expect(() => execFileSync('python3', [checker, path], { stdio: 'pipe' })).toThrow();
+      expect(() => execPythonSync([checker, path], { stdio: 'pipe' })).toThrow();
     } finally { rmSync(directory, { recursive: true, force: true }); }
   });
 });

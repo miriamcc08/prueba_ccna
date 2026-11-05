@@ -1,8 +1,8 @@
+import { execPythonSync } from './helpers/python';
 import { describe, it, expect } from 'vitest';
 import { readFileSync, writeFileSync, mkdtempSync, rmSync } from 'node:fs';
 import { tmpdir } from 'node:os';
 import { join, resolve } from 'node:path';
-import { execFileSync } from 'node:child_process';
 import { createHash } from 'node:crypto';
 import { questionImportItemSchema } from '../src/validators/schemas';
 import { validateQuestionAnswers } from '../src/utils/networkValidators';
@@ -12,7 +12,7 @@ const batch = JSON.parse(readFileSync(file, 'utf8'));
 const references = JSON.parse(readFileSync(referencesFile, 'utf8'));
 const calculations = resolve(__dirname, '../../tools/check-question-calculations.py');
 const evidenceChecker = resolve(__dirname, '../../tools/check-question-evidence.py');
-const runEvidence = (path = file, refs = referencesFile, extra: string[] = []) => JSON.parse(execFileSync('python3', [evidenceChecker, path, '--references', refs, ...extra], { encoding: 'utf8', stdio: 'pipe' }));
+const runEvidence = (path = file, refs = referencesFile, extra: string[] = []) => JSON.parse(execPythonSync([evidenceChecker, path, '--references', refs, ...extra], { encoding: 'utf8', stdio: 'pipe' }));
 
 describe('Fifth original question batch and traceable validation', () => {
   it('has fifty bilingual scenarios, five multiple selections and explicit related families', () => {
@@ -45,7 +45,7 @@ describe('Fifth original question batch and traceable validation', () => {
     expect(references.focusedEvidence.find((e: any) => e.questionId === q.id).anchors.length).toBeGreaterThan(0);
   });
   it('independently recomputes all six executable cases', () => {
-    const report = JSON.parse(execFileSync('python3', [calculations, file], { encoding: 'utf8' }));
+    const report = JSON.parse(execPythonSync([calculations, file], { encoding: 'utf8' }));
     expect(report.independentChecksPassed).toBe(6);
     expect(report.technicalApprovals).toBe(0);
   });
@@ -72,7 +72,7 @@ describe('Fifth original question batch and traceable validation', () => {
       correct.isCorrect = false; incorrect.isCorrect = true;
       expect(validateQuestionAnswers(q, q.options).valid).toBe(true);
       const path = join(dir, 'changed.json'); writeFileSync(path, JSON.stringify(changed));
-      expect(() => execFileSync('python3', [calculations, path], { stdio: 'pipe' })).toThrow();
+      expect(() => execPythonSync([calculations, path], { stdio: 'pipe' })).toThrow();
       expect(() => runEvidence(path)).toThrow(/content changed since documentary review/);
     } finally { rmSync(dir, { recursive: true, force: true }); }
   });

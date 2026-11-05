@@ -1,8 +1,8 @@
+import { execPythonSync } from './helpers/python';
 import { describe, it, expect } from 'vitest';
 import { readFileSync, writeFileSync, mkdtempSync, rmSync } from 'node:fs';
 import { tmpdir } from 'node:os';
 import { join, resolve } from 'node:path';
-import { execFileSync } from 'node:child_process';
 import { questionImportItemSchema } from '../src/validators/schemas';
 import { validateQuestionAnswers } from '../src/utils/networkValidators';
 const file = resolve(__dirname, '../prisma/questions/original_20261026_b06_50.json');
@@ -11,7 +11,7 @@ const batch = JSON.parse(readFileSync(file, 'utf8'));
 const references = JSON.parse(readFileSync(referencesFile, 'utf8'));
 const calculations = resolve(__dirname, '../../tools/check-question-calculations.py');
 const evidenceChecker = resolve(__dirname, '../../tools/check-question-evidence.py');
-const evidence = (path = file) => JSON.parse(execFileSync('python3', [evidenceChecker, path, '--references', referencesFile], { encoding: 'utf8', stdio: 'pipe' }));
+const evidence = (path = file) => JSON.parse(execPythonSync([evidenceChecker, path, '--references', referencesFile], { encoding: 'utf8', stdio: 'pipe' }));
 const calculated = batch.questions.filter((q: any) => q.verification.calculation);
 
 describe('Sixth original batch: physical links and operational diagnostics', () => {
@@ -44,7 +44,7 @@ describe('Sixth original batch: physical links and operational diagnostics', () 
     expect(references.focusedEvidence.some((e: any) => e.questionId === q.id)).toBe(true);
   });
   it('recomputes twelve independent cases without awarding technical approval', () => {
-    const report = JSON.parse(execFileSync('python3', [calculations, file], { encoding: 'utf8' }));
+    const report = JSON.parse(execPythonSync([calculations, file], { encoding: 'utf8' }));
     expect(report.independentChecksPassed).toBe(12);
     expect(report.technicalApprovals).toBe(0);
     expect(calculated).toHaveLength(12);
@@ -63,7 +63,7 @@ describe('Sixth original batch: physical links and operational diagnostics', () 
       correct.isCorrect = false; incorrect.isCorrect = true;
       expect(validateQuestionAnswers(q, q.options).valid).toBe(true);
       const path = join(dir, 'changed.json'); writeFileSync(path, JSON.stringify(changed));
-      expect(() => execFileSync('python3', [calculations, path], { stdio: 'pipe' })).toThrow();
+      expect(() => execPythonSync([calculations, path], { stdio: 'pipe' })).toThrow();
       expect(() => evidence(path)).toThrow(/content changed since documentary review/);
     } finally { rmSync(dir, { recursive: true, force: true }); }
   });
