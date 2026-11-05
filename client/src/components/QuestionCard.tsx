@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { ExamQuestionView } from '@shared/types';
+import { OptionText } from './OptionText';
 import { useTranslation } from '../i18n/useTranslation';
-import { CheckIcon, CheckCircleIcon, XCircleIcon, InfoIcon, ShieldIcon } from './Icons';
+import { CheckCircleIcon, XCircleIcon, InfoIcon, ShieldIcon } from './Icons';
 
 interface QuestionCardProps {
   question: ExamQuestionView;
@@ -160,6 +161,7 @@ export const QuestionCard: React.FC<QuestionCardProps> = ({
                 key={option.id}
                 type="button"
                 onClick={() => handleOptionToggle(option.id)}
+                aria-pressed={isSelected}
                 disabled={hasConfirmed && mode === 'study'}
                 className={`w-full text-left p-4 rounded-xl border transition-all duration-150 flex items-start gap-3.5 group cursor-pointer disabled:cursor-default ${optionContainerClass}`}
               >
@@ -174,14 +176,13 @@ export const QuestionCard: React.FC<QuestionCardProps> = ({
                         : 'border border-slate-600 bg-slate-800 text-slate-400 group-hover:border-slate-400'
                     }`}
                   >
-                    {isSelected ? <CheckIcon size={14} /> : option.label}
+                    {option.label}
                   </div>
                 </div>
 
                 {/* Option Content Text */}
-                <div className="flex-1 text-sm sm:text-base leading-snug">
-                  <span className="font-semibold text-slate-300 mr-2">{option.label}.</span>
-                  <span>{option.text}</span>
+                <div className="min-w-0 flex-1 text-sm sm:text-base leading-snug">
+                  <OptionText text={option.text} />
                 </div>
 
                 {/* Study mode icons */}

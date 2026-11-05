@@ -683,3 +683,68 @@ test('reviewed bank approvals are audited and enable a real 100-question exam wi
   expect(await db.questionReview.count({ where: { reviewerId: 'system-assisted-bank-review', status: 'rejected' } })).toBe(209);
   await db.$disconnect();
 });
+
+for (const language of ['es', 'en']) {
+  test(`address alternatives use hyphenated lines in exam and review (${language})`, async ({ page }) => {
+    const { PrismaClient } = require('../../server/node_modules/@prisma/client');
+    const { readFileSync } = require('node:fs');
+    const { resolve } = require('node:path');
+    const original = JSON.parse(readFileSync(resolve(__dirname, '../../server/prisma/questions/reviewed_batch3_corrections_20261029.json'), 'utf8')).questions.find(q => q.id === 'ccna-legacy-batch3_all-029-review-r1');
+    const db = new PrismaClient({ datasourceUrl: process.env.CCNA_BROWSER_DATABASE_URL });
+    let fixture;
+    try {
+      const topic = await db.topic.create({ data: { code: `display-${language}-${Date.now()}`, nameEn: 'Address display', nameEs: 'Presentación de direcciones', examArea: 'network_fundamentals', examAreaNumber: '1.0', weightPercentage: 20 } });
+      const q = await db.question.create({ data: {
+        statementEn: original.statementEn, statementEs: original.statementEs, questionType: original.questionType,
+        difficulty: original.difficulty, questionFamilyId: topic.id, primaryTopicId: topic.id, validationStatus: 'validated',
+        explanationEn: original.explanationEn, explanationEs: original.explanationEs,
+        options: { create: original.options.map((o, index) => ({ optionLabel: o.optionLabel, optionTextEn: o.optionTextEn, optionTextEs: o.optionTextEs, isCorrect: o.isCorrect, displayOrder: index })) },
+      }, include: { options: true } });
+      fixture = { topicId: topic.id, correctIds: q.options.filter(o => o.isCorrect).map(o => o.id) };
+    } finally { await db.$disconnect(); }
+    await page.goto('/');
+    await page.getByRole('button', { name: language.toUpperCase(), exact: true }).click();
+    const setup = await page.evaluate(async ({ fixture, language }) => {
+      const { default: api } = await import('/src/services/api.ts');
+      const created = await api.createExam({ questionCount: 1, language, mode: 'custom', topics: [fixture.topicId], studyMode: true, strictMode: false, untimed: true, randomize: false, showExplanations: true });
+      if (!created.success) throw new Error(created.error);
+      await api.startExam(created.data.examId);
+      const q = await api.getExamQuestion(created.data.examId, 0);
+      return { id: created.data.examId, options: q.data.options, correctIndex: q.data.options.findIndex(o => fixture.correctIds.includes(o.id)) };
+    }, { fixture, language });
+    await page.goto('/exam/' + setup.id);
+    const alternatives = page.locator('button.w-full.text-left');
+    await expect(alternatives).toHaveCount(4);
+    for (const [i, option] of setup.options.entries()) {
+      const fields = option.text.split(', ');
+      const items = alternatives.nth(i).getByRole('listitem');
+      await expect(items).toHaveCount(4);
+      for (const [j, field] of fields.entries()) {
+        await expect(items.nth(j).locator('span').first()).toHaveText('-');
+        await expect(items.nth(j).locator('span').last()).toHaveText(field);
+      }
+    }
+    const formats = await page.evaluate(async () => {
+      const { optionListItems } = await import('/src/components/OptionText.tsx');
+      return [optionListItems('One, two, and three.'), optionListItems('ip route 10.0.0.0 255.0.0.0 192.0.2.1\n! keep command lines'), optionListItems('{"IP origen":"10.1.1.1","IP destino":"10.2.2.2"}'), optionListItems('- First item\n- Second item')];
+    });
+    expect(formats).toEqual([null, null, null, ['First item', 'Second item']]);
+    await page.setViewportSize({ width: 390, height: 844 });
+    expect(await page.evaluate(() => document.documentElement.scrollWidth <= window.innerWidth)).toBe(true);
+    await page.screenshot({ path: `/tmp/ccna-option-lines-${language}.png`, fullPage: true });
+    await alternatives.nth(setup.correctIndex).click();
+    await expect(alternatives.nth(setup.correctIndex)).toHaveAttribute('aria-pressed', 'true');
+    await expect(alternatives.nth(setup.correctIndex).getByText(setup.options[setup.correctIndex].label, { exact: true })).toBeVisible();
+    await page.getByRole('button', { name: /Confirmar y Continuar|Confirm & Proceed/ }).click();
+    await expect(alternatives.first()).toBeDisabled();
+    await page.evaluate(async id => {
+      const { default: api } = await import('/src/services/api.ts');
+      const done = await api.completeExam(id);
+      if (!done.success) throw new Error(done.error);
+    }, setup.id);
+    await page.goto('/review/' + setup.id);
+    await expect(page.getByRole('list')).toHaveCount(4);
+    await expect(page.getByRole('listitem')).toHaveCount(16);
+    expect(await page.evaluate(() => document.documentElement.scrollWidth <= window.innerWidth)).toBe(true);
+  });
+}

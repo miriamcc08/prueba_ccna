@@ -1,0 +1,42 @@
+{
+  "date": "2026-11-05",
+  "change": "Display explicit MAC/IP fields as hyphenated lines in exam, review and bank inspector, preserving stored question content.",
+  "validation": {
+    "build": "server and client passed",
+    "viteVersion": "6.4.5",
+    "chromiumTestsPassed": 24,
+    "chromiumTestsFailed": 0,
+    "newBrowserCases": 2,
+    "languages": [
+      "es",
+      "en"
+    ],
+    "mobileViewport": {
+      "width": 390,
+      "height": 844
+    },
+    "checks": [
+      "Four exact address fields per alternative, each with a hyphen",
+      "Ordinary prose, CLI and JSON not split",
+      "Explicit multiline bullets recognized",
+      "Choice letter remains visible after selection; aria-pressed exposes selection",
+      "Actual answer confirmation and final review preserve working selection",
+      "No horizontal document overflow at mobile width"
+    ],
+    "buildLogSha256": "a3092816af9c13e045faf1217f631c48721daa1e6df7f1a0cd67e7abb0326783",
+    "browserLogSha256": "9635388f4367fbd84e08249f1d7368d6512e07e1d762cd5fc672196eedf4850f"
+  },
+  "sourceSha256": {
+    "client/src/components/OptionText.tsx": "ef1a70603e7f34e585d03546c2435b43442e60d0332cbd165d69507f24005495",
+    "client/src/components/QuestionCard.tsx": "c8ca7982e46d1554bfc7d187adf76b8687513050911d76a90817f51920b5a078",
+    "client/src/pages/ReviewPage.tsx": "84630b22fc8fa2541d613273dc1ee2b7391461e9bdf036cc504c54275f8f0fb9",
+    "client/src/pages/QuestionBankPage.tsx": "1f9ed310048b56d5f9e33cc05c78ed6ebcbcfda3f02bc766b6241478bca13633",
+    "tests/browser/workflow.spec.cjs": "fa8096aecd6773494cb6e5e3d34548c39b327f4084f957c5abe38893dd9057e8"
+  },
+  "pcSync": "Published commit must be pulled in the user PC and its hash checked; this environment cannot edit the user local folder directly.",
+  "unmodified": [
+    "question JSON, review hashes and answer keys",
+    "user database, accounts and exam history",
+    "dependency versions"
+  ]
+}

@@ -1,6 +1,7 @@
 import React, { useEffect, useState, useMemo } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { ReviewQuestionItem } from '@shared/types';
+import { OptionText } from '../components/OptionText';
 import { useTranslation } from '../i18n/useTranslation';
 import api from '../services/api';
 import {
@@ -307,10 +308,10 @@ export const ReviewPage: React.FC = () => {
                       key={opt.id}
                       className={`p-4 rounded-xl border flex items-start justify-between gap-3 ${borderClass}`}
                     >
-                      <div className="flex items-start gap-3 flex-1">
+                      <div className="flex min-w-0 items-start gap-3 flex-1">
                         <span className="font-bold text-slate-300 w-5 text-sm">{opt.label}.</span>
-                        <div className="text-sm leading-snug">
-                          <div>{opt.text}</div>
+                        <div className="min-w-0 text-sm leading-snug">
+                          <OptionText text={opt.text} />
                           {opt.explanation && (
                             <div className="text-xs text-slate-400 mt-1 italic">
                               {opt.explanation}

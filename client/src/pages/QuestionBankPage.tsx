@@ -1,3 +1,4 @@
+import { OptionText } from '../components/OptionText';
 import React, { useEffect, useState, useCallback } from 'react';
 import {
   QuestionListItem,
@@ -358,8 +359,8 @@ export const QuestionBankPage: React.FC = () => {
                         }`}
                       >
                         <span className="font-bold w-5">{opt.optionLabel}.</span>
-                        <div className="flex-1">
-                          <div>{language === 'es' ? opt.optionTextEs || opt.optionTextEn : opt.optionTextEn}</div>
+                        <div className="min-w-0 flex-1">
+                          <OptionText text={language === 'es' ? opt.optionTextEs || opt.optionTextEn : opt.optionTextEn} />
                           {(language === 'es' ? opt.explanationEs : opt.explanationEn) && (
                             <div className="text-xs text-slate-400 mt-1 italic">
                               {language === 'es' ? opt.explanationEs : opt.explanationEn}

@@ -12,3 +12,7 @@ dist/
 __pycache__/
 
 *.py[cod]
+
+# TypeScript output generated from the Vite configuration.
+/client/vite.config.js
+/client/vite.config.d.ts
