@@ -349,12 +349,12 @@ export async function updateQuestion(
   if (data.options) {
     const validation = validateQuestionAnswers(
       {
-        questionType: (data.questionType || existing.questionType) as string,
-        multipleAnswerCount: (data.multipleAnswerCount ?? existing.multipleAnswerCount) as number | null,
-        statementEn: (data.statementEn || existing.statementEn) as string,
-        statementEs: (data.statementEs || existing.statementEs) as string,
+        questionType: data.questionType || existing.questionType,
+        multipleAnswerCount: data.multipleAnswerCount ?? existing.multipleAnswerCount,
+        statementEn: data.statementEn || existing.statementEn,
+        statementEs: data.statementEs || existing.statementEs,
       },
-      data.options as any
+      data.options
     );
 
     if (!validation.valid) {
@@ -370,7 +370,7 @@ export async function updateQuestion(
       });
 
       await tx.questionOption.createMany({
-        data: data.options!.map((opt: any, idx: number) => ({
+        data: data.options.map((opt, idx) => ({
           questionId: id,
           optionLabel: opt.optionLabel,
           optionTextEn: opt.optionTextEn,
@@ -385,10 +385,10 @@ export async function updateQuestion(
 
     const { options: _, subtopics, ...questionData } = data;
 
-    const updateData: Record<string, any> = {
+    const updateData: Prisma.QuestionUncheckedUpdateInput = {
       ...questionData,
       // Any edit invalidates a previous technical approval. History remains in review records.
-      validationStatus: (data.validationStatus as string) || 'pending_review',
+      validationStatus: data.validationStatus || 'pending_review',
       lastVerifiedAt: null,
     };
     if (subtopics) updateData.subtopics = JSON.stringify(subtopics);

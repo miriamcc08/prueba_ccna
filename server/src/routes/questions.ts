@@ -240,7 +240,7 @@ router.post('/:id/review', requireAuth, requireAdmin, async (req: Request, res: 
       const q = await tx.question.findUnique({ where: { id: (req.params.id as string) }, include: { options: true } });
       if (!q) throw new AppError(404, 'Question not found.');
       if (input.status === 'validated') {
-        const check = validateQuestionAnswers(q as any, q.options as any);
+        const check = validateQuestionAnswers(q, q.options);
         if (!check.valid) throw new AppError(400, 'Structural validation failed.', check.errors);
         if (!input.evidenceUrl || !input.technicalReviewConfirmed) throw new AppError(400, 'Approval requires an HTTPS reference and explicit technical review confirmation.');
         if (!q.explanationEn?.trim() || !q.explanationEs?.trim() || !q.examVersion) throw new AppError(400, 'Approval requires bilingual explanations and an exam version.');

@@ -1,0 +1,115 @@
+{
+  "verifiedAt": "2026-11-05T12:58:58.146745-05:00",
+  "mainBeforeIntegration": "cef82bb3aa6f413317b13ce773f9c9af07bd603e",
+  "improvementsBeforeAntigravity": "e69e860592a28aaf66a3ab1e3111f9571ab5944c",
+  "antigravityTipReviewed": "fccab101",
+  "antigravityCommitsPreserved": [
+    "46364647",
+    "451c86d1",
+    "fccab101"
+  ],
+  "historyCheck": {
+    "commitsOnlyOnMain": 0,
+    "commitsOnlyOnImprovementsBeforeCleanup": 14,
+    "integrationMethod": "fast-forward only; no forced push or history rewrite"
+  },
+  "checks": {
+    "cleanLockfileInstall": "passed; root/server/client in isolated runtime",
+    "prismaGeneratedFromSchema": "6.19.3",
+    "serverAndClientBuild": "passed",
+    "strictReviewTypecheck": "passed",
+    "serverTests": {
+      "passed": 622,
+      "files": 14,
+      "failed": 0
+    },
+    "chromiumTests": {
+      "passed": 22,
+      "failed": 0
+    },
+    "bankAudit": {
+      "received": 869,
+      "structuralRejections": 0,
+      "duplicates": 0,
+      "editorialReview": {
+        "integrity": "verified",
+        "summary": {
+          "validated": 619,
+          "pending_review": 41,
+          "rejected": 209
+        }
+      }
+    },
+    "oldDatabaseMigration": {
+      "database": "isolated copy of original tracked database",
+      "allOriginalRowsAndValuesPreserved": true,
+      "tables": {
+        "User": {
+          "rows": 1,
+          "originalColumnsUnchanged": true
+        },
+        "Topic": {
+          "rows": 51,
+          "originalColumnsUnchanged": true
+        },
+        "Source": {
+          "rows": 2,
+          "originalColumnsUnchanged": true
+        },
+        "Question": {
+          "rows": 108,
+          "originalColumnsUnchanged": true
+        },
+        "QuestionOption": {
+          "rows": 442,
+          "originalColumnsUnchanged": true
+        },
+        "QuestionVariant": {
+          "rows": 0,
+          "originalColumnsUnchanged": true
+        },
+        "Exam": {
+          "rows": 4,
+          "originalColumnsUnchanged": true
+        },
+        "ExamQuestion": {
+          "rows": 70,
+          "originalColumnsUnchanged": true
+        },
+        "ExamResponse": {
+          "rows": 0,
+          "originalColumnsUnchanged": true
+        },
+        "QuestionFavorite": {
+          "rows": 0,
+          "originalColumnsUnchanged": true
+        },
+        "foreignKeys": [],
+        "integrity": "ok"
+      }
+    }
+  },
+  "testedFilesSha256": {
+    "server/src/routes/questions.ts": "17862bc3a87771c2f74ec9b44fc80e5422750dc3615aa592c36e2294b537c8c2",
+    "server/src/services/questionService.ts": "76a4631d04384cd8abfe5fbec846d49db4efe1d525f8416640a0d271510a9408",
+    "server/src/validators/schemas.ts": "141a84bbf5096a9cdac841ca32225af5f2c512e61f155555f3eadddd5d1226e0",
+    "server/prisma/schema.prisma": "9868d28bb4d852438842de74a4cb85ce40921ff53cd268c7f402fcbb85005027",
+    "server/package-lock.json": "8992e318a9413a77592f636334e2fb151046d1f185a77b4bcb2c862156e601bd",
+    "client/package-lock.json": "c3c4094ffa2416d19c3cb49a80cf539ec46893e61da31b100d7509afbee92683",
+    "package-lock.json": "7d648f33203e907392a763b450da66b33927417db6a7db0ff0d2aa7d1cfccf49",
+    "server/prisma/reviews/assisted-20261029.json": "f709c547d86daf72d8b379f6ebe56e06ec57a02e89b5ad5c435c62299f863650"
+  },
+  "testLogSha256": {
+    "merge-20261105-final-build.log": "fc11d8272cea972c799a87f2a84d86c4ff83c99146128ae1c20cabe049feced0",
+    "merge-20261105-final-server.log": "d20db260de700f5f569b96d057cae36844bb8e22ad06c7f84d24c9e5fa0e71cd",
+    "merge-20261105-final-browser.log": "d96c13094d32accfb7d5bef56caa8b71dfe0b8b3085ba1098c09c3b879031ebc",
+    "merge-20261105-final-types.log": "7858ee5a967de1a097375ab92427533ec2f6a03c3cb3df9b646079c0edcc4300",
+    "merge-20261105-upgrade.log": "8eee994f23064c69efb8c0d5e030957ede1d3e1f58f44e1bf39f6a88dc679338"
+  },
+  "limits": [
+    "Only changes published to GitHub and the three commits supplied by the user were reviewed.",
+    "No direct access to the user PC or its live SQLite database.",
+    "41 question candidates remain pending; this integration does not approve them.",
+    "Legacy tracked dependencies/generated files remain a separate repository-cleanup task."
+  ]
+}

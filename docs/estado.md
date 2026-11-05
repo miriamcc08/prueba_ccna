@@ -4,6 +4,10 @@ Lista vigente de pendientes y criterios de cierre: [pendientes-cierre.md](pendie
 
 Estado vigente del cierre funcional: [auditoría del 26/10/2026](auditoria-funcional-20261026.md). Incluye matriz de requisitos, cambios y pendientes. Las secciones de lotes posteriores conservan su historia; sus cifras de pruebas no sustituyen la última comprobación.
 
+## Integración de ramas — 05/11/2026
+
+Se recuperaron los tres commits de Antigravity que el usuario tenía solo en su PC y se revisaron antes de integrar la rama de mejoras en `main` por avance directo. Se sustituyeron tipos `any` innecesarios por validación de tipos Prisma y se retiraron cuatro scripts temporales de reescritura. Pasan instalación limpia, generación Prisma, compilación, tipado, 622 pruebas de servidor y 22 de Chromium. Las migraciones sobre una copia de la base antigua conservan los registros y valores originales de sus diez tablas. [Informe y pasos para el PC](integracion-main-20261105.md). El banco conserva sus 619 versiones revisadas y 41 pendientes; esta integración no amplía las aprobaciones.
+
 ## Actualización vigente del 30/10/2026
 
 [Revisión del quinto lote heredado](revision-lote-heredado-05-20261030.md): se cierran sus 47 pendientes con 46 versiones corregidas y una aprobación sin cambios. Banco vigente: 869 registros importables, 619 validados, 209 rechazados con reemplazo aprobado y 41 pendientes. Pasan 622 pruebas de servidor y 22 de Chromium, tipado estricto, compilación, auditoría e idempotencia; reconstrucción del manifiesto idéntica byte a byte. Nueva base aislada: 877 registros, 627 validados y 544 familias declaradas validadas. Las cifras siguientes son históricas.

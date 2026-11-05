@@ -1,5 +1,7 @@
 # Entrega para GitHub
 
+Este informe conserva la entrega histórica de la rama de mejoras. La comprobación e integración posterior se documenta en [Integración de las ramas — 05/11/2026](integracion-main-20261105.md).
+
 Esta entrega reúne el trabajo acumulado del simulador en la rama `codex/ccna-mejoras-validadas`, preparada sobre el commit `cef82bb` de `main`. Los informes anteriores describen el estado al terminar cada sesión; sus frases «sin commit ni push» corresponden a esos momentos, anteriores a esta entrega.
 
 Incluye código, migraciones, pruebas, herramientas, documentación, 360 candidatos originales pendientes y correcciones/auditorías de candidatos heredados. No presenta el banco como 1000 preguntas aprobadas ni declara terminada la preparación de producción. El estado vigente está en [pendientes-cierre.md](pendientes-cierre.md).
