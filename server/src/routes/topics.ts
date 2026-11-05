@@ -58,7 +58,7 @@ router.get(
     try {
       const topic = await prisma.topic.findFirst({
         where: {
-          OR: [{ id: req.params.id }, { code: req.params.id }],
+          OR: [{ id: req.params.id as string }, { code: req.params.id as string }],
         },
         include: {
           parentTopic: true,

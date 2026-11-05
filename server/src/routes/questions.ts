@@ -72,7 +72,7 @@ router.get(
   requireAdmin,
   async (req: Request, res: Response, next: NextFunction): Promise<void> => {
     try {
-      const question = await questionService.getQuestionById(req.params.id);
+      const question = await questionService.getQuestionById(paramId(req));
       const response: ApiResponse<QuestionDetail> = {
         success: true,
         data: question,
@@ -120,7 +120,7 @@ router.put(
   async (req: Request, res: Response, next: NextFunction): Promise<void> => {
     try {
       const input = updateQuestionSchema.parse(req.body);
-      const updated = await questionService.updateQuestion(req.params.id, input);
+      const updated = await questionService.updateQuestion(paramId(req), input);
 
       const response: ApiResponse<QuestionDetail> = {
         success: true,
@@ -169,7 +169,7 @@ router.post(
   requireAdmin,
   async (req: Request, res: Response, next: NextFunction): Promise<void> => {
     try {
-      const q = await questionService.getQuestionById(req.params.id);
+      const q = await questionService.getQuestionById(paramId(req));
 
       const answerValidation = validateQuestionAnswers(
         {
@@ -212,17 +212,17 @@ export default router;
 // Favorite operations derive ownership from authentication, never from the request body.
 router.put('/:id/favorite', requireAuth, async (req: Request, res: Response, next: NextFunction) => {
   try {
-    if (!await prisma.question.findUnique({ where: { id: req.params.id } })) throw new AppError(404, 'Question not found.');
+    if (!await prisma.question.findUnique({ where: { id: paramId(req) } })) throw new AppError(404, 'Question not found.');
     await prisma.questionFavorite.upsert({
-      where: { userId_questionId: { userId: req.user!.id, questionId: req.params.id } },
-      create: { userId: req.user!.id, questionId: req.params.id }, update: {},
+      where: { userId_questionId: { userId: req.user!.id, questionId: paramId(req) } },
+      create: { userId: req.user!.id, questionId: paramId(req) }, update: {},
     });
     res.json({ success: true, data: { favorite: true } });
   } catch (error) { next(error); }
 });
 router.delete('/:id/favorite', requireAuth, async (req: Request, res: Response, next: NextFunction) => {
   try {
-    await prisma.questionFavorite.deleteMany({ where: { userId: req.user!.id, questionId: req.params.id } });
+    await prisma.questionFavorite.deleteMany({ where: { userId: req.user!.id, questionId: paramId(req) } });
     res.json({ success: true, data: { favorite: false } });
   } catch (error) { next(error); }
 });
@@ -237,10 +237,10 @@ router.post('/:id/review', requireAuth, requireAdmin, async (req: Request, res: 
   try {
     const input = reviewSchema.parse(req.body);
     await prisma.$transaction(async tx => {
-      const q = await tx.question.findUnique({ where: { id: req.params.id }, include: { options: true } });
+      const q = await tx.question.findUnique({ where: { id: paramId(req) }, include: { options: true } });
       if (!q) throw new AppError(404, 'Question not found.');
       if (input.status === 'validated') {
-        const check = validateQuestionAnswers(q, q.options);
+        const check = validateQuestionAnswers(q as any, q.options as any);
         if (!check.valid) throw new AppError(400, 'Structural validation failed.', check.errors);
         if (!input.evidenceUrl || !input.technicalReviewConfirmed) throw new AppError(400, 'Approval requires an HTTPS reference and explicit technical review confirmation.');
         if (!q.explanationEn?.trim() || !q.explanationEs?.trim() || !q.examVersion) throw new AppError(400, 'Approval requires bilingual explanations and an exam version.');
@@ -252,13 +252,13 @@ router.post('/:id/review', requireAuth, requireAdmin, async (req: Request, res: 
         validationStatus: input.status, lastVerifiedAt: input.status === 'validated' ? new Date() : null,
       } });
     });
-    res.json({ success: true, data: await questionService.getQuestionById(req.params.id) });
+    res.json({ success: true, data: await questionService.getQuestionById(paramId(req)) });
   } catch (error) { next(error); }
 });
 router.get('/:id/reviews', requireAuth, requireAdmin, async (req: Request, res: Response, next: NextFunction) => {
   try {
     const reviews = await prisma.questionReview.findMany({
-      where: { questionId: req.params.id }, orderBy: { createdAt: 'desc' },
+      where: { questionId: paramId(req) }, orderBy: { createdAt: 'desc' },
       select: { id: true, questionId: true, reviewerId: true, status: true, notes: true, evidenceUrl: true, createdAt: true },
     });
     res.json({ success: true, data: reviews });
@@ -268,6 +268,6 @@ router.get('/:id/reviews', requireAuth, requireAdmin, async (req: Request, res: 
 router.post('/:id/revisions', requireAuth, requireAdmin, async (req: Request, res: Response, next: NextFunction) => {
   try {
     const changes = updateQuestionSchema.parse(req.body);
-    res.status(201).json({ success: true, data: await questionService.createQuestionRevision(req.params.id, changes, req.user!.id) });
+    res.status(201).json({ success: true, data: await questionService.createQuestionRevision(paramId(req), changes, req.user!.id) });
   } catch (error) { next(error); }
 });
