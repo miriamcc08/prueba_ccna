@@ -1,0 +1,60 @@
+{
+  "date": "2026-11-09",
+  "baseCommit": "efc115d60f56e9d1eeeec4d07fb062264a389a2f",
+  "build": "server and client passed; existing client chunk-size warning",
+  "server": {
+    "fullSuite": {
+      "filesPassed": 15,
+      "testsPassed": 644
+    },
+    "finalTargetedSuite": {
+      "testsPassed": 8,
+      "skipped": 92,
+      "note": "Seven scenarios overlap the full suite; one additional regression verifies the email-style username created by the existing admin bootstrap. Final source has 645 tests in total."
+    }
+  },
+  "browser": {
+    "fullSuitePassed": 26
+  },
+  "migration": {
+    "migration": "20261109190000_user_management",
+    "method": "Prisma migrate deploy on SQLite backup; compare all existing columns and rows",
+    "preservedRows": {
+      "User": 2,
+      "Topic": 51,
+      "Source": 34,
+      "Question": 977,
+      "QuestionOption": 3956,
+      "QuestionVariant": 0,
+      "Exam": 4,
+      "ExamQuestion": 70,
+      "ExamResponse": 0,
+      "QuestionFavorite": 0,
+      "QuestionReview": 928
+    },
+    "integrity": "ok",
+    "foreignKeyViolations": 0,
+    "newAuditRows": 0
+  },
+  "accountActivation": "Only temporary test accounts used. Owner must migrate PC and explicitly run superadmin:bootstrap with existing admin credentials.",
+  "sourceSha256": {
+    "client/src/components/AdminUsers.tsx": "20b58260b77100d3fcfcfd6568e766acfa2ffbbdb1b38799aa28d6b899b0b430",
+    "server/prisma/bootstrap-superadmin.ts": "63cd3ab2aa6296387388e574b7aa83a252acf654857f123a475e020e669f7550",
+    "server/prisma/migrations/20261109190000_user_management/migration.sql": "0b0993da16a9ac9af1bfbfba18c83b2c99b8a68aa65c431cb2d61f34ec4de43d",
+    "server/src/routes/accountManagement.ts": "d97faf5817d8695c96ff2fbc0a620429712978e625d7c7e400ef3ecc442765ac",
+    "client/src/hooks/useAuth.tsx": "1bf1a85f882819fcdc58e3faf5b729e8492c3f88a740be151c424e46e2e6884a",
+    "client/src/pages/AdminPage.tsx": "6f0ada2131ae2e28536579ab00f4f43271acff54817865cc026ba36fb78b6638",
+    "client/src/services/api.ts": "1b52d8b54bb0355b01abe863885b074a5617a13150c53ccb6091ea9a3c1f6f20",
+    "server/package.json": "48e30682a2ee64dd9d1f3a405e1efbfb893f6a0ad3bb2cbf08f7cff14eb41454",
+    "server/prisma/bootstrap-admin.ts": "db085bb00498bc992d6acf98f181307ed951e626f417e5216a566e7da3334325",
+    "server/prisma/schema.prisma": "35b6a3435df83fff1a6c3d43eaa660e4ea3c230a632886617376afb73c9253c6",
+    "server/src/index.ts": "e7ee90b9319abb2f01c949e2ceb890927a49bc8af45c4e0dfd942b9586f9e33b",
+    "server/src/middleware/auth.ts": "f4af6dd7e436e7263049d4bbb1788ff8f07053f716d08d416ba79051540647dd",
+    "server/src/routes/exams.ts": "d46996746048910d9b484d224fe3d854a9bcbb8540c0df6937ed98f56035a54c",
+    "server/src/routes/questions.ts": "4309d638cdd52d9e252bddd2a56a6806c8eb91280f2c868c3858b449c05d62ec",
+    "server/src/routes/users.ts": "4ed18ca3a1dc706b0c4d35421bce2aacaa2ae3ba564f62d5eedb599e1f06c056",
+    "server/tests/exam.integration.test.ts": "56e04c3c955544f3afc7767dbfdbaa5e8c9b48d259909d20a741ea54da672cf9",
+    "shared/types/index.ts": "7a88bfc0be46dd429bafb870b9ce3fe1d9f5820ca5fbdb79e2813ecc0202096c",
+    "tests/browser/workflow.spec.cjs": "ef9fe0f70e259715aa4815f644468ac4d5e39891b7da15c4740232d670fb845a"
+  }
+}

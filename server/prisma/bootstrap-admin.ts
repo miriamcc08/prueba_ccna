@@ -15,7 +15,7 @@ export async function bootstrapAdmin(db: PrismaClient, email?: string, password?
   if (matches.length > 1) throw new Error('Ambiguous existing email; no accounts were changed.');
   const existing = matches[0];
   if (existing) {
-    if (existing.role !== 'admin') throw new Error('This email belongs to a non-admin account. Use a separate administrator email; no roles or passwords were changed.');
+    if (!['admin','superadmin'].includes(existing.role)) throw new Error('This email belongs to a non-admin account. Use a separate administrator email; no roles or passwords were changed.');
     return { status: 'unchanged' as const };
   }
   await db.user.create({ data: {

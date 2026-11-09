@@ -9,6 +9,7 @@ export interface AuthUser {
   username: string;
   role: string;
   language: string;
+  authVersion?: number;
 }
 
 declare global {
@@ -91,8 +92,8 @@ async function currentIdentity(token: string): Promise<AuthUser | null> {
   const claimed = verifyToken(token);
   if (!claimed || typeof claimed.id !== 'string') return null;
   const { prisma } = await import('../lib/prisma');
-  const user = await prisma.user.findUnique({ where: { id: claimed.id }, select: { id: true, email: true, username: true, role: true, language: true } });
-  return user?.role === 'review_service' ? null : user;
+  const user = await prisma.user.findUnique({ where: { id: claimed.id }, select: { id: true, email: true, username: true, role: true, language: true, deletedAt: true, authVersion: true } });
+  return !user || user.deletedAt || user.role === 'review_service' || user.authVersion !== (claimed.authVersion || 0) ? null : user;
 }
 
 export async function optionalAuth(req: Request, _res: Response, next: NextFunction): Promise<void> {
@@ -116,7 +117,7 @@ export function requireAdmin(req: Request, res: Response, next: NextFunction): v
     return;
   }
 
-  if (req.user.role !== 'admin') {
+  if (!['admin', 'superadmin'].includes(req.user.role)) {
     const response: ApiResponse = {
       success: false,
       error: 'Access denied: Admin privileges required.',

@@ -1364,3 +1364,98 @@ describe('Administrator question removal and restoration', () => {
     expect((await prisma.question.findUniqueOrThrow({ where: { id } })).validationStatus).toBe('draft');
   }, 60000);
 });
+
+describe('User management and three roles', () => {
+  const reason = 'Account management requested and verified by the operator.';
+  async function identity(role: string, suffix: string) {
+    const bcrypt = await import('bcryptjs');
+    const user = await prisma.user.create({ data: { email: `${suffix}@example.test`, username: suffix, role, passwordHash: await bcrypt.hash('valid-password-123',4) } });
+    return { user, token: generateToken({ ...user, authVersion: user.authVersion }) };
+  }
+  const payload = (suffix: string, role = 'user') => ({ email: suffix+'@example.test', username: suffix, role, language: 'es', password: 'strong-password-123', reason });
+  it('blocks guests and normal users; public registration cannot grant roles', async () => {
+    const normal = await identity('user','normal');
+    expect((await request('/admin/users')).status).toBe(401);
+    expect((await request('/admin/users','GET',undefined,normal.token)).status).toBe(403);
+    const registration = await request('/users/register','POST',{ ...payload('registered','superadmin'), deletedAt: null });
+    expect(registration.body.data.user.role).toBe('user');
+  });
+  it('admins create and edit only normal accounts without exposing password hashes', async () => {
+    const admin = await identity('admin','manager');
+    const owner = await identity('superadmin','owner');
+    expect((await request('/admin/users','POST',payload('forbidden','admin'),admin.token)).status).toBe(403);
+    expect((await request('/admin/users/'+owner.user.id,'PUT',payload('owner','user'),admin.token)).status).toBe(403);
+    expect((await request('/admin/users/'+owner.user.id,'DELETE',{reason},admin.token)).status).toBe(403);
+    const created = await request('/admin/users','POST',payload('student'),admin.token);
+    expect(created.status).toBe(201); expect(JSON.stringify(created.body)).not.toContain('passwordHash');
+    const saved = await prisma.user.findUniqueOrThrow({ where: { id: created.body.data.id } });
+    expect(saved.passwordHash).not.toContain('strong-password');
+    const changed = await request('/admin/users/'+saved.id,'PUT',{...payload('student'),username:'student_changed',password:undefined},admin.token);
+    expect(changed.status).toBe(200); expect(changed.body.data.username).toBe('student_changed');
+    expect((await request('/admin/users','GET',undefined,admin.token)).body.data.total).toBe(3);
+    expect((await request('/admin/users/'+saved.id+'/audit','GET',undefined,admin.token)).status).toBe(403);
+  });
+  it('superadmin grants and revokes roles with immediate token revocation and safe audit', async () => {
+    const owner = await identity('superadmin','owner'); const member = await identity('user','member');
+    const promoted = await request('/admin/users/'+member.user.id,'PUT',{...payload('member','admin'), password: undefined},owner.token);
+    expect(promoted.status).toBe(200);
+    expect((await request('/users/me','GET',undefined,member.token)).status).toBe(401);
+    const login = await request('/users/login','POST',{email:member.user.email,password:'valid-password-123'});
+    expect(login.status).toBe(200); expect(login.body.data.user.role).toBe('admin');
+    expect((await request('/admin/users','GET',undefined,login.body.data.token)).status).toBe(200);
+    expect((await request('/admin/users/'+member.user.id,'PUT',{...payload('member'),password:undefined},owner.token)).status).toBe(200);
+    expect((await request('/admin/users','GET',undefined,login.body.data.token)).status).toBe(401);
+    const audit = await request('/admin/users/'+member.user.id+'/audit','GET',undefined,owner.token);
+    expect(audit.body.data).toHaveLength(2); expect(JSON.stringify(audit.body)).not.toContain('password');
+  });
+  it('deactivation preserves exams and reviews, blocks login and restoration cannot revive tokens or privileges', async () => {
+    const owner = await identity('superadmin','owner'); const member = await identity('admin','member');
+    const exam = await engine.createExam(config(),member.user.id);
+    await prisma.questionReview.create({data:{questionId:question.id,reviewerId:member.user.id,status:'pending_review',notes:'Existing review is retained.'}});
+    expect((await request('/admin/users/'+member.user.id,'DELETE',{reason},owner.token)).status).toBe(200);
+    expect((await request('/users/me','GET',undefined,member.token)).status).toBe(401);
+    expect((await request('/users/login','POST',{email:member.user.email,password:'valid-password-123'})).status).toBe(401);
+    expect(await prisma.exam.findUnique({where:{id:exam.examId}})).toBeTruthy();
+    expect(await prisma.questionReview.count({where:{reviewerId:member.user.id}})).toBe(1);
+    expect((await request('/admin/users?removed=true','GET',undefined,owner.token)).body.data.users[0].id).toBe(member.user.id);
+    expect((await request('/admin/users/'+member.user.id+'/restore','POST',{reason},owner.token)).body.data.role).toBe('user');
+    expect((await request('/users/me','GET',undefined,member.token)).status).toBe(401);
+    const login = await request('/users/login','POST',{email:member.user.email,password:'valid-password-123'});
+    expect(login.status).toBe(200); expect(login.body.data.user.role).toBe('user');
+  });
+  it('protects own role and last owner, validates inputs, rejects duplicates without partial audits', async () => {
+    const owner = await identity('superadmin','owner');
+    expect((await request('/admin/users/'+owner.user.id,'DELETE',{reason},owner.token)).status).toBe(409);
+    expect((await request('/admin/users/'+owner.user.id,'PUT',{...payload('owner','user'),password:undefined},owner.token)).status).toBe(409);
+    expect((await request('/admin/users','POST',{...payload('bad'),password:'tiny'},owner.token)).status).toBe(400);
+    expect((await request('/admin/users','POST',{...payload('bad'),role:'review_service'},owner.token)).status).toBe(400);
+    expect((await request('/admin/users','POST',payload('owner'),owner.token)).status).toBe(409);
+    expect(await prisma.userAccountAudit.count({where:{actorId:owner.user.id}})).toBe(0);
+    expect((await request('/admin/users','POST',payload('second','superadmin'),owner.token)).status).toBe(201);
+  });
+  it('preserves the email-style username of the existing bootstrapped owner when editing its profile', async () => {
+    const owner = await identity('superadmin','owner');
+    await prisma.user.update({where:{id:owner.user.id},data:{username:owner.user.email}});
+    const result = await request('/admin/users/'+owner.user.id,'PUT',{...payload('owner','superadmin'),username:owner.user.email,password:undefined},owner.token);
+    expect(result.status).toBe(200); expect(result.body.data.username).toBe(owner.user.email);
+    expect(result.body.data.role).toBe('superadmin');
+    expect((await request('/users/me','GET',undefined,owner.token)).status).toBe(401);
+  });
+  it('password reset revokes old sessions while blank passwords preserve the hash', async () => {
+    const admin = await identity('admin','manager'); const member = await identity('user','member');
+    expect((await request('/admin/users/'+member.user.id,'PUT',{...payload('member'),password:'new-password-12345'},admin.token)).status).toBe(200);
+    expect((await request('/users/login','POST',{email:member.user.email,password:'valid-password-123'})).status).toBe(401);
+    expect((await request('/users/login','POST',{email:member.user.email,password:'new-password-12345'})).status).toBe(200);
+    expect((await request('/users/me','GET',undefined,member.token)).status).toBe(401);
+  });
+  it('bootstraps the first owner only after proving existing admin credentials', async () => {
+    const { bootstrapSuperadmin } = await import('../prisma/bootstrap-superadmin');
+    const admin = await identity('admin','manager');
+    await expect(bootstrapSuperadmin(prisma,admin.user.email,'wrong')).rejects.toThrow();
+    expect(await bootstrapSuperadmin(prisma,admin.user.email,'valid-password-123')).toBe('promoted');
+    expect((await request('/users/me','GET',undefined,admin.token)).status).toBe(401);
+    expect(await bootstrapSuperadmin(prisma,admin.user.email,'valid-password-123')).toBe('unchanged');
+    const second = await identity('admin','second');
+    await expect(bootstrapSuperadmin(prisma,second.user.email,'valid-password-123')).rejects.toThrow('already exists');
+  });
+});

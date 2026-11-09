@@ -13,6 +13,7 @@ import { useTranslation } from '../i18n/useTranslation';
 import { useAuth } from '../hooks/useAuth';
 import api from '../services/api';
 import AdminQuestionEditor from '../components/AdminQuestionEditor';
+import AdminUsers from '../components/AdminUsers';
 import {
   ShieldIcon,
   UploadIcon,
@@ -24,7 +25,7 @@ import {
   XIcon,
 } from '../components/Icons';
 
-type AdminTab = 'questions' | 'import' | 'statistics' | 'create';
+type AdminTab = 'questions' | 'import' | 'statistics' | 'create' | 'users';
 
 export const AdminPage: React.FC = () => {
   const { t, language } = useTranslation();
@@ -261,6 +262,7 @@ export const AdminPage: React.FC = () => {
 
         {/* Tab Navigation */}
         <div className="flex flex-wrap gap-1 items-center bg-slate-800 p-1 rounded-xl border border-slate-700 text-xs font-semibold">
+          <button type="button" className="btn-secondary" onClick={() => setActiveTab('users')}>{l('Usuarios y roles', 'Users and roles')}</button>
           <button type="button" onClick={() => { setActiveTab('create'); setReviewTarget(null); }} className="btn-secondary">{l('Crear pregunta', 'Create question')}</button>
           <button
             type="button"
@@ -299,6 +301,7 @@ export const AdminPage: React.FC = () => {
         </div>
       )}
 
+      {activeTab === 'users' && <AdminUsers />}
       {activeTab === 'create' && <AdminQuestionEditor onCreated={() => {
         setDeletedOnly(false); setQuestionPage(1); setQuestionSearch(''); setQuestionStatus('pending_review'); setActiveTab('questions');
         setActionMessage(l('Pregunta creada y guardada pendiente de revisión.', 'Question created and saved for review.'));

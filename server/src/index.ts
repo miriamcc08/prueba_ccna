@@ -4,6 +4,7 @@ import questionsRouter from './routes/questions';
 import examsRouter from './routes/exams';
 import topicsRouter from './routes/topics';
 import usersRouter from './routes/users';
+import accountManagementRouter from './routes/accountManagement';
 import { errorHandler, notFoundHandler } from './middleware/errorHandler';
 import { allowedOrigin } from './lib/corsPolicy';
 import { AppError } from './middleware/errorHandler';
@@ -71,6 +72,7 @@ app.use('/api/questions', questionsRouter);
 app.use('/api/exams', examsRouter);
 app.use('/api/topics', topicsRouter);
 app.use('/api/users', usersRouter);
+app.use('/api/admin/users', accountManagementRouter);
 
 // ---- 404 Handler ----
 app.use(notFoundHandler);

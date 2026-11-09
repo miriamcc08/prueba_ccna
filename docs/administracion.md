@@ -96,3 +96,7 @@ try {
 ```
 
 No compartas la contraseña ni la guardes en Git. El proceso necesita recibirla temporalmente para calcular su hash. Reinicia la aplicación e inicia sesión con esa cuenta: aparecerá Administración. Comprueba después que una cuenta normal no puede acceder a `/admin`.
+
+## Gestión de cuentas y jerarquía de roles
+
+Desde el 09/11/2026 hay tres roles: `user`, `admin` y `superadmin`. El panel **Usuarios y roles** permite gestionar cuentas normales; solo superadmin concede roles administrativos y gestiona cuentas privilegiadas. [Procedimiento de actualización, permisos y configuración de tu superadmin](usuarios-roles-20261109.md). La primera cuenta creada con `admin:bootstrap` sigue siendo admin hasta que el propietario ejecute la inicialización local explícita.

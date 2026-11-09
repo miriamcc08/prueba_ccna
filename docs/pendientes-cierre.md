@@ -16,7 +16,7 @@ Configuración y disponibilidad real; exámenes estrictos; estudio sin tiempo; f
 
 | ID | Pendiente | Criterio de cierre |
 |---|---|---|
-| C01 | Activar la primera cuenta administradora en el entorno que se vaya a utilizar | Configurar correo/contraseña mediante variables seguras, ejecutar `admin:bootstrap` y comprobar acceso a `/admin` y denegación a una cuenta normal. La última consulta de la copia de desarrollo mostró 0 administradores; no se inventaron credenciales. |
+| C01 | Configurar y comprobar el propietario superadmin en el PC | El usuario confirmó que creó su admin y accede al panel. Falta actualizar a la gestión de usuarios, ejecutar `superadmin:bootstrap` con sus credenciales locales y comprobar los tres roles; no se crean credenciales reales en el entorno de pruebas. |
 | C02 | Revisar técnicamente el material existente | Hay decisiones técnicas asistidas para 828 registros: 619 aprobados y 209 rechazados con reemplazo; quedan 41 heredadas pendientes (dos retenciones del lote 4, una del lote 6 y 38 del segundo lote). Completar respuesta, distractores, explicación, traducción, referencia vigente y licencia por candidato. Registrar decisión y evidencia; mantener fuera de exámenes lo no aprobado. |
 | C03 | Completar el mapa del temario oficial vigente | Vincular las preguntas aprobadas a los subobjetivos, contrastar pesos/versiones con fuente oficial y mostrar huecos. Las coincidencias por palabras actuales no certifican cobertura. |
 | C04 | Disponer de suficientes familias aprobadas por modalidad y dificultad | Probar las cantidades ofrecidas, incluidos simulacros largos. Tras aplicar el manifiesto, la nueva base aislada de validación contiene 877 registros, 627 validados y 544 familias validadas; se probó un simulacro de 100 con dificultad mixta. Otros filtros siguen teniendo menos disponibilidad. La interfaz informa la escasez, no inventa disponibilidad. |
@@ -85,4 +85,6 @@ Las dependencias se actualizaron para resolver los avisos detectados en la insta
 
 Revisión vigente y procedimiento para actualizar cada base local: [revisión vigente del 29/10](revision-heredadas-20261029.md). El actor técnico de revisión no es un administrador interactivo.
 
-Actualización de perfiles y gestión editorial del 05/11/2026: [entrega y validación](perfiles-administracion-20261105.md). La cuenta real del PC sigue pendiente de activación local (C01); las cuentas temporales de prueba no la sustituyen.
+Actualización de perfiles y gestión editorial del 05/11/2026: [entrega y validación](perfiles-administracion-20261105.md). El usuario confirmó después la creación de su admin local. La promoción a superadmin de C01 se verifica en el PC; las cuentas temporales no la sustituyen.
+
+Gestión de cuentas añadida el 09/11/2026: CRUD reversible, sesiones revocables y roles user/admin/superadmin, con auditoría. [Entrega y activación local del propietario](usuarios-roles-20261109.md). La promoción real del propietario sigue pendiente de ejecutar en su PC.

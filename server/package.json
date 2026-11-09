@@ -17,7 +17,8 @@
     "db:load-original": "tsx prisma/load-original-batch.ts",
     "admin:bootstrap": "tsx prisma/bootstrap-admin.ts",
     "db:sync-reviewed": "node --import tsx prisma/sync-reviewed-bank.ts",
-    "check:review": "tsc -p tsconfig.review.json"
+    "check:review": "tsc -p tsconfig.review.json",
+    "superadmin:bootstrap": "tsx prisma/bootstrap-superadmin.ts"
   },
   "prisma": {
     "seed": "tsx prisma/seed.ts"

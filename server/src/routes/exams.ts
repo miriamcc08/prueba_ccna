@@ -110,7 +110,7 @@ router.use('/:id', optionalAuth, async (req: Request, _res: Response, next: Next
   try {
     const exam = await prisma.exam.findUnique({ where: { id: (req.params.id as string) } });
     if (!exam) throw new AppError(404, 'Exam not found.');
-    if (exam.userId && exam.userId !== req.user?.id && req.user?.role !== 'admin') {
+    if (exam.userId && exam.userId !== req.user?.id && !['admin', 'superadmin'].includes(req.user?.role || '')) {
       throw new AppError(403, 'This exam belongs to another user.');
     }
     await examEngine.checkExpiry(exam.id);

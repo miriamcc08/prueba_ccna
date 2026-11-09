@@ -40,7 +40,8 @@ export type ExamStatus = 'configured' | 'in_progress' | 'completed' | 'expired' 
 
 export type ExamQuestionStatus = 'pending' | 'answered' | 'skipped' | 'timed_out';
 
-export type UserRole = 'user' | 'admin';
+export type UserRole = 'user' | 'admin' | 'superadmin';
+export interface ManagedUser { id: string; email: string; username: string; role: UserRole; language: string; deletedAt: string | null; createdAt: string; }
 
 export type SourceType = 'official_docs' | 'original' | 'user_import' | 'rfc' | 'textbook';
 

@@ -19,10 +19,13 @@ model User {
   email        String   @unique
   username     String   @unique
   passwordHash String
-  role         String   @default("user") // user | admin
+  role         String   @default("user") // user | admin | superadmin
   language     String   @default("en")   // en | es
   createdAt    DateTime @default(now())
   updatedAt    DateTime @updatedAt
+
+  deletedAt    DateTime?
+  authVersion  Int @default(0)
 
   exams      Exam[]
   favorites  QuestionFavorite[]
@@ -260,4 +263,16 @@ model QuestionReview {
   notes       String
   evidenceUrl String?
   createdAt   DateTime @default(now())
+}
+
+// Identifiers intentionally remain without cascading relations to retain audit history.
+model UserAccountAudit {
+  id String @id @default(cuid())
+  actorId String
+  targetId String
+  action String
+  beforeJson String?
+  afterJson String?
+  reason String
+  createdAt DateTime @default(now())
 }

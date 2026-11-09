@@ -42,7 +42,7 @@ La nueva base aislada de validación tiene **831 registros, 580 validados y 499 
 
 ## Cuentas y administración
 
-El rol **admin** permite crear preguntas bilingües, importar JSON/CSV, buscar, paginar, comprobar y revisar candidatos en `/admin`. No incluye generación con IA. Consulta la [guía de administración](docs/administracion.md) y la [auditoría funcional actual](docs/auditoria-funcional-20261026.md).
+Hay tres roles: **user**, **admin** y **superadmin**. Admin y superadmin gestionan preguntas bilingües, revisiones, importaciones JSON/CSV y retirada/restauración en `/admin`. El panel **Usuarios y roles** permite al admin gestionar usuarios normales; solo superadmin otorga roles y gestiona cuentas privilegiadas. Eliminar una cuenta la desactiva conservando historial; restaurar devuelve a user. Para convertir tu admin existente en el primer superadmin, consulta la [guía local del propietario](docs/usuarios-roles-20261109.md). No incluye generación con IA. Consulta la [guía de administración](docs/administracion.md) y la [auditoría funcional actual](docs/auditoria-funcional-20261026.md).
 
 Los usuarios pueden registrarse desde la interfaz. El seed no crea una contraseña administrativa conocida ni cambia la de una cuenta existente. Para crear un administrador nuevo, inyecta `ADMIN_EMAIL` y `ADMIN_PASSWORD` (mínimo 12 caracteres) de forma segura y ejecuta `npm run admin:bootstrap` desde la carpeta `server` de la copia de ejecución. No incluyas valores en archivos versionados ni en comandos compartidos. En producción es obligatorio proporcionar `JWT_SECRET`.
 

@@ -63,6 +63,7 @@ router.post(
         username: user.username,
         role: user.role,
         language: user.language,
+        authVersion: user.authVersion,
       });
 
       const response: ApiResponse<{
@@ -105,7 +106,7 @@ router.post(
         },
       });
 
-      if (!user || user.role === 'review_service') {
+      if (!user || user.deletedAt || user.role === 'review_service') {
         throw new AppError(401, 'Invalid email or password.');
       }
 
@@ -120,6 +121,7 @@ router.post(
         username: user.username,
         role: user.role,
         language: user.language,
+        authVersion: user.authVersion,
       });
 
       const response: ApiResponse<{

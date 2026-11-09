@@ -38,6 +38,10 @@ const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || '/api';
 const TOKEN_KEY = 'ccna_token';
 
 class ApiService {
+  manageUsers<T = any>(path = '', method = 'GET', body?: object) {
+    return this.request<T>('/admin/users' + path, { method, ...(body ? { body: JSON.stringify(body) } : {}) });
+  }
+
   private baseUrl: string;
 
   constructor() {

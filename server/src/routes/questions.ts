@@ -48,7 +48,7 @@ router.get(
   async (req: Request, res: Response, next: NextFunction): Promise<void> => {
     try {
       const filters = questionFilterSchema.parse(req.query);
-      if (filters.deletedOnly && req.user?.role !== 'admin') throw new AppError(req.user ? 403 : 401, 'Administrator permissions required to view removed questions.');
+      if (filters.deletedOnly && !['admin', 'superadmin'].includes(req.user?.role || '')) throw new AppError(req.user ? 403 : 401, 'Administrator permissions required to view removed questions.');
       const result = await questionService.getQuestions(filters, req.user?.id);
 
       const response: ApiResponse<QuestionListItem[]> = {
