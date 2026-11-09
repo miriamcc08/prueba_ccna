@@ -214,6 +214,7 @@ class ApiService {
     status?: string;
     language?: string;
     favoritesOnly?: boolean;
+    deletedOnly?: boolean;
   }): Promise<ApiResponse<QuestionListItem[]>> {
     const query = new URLSearchParams();
     if (params) {
@@ -248,6 +249,14 @@ class ApiService {
     return this.post('/questions', question);
   }
 
+  public removeQuestion(id: string, notes: string): Promise<ApiResponse<QuestionDetail>> {
+    return this.request(`/questions/${id}`, { method: 'DELETE', body: JSON.stringify({ notes }) });
+  }
+
+  public restoreQuestion(id: string, notes: string): Promise<ApiResponse<QuestionDetail>> {
+    return this.post(`/questions/${id}/restore`, { notes });
+  }
+
   public validateQuestion(id: string): Promise<ApiResponse<{ valid: boolean; answerValidation: { valid: boolean; errors: string[] }; subnetValidation: { valid: boolean; errors: string[] } | null }>> {
     return this.post(`/questions/${id}/validate`);
   }
@@ -256,7 +265,7 @@ class ApiService {
     return this.post<ImportResult>('/questions/import', { questions });
   }
 
-  public createQuestionRevision(id: string, changes: Partial<QuestionDetail>): Promise<ApiResponse<QuestionDetail>> {
+  public createQuestionRevision(id: string, changes: Partial<QuestionDraftInput>): Promise<ApiResponse<QuestionDetail>> {
     return this.post(`/questions/${id}/revisions`, changes);
   }
 

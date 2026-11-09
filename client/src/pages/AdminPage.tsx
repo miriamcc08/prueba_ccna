@@ -37,6 +37,12 @@ export const AdminPage: React.FC = () => {
   // Question Management State
   const [questions, setQuestions] = useState<QuestionListItem[]>([]);
   const [loadingQuestions, setLoadingQuestions] = useState(false);
+  const [deletedOnly, setDeletedOnly] = useState(false);
+  const [editTarget, setEditTarget] = useState<import('@shared/types').QuestionDetail | null>(null);
+  const [removalTarget, setRemovalTarget] = useState<QuestionListItem | null>(null);
+  const [removalNotes, setRemovalNotes] = useState('');
+  const [removalBusy, setRemovalBusy] = useState(false);
+  const [removalError, setRemovalError] = useState('');
   const [questionPage, setQuestionPage] = useState(1);
   const [questionSearch, setQuestionSearch] = useState('');
   const [questionStatus, setQuestionStatus] = useState('');
@@ -76,7 +82,7 @@ export const AdminPage: React.FC = () => {
     const version = ++requestVersion.current;
     setLoadingQuestions(true);
     try {
-      const res = await api.getQuestions({ page: questionPage, pageSize: 50, search: questionSearch, status: questionStatus, language });
+      const res = await api.getQuestions({ page: questionPage, pageSize: 50, search: questionSearch, status: questionStatus, language, deletedOnly });
       if (version !== requestVersion.current) return;
       if (res.success && res.data) {
         setQuestions(res.data); setPagination(res.pagination || null);
@@ -111,7 +117,7 @@ export const AdminPage: React.FC = () => {
     } else if (activeTab === 'statistics') {
       loadStats();
     }
-  }, [activeTab, isAdmin, questionPage, questionSearch, questionStatus, language]);
+  }, [activeTab, isAdmin, questionPage, questionSearch, questionStatus, language, deletedOnly]);
 
   const handleUpdateStatus = async (id: string, status: ValidationStatus) => {
     setReviewTarget({ id, status }); setReviewNotes(''); setReviewEvidence(''); setReviewConfirmed(false); setReviewDetail(null); setRevisionOptions([]); setValidationMessage('');
@@ -144,6 +150,24 @@ export const AdminPage: React.FC = () => {
       if (res.success) { setReviewTarget(null); await loadQuestions(); setActionMessage(t('adminWorkflow.revisionSaved')); }
       else setActionMessage(res.error || t('adminWorkflow.saveError'));
     } finally { setReviewBusy(false); }
+  };
+
+  const openEditor = async (id: string) => {
+    const detail = await api.getQuestionDetail(id);
+    if (detail.success && detail.data) { setReviewTarget(null); setEditTarget(detail.data); }
+    else setActionMessage(detail.error || t('adminWorkflow.detailError'));
+  };
+  const submitRemoval = async () => {
+    if (!removalTarget) return;
+    setRemovalBusy(true); setRemovalError('');
+    try {
+      const restoring = !!removalTarget.deletedAt;
+      const result = restoring ? await api.restoreQuestion(removalTarget.id, removalNotes) : await api.removeQuestion(removalTarget.id, removalNotes);
+      if (!result.success) { setRemovalError(result.error || l('No se pudo guardar.', 'Unable to save.')); return; }
+      setRemovalTarget(null); setReviewTarget(null); setEditTarget(null);
+      setActionMessage(restoring ? l('Pregunta restaurada, pendiente de revisión.', 'Question restored, pending review.') : l('Pregunta retirada. El historial se conserva.', 'Question removed. History preserved.'));
+      await loadQuestions();
+    } finally { setRemovalBusy(false); }
   };
 
   const handleFileUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -276,10 +300,26 @@ export const AdminPage: React.FC = () => {
       )}
 
       {activeTab === 'create' && <AdminQuestionEditor onCreated={() => {
-        setQuestionPage(1); setQuestionSearch(''); setQuestionStatus('pending_review'); setActiveTab('questions');
+        setDeletedOnly(false); setQuestionPage(1); setQuestionSearch(''); setQuestionStatus('pending_review'); setActiveTab('questions');
         setActionMessage(l('Pregunta creada y guardada pendiente de revisión.', 'Question created and saved for review.'));
       }} />}
 
+      {editTarget && <section role="dialog" aria-label={l('Editar pregunta', 'Edit question')} className="space-y-3">
+        <AdminQuestionEditor key={editTarget.id} initialQuestion={editTarget} onCreated={() => {
+          setEditTarget(null); setQuestionStatus('pending_review'); setDeletedOnly(false); setQuestionPage(1);
+          setActionMessage(l('Nueva revisión guardada pendiente de aprobación; el historial anterior se conserva.', 'New revision saved pending approval; previous history preserved.')); loadQuestions();
+        }} />
+        <button type="button" className="btn-secondary" onClick={() => setEditTarget(null)}>{t('common.cancel')}</button>
+      </section>}
+      {removalTarget && <section role="dialog" aria-label={removalTarget.deletedAt ? l('Restaurar pregunta', 'Restore question') : l('Retirar pregunta', 'Remove question')} className="card space-y-3">
+        <h2>{removalTarget.deletedAt ? l('Restaurar pregunta', 'Restore question') : l('Retirar pregunta', 'Remove question')}</h2>
+        <p>{removalTarget.statement}</p>
+        <p>{removalTarget.deletedAt ? l('Volverá al banco pendiente de revisión; restaurar no la aprueba.', 'It returns pending review; restoration does not approve it.') : l('Saldrá del banco activo y de los exámenes nuevos. Los intentos anteriores se conservan y podrás restaurarla.', 'It leaves the active bank and new exams. Past attempts are preserved and you can restore it.')}</p>
+        <label className="block">{l('Motivo del cambio', 'Reason for change')}<textarea className="input-field w-full" minLength={20} maxLength={2000} disabled={removalBusy} value={removalNotes} onChange={e => setRemovalNotes(e.target.value)} /></label>
+        {removalError && <p role="alert">{removalError}</p>}
+        <button type="button" className="btn-primary" disabled={removalBusy || removalNotes.trim().length < 20} onClick={submitRemoval}>{removalTarget.deletedAt ? l('Confirmar restauración', 'Confirm restoration') : l('Confirmar retirada', 'Confirm removal')}</button>
+        <button type="button" className="btn-secondary" disabled={removalBusy} onClick={() => setRemovalTarget(null)}>{t('common.cancel')}</button>
+      </section>}
       {reviewTarget && <section className="card space-y-3" aria-label={t('adminWorkflow.title')}>
         <h2>{t('adminWorkflow.title')}: {reviewTarget.status}</h2>
         {reviewDetail ? <div className="space-y-2">
@@ -323,6 +363,7 @@ export const AdminPage: React.FC = () => {
         <div className="card p-0 overflow-hidden bg-slate-800/90 border-slate-700/80 shadow-xl">
           <div className="p-4 flex flex-wrap gap-3">
             <label>{l('Buscar preguntas', 'Search questions')}<input className="input-field" value={questionSearch} onChange={e => { setQuestionSearch(e.target.value); setQuestionPage(1); }} /></label>
+            <label><input type="checkbox" checked={deletedOnly} onChange={e => { setDeletedOnly(e.target.checked); setQuestionStatus(''); setQuestionPage(1); }} /> {l('Mostrar retiradas', 'Show removed')}</label>
             <label>{l('Estado de revisión', 'Review status')}<select className="input-field" value={questionStatus} onChange={e => { setQuestionStatus(e.target.value); setQuestionPage(1); }}>
               <option value="">{l('Todos', 'All')}</option><option value="pending_review">{l('Pendientes', 'Pending')}</option><option value="validated">{l('Aprobadas', 'Approved')}</option><option value="draft">{l('Borradores', 'Drafts')}</option><option value="rejected">{l('Rechazadas', 'Rejected')}</option>
             </select></label>
@@ -371,11 +412,15 @@ export const AdminPage: React.FC = () => {
                               : 'bg-red-950 text-red-400 border-red-500/40'
                           }`}
                         >
-                          {q.validationStatus}
+                          {q.deletedAt ? l('Retirada', 'Removed') : q.validationStatus}
                         </span>
                       </td>
                       <td className="py-3.5 px-4 text-right">
-                        <div className="flex items-center justify-end gap-1.5">
+                        <div className="flex flex-wrap items-center justify-end gap-1.5">
+                          {q.deletedAt ? <button type="button" className="btn-secondary" onClick={() => { setRemovalTarget(q); setRemovalNotes(''); setRemovalError(''); }}>{l('Restaurar', 'Restore')}</button> : <>
+                          <button type="button" className="btn-secondary" onClick={() => openEditor(q.id)}>{l('Editar', 'Edit')}</button>
+                          <button type="button" className="btn-secondary" onClick={() => { setRemovalTarget(q); setRemovalNotes(''); setRemovalError(''); }}>{l('Eliminar', 'Delete')}</button>
+
                           <button
                             type="button"
                             title="Approve / Validate"
@@ -392,6 +437,7 @@ export const AdminPage: React.FC = () => {
                           >
                             <XIcon size={14} />
                           </button>
+                        </>}
                         </div>
                       </td>
                     </tr>

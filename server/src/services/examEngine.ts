@@ -40,7 +40,7 @@ async function findEligibleQuestions(config: ExamConfig, userId?: string) {
   if (mode === 'topic_practice' && topics.length === 0) throw new AppError(400, 'Select at least one topic.');
   // Every selection path shares the same eligibility rules. No unfiltered fallback.
   const where: Prisma.QuestionWhereInput = {
-    validationStatus: 'validated',
+    validationStatus: 'validated', deletedAt: null,
     examVersion: '200-301-v1.1',
     ...(difficulty !== 'mixed' ? { difficulty } : {}),
   };
@@ -173,7 +173,7 @@ export async function createExam(
     });
 
     const content = await tx.question.findMany({
-      where: { id: { in: selectedQuestionIds }, validationStatus: 'validated' },
+      where: { id: { in: selectedQuestionIds }, validationStatus: 'validated', deletedAt: null },
       include: { primaryTopic: true, source: true, options: { orderBy: { displayOrder: 'asc' } } },
     });
     if (content.length !== selectedQuestionIds.length) throw new AppError(409, 'Question eligibility changed. Configure the exam again.');
@@ -231,7 +231,7 @@ export async function restartStudyExercise(examId: string, examQuestionId: strin
     if (!original) throw new AppError(404, 'Question does not belong to this attempt.');
     if (original.status !== 'answered') throw new AppError(400, 'Confirm the exercise before restarting it.');
     const content = original.question;
-    if (content.validationStatus !== 'validated' || content.examVersion !== source.examVersion) {
+    if (content.deletedAt || content.validationStatus !== 'validated' || content.examVersion !== source.examVersion) {
       throw new AppError(409, 'This question is no longer eligible. Choose another study exercise.');
     }
     const settings = source.settings ? JSON.parse(source.settings) : {};

@@ -748,3 +748,81 @@ for (const language of ['es', 'en']) {
     expect(await page.evaluate(() => document.documentElement.scrollWidth <= window.innerWidth)).toBe(true);
   });
 }
+
+test('normal users are restricted while administrators edit, remove and restore questions with confirmation', async ({ page }) => {
+  await page.goto('/');
+  const account = await page.evaluate(async () => {
+    const { default: api } = await import('/src/services/api.ts');
+    const name = 'manager' + Date.now();
+    const r = await api.register(name + '@example.test', name, 'manager-test-password');
+    api.setToken(r.data.token); localStorage.setItem('ccna_user', JSON.stringify(r.data.user));
+    return { id: r.data.user.id, email: r.data.user.email, marker: name };
+  });
+  await page.goto('/admin');
+  await expect(page.getByText('Acceso restringido', { exact: true })).toBeVisible();
+  await expect(page.getByRole('button', { name: 'Crear pregunta', exact: true })).toHaveCount(0);
+  const { PrismaClient } = require('../../server/node_modules/@prisma/client');
+  const db = new PrismaClient({ datasourceUrl: process.env.CCNA_BROWSER_DATABASE_URL });
+  await db.user.update({ where: { id: account.id }, data: { role: 'admin' } });
+  const topic = await db.topic.findFirstOrThrow({ where: { parentTopicId: null } });
+  const original = await page.evaluate(async ({ account, topicId }) => {
+    const { default: api } = await import('/src/services/api.ts');
+    const login = await api.login(account.email, 'manager-test-password');
+    api.setToken(login.data.token); localStorage.setItem('ccna_user', JSON.stringify(login.data.user));
+    const q = await api.createQuestion({
+      statementEn: account.marker + ': original IPv4 address-size exercise', statementEs: account.marker + ': ejercicio original sobre tamaño IPv4',
+      questionType: 'single_choice', difficulty: 'basic', primaryTopicId: topicId,
+      explanationEn: 'IPv4 addresses contain 32 bits.', explanationEs: 'Las direcciones IPv4 contienen 32 bits.',
+      sourceUrl: 'https://www.rfc-editor.org/rfc/rfc791', sourceLicense: 'Original test fixture',
+      options: [{ optionLabel: 'A', optionTextEn: '32 bits', optionTextEs: '32 bits', isCorrect: true }, { optionLabel: 'B', optionTextEn: '128 bits', optionTextEs: '128 bits', isCorrect: false }],
+    });
+    if (!q.success) throw new Error(q.error);
+    return q.data;
+  }, { account, topicId: topic.id });
+  await page.goto('/admin');
+  await page.getByLabel('Buscar preguntas').fill(account.marker);
+  const oldRow = page.getByRole('row').filter({ hasText: original.statementEs });
+  await oldRow.getByRole('button', { name: 'Editar', exact: true }).click();
+  const editor = page.getByRole('dialog', { name: 'Editar pregunta', exact: true });
+  const statementEn = account.marker + ': corrected IPv4 address-size exercise';
+  const statementEs = account.marker + ': ejercicio IPv4 corregido';
+  await expect(editor.getByRole('textbox', { name: 'Enunciado EN', exact: true })).toHaveValue(original.statementEn);
+  await editor.getByRole('textbox', { name: 'Enunciado EN', exact: true }).fill(statementEn);
+  await editor.getByRole('textbox', { name: 'Enunciado ES', exact: true }).fill(statementEs);
+  await editor.getByRole('combobox', { name: 'Dificultad', exact: true }).selectOption('advanced');
+  await editor.getByRole('spinbutton', { name: 'Tiempo estimado (segundos)', exact: true }).fill('150');
+  await editor.getByRole('textbox', { name: 'Explicación de opción A ES', exact: true }).fill('IPv4 usa 32 bits, no 128 como IPv6.');
+  await editor.getByRole('button', { name: 'Guardar nueva revisión', exact: true }).click();
+  await expect(editor).toHaveCount(0);
+  const row = page.getByRole('row').filter({ hasText: statementEs });
+  await expect(row).toContainText('pending_review');
+  const revised = await db.question.findFirstOrThrow({ where: { statementEn }, include: { options: true } });
+  expect(revised.id).not.toBe(original.id);
+  expect(revised.difficulty).toBe('advanced'); expect(revised.estimatedTimeSeconds).toBe(150);
+  expect(revised.options.find(o => o.optionLabel === 'A').explanationEs).toContain('IPv4 usa 32 bits');
+  expect((await db.question.findUniqueOrThrow({ where: { id: original.id } })).statementEn).toBe(original.statementEn);
+  await row.getByRole('button', { name: 'Eliminar', exact: true }).click();
+  let dialog = page.getByRole('dialog', { name: 'Retirar pregunta', exact: true });
+  await expect(dialog.getByRole('button', { name: 'Confirmar retirada', exact: true })).toBeDisabled();
+  await dialog.getByRole('button', { name: 'Cancelar', exact: true }).click();
+  expect((await db.question.findUniqueOrThrow({ where: { id: revised.id } })).deletedAt).toBeNull();
+  await row.getByRole('button', { name: 'Eliminar', exact: true }).click();
+  dialog = page.getByRole('dialog', { name: 'Retirar pregunta', exact: true });
+  await dialog.getByLabel('Motivo del cambio').fill('Retirada de una revisión de prueba por el administrador.');
+  await dialog.getByRole('button', { name: 'Confirmar retirada', exact: true }).click();
+  await expect(row).toHaveCount(0);
+  await page.getByLabel('Mostrar retiradas', { exact: true }).check();
+  await row.getByRole('button', { name: 'Restaurar', exact: true }).click();
+  dialog = page.getByRole('dialog', { name: 'Restaurar pregunta', exact: true });
+  await dialog.getByLabel('Motivo del cambio').fill('Restauración de la revisión para comprobar sus permisos.');
+  await dialog.getByRole('button', { name: 'Confirmar restauración', exact: true }).click();
+  await expect(row).toHaveCount(0);
+  await page.getByLabel('Mostrar retiradas', { exact: true }).uncheck();
+  await expect(row).toContainText('pending_review');
+  expect((await db.question.findUniqueOrThrow({ where: { id: revised.id } })).deletedAt).toBeNull();
+  expect(await db.questionReview.count({ where: { questionId: revised.id } })).toBe(2);
+  await db.user.update({ where: { id: account.id }, data: { role: 'user' } });
+  await db.$disconnect();
+  await page.reload();
+  await expect(page.getByText('Acceso restringido', { exact: true })).toBeVisible();
+});

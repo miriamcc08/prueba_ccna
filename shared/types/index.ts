@@ -116,6 +116,7 @@ export interface PaginationInfo {
 // ---- Question Types (API responses) ----
 
 export interface QuestionListItem {
+  deletedAt?: string | null;
   id: string;
   statement: string;
   questionType: QuestionType;
@@ -127,6 +128,7 @@ export interface QuestionListItem {
 }
 
 export interface QuestionDetail {
+  deletedAt?: string | null;
   sourceLicense?: string;
   sourceUrl?: string;
   questionFamilyId?: string;

@@ -173,6 +173,7 @@ export type ImportQuestionsInput = z.infer<typeof importQuestionsSchema>;
 
 // ---- 9. Question Filter Query Schema ----
 export const questionFilterSchema = z.object({
+  deletedOnly: z.enum(['true', 'false']).default('false').transform(value => value === 'true'),
   favoritesOnly: z.enum(['true', 'false']).default('false').transform(value => value === 'true'),
   topic: z.string().optional(),
   examArea: z.enum(EXAM_AREAS).optional(),

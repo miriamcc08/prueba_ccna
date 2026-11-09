@@ -20,7 +20,7 @@ router.get(
             select: { questions: true },
           },
           questions: {
-            where: { validationStatus: 'validated' },
+            where: { validationStatus: 'validated', deletedAt: null },
             select: { id: true },
           },
         },

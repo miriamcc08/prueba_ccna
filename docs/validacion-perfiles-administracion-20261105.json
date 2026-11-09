@@ -1,0 +1,48 @@
+{
+  "completedOn": "2026-11-09",
+  "server": {
+    "filesPassed": 15,
+    "testsPassed": 637
+  },
+  "browser": {
+    "existingScenariosPassed": 24,
+    "newAdminScenarioPassed": 1,
+    "execution": "24 existing scenarios passed in full run; new scenario rerun separately after correcting its locator to use accessible role/name"
+  },
+  "build": "passed: server TypeScript and client TypeScript/Vite; existing chunk-size warning",
+  "migration": {
+    "method": "SQLite backup then exact migration SQL; all preexisting columns compared row by row",
+    "tables": {
+      "User": 2,
+      "Topic": 51,
+      "Source": 34,
+      "Question": 977,
+      "QuestionOption": 3956,
+      "QuestionVariant": 0,
+      "Exam": 4,
+      "ExamQuestion": 70,
+      "ExamResponse": 0,
+      "QuestionFavorite": 0,
+      "QuestionReview": 928
+    },
+    "integrity": "ok",
+    "foreignKeyViolations": 0,
+    "prismaMigrateDeploy": "passed; existing rows unchanged; deletedAt null for all 977 questions"
+  },
+  "pcSynchronization": "requires user git pull, Prisma generate/migrate and local administrator bootstrap; not performed remotely",
+  "sourceHashes": {
+    "client/src/components/AdminQuestionEditor.tsx": "25b7a38b211a2fcbfcbc5c92b495c99b4d7d6c36b78bba87b2db8b498fb1db93",
+    "client/src/pages/AdminPage.tsx": "00d0c62a4d143e662127a4e62cb41bfa2e11572009a82ed637913db94cdc134a",
+    "client/src/services/api.ts": "5a9f9fe2b30860c1442d5a50f55ffe1ab6ad4990fe0723dd36fa45bdc0b6a441",
+    "server/prisma/schema.prisma": "2ff0c22516103bec20a3a2babc1a69476f5b0cf67f601065026567c7ba2efed3",
+    "server/src/routes/questions.ts": "58002624b3aa98bc26acd37ac1d17100eca2519a0f2f1f1142c4db3e7b4453e1",
+    "server/src/routes/topics.ts": "0f563fb304b9bf91603d3fcac139040dafdce1bea929ad971b3a071340ffa732",
+    "server/src/services/examEngine.ts": "9413fe94156f8467984f37d936237286e342bb846a12a9168c2320160fbd14da",
+    "server/src/services/questionService.ts": "6d52482715a7659d730acdba2620d5469025951a33b3a9988940c9e2968a5b2c",
+    "server/src/validators/schemas.ts": "0eb054d0db419b907ba1d389f01220370a633ea47ce5b6d628eb33db344a84db",
+    "server/tests/exam.integration.test.ts": "be02e6dd88fc170d887878c790d4a923b738dbeed0e959927426d742769807b0",
+    "shared/types/index.ts": "ea12beffe70f4d8b1bc1e2743f06334dcefcbc8773c835e73dba14946f004189",
+    "tests/browser/workflow.spec.cjs": "bbe8b058197f51c3107c8893755947d31bf6b018a10df88e0dc495812a4eabc4",
+    "server/prisma/migrations/20261105190000_soft_delete_questions/migration.sql": "a1ee7c755cb517e5dc1a1c4719804aff09a840f2f05f339ae301337f8e41bb44"
+  }
+}

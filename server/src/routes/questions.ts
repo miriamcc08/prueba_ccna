@@ -48,6 +48,7 @@ router.get(
   async (req: Request, res: Response, next: NextFunction): Promise<void> => {
     try {
       const filters = questionFilterSchema.parse(req.query);
+      if (filters.deletedOnly && req.user?.role !== 'admin') throw new AppError(req.user ? 403 : 401, 'Administrator permissions required to view removed questions.');
       const result = await questionService.getQuestions(filters, req.user?.id);
 
       const response: ApiResponse<QuestionListItem[]> = {
@@ -212,7 +213,7 @@ export default router;
 // Favorite operations derive ownership from authentication, never from the request body.
 router.put('/:id/favorite', requireAuth, async (req: Request, res: Response, next: NextFunction) => {
   try {
-    if (!await prisma.question.findUnique({ where: { id: (req.params.id as string) } })) throw new AppError(404, 'Question not found.');
+    if (!await prisma.question.findFirst({ where: { id: (req.params.id as string), deletedAt: null } })) throw new AppError(404, 'Question not found.');
     await prisma.questionFavorite.upsert({
       where: { userId_questionId: { userId: req.user!.id, questionId: (req.params.id as string) } },
       create: { userId: req.user!.id, questionId: (req.params.id as string) }, update: {},
@@ -239,6 +240,7 @@ router.post('/:id/review', requireAuth, requireAdmin, async (req: Request, res: 
     await prisma.$transaction(async tx => {
       const q = await tx.question.findUnique({ where: { id: (req.params.id as string) }, include: { options: true } });
       if (!q) throw new AppError(404, 'Question not found.');
+      if (q.deletedAt) throw new AppError(409, 'Restore the question before reviewing it.');
       if (input.status === 'validated') {
         const check = validateQuestionAnswers(q, q.options);
         if (!check.valid) throw new AppError(400, 'Structural validation failed.', check.errors);
@@ -269,5 +271,19 @@ router.post('/:id/revisions', requireAuth, requireAdmin, async (req: Request, re
   try {
     const changes = updateQuestionSchema.parse(req.body);
     res.status(201).json({ success: true, data: await questionService.createQuestionRevision((req.params.id as string), changes, req.user!.id) });
+  } catch (error) { next(error); }
+});
+
+const removalSchema = z.object({ notes: z.string().trim().min(20).max(2000) });
+router.delete('/:id', requireAuth, requireAdmin, async (req: Request, res: Response, next: NextFunction) => {
+  try {
+    const { notes } = removalSchema.parse(req.body);
+    res.json({ success: true, data: await questionService.setQuestionRemoval(req.params.id as string, true, req.user!.id, notes) });
+  } catch (error) { next(error); }
+});
+router.post('/:id/restore', requireAuth, requireAdmin, async (req: Request, res: Response, next: NextFunction) => {
+  try {
+    const { notes } = removalSchema.parse(req.body);
+    res.json({ success: true, data: await questionService.setQuestionRemoval(req.params.id as string, false, req.user!.id, notes) });
   } catch (error) { next(error); }
 });

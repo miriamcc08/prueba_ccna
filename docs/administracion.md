@@ -51,3 +51,48 @@ La [tercera ronda](revision-heredadas-20261029.md) acumula 420 aprobaciones y re
 La [cuarta ronda, rutas y STP](revision-rutas-stp-20261029.md) acumula 426 aprobaciones, 41 rechazos con reemplazo y 234 pendientes. Añade seis aprobaciones y tres versiones corregidas. Está probada la actualización desde la entrega de 420 aprobaciones sin sobrescribir los originales.
 
 La [quinta ronda, tercer lote heredado](revision-lote-heredado-03-20261029.md) acumula 472 aprobaciones, 78 rechazos con reemplazo y 188 pendientes. Desde la entrega de 426 añade 46 aprobaciones, 37 versiones y 37 rechazos. Las dos propuestas retenidas están fuera de los archivos importables. Se probó la actualización y la carga desde cero con el contenido definitivo.
+
+## Editar, retirar y restaurar (05/11/2026)
+
+Cada fila activa dispone de **Editar** y **Eliminar**. Editar abre el formulario bilingüe precargado y guarda una nueva revisión pendiente: conserva la versión y las alternativas anteriores para el historial. Incluye dificultad, tiempo estimado, referencia y explicaciones por alternativa.
+
+**Eliminar** significa retirar del banco activo, según la elección del usuario. Exige confirmación y motivo de al menos 20 caracteres. Conserva opciones, intentos y auditoría; la pregunta deja de contarse como disponible y no puede incluirse en exámenes nuevos ni reinicios de estudio. Los intentos existentes se conservan.
+
+Activa **Mostrar retiradas** para verlas y pulsa **Restaurar** con un motivo. La pregunta vuelve como `pending_review`: requiere revisión técnica antes de utilizarse. No se puede editar ni aprobar mientras esté retirada. Tanto la retirada como la restauración registran el administrador y el motivo. Un usuario normal no puede ejecutar estas operaciones ni consultar el listado de retiradas; el servidor comprueba los permisos.
+
+### Actualizar una instalación Windows existente
+
+Detén el servidor con Ctrl+C. En la raíz del proyecto, descarga los cambios con `git pull --ff-only`. Haz una copia consistente de `server/prisma/dev.db` con la aplicación detenida y conserva también cualquier archivo WAL asociado si existiera. Después ejecuta:
+
+```powershell
+npm --prefix server run db:generate
+Set-Location .\server
+npx prisma migrate deploy
+Set-Location ..
+npm run build
+npm test
+npm run dev
+```
+
+La migración nueva añade `Question.deletedAt`; no elimina preguntas ni historial. No uses `db:reset`. No es necesario volver a importar el banco para activar estos controles.
+
+### Crear el administrador en Windows sin escribir la contraseña en el historial
+
+Con la aplicación detenida, abre PowerShell en `server`. Utiliza un correo distinto si el anterior pertenece a un usuario normal:
+
+```powershell
+$env:ADMIN_EMAIL = Read-Host "Correo para la cuenta administradora"
+$adminSecret = Read-Host "Contraseña (mínimo 12 caracteres, máximo 72 bytes UTF-8)" -AsSecureString
+$adminPointer = [Runtime.InteropServices.Marshal]::SecureStringToBSTR($adminSecret)
+try {
+    $env:ADMIN_PASSWORD = [Runtime.InteropServices.Marshal]::PtrToStringBSTR($adminPointer)
+    npm run admin:bootstrap
+} finally {
+    [Runtime.InteropServices.Marshal]::ZeroFreeBSTR($adminPointer)
+    $adminSecret.Dispose()
+    Remove-Item Env:ADMIN_PASSWORD -ErrorAction SilentlyContinue
+    Remove-Item Env:ADMIN_EMAIL -ErrorAction SilentlyContinue
+}
+```
+
+No compartas la contraseña ni la guardes en Git. El proceso necesita recibirla temporalmente para calcular su hash. Reinicia la aplicación e inicia sesión con esa cuenta: aparecerá Administración. Comprueba después que una cuenta normal no puede acceder a `/admin`.

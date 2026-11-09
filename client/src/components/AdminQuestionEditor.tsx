@@ -1,33 +1,36 @@
 import React, { useEffect, useState } from 'react';
-import { Difficulty, QuestionType, TopicWithCount } from '@shared/types';
+import { Difficulty, QuestionType, TopicWithCount, QuestionDetail } from '@shared/types';
 import api from '../services/api';
 import { useTranslation } from '../i18n/useTranslation';
 
-type Option = { optionTextEn: string; optionTextEs: string; isCorrect: boolean };
+type Option = { optionTextEn: string; optionTextEs: string; isCorrect: boolean; explanationEn?: string; explanationEs?: string };
 const emptyOptions = (): Option[] => Array.from({ length: 4 }, () => ({ optionTextEn: '', optionTextEs: '', isCorrect: false }));
 
-export default function AdminQuestionEditor({ onCreated }: { onCreated: () => void }) {
+export default function AdminQuestionEditor({ onCreated, initialQuestion }: { onCreated: () => void; initialQuestion?: QuestionDetail }) {
   const { language } = useTranslation();
   const l = (es: string, en: string) => language === 'es' ? es : en;
   const [topics, setTopics] = useState<TopicWithCount[]>([]);
-  const [topicId, setTopicId] = useState('');
-  const [type, setType] = useState<QuestionType>('single_choice');
-  const [difficulty, setDifficulty] = useState<Difficulty>('basic');
-  const [statementEn, setStatementEn] = useState('');
-  const [statementEs, setStatementEs] = useState('');
-  const [explanationEn, setExplanationEn] = useState('');
-  const [explanationEs, setExplanationEs] = useState('');
-  const [sourceUrl, setSourceUrl] = useState('');
-  const [sourceLicense, setSourceLicense] = useState('');
-  const [family, setFamily] = useState('');
-  const [options, setOptions] = useState<Option[]>(emptyOptions);
+  const [topicId, setTopicId] = useState(initialQuestion?.primaryTopic.id || '');
+  const [type, setType] = useState<QuestionType>(initialQuestion?.questionType || 'single_choice');
+  const [difficulty, setDifficulty] = useState<Difficulty>(initialQuestion?.difficulty || 'basic');
+  const [statementEn, setStatementEn] = useState(initialQuestion?.statementEn || '');
+  const [statementEs, setStatementEs] = useState(initialQuestion?.statementEs || '');
+  const [explanationEn, setExplanationEn] = useState(initialQuestion?.explanationEn || '');
+  const [explanationEs, setExplanationEs] = useState(initialQuestion?.explanationEs || '');
+  const [sourceUrl, setSourceUrl] = useState(initialQuestion?.sourceUrl || '');
+  const [sourceLicense, setSourceLicense] = useState(initialQuestion?.sourceLicense || '');
+  const [family, setFamily] = useState(initialQuestion?.questionFamilyId || '');
+  const [estimatedTime, setEstimatedTime] = useState(initialQuestion?.estimatedTimeSeconds || 90);
+  const [correctWhyEn, setCorrectWhyEn] = useState(initialQuestion?.correctAnswerExplanationEn || '');
+  const [correctWhyEs, setCorrectWhyEs] = useState(initialQuestion?.correctAnswerExplanationEs || '');
+  const [options, setOptions] = useState<Option[]>(() => initialQuestion ? initialQuestion.options.map(option => ({ optionTextEn: option.optionTextEn, optionTextEs: option.optionTextEs, isCorrect: option.isCorrect, explanationEn: option.explanationEn, explanationEs: option.explanationEs })) : emptyOptions());
   const [busy, setBusy] = useState(false);
   const [error, setError] = useState('');
   useEffect(() => {
     let active = true;
     api.getTopics().then(res => {
       if (!active) return;
-      if (res.success && res.data) { setTopics(res.data); setTopicId(res.data[0]?.id || ''); }
+      if (res.success && res.data) { setTopics(res.data); const firstTopicId = res.data[0]?.id || ''; setTopicId(current => current || firstTopicId); }
       else setError(res.error || 'Unable to load topics.');
     });
     return () => { active = false; };
@@ -50,26 +53,29 @@ export default function AdminQuestionEditor({ onCreated }: { onCreated: () => vo
     if (!sourceUrl.startsWith('https://')) { setError(l('La referencia debe usar HTTPS.', 'The reference must use HTTPS.')); return; }
     setBusy(true);
     try {
-      const res = await api.createQuestion({
+      const input = {
         statementEn: statementEn.trim(), statementEs: statementEs.trim(), questionType: type, difficulty,
-        primaryTopicId: topicId, validationStatus: 'pending_review',
+        primaryTopicId: topicId, validationStatus: 'pending_review' as const, estimatedTimeSeconds: estimatedTime,
+        correctAnswerExplanationEn: correctWhyEn.trim(), correctAnswerExplanationEs: correctWhyEs.trim(),
         multipleAnswerCount: type === 'multiple_choice' ? correct : null,
         explanationEn: explanationEn.trim(), explanationEs: explanationEs.trim(), sourceUrl, sourceLicense: sourceLicense.trim(),
         ...(family.trim() ? { questionFamilyId: family.trim() } : {}),
         options: options.map((option, index) => ({ ...option, optionLabel: String.fromCharCode(65 + index) })),
-      });
+      };
+      const res = initialQuestion ? await api.createQuestionRevision(initialQuestion.id, input) : await api.createQuestion(input);
       if (res.success) onCreated();
       else setError([res.error, res.message].filter(Boolean).join(': '));
     } finally { setBusy(false); }
   };
   const types: QuestionType[] = ['single_choice', 'multiple_choice', 'true_false', 'subnetting', 'ipv4_calculation', 'ipv6_addressing', 'routing_table', 'ios_commands', 'router_config', 'switch_config', 'troubleshooting', 'topology_analysis', 'network_security', 'automation'];
   const typeNames: Record<string, string> = { single_choice: l('Selección única', 'Single choice'), multiple_choice: l('Selección múltiple', 'Multiple selection'), true_false: l('Verdadero o falso', 'True or false'), subnetting: 'Subnetting', ipv4_calculation: l('Cálculo IPv4', 'IPv4 calculation'), ipv6_addressing: l('Direccionamiento IPv6', 'IPv6 addressing'), routing_table: l('Tabla de routing', 'Routing table'), ios_commands: l('Comandos IOS', 'IOS commands'), router_config: l('Configuración de router', 'Router configuration'), switch_config: l('Configuración de switch', 'Switch configuration'), troubleshooting: 'Troubleshooting', topology_analysis: l('Análisis de topología', 'Topology analysis'), network_security: l('Seguridad de redes', 'Network security'), automation: l('Automatización', 'Automation') };
-  return <form className="card space-y-4" onSubmit={submit} aria-label={l('Crear pregunta', 'Create question')}>
-    <h2 className="text-lg font-bold">{l('Crear pregunta', 'Create question')}</h2>
+  return <form className="card space-y-4" onSubmit={submit} aria-label={initialQuestion ? l('Editar pregunta', 'Edit question') : l('Crear pregunta', 'Create question')}>
+    <h2 className="text-lg font-bold">{initialQuestion ? l('Editar pregunta', 'Edit question') : l('Crear pregunta', 'Create question')}</h2>
+    {initialQuestion && <p>{l('La corrección crea una nueva revisión pendiente y conserva los intentos anteriores.', 'Saving creates a new pending revision and preserves past attempts.')}</p>}
     <p>{l('Redacta ambos idiomas y marca las respuestas. Se guardará pendiente de revisión; aprobarla es un paso separado.', 'Write both languages and select the answers. It will be saved for review; approval is a separate step.')}</p>
     <fieldset disabled={busy} className="space-y-4">
       <div className="grid sm:grid-cols-3 gap-3">
-        <label>{l('Tema principal', 'Primary topic')}<select className="input-field w-full" required value={topicId} onChange={e => setTopicId(e.target.value)}>{!topics.length && <option value="">{l('Cargando temas', 'Loading topics')}</option>}{topics.map(topic => <option key={topic.id} value={topic.id}>{language === 'es' ? topic.nameEs : topic.nameEn}</option>)}</select></label>
+        <label>{l('Tema principal', 'Primary topic')}<select className="input-field w-full" required value={topicId} onChange={e => setTopicId(e.target.value)}>{!topics.length && <option value="">{l('Cargando temas', 'Loading topics')}</option>}{initialQuestion && !topics.some(topic => topic.id === initialQuestion.primaryTopic.id) && <option value={initialQuestion.primaryTopic.id}>{language === 'es' ? initialQuestion.primaryTopic.nameEs : initialQuestion.primaryTopic.nameEn}</option>}{topics.map(topic => <option key={topic.id} value={topic.id}>{language === 'es' ? topic.nameEs : topic.nameEn}</option>)}</select></label>
         <label>{l('Tipo de pregunta', 'Question type')}<select className="input-field w-full" value={type} onChange={e => changeType(e.target.value as QuestionType)}>{types.map(value => <option key={value} value={value}>{typeNames[value]}</option>)}</select></label>
         <label>{l('Dificultad', 'Difficulty')}<select className="input-field w-full" value={difficulty} onChange={e => setDifficulty(e.target.value as Difficulty)}><option value="basic">{l('Básica', 'Basic')}</option><option value="intermediate">{l('Intermedia', 'Intermediate')}</option><option value="advanced">{l('Avanzada', 'Advanced')}</option></select></label>
       </div>
@@ -80,16 +86,21 @@ export default function AdminQuestionEditor({ onCreated }: { onCreated: () => vo
         <legend>{l('Opción', 'Option')} {String.fromCharCode(65 + index)}</legend>
         <label>{l('Opción', 'Option')} {String.fromCharCode(65 + index)} — EN<input className="input-field w-full" required value={option.optionTextEn} onChange={e => update(index, { optionTextEn: e.target.value })} /></label>
         <label>{l('Opción', 'Option')} {String.fromCharCode(65 + index)} — ES<input className="input-field w-full" required value={option.optionTextEs} onChange={e => update(index, { optionTextEs: e.target.value })} /></label>
+        <label>{l('Explicación de opción', 'Option explanation')} {String.fromCharCode(65 + index)} EN<textarea className="input-field w-full" value={option.explanationEn || ''} onChange={e => update(index, { explanationEn: e.target.value })} /></label>
+        <label>{l('Explicación de opción', 'Option explanation')} {String.fromCharCode(65 + index)} ES<textarea className="input-field w-full" value={option.explanationEs || ''} onChange={e => update(index, { explanationEs: e.target.value })} /></label>
         <label><input type={type === 'multiple_choice' ? 'checkbox' : 'radio'} name="correct-answer" checked={option.isCorrect} onChange={e => type === 'multiple_choice' ? update(index, { isCorrect: e.target.checked }) : setOptions(previous => previous.map((value, i) => ({ ...value, isCorrect: i === index })))} /> {l('Correcta', 'Correct')} {String.fromCharCode(65 + index)}</label>
         {type !== 'true_false' && options.length > 2 && <button className="btn-secondary" type="button" onClick={() => setOptions(previous => previous.filter((_, i) => i !== index))}>{l('Quitar opción', 'Remove option')} {String.fromCharCode(65 + index)}</button>}
       </fieldset>)}
       {type !== 'true_false' && options.length < 6 && <button className="btn-secondary" type="button" onClick={() => setOptions(previous => [...previous, { optionTextEn: '', optionTextEs: '', isCorrect: false }])}>{l('Añadir opción', 'Add option')}</button>}
       <label className="block">{l('Explicación EN', 'Explanation EN')}<textarea className="input-field w-full" required minLength={5} value={explanationEn} onChange={e => setExplanationEn(e.target.value)} /></label>
       <label className="block">{l('Explicación ES', 'Explanation ES')}<textarea className="input-field w-full" required minLength={5} value={explanationEs} onChange={e => setExplanationEs(e.target.value)} /></label>
+      <label className="block">{l('Por qué es correcta EN', 'Correct answer explanation EN')}<textarea className="input-field w-full" value={correctWhyEn} onChange={e => setCorrectWhyEn(e.target.value)} /></label>
+      <label className="block">{l('Por qué es correcta ES', 'Correct answer explanation ES')}<textarea className="input-field w-full" value={correctWhyEs} onChange={e => setCorrectWhyEs(e.target.value)} /></label>
+      <label className="block">{l('Tiempo estimado (segundos)', 'Estimated time (seconds)')}<input className="input-field w-full" type="number" min={10} max={600} required value={estimatedTime} onChange={e => setEstimatedTime(Number(e.target.value))} /></label>
       <label className="block">{l('Referencia técnica HTTPS', 'HTTPS technical reference')}<input className="input-field w-full" type="url" pattern="https://.*" required value={sourceUrl} onChange={e => setSourceUrl(e.target.value)} /></label>
       <label className="block">{l('Autoría o licencia', 'Authorship or license')}<input className="input-field w-full" required value={sourceLicense} onChange={e => setSourceLicense(e.target.value)} placeholder={l('Autoría propia o autorización de reutilización', 'Original authorship or permission to reuse')} /></label>
-      <label className="block">{l('Familia de ejercicio (opcional)', 'Exercise family (optional)')}<input className="input-field w-full" value={family} onChange={e => setFamily(e.target.value)} /></label>
-      <button className="btn-primary" type="submit" disabled={!topicId}>{busy ? l('Guardando…', 'Saving…') : l('Guardar pendiente de revisión', 'Save for review')}</button>
+      <label className="block">{l('Familia de ejercicio (opcional)', 'Exercise family (optional)')}<input className="input-field w-full" disabled={!!initialQuestion} value={family} onChange={e => setFamily(e.target.value)} /></label>
+      <button className="btn-primary" type="submit" disabled={!topicId}>{busy ? l('Guardando…', 'Saving…') : initialQuestion ? l('Guardar nueva revisión', 'Save new revision') : l('Guardar pendiente de revisión', 'Save for review')}</button>
     </fieldset>
     {error && <p role="alert" className="text-red-300">{error}</p>}
   </form>;

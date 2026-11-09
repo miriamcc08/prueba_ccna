@@ -43,7 +43,7 @@ export async function getQuestions(filters: QuestionFilterInput, userId?: string
     pageSize = 20,
   } = filters;
 
-  const where: any = {};
+  const where: Prisma.QuestionWhereInput = { deletedAt: filters.deletedOnly ? { not: null } : null };
   if (filters.favoritesOnly) {
     if (!userId) throw new AppError(401, 'Sign in to view favorites.');
     where.favorites = { some: { userId } };
@@ -60,7 +60,6 @@ export async function getQuestions(filters: QuestionFilterInput, userId?: string
 
   if (examArea) {
     where.primaryTopic = {
-      ...(where.primaryTopic || {}),
       examArea,
     };
   }
@@ -106,6 +105,7 @@ export async function getQuestions(filters: QuestionFilterInput, userId?: string
   const totalPages = Math.ceil(totalItems / pageSize) || 1;
 
   const questionListItems: QuestionListItem[] = questions.map((q) => ({
+    deletedAt: q.deletedAt?.toISOString() || null,
     id: q.id,
     statement: language === 'es' ? q.statementEs : q.statementEn,
     questionType: q.questionType as QuestionType,
@@ -173,6 +173,7 @@ export async function getQuestionById(id: string): Promise<QuestionDetail> {
   }));
 
   return {
+    deletedAt: question.deletedAt?.toISOString() || null,
     sourceUrl: question.sourceUrl || undefined,
     sourceLicense: question.sourceLicense || undefined,
     questionFamilyId: question.questionFamilyId || undefined,
@@ -336,6 +337,7 @@ export async function updateQuestion(
     throw new AppError(404, `Question with id "${id}" not found.`);
   }
 
+  if (existing.deletedAt) throw new AppError(409, 'Restore the question before editing it.');
   if (data.validationStatus === 'validated') throw new AppError(400, 'Use the technical review endpoint to approve questions.');
 
   if (await prisma.examQuestion.count({ where: { questionId: id, contentSnapshot: null } }) > 0) {
@@ -557,8 +559,9 @@ export async function getQuestionStats(): Promise<{
   byQuestionType: Record<string, number>;
 }> {
   const [total, byTopicRows, byDiffRows, byStatusRows, byTypeRows] = await Promise.all([
-    prisma.question.count(),
+    prisma.question.count({ where: { deletedAt: null } }),
     prisma.question.findMany({
+      where: { deletedAt: null },
       select: {
         primaryTopic: {
           select: { examArea: true },
@@ -567,14 +570,17 @@ export async function getQuestionStats(): Promise<{
     }),
     prisma.question.groupBy({
       by: ['difficulty'],
+      where: { deletedAt: null },
       _count: { id: true },
     }),
     prisma.question.groupBy({
       by: ['validationStatus'],
+      where: { deletedAt: null },
       _count: { id: true },
     }),
     prisma.question.groupBy({
       by: ['questionType'],
+      where: { deletedAt: null },
       _count: { id: true },
     }),
   ]);
@@ -614,6 +620,7 @@ export async function createQuestionRevision(id: string, changes: UpdateQuestion
   const created = await prisma.$transaction(async tx => {
     const original = await tx.question.findUnique({ where: { id }, include: { options: { orderBy: { displayOrder: 'asc' } } } });
     if (!original) throw new AppError(404, 'Question not found.');
+    if (original.deletedAt) throw new AppError(409, 'Restore the question before editing it.');
     const withoutNulls = (value: Record<string, unknown>) => Object.fromEntries(Object.entries(value).filter(([, value]) => value !== null));
     const parsed = createQuestionSchema.parse({
       ...withoutNulls(original),
@@ -637,4 +644,22 @@ export async function createQuestionRevision(id: string, changes: UpdateQuestion
     return revision;
   });
   return getQuestionById(created.id);
+}
+
+/** Soft removal never deletes options or rewrites questions captured in past exams. */
+export async function setQuestionRemoval(id: string, removed: boolean, reviewerId: string, notes: string): Promise<QuestionDetail> {
+  await prisma.$transaction(async tx => {
+    const original = await tx.question.findUnique({ where: { id } });
+    if (!original) throw new AppError(404, 'Question not found.');
+    if (Boolean(original.deletedAt) === removed) throw new AppError(409, removed ? 'Question already removed.' : 'Question is not removed.');
+    await tx.question.update({ where: { id }, data: {
+      deletedAt: removed ? new Date() : null,
+      validationStatus: removed ? 'draft' : 'pending_review', lastVerifiedAt: null,
+    } });
+    await tx.questionReview.create({ data: {
+      questionId: id, reviewerId, status: removed ? 'removed' : 'pending_review',
+      notes: `${removed ? 'Removed from active bank' : 'Restored pending technical review'}. PreviousStatus=${original.validationStatus}; previousVerification=${original.lastVerifiedAt?.toISOString() || 'none'}. ${notes}`,
+    } });
+  });
+  return getQuestionById(id);
 }

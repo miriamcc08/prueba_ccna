@@ -1286,3 +1286,81 @@ describe('Applying assisted technical bank decisions', () => {
     expect((await prisma.question.findUniqueOrThrow({ where: { id } })).validationStatus).toBe('pending_review');
   }, 60000);
 });
+
+describe('Administrator question removal and restoration', () => {
+  const notes = 'Retirada o restauración revisada por el administrador para el banco de práctica.';
+  async function administrator() {
+    const user = await prisma.user.create({ data: { email: 'question-manager@example.test', username: 'question-manager', passwordHash: 'unused', role: 'admin' } });
+    return { user, token: generateToken(user) };
+  }
+  it('rejects guests, normal users, forged role claims and revoked administrator roles', async () => {
+    expect((await request(`/questions/${question.id}`, 'DELETE', { notes })).status).toBe(401);
+    expect((await request(`/questions/${question.id}/restore`, 'POST', { notes })).status).toBe(401);
+    expect((await request('/questions?deletedOnly=true')).status).toBe(401);
+    const { user, token } = await administrator();
+    await prisma.user.update({ where: { id: user.id }, data: { role: 'user' } });
+    expect((await request(`/questions/${question.id}`, 'DELETE', { notes }, token)).status).toBe(403);
+    expect((await request(`/questions/${question.id}/restore`, 'POST', { notes }, token)).status).toBe(403);
+    expect((await request('/questions?deletedOnly=true', 'GET', undefined, token)).status).toBe(403);
+    expect((await prisma.question.findUniqueOrThrow({ where: { id: question.id } })).deletedAt).toBeNull();
+    expect(await prisma.questionReview.count()).toBe(0);
+  });
+  it.each([true, false])('removes a used question without changing its content, option IDs or previous results (snapshot=%s)', async snapshot => {
+    const { contentRecord, digest } = await import('../prisma/bank-review-format');
+    const { token, user } = await administrator();
+    const a = await attempt({ studyMode: true, strictMode: false, untimed: true });
+    expect(a.question.id).toBe(question.id);
+    if (!snapshot) await prisma.examQuestion.updateMany({ where: { examId: a.id }, data: { contentSnapshot: null } });
+    await engine.submitAnswer(a.id, a.question.examQuestionId, [question.options[0].id]);
+    await engine.completeExam(a.id);
+    const review = await getExamReview(a.id), results = await calculateResults(a.id);
+    const before = await prisma.question.findUniqueOrThrow({ where: { id: question.id }, include: { options: true, primaryTopic: true } });
+    expect((await request(`/questions/${question.id}`, 'DELETE', { notes }, token)).status).toBe(200);
+    const after = await prisma.question.findUniqueOrThrow({ where: { id: question.id }, include: { options: true, primaryTopic: true } });
+    expect(after.deletedAt).not.toBeNull();
+    expect(after.validationStatus).toBe('draft');
+    expect(digest(contentRecord(after))).toBe(digest(contentRecord(before)));
+    expect(after.options.map(option => option.id).sort()).toEqual(before.options.map(option => option.id).sort());
+    expect(await getExamReview(a.id)).toEqual(review);
+    expect(await calculateResults(a.id)).toEqual(results);
+    expect((await request('/questions')).body.data.map((q: any) => q.id)).not.toContain(question.id);
+    expect((await request('/questions?deletedOnly=true', 'GET', undefined, token)).body.data.map((q: any) => q.id)).toEqual([question.id]);
+    expect((await prisma.questionReview.findFirstOrThrow()).reviewerId).toBe(user.id);
+    expect((await request(`/questions/${question.id}`, 'PUT', { explanationEn: 'Changed explanation' }, token)).status).toBe(409);
+    expect((await request(`/questions/${question.id}/revisions`, 'POST', { explanationEn: 'Changed explanation' }, token)).status).toBe(409);
+    expect((await request(`/questions/${question.id}/review`, 'POST', { status: 'validated', notes, evidenceUrl: 'https://www.rfc-editor.org/rfc/rfc826', technicalReviewConfirmed: true }, token)).status).toBe(409);
+    await expect(engine.restartStudyExercise(a.id, a.question.examQuestionId)).rejects.toThrow('no longer eligible');
+    // Even a direct status-only change cannot put a removed row back into new exams.
+    await prisma.question.update({ where: { id: question.id }, data: { validationStatus: 'validated' } });
+    const fresh = await engine.createExam(config({ questionCount: 2 }));
+    expect((await prisma.examQuestion.findMany({ where: { examId: fresh.examId } })).some(row => row.questionId === question.id)).toBe(false);
+  }, 30000);
+  it('requires a reason and confirmation, restores only to pending review and does not duplicate audit events', async () => {
+    const { token } = await administrator();
+    expect((await request(`/questions/${question.id}`, 'DELETE', {}, token)).status).toBe(400);
+    expect(await prisma.questionReview.count()).toBe(0);
+    expect((await request(`/questions/${question.id}`, 'DELETE', { notes }, token)).status).toBe(200);
+    expect((await request(`/questions/${question.id}`, 'DELETE', { notes }, token)).status).toBe(409);
+    const restored = await request(`/questions/${question.id}/restore`, 'POST', { notes }, token);
+    expect(restored.status).toBe(200);
+    expect(restored.body.data.deletedAt).toBeNull();
+    expect(restored.body.data.validationStatus).toBe('pending_review');
+    expect((await prisma.question.findUniqueOrThrow({ where: { id: question.id } })).lastVerifiedAt).toBeNull();
+    expect((await request(`/questions/${question.id}/restore`, 'POST', { notes }, token)).status).toBe(409);
+    expect(await prisma.questionReview.count({ where: { questionId: question.id } })).toBe(2);
+    expect((await request('/questions')).body.data.some((q: any) => q.id === question.id)).toBe(true);
+  });
+  it('never lets the versioned import silently reapprove a question removed by an administrator', async () => {
+    const { syncReviewedBank } = await import('../prisma/sync-reviewed-bank');
+    for (const [i, area] of ['network_fundamentals','network_access','ip_connectivity','ip_services','security_fundamentals','automation_programmability'].entries()) {
+      await prisma.topic.upsert({ where: { code: `${i + 1}.0` }, update: {}, create: { code: `${i + 1}.0`, nameEn: area, nameEs: area, examArea: area, examAreaNumber: `${i + 1}.0`, weightPercentage: 10 } });
+    }
+    await syncReviewedBank(prisma, true);
+    const { token } = await administrator();
+    const id = 'ccna-original-20261024-001';
+    expect((await request(`/questions/${id}`, 'DELETE', { notes }, token)).status).toBe(200);
+    await expect(syncReviewedBank(prisma, true)).rejects.toThrow('status changed after review');
+    expect((await prisma.question.findUniqueOrThrow({ where: { id } })).deletedAt).not.toBeNull();
+    expect((await prisma.question.findUniqueOrThrow({ where: { id } })).validationStatus).toBe('draft');
+  }, 60000);
+});

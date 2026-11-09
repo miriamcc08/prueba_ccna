@@ -93,6 +93,7 @@ model Question {
   // Validation
   validationStatus String    @default("draft") // draft, pending_review, validated, rejected
   lastVerifiedAt   DateTime?
+  deletedAt        DateTime? // Soft removal preserves attempts, options and review history
   examVersion      String    @default("200-301-v1.1")
 
   // Bilingual explanations

@@ -8,9 +8,9 @@ El usuario ha pausado la creación de preguntas. Esa pausa se mantiene. Revisar 
 
 ## Lo que ya funciona
 
-Configuración y disponibilidad real; exámenes estrictos; estudio sin tiempo; fecha límite del servidor y recuperación; confirmación de respuestas; resultados y revisión; contenido inmutable por intento nuevo; historial; favoritos; recomendaciones por reglas; registro e inicio de sesión; roles actuales comprobados en servidor; CORS restrictivo; sonidos opcionales; borrado confirmado del historial propio. Administración permite crear, importar **JSON/CSV**, buscar, filtrar, paginar, revisar y aprobar/rechazar candidatos con evidencia. Resultados ya muestra el rendimiento por dificultad que calcula la API.
+Configuración y disponibilidad real; exámenes estrictos; estudio sin tiempo; fecha límite del servidor y recuperación; confirmación de respuestas; resultados y revisión; contenido inmutable por intento nuevo; historial; favoritos; recomendaciones por reglas; registro e inicio de sesión; roles actuales comprobados en servidor; CORS restrictivo; sonidos opcionales; borrado confirmado del historial propio. Administración permite crear, editar mediante revisiones, retirar y restaurar con auditoría, importar **JSON/CSV**, buscar, filtrar, paginar, revisar y aprobar/rechazar candidatos con evidencia. Resultados ya muestra el rendimiento por dificultad que calcula la API.
 
-Última comprobación: compilación de cliente y servidor correcta, **622 pruebas de servidor y 22 de Chromium aprobadas** ([detalle](revision-lote-heredado-05-20261030.md)). Esto comprueba escenarios concretos, no todas las preguntas ni todos los dispositivos.
+Última comprobación (09/11/2026): **637 pruebas de servidor y 25 escenarios de Chromium aprobados** (24 escenarios existentes y el escenario nuevo ejecutado de forma dirigida; [detalle](perfiles-administracion-20261105.md)). Esto comprueba escenarios concretos, no todas las preguntas ni todos los dispositivos.
 
 ## 1. Para entregar un simulador útil con contenido suficiente
 
@@ -84,3 +84,5 @@ Para declarar completo el **alcance original**, todos sus requisitos deben pasar
 Las dependencias se actualizaron para resolver los avisos detectados en la instalación: [informe y comprobación](actualizacion-dependencias-20261026.md). Esto avanza P05, pero no sustituye la revisión de secretos, permisos, encabezados y operación del despliegue.
 
 Revisión vigente y procedimiento para actualizar cada base local: [revisión vigente del 29/10](revision-heredadas-20261029.md). El actor técnico de revisión no es un administrador interactivo.
+
+Actualización de perfiles y gestión editorial del 05/11/2026: [entrega y validación](perfiles-administracion-20261105.md). La cuenta real del PC sigue pendiente de activación local (C01); las cuentas temporales de prueba no la sustituyen.
