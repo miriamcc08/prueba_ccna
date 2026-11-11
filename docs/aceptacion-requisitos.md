@@ -64,3 +64,5 @@ El 11/11/2026 la propietaria aceptó **RF-06, modo de estudio**, mediante «si t
 El 11/11/2026 la propietaria aceptó **RF-07, cronómetro y recuperación de sesiones**, y solicitó decidir en bloques de diez para agilizar la revisión. RF-08 a RF-17 se presentan como propuestas, sin aceptación presunta. El umbral concreto del aviso de tiempo de RF-07 permanece por precisar antes de su aceptación técnica.
 
 El 11/11/2026 la propietaria aceptó **RF-08 a RF-17 completos**, mediante «acepto todos» en respuesta exclusivamente a ese bloque. Se aprueban sus definiciones y criterios; no se aprueba el bloque siguiente ni se certifica implementación. RF-18 a RF-27 permanecen propuestos. RF-01 a RF-17 tienen definición aceptada; su aceptación técnica requiere evidencia por requisito.
+
+El 11/11/2026 la propietaria aceptó **RF-18 a RF-27 completos**, mediante «acepto todas» referido a ese bloque. RF-01 a RF-27 tienen definición aceptada, sin certificar cumplimiento técnico. RNF-01 a RNF-10 se presentan como propuestas con objetivos explícitos, pendientes de decisión; el resto de funciones de la matriz continúa por revisar.

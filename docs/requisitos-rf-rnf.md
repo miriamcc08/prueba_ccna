@@ -42,7 +42,7 @@ El cierre de todas las sesiones o la revocación en servidor de un token copiado
 
 ## Pendientes del proceso de requisitos
 
-Clasificar y presentar el resto de RF y RNF individualmente. Para cada uno, registrar: aceptar, modificar, diferir o descartar. Los RNF tendrán criterios medibles y valores acordados; no se asignan tiempos de respuesta, carga o compatibilidad sin decisión explícita. RF-01 a RF-17 están aceptados en su definición. RF-18 y siguientes no se incorporan al alcance aprobado hasta recibir respuesta.
+Clasificar y presentar el resto de RF y RNF individualmente. Para cada uno, registrar: aceptar, modificar, diferir o descartar. Los RNF tendrán criterios medibles y valores acordados; no se asignan tiempos de respuesta, carga o compatibilidad sin decisión explícita. RF-01 a RF-27 están aceptados en su definición. RF-28 y siguientes no se incorporan al alcance aprobado hasta recibir respuesta.
 
 ## RF-03 — Configuración del examen
 
@@ -154,11 +154,11 @@ Cambio de método solicitado por la propietaria: presentar diez requisitos por b
 
 La aceptación se limita al bloque RF-08 a RF-17 tal como se presentó. La comparación completa o los filtros adicionales no se consideran ya implementados por aprobar su definición. Este bloque no genera nuevas preguntas ni levanta la pausa del banco.
 
-## Bloque RF-18 a RF-27 — propuestas pendientes de elección
+## Bloque RF-18 a RF-27 — aceptados
 
-**Decisión:** pendiente para cada fila. **Verificación técnica:** pendiente. Este bloque continúa los requisitos funcionales; no incluye aprobación de los RNF ni de futuras ampliaciones. Su aceptación no cambia por sí sola el hito local/avanzado de las referencias anteriores.
+**Decisión:** RF-18 a RF-27 aceptados expresamente el 11/11/2026 mediante «acepto todas». **Verificación técnica:** pendiente. Esta aceptación no incluye RNF ni futuras ampliaciones. Su aceptación no cambia por sí sola el hito local/avanzado de las referencias anteriores.
 
-| ID | Requisito funcional propuesto | Criterio de aceptación resumido | Referencia anterior |
+| ID | Requisito funcional aceptado | Criterio de aceptación resumido | Referencia anterior |
 |---|---|---|---|
 | RF-18 | Gestión de usuarios: admin/superadmin crean, consultan, editan y desactivan/restauran cuentas normales. | Desactivar bloquea acceso conservando historial; restaurar devuelve a user; datos inválidos o duplicados no dejan cambios parciales. | RA-04 |
 | RF-19 | Gestión de roles: solo superadmin asigna user/admin/superadmin y gestiona cuentas privilegiadas. | Admin no se eleva ni modifica privilegiadas; no se permite cambiar el propio rol o desactivarse ni eliminar el último superadmin activo; los cambios invalidan sesiones anteriores de la cuenta afectada. | RA-05/06 |
@@ -171,4 +171,25 @@ La aceptación se limita al bloque RF-08 a RF-17 tal como se presentó. La compa
 | RF-26 | Ejecución de validadores técnicos desde administración y consulta de resultados. | Muestra qué cálculos/estructuras se verificaron, errores y límites; pasar comprobaciones no aprueba automáticamente la pregunta. | RC-04/05, RA-02 |
 | RF-27 | Consulta de cobertura por versión del temario, áreas y subobjetivos. | Muestra preguntas aprobadas, familias y huecos por objetivo, con fuente y fecha del temario; separa candidatas de aprobadas. | RC-07 |
 
-Responder por ID o aceptar el bloque completo. La comparación adaptativa completa, gestión de fuentes/familias y cobertura pueden requerir desarrollo posterior: aceptación de definición no equivale a entrega. La generación sigue pausada y los RNF se revisarán en bloques separados.
+La aceptación se limita a estas diez definiciones y criterios. La comparación adaptativa completa, gestión de fuentes/familias y cobertura pueden requerir desarrollo posterior: aceptación de definición no equivale a entrega. La generación sigue pausada y los RNF se revisarán en bloques separados.
+
+## Bloque RNF-01 a RNF-10 — propuestas pendientes de elección
+
+**Tipo:** no funcional. **Decisión:** pendiente para cada fila. **Verificación técnica:** pendiente. Son condiciones de calidad propuestas para la entrega local; no se consideran ya cumplidas. Los valores concretos de este bloque se proponen ahora y solo se adoptan si se acepta explícitamente. Publicación, carga multiusuario y operación remota se especificarán aparte.
+
+| ID | Requisito no funcional propuesto | Criterio de aceptación propuesto | Referencia anterior |
+|---|---|---|---|
+| RNF-01 | Seguridad de acceso: comprobar identidad, rol y estado vigente en servidor. | Las pruebas de invitado/user/admin/superadmin y cuenta desactivada rechazan todas las operaciones no autorizadas del catálogo de permisos; manipular rol/ID o reutilizar una sesión revocada no concede acceso. | RS-01/02, RA-06 |
+| RNF-02 | Protección de secretos y datos personales. | Contraseñas como hash, sin valores reales ni bases personales en archivos publicados; respuestas y registros no revelan hashes, contraseñas o tokens. Revisar archivos nuevos, seguimiento heredado y contenido de la entrega antes de cerrar el requisito, preservando respaldos. | RI-04, RS-03 |
+| RNF-03 | Integridad y consistencia. | Pruebas de doble envío, edición, retirada y migración no duplican confirmaciones ni alteran resultados históricos; todas las verificaciones de integridad y claves foráneas de la base de prueba pasan. | RI-02, RE-09, RR-02 |
+| RNF-04 | Rendimiento local medible. | En compilación de producción, API en localhost y PC de prueba documentado, al menos 95 % de 30 ejecuciones por operación terminan en 2 segundos o menos: consultar página de banco, abrir pregunta y guardar respuesta. Usar la misma copia del banco disponible y un usuario activo; medir desde envío del cliente hasta respuesta JSON. Documentar equipo, tamaño de datos y resultados; sin carga multiusuario y excluyendo instalación/importación/build/primer arranque. | RP-07 adaptado a L |
+| RNF-05 | Compatibilidad local. | Los recorridos de registro, examen, resultados y administración pasan en Windows 11 con Chrome y Edge estables, registrando sus versiones; instalar con la versión compatible de Node documentada. Otros sistemas/navegadores quedan por acordar. | RI-01, RU-04 |
+| RNF-06 | Usabilidad y claridad. | Todos los formularios de los recorridos principales identifican campos obligatorios y muestran errores junto al contexto; las operaciones destructivas permiten cancelar sin cambios y los estados de carga/vacío no muestran éxito ficticio. Verificar lista de pantallas por rol. | RU-01/02 |
+| RNF-07 | Accesibilidad de los recorridos principales. | Objetivo propuesto WCAG 2.2 AA para registro/login, configuración, examen, resultados y administración: teclado completo, foco visible, nombres accesibles, avisos y contraste mínimo aplicable. Verificar criterios pertinentes con revisión manual y herramientas; un escáner sin alertas no basta para certificar cumplimiento. | RU-04, DEC-04 |
+| RNF-08 | Respaldo y recuperación local. | Crear copia consistente antes de cada actualización de esquema y restaurarla en una base separada en 15 minutos o menos, con herramientas ya instaladas. Comprobar cuentas, banco e historial; no sobrescribir la base original durante la prueba. Informar que solo se recupera hasta el momento del respaldo y no prometer pérdida cero de datos posteriores. | RS-04/05, RP-03 |
+| RNF-09 | Mantenibilidad y pruebas reproducibles. | Separar cliente/API y centralizar validación/errores; desde una copia limpia, instalar lockfiles, generar cliente/migrar, compilar y pasar las pruebas pertinentes. Todo cambio identifica requisitos y evidencia; las pruebas no modifican la base personal. | RI-01, RS-03/04 |
+| RNF-10 | Trazabilidad y actualización PC/GitHub. | Documentar cada entrega y verificar el mismo commit local/remoto tras publicar y hacer pull, registrando archivos modificados sin incluir datos o secretos locales. Si hay diferencias o falta aplicar migraciones, informarlo antes de declarar sincronizado el código. Las cuentas/bases no se replican por Git. | RG-02, RS-05 |
+
+Se pueden aceptar, modificar, diferir o descartar por ID. Aceptar RNF-04/05/07/08 adopta expresamente los objetivos propuestos (2 segundos/95 %/30 muestras, Windows 11 Chrome/Edge, WCAG 2.2 AA y restauración de 15 minutos); no afirma que hayan sido medidos o alcanzados. Si la PC usa otro Windows o se desea otro umbral, ajustar antes de cerrar la definición. No se reanudan generación ni despliegue.
+
+Quedan RF avanzados por revisar individualmente o por bloques desde la matriz original (por ejemplo variantes recalculadas y puntuación configurable); pasar a RNF no los elimina ni los aprueba por omisión.
