@@ -1,6 +1,6 @@
 # Requisitos del simulador CCNA
 
-**Revisión individual RF/RNF:** la propietaria pidió decidir cada requisito por separado. Consultar [el registro de requisitos funcionales y no funcionales](requisitos-rf-rnf.md). RF-01, RF-02, RF-03, RF-04 y RF-05 están aceptados; esta matriz de 70 sigue como borrador de referencia y no constituye aprobación global.
+**Revisión individual RF/RNF:** la propietaria pidió decidir cada requisito por separado. Consultar [el registro de requisitos funcionales y no funcionales](requisitos-rf-rnf.md). RF-01, RF-02, RF-03, RF-04, RF-05 y RF-06 están aceptados; esta matriz de 70 sigue como borrador de referencia y no constituye aprobación global.
 
 
 Versión 0.1 — borrador para revisión conjunta, 11/11/2026. Propietaria del producto: Miriam. Base técnica consultada: commit `540e2a84`. Este documento organiza el alcance; no certifica que todo esté implementado ni aprobado por la propietaria.

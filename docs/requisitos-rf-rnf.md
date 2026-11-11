@@ -42,7 +42,7 @@ El cierre de todas las sesiones o la revocación en servidor de un token copiado
 
 ## Pendientes del proceso de requisitos
 
-Clasificar y presentar el resto de RF y RNF individualmente. Para cada uno, registrar: aceptar, modificar, diferir o descartar. Los RNF tendrán criterios medibles y valores acordados; no se asignan tiempos de respuesta, carga o compatibilidad sin decisión explícita. RF-01, RF-02, RF-03, RF-04 y RF-05 están aceptados en su definición. RF-06 y siguientes no se incorporan al alcance aprobado hasta recibir respuesta.
+Clasificar y presentar el resto de RF y RNF individualmente. Para cada uno, registrar: aceptar, modificar, diferir o descartar. Los RNF tendrán criterios medibles y valores acordados; no se asignan tiempos de respuesta, carga o compatibilidad sin decisión explícita. RF-01, RF-02, RF-03, RF-04, RF-05 y RF-06 están aceptados en su definición. RF-07 y siguientes no se incorporan al alcance aprobado hasta recibir respuesta.
 
 ## RF-03 — Configuración del examen
 
@@ -97,13 +97,13 @@ Reglas aceptadas:
 
 El reloj y su recuperación se detallarán en un requisito separado. La política sobre consulta paralela del banco sigue como decisión abierta DEC-03; este requisito no promete controlar otras pestañas o dispositivos.
 
-## RF-06 — Modo de estudio (propuesto para revisión)
+## RF-06 — Modo de estudio
 
-**Tipo:** funcional. **Decisión:** pendiente. **Verificación del producto:** pendiente. **Relación con la matriz anterior:** RE-06, RR-04 y RL-01; fase original 2.
+**Tipo:** funcional. **Decisión:** aceptado expresamente por la propietaria el 11/11/2026 mediante «si tambien acepto». **Verificación del producto:** pendiente de vincular evidencia y comprobar aceptación local. **Relación con la matriz anterior:** RE-06, RR-04 y RL-01; fase original 2.
 
 El usuario podrá practicar en modo de estudio, consultar las soluciones después de confirmar y repasar lo aprendido.
 
-Reglas propuestas:
+Reglas aceptadas:
 
 - Mostrar la respuesta correcta y su explicación después de confirmar, cuando esté activada la opción de explicaciones.
 - Permitir regresar a preguntas ya respondidas para revisar su selección y explicación, sin modificar respuestas confirmadas.
@@ -115,3 +115,22 @@ Reglas propuestas:
 **Criterio de aceptación:** el usuario confirma una respuesta y puede consultar su solución y explicación, volver a respuestas anteriores y practicar sin reloj. Cambiar de tema o reiniciar abre una práctica independiente sin alterar las respuestas ni resultados anteriores; las favoritas se asocian a su propia cuenta.
 
 Las variantes recalculadas requieren un requisito separado. RF-06 no autoriza generar preguntas nuevas ni levantar la pausa del banco. Los plazos opcionales se regirán por el requisito de cronómetro.
+
+## RF-07 — Cronómetro y recuperación de sesiones (propuesto para revisión)
+
+**Tipo:** funcional. **Decisión:** pendiente. **Verificación del producto:** pendiente. **Relación con la matriz anterior:** RE-05 y RE-09; fase original 2.
+
+La aplicación mostrará el tiempo restante y permitirá recuperar un intento interrumpido sin perder respuestas confirmadas ni ampliar el plazo.
+
+Reglas propuestas:
+
+- Mostrar minutos y segundos y un aviso cuando quede poco tiempo.
+- Calcular el plazo mediante marcas temporales del servidor; recargar o desconectarse no reinicia ni pausa el reloj.
+- Al reconectar, recuperar el mismo intento y sus respuestas confirmadas; una selección que no llegó a confirmarse no se considera guardada.
+- Si el plazo total venció, cerrar el examen con las respuestas guardadas y marcar las restantes como no respondidas.
+- Permitir un límite opcional por pregunta: al vencer, registrar como no respondida y avanzar o finalizar según corresponda. No reactivar su plazo al recargar.
+- Registrar tiempo total y por pregunta. El estudio sin cronómetro no aplica límites ni caducidad temporal.
+
+**Criterio de aceptación:** recargar o interrumpir la conexión conserva el plazo original y las respuestas confirmadas. Al reconectar, se recupera el intento si sigue vigente o se obtiene su cierre por caducidad; nunca se otorga tiempo adicional. El límite por pregunta, cuando está activado, tampoco se reinicia.
+
+La recuperación presupone conservar el identificador o acceso al intento en el mismo navegador o mediante su cuenta según corresponda; no se promete recuperar una sesión anónima si se pierde su identificador. El umbral concreto del aviso se acordará antes de cerrar la aceptación de este requisito.

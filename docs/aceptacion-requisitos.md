@@ -57,4 +57,6 @@ El 11/11/2026 la propietaria aceptó **RF-03, configuración del examen**, media
 
 El 11/11/2026 la propietaria aceptó **RF-04, modalidades de práctica**, mediante «si acepto». Se aprueba la definición; su verificación técnica queda pendiente. RF-05 se presentó para decisión individual y fue aceptado posteriormente; véase el registro siguiente.
 
-El 11/11/2026 la propietaria aceptó **RF-05, examen estricto**, mediante «acpeto» en respuesta a la propuesta. Se aprueba su definición; no se certifica su cumplimiento técnico. RF-06, modo de estudio, se presenta como propuesta sin aprobar.
+El 11/11/2026 la propietaria aceptó **RF-05, examen estricto**, mediante «acpeto» en respuesta a la propuesta. Se aprueba su definición; no se certifica su cumplimiento técnico. RF-06 se presentó para decisión individual y fue aceptado posteriormente; véase el registro siguiente.
+
+El 11/11/2026 la propietaria aceptó **RF-06, modo de estudio**, mediante «si tambien acepto». Se aprueba su definición; la verificación técnica continúa pendiente. RF-07, cronómetro y recuperación de sesiones, se presenta como propuesta sin aprobar.
