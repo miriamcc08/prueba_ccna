@@ -42,7 +42,7 @@ El cierre de todas las sesiones o la revocación en servidor de un token copiado
 
 ## Pendientes del proceso de requisitos
 
-Clasificar y presentar el resto de RF y RNF individualmente. Para cada uno, registrar: aceptar, modificar, diferir o descartar. Los RNF tendrán criterios medibles y valores acordados; no se asignan tiempos de respuesta, carga o compatibilidad sin decisión explícita. RF-01 a RF-27 están aceptados en su definición. RF-28 y siguientes no se incorporan al alcance aprobado hasta recibir respuesta.
+Clasificar y presentar el resto de RF y RNF individualmente. Para cada uno, registrar: aceptar, modificar, diferir o descartar. Los RNF tendrán criterios medibles y valores acordados; no se asignan tiempos de respuesta, carga o compatibilidad sin decisión explícita. RF-01 a RF-37 están aceptados en su definición. RF-38 y siguientes no se incorporan al alcance aprobado hasta recibir respuesta.
 
 ## RF-03 — Configuración del examen
 
@@ -192,17 +192,17 @@ La aceptación se limita a estas diez definiciones y criterios. La comparación 
 
 La aceptación de RNF-04/05/07/08 adopta expresamente los objetivos presentados (2 segundos/95 %/30 muestras, Windows 11 Chrome/Edge, WCAG 2.2 AA y restauración de 15 minutos); no afirma que hayan sido medidos o alcanzados. Cambios posteriores de plataforma o umbral requieren registrar una modificación del requisito. No se reanudan generación ni despliegue.
 
-Quedan RF avanzados por revisar individualmente o por bloques desde la matriz original (por ejemplo variantes recalculadas y puntuación configurable); pasar a RNF no los elimina ni los aprueba por omisión.
+Los RF avanzados se presentaron en el bloque RF-28 a RF-37 y fueron aceptados posteriormente; véase el registro siguiente. La matriz original sigue como referencia para reconciliar cualquier condición aún no decidida.
 
-## Bloque RF-28 a RF-37 — propuestas avanzadas pendientes de elección
+## Bloque RF-28 a RF-37 — aceptados
 
-**Decisión:** pendiente por fila. **Verificación técnica:** pendiente. Estas propuestas concretan funciones del alcance original aún por decidir; no se aprueban por haber aceptado los RNF. Aceptarlas no levanta la pausa de generación ni obliga a terminarlas en la primera versión local: conservan sus hitos L/A definidos en la matriz, salvo ajuste expreso. La política de permisos de RF-30 también es propuesta.
+**Decisión:** RF-28 a RF-37 aceptados expresamente el 11/11/2026 mediante «acepto todo», en respuesta a ese bloque. **Verificación técnica:** pendiente. La aceptación no levanta la pausa de generación ni obliga a terminarlos en la primera versión local: conservan sus hitos L/A definidos en la matriz, salvo ajuste expreso. La política y límites de RF-30 quedan aceptados tal como se presentaron.
 
-| ID | Requisito funcional propuesto | Criterio de aceptación resumido | Referencia anterior |
+| ID | Requisito funcional aceptado | Criterio de aceptación resumido | Referencia anterior |
 |---|---|---|---|
 | RF-28 | Generar variantes técnicas con recálculo de parámetros, alternativas y clave. | Mantener familia y parámetros; rechazar ambigüedad y verificar con cálculo independiente antes de aprobar. Generación solo cuando se levante la pausa aplicable. | RB-03 |
 | RF-29 | Repetir un ejercicio mediante una variante aprobada disponible. | Crear intento independiente con misma familia y variante distinta, conservando el anterior; informar si no existe una compatible. | RE-10 |
-| RF-30 | Configurar la política de puntuación desde superadmin. | Propuesta: configurar objetivo interno de práctica y habilitar/deshabilitar escala interna 300–1000; mantener porcentaje, peso igual y múltiple exacta. Guardar política por intento y no recalcular históricos ni atribuirla a Cisco. Otros parámetros requieren acuerdo separado. | RE-08 |
+| RF-30 | Configurar la política de puntuación desde superadmin. | Configurar objetivo interno de práctica y habilitar/deshabilitar escala interna 300–1000; mantener porcentaje, peso igual y múltiple exacta. Guardar política por intento y no recalcular históricos ni atribuirla a Cisco. Otros parámetros requieren acuerdo separado. | RE-08 |
 | RF-31 | Explicaciones pedagógicas ampliadas por escenario. | Incluir pasos, razón de distractores relevantes, fórmulas/comandos cuando apliquen, ejemplo, referencia, consejo y enlace a refuerzo aprobado disponible; indicar si no hay refuerzo. Amplía RF-09, sin generar contenido nuevo automáticamente. | RC-09 |
 | RF-32 | Diagnóstico adaptativo avanzado. | Detectar evolución por dificultad y conceptos confundidos con datos verificables; mostrar fundamento y comparación pertinente sin afirmar conclusiones si faltan datos. Amplía RF-11/21. | RL-02 |
 | RF-33 | Seleccionar versión del temario entre las soportadas. | Cada intento conserva versión elegida y selecciona contenido compatible; una versión sin banco suficiente se informa y no se mezcla con otra. | RC-07, RE-03 |
@@ -211,4 +211,14 @@ Quedan RF avanzados por revisar individualmente o por bloques desde la matriz or
 | RF-36 | Meta posterior de 1000 preguntas aprobadas y distintas. | Contar activas aprobadas y familias/conceptos sustancialmente distintos por separado; candidatas, rechazadas o variantes cosméticas no cumplen la meta. Generación y meta siguen diferidas. | RB-01 |
 | RF-37 | Práctica sin cuenta con recuperación limitada. | Permitir recuperar el intento anónimo si se conserva su identificador en el navegador; informar que perderlo puede impedir recuperar la sesión y que no equivale a historial de cuenta entre equipos. | RE-09, RP-06 |
 
-Por ID se puede aceptar, modificar, diferir o descartar. RF-30 incluye límites propuestos para que su configuración sea verificable. Este bloque no incorpora las ampliaciones opcionales RX (IA conectada, doble factor, reportes, exportaciones o laboratorios interactivos), que siguen sin aprobar.
+La aceptación se limita a estas diez definiciones y criterios. RF-30 conserva los límites acordados para que su configuración sea verificable. Este bloque no incorpora las ampliaciones opcionales RX (IA conectada, doble factor, reportes, exportaciones o laboratorios interactivos), que siguen sin aprobar.
+
+## Resumen de decisiones al 11/11/2026
+
+- **37 requisitos funcionales:** RF-01 a RF-37 aceptados en su definición.
+- **10 requisitos no funcionales:** RNF-01 a RNF-10 aceptados en su definición, incluidos sus objetivos explícitos.
+- **47 definiciones aceptadas no equivalen a 47 funciones verificadas.** El cumplimiento del producto requiere evidencia y aceptación técnica por requisito.
+- La primera entrega sigue siendo local en el PC. Publicación, carga multiusuario y operación remota no quedan aprobadas por este bloque.
+- Generación de preguntas nuevas y variantes permanece pausada; la meta de 1000 y continuación de lotes siguen posteriores. Aceptar su definición no autoriza ejecutarlas ahora.
+- Las ampliaciones opcionales RX y las fases nuevas propuestas no reciben aprobación por omisión. Se revisan por separado cuando corresponda.
+- Siguiente control: relacionar estas definiciones con los hitos L/A y las fases originales, completar decisiones abiertas de detalle y registrar evidencia de implementación y pruebas. Las condiciones de la matriz de referencia no cubiertas aún deben marcarse pendientes, sin afirmar cierre total del alcance original.
