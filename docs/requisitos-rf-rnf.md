@@ -42,15 +42,15 @@ El cierre de todas las sesiones o la revocación en servidor de un token copiado
 
 ## Pendientes del proceso de requisitos
 
-Clasificar y presentar el resto de RF y RNF individualmente. Para cada uno, registrar: aceptar, modificar, diferir o descartar. Los RNF tendrán criterios medibles y valores acordados; no se asignan tiempos de respuesta, carga o compatibilidad sin decisión explícita. RF-01 y RF-02 están aceptados en su definición. RF-03 y siguientes no se incorporan al alcance aprobado hasta recibir respuesta.
+Clasificar y presentar el resto de RF y RNF individualmente. Para cada uno, registrar: aceptar, modificar, diferir o descartar. Los RNF tendrán criterios medibles y valores acordados; no se asignan tiempos de respuesta, carga o compatibilidad sin decisión explícita. RF-01, RF-02 y RF-03 están aceptados en su definición. RF-04 y siguientes no se incorporan al alcance aprobado hasta recibir respuesta.
 
-## RF-03 — Configuración del examen (propuesto para revisión)
+## RF-03 — Configuración del examen
 
-**Tipo:** funcional. **Decisión:** pendiente. **Verificación del producto:** pendiente. **Relación con la matriz anterior:** RE-01 y RE-03; fase original 2.
+**Tipo:** funcional. **Decisión:** aceptado expresamente por la propietaria el 11/11/2026 mediante «si me gusta». **Verificación del producto:** pendiente de vincular evidencia y comprobar aceptación local. **Relación con la matriz anterior:** RE-01 y RE-03; fase original 2.
 
 Antes de iniciar, el usuario podrá configurar cantidad de preguntas, duración, idioma (español o inglés), dificultad y temas.
 
-Reglas propuestas:
+Reglas aceptadas:
 
 - Mostrar las opciones disponibles y un resumen de la configuración antes de confirmar el inicio.
 - Comprobar la disponibilidad de preguntas aprobadas y activas compatibles con los filtros, sin repetir familias equivalentes.
@@ -59,4 +59,20 @@ Reglas propuestas:
 
 **Criterio de aceptación:** al elegir y confirmar una configuración válida, el examen utiliza la cantidad, idioma, dificultad y temas acordados y aplica la duración elegida. Si faltan preguntas, no inicia con una configuración diferente y explica qué debe ajustarse.
 
-Las modalidades y las reglas de examen estricto/estudio se revisarán como requisitos separados. Esta propuesta no aprueba parámetros numéricos nuevos.
+Las modalidades y las reglas de examen estricto/estudio se revisarán como requisitos separados. Esta aceptación no fija parámetros numéricos nuevos.
+
+## RF-04 — Modalidades de práctica (propuesto para revisión)
+
+**Tipo:** funcional. **Decisión:** pendiente. **Verificación del producto:** pendiente. **Relación con la matriz anterior:** RE-02 y RR-04; fase original 2.
+
+El usuario podrá elegir entre simulacro completo, práctica por tema, examen personalizado, repaso de errores, práctica de subnetting, práctica de comandos y práctica de troubleshooting.
+
+Reglas propuestas:
+
+- Cada modalidad seleccionará preguntas que correspondan realmente a su propósito y respetará la configuración compatible aceptada en RF-03.
+- El repaso de errores utilizará fallos del historial del usuario y conservará el intento original.
+- Si no hay historial o preguntas suficientes, se informará y se permitirá elegir otra configuración; no se inventarán preguntas ni resultados.
+
+**Criterio de aceptación:** al elegir una modalidad, las preguntas cumplen sus filtros; el repaso de errores corresponde al historial propio. Cuando no existe material compatible, la aplicación explica el motivo sin iniciar una práctica diferente de la elegida.
+
+Esta propuesta define modalidades de contenido; las reglas de navegación, respuestas y reloj del modo estricto y del modo estudio se revisarán por separado. No autoriza generar más preguntas ni reanuda la meta de 1000.
