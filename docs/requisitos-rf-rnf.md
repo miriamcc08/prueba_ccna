@@ -42,7 +42,7 @@ El cierre de todas las sesiones o la revocación en servidor de un token copiado
 
 ## Pendientes del proceso de requisitos
 
-Clasificar y presentar el resto de RF y RNF individualmente. Para cada uno, registrar: aceptar, modificar, diferir o descartar. Los RNF tendrán criterios medibles y valores acordados; no se asignan tiempos de respuesta, carga o compatibilidad sin decisión explícita. RF-01, RF-02, RF-03, RF-04, RF-05 y RF-06 están aceptados en su definición. RF-07 y siguientes no se incorporan al alcance aprobado hasta recibir respuesta.
+Clasificar y presentar el resto de RF y RNF individualmente. Para cada uno, registrar: aceptar, modificar, diferir o descartar. Los RNF tendrán criterios medibles y valores acordados; no se asignan tiempos de respuesta, carga o compatibilidad sin decisión explícita. RF-01 a RF-07 están aceptados en su definición. RF-08 y siguientes no se incorporan al alcance aprobado hasta recibir respuesta.
 
 ## RF-03 — Configuración del examen
 
@@ -116,13 +116,13 @@ Reglas aceptadas:
 
 Las variantes recalculadas requieren un requisito separado. RF-06 no autoriza generar preguntas nuevas ni levantar la pausa del banco. Los plazos opcionales se regirán por el requisito de cronómetro.
 
-## RF-07 — Cronómetro y recuperación de sesiones (propuesto para revisión)
+## RF-07 — Cronómetro y recuperación de sesiones
 
-**Tipo:** funcional. **Decisión:** pendiente. **Verificación del producto:** pendiente. **Relación con la matriz anterior:** RE-05 y RE-09; fase original 2.
+**Tipo:** funcional. **Decisión:** aceptado por la propietaria el 11/11/2026 mediante «si, acetp», solicitando continuar con bloques de diez. **Verificación del producto:** pendiente de vincular evidencia y comprobar aceptación local. **Relación con la matriz anterior:** RE-05 y RE-09; fase original 2.
 
 La aplicación mostrará el tiempo restante y permitirá recuperar un intento interrumpido sin perder respuestas confirmadas ni ampliar el plazo.
 
-Reglas propuestas:
+Reglas aceptadas:
 
 - Mostrar minutos y segundos y un aviso cuando quede poco tiempo.
 - Calcular el plazo mediante marcas temporales del servidor; recargar o desconectarse no reinicia ni pausa el reloj.
@@ -134,3 +134,22 @@ Reglas propuestas:
 **Criterio de aceptación:** recargar o interrumpir la conexión conserva el plazo original y las respuestas confirmadas. Al reconectar, se recupera el intento si sigue vigente o se obtiene su cierre por caducidad; nunca se otorga tiempo adicional. El límite por pregunta, cuando está activado, tampoco se reinicia.
 
 La recuperación presupone conservar el identificador o acceso al intento en el mismo navegador o mediante su cuenta según corresponda; no se promete recuperar una sesión anónima si se pierde su identificador. El umbral concreto del aviso se acordará antes de cerrar la aceptación de este requisito.
+
+## Bloque RF-08 a RF-17 — propuestas pendientes de elección
+
+Cambio de método solicitado por la propietaria: presentar diez requisitos por bloque y permitir decidir por ID. Los siguientes no están aprobados; su verificación técnica también queda pendiente. Conservar las decisiones individuales o por selección explícita, sin asumir que el silencio aprueba el resto.
+
+| ID | Requisito funcional propuesto | Criterio de aceptación resumido | Referencia anterior |
+|---|---|---|---|
+| RF-08 | Resultados del examen: mostrar puntuación, porcentaje, aciertos, errores, no respondidas y tiempos. | Un intento con respuestas conocidas produce los valores esperados al finalizar o caducar; nunca presenta la puntuación como oficial Cisco. | RR-01, RE-07 |
+| RF-09 | Revisión explicada: mostrar selección, clave, explicación y referencia de cada pregunta tras finalizar. | La revisión coincide con la versión presentada en el intento, aunque se haya editado después. | RR-02, RC-09 |
+| RF-10 | Historial personal: listar intentos con fecha, idioma, configuración y resultado y permitir abrirlos. | Cada cuenta consulta únicamente su historial personal; los datos coinciden con los intentos guardados. | RR-03 |
+| RF-11 | Comparación de progreso: comparar intentos por áreas y dificultad. | Usa resultados reales e indica cuando no hay datos suficientes o las versiones/políticas no son comparables. | RR-05 |
+| RF-12 | Favoritas: guardar, quitar y filtrar preguntas favoritas de la cuenta. | La selección persiste al iniciar sesión de nuevo y no modifica favoritas ajenas. | RR-04 |
+| RF-13 | Banco de preguntas: buscar y filtrar por tema, dificultad, tipo, idioma y estado según permisos. | Los resultados y páginas corresponden a los filtros y respetan los permisos sobre contenido retirado y soluciones. La política de consulta paralela durante estricto sigue pendiente en DEC-03. | RU-05 |
+| RF-14 | Crear y editar preguntas: admin/superadmin redactan contenido ES/EN, alternativas, clave, explicación y fuente. | Guardar crea contenido pendiente de revisión; editar conserva versiones usadas en exámenes anteriores. | RA-01 |
+| RF-15 | Importar JSON/CSV autorizado con informe de resultados y errores. | Una importación repetida no duplica registros idénticos ni sobrescribe contenido local incompatible; las altas quedan pendientes. | RC-03 |
+| RF-16 | Revisar, aprobar y rechazar preguntas con evidencia y auditoría. | Solo administración decide, con notas y referencia; los candidatos no aprobados quedan fuera de exámenes. | RA-02 |
+| RF-17 | Retirar y restaurar preguntas con confirmación y motivo. | Retirar excluye de exámenes nuevos conservando historial; restaurar devuelve a pendiente de revisión y registra actor/fecha. | RA-03 |
+
+Opciones por ID: aceptar, modificar (indicando el cambio), diferir o descartar. Las propuestas de comparación completa o filtros adicionales no se consideran ya implementadas por aparecer en esta lista. Este bloque no genera nuevas preguntas ni levanta la pausa del banco.
