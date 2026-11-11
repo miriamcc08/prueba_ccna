@@ -46,3 +46,7 @@ Cerrar un requisito requiere criterios completos, evidencia vinculada y aceptaci
 Se creó la matriz, su trazabilidad y esta plantilla. Se enlazaron desde README y los documentos de plan/estado/pendientes. Se actualizó el pendiente de superadmin con la confirmación real del usuario. No se modificaron código, cuentas, base de datos ni preguntas; no se reejecutó la suite de aplicación para una edición exclusivamente documental.
 
 Validación documental del 11/11/2026: 70 identificadores únicos de requisitos; referencias a requisitos existentes; matrices de cuatro columnas coherentes; 92 enlaces locales de los seis documentos modificados comprobados y `git diff --check` sin errores. Se contrastó la matriz con las secciones disponibles del prompt y las siete fases originales. Las secciones truncadas de la fuente y las decisiones DEC abiertas permanecen explícitas. Esto valida la coherencia documental, no certifica implementación ni aceptación.
+
+## Decisiones individuales RF/RNF
+
+El 11/11/2026 la propietaria solicitó separar requisitos funcionales y no funcionales y decidir individualmente. **RF-01, registro de usuarios, aceptado** mediante respuesta «acepto» al texto presentado. Esto aprueba su definición, no el cumplimiento técnico ni los restantes requisitos. Texto y seguimiento en [requisitos-rf-rnf.md](requisitos-rf-rnf.md). RF-02 permanece propuesto y pendiente de decisión.
