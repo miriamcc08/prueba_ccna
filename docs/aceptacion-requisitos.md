@@ -53,4 +53,6 @@ El 11/11/2026 la propietaria solicitó separar requisitos funcionales y no funci
 
 El 11/11/2026 la propietaria aceptó **RF-02, inicio y cierre de sesión**, mediante «si me gusta, lo acepto». Se conserva el texto acordado y se distingue aceptación de definición de verificación técnica pendiente. RF-03 se presentó para decisión individual y fue aceptado posteriormente; véase el registro siguiente.
 
-El 11/11/2026 la propietaria aceptó **RF-03, configuración del examen**, mediante «si me gusta» en respuesta a la solicitud de decisión. Se aprueba su definición; la verificación técnica sigue pendiente. RF-04, modalidades de práctica, se presenta como propuesta sin aprobar.
+El 11/11/2026 la propietaria aceptó **RF-03, configuración del examen**, mediante «si me gusta» en respuesta a la solicitud de decisión. Se aprueba su definición; la verificación técnica sigue pendiente. RF-04 se presentó para decisión individual y fue aceptado posteriormente; véase el registro siguiente.
+
+El 11/11/2026 la propietaria aceptó **RF-04, modalidades de práctica**, mediante «si acepto». Se aprueba la definición; su verificación técnica queda pendiente. RF-05, examen estricto, se presenta como propuesta sin aprobar.

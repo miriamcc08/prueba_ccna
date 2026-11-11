@@ -42,7 +42,7 @@ El cierre de todas las sesiones o la revocación en servidor de un token copiado
 
 ## Pendientes del proceso de requisitos
 
-Clasificar y presentar el resto de RF y RNF individualmente. Para cada uno, registrar: aceptar, modificar, diferir o descartar. Los RNF tendrán criterios medibles y valores acordados; no se asignan tiempos de respuesta, carga o compatibilidad sin decisión explícita. RF-01, RF-02 y RF-03 están aceptados en su definición. RF-04 y siguientes no se incorporan al alcance aprobado hasta recibir respuesta.
+Clasificar y presentar el resto de RF y RNF individualmente. Para cada uno, registrar: aceptar, modificar, diferir o descartar. Los RNF tendrán criterios medibles y valores acordados; no se asignan tiempos de respuesta, carga o compatibilidad sin decisión explícita. RF-01, RF-02, RF-03 y RF-04 están aceptados en su definición. RF-05 y siguientes no se incorporan al alcance aprobado hasta recibir respuesta.
 
 ## RF-03 — Configuración del examen
 
@@ -61,13 +61,13 @@ Reglas aceptadas:
 
 Las modalidades y las reglas de examen estricto/estudio se revisarán como requisitos separados. Esta aceptación no fija parámetros numéricos nuevos.
 
-## RF-04 — Modalidades de práctica (propuesto para revisión)
+## RF-04 — Modalidades de práctica
 
-**Tipo:** funcional. **Decisión:** pendiente. **Verificación del producto:** pendiente. **Relación con la matriz anterior:** RE-02 y RR-04; fase original 2.
+**Tipo:** funcional. **Decisión:** aceptado expresamente por la propietaria el 11/11/2026 mediante «si acepto». **Verificación del producto:** pendiente de vincular evidencia y comprobar aceptación local. **Relación con la matriz anterior:** RE-02 y RR-04; fase original 2.
 
 El usuario podrá elegir entre simulacro completo, práctica por tema, examen personalizado, repaso de errores, práctica de subnetting, práctica de comandos y práctica de troubleshooting.
 
-Reglas propuestas:
+Reglas aceptadas:
 
 - Cada modalidad seleccionará preguntas que correspondan realmente a su propósito y respetará la configuración compatible aceptada en RF-03.
 - El repaso de errores utilizará fallos del historial del usuario y conservará el intento original.
@@ -75,4 +75,24 @@ Reglas propuestas:
 
 **Criterio de aceptación:** al elegir una modalidad, las preguntas cumplen sus filtros; el repaso de errores corresponde al historial propio. Cuando no existe material compatible, la aplicación explica el motivo sin iniciar una práctica diferente de la elegida.
 
-Esta propuesta define modalidades de contenido; las reglas de navegación, respuestas y reloj del modo estricto y del modo estudio se revisarán por separado. No autoriza generar más preguntas ni reanuda la meta de 1000.
+Este requisito define modalidades de contenido; las reglas de navegación, respuestas y reloj del modo estricto y del modo estudio se revisarán por separado. No autoriza generar más preguntas ni reanuda la meta de 1000.
+
+## RF-05 — Examen estricto (propuesto para revisión)
+
+**Tipo:** funcional. **Decisión:** pendiente. **Verificación del producto:** pendiente. **Relación con la matriz anterior:** RE-04, RE-05 y RS-02; fase original 2.
+
+El usuario podrá realizar un examen con reglas de avance y confirmación obligatoria.
+
+Reglas propuestas:
+
+- Mostrar una pregunta a la vez y exigir seleccionar y confirmar la respuesta antes de continuar.
+- En selección múltiple, exigir exactamente el número de alternativas indicado.
+- No permitir saltar preguntas, retroceder ni cambiar respuestas confirmadas.
+- No revelar aciertos, errores, claves ni explicaciones del intento hasta finalizarlo.
+- Mantener la configuración confirmada y el plazo del servidor aunque se recargue la página.
+- Al agotarse el tiempo total o el límite por pregunta, si está activado, registrar como no respondidas las preguntas cuyo plazo haya terminado y avanzar o finalizar según corresponda, sin exigir selección. Esta es la excepción temporal al avance por confirmación.
+- Aplicar estas reglas también en el servidor ante peticiones manipuladas.
+
+**Criterio de aceptación:** en un intento estricto, solo se avanza tras confirmar una selección válida o por vencimiento del plazo aplicable; una respuesta confirmada no se modifica. Recargar no reinicia el reloj; al caducar el examen se cierra y conserva las respuestas guardadas para calcular el resultado. La API del intento no revela soluciones antes de finalizar.
+
+El reloj y su recuperación se detallarán en un requisito separado. La política sobre consulta paralela del banco sigue como decisión abierta DEC-03; este requisito no promete controlar otras pestañas o dispositivos.
