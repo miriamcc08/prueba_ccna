@@ -62,3 +62,5 @@ El 11/11/2026 la propietaria aceptó **RF-05, examen estricto**, mediante «acpe
 El 11/11/2026 la propietaria aceptó **RF-06, modo de estudio**, mediante «si tambien acepto». Se aprueba su definición; la verificación técnica continúa pendiente. RF-07 se presentó para decisión y fue aceptado posteriormente; véase el registro siguiente.
 
 El 11/11/2026 la propietaria aceptó **RF-07, cronómetro y recuperación de sesiones**, y solicitó decidir en bloques de diez para agilizar la revisión. RF-08 a RF-17 se presentan como propuestas, sin aceptación presunta. El umbral concreto del aviso de tiempo de RF-07 permanece por precisar antes de su aceptación técnica.
+
+El 11/11/2026 la propietaria aceptó **RF-08 a RF-17 completos**, mediante «acepto todos» en respuesta exclusivamente a ese bloque. Se aprueban sus definiciones y criterios; no se aprueba el bloque siguiente ni se certifica implementación. RF-18 a RF-27 permanecen propuestos. RF-01 a RF-17 tienen definición aceptada; su aceptación técnica requiere evidencia por requisito.

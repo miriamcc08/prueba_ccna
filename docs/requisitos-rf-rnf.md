@@ -42,7 +42,7 @@ El cierre de todas las sesiones o la revocación en servidor de un token copiado
 
 ## Pendientes del proceso de requisitos
 
-Clasificar y presentar el resto de RF y RNF individualmente. Para cada uno, registrar: aceptar, modificar, diferir o descartar. Los RNF tendrán criterios medibles y valores acordados; no se asignan tiempos de respuesta, carga o compatibilidad sin decisión explícita. RF-01 a RF-07 están aceptados en su definición. RF-08 y siguientes no se incorporan al alcance aprobado hasta recibir respuesta.
+Clasificar y presentar el resto de RF y RNF individualmente. Para cada uno, registrar: aceptar, modificar, diferir o descartar. Los RNF tendrán criterios medibles y valores acordados; no se asignan tiempos de respuesta, carga o compatibilidad sin decisión explícita. RF-01 a RF-17 están aceptados en su definición. RF-18 y siguientes no se incorporan al alcance aprobado hasta recibir respuesta.
 
 ## RF-03 — Configuración del examen
 
@@ -135,11 +135,11 @@ Reglas aceptadas:
 
 La recuperación presupone conservar el identificador o acceso al intento en el mismo navegador o mediante su cuenta según corresponda; no se promete recuperar una sesión anónima si se pierde su identificador. El umbral concreto del aviso se acordará antes de cerrar la aceptación de este requisito.
 
-## Bloque RF-08 a RF-17 — propuestas pendientes de elección
+## Bloque RF-08 a RF-17 — aceptados
 
-Cambio de método solicitado por la propietaria: presentar diez requisitos por bloque y permitir decidir por ID. Los siguientes no están aprobados; su verificación técnica también queda pendiente. Conservar las decisiones individuales o por selección explícita, sin asumir que el silencio aprueba el resto.
+Cambio de método solicitado por la propietaria: presentar diez requisitos por bloque y permitir decidir por ID. RF-08 a RF-17 fueron aceptados expresamente el 11/11/2026 mediante «acepto todos». Su verificación técnica queda pendiente; la aceptación no certifica implementación. Conservar las decisiones individuales o por selección explícita, sin asumir que el silencio aprueba el resto.
 
-| ID | Requisito funcional propuesto | Criterio de aceptación resumido | Referencia anterior |
+| ID | Requisito funcional aceptado | Criterio de aceptación resumido | Referencia anterior |
 |---|---|---|---|
 | RF-08 | Resultados del examen: mostrar puntuación, porcentaje, aciertos, errores, no respondidas y tiempos. | Un intento con respuestas conocidas produce los valores esperados al finalizar o caducar; nunca presenta la puntuación como oficial Cisco. | RR-01, RE-07 |
 | RF-09 | Revisión explicada: mostrar selección, clave, explicación y referencia de cada pregunta tras finalizar. | La revisión coincide con la versión presentada en el intento, aunque se haya editado después. | RR-02, RC-09 |
@@ -152,4 +152,23 @@ Cambio de método solicitado por la propietaria: presentar diez requisitos por b
 | RF-16 | Revisar, aprobar y rechazar preguntas con evidencia y auditoría. | Solo administración decide, con notas y referencia; los candidatos no aprobados quedan fuera de exámenes. | RA-02 |
 | RF-17 | Retirar y restaurar preguntas con confirmación y motivo. | Retirar excluye de exámenes nuevos conservando historial; restaurar devuelve a pendiente de revisión y registra actor/fecha. | RA-03 |
 
-Opciones por ID: aceptar, modificar (indicando el cambio), diferir o descartar. Las propuestas de comparación completa o filtros adicionales no se consideran ya implementadas por aparecer en esta lista. Este bloque no genera nuevas preguntas ni levanta la pausa del banco.
+La aceptación se limita al bloque RF-08 a RF-17 tal como se presentó. La comparación completa o los filtros adicionales no se consideran ya implementados por aprobar su definición. Este bloque no genera nuevas preguntas ni levanta la pausa del banco.
+
+## Bloque RF-18 a RF-27 — propuestas pendientes de elección
+
+**Decisión:** pendiente para cada fila. **Verificación técnica:** pendiente. Este bloque continúa los requisitos funcionales; no incluye aprobación de los RNF ni de futuras ampliaciones. Su aceptación no cambia por sí sola el hito local/avanzado de las referencias anteriores.
+
+| ID | Requisito funcional propuesto | Criterio de aceptación resumido | Referencia anterior |
+|---|---|---|---|
+| RF-18 | Gestión de usuarios: admin/superadmin crean, consultan, editan y desactivan/restauran cuentas normales. | Desactivar bloquea acceso conservando historial; restaurar devuelve a user; datos inválidos o duplicados no dejan cambios parciales. | RA-04 |
+| RF-19 | Gestión de roles: solo superadmin asigna user/admin/superadmin y gestiona cuentas privilegiadas. | Admin no se eleva ni modifica privilegiadas; no se permite cambiar el propio rol o desactivarse ni eliminar el último superadmin activo; los cambios invalidan sesiones anteriores de la cuenta afectada. | RA-05/06 |
+| RF-20 | Auditoría administrativa: registrar cambios de cuentas y decisiones editoriales con actor, fecha, motivo y objetivo. | Superadmin puede consultar los cambios de cuentas y administración las revisiones editoriales; no se muestran contraseñas ni hashes. | RA-07, RA-02/03 |
+| RF-21 | Recomendaciones de estudio basadas en resultados reales: áreas débiles, errores repetidos y tiempos. | El plan explica su fundamento y permite abrir práctica del tema con contenido aprobado; sin historial se informa que faltan datos. | RL-01/02 |
+| RF-22 | Selección de idioma de interfaz y contenido ES/EN. | Cambiar la interfaz no altera idioma, respuestas ni contenido guardado de intentos anteriores; enunciados, opciones y explicaciones tienen versión ES/EN. | RU-03, RI-03, RR-03 |
+| RF-23 | Eliminación confirmada del historial propio. | Cancelar conserva datos; confirmar borra únicamente el historial de la cuenta solicitante, nunca el de otras cuentas; se informa que no es reversible desde la interfaz. | RR-03 |
+| RF-24 | Gestión editorial de fuentes y licencias por administración. | Permite registrar/editar fuente, URL, consulta y condiciones de reutilización, vinculándolas a preguntas; cambiar el catálogo no reescribe capturas de exámenes anteriores. | RA-08, RC-06 |
+| RF-25 | Gestión de familias y duplicados por administración. | Permite relacionar preguntas equivalentes y registrar decisiones; no destruye versiones históricas y evita repetir familias en un examen. | RA-08, RC-08 |
+| RF-26 | Ejecución de validadores técnicos desde administración y consulta de resultados. | Muestra qué cálculos/estructuras se verificaron, errores y límites; pasar comprobaciones no aprueba automáticamente la pregunta. | RC-04/05, RA-02 |
+| RF-27 | Consulta de cobertura por versión del temario, áreas y subobjetivos. | Muestra preguntas aprobadas, familias y huecos por objetivo, con fuente y fecha del temario; separa candidatas de aprobadas. | RC-07 |
+
+Responder por ID o aceptar el bloque completo. La comparación adaptativa completa, gestión de fuentes/familias y cobertura pueden requerir desarrollo posterior: aceptación de definición no equivale a entrega. La generación sigue pausada y los RNF se revisarán en bloques separados.
