@@ -49,4 +49,6 @@ Validación documental del 11/11/2026: 70 identificadores únicos de requisitos;
 
 ## Decisiones individuales RF/RNF
 
-El 11/11/2026 la propietaria solicitó separar requisitos funcionales y no funcionales y decidir individualmente. **RF-01, registro de usuarios, aceptado** mediante respuesta «acepto» al texto presentado. Esto aprueba su definición, no el cumplimiento técnico ni los restantes requisitos. Texto y seguimiento en [requisitos-rf-rnf.md](requisitos-rf-rnf.md). RF-02 permanece propuesto y pendiente de decisión.
+El 11/11/2026 la propietaria solicitó separar requisitos funcionales y no funcionales y decidir individualmente. **RF-01, registro de usuarios, aceptado** mediante respuesta «acepto» al texto presentado. Esto aprueba su definición, no el cumplimiento técnico ni los restantes requisitos. Texto y seguimiento en [requisitos-rf-rnf.md](requisitos-rf-rnf.md). RF-02 fue aceptado posteriormente de forma individual; véase el registro siguiente.
+
+El 11/11/2026 la propietaria aceptó **RF-02, inicio y cierre de sesión**, mediante «si me gusta, lo acepto». Se conserva el texto acordado y se distingue aceptación de definición de verificación técnica pendiente. RF-03, configuración del examen, se presenta como propuesta sin aprobar.

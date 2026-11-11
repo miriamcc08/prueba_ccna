@@ -23,13 +23,13 @@ Reglas aceptadas:
 
 La respuesta «acepto» se refiere exclusivamente a este requisito con las reglas presentadas. No aprueba otros requisitos ni fija nuevos límites de contraseña o verificación de correo.
 
-## RF-02 — Inicio y cierre de sesión (propuesto para la siguiente revisión)
+## RF-02 — Inicio y cierre de sesión
 
-**Tipo:** funcional. **Decisión:** pendiente. **Verificación del producto:** no aceptada por este registro. **Relación con la matriz anterior:** RS-01 y RA-06; fases originales 6 y 7.
+**Tipo:** funcional. **Decisión:** aceptado expresamente por la propietaria el 11/11/2026 mediante «si me gusta, lo acepto». **Verificación del producto:** pendiente de vincular evidencia y comprobar aceptación local. **Relación con la matriz anterior:** RS-01 y RA-06; fases originales 6 y 7.
 
 El usuario podrá iniciar sesión con correo y contraseña, y cerrar su sesión desde la aplicación.
 
-Reglas propuestas:
+Reglas aceptadas:
 
 - Solo podrán iniciar sesión cuentas activas con credenciales correctas.
 - El sistema reconocerá el rol actual de la cuenta: `user`, `admin` o `superadmin`.
@@ -38,8 +38,25 @@ Reglas propuestas:
 
 **Criterio de aceptación:** una cuenta activa accede con sus credenciales y permisos correspondientes; credenciales incorrectas o una cuenta desactivada no permiten acceso. Después de cerrar sesión, la aplicación solicita autenticación al intentar abrir una función protegida.
 
-El cierre de todas las sesiones o la revocación en servidor de un token copiado requieren definición separada; esta propuesta no los da por aprobados ni implementados.
+El cierre de todas las sesiones o la revocación en servidor de un token copiado requieren definición separada; RF-02 no los da por aprobados ni implementados.
 
 ## Pendientes del proceso de requisitos
 
-Clasificar y presentar el resto de RF y RNF individualmente. Para cada uno, registrar: aceptar, modificar, diferir o descartar. Los RNF tendrán criterios medibles y valores acordados; no se asignan tiempos de respuesta, carga o compatibilidad sin decisión explícita. Las propuestas RF-02 y siguientes no se incorporan al alcance aprobado hasta recibir respuesta.
+Clasificar y presentar el resto de RF y RNF individualmente. Para cada uno, registrar: aceptar, modificar, diferir o descartar. Los RNF tendrán criterios medibles y valores acordados; no se asignan tiempos de respuesta, carga o compatibilidad sin decisión explícita. RF-01 y RF-02 están aceptados en su definición. RF-03 y siguientes no se incorporan al alcance aprobado hasta recibir respuesta.
+
+## RF-03 — Configuración del examen (propuesto para revisión)
+
+**Tipo:** funcional. **Decisión:** pendiente. **Verificación del producto:** pendiente. **Relación con la matriz anterior:** RE-01 y RE-03; fase original 2.
+
+Antes de iniciar, el usuario podrá configurar cantidad de preguntas, duración, idioma (español o inglés), dificultad y temas.
+
+Reglas propuestas:
+
+- Mostrar las opciones disponibles y un resumen de la configuración antes de confirmar el inicio.
+- Comprobar la disponibilidad de preguntas aprobadas y activas compatibles con los filtros, sin repetir familias equivalentes.
+- Si no alcanza la disponibilidad, informar el límite y permitir ajustar la configuración; no reducir la cantidad ni cambiar filtros silenciosamente.
+- No permitir cambiar la configuración del intento una vez iniciado.
+
+**Criterio de aceptación:** al elegir y confirmar una configuración válida, el examen utiliza la cantidad, idioma, dificultad y temas acordados y aplica la duración elegida. Si faltan preguntas, no inicia con una configuración diferente y explica qué debe ajustarse.
+
+Las modalidades y las reglas de examen estricto/estudio se revisarán como requisitos separados. Esta propuesta no aprueba parámetros numéricos nuevos.
