@@ -173,11 +173,11 @@ La aceptación se limita al bloque RF-08 a RF-17 tal como se presentó. La compa
 
 La aceptación se limita a estas diez definiciones y criterios. La comparación adaptativa completa, gestión de fuentes/familias y cobertura pueden requerir desarrollo posterior: aceptación de definición no equivale a entrega. La generación sigue pausada y los RNF se revisarán en bloques separados.
 
-## Bloque RNF-01 a RNF-10 — propuestas pendientes de elección
+## Bloque RNF-01 a RNF-10 — aceptados
 
-**Tipo:** no funcional. **Decisión:** pendiente para cada fila. **Verificación técnica:** pendiente. Son condiciones de calidad propuestas para la entrega local; no se consideran ya cumplidas. Los valores concretos de este bloque se proponen ahora y solo se adoptan si se acepta explícitamente. Publicación, carga multiusuario y operación remota se especificarán aparte.
+**Tipo:** no funcional. **Decisión:** RNF-01 a RNF-10 aceptados expresamente el 11/11/2026 mediante «acpeto todo». **Verificación técnica:** pendiente. Son condiciones de calidad acordadas para la entrega local; no se consideran ya cumplidas. Se adoptan los objetivos explícitos del bloque. Publicación, carga multiusuario y operación remota se especificarán aparte.
 
-| ID | Requisito no funcional propuesto | Criterio de aceptación propuesto | Referencia anterior |
+| ID | Requisito no funcional aceptado | Criterio de aceptación acordado | Referencia anterior |
 |---|---|---|---|
 | RNF-01 | Seguridad de acceso: comprobar identidad, rol y estado vigente en servidor. | Las pruebas de invitado/user/admin/superadmin y cuenta desactivada rechazan todas las operaciones no autorizadas del catálogo de permisos; manipular rol/ID o reutilizar una sesión revocada no concede acceso. | RS-01/02, RA-06 |
 | RNF-02 | Protección de secretos y datos personales. | Contraseñas como hash, sin valores reales ni bases personales en archivos publicados; respuestas y registros no revelan hashes, contraseñas o tokens. Revisar archivos nuevos, seguimiento heredado y contenido de la entrega antes de cerrar el requisito, preservando respaldos. | RI-04, RS-03 |
@@ -190,6 +190,25 @@ La aceptación se limita a estas diez definiciones y criterios. La comparación 
 | RNF-09 | Mantenibilidad y pruebas reproducibles. | Separar cliente/API y centralizar validación/errores; desde una copia limpia, instalar lockfiles, generar cliente/migrar, compilar y pasar las pruebas pertinentes. Todo cambio identifica requisitos y evidencia; las pruebas no modifican la base personal. | RI-01, RS-03/04 |
 | RNF-10 | Trazabilidad y actualización PC/GitHub. | Documentar cada entrega y verificar el mismo commit local/remoto tras publicar y hacer pull, registrando archivos modificados sin incluir datos o secretos locales. Si hay diferencias o falta aplicar migraciones, informarlo antes de declarar sincronizado el código. Las cuentas/bases no se replican por Git. | RG-02, RS-05 |
 
-Se pueden aceptar, modificar, diferir o descartar por ID. Aceptar RNF-04/05/07/08 adopta expresamente los objetivos propuestos (2 segundos/95 %/30 muestras, Windows 11 Chrome/Edge, WCAG 2.2 AA y restauración de 15 minutos); no afirma que hayan sido medidos o alcanzados. Si la PC usa otro Windows o se desea otro umbral, ajustar antes de cerrar la definición. No se reanudan generación ni despliegue.
+La aceptación de RNF-04/05/07/08 adopta expresamente los objetivos presentados (2 segundos/95 %/30 muestras, Windows 11 Chrome/Edge, WCAG 2.2 AA y restauración de 15 minutos); no afirma que hayan sido medidos o alcanzados. Cambios posteriores de plataforma o umbral requieren registrar una modificación del requisito. No se reanudan generación ni despliegue.
 
 Quedan RF avanzados por revisar individualmente o por bloques desde la matriz original (por ejemplo variantes recalculadas y puntuación configurable); pasar a RNF no los elimina ni los aprueba por omisión.
+
+## Bloque RF-28 a RF-37 — propuestas avanzadas pendientes de elección
+
+**Decisión:** pendiente por fila. **Verificación técnica:** pendiente. Estas propuestas concretan funciones del alcance original aún por decidir; no se aprueban por haber aceptado los RNF. Aceptarlas no levanta la pausa de generación ni obliga a terminarlas en la primera versión local: conservan sus hitos L/A definidos en la matriz, salvo ajuste expreso. La política de permisos de RF-30 también es propuesta.
+
+| ID | Requisito funcional propuesto | Criterio de aceptación resumido | Referencia anterior |
+|---|---|---|---|
+| RF-28 | Generar variantes técnicas con recálculo de parámetros, alternativas y clave. | Mantener familia y parámetros; rechazar ambigüedad y verificar con cálculo independiente antes de aprobar. Generación solo cuando se levante la pausa aplicable. | RB-03 |
+| RF-29 | Repetir un ejercicio mediante una variante aprobada disponible. | Crear intento independiente con misma familia y variante distinta, conservando el anterior; informar si no existe una compatible. | RE-10 |
+| RF-30 | Configurar la política de puntuación desde superadmin. | Propuesta: configurar objetivo interno de práctica y habilitar/deshabilitar escala interna 300–1000; mantener porcentaje, peso igual y múltiple exacta. Guardar política por intento y no recalcular históricos ni atribuirla a Cisco. Otros parámetros requieren acuerdo separado. | RE-08 |
+| RF-31 | Explicaciones pedagógicas ampliadas por escenario. | Incluir pasos, razón de distractores relevantes, fórmulas/comandos cuando apliquen, ejemplo, referencia, consejo y enlace a refuerzo aprobado disponible; indicar si no hay refuerzo. Amplía RF-09, sin generar contenido nuevo automáticamente. | RC-09 |
+| RF-32 | Diagnóstico adaptativo avanzado. | Detectar evolución por dificultad y conceptos confundidos con datos verificables; mostrar fundamento y comparación pertinente sin afirmar conclusiones si faltan datos. Amplía RF-11/21. | RL-02 |
+| RF-33 | Seleccionar versión del temario entre las soportadas. | Cada intento conserva versión elegida y selecciona contenido compatible; una versión sin banco suficiente se informa y no se mezcla con otra. | RC-07, RE-03 |
+| RF-34 | Informes por lote del banco. | Mostrar creadas, aprobadas, rechazadas, pendientes, duplicados, errores y cobertura; no sumar versiones como conceptos independientes. | RB-02 |
+| RF-35 | Continuación de la ampliación por lotes de 50. | Al autorizar su reanudación, continuar desde IDs y revisiones guardados sin duplicar ni sobrescribir conflictos; emitir informe de cada lote. Mientras tanto permanece pausada. | RB-02 |
+| RF-36 | Meta posterior de 1000 preguntas aprobadas y distintas. | Contar activas aprobadas y familias/conceptos sustancialmente distintos por separado; candidatas, rechazadas o variantes cosméticas no cumplen la meta. Generación y meta siguen diferidas. | RB-01 |
+| RF-37 | Práctica sin cuenta con recuperación limitada. | Permitir recuperar el intento anónimo si se conserva su identificador en el navegador; informar que perderlo puede impedir recuperar la sesión y que no equivale a historial de cuenta entre equipos. | RE-09, RP-06 |
+
+Por ID se puede aceptar, modificar, diferir o descartar. RF-30 incluye límites propuestos para que su configuración sea verificable. Este bloque no incorpora las ampliaciones opcionales RX (IA conectada, doble factor, reportes, exportaciones o laboratorios interactivos), que siguen sin aprobar.
