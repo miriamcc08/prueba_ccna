@@ -1,5 +1,8 @@
 # Simulador de práctica CCNA 200-301
 
+Requisitos en revisión: [línea base y fases](docs/requisitos.md) · [registro de aceptación](docs/aceptacion-requisitos.md). Primera entrega local; publicación y meta de 1000 preguntas posteriores, con generación pausada.
+
+
 Aplicación React/TypeScript y Express/Prisma con SQLite para desarrollo. La puntuación de práctica y el objetivo de 82,5 % son internos; no equivalen a una calificación oficial de Cisco.
 
 ## Entorno en la nube

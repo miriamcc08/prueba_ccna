@@ -1,5 +1,8 @@
 # Estado frente al documento de requisitos
 
+Actualización del 11/11/2026: [requisitos v0.1 para revisión](requisitos.md) y [registro de aceptación](aceptacion-requisitos.md). Se mantienen las fases originales, con fases 0/8 propuestas. Prioridad confirmada: uso local primero; publicación y meta de 1000 después, sin reanudar generación. Las secciones anteriores conservan evidencia histórica, no aceptación de esta nueva línea base.
+
+
 Lista vigente de pendientes y criterios de cierre: [pendientes-cierre.md](pendientes-cierre.md).
 
 Estado vigente del cierre funcional: [auditoría del 26/10/2026](auditoria-funcional-20261026.md). Incluye matriz de requisitos, cambios y pendientes. Las secciones de lotes posteriores conservan su historia; sus cifras de pruebas no sustituyen la última comprobación.

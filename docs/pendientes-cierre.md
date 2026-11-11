@@ -1,5 +1,8 @@
 # Lista de cierre del simulador
 
+Actualización del 11/11/2026: [requisitos v0.1 para revisión](requisitos.md) y [registro de aceptación](aceptacion-requisitos.md). Se mantienen las fases originales, con fases 0/8 propuestas. Prioridad confirmada: uso local primero; publicación y meta de 1000 después, sin reanudar generación. Las secciones anteriores conservan evidencia histórica, no aceptación de esta nueva línea base.
+
+
 Base funcional del 26/10/2026; revisión de contenido actualizada el 30/10/2026: CSV, resultados por dificultad, reinicio independiente de estudio, tiempo por pregunta, cambio de tema en estudio e historial con versión del temario visible.
 
 **Estado:** el recorrido principal está probado, pero no está completo el alcance original ni certificado el despliegue de producción. No se asigna un porcentaje de avance: las preguntas candidatas, las pruebas automatizadas y los requisitos entregados miden cosas diferentes.
@@ -16,7 +19,7 @@ Configuración y disponibilidad real; exámenes estrictos; estudio sin tiempo; f
 
 | ID | Pendiente | Criterio de cierre |
 |---|---|---|
-| C01 | Configurar y comprobar el propietario superadmin en el PC | El usuario confirmó que creó su admin y accede al panel. Falta actualizar a la gestión de usuarios, ejecutar `superadmin:bootstrap` con sus credenciales locales y comprobar los tres roles; no se crean credenciales reales en el entorno de pruebas. |
+| C01 | Configurar y comprobar el propietario superadmin en el PC | El usuario confirmó que creó su admin y accede al panel. El usuario confirmó además la migración y `Superadmin configured. Sign in again.`; falta registrar pruebas finales de su instalación y comprobar los tres roles visualmente. No se crean credenciales reales en el entorno de pruebas. |
 | C02 | Revisar técnicamente el material existente | Hay decisiones técnicas asistidas para 828 registros: 619 aprobados y 209 rechazados con reemplazo; quedan 41 heredadas pendientes (dos retenciones del lote 4, una del lote 6 y 38 del segundo lote). Completar respuesta, distractores, explicación, traducción, referencia vigente y licencia por candidato. Registrar decisión y evidencia; mantener fuera de exámenes lo no aprobado. |
 | C03 | Completar el mapa del temario oficial vigente | Vincular las preguntas aprobadas a los subobjetivos, contrastar pesos/versiones con fuente oficial y mostrar huecos. Las coincidencias por palabras actuales no certifican cobertura. |
 | C04 | Disponer de suficientes familias aprobadas por modalidad y dificultad | Probar las cantidades ofrecidas, incluidos simulacros largos. Tras aplicar el manifiesto, la nueva base aislada de validación contiene 877 registros, 627 validados y 544 familias validadas; se probó un simulacro de 100 con dificultad mixta. Otros filtros siguen teniendo menos disponibilidad. La interfaz informa la escasez, no inventa disponibilidad. |
@@ -87,4 +90,4 @@ Revisión vigente y procedimiento para actualizar cada base local: [revisión vi
 
 Actualización de perfiles y gestión editorial del 05/11/2026: [entrega y validación](perfiles-administracion-20261105.md). El usuario confirmó después la creación de su admin local. La promoción a superadmin de C01 se verifica en el PC; las cuentas temporales no la sustituyen.
 
-Gestión de cuentas añadida el 09/11/2026: CRUD reversible, sesiones revocables y roles user/admin/superadmin, con auditoría. [Entrega y activación local del propietario](usuarios-roles-20261109.md). La promoción real del propietario sigue pendiente de ejecutar en su PC.
+Gestión de cuentas añadida el 09/11/2026: CRUD reversible, sesiones revocables y roles user/admin/superadmin, con auditoría. [Entrega y activación local del propietario](usuarios-roles-20261109.md). El propietario confirmó que ejecutó la promoción en su PC. Su aceptación visual y las pruebas finales locales siguen por registrar.

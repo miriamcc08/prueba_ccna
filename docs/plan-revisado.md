@@ -1,5 +1,8 @@
 # Revisión del PLAN.md recibido
 
+Actualización del 11/11/2026: [requisitos v0.1 para revisión](requisitos.md) y [registro de aceptación](aceptacion-requisitos.md). Se mantienen las fases originales, con fases 0/8 propuestas. Prioridad confirmada: uso local primero; publicación y meta de 1000 después, sin reanudar generación. Las secciones anteriores conservan evidencia histórica, no aceptación de esta nueva línea base.
+
+
 El archivo adjunto se usa como referencia de prioridades y entregables, no como prueba de que sus afirmaciones estén verificadas. El estado comprobado del proyecto está en `estado.md`; el trabajo restante y sus criterios están en [pendientes-cierre.md](pendientes-cierre.md).
 
 ## Correcciones al plan
