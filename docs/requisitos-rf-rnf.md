@@ -42,7 +42,7 @@ El cierre de todas las sesiones o la revocación en servidor de un token copiado
 
 ## Pendientes del proceso de requisitos
 
-Clasificar y presentar el resto de RF y RNF individualmente. Para cada uno, registrar: aceptar, modificar, diferir o descartar. Los RNF tendrán criterios medibles y valores acordados; no se asignan tiempos de respuesta, carga o compatibilidad sin decisión explícita. RF-01, RF-02, RF-03 y RF-04 están aceptados en su definición. RF-05 y siguientes no se incorporan al alcance aprobado hasta recibir respuesta.
+Clasificar y presentar el resto de RF y RNF individualmente. Para cada uno, registrar: aceptar, modificar, diferir o descartar. Los RNF tendrán criterios medibles y valores acordados; no se asignan tiempos de respuesta, carga o compatibilidad sin decisión explícita. RF-01, RF-02, RF-03, RF-04 y RF-05 están aceptados en su definición. RF-06 y siguientes no se incorporan al alcance aprobado hasta recibir respuesta.
 
 ## RF-03 — Configuración del examen
 
@@ -77,13 +77,13 @@ Reglas aceptadas:
 
 Este requisito define modalidades de contenido; las reglas de navegación, respuestas y reloj del modo estricto y del modo estudio se revisarán por separado. No autoriza generar más preguntas ni reanuda la meta de 1000.
 
-## RF-05 — Examen estricto (propuesto para revisión)
+## RF-05 — Examen estricto
 
-**Tipo:** funcional. **Decisión:** pendiente. **Verificación del producto:** pendiente. **Relación con la matriz anterior:** RE-04, RE-05 y RS-02; fase original 2.
+**Tipo:** funcional. **Decisión:** aceptado expresamente por la propietaria el 11/11/2026 mediante «acpeto». **Verificación del producto:** pendiente de vincular evidencia y comprobar aceptación local. **Relación con la matriz anterior:** RE-04, RE-05 y RS-02; fase original 2.
 
 El usuario podrá realizar un examen con reglas de avance y confirmación obligatoria.
 
-Reglas propuestas:
+Reglas aceptadas:
 
 - Mostrar una pregunta a la vez y exigir seleccionar y confirmar la respuesta antes de continuar.
 - En selección múltiple, exigir exactamente el número de alternativas indicado.
@@ -96,3 +96,22 @@ Reglas propuestas:
 **Criterio de aceptación:** en un intento estricto, solo se avanza tras confirmar una selección válida o por vencimiento del plazo aplicable; una respuesta confirmada no se modifica. Recargar no reinicia el reloj; al caducar el examen se cierra y conserva las respuestas guardadas para calcular el resultado. La API del intento no revela soluciones antes de finalizar.
 
 El reloj y su recuperación se detallarán en un requisito separado. La política sobre consulta paralela del banco sigue como decisión abierta DEC-03; este requisito no promete controlar otras pestañas o dispositivos.
+
+## RF-06 — Modo de estudio (propuesto para revisión)
+
+**Tipo:** funcional. **Decisión:** pendiente. **Verificación del producto:** pendiente. **Relación con la matriz anterior:** RE-06, RR-04 y RL-01; fase original 2.
+
+El usuario podrá practicar en modo de estudio, consultar las soluciones después de confirmar y repasar lo aprendido.
+
+Reglas propuestas:
+
+- Mostrar la respuesta correcta y su explicación después de confirmar, cuando esté activada la opción de explicaciones.
+- Permitir regresar a preguntas ya respondidas para revisar su selección y explicación, sin modificar respuestas confirmadas.
+- Permitir practicar sin cronómetro.
+- Permitir consultar referencias técnicas y guardar favoritas personales al iniciar sesión.
+- Cambiar de tema o reiniciar un ejercicio creará una práctica nueva y conservará el intento anterior.
+- Utilizar solo preguntas aprobadas y activas; informar cuando no haya contenido disponible.
+
+**Criterio de aceptación:** el usuario confirma una respuesta y puede consultar su solución y explicación, volver a respuestas anteriores y practicar sin reloj. Cambiar de tema o reiniciar abre una práctica independiente sin alterar las respuestas ni resultados anteriores; las favoritas se asocian a su propia cuenta.
+
+Las variantes recalculadas requieren un requisito separado. RF-06 no autoriza generar preguntas nuevas ni levantar la pausa del banco. Los plazos opcionales se regirán por el requisito de cronómetro.
